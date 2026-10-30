@@ -129,6 +129,25 @@ void Terrain::setup( const Catalog &cat, const std::string &theme, uint32_t seed
     m_seed = seed;
     m_halfW = halfW / GroundFactor + 120.0f;
     m_look = Look();
+    // Every value back to its default: a theme names only what differs.
+    m_relief = 60.0f;
+    m_scale = 0.004f;
+    m_water = -1e9f;
+    m_waterColor = { 30, 70, 110, 255 };
+    m_waterGlow = 0.0f;
+    m_low = { 70, 60, 50, 255 };
+    m_mid = { 110, 96, 70, 255 };
+    m_high = { 150, 140, 120, 255 };
+    m_peak = { 220, 220, 225, 255 };
+    m_glow = { 255, 120, 40, 255 };
+    m_glowAmount = 0.0f;
+    m_city = m_trees = m_craters = m_plates = m_rocks = m_ridge = 0.0f;
+    m_propColor = { 120, 120, 130, 255 };
+    m_treeColor = { 40, 90, 50, 255 };
+    m_cloudColor = { 255, 255, 255, 255 };
+    m_clouds = 0.0f;
+    m_nebulaA = { 60, 30, 120, 255 };
+    m_nebulaB = { 20, 80, 140, 255 };
     const Block *b = cat.theme( theme );
     if ( !b ) b = cat.theme( "space" );
     m_theme = b ? *b : Block();
