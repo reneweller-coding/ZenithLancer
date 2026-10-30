@@ -45,15 +45,36 @@ std::string dataDir( const std::string &given )
     return std::string( ZENITH_ROOT ) + "/data";
 }
 
-/** @brief The gear an autopilot run flies with: the episode's own, raised to what a player would have by then. */
+/**
+ * @brief The gear an autopilot run flies with: what a player has bought by the middle of the mission's episode
+ *        (docs/DESIGN.md's prices against the credits an episode earns). --loadout changes it.
+ */
 Loadout simLoadout( const Catalog &cat, const LevelDef &lv )
 {
+    static const char *mid[6] = {
+        "",
+        "ship=lancer,front=pulse:5,rear=tailgun:2,left=pip,right=-,gen=dynamo,shield=ward,special=nova_s",
+        "ship=bastion,front=hornet:5,rear=sweep:3,left=glimmer,right=pip,gen=fusion,shield=mantle,special=drones",
+        "ship=corsair,front=prism:5,rear=orbiter:4,left=warden,right=lancet,gen=plasmaheart,shield=fortress,special=timeslow",
+        "ship=warhawk,front=helix:6,rear=halo:4,left=hydra,right=phoenix,gen=starforge,shield=prismshield,special=supernova",
+        "ship=seraphim,front=tempest:7,rear=hailstorm:5,left=seraph,right=mirror,gen=singularity,shield=halo_s,special=lance" };
     Loadout o;
     auto    ep = cat.m_episodes.find( lv.m_episode );
     if ( ep != cat.m_episodes.end() ) o = ep->second.m_loadout;
-    // A player in the middle of an episode has upgraded: two levels per episode and a bit.
-    o.m_frontLv = std::min( 11, o.m_frontLv + 1 + lv.m_episode );
-    o.m_rearLv = std::min( 11, o.m_rearLv + lv.m_episode );
+    if ( lv.m_episode >= 1 && lv.m_episode <= 5 ) parseLoadout( o, mid[lv.m_episode] );
+    // Goods this data does not know fall back to the episode's own.
+    if ( ep != cat.m_episodes.end() )
+    {
+        const Loadout &e = ep->second.m_loadout;
+        if ( !cat.ship( o.m_ship ) ) o.m_ship = e.m_ship;
+        if ( !cat.weapon( o.m_front ) ) o.m_front = e.m_front;
+        if ( !o.m_rear.empty() && !cat.weapon( o.m_rear ) ) o.m_rear = e.m_rear;
+        if ( !o.m_sideL.empty() && !cat.sidekick( o.m_sideL ) ) o.m_sideL = e.m_sideL;
+        if ( !o.m_sideR.empty() && !cat.sidekick( o.m_sideR ) ) o.m_sideR = e.m_sideR;
+        if ( !cat.generator( o.m_gen ) ) o.m_gen = e.m_gen;
+        if ( !cat.shield( o.m_shield ) ) o.m_shield = e.m_shield;
+        if ( !o.m_special.empty() && !cat.special( o.m_special ) ) o.m_special = e.m_special;
+    }
     return o;
 }
 

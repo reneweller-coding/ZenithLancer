@@ -667,6 +667,59 @@ void World::useSpecial( int i )
     else if ( k == "repair" ) p.m_armor = std::min( p.m_armorMax, p.m_armor + s.m_p.num( "power", p.m_armorMax * 0.5f ) );
     else if ( k == "magnet" ) p.m_magnet = time;
     else if ( k == "lance" ) p.m_drones = -time;   // negative: the lance (a wide beam) instead of drones
+    else if ( k == "shield" )
+    {
+        // Overcharge: the shield and the generator full at once, and a moment without harm.
+        p.m_shield = p.m_shieldDef ? p.m_shieldDef->m_max : 0.0f;
+        p.m_energy = p.m_energyMax;
+        p.m_barrier = std::max( p.m_barrier, s.m_p.num( "time", 0.6f ) );
+    }
+    else if ( k == "missiles" )
+    {
+        // A salvo of homing missiles fanned out from the ship.
+        int   n = std::max( 1, s.m_p.integer( "count", 12 ) );
+        float dmg = s.m_p.num( "power", 30.0f );
+        Color c = s.m_p.color( "color", { 255, 140, 80, 255 } );
+        for ( int j = 0; j < n; ++j )
+        {
+            Bullet b;
+            b.m_player = true;
+            b.m_owner = i;
+            b.m_pos = b.m_origin = p.m_pos;
+            b.m_vel = mul( dirOf( 180.0f - 80.0f + 160.0f * j / std::max( 1, n - 1 ) ), 420.0f );
+            b.m_accel = 700.0f;
+            b.m_home = 330.0f;
+            b.m_damage = dmg;
+            b.m_radius = 4.0f;
+            b.m_life = 2.2f;
+            b.m_sprite = spriteOf( "rocket" );
+            b.m_color = c;
+            m_bullets.push_back( b );
+        }
+    }
+    else if ( k == "mines" )
+    {
+        // A ring of mines round the ship that bursts after a moment.
+        int   n = std::max( 1, s.m_p.integer( "count", 8 ) );
+        float dmg = s.m_p.num( "power", 60.0f );
+        Color c = s.m_p.color( "color", { 255, 90, 90, 255 } );
+        for ( int j = 0; j < n; ++j )
+        {
+            Bullet b;
+            b.m_player = true;
+            b.m_owner = i;
+            b.m_pos = b.m_origin = p.m_pos;
+            b.m_vel = mul( dirOf( 360.0f * j / n ), 260.0f );
+            b.m_drag = 2.2f;
+            b.m_damage = dmg;
+            b.m_explode = s.m_p.num( "radius", 90.0f );
+            b.m_radius = 7.0f;
+            b.m_life = s.m_p.num( "time", 1.6f );
+            b.m_sprite = spriteOf( "bomb" );
+            b.m_color = c;
+            m_bullets.push_back( b );
+        }
+    }
 }
 
 void World::moveSidekicks( int i, const PlayerInput &in )
@@ -725,7 +778,8 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
         float radius = V( "radius", 0 ), accel = V( "accel", 0 ), drag = V( "drag", 0 ), jitter = V( "jitter", 0 );
         int   pierce = (int)std::lround( V( "pierce", 0 ) ), bounce = (int)std::lround( V( "bounce", 0 ) );
         int   split = (int)std::lround( V( "split", 0 ) );
-        float ox = V( "x", 0 ), oy = V( "y", 0 ), length = V( "length", 0 );
+        float ox = V( "x", 0 ), oy = V( "y", 0 ), length = V( "length", 0 ), slow = V( "slow", 0 );
+        float phase = V( "phase", 0 ) * Deg;
         Color col = p.color( "color", { 120, 220, 255, 255 } );
         int   sprite = spriteOf( p.str( "sprite", s.m_kind == "homing" ? "rocket" : s.m_kind == "flame" ? "flame" : "pulse" ) );
         Vector2 origin = { from.x + ox, from.y + oy };
@@ -735,9 +789,13 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
             b.m_player = true;
             b.m_owner = i;
             b.m_pos = b.m_origin = at;
+            // jitter: a little scatter of the aim (degrees either way).
+            if ( jitter > 0 ) dir += m_rng.range( -jitter, jitter );
             b.m_vel = mul( dirOf( dir ), spd );
             b.m_radius = size;
             b.m_damage = dmg;
+            b.m_slow = slow;
+            b.m_phase = phase;
             b.m_life = life;
             b.m_home = home;
             b.m_amp = amp;
@@ -775,7 +833,7 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
         else if ( k == "homing" )
             for ( int j = 0; j < n; ++j )
             {
-                float a = n > 1 ? baseDir - spread * 0.5f + spread * j / ( n - 1 ) : baseDir + angle;
+                float a = ( n > 1 ? baseDir - spread * 0.5f + spread * j / ( n - 1 ) : baseDir ) + angle;
                 size_t bi = shoot( { origin.x + ( j - ( n - 1 ) * 0.5f ) * dx, origin.y }, a, speed );
                 if ( m_bullets[bi].m_home <= 0 ) m_bullets[bi].m_home = 240.0f;
             }
@@ -783,7 +841,8 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
             for ( int j = 0; j < n; ++j )
             {
                 size_t bi = shoot( { origin.x + ( j - ( n - 1 ) * 0.5f ) * dx, origin.y }, baseDir + angle, speed );
-                if ( m_bullets[bi].m_amp <= 0 ) m_bullets[bi].m_amp = 30.0f;
+                // amp may be negative (the swing starts the other way); unset it is 30.
+                if ( !p.has( "amp" ) ) m_bullets[bi].m_amp = 30.0f;
                 if ( m_bullets[bi].m_freq <= 0 ) m_bullets[bi].m_freq = 3.0f;
                 if ( j % 2 == 1 ) m_bullets[bi].m_amp = -m_bullets[bi].m_amp;
             }
@@ -794,7 +853,7 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
                 size_t bi = shoot( origin, a, speed * m_rng.range( 0.8f, 1.2f ) );
                 if ( k == "flame" )
                 {
-                    m_bullets[bi].m_slow = 2.5f;
+                    if ( !p.has( "slow" ) ) m_bullets[bi].m_slow = 2.5f;
                     if ( m_bullets[bi].m_pierce == 0 ) m_bullets[bi].m_pierce = 3;
                 }
             }
@@ -820,6 +879,7 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
             pl.m_beam = true;
             pl.m_beamWidth = std::max( pl.m_beamWidth, width );
             pl.m_beamColor = col;
+            pl.m_beams.push_back( { origin, width, col } );
             float stopY = -50.0f;
             int   first = -1;
             if ( pierce == 0 )
@@ -877,6 +937,8 @@ void World::firePlayer( int i, const PlayerInput &in )
 {
     Player &p = m_players[i];
     p.m_beam = false;
+    p.m_beamWidth = 0.0f;
+    p.m_beams.clear();
     p.m_firing = in.m_fire && p.m_alive;
     if ( p.m_frontT > 0 ) p.m_frontT -= Dt;
     if ( p.m_rearT > 0 ) p.m_rearT -= Dt;
@@ -1385,6 +1447,34 @@ void World::fireEnemy( int idx )
 
 // ---------------------------------------------------------------------------------------------------- bullets
 
+namespace
+{
+/** @brief A pilot's shot bursts into splinters (split=n): a fan forward, weaker and without splitting again. */
+void splinter( std::vector<Bullet> &out, const Bullet &b, Rng &rng )
+{
+    Vector2 d = len( b.m_vel ) > 1.0f ? norm( b.m_vel ) : Vector2{ 0, -1 };
+    float   base = angleOf( d );
+    for ( int j = 0; j < b.m_split; ++j )
+    {
+        Bullet s = b;
+        float  a = base + ( b.m_split > 1 ? -50.0f + 100.0f * j / ( b.m_split - 1 ) : 0.0f ) + rng.range( -6.0f, 6.0f );
+        s.m_vel = mul( dirOf( a ), std::max( 450.0f, len( b.m_vel ) * 0.8f ) );
+        s.m_damage = b.m_damage * 0.45f;
+        s.m_radius = std::max( 2.0f, b.m_radius * 0.7f );
+        s.m_split = 0;
+        s.m_explode = 0;
+        s.m_age = 0;
+        s.m_life = 0.45f;
+        s.m_home = 0;
+        s.m_amp = 0;
+        s.m_spin = 0;
+        s.m_pierce = 0;
+        s.m_dead = false;
+        out.push_back( s );
+    }
+}
+}   // namespace
+
 void World::moveBullets()
 {
     for ( Bullet &b : m_bullets )
@@ -1413,6 +1503,7 @@ void World::moveBullets()
                 emit( EvE::EXPLODE, b.m_pos, 0, 0, "", b.m_color );
                 continue;
             }
+            if ( b.m_player && b.m_split > 0 ) splinter( m_born, b, m_rng );
             if ( b.m_player && b.m_explode > 0 )
             {
                 for ( size_t e = 0; e < m_enemies.size(); ++e )
@@ -1466,7 +1557,7 @@ void World::moveBullets()
             // Weaving across its way.
             Vector2 d = norm( b.m_vel );
             Vector2 side = { -d.y, d.x };
-            float   w0 = std::sin( 2 * Pi * b.m_freq * ( b.m_age - dt ) ), w1 = std::sin( 2 * Pi * b.m_freq * b.m_age );
+            float   w0 = std::sin( 2 * Pi * b.m_freq * ( b.m_age - dt ) + b.m_phase ), w1 = std::sin( 2 * Pi * b.m_freq * b.m_age + b.m_phase );
             b.m_pos = add( b.m_pos, mul( side, b.m_amp * ( w1 - w0 ) ) );
         }
         if ( b.m_bounce > 0 && ( b.m_pos.x < 0 || b.m_pos.x > FieldW ) )
@@ -1889,6 +1980,7 @@ void World::collide()
             else
             {
                 b.m_dead = true;
+                if ( b.m_split > 0 ) splinter( m_born, b, m_rng );
                 break;
             }
         }

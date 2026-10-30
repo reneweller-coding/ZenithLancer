@@ -221,11 +221,21 @@ void App::shop( float dt )
                 desc = w->m_desc;
                 int lv = name == *slot ? ( m_tab == 1 ? o.m_frontLv : o.m_rearLv ) : 1;
                 char buf[160];
-                snprintf( buf, sizeof( buf ), "Stufe %d:  ~%d Schaden/s    Energie %.0f je Salve", lv, (int)dps( *w, lv, 1 ), w->m_energy.at( ( lv - 1 ) / 10.0f ) );
+                float energy = w->m_energy.at( ( lv - 1 ) / 10.0f ) * w->m_rate.at( ( lv - 1 ) / 10.0f );
+                if ( w->m_modes > 1 )
+                {
+                    snprintf( buf, sizeof( buf ), "Stufe %d:  ~%d / ~%d Schaden/s (%s / %s)    Energie %.0f/s", lv, (int)dps( *w, lv, 1 ),
+                              (int)dps( *w, lv, 2 ), w->m_mode1.c_str(), w->m_mode2.c_str(), energy );
+                    lines.push_back( buf );
+                    snprintf( buf, sizeof( buf ), "Stufe 11: ~%d / ~%d Schaden/s", (int)dps( *w, 11, 1 ), (int)dps( *w, 11, 2 ) );
+                }
+                else
+                {
+                    snprintf( buf, sizeof( buf ), "Stufe %d:  ~%d Schaden/s    Energie %.0f/s", lv, (int)dps( *w, lv, 1 ), energy );
+                    lines.push_back( buf );
+                    snprintf( buf, sizeof( buf ), "Stufe 11: ~%d Schaden/s", (int)dps( *w, 11, 1 ) );
+                }
                 lines.push_back( buf );
-                snprintf( buf, sizeof( buf ), "Stufe 11: ~%d Schaden/s", (int)dps( *w, 11, 1 ) );
-                lines.push_back( buf );
-                if ( w->m_modes > 1 ) lines.push_back( "Modi: " + w->m_mode1 + " / " + w->m_mode2 );
                 if ( m_tab == 1 ) test.m_front = name, test.m_frontLv = lv;
                 else test.m_rear = name, test.m_rearLv = lv;
             }

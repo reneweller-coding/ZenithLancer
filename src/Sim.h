@@ -146,6 +146,15 @@ struct Bullet
     bool        m_mine = false;
     float       m_slow = 0.0f;       ///< flame: slows to a stop
     float       m_length = 0.0f;     ///< drawn this long along its way
+    float       m_phase = 0.0f;      ///< weaving shots: where in their swing they start (radians)
+};
+
+/** @brief A pilot's beam this step (the renderer draws it from its muzzle up the field). */
+struct BeamShot
+{
+    Vector2 m_from = { 0, 0 };
+    float   m_width = 10.0f;
+    Color   m_color = WHITE;
 };
 
 /** @brief An enemy laser beam. */
@@ -228,6 +237,7 @@ struct Player
     bool                m_beam = false;      ///< a beam gun burns this step
     float               m_beamWidth = 0.0f;
     Color               m_beamColor = WHITE;
+    std::vector<BeamShot> m_beams;           ///< every beam burning this step (guns, rear guns, sidekicks)
     float               m_barrier = 0.0f;    ///< special: seconds of the barrier
     float               m_drones = 0.0f;     ///< special: seconds of the drone swarm
     float               m_magnet = 0.0f;

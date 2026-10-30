@@ -153,7 +153,7 @@ const std::set<std::string> ShotKeys = { "lv",    "mode",   "n",      "dx",     
                                          "dmg",   "size",   "pierce", "life",   "home",   "amp",   "freq",
                                          "radius", "color", "sprite", "every",  "x",      "y",     "accel",
                                          "range", "chain",  "width",  "bounce", "drag",   "spin",  "jitter",
-                                         "delay", "length", "trail",  "split",  "slow",   "push" };
+                                         "delay", "length", "trail",  "split",  "slow",   "push", "phase" };
 const std::set<std::string> FireKeys = { "every", "delay", "speed", "n",     "spread", "dir",  "bullet", "color",
                                          "burst", "gap",   "rot",   "accel", "from",   "until", "x",     "z",
                                          "mirror", "cap",  "spawn", "turn",  "dur",    "warn", "width",  "size",
