@@ -21,6 +21,8 @@ Deck (Linux build, 1280×800, pad).
   the enemies, continues (score back to zero), best scores per difficulty. Each episode has an arcade run of
   about six of its missions; finishing a run continues with the next episode.
 - **Bossjagd** – every boss in a row (opens after the campaign).
+- **Überleben** – one long mission under arcade rules whose waves rise through all five episodes until the
+  lives are gone; its own seed or the day's (see "Survival").
 
 ## Difficulties (`data/difficulty.txt`)
 
@@ -130,3 +132,29 @@ in episode 1 and ~40–80k in episode 5.
 Six hulls with fixed gear (e.g. Lancer with Pulslanze, Turmfalke with Drehkanone, Bastion with Streukanone and
 Mörser, Irrlicht with Nadelwerfer and two Funken, Korsar with Hornissenschwarm, Eisvogel with Wellenbrecher).
 Power-ups raise the front gun; gun pickups switch it; the rear gun and sidekicks come from pickups too.
+
+## Survival (`src/Survival.cpp`)
+
+One mission of an hour, 20 cycles of 3 minutes, flown under arcade rules (lives, power-ups, a life from every
+boss) and made of the campaign's own missions: their wave, ground and obstacle lines, their bosses, grounds and
+music. The same seed gives the same mission; the daily seed (the local date, hashed) is everyone's on that day.
+
+- **Tier.** Every mission has one: its episode plus a tenth for each place in it (`e1_01` 1.0, `e5_10` 5.9;
+  secret missions count as the seventh). The waves' tier rises by 0.3 a minute of timeline: episode 2 from 3:20,
+  episode 5 from 13:20, the last missions' waves from 16:20.
+- **Waves.** Fliers come from the tier reached and up to 0.6–1.2 tiers behind it, the nearer the likelier; ground
+  units and obstacles only from missions over the ground being flown. The missions' loot goes (shield and armour
+  drops stay); half the waves are mirrored.
+- **How they rise.** A wave every 4.5 s at first, every 3 s from minute 15; a second at the same time from minute 1
+  (70 % of them by minute 10), a third from minute 4 (80 % by minute 12); rows of three or more grow to twice
+  their ships by minute 16 (lines close up). Hit points ×1.6 for each tier a wave lies behind the tier reached,
+  +6 % a minute up to minute 25, and past the last missions +50 % a tier.
+- **Bosses.** Each cycle ends with music, the warning and a boss: mini-bosses (the campaign's other bosses) and
+  great bosses (those of each episode's `_05`, `_09`, `_10`) in turn, of the tier reached and new to the run; the
+  last is the greatest, to the music `final`. A boss with its parts holds 800 + 150 a minute hit points at most
+  (`hp=` on the boss event). After it a shield and an armour pickup.
+- **Grounds.** After every boss a new ground: a mission of the episode the next cycle lies in, a ground not flown
+  yet, with its music and scroll speed.
+- **Balance** (`--sim survival --mortal --seed N`, the autopilot as the Lancer): on Normal the run ends after
+  13–19 minutes (16 on average over 15 seeds), the first death after 7–14; on Leicht after ~20, on Schwer after
+  9–25, on Unmöglich after ~8.

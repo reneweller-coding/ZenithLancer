@@ -189,7 +189,7 @@ level e1_01
 ```
 
 Events: `wave <enemy>` / `ground <enemy>` / `obstacle <enemy>` (all take the wave values below), `boss <enemy>
-[x= y= path values]`, `pickup <credits|power|shield|armor|weapon|rear|side|life|special|cube|key|plan> x= [y=]
+[x= y= hp= path values]` (`hp`: a multiplier for the boss and its parts), `pickup <credits|power|shield|armor|weapon|rear|side|life|special|cube|key|plan> x= [y=]
 [value=] [item=]`, `text <story>`, `scroll <speed>`, `music <name>`, `warn` (siren + WARNUNG), `clear` (removes
 enemy bullets), `end [seconds]`.
 
