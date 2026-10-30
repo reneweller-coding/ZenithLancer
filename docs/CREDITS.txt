@@ -1,0 +1,11 @@
+ZENITH LANCER – Mitwirkende und Lizenzen
+
+Idee und Leitung: Rene Weller
+Programm, Welt, Gegner, Waffen, Missionen und Texte: Claude (Anthropic) mit Rene Weller
+
+Alle Schiffe, Gegner, Landschaften und Geräuscheffekte werden im Programm erzeugt.
+
+Verwendet:
+- raylib 5.5 (zlib/libpng-Lizenz), Copyright (c) 2013-2024 Ramon Santamaria
+- Schrift Barlow (SIL Open Font License 1.1), Copyright 2017 The Barlow Project Authors
+  (assets/fonts/Barlow-OFL.txt)

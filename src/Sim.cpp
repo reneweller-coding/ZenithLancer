@@ -32,13 +32,6 @@ int pathKind( const std::string &n )
     return P_STRAIGHT;
 }
 
-/** @brief Turns a vector by degrees (clockwise on the screen, as dirOf). */
-Vector2 turn( Vector2 v, float deg )
-{
-    float c = std::cos( deg * Deg ), s = std::sin( deg * Deg );
-    return { v.x * c - v.y * s, v.x * s + v.y * c };
-}
-
 /** @brief A point on a Catmull-Rom spline through pts at t in [0, 1]. */
 Vector2 spline( const std::vector<Vector2> &pts, float t )
 {
