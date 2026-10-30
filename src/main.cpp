@@ -199,6 +199,7 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
         if ( arcade )
             printf( "%-22s first death %.0fs, timeline %.0fs, bosses %d\n", "", r.m_firstDeath, r.m_timeline,
                     r.m_bosses );
+        if ( !r.m_stuck.empty() ) printf( "%-22s still on the field: %s\n", "", r.m_stuck.c_str() );
         fflush( stdout );
         if ( !r.m_won ) ++fails;
     }

@@ -384,7 +384,7 @@ void App::play( float dt )
                     {
                         int ep = m_world.m_level ? m_world.m_level->m_episode : 0;
                         bool last = m_world.m_level && m_world.m_level->m_next.empty() && m_mode == ModeE::CAMPAIGN;
-                        m_audio.music( ep == 5 && last ? "final" : ep >= 1 && ep <= 5 ? "e" + std::to_string( ep ) + "_boss" : "boss" );
+                        m_audio.music( ep == 5 && last ? "final" : ep >= 1 && ep <= 6 ? "e" + std::to_string( ep ) + "_boss" : "boss" );
                     }
                 }
                 // The pad shakes with what the pilot feels: hits, big blasts nearby, a boss going down.
@@ -750,7 +750,7 @@ void App::retryBoss()
     m_outroT = -1;
     int ep = m_world.m_level ? m_world.m_level->m_episode : 0;
     bool last = m_world.m_level && m_world.m_level->m_next.empty() && m_mode == ModeE::CAMPAIGN;
-    m_audio.music( ep == 5 && last ? "final" : ep >= 1 && ep <= 5 && m_mode == ModeE::CAMPAIGN ? "e" + std::to_string( ep ) + "_boss" : "boss" );
+    m_audio.music( ep == 5 && last ? "final" : ep >= 1 && ep <= 6 && m_mode == ModeE::CAMPAIGN ? "e" + std::to_string( ep ) + "_boss" : "boss" );
     m_screen = ScreenE::PLAY;
     m_t = 0;
 }

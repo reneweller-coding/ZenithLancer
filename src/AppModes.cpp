@@ -121,7 +121,7 @@ void App::toBoss()
     bool own = false;
     for ( const LevelEvent &ev : lv->m_events )
         if ( ev.m_type == "music" ) own = true;
-    if ( !own ) m_audio.music( lv->m_episode >= 1 && lv->m_episode <= 5 ? "e" + std::to_string( lv->m_episode ) + "_boss" : "boss" );
+    if ( !own ) m_audio.music( lv->m_episode >= 1 && lv->m_episode <= 6 ? "e" + std::to_string( lv->m_episode ) + "_boss" : "boss" );
 }
 
 void App::practice( float dt )
@@ -920,7 +920,7 @@ void App::bench()
     // Heavy stretches flown by the autopilot with the full picture, no frame limit: the opening of each episode's
     // last mission and its boss. The frame times go to the screen's console and to <user>/bench.txt.
     std::vector<std::string> names;
-    for ( const char *n : { "e1_10", "e2_10", "e3_10", "e4_10", "e5_10" } )
+    for ( const char *n : { "e1_10", "e2_10", "e3_10", "e4_10", "e5_10", "e6_10" } )
         if ( m_cat.level( n ) ) names.push_back( n );
     std::vector<int> levels = m_opt.m_benchAll ? std::vector<int>{ 0, 1, 2 } : std::vector<int>{ quality() };
     const char      *qname[] = { "performance", "balanced", "quality" };

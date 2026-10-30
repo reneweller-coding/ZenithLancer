@@ -27,6 +27,7 @@ CAST = [
     ("Salgado", "salgado", "salgado"),
     ("Voss", "voss", "voss"),
     ("Kurator", "curator", "curator"),
+    ("Das Echo", "curator", "curator"),
     ("Chor", "choir", "choir"),
     ("Nadia", "vey", "vey"),
     ("Tosk", "tosk", "tosk"),
@@ -44,7 +45,7 @@ FEMALE_NAMES = ("Ilse", "Pia", "Lia", "Nell", "Selma", "Dalia", "Henrike", "Mari
                 "Imre", "Bryn", "Tamsin", "Varga", "Ansel", "Arden")
 OLD = ("Der Alte", "Archivar", "Prof.", "vor fünfzig Jahren")
 # Places and dates at the head of an intro or an ending: a narrator, no portrait.
-PLACE = re.compile(r"(\d{4}|nach Zenith|System|Mond des|Orbit über|^Corvina, Thalassa$)")
+PLACE = re.compile(r"(\d{4}|nach Zenith|System|Mond des|Orbit über|^Corvina, Thalassa$|^Vael$|^Vael, )")
 
 
 def classify(name):

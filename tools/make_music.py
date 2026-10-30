@@ -22,7 +22,7 @@ import soundfile as sf
 from scipy.signal import lfilter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SPECS = ("music.json", "music_calm.json")
+SPECS = ("music.json", "music_calm.json", "music_e6.json")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths   # noqa: E402  (tools/paths.py: where the AudioGenerator lives)
 

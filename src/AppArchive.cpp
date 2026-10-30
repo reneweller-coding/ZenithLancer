@@ -39,6 +39,7 @@ const std::vector<PaintDef> &paints()
         { "ash", { 150, 152, 165, 255 }, 0.92f, "episode3", "Asche" },
         { "thorn", { 110, 210, 80, 255 }, 0.92f, "episode4", "Dorn" },
         { "noon", { 255, 205, 90, 255 }, 0.92f, "episode5", "Mittagsgold" },
+        { "dusk", { 210, 120, 70, 255 }, 0.92f, "episode6", "Abendrot" },
         { "school", { 235, 240, 255, 255 }, 0.85f, "school", "Fluglehrerweiß" },
         { "night", { 45, 50, 70, 255 }, 0.92f, "kills_1000", "Nachtschwarz" },
         { "chain", { 255, 80, 210, 255 }, 0.92f, "chain_50", "Kettenmagenta" },

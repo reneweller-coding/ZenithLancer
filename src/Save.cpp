@@ -252,6 +252,7 @@ void Campaign::load( const std::string &path )
         else if ( k == "credits2" ) m_credits2 = atoll( v.c_str() );
         else if ( k == "score2" ) m_score2 = atoll( v.c_str() );
         else if ( k == "plus" ) m_plus = atoi( v.c_str() );
+        else if ( k == "intro" ) m_intro = atoi( v.c_str() ) != 0;
         else if ( k == "episode" ) m_episode = atoi( v.c_str() );
         else if ( k == "choices" ) m_choices = split( v );
         else if ( k == "last" ) m_last = v;
@@ -285,7 +286,7 @@ bool Campaign::save( const std::string &path ) const
     writeLoadout( f, m_load );
     fprintf( f, "done %s\ncubes %s\nplans %s\nkeys %s\nowned %s\n", join( m_done ).c_str(), join( m_cubes ).c_str(),
              join( m_plans ).c_str(), join( m_keys ).c_str(), join( m_owned ).c_str() );
-    fprintf( f, "coop %d\nplus %d\n", m_coop ? 1 : 0, m_plus );
+    fprintf( f, "coop %d\nplus %d\nintro %d\n", m_coop ? 1 : 0, m_plus, m_intro ? 1 : 0 );
     if ( m_has2 )
     {
         fprintf( f, "has2 1\ncredits2 %lld\nscore2 %lld\n", m_credits2, m_score2 );

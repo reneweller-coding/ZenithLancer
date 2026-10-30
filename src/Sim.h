@@ -501,6 +501,7 @@ struct SimResult
     float       m_firstDeath = -1.0f;   ///< seconds to the first death (-1: none)
     float       m_timeline = 0.0f;      ///< how far the timeline came (it stands while a boss holds it)
     int         m_bosses = 0;           ///< bosses destroyed
+    std::string m_stuck;                ///< not won in time: the boss still on the field ("" none)
 };
 
 /**

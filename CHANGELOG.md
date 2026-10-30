@@ -35,6 +35,12 @@ the Steam Deck, free software under the AGPL-3.0.
 - The archive: every enemy met as a turning model, the music room, paints for both pilots.
 - Videos of replays or missions (`--video`), a Steam Deck check of every screen's text size (`--deckcheck`).
 - Replays carry a checksum of the data and warn when it differs.
+- **Episode 6, "Afterglow"**: an epilogue after the credits over the gas giant Vael – twelve missions, fifteen new
+  enemies and their models, three bosses (Ark Mercy, the Stormweaver, the Echo), four new grounds, 100 story texts
+  in German and English, voiced, and four pieces of music.
+- Medals for every mission, challenge codes for friends, the boss rush for two, the arcade ghost, the photo mode,
+  the wave editor, a battery profile for the Steam Deck, the logbook's portraits and voices in the list.
+- Golden replays as a test (`--goldentest`), a sanitizer job in CI; test runs and ffmpeg stay in the background.
 
 ### Changed since 0.9.0
 

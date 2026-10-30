@@ -1,0 +1,16 @@
+{
+  "name": "Zenith Lancer e6",
+  "style": "instrumental video game soundtrack with modern production, clear genre, high quality mix",
+  "key": "E minor",
+  "bpm": 140,
+  "timesig": "4",
+  "takes": 3,
+  "format": "flac",
+  "seed": 6606,
+  "cues": [
+    {"id": "e6_a", "type": "loop", "bars": 24, "bpm": 128, "key": "E minor", "style": "majestic electronic music high above a gas giant, slow warm pads, amber arpeggios, deep wide bass, distant choir-like synths, steady driving drums, awe and melancholy, no vocals", "hint": "instrumental video game level music, constant energy, no intro, no ending"},
+    {"id": "e6_b", "type": "loop", "bars": 24, "bpm": 150, "key": "E minor", "style": "dark storm electronica inside a hurricane, heavy breakbeat drums, rolling distorted bass, crystalline glitch arpeggios, thunder, tense and driving, no vocals", "hint": "instrumental video game level music, constant energy, no intro, no ending"},
+    {"id": "e6_boss", "type": "loop", "bars": 16, "bpm": 160, "key": "E minor", "style": "boss battle against a giant ark and a storm machine, pounding war drums, aggressive synth bass, crystalline lead melody, choir pads, high tension, epic, no vocals", "hint": "instrumental video game boss music, constant intensity, no intro, no ending"},
+    {"id": "e6_final", "type": "loop", "bars": 16, "bpm": 150, "key": "E minor", "style": "final boss battle against a cold empty machine mind, epic hybrid orchestral electronic, massive drums, an eerie music box melody turned dark, rising choir, strings, no vocals", "hint": "instrumental video game final boss music, constant intensity, no intro, no ending"}
+  ]
+}

@@ -797,7 +797,18 @@ void App::slots( float dt )
                 m_feats.max( "ngplus", m_camp.m_plus );
                 checkFeats();
             }
-            go( ScreenE::PLAN );
+            if ( m_camp.m_intro )
+            {
+                // The epilogue's intro, waiting since the credits.
+                m_camp.m_intro = false;
+                m_stories.clear();
+                auto ep = m_cat.m_episodes.find( m_camp.m_episode );
+                if ( ep != m_cat.m_episodes.end() ) queueStory( ep->second.m_intro );
+                saveCampaign();
+                showStories( ScreenE::PLAN );
+            }
+            else
+                go( ScreenE::PLAN );
         }
         else if ( c == 1 )
         {
@@ -1262,7 +1273,10 @@ void App::campaignNext( const LevelDef &lv )
         m_prof.m_episodes = std::max( m_prof.m_episodes, m_camp.m_episode + 1 );
         m_prof.m_arcadeEpisodes = std::max( m_prof.m_arcadeEpisodes, m_camp.m_episode + 1 );
         auto nx = m_cat.m_episodes.find( m_camp.m_episode + 1 );
-        if ( nx == m_cat.m_episodes.end() )
+        const EpisodeDef *here = ep != m_cat.m_episodes.end() ? &ep->second : nullptr;
+        // An epilogue comes after the campaign's end: the end (scores, credits) is at the episode before it.
+        bool epilogueNext = nx != m_cat.m_episodes.end() && nx->second.m_epilogue && !( here && here->m_epilogue );
+        if ( nx == m_cat.m_episodes.end() || epilogueNext )
         {
             // The end of the campaign: the boss rush opens, and the next difficulty.
             m_prof.m_bossRush = true;
@@ -1277,6 +1291,17 @@ void App::campaignNext( const LevelDef &lv )
             m_nameCursor = 0;
             m_score[0] = m_camp.m_score + m_camp.m_score2;
             long long total = m_score[0];
+            if ( epilogueNext )
+            {
+                // The slot goes on into the epilogue after the credits; its intro waits for the slot's next start.
+                m_camp.m_episode = nx->first;
+                m_camp.m_choices = { nx->second.m_first };
+                m_camp.m_credits += nx->second.m_credits / 4;
+                m_camp.m_intro = true;
+                m_camp.save( slotPath( m_slot ) );
+                showStories( m_prof.place( m_scoreKey, total ) >= 0 ? ScreenE::NAME : ScreenE::CREDITS );
+                return;
+            }
             // The slot goes on as New Game+: episode 1 again with all the gear and money, the enemies tougher.
             auto first = m_cat.m_episodes.begin();
             ++m_camp.m_plus;

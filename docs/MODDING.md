@@ -33,8 +33,11 @@ In the game: main menu → **Mods** → switch it on (Enter / A). Leaving the sc
 - A mod's enemies (with a `title`) show in the archive once they have been met. Replays keep a checksum of the data
   they were flown with; one recorded with other mods is marked as possibly drifting.
 - **Stories**: German under `data/story/de/`, English under `data/story/en/` (same names as the German ones).
-- **A whole episode**: `data/episodes/e6.txt` with its missions under `data/levels/e6/`. It opens in the campaign after
-  episode 5 has been finished.
+- **A whole episode**: `data/episodes/e7.txt` with its missions under `data/levels/e7/`. It opens in the campaign after
+  episode 6 has been finished. `epilogue 1` in an episode file makes it an epilogue: the campaign's end (scores,
+  credits) comes before it, New Game+ after it (the game's own episode 6 is one).
+- **The wave editor** (Mods > Wellen-Editor) builds missions without writing files: it saves them as the mod
+  `editor` (`<user>/mods/editor`), a mission file per mission plus the editor's own `.edit` file to edit it again.
 
 The syntax of every file is in [DATA.md](DATA.md); the game's own `data/` is the best example. Interface texts
 (`data/lang/`), the music and the pictures are not part of a mod: a mod's missions choose among the game's music

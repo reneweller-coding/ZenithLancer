@@ -3,7 +3,7 @@
 # Zenith Lancer
 
 A vertical scrolling shooter in the tradition of the great 1990s PC shooters, with a workshop between the missions:
-a campaign of five episodes and 60 missions across the worlds of the Solenne system, front and rear guns with eleven
+a campaign of five episodes and an epilogue, 72 missions across the worlds of the Solenne system, front and rear guns with eleven
 power levels, sidekicks, a generator that feeds them all, a shield, specials, log crystals that tell the story,
 blueprints for rare gear and secret missions behind hidden beacons. Beside the campaign: an arcade mode for one or two
 pilots and a boss rush, seven difficulties, German and English.
@@ -49,7 +49,7 @@ Station in the prototype Lancer with its on-board mind ORRIN; the smuggler Basti
 her from world to world.
 
 - **The campaign:** five episodes (the foundries of Pyra, the ocean world Thalassa, the asteroid belt of the Shatter,
-  the jungle moon Sylvara, the sun Solenne), 60 missions with forks in the path and secret missions, bosses in
+  the jungle moon Sylvara, the sun Solenne) and an epilogue over the gas giant Vael, 72 missions with forks in the path and secret missions, bosses in
   several parts, three save slots. A later episode opens once the one before is finished.
 - **The workshop:** between the missions Quill sells hulls, front and rear guns with eleven power levels, two
   sidekicks, generators, shields and specials, and takes back what is fitted at full value. The generator feeds the
@@ -72,6 +72,8 @@ her from world to world.
 - **Replays** of your runs, **achievements** and **statistics**.
 - **Chains and grazes** for the score, a **weekly flight** with house rules and the **ghost** of your best flight.
 - A **flight school**, and the **archive**: every enemy met, the music room, paints for your ship.
+- **Episode 6**, an epilogue after the credits over the gas giant Vael; **medals** for every mission, **challenge
+  codes** for friends, the **boss rush for two**, a **photo mode** and a **wave editor** for missions of your own.
 - **Accessibility:** bullet contrast and colour-blind palettes, the game speed, auto-bomb, reduced flashes.
 - **Graphics quality** settings and a **benchmark mode**, made for the Steam Deck.
 - **A play log** of your sessions.
@@ -192,7 +194,7 @@ portraits made for the game; the Barlow font keeps its own licence. All characte
 ## Deutsch
 
 Ein senkrecht scrollender Shooter in der Tradition der großen PC-Shooter der Neunziger, mit einer Werkstatt zwischen
-den Einsätzen: eine Kampagne aus fünf Episoden und 60 Missionen durch das Solenne-System, Front- und Heckkanonen mit
+den Einsätzen: eine Kampagne aus fünf Episoden und einem Nachspiel, 72 Missionen durch das Solenne-System, Front- und Heckkanonen mit
 elf Leistungsstufen, Begleiter, ein Generator, der alles speist, Schild und Spezialwaffen, Logkristalle, die die
 Geschichte erzählen, Baupläne für seltene Ausrüstung und Geheimmissionen hinter versteckten Peilsignalen. Dazu ein
 Arcade-Modus für einen oder zwei Spieler, die Bossjagd, sieben Schwierigkeitsgrade, Deutsch und Englisch.
@@ -210,6 +212,8 @@ Geräuscheffekte erzeugt das Programm selbst, aus Textdateien, die jeder ändern
 - **Wiederholungen** der eigenen Läufe, **Erfolge** und **Statistiken**.
 - **Ketten und Streifschüsse** für die Punkte, ein **Wochenflug** mit Sonderregeln und der **Geist** des besten Flugs.
 - Eine **Flugschule** und das **Archiv**: jeder getroffene Gegner, das Musikzimmer, Lackierungen fürs Schiff.
+- **Episode 6**, ein Nachspiel nach dem Abspann über dem Gasriesen Vael; **Medaillen** für jeden Einsatz,
+  **Herausforderungscodes** für Freunde, die **Bossjagd zu zweit**, ein **Fotomodus** und ein **Wellen-Editor**.
 - **Barrierefreiheit:** Kugelkontrast und Farbpaletten für Farbfehlsichtige, Spieltempo, automatische Bombe, weniger
   Blitze.
 - **Grafikqualität** in Stufen und ein **Benchmark**, gemacht für das Steam Deck.

@@ -1,0 +1,55 @@
+# Episode 6, mission 4: the storm swallows the Ark and rains crystals; a Directorate beacon from the rings.
+
+level e6_04
+  title    "Kristallregen"
+  title_en "Crystal Rain"
+  episode  6
+  theme    e6_storm
+  music    e6_b
+  scroll   75
+  length   198
+  next     e6_05
+  secret   e6_s1 key=e6_k1
+  map      0.40 0.24
+  briefing e6_04_brief
+  debrief  e6_04_after
+
+  at 1   text e6_04_r1
+  at 3   obstacle e6_shard n=4 form=random range=600 gap=1.0 path=drift speed=70
+  at 8   wave e6_splinter n=8 form=random range=600 gap=0.3 path=dive turn=50
+  at 14  wave e6_glimmer n=10 form=column x=100 gap=0.25 path=swoop side=1 cx=360 cy=260 dur=4 mirror=1
+  at 20  pickup credits x=240 value=700
+  at 22  text e6_04_r2
+  at 24  obstacle e6_shard n=5 form=random range=620 gap=0.8 path=drift speed=80
+  at 28  wave e6_hunter n=3 form=line x=360 spacing=220 path=chase turn=90 dur=2.2
+  at 34  wave e6_jelly n=2 form=line x=360 spacing=320 path=hover stop=150 wait=7
+  at 40  pickup cube x=460 item=e6_c07
+  at 44  wave e6_remnant n=6 form=column x=620 gap=0.4 path=swoop side=-1 cx=340 cy=260 dur=4.5
+  at 50  obstacle e6_shard n=6 form=random range=640 gap=0.7 path=drift speed=90
+  at 52  text e6_04_r3
+  # the beacon: the wave that carries it must be shot down whole
+  at 56  wave e6_hunter n=5 form=v x=360 spacing=70 path=hover stop=170 wait=5 drop=key item=e6_k1
+  at 64  pickup credits x=200 value=720
+  at 68  wave e6_splinter n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=290
+  at 76  wave e6_reverb x=360 path=hover stop=140 wait=9
+  at 84  obstacle e6_shard n=4 form=random range=600 gap=1.0 path=drift speed=70
+  at 88  pickup cube x=220 item=e6_c08
+  at 92  wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 98  wave e6_gunboat x=0 path=strafe side=1 y=120 speed=75
+  at 106 wave e6_glimmer n=12 form=grid cols=6 x=360 spacing=80 dy=55 path=straight speed=120 drop=credits value=950
+  at 114 pickup credits x=360 value=760
+  at 116 text e6_04_r4
+  at 118 wave e6_hunter n=4 form=sides gap=0.5 path=chase turn=90 dur=2.4 diff=3
+  at 126 obstacle e6_shard n=5 form=random range=620 gap=0.8 path=drift speed=85
+  at 132 pickup credits x=480 value=740
+  # the last stretch: everything the echo has
+  at 138 wave e6_hunter n=4 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 144 wave e6_glimmer n=14 form=random range=640 gap=0.2 path=dive turn=40 speed=260
+  at 150 wave e6_reverb x=360 path=hover stop=150 wait=9
+  at 152 obstacle e6_shard n=3 form=random range=600 gap=1.2 path=drift speed=70
+  at 160 wave e6_splinter n=12 form=sides gap=0.3 path=dive turn=50
+  at 166 wave e6_remnant n=6 form=v x=360 spacing=70 path=dive turn=50
+  at 170 wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 174 wave e6_hunter n=3 form=line x=360 spacing=220 path=chase turn=90 dur=2.2 diff=3
+  at 178 pickup credits x=360 value=900
+  at 188 end

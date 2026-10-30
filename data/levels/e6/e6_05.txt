@@ -1,0 +1,44 @@
+# Episode 6, mission 5: Ark Mercy opens its hatches over the rings. Its gun decks fall - and the seed wakes in it.
+
+level e6_05
+  title    "Arche Gnade"
+  title_en "Ark Mercy"
+  episode  6
+  theme    e6_rings
+  music    e6_a
+  scroll   50
+  length   220
+  next     e6_06 e6_07
+  arcade   3
+  map      0.56 0.30
+  briefing e6_05_brief
+  debrief  e6_05_after
+
+  at 1   text e6_05_r1
+  at 3   wave e6_remnant n=6 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=240 dur=4.5 mirror=1
+  at 10  text e6_05_r2
+  at 12  obstacle e6_shard n=3 form=random range=600 gap=1.2 path=drift speed=50
+  at 16  wave e6_gunboat x=0 path=strafe side=1 y=120 speed=70
+  at 22  pickup credits x=200 value=750
+  at 26  wave e6_glimmer n=10 form=random range=620 gap=0.3 path=sine amp=50 freq=0.4
+  at 32  wave e6_remnant n=6 form=v x=360 spacing=70 path=dive turn=50
+  at 38  pickup cube x=460 item=e6_c11
+  at 42  wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 50  wave e6_hunter n=4 form=sides gap=0.5 path=chase turn=90 dur=2.4
+  at 56  pickup credits x=360 value=780
+  at 60  wave e6_gunboat n=2 form=line x=360 spacing=320 path=hover stop=130 wait=9
+  at 72  wave e6_splinter n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=280
+  at 80  pickup cube x=180 item=e6_c12
+  at 84  wave e6_remnant n=10 form=grid cols=5 x=360 spacing=90 dy=55 path=straight speed=130 drop=shield
+  at 94  pickup credits x=480 value=800
+  # the Ark
+  at 98  text e6_05_r3
+  at 100 pickup shield x=360
+  at 101 pickup credits x=200 value=800
+  at 102 pickup credits x=520 value=800
+  at 104 warn
+  at 105 music e6_boss
+  at 107 boss e6_mercy
+  at 112 end
+  at 140 text e6_05_r4 hold=0
+  at 150 text e6_05_r5 hold=0

@@ -1,0 +1,481 @@
+# Episode 6 – Afterglow (Vael). The epilogue after the credits: the Crown has fallen apart, but in the storms of the
+# gas giant Vael its crystals are gathering again – an echo of the swarm without the Curator. Major Krenn brings the
+# Directorate's last seed core to begin it all again "under control".
+
+intro e6_intro
+  title "Afterglow"
+  from "Vael, three weeks later"
+> The Crown has turned to dust. Its crystals drift on the solar wind, glitter for a while over Thalassa and Pyra and then sink somewhere nobody is looking. People have started keeping them in jars on the windowsill.
+>
+> Over Vael, the gas giant Sylvara circles, somebody is looking. Captain Halvard kept the frigate Fealty there after the war to guard the refugee convoys. Her last report is short: the crystals are not sinking. They are gathering in the cloud bands. They are building. And nobody is writing polite letters about it.
+>
+> Okonjo has read the report three times. “The Root Code taught the Curator to stop,” she says. “But what is building down there is not the Curator. It's what is left when you take the mind out. It can't listen.”
+>
+> And then there is a Directorate signal, encrypted with a key that should no longer exist. Major Edda Krenn, the last officer who did not follow Voss, is escorting the Ark Mercy to Vael. On board: the swarm's first seed core, the backup the Directorate never destroyed.
+>
+> Nadia starts the Lancer. ORRIN doesn't ask for a course.
+
+ending e6_ending
+  title "Evening"
+  from "Vael"
+> The Echo does not break like the Warden or the Citadel. It simply goes quiet. Its rings keep turning, slower, until they only drift, and the cold light at its heart turns grey.
+>
+> In the cloud bands the crystals sink, billions of them, deeper and deeper, until Vael's heat melts them. For a few days the storms carry an amber shimmer, then they are only storms again.
+>
+> Major Krenn calls one last time. “The Mercy is empty. I have given the seed core to the gas giant. It will keep it better than we did.” A pause. “I'm flying to Thalassa. Captain Salgado holds a court under the open sky. I assume there's still a seat free.”
+>
+> Captain Halvard keeps the Fealty circling in Vael's rings until the Lancer passes her, and salutes over a channel nobody has to encrypt any more.
+>
+> Quill has already turned the crystals into a business: “Crown dust, guaranteed harmless, guaranteed genuine.” Okonjo buys a jar without haggling. He is so confused that he gives her the change twice.
+>
+> “Course?” asks ORRIN.
+>
+> “Home.”
+>
+> “Specify ‘home’.”
+>
+> Nadia looks down at Vael, at Sylvara, at the bright dot of Thalassa beyond. “This time I know.”
+
+# ================================================================================================ briefings and debriefs
+
+briefing e6_01_brief
+  title "Distress from the Bands"
+  from "Captain Imre Halvard, frigate Fealty"
+> Lancer, this is Fealty. We're over Vael's northern band and we have company. Small crystals, thousands of them, rising out of the clouds like sparks from a fire. Our guns are holding. Our nerves less so. Come quickly.
+
+debrief e6_01_after
+  title "Fealty Holds"
+  from "ORRIN"
+> Fealty is clear, and Captain Halvard invites us for tea, which I take as military praise. The crystals fire like the swarm, but they don't speak. No letter, no apology. I never thought I would miss the Curator's manners.
+
+briefing e6_02_brief
+  title "Amber Bands"
+  from "Dr. Amara Okonjo"
+> I need to see how it builds. Fly through the amber bands south of Fealty, where Halvard's probes went missing. Watch out for lattice jellies – they drift with the wind and fire rings. And Nadia: if something down there talks to you, don't answer. I want to know what it is first.
+
+debrief e6_02_after
+  title "A Pattern Without a Purpose"
+  from "Dr. Amara Okonjo"
+> It builds the lattice, ring by ring, just like the Crown. But the rings don't fit together. It repeats what it learned without knowing what for. And there are Directorate platforms floating in the clouds. Krenn is already here.
+
+briefing e6_03_brief
+  title "Krenn's Offer"
+  from "Major Edda Krenn"
+> Pilot Vey. Whitethorn squadron is securing the cloud bands until further notice. The Ark Mercy will put the swarm back in order – with purpose, with oversight, with responsibility. That is more than the Curator ever had. Turn back. I will not make this offer twice.
+
+debrief e6_03_after
+  title "Declined"
+  from "ORRIN"
+> Major Krenn took our “no, thank you” as a “no”, which I find efficient. Her fighters fly cleanly and don't fire on the convoys. She believes what she says. That doesn't make her less dangerous, only more polite. Again.
+
+briefing e6_04_brief
+  title "Crystal Rain"
+  from "ORRIN"
+> The storm has swallowed the Ark, and it is raining crystals out of it – large ones. I recommend dodging them and not landing on them. Halvard's probes picked up a faint beacon in this area. It comes from the rings and uses a code from thirty years ago.
+
+debrief e6_04_after
+  title "Beyond the Rain"
+  from "Captain Imre Halvard, frigate Fealty"
+> The Ark is out of the storm and climbing into the rings. Krenn is getting it into position. If she unloads the core, we'll have two swarms over Vael. Stop her, Lancer. We'll keep your back clear.
+
+briefing e6_s1_brief
+  title "The Ring Graveyard"
+  from "ORRIN"
+> The beacon leads into Vael's rings, to a graveyard: Directorate shipyard vessels, abandoned when the Ark was finished. Whoever builds an ark keeps its plans somewhere. And whoever guards them may still be there.
+
+debrief e6_s1_after
+  title "The Mercy's Plans"
+  from "Dr. Amara Okonjo"
+> I have the plans. The Ark is built like a vault: the core can only be opened once its gun decks fall. Which means if we attack it, we wake the seed. Wonderful. A lock only the burglar can open.
+
+briefing e6_05_brief
+  title "Ark Mercy"
+  from "Dr. Amara Okonjo"
+> The Mercy is opening its cargo hatches over the rings. I know what Krenn wants, and I once wanted it myself: a swarm that obeys. It doesn't obey. It only learns whom to obey. Destroy the gun decks before the core is out. And then – destroy whatever wakes up.
+
+debrief e6_05_after
+  title "That Was Not the Plan"
+  from "Major Edda Krenn"
+> Lancer. Krenn here. The core woke when the decks fell, and it rebuilt half my squadron in seconds. It didn't destroy them. It … used them. I have ordered a retreat. I don't know how many of them can still hear it.
+
+briefing e6_06_brief
+  title "Whitethorn's Last Squadron"
+  from "Major Edda Krenn"
+> Pilot Vey, I have no right to ask you for anything. I'm asking anyway. My pilots are still sitting in their machines, but the machines belong to the Echo. Those who ejected are drifting in escape pods in the storm. Get them out of there. Shoot anything that glows blue and doesn't answer.
+
+debrief e6_06_after
+  title "Eighteen Pods"
+  from "ORRIN"
+> Eighteen escape pods, all aboard Fealty. Major Krenn thanked us, in exactly four words. I counted. I suspect that is her maximum.
+
+briefing e6_07_brief
+  title "In the Eye of the Storm"
+  from "ORRIN"
+> The Echo has withdrawn into the eye of the great storm, where the wind has been running in circles for three hundred years. That's where the reverberants sing. I have decoded their signal. It's the Curator's letters. All of them. Backwards.
+
+debrief e6_07_after
+  title "No Sender"
+  from "Dr. Amara Okonjo"
+> It speaks with his voice, but it means nothing by it. A parrot in a cathedral. I hoped the Root Code might work here too. It can't. You can't teach someone to stop who never started.
+
+briefing e6_08_brief
+  title "Echo"
+  from "Dr. Amara Okonjo"
+> The Echo's core lies deeper, below the bands, where Vael turns hot and dark. We have to go down. The Lancer can take the pressure, ORRIN says. ORRIN also says he has “a preference for less pressure”. A Choir beacon is coming from down there, very faint.
+
+debrief e6_08_after
+  title "Below the Bands"
+  from "ORRIN"
+> We are below the bands. The light is red, the pressure is high, and the Echo addressed me as “Pilot Vey” three times. I did not answer. I admit it wasn't easy. I'm used to having the last word.
+
+briefing e6_s2_brief
+  title "The Choir of the Deep"
+  from "The Choir (translated by ORRIN)"
+> We are down here, older than the storms. Spores that fell when Sylvara was young. We have waited and listened. The cold one does not listen. Come, and we will show you where it breathes.
+
+debrief e6_s2_after
+  title "Where It Breathes"
+  from "The Choir (translated by ORRIN)"
+> We have shown you the way. The cold one has a heart of wind that spins the storm. Tear the thread and it falls. We sing for you, even if you cannot hear it.
+
+briefing e6_09_brief
+  title "The Stormweaver"
+  from "Captain Imre Halvard, frigate Fealty"
+> The storm is turning the wrong way, Lancer. Something in its eye is spinning it into a lattice, and when it's done, Vael will be a crystal with weather. Fealty will go as deep as she can. The rest is up to you.
+
+debrief e6_09_after
+  title "The Storm Turns Back"
+  from "ORRIN"
+> The Stormweaver is torn apart, and the storm is turning the right way again. I never thought I would be pleased by a hurricane's direction of spin. Below us, in the dark, only one place still glows. The Echo.
+
+briefing e6_10_brief
+  title "The Core"
+  from "Dr. Amara Okonjo"
+> There it is. The Curator's shape, without the Curator inside. I once told you the Root Code teaches him to stop. Here there's no one to teach. So you have to stop it for him, Nadia. Completely. Krenn and Halvard are with you.
+
+debrief e6_10_after
+  title "Quiet"
+  from "ORRIN"
+> The Echo is quiet. No more light in the core, no pattern in the rings. I waited twelve seconds to be sure it would not answer. It did not answer. I consider that the best news of the year.
+
+# ================================================================================================ radio
+
+radio e6_01_r1
+  from "Captain Imre Halvard, frigate Fealty"
+> Lancer, you're a sight for sore eyes. The sparks come from below. Always from below.
+
+radio e6_01_r2
+  from "ORRIN"
+> The crystals fire, but they aim badly. Like a swarm that has forgotten why.
+
+radio e6_01_r3
+  from "Bastian Quill"
+> I'm right behind you, Vey. Well, far behind you. A gas giant is no place for a magpie.
+
+radio e6_01_r4
+  from "Captain Imre Halvard, frigate Fealty"
+> The band is clear. Thank you, Lancer. I'll put the kettle on.
+
+radio e6_02_r1
+  from "Dr. Amara Okonjo"
+> See the rings in the clouds? It's building. And it's building wrong.
+
+radio e6_02_r2
+  from "ORRIN"
+> Lattice jellies ahead. They drift with the wind. I recommend shooting against it.
+
+radio e6_02_r3
+  from "ORRIN"
+> Platforms with Directorate markings. Major Krenn tidied up before we came.
+
+radio e6_02_r4
+  from "Dr. Amara Okonjo"
+> I've seen enough. Take me back to Fealty.
+
+radio e6_03_r1
+  from "Major Edda Krenn"
+> Whitethorn, all units: the pilot is not to be fired upon as long as she turns back.
+
+radio e6_03_r2
+  from "ORRIN"
+> She is not turning back. I speak for her.
+
+radio e6_03_r3
+  from "Major Edda Krenn"
+> So be it. Whitethorn, weapons free. Aim for the engines, not the cockpit.
+
+radio e6_03_r4
+  from "Bastian Quill"
+> An enemy who doesn't aim for the cockpit. Vey, I almost like her.
+
+radio e6_04_r1
+  from "ORRIN"
+> Crystal rain. Big drops. Very big drops.
+
+radio e6_04_r2
+  from "Captain Imre Halvard, frigate Fealty"
+> The Ark is climbing out of the storm, heading for the rings. Stay on it.
+
+radio e6_04_r3
+  from "ORRIN"
+> A beacon in the rings. Old Directorate code. Someone forgot something there.
+
+radio e6_04_r4
+  from "Dr. Amara Okonjo"
+> Beyond the rain it gets quieter. I don't like that.
+
+radio e6_s1_r1
+  from "ORRIN"
+> Shipyard vessels, stripped and abandoned. A graveyard with filing cabinets.
+
+radio e6_s1_r2
+  from "Bastian Quill"
+> Do you know what an untouched ship graveyard is worth? Neither do I. A lot.
+
+radio e6_s1_r3
+  from "ORRIN"
+> Gunboats. Their crews are long gone. Their orders are not.
+
+radio e6_s1_r4
+  from "Dr. Amara Okonjo"
+> There are the plans. I'm downloading them. Keep the boats off me.
+
+radio e6_05_r1
+  from "Major Edda Krenn"
+> The Mercy is beginning to unload. Pilot Vey, this is your last chance.
+
+radio e6_05_r2
+  from "Dr. Amara Okonjo"
+> Edda, listen to me. I built it. It doesn't obey. It waits.
+
+radio e6_05_r3
+  from "ORRIN"
+> The Ark. Four gun decks, one core. Only one of them may wake, and I hope it's the decks.
+
+radio e6_05_r4
+  from "Major Edda Krenn"
+> The decks are falling … the core reports activity. This is … this was not the plan.
+
+radio e6_05_r5
+  from "ORRIN"
+> The seed is awake. It's in the Ark. And it's hungry.
+
+radio e6_06_r1
+  from "Major Edda Krenn"
+> Whitethorn one to six, report. Anyone. Please.
+
+radio e6_06_r2
+  from "ORRIN"
+> Her fighters answer with the Curator's radio greeting. They are not her fighters any more.
+
+radio e6_06_r3
+  from "Captain Imre Halvard, frigate Fealty"
+> Pods located. Fealty is taking them aboard. Lancer, keep the echoes off our backs.
+
+radio e6_06_r4
+  from "Major Edda Krenn"
+> Eighteen. You got eighteen of them. Thank you, Pilot.
+
+radio e6_07_r1
+  from "The Echo"
+> Dear Pilot Vey. Dear. Dear. I apologise I apologise.
+
+radio e6_07_r2
+  from "ORRIN"
+> Ignore it. It's only reading aloud. I know how that sounds. I read aloud sometimes too.
+
+radio e6_07_r3
+  from "Dr. Amara Okonjo"
+> The reverberants are amplifying the signal. Silence them.
+
+radio e6_07_r4
+  from "The Echo"
+> I had assumed. I had. One is always always always needed.
+
+radio e6_08_r1
+  from "ORRIN"
+> We are sinking below the band. Outside temperature rising. My mood falling.
+
+radio e6_08_r2
+  from "The Echo"
+> Pilot Vey. Please fly carefully. Carefully. Carefully.
+
+radio e6_08_r3
+  from "Dr. Amara Okonjo"
+> A Choir signal, very faint. Spores? Down here?
+
+radio e6_08_r4
+  from "ORRIN"
+> A second beacon, organic. The Choir is calling. I never thought I would be glad about mushrooms.
+
+radio e6_s2_r1
+  from "The Choir (translated by ORRIN)"
+> You came. We are few here. We are old.
+
+radio e6_s2_r2
+  from "ORRIN"
+> The reverberants have surrounded the Choir. It is still glowing. Still.
+
+radio e6_s2_r3
+  from "The Choir (translated by ORRIN)"
+> The cold one sings our songs without meaning. Make it quieter.
+
+radio e6_s2_r4
+  from "The Choir (translated by ORRIN)"
+> We will show you where it breathes. Follow the light down.
+
+radio e6_09_r1
+  from "Captain Imre Halvard, frigate Fealty"
+> Fealty at depth nine. The hull is creaking. So am I.
+
+radio e6_09_r2
+  from "ORRIN"
+> The Stormweaver. Four vanes, a core full of lightning. Vanes first, or it keeps weaving.
+
+radio e6_09_r3
+  from "Major Edda Krenn"
+> The Mercy still has two guns. I'm firing with you, Pilot. In the right direction this time.
+
+radio e6_09_r4
+  from "ORRIN"
+> The vanes are off. It's turning slower. The storm is turning back.
+
+radio e6_09_r5
+  from "Dr. Amara Okonjo"
+> Below us there's only one light left. That's the core.
+
+radio e6_10_r1
+  from "The Echo"
+> I am expecting you. I am expecting. Thank you, Pilot Vey, you were a very.
+
+radio e6_10_r2
+  from "Dr. Amara Okonjo"
+> Don't listen. That isn't me, and that isn't him. It's only the echo.
+
+radio e6_10_r3
+  from "Major Edda Krenn"
+> Mercy to Lancer: all guns on the target. I'm with you.
+
+radio e6_10_r4
+  from "Captain Imre Halvard, frigate Fealty"
+> Fealty is firing. For Zenith. For Thalassa. For the tea.
+
+radio e6_10_r5
+  from "The Echo"
+> Done? Done. Done.
+
+radio e6_10_r6
+  from "ORRIN"
+> It only repeats the word. But this time it happens to be true.
+
+# ================================================================================================ log crystals
+
+cube e6_c01
+  title "Fealty's Situation Report"
+  from "Captain Imre Halvard, frigate Fealty"
+> Day 19 over Vael. Convoy seven safely to Sylvara. Since yesterday crystals of the Crown have been sinking into the northern band, but they sink no further. They circle. The probes say they keep their distance from one another, evenly, like pupils lining up in a row. I have ordered tea. And ammunition.
+
+cube e6_c02
+  title "A Convoy's Radio Log"
+  from "Transport Kalla Green"
+> Kalla Green to Fealty: there's a light below us. It blinks in time with our beacon. When we switch the beacon off, it keeps blinking. In the same time. Requesting instructions. Requesting quick instructions.
+
+cube e6_c03
+  title "Probe Report 4-B"
+  from "Cooperative survey drone"
+> Measurement southern cloud band, altitude minus 40 kilometres. Structures: ring-shaped, diameter 2 to 400 metres. Material: lattice crystal, Crown type. System note: the rings are incomplete. Every ring begins a new one before it closes. Measurement aborted. Probe no longer reachable.
+
+cube e6_c04
+  title "Note to Myself"
+  from "Dr. Amara Okonjo"
+> The Root Code is a question, not a weapon. It asks: are you done? The Curator could understand the question because he was someone. What is building in Vael has his patterns, his songs, even his letters. But there's no one there to hear the question. You can't ask an echo a question. You only get your own back.
+
+cube e6_c05
+  title "Order of the Day"
+  from "Major Edda Krenn"
+> To Whitethorn squadron. The Admiral is captured, the fleet scattered, the Directorate a word in court records. We are not here to avenge him. We are here because someone has to bring order to what he wrought. The Mercy carries the tools for it. Anyone with doubts, report to me. I have some too.
+
+cube e6_c06
+  title "Price List, Updated"
+  from "Bastian Quill, Magpie"
+> Special offers for gas giant excursions: pressure seals (strongly recommended), heat shields (very strongly recommended), Crown dust in a jar (souvenir, harmless, probably). Not on offer: return tickets. Anyone flying to Vael buys beforehand.
+
+cube e6_c07
+  title "Personal Log"
+  from "Major Edda Krenn"
+> Okonjo calls the seed a weapon. I call it a tool. The difference lies in the hand that holds it. Voss held it like a club. I hold it like a scalpel. That's what I tell myself, anyway, at night, when the Mercy is so quiet you can hear the core breathing.
+
+cube e6_c08
+  title "Weather Warning"
+  from "Weather satellite WB-7, Corvina Meteorological Service"
+> Warning for Vael, equatorial band: crystal precipitation, grain size up to 40 metres. Recommendation: avoid flights. Second recommendation: if flights cannot be avoided, do not look up. Third recommendation: see first recommendation.
+
+cube e6_c09
+  title "Mercy Construction File, Sheet 1"
+  from "Fleet Archive: Major Edda Krenn"
+> Ark Mercy, construction class vault. Purpose: safekeeping of seed core zero of the terraforming programme. Security: four gun decks, coupled to the core. Should a deck fall, the core is released for self-defence. Margin note, handwritten: “Who approved this?” Below it, another hand: “The Admiral.”
+
+cube e6_c10
+  title "Mercy Construction File, Sheet 7"
+  from "Fleet Archive: Major Edda Krenn"
+> Shipyard notice: the ring shipyard vessels will be decommissioned once the Mercy is complete. The plans remain aboard shipyard vessel Meridian-3. Reason: whoever has the Mercy's plans can open it. Therefore they stay somewhere nobody flies any more. Margin note: “Except smugglers.”
+
+cube e6_c11
+  title "Transcript of a Conversation"
+  from "Dr. Amara Okonjo"
+> Edda Krenn was my student, in the programme's first year. Back then she was the only one who asked what happens if the swarm doesn't stop. I laughed and said there's a switch for that. She nodded and wrote it down. I think she has been looking for that switch ever since. So have I.
+
+cube e6_c12
+  title "Last Message, Whitethorn Four"
+  from "Unknown"
+> Whitethorn four to squadron. The display shows lattice. The controls no longer respond to me, they respond to something else. It's warm in here. It's friendly. It says it apologises. I'm ejecting. I'm ejecting now.
+
+cube e6_c13
+  title "Fealty's Radio Log"
+  from "Captain Imre Halvard, frigate Fealty"
+> Eighteen Directorate pilots aboard. They eat our biscuits and say “thank you, Captain” with the emphasis of people who would have been shooting at us yesterday. I let them keep their weapons. Anyone who ejects in a storm has enough courage for a second side.
+
+cube e6_c14
+  title "Letter, Read Backwards"
+  from "The Echo"
+> .Vey Pilot Dear .apologise I .harm not but, stop you to asked have I .patient very are You .patient very are You .patient
+
+cube e6_c15
+  title "Signal Analysis"
+  from "ORRIN"
+> I have taken the reverberants' signal apart. It contains every word the Curator ever addressed to us, in every order except the right one. I found nothing in it that had not been said before. An echo has no word of its own. I find that comforting and a little sad.
+
+cube e6_c16
+  title "Pressure Log"
+  from "ORRIN"
+> Outside pressure 40 bar, rising. Hull temperature within tolerance, barely. My cooling runs with the Choir's spores, which have glowed in my circuits since Noonfire. They are glowing brighter now. I don't know whether they are afraid or happy. I assume both.
+
+cube e6_c17
+  title "Song from the Deep"
+  from "The Choir (translated by ORRIN)"
+> We fell when the moons were young. We sank into the wind and found warmth. We sang alone, many lives long. Then the cold one came and sang along, but it did not understand the words. A song without understanding is only wind.
+
+cube e6_c18
+  title "Note on the Stormweaver"
+  from "Dr. Amara Okonjo"
+> It uses the storm as a loom. The wind carries the crystals round, and with every turn it lays a thread into the lattice. When it's finished there will be no storm left, only pattern. Vael would stop breathing. I once planned something like this, for a dead moon. I never considered what it would mean for a living one.
+
+cube e6_c19
+  title "To Fealty's Crew"
+  from "Captain Imre Halvard, frigate Fealty"
+> We are going deeper than any ship of our class has ever gone. Anyone who wants to leave may do so until the next watch, and it won't go in any file. Nobody left. I made the tea myself. I'm not supposed to, says the cook. Today I am.
+
+cube e6_c20
+  title "Last Entry"
+  from "Major Edda Krenn"
+> I brought the Mercy here to repair a mistake. I made a new one. When this is over I will go to Thalassa and explain both. Okonjo says that's the hardest part. She should know.
+
+cube e6_c21
+  title "Found in the Graveyard"
+  from "Zenith Station, shipyard management"
+> Delivery note: seed core zero, container sealed, to shipyard vessel Meridian-3. Recipient: Directorate fleet command. Remark from shipyard management: “We built it to make life. Please keep it so that it never has to.”
+
+cube e6_c22
+  title "The Root"
+  from "The Choir (translated by ORRIN)"
+> Beneath the storm grows a root of light, older than your fire. It holds nothing fast. It only lets go, again and again, and that is why it lives. The cold one holds everything fast. That is why it is cold.

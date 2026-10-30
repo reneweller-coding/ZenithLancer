@@ -1,7 +1,7 @@
 ZENITH LANCER
 =============
 
-Ein Shoot 'em up mit Werkstatt: fünf Episoden Kampagne mit verzweigten Einsätzen,
+Ein Shoot 'em up mit Werkstatt: fünf Episoden Kampagne und ein Nachspiel mit verzweigten Einsätzen,
 Geheimmissionen und Logkristallen, ein Arcade-Modus für einen oder zwei Spieler,
 eine Bossjagd und sieben Schwierigkeitsgrade. Deutsch und Englisch (Optionen > Sprache).
 
@@ -44,6 +44,10 @@ Bosse:     Wer einen Bosskampf verliert, darf den Boss direkt noch einmal angehe
            mit voller Panzerung und allem, was vorher verdient war.
 Geheimes:  Manche Einsätze verbergen ein Peilsignal. Wer es findet, entdeckt einen
            geheimen Kurs.
+Medaillen: Jeder gewonnene Einsatz bringt Bronze; ab Normal Silber (70 % der Gegner, kein
+           Abschuss) und Gold (85 %, kaum Schaden, der Boss beim ersten Versuch).
+Nachspiel: Nach dem Abspann geht derselbe Speicherplatz in Episode 6 "Nachglut" über dem
+           Gasriesen Vael weiter; erst danach beginnt Neues Spiel+.
 Kette:     Jeder Abschuss innerhalb von zwei Sekunden nach dem letzten verlängert die
            Kette und hebt den Punkte-Multiplikator (bis fünffach). Ein Treffer bricht sie.
            Kugeln, die knapp vorbeiziehen (Streifschuss), bringen Punkte und halten die
@@ -61,6 +65,11 @@ Neues Spiel+:       Nach dem Ende der Kampagne geht der Speicherplatz mit aller 
                     Tag dieselben Wellen, der Wochenflug eine Woche lang dieselben und zwei
                     Sonderregeln (Doppelfeuer, Glaskanone, Nur Heck ...). Im Tages- und im
                     Wochenflug fliegt der Geist deines besten Flugs als heller Ring mit.
+Herausforderung:    Unter Überleben: ein Code aus zehn Zeichen (Seed, Schwierigkeit, Regeln) für
+                    Freunde, die genau dieselben Wellen fliegen. Kopieren und Einfügen geht mit
+                    Strg+C/Strg+V; die Wiederholung liegt danach im Ordner replays.
+Bossjagd für zwei:  Alle großen Bosse mit zwei Piloten, eigene Bestenliste.
+Arcade-Geist:       Wer einen Arcade-Einsatz allein fliegt, fliegt gegen seinen besten Lauf darin.
 Flugschule:         Neun kurze Lektionen: Fliegen, Feuer, Fokus, Streifschuss, Kette, Heckwaffe,
                     Spezialwaffe, Seitenschiffe, Werkstatt. Hier kann nichts passieren.
 Archiv:             Jeder Gegner, dem du begegnet bist, als Modell mit seinen Werten; das
@@ -69,14 +78,19 @@ Archiv:             Jeder Gegner, dem du begegnet bist, als Modell mit seinen We
 Übung:              Jeder schon geflogene Einsatz, ganz oder nur sein Boss, mit der Ausrüstung
                     der Episode oder eines Speicherplatzes. Nichts davon zählt.
 Wiederholungen:     Jeder Einsatz wird aufgenommen und lässt sich ansehen (Tab / Y: Tempo).
-Erfolge:            53 Erfolge und eine Statistik über alle Spiele.
+Erfolge:            57 Erfolge und eine Statistik über alle Spiele.
 Mods:               Eigene Waffen, Schiffe, Gegner und Einsätze im Ordner mods (siehe
-                    docs/MODDING.md im Quelltext oder mods/example).
+                    docs/MODDING.md im Quelltext oder mods/example). Unter Mods steht der
+                    Wellen-Editor: Einsätze aus Gegnern, Formationen und Wegen bauen, sofort
+                    probefliegen und als Mod "editor" speichern.
+Fotomodus:          In der Pause: das Feld steht, der Stick schwenkt, Feuer/Fokus zoomen,
+                    Tab / Y speichert das Bild ohne Anzeigen (Ordner shots).
 
 Hilfen und Grafik (Optionen)
 ----------------------------
 Gegnergeschosse kräftig umrandet oder in Farben für Rot-Grün- und Blau-Gelb-Sehschwäche,
 Spieltempo 70 bis 100 %, Auto-Bombe, gedämpfte Blitze, Stimmen an oder aus.
+"Akku sparen" (Steam Deck unterwegs): 30 Bilder in der Sekunde, höchstens ausgewogene Grafik.
 Grafik "Flüssig", "Ausgewogen" (Steam Deck) oder "Qualität". Wer messen will:
     ZenithLancer --bench all
 fliegt schwere Abschnitte und schreibt die Bildraten nach bench.txt im Spielerordner.
@@ -98,7 +112,7 @@ Quelltext: https://github.com/reneweller-coding/ZenithLancer
 ZENITH LANCER (English)
 =======================
 
-A shoot 'em up with a workshop: a five-episode campaign with branching missions,
+A shoot 'em up with a workshop: a five-episode campaign and an epilogue with branching missions,
 secret missions and log crystals, an arcade mode for one or two players, a boss
 rush and seven difficulties. The game speaks German and English (Options >
 Language; it starts in your system's language).
@@ -141,6 +155,10 @@ Bosses:    lose a boss fight and you may fight the boss again from its start,
            with full armour and everything you earned before it.
 Blueprints: some missions hide blueprints for special equipment.
 Secrets:   some missions hide a beacon. Find it and a secret course opens.
+Medals:    every mission won earns bronze; from Normal on silver (70 % of the enemies, no
+           loss) and gold (85 %, barely hit, the boss at the first try).
+Epilogue:  after the credits the same save slot goes on into episode 6, "Afterglow", over the
+           gas giant Vael; New Game+ begins only after it.
 Chain:     every kill within two seconds of the last one extends the chain and raises
            the score multiplier (up to five times). A hit breaks it. Bullets that pass
            close by (grazes) score points and keep the chain alive. The campaign's credits
@@ -158,6 +176,11 @@ Survival:          wave after wave until the last life. The daily flight has the
                    for everyone on the same day, the weekly flight the same for a week and two
                    house rules (Double Fire, Glass Cannon, Rear Only ...). In the daily and the
                    weekly flight the ghost of your best flight flies along as a pale ring.
+Challenge:         under Survival: a ten-character code (seed, difficulty, rules) for friends
+                   who fly exactly the same waves. Copy and paste with Ctrl+C/Ctrl+V; the
+                   replay is in the replays folder afterwards.
+Boss rush for two: every great boss with two pilots, its own score list.
+Arcade ghost:      fly an arcade mission alone and you fly against your best run in it.
 Flight school:     nine short lessons: flying, fire, focus, grazes, chains, the rear gun, the
                    special, sidekicks, the workshop. Nothing can happen to you there.
 Archive:           every enemy you have met as a model with its numbers; the music room with
@@ -165,14 +188,19 @@ Archive:           every enemy you have met as a model with its numbers; the mus
 Practice:          any mission flown before, whole or just its boss, with the episode's gear
                    or a save slot's. None of it counts.
 Replays:           every mission is recorded and can be watched (Tab / Y: speed).
-Achievements:      53 achievements and statistics across all games.
+Achievements:      57 achievements and statistics across all games.
 Mods:              your own guns, ships, enemies and missions in the mods folder (see
-                   docs/MODDING.md in the source or mods/example).
+                   docs/MODDING.md in the source or mods/example). The Mods screen holds the
+                   wave editor: build missions from enemies, formations and paths, test-fly
+                   them at once and save them as the mod "editor".
+Photo mode:        in the pause: the field stands still, the stick pans, fire/focus zoom,
+                   Tab / Y saves the picture without the HUD (folder shots).
 
 Aids and graphics (Options)
 ---------------------------
 Enemy bullets with a strong rim or in colours for red-green and blue-yellow colour
 blindness, game speed 70 to 100 %, auto-bomb, dimmed flashes, voices on or off.
+"Save battery" (Steam Deck on the go): 30 frames a second, balanced graphics at most.
 Graphics "Smooth", "Balanced" (Steam Deck) or "Quality". To measure:
     ZenithLancer --bench all
 flies heavy stretches and writes the frame rates to bench.txt in the player folder.

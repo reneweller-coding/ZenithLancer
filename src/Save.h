@@ -119,6 +119,7 @@ struct Campaign
     long long                m_credits2 = 0;    ///< ... money
     long long                m_score2 = 0;      ///< ... score
     int                      m_plus = 0;        ///< New Game+: the rounds finished before this one
+    bool                     m_intro = false;   ///< the episode's intro is still to be shown (the epilogue after the credits)
 
     void load( const std::string &path );
     bool save( const std::string &path ) const;

@@ -1,0 +1,41 @@
+# Episode 6, mission 10: the core of the echo in Vael's hot dark - the Curator's shape without the Curator. Krenn's
+# Ark and Halvard's frigate fire with the pilot.
+
+level e6_10
+  title    "Der Kern"
+  title_en "The Core"
+  episode  6
+  theme    e6_deep
+  music    e6_b
+  scroll   50
+  length   230
+  map      0.94 0.36
+  briefing e6_10_brief
+  debrief  e6_10_after
+
+  at 1   text e6_10_r1
+  at 3   wave e6_glimmer n=10 form=column x=100 gap=0.3 path=orbit cx=360 cy=250 r=170 dur=4 side=1 mirror=1
+  at 10  wave e6_splinter n=8 form=v x=360 spacing=55 path=dive turn=60
+  at 18  wave e6_reverb x=360 path=hover stop=150 wait=10
+  at 28  pickup credits x=200 value=900
+  at 30  wave e6_hunter n=6 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 38  wave e6_jelly n=4 form=line x=360 spacing=170 path=hover stop=170 wait=6
+  at 46  pickup credits x=480 value=920
+  at 50  obstacle e6_shard n=5 form=random range=620 gap=0.8 path=drift speed=70
+  at 54  wave e6_reverb n=2 form=line x=360 spacing=330 path=hover stop=150 wait=10
+  at 66  wave e6_splinter n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=300
+  at 74  pickup credits x=360 value=940
+  at 78  wave e6_glimmer n=12 form=grid cols=6 x=360 spacing=80 dy=55 path=straight speed=130 drop=credits value=1200
+  # the core
+  at 88  text e6_10_r3
+  at 89  text e6_10_r2
+  at 90  pickup shield x=360
+  at 91  pickup credits x=200 value=1000
+  at 92  pickup credits x=520 value=1000
+  at 94  warn
+  at 95  music e6_final
+  at 97  boss e6_echo
+  at 99  text e6_10_r4 hold=0
+  at 100 text e6_10_r5
+  at 103 text e6_10_r6
+  at 108 end

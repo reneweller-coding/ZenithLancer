@@ -757,6 +757,7 @@ bool Catalog::load( const std::string &dir, const std::vector<std::string> &mods
                 else if ( k == "ending" ) ep.m_ending = l.arg( 0 );
                 else if ( k == "credits" ) ep.m_credits = (int)l.argNum( 0, 0 );
                 else if ( k == "arcade" ) ep.m_arcade = l.m_args;
+                else if ( k == "epilogue" ) ep.m_epilogue = l.argNum( 0, 0 ) != 0;
                 else if ( k == "ship" || k == "front" || k == "rear" || k == "side" || k == "gen" || k == "shield" ||
                           k == "special" )
                     loadoutLine( ep.m_loadout, l );

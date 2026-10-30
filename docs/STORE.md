@@ -15,7 +15,7 @@ compatibility itself; the Deck notes below describe what the game does, in the o
 
 ### Short description (Steam: at most 300 characters)
 
-A vertical shooter with a workshop between the missions: 60 missions in five episodes, front and rear guns with
+A vertical shooter with a workshop between the missions: 72 missions in five episodes and an epilogue, front and rear guns with
 eleven power levels, sidekicks, shields and specials, secret missions and log crystals. Co-op for two, arcade, a boss
 rush and a daily survival run. Free and open source.
 
@@ -44,7 +44,7 @@ Free and open source under the AGPL-3.0, in English and German, for Windows, Lin
 
 ### Features
 
-- A campaign of five episodes and 60 missions, with forks, secret missions and an ending.
+- A campaign of five episodes and an epilogue, 72 missions, with forks, secret missions and an ending.
 - A workshop: 10 hulls, 24 front and 14 rear guns with eleven power levels, 22 sidekicks, generators, shields and
   specials.
 - Log crystals, blueprints for rare gear, hidden beacons.
@@ -54,6 +54,7 @@ Free and open source under the AGPL-3.0, in English and German, for Windows, Lin
 - Replays, achievements and statistics, a play log.
 - Score chains and grazes, a weekly flight with house rules, the ghost of your best daily or weekly flight.
 - A flight school; the archive of every enemy met, a music room and paints for your ship.
+- An epilogue episode after the credits, medals, challenge codes for friends, a photo mode and a wave editor.
 - Accessibility: bullet contrast and colour-blind palettes, game speed, auto-bomb, reduced flashes, text size,
   rebindable keys and buttons, mouse control.
 - Speaker portraits and voiced radio calls; music in layers that follows the fight.
@@ -128,7 +129,7 @@ middle one fires the special. Every key and button can be changed in the options
 
 ### Kurzbeschreibung (Steam: höchstens 300 Zeichen)
 
-Ein senkrechter Shooter mit Werkstatt zwischen den Einsätzen: 60 Missionen in fünf Episoden, Front- und Heckkanonen
+Ein senkrechter Shooter mit Werkstatt zwischen den Einsätzen: 72 Missionen in fünf Episoden und einem Nachspiel, Front- und Heckkanonen
 mit elf Stufen, Begleiter, Schilde und Spezialwaffen, Geheimmissionen und Logkristalle. Koop zu zweit, Arcade,
 Bossjagd und tägliches Überleben. Frei und quelloffen.
 
@@ -157,7 +158,7 @@ Frei und quelloffen unter der AGPL-3.0, auf Deutsch und Englisch, für Windows, 
 
 ### Merkmale
 
-- Eine Kampagne aus fünf Episoden und 60 Missionen, mit Abzweigungen, Geheimmissionen und einem Ende.
+- Eine Kampagne aus fünf Episoden und einem Nachspiel, 72 Missionen, mit Abzweigungen, Geheimmissionen und einem Ende.
 - Eine Werkstatt: 10 Rümpfe, 24 Front- und 14 Heckkanonen mit elf Leistungsstufen, 22 Begleiter, Generatoren, Schilde
   und Spezialwaffen.
 - Logkristalle, Baupläne für seltene Ausrüstung, versteckte Peilsignale.
@@ -167,6 +168,7 @@ Frei und quelloffen unter der AGPL-3.0, auf Deutsch und Englisch, für Windows, 
 - Wiederholungen, Erfolge und Statistiken, ein Spielprotokoll.
 - Punkteketten und Streifschüsse, ein Wochenflug mit Sonderregeln, der Geist des besten Tages- oder Wochenflugs.
 - Eine Flugschule; das Archiv aller getroffenen Gegner, ein Musikzimmer und Lackierungen fürs Schiff.
+- Ein Nachspiel nach dem Abspann, Medaillen, Herausforderungscodes für Freunde, ein Fotomodus und ein Wellen-Editor.
 - Barrierefreiheit: Kugelkontrast und Farbpaletten für Farbfehlsichtige, Spieltempo, automatische Bombe, weniger
   Blitze, Textgröße, frei belegbare Tasten und Knöpfe, Maussteuerung.
 - Porträts der Sprecher und gesprochene Funksprüche; Musik in Schichten, die dem Kampf folgt.

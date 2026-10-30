@@ -1,0 +1,18 @@
+episode 6
+  title "Nachglut"
+  subtitle "Nach dem Abspann: Die Krone ist zerfallen, doch über dem Gasriesen Vael sammeln sich ihre Kristalle wieder – ohne den Kurator, ohne Stimme, ohne Grund. Und Major Krenn bringt den letzten Saatkern des Direktorats."
+  title_en "Afterglow"
+  subtitle_en "After the credits: the Crown has fallen apart, but over the gas giant Vael its crystals are gathering again – without the Curator, without a voice, without a reason. And Major Krenn is bringing the Directorate's last seed core."
+  epilogue 1
+  first e6_01
+  intro e6_intro
+  ending e6_ending
+  credits 160000
+  ship seraphim
+  front tempest 8
+  rear hailstorm 6
+  side seraph mirror
+  gen singularity
+  shield halo_s
+  special lance
+  arcade e6_01 e6_03 e6_05 e6_07 e6_09 e6_10

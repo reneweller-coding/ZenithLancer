@@ -1,0 +1,50 @@
+# Episode 6, mission 7: the eye of the great storm, where the reverberants sing the Curator's letters backwards.
+
+level e6_07
+  title    "Im Auge des Sturms"
+  title_en "In the Eye of the Storm"
+  episode  6
+  theme    e6_storm
+  music    e6_b
+  scroll   60
+  length   184
+  next     e6_08
+  arcade   4
+  map      0.70 0.40
+  briefing e6_07_brief
+  debrief  e6_07_after
+
+  at 1   text e6_07_r1
+  at 3   wave e6_glimmer n=10 form=column x=100 gap=0.3 path=orbit cx=360 cy=250 r=170 dur=4 side=1 mirror=1
+  at 10  text e6_07_r2
+  at 12  wave e6_reverb x=360 path=hover stop=150 wait=10
+  at 22  pickup credits x=200 value=800
+  at 24  wave e6_splinter n=8 form=v x=360 spacing=55 path=dive turn=60
+  at 30  wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 36  pickup cube x=520 item=e6_c15
+  at 40  text e6_07_r3
+  at 42  wave e6_reverb n=2 form=line x=360 spacing=330 path=hover stop=150 wait=11
+  at 54  wave e6_hunter n=4 form=sides gap=0.5 path=chase turn=90 dur=2.4
+  at 60  pickup credits x=360 value=820
+  at 64  obstacle e6_shard n=4 form=random range=600 gap=1.0 path=drift speed=70
+  at 68  wave e6_glimmer n=12 form=grid cols=6 x=360 spacing=80 dy=55 path=straight speed=120 drop=shield
+  at 76  wave e6_splinter n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=280
+  at 82  pickup credits x=480 value=840
+  at 84  text e6_07_r4
+  at 86  wave e6_reverb x=200 path=hover stop=140 wait=10
+  at 86  wave e6_reverb x=520 path=hover stop=180 wait=10 diff=3
+  at 98  pickup cube x=200 item=e6_c16
+  at 102 wave e6_jelly n=4 form=line x=360 spacing=170 path=hover stop=160 wait=6
+  at 110 wave e6_hunter n=6 form=column x=620 gap=0.45 path=swoop side=-1 cx=340 cy=260 dur=5
+  at 118 pickup credits x=360 value=860
+  # the last stretch: everything the echo has
+  at 124 wave e6_hunter n=4 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 130 wave e6_glimmer n=14 form=random range=640 gap=0.2 path=dive turn=40 speed=260
+  at 136 wave e6_reverb x=360 path=hover stop=150 wait=9
+  at 138 obstacle e6_shard n=3 form=random range=600 gap=1.2 path=drift speed=70
+  at 146 wave e6_splinter n=12 form=sides gap=0.3 path=dive turn=50
+  at 152 wave e6_remnant n=6 form=v x=360 spacing=70 path=dive turn=50
+  at 156 wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 160 wave e6_hunter n=3 form=line x=360 spacing=220 path=chase turn=90 dur=2.2 diff=3
+  at 164 pickup credits x=360 value=900
+  at 174 end

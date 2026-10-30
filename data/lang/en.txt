@@ -479,3 +479,4 @@ Eingabe: Titel tippen    Esc / B: zurück = Enter: type the title    Esc / B: ba
 Links/Rechts: ändern    Eingabe / A: wählen    Esc / B: zurück = Left/Right: change    Enter / A: choose    Esc / B: back
 Gespeichert (Mod "editor" ist an). = Saved (the mod "editor" is on).
 Speichern fehlgeschlagen. = Saving failed.
+Abendrot = Dusk Red

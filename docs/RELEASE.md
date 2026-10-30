@@ -36,7 +36,10 @@ The app tests, the playing and the pictures use the graphics card: check that no
   auto-bomb, reduced flashes); each graphics quality and the benchmark; the play log written; the example mod from
   `mods/example` loaded, and a broken mod reported instead of a crash; the flight school to its end; the weekly
   flight with its rules and, flown twice, the ghost; chains and grazes in the HUD; the archive's three pages (a model
-  of an enemy met, a piece played in the music room, a paint on the ship in a mission).
+  of an enemy met, a piece played in the music room, a paint on the ship in a mission); episode 6 after the credits
+  in the same slot (its intro on the slot's next start) and New Game+ after its end; a medal in the plan; a
+  challenge code typed in and pasted; the boss rush for two; the photo mode's picture in shots; the wave editor's
+  test flight and the saved mission in practice after a restart; the battery profile on the Deck.
 - **Listening:** every piece of music once (title, shop, plan, story, each episode's missions and boss, secret, final,
   ending) against the effects; the music layers rising and falling without clicks; the voiced radio calls against
   music and effects, the right speaker and portrait, nothing clipped or garbled, in German and in English.

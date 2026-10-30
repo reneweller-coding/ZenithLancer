@@ -1,0 +1,55 @@
+# Episode 6, mission 3: Major Krenn's offer, and Whitethorn squadron when it is declined.
+
+level e6_03
+  title    "Krenns Angebot"
+  title_en "Krenn's Offer"
+  episode  6
+  theme    e6_bands
+  music    e6_b
+  scroll   70
+  length   200
+  next     e6_04
+  arcade   2
+  map      0.26 0.34
+  briefing e6_03_brief
+  debrief  e6_03_after
+
+  at 1   text e6_03_r1
+  at 4   wave e6_remnant n=4 form=line x=360 spacing=140 path=hover stop=150 wait=4 exit=180
+  at 10  text e6_03_r2
+  at 13  text e6_03_r3
+  at 15  wave e6_remnant n=6 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=260 dur=4.5 mirror=1
+  at 24  ground e6_platform x=200
+  at 24  ground e6_platform x=520
+  at 28  pickup credits x=360 value=650
+  at 30  wave e6_remnant n=5 form=v x=360 spacing=70 path=dive turn=50
+  at 36  wave e6_gunboat x=0 path=strafe side=1 y=110 speed=75
+  at 40  text e6_03_r4
+  at 44  pickup cube x=520 item=e6_c05
+  at 48  wave e6_remnant n=8 form=random range=600 gap=0.35 path=dive turn=40 speed=230
+  at 56  wave e6_glimmer n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.4
+  # a breath: the echo does not care whose side anyone is on
+  at 62  wave e6_jelly n=2 form=line x=360 spacing=320 path=hover stop=170 wait=6
+  at 68  pickup credits x=200 value=700
+  at 72  wave e6_hunter n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=340 cy=280 dur=5
+  at 78  ground e6_platform n=3 form=line x=360 spacing=230
+  at 82  wave e6_remnant n=6 form=sides gap=0.4 path=dive turn=50
+  at 88  pickup cube x=200 item=e6_c06
+  at 92  wave e6_gunboat x=720 path=strafe side=-1 y=150 speed=70
+  at 94  wave e6_gunboat x=0 path=strafe side=1 y=90 speed=70 diff=3
+  at 104 pickup credits x=480 value=720
+  at 108 wave e6_remnant n=10 form=grid cols=5 x=360 spacing=90 dy=55 path=straight speed=130 drop=shield
+  at 116 wave e6_hunter n=3 form=line x=360 spacing=220 path=chase turn=90 dur=2.2
+  at 124 wave e6_reverb x=360 path=hover stop=150 wait=9
+  at 134 pickup credits x=360 value=700
+  # the last stretch: everything the echo has
+  at 140 wave e6_hunter n=4 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 146 wave e6_glimmer n=14 form=random range=640 gap=0.2 path=dive turn=40 speed=260
+  at 152 wave e6_reverb x=360 path=hover stop=150 wait=9
+  at 154 obstacle e6_shard n=3 form=random range=600 gap=1.2 path=drift speed=70
+  at 162 wave e6_splinter n=12 form=sides gap=0.3 path=dive turn=50
+  at 168 wave e6_remnant n=6 form=v x=360 spacing=70 path=dive turn=50
+  at 172 wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 176 wave e6_hunter n=3 form=line x=360 spacing=220 path=chase turn=90 dur=2.2 diff=3
+  at 180 pickup credits x=360 value=900
+  at 190 end

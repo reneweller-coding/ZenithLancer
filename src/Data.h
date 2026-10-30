@@ -360,6 +360,7 @@ struct EpisodeDef
     int                      m_credits = 0;    ///< money when it is started fresh
     Loadout                  m_loadout;        ///< ... and the gear
     std::vector<std::string> m_arcade;         ///< the arcade run's missions (in order)
+    bool                     m_epilogue = false;   ///< played after the campaign's end (its credits, its scores)
     std::string              m_where;
 };
 

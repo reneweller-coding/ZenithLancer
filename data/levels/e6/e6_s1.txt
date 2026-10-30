@@ -1,0 +1,51 @@
+# Episode 6, secret mission 1: the graveyard of the Directorate's shipyard vessels in Vael's rings, and the Ark's
+# plans aboard Meridian-3.
+
+level e6_s1
+  title    "Der Ringfriedhof"
+  title_en "The Ring Graveyard"
+  episode  6
+  theme    e6_rings
+  music    secret
+  scroll   45
+  length   182
+  next     e6_05
+  issecret 1
+  map      0.52 0.08
+  briefing e6_s1_brief
+  debrief  e6_s1_after
+
+  at 1   text e6_s1_r1
+  at 3   obstacle e6_shard n=4 form=random range=600 gap=1.2 path=drift speed=50
+  at 6   wave e6_remnant n=6 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
+  at 14  text e6_s1_r2
+  at 16  pickup credits x=200 value=900
+  at 18  pickup credits x=520 value=900
+  at 22  wave e6_gunboat x=0 path=strafe side=1 y=110 speed=70
+  at 26  text e6_s1_r3
+  at 28  wave e6_remnant n=5 form=v x=360 spacing=70 path=dive turn=40
+  at 34  pickup cube x=360 item=e6_c09
+  at 38  wave e6_gunboat x=720 path=strafe side=-1 y=160 speed=70
+  at 40  wave e6_glimmer n=10 form=random range=600 gap=0.3 path=zigzag amp=40 freq=0.5
+  at 48  obstacle e6_shard n=4 form=random range=600 gap=1.0 path=drift speed=55
+  at 52  pickup credits x=360 value=950
+  at 56  text e6_s1_r4
+  at 58  wave e6_gunboat n=2 form=line x=360 spacing=330 path=hover stop=130 wait=10
+  at 70  wave e6_remnant n=8 form=sides gap=0.35 path=dive turn=50
+  at 78  pickup cube x=200 item=e6_c21
+  at 82  wave e6_reverb x=360 path=hover stop=140 wait=10
+  at 92  wave e6_gunboat n=3 form=line x=360 spacing=230 path=hover stop=140 wait=10 diff=3
+  at 100 pickup credits x=480 value=1000
+  at 104 wave e6_remnant n=10 form=grid cols=5 x=360 spacing=90 dy=55 path=straight speed=130 drop=credits value=1500
+  at 116 pickup cube x=520 item=e6_c10
+  # the last stretch: everything the echo has
+  at 122 wave e6_hunter n=4 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 128 wave e6_glimmer n=14 form=random range=640 gap=0.2 path=dive turn=40 speed=260
+  at 134 wave e6_reverb x=360 path=hover stop=150 wait=9
+  at 136 obstacle e6_shard n=3 form=random range=600 gap=1.2 path=drift speed=70
+  at 144 wave e6_splinter n=12 form=sides gap=0.3 path=dive turn=50
+  at 150 wave e6_remnant n=6 form=v x=360 spacing=70 path=dive turn=50
+  at 154 wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 158 wave e6_hunter n=3 form=line x=360 spacing=220 path=chase turn=90 dur=2.2 diff=3
+  at 162 pickup credits x=360 value=900
+  at 172 end

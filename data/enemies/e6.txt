@@ -1,0 +1,289 @@
+# Episode 6 (Vael, "Nachglut"): the swarm's echo - the Crown's crystals, gathered again in the gas giant's storms
+# without the Curator's mind - and the Directorate's last fleet under Major Krenn. The echo fires pale cyan and
+# amber, the Directorate pale blue. A little stronger than episode 5: the pilot comes with episode 5's gear.
+
+# ------------------------------------------------------------------------------------------------ the echo
+
+enemy e6_glimmer
+  title "Nachglimmer"
+  title_en "Afterglimmer"
+  model e6_glimmer
+  hp 50
+  radius 11
+  score 115
+  speed 150
+  path sine amp=60 freq=0.4
+  face move
+  fire aimed every=2.55 delay=1.2 speed=190 bullet=orb color=#9fe8ff cap=1
+  drop credits 0.08 value=60
+  drop power 0.02 mode=arcade
+  explode small
+  contact 10
+
+enemy e6_splinter
+  title "Splitterling"
+  title_en "Splinterling"
+  model e6_splinter
+  hp 65
+  radius 12
+  score 135
+  speed 270
+  path dive turn=70
+  face move
+  fire aimed n=2 spread=8 every=1.53 delay=0.5 speed=260 bullet=needle color=#9fe8ff cap=2
+  drop credits 0.12 value=70
+  explode small
+  contact 14
+
+enemy e6_jelly
+  title "Gitterqualle"
+  title_en "Lattice Jelly"
+  model e6_jelly
+  hp 225
+  radius 22
+  score 380
+  speed 90
+  path hover stop=180 wait=6 amp=60 freq=0.25 exit=0
+  face down
+  fire ring n=10 rot=12 every=2.38 delay=1.4 speed=120 bullet=orb color=#9fe8ff
+  fire ring n=10 rot=-12 every=2.38 delay=2.8 speed=110 bullet=orb color=#ffb060 diff=3
+  drop credits 0.4 value=180
+  explode medium
+  contact 20
+
+enemy e6_hunter
+  title "Echojäger"
+  title_en "Echo Hunter"
+  model e6_hunter
+  hp 260
+  radius 18
+  score 430
+  speed 200
+  path chase turn=90 dur=2.4
+  face move
+  fire fan n=5 spread=12 every=1.87 delay=1.0 speed=210 bullet=shard color=#9fe8ff
+  fire aimed every=2.63 delay=2.0 speed=260 bullet=needle color=#ffb060 diff=3
+  drop credits 0.35 value=190
+  explode medium
+  contact 22
+
+enemy e6_reverb
+  title "Hallkörper"
+  title_en "Reverberant"
+  model e6_reverb
+  hp 960
+  radius 40
+  score 1640
+  speed 70
+  path hover stop=150 wait=9 amp=80 freq=0.18 exit=180
+  face down
+  fire spiral n=3 rot=14 every=0.27 delay=1.5 speed=140 bullet=orb color=#9fe8ff
+  fire ring n=14 rot=7 every=3.06 delay=3.0 speed=110 bullet=ring color=#ffb060 size=6 damage=6
+  fire spawn spawn=e6_glimmer every=5.1 delay=4 z=40
+  drop credits 1 value=900
+  drop shield 0.3
+  explode large
+  contact 30
+
+enemy e6_shard
+  title "Echokristall"
+  title_en "Echo Crystal"
+  model e6_shard
+  kind obstacle
+  hp 720
+  radius 26
+  score 240
+  speed 60
+  path drift
+  face spin
+  drop credits 0.6 value=220
+  explode medium
+  contact 30
+
+# ------------------------------------------------------------------------------------------------ the Directorate's last fleet
+
+enemy e6_remnant
+  title "Restjäger"
+  title_en "Remnant Fighter"
+  model e6_remnant
+  hp 190
+  radius 16
+  score 330
+  speed 210
+  path swoop
+  face move
+  fire fan n=3 spread=14 every=1.7 delay=0.8 speed=220 bullet=needle color=#8ac8ff
+  drop credits 0.3 value=160
+  explode medium
+  contact 18
+
+enemy e6_gunboat
+  title "Kanonenboot Meridian"
+  title_en "Meridian Gunboat"
+  model e6_gunboat
+  hp 1020
+  radius 42
+  score 1700
+  speed 70
+  path strafe y=140 amp=20 freq=0.2
+  face down
+  fire aimed n=3 spread=8 burst=3 gap=0.12 every=2.04 delay=1.0 speed=240 bullet=needle color=#8ac8ff x=19 z=-16 mirror=1
+  fire missile every=3.4 delay=2.5 speed=160 turn=70 bullet=missile color=#ff6040 z=20
+  fire fan n=9 spread=9 every=3.91 delay=3.5 speed=170 bullet=orb color=#8ac8ff diff=3
+  drop credits 1 value=950
+  drop weapon 0.3 mode=arcade
+  explode large
+  contact 34
+
+enemy e6_platform
+  title "Schwebeplattform"
+  title_en "Floating Platform"
+  model e6_platform
+  kind ground
+  hp 510
+  radius 26
+  score 640
+  aimhead 1
+  face down
+  fire aimed n=2 spread=6 burst=3 gap=0.15 every=2.21 delay=1.2 speed=230 bullet=needle color=#8ac8ff
+  fire ring n=8 every=3.74 delay=2.4 speed=120 bullet=orb color=#8ac8ff diff=3
+  drop credits 0.7 value=300
+  explode large
+
+# ------------------------------------------------------------------------------------------------ Ark Mercy (e6_05)
+
+enemy e6_mercy
+  title "Arche Gnade"
+  title_en "Ark Mercy"
+  model e6_mercy
+  kind boss
+  hp 18000
+  radius 118
+  score 3720
+  speed 80
+  path boss stop=230 amp=110 freq=0.16
+  face down
+  part e6_mercy_gun x=-44 z=-70
+  part e6_mercy_gun x=44 z=-70
+  part e6_mercy_gun x=-50 z=50
+  part e6_mercy_gun x=50 z=50
+  # with its guns the hull only guides them; when they fall the seed wakes in it (the hull can be hit all along:
+  # its decks lie inside its hit circle, straight guns could not reach them past a shielded hull)
+  fire missile every=3.06 delay=2.0 speed=150 turn=60 bullet=missile color=#ff6040 x=30 z=80 mirror=1 parts=1
+  fire ring n=20 rot=9 every=1.87 delay=1.0 speed=120 bullet=orb color=#9fe8ff parts=0
+  fire spiral n=3 rot=-13 every=0.26 delay=0.5 speed=150 bullet=orb color=#ffb060 parts=0 until=0.5
+  fire laser warn=1.3 dur=2.6 width=16 damage=28 every=5.52 delay=2.0 dir=-70 rot=22 z=60 color=#9fe8ff parts=0 until=0.5
+  fire laser warn=1.3 dur=2.6 width=16 damage=28 every=5.52 delay=5.2 dir=70 rot=-22 z=60 color=#9fe8ff parts=0 until=0.5
+  fire spawn spawn=e6_splinter every=3.82 delay=2.0 x=40 z=100 mirror=1 from=0.5 parts=0
+  fire wall n=15 every=4.42 delay=2.5 speed=120 bullet=shard color=#e6fbff from=0.5 parts=0
+  fire aimed n=5 spread=9 every=2.04 delay=1.5 speed=230 bullet=needle color=#9fe8ff from=0.5 parts=0
+  drop credits 1 value=2200
+  explode huge
+
+enemy e6_mercy_gun
+  title "Geschützdeck"
+  title_en "Gun Deck"
+  model e6_mercy_gun
+  kind part
+  hp 730
+  radius 22
+  score 560
+  face down
+  aimhead 1
+  fire aimed n=3 spread=8 burst=2 gap=0.15 every=1.87 delay=1.0 speed=240 bullet=needle color=#8ac8ff
+  fire fan n=5 spread=12 every=2.89 delay=2.4 speed=180 bullet=orb color=#8ac8ff diff=3
+  drop credits 1 value=320
+  explode large
+
+# ------------------------------------------------------------------------------------------------ the Stormweaver (e6_09)
+
+enemy e6_weaver
+  title "Sturmweber"
+  title_en "Stormweaver"
+  model e6_weaver
+  kind boss
+  hp 15000
+  radius 104
+  score 3900
+  speed 100
+  path boss stop=250 amp=140 freq=0.22
+  face down
+  part e6_weaver_vane x=-80 z=0
+  part e6_weaver_vane x=80 z=0
+  fire ring n=16 rot=11 every=1.7 delay=2.0 speed=125 bullet=orb color=#9fe8ff until=0.6
+  fire spiral n=4 rot=17 every=0.2 delay=1.0 speed=150 bullet=orb color=#ffb060 from=0.75 until=0.35
+  fire laser warn=1.2 dur=2.8 width=14 damage=28 every=4.67 delay=1.0 dir=-60 rot=30 z=50 color=#e6fbff from=0.6
+  fire laser warn=1.2 dur=2.8 width=14 damage=28 every=4.67 delay=3.6 dir=60 rot=-30 z=50 color=#e6fbff from=0.6
+  fire rain n=10 every=2.72 delay=2.0 speed=200 bullet=needle color=#e6fbff from=0.6 until=0.25
+  fire spawn spawn=e6_glimmer every=4.25 delay=3.0 x=60 z=40 mirror=1 from=0.5
+  fire ring n=26 rot=5 every=1.44 delay=0.5 speed=115 bullet=orb color=#9fe8ff from=0.35
+  fire aimed n=3 spread=10 every=1.87 delay=1.2 speed=240 bullet=needle color=#ffb060 from=0.25
+  drop credits 1 value=2300
+  explode huge
+
+enemy e6_weaver_vane
+  title "Wetterflügel"
+  title_en "Weather Vane"
+  model e6_weaver_vane
+  kind part
+  hp 805
+  radius 24
+  score 600
+  face down
+  aimhead 1
+  fire laser warn=1.0 dur=0.8 width=10 damage=14 every=4.25 delay=2.5 color=#9fe8ff
+  fire fan n=5 spread=11 every=2.21 delay=1.0 speed=200 bullet=shard color=#e6fbff
+  drop credits 1 value=340
+  explode large
+
+# ------------------------------------------------------------------------------------------------ the Echo (e6_10)
+
+enemy e6_echo
+  title "Das Echo"
+  title_en "The Echo"
+  model e6_echo
+  kind boss
+  hp 20625
+  radius 124
+  score 4400
+  speed 90
+  path boss stop=270 amp=100 freq=0.17
+  face down
+  part e6_echo_shard x=-96 z=24
+  part e6_echo_shard x=96 z=24
+  part e6_echo_shard x=-60 z=-74
+  part e6_echo_shard x=60 z=-74
+  # I - the greeting it cannot mean (1.0 .. 0.75): the Curator's fans and rings, cold
+  fire fan n=7 spread=14 every=1.95 delay=2.5 speed=175 bullet=orb color=#9fe8ff z=60 until=0.75
+  fire ring n=16 rot=9 every=1.95 delay=3.5 speed=125 bullet=ring color=#ffb060 size=6 damage=6 until=0.75
+  fire spawn spawn=e6_glimmer every=5.52 delay=4 z=-60 until=0.75
+  # II - order without a reason (0.75 .. 0.5): beams from both sides, a spiral
+  fire laser warn=1.3 dur=3.0 width=16 damage=30 every=5.1 delay=0.5 dir=76 rot=-20 x=70 z=40 color=#e6fbff from=0.75 until=0.5
+  fire laser warn=1.3 dur=3.0 width=16 damage=30 every=5.1 delay=0.5 dir=-76 rot=20 x=-70 z=40 color=#e6fbff from=0.75 until=0.5
+  fire spiral n=3 rot=13 every=0.22 delay=1.0 speed=155 bullet=orb color=#9fe8ff from=0.75 until=0.5
+  # III - the hunger (0.5 .. 0.2): walls of shards, splinters, the aimed beam
+  fire spiral n=3 rot=-11 every=0.23 delay=0.5 speed=140 bullet=orb color=#ffb060 from=0.5 until=0.2
+  fire wall n=15 every=4.42 delay=2.0 speed=120 bullet=shard color=#e6fbff from=0.5 until=0.2
+  fire spawn spawn=e6_splinter every=4.67 delay=1.5 x=60 z=30 mirror=1 from=0.5 until=0.2
+  fire laser warn=1.1 dur=1.0 width=20 damage=16 every=3.91 delay=3.0 z=60 color=#ffb060 from=0.5 until=0.2
+  # IV - only the echo of an echo (0.2 .. 0): both spirals, the rings tightening
+  fire spiral n=4 rot=9 every=0.21 delay=0.5 speed=135 bullet=orb color=#9fe8ff from=0.2
+  fire spiral n=4 rot=-9 every=0.21 delay=0.62 speed=135 bullet=orb color=#ffb060 from=0.2
+  fire ring n=24 rot=7 every=1.87 delay=1.0 speed=105 bullet=orb color=#e6fbff from=0.2
+  drop credits 1 value=2600
+  explode huge
+
+enemy e6_echo_shard
+  title "Echosplitter"
+  title_en "Echo Splinter"
+  model e6_echo_shard
+  kind part
+  hp 675
+  radius 22
+  score 560
+  face down
+  aimhead 1
+  fire aimed n=3 spread=10 every=1.95 delay=1.4 speed=230 bullet=needle color=#9fe8ff
+  fire laser warn=1.2 dur=0.9 width=10 damage=14 every=5.1 delay=3.5 color=#ffb060 diff=3
+  drop credits 1 value=320
+  explode large

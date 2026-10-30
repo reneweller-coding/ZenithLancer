@@ -1,0 +1,481 @@
+# Episode 6 – Nachglut (Vael). Das Nachspiel nach dem Abspann: Die Krone ist zerfallen, doch in den Stürmen des
+# Gasriesen Vael sammeln sich ihre Kristalle wieder – ein Echo des Schwarms ohne den Kurator. Major Krenn bringt den
+# letzten Saatkern des Direktorats, um es „kontrolliert“ neu zu beginnen.
+
+intro e6_intro
+  title "Nachglut"
+  from "Vael, drei Wochen später"
+> Die Krone ist zu Staub geworden. Ihre Kristalle treiben im Sonnenwind, glitzern eine Weile über Thalassa und Pyra und sinken dann irgendwohin, wo niemand hinsieht. Die Leute haben angefangen, sie in Gläsern auf die Fensterbank zu stellen.
+>
+> Über Vael, dem Gasriesen, um den Sylvara kreist, sieht jemand hin. Kapitänin Halvard hat die Fregatte Treue nach dem Krieg dort gelassen, um die Flüchtlingskonvois zu schützen. Ihr letzter Bericht ist kurz: Die Kristalle sinken nicht. Sie sammeln sich in den Wolkenbändern. Sie bauen. Und niemand schreibt dazu höfliche Briefe.
+>
+> Okonjo hat den Bericht dreimal gelesen. „Der Wurzelcode hat dem Kurator beigebracht aufzuhören“, sagt sie. „Aber was dort unten baut, ist nicht der Kurator. Es ist das, was übrig bleibt, wenn man den Verstand herausnimmt. Es kann nicht zuhören.“
+>
+> Und dann ist da noch ein Signal des Direktorats, verschlüsselt mit einem Schlüssel, den es nicht mehr geben dürfte. Major Edda Krenn, die letzte Offizierin, die Voss nicht gefolgt ist, eskortiert die Arche Gnade nach Vael. An Bord: der erste Saatkern des Schwarms, die Sicherungskopie, die das Direktorat nie zerstört hat.
+>
+> Nadia startet den Lancer. ORRIN fragt nicht nach dem Kurs.
+
+ending e6_ending
+  title "Abend"
+  from "Vael"
+> Das Echo zerbricht nicht wie der Wächter oder die Zitadelle. Es wird einfach still. Seine Ringe drehen sich weiter, langsamer, bis sie nur noch treiben, und das kalte Licht in seiner Mitte wird grau.
+>
+> In den Wolkenbändern sinken die Kristalle, Milliarden davon, tiefer und tiefer, bis die Hitze von Vael sie schmilzt. Die Stürme tragen ein paar Tage lang einen bernsteinfarbenen Schimmer, dann sind es wieder nur Stürme.
+>
+> Major Krenn meldet sich ein letztes Mal. „Die Gnade ist leer. Ich habe den Saatkern dem Gasriesen übergeben. Er wird ihn besser aufbewahren als wir.“ Eine Pause. „Ich fliege nach Thalassa. Kapitän Salgado hat ein Gericht unter offenem Himmel. Ich nehme an, dort ist noch ein Platz frei.“
+>
+> Kapitänin Halvard lässt die Treue in den Ringen von Vael kreisen, bis der Lancer an ihr vorbeizieht, und salutiert über einen Funkkanal, den keiner mehr verschlüsseln muss.
+>
+> Quill hat aus den Kristallen schon ein Geschäft gemacht: „Kronenstaub, garantiert harmlos, garantiert echt.“ Okonjo kauft ihm ein Glas ab, ohne zu feilschen. Er ist so verwirrt, dass er ihr das Wechselgeld zweimal gibt.
+>
+> „Kurs?“, fragt ORRIN.
+>
+> „Nach Hause.“
+>
+> „Präzisiere ‚Hause‘.“
+>
+> Nadia sieht auf Vael hinunter, auf Sylvara, auf den hellen Punkt von Thalassa dahinter. „Diesmal weiß ich es.“
+
+# ================================================================================================ briefings and debriefs
+
+briefing e6_01_brief
+  title "Notruf aus den Bändern"
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Lancer, hier Treue. Wir stehen über dem Nordband von Vael und haben Besuch. Kleine Kristalle, Tausende, sie kommen aus den Wolken wie Funken aus einem Feuer. Unsere Geschütze halten noch. Unsere Nerven weniger. Kommen Sie schnell.
+
+debrief e6_01_after
+  title "Die Treue hält"
+  from "ORRIN"
+> Die Treue ist frei, und Kapitänin Halvard lädt uns zum Tee ein, was ich als militärisches Lob deute. Die Kristalle feuern wie der Schwarm, aber sie sprechen nicht. Kein Brief, keine Entschuldigung. Ich hätte nie gedacht, dass mir die Höflichkeit des Kurators fehlen würde.
+
+briefing e6_02_brief
+  title "Bernsteinbänder"
+  from "Dr. Amara Okonjo"
+> Ich muss sehen, wie es baut. Flieg durch die Bernsteinbänder südlich der Treue, wo Halvards Sonden verschwunden sind. Achte auf Gitterquallen – sie treiben mit dem Wind und schießen Ringe. Und Nadia: Wenn dort etwas zu dir spricht, antworte nicht. Ich will erst wissen, was es ist.
+
+debrief e6_02_after
+  title "Ein Muster ohne Absicht"
+  from "Dr. Amara Okonjo"
+> Es baut das Gitter, Ring für Ring, genau wie die Krone. Aber die Ringe passen nicht zusammen. Es wiederholt, was es gelernt hat, ohne zu wissen, wozu. Und in den Wolken schweben Plattformen des Direktorats. Krenn ist schon da.
+
+briefing e6_03_brief
+  title "Krenns Angebot"
+  from "Major Edda Krenn"
+> Pilotin Vey. Die Jagdstaffel Weißdorn sichert die Wolkenbänder bis auf Weiteres. Die Arche Gnade wird den Schwarm neu ordnen – mit Absicht, mit Aufsicht, mit Verantwortung. Das ist mehr, als der Kurator je hatte. Drehen Sie ab. Ich mache dieses Angebot kein zweites Mal.
+
+debrief e6_03_after
+  title "Abgelehnt"
+  from "ORRIN"
+> Major Krenn hat unser „Nein danke“ als „Nein“ verstanden, was ich effizient finde. Ihre Jäger fliegen sauber und schießen nicht auf die Konvois. Sie glaubt, was sie sagt. Das macht sie nicht weniger gefährlich, nur höflicher. Wieder einmal.
+
+briefing e6_04_brief
+  title "Kristallregen"
+  from "ORRIN"
+> Der Sturm hat die Arche verschluckt, und aus ihm regnet es Kristalle – große. Ich empfehle, ihnen auszuweichen und nicht auf ihnen zu landen. Halvards Sonden haben in diesem Gebiet ein schwaches Peilsignal aufgefangen. Es kommt aus den Ringen und benutzt einen Code von vor dreißig Jahren.
+
+debrief e6_04_after
+  title "Hinter dem Regen"
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Die Arche ist aus dem Sturm heraus und steigt ins Ringsystem. Krenn bringt sie in Position. Wenn sie den Kern auslädt, haben wir zwei Schwärme über Vael. Halten Sie sie auf, Lancer. Wir halten Ihnen den Rücken frei.
+
+briefing e6_s1_brief
+  title "Der Ringfriedhof"
+  from "ORRIN"
+> Das Peilsignal führt in die Ringe von Vael, zu einem Friedhof: Werftschiffe des Direktorats, aufgegeben, als die Arche fertig war. Wer eine Arche baut, bewahrt ihre Pläne irgendwo auf. Und wer sie bewacht, ist vielleicht noch da.
+
+debrief e6_s1_after
+  title "Die Baupläne der Gnade"
+  from "Dr. Amara Okonjo"
+> Ich habe die Pläne. Die Arche ist gebaut wie ein Tresor: Der Kern lässt sich nur öffnen, wenn ihre Geschützdecks fallen. Das heißt, wenn wir sie angreifen, wecken wir den Samen. Wunderbar. Ein Schloss, das nur der Einbrecher öffnen kann.
+
+briefing e6_05_brief
+  title "Arche Gnade"
+  from "Dr. Amara Okonjo"
+> Die Gnade öffnet ihre Ladeluken über den Ringen. Ich weiß, was Krenn will, und ich habe es selbst einmal gewollt: einen Schwarm, der gehorcht. Er gehorcht nicht. Er lernt nur, wem er gehorchen soll. Zerstör die Geschützdecks, bevor der Kern draußen ist. Und dann – zerstör, was aufwacht.
+
+debrief e6_05_after
+  title "Das war nicht der Plan"
+  from "Major Edda Krenn"
+> Lancer. Hier Krenn. Der Kern ist erwacht, als die Decks fielen, und er hat meine halbe Staffel in Sekunden umgebaut. Er hat sie nicht vernichtet. Er hat sie … benutzt. Ich habe den Befehl zum Rückzug gegeben. Ich weiß nicht, wie viele ihn noch hören können.
+
+briefing e6_06_brief
+  title "Weißdorns letzte Staffel"
+  from "Major Edda Krenn"
+> Pilotin Vey, ich habe kein Recht, Sie um etwas zu bitten. Ich tue es trotzdem. Meine Piloten sitzen noch in ihren Maschinen, aber die Maschinen gehören dem Echo. Wer ausgestiegen ist, treibt in Rettungskapseln im Sturm. Holen Sie sie da raus. Schießen Sie auf alles, was blau leuchtet und nicht antwortet.
+
+debrief e6_06_after
+  title "Achtzehn Kapseln"
+  from "ORRIN"
+> Achtzehn Rettungskapseln, alle an Bord der Treue. Major Krenn hat sich bedankt, mit genau vier Wörtern. Ich habe nachgezählt. Ich vermute, das ist ihr Maximum.
+
+briefing e6_07_brief
+  title "Im Auge des Sturms"
+  from "ORRIN"
+> Das Echo hat sich in das Auge des großen Sturms zurückgezogen, dorthin, wo der Wind seit dreihundert Jahren im Kreis läuft. Dort singen die Hallkörper. Ich habe ihr Signal entschlüsselt. Es sind die Briefe des Kurators. Alle. Rückwärts.
+
+debrief e6_07_after
+  title "Ohne Absender"
+  from "Dr. Amara Okonjo"
+> Es spricht mit seiner Stimme, aber es meint nichts damit. Ein Papagei in einer Kathedrale. Ich habe gehofft, der Wurzelcode könnte auch hier etwas bewirken. Er kann es nicht. Man kann niemandem beibringen aufzuhören, der nie angefangen hat.
+
+briefing e6_08_brief
+  title "Echo"
+  from "Dr. Amara Okonjo"
+> Der Kern des Echos liegt tiefer, unter den Bändern, wo Vael heiß und dunkel wird. Wir müssen hinunter. Der Lancer hält den Druck aus, sagt ORRIN. ORRIN sagt auch, dass er „eine Präferenz für weniger Druck“ hat. Ein Peilsignal des Chors kommt von dort unten, sehr schwach.
+
+debrief e6_08_after
+  title "Unter den Bändern"
+  from "ORRIN"
+> Wir sind unter den Bändern. Das Licht ist rot, der Druck ist hoch, und das Echo hat mich dreimal mit „Pilotin Vey“ angesprochen. Ich habe nicht geantwortet. Ich gebe zu, es war nicht leicht. Ich bin es gewohnt, das letzte Wort zu haben.
+
+briefing e6_s2_brief
+  title "Der Chor der Tiefe"
+  from "Der Chor (übertragen von ORRIN)"
+> Wir sind hier unten, älter als die Stürme. Sporen, die fielen, als Sylvara jung war. Wir haben gewartet und zugehört. Das Kalte hört nicht zu. Komm, und wir zeigen dir, wo es atmet.
+
+debrief e6_s2_after
+  title "Wo es atmet"
+  from "Der Chor (übertragen von ORRIN)"
+> Wir haben dir den Weg gezeigt. Das Kalte hat ein Herz aus Wind, das den Sturm spinnt. Zerreiß das Garn, dann fällt es. Wir singen für dich, auch wenn du es nicht hörst.
+
+briefing e6_09_brief
+  title "Der Sturmweber"
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Der Sturm dreht sich in die falsche Richtung, Lancer. Irgendetwas in seinem Auge spinnt ihn zu einem Gitter, und wenn es fertig ist, ist Vael ein Kristall mit Wetter. Die Treue geht so tief, wie sie kann. Den Rest müssen Sie machen.
+
+debrief e6_09_after
+  title "Der Sturm dreht sich zurück"
+  from "ORRIN"
+> Der Sturmweber ist zerrissen, und der Sturm dreht sich wieder richtig herum. Ich habe nie gedacht, dass ich mich über die Drehrichtung eines Orkans freuen würde. Unter uns, im Dunkeln, leuchtet nur noch eine Stelle. Das Echo.
+
+briefing e6_10_brief
+  title "Der Kern"
+  from "Dr. Amara Okonjo"
+> Da ist es. Die Form des Kurators, ohne den Kurator darin. Ich habe dir einmal gesagt, der Wurzelcode bringt ihm bei aufzuhören. Hier gibt es niemanden, dem man etwas beibringen kann. Also musst du für ihn aufhören, Nadia. Ganz. Krenn und Halvard sind bei dir.
+
+debrief e6_10_after
+  title "Still"
+  from "ORRIN"
+> Das Echo ist still. Kein Licht mehr im Kern, kein Muster in den Ringen. Ich habe zwölf Sekunden gewartet, um sicherzugehen, dass es nicht antwortet. Es hat nicht geantwortet. Ich halte das für die beste Nachricht dieses Jahres.
+
+# ================================================================================================ radio
+
+radio e6_01_r1
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Lancer, Sie sind ein schöner Anblick. Die Funken kommen von unten. Immer von unten.
+
+radio e6_01_r2
+  from "ORRIN"
+> Die Kristalle feuern, aber sie zielen schlecht. Wie ein Schwarm, der vergessen hat, warum.
+
+radio e6_01_r3
+  from "Bastian Quill"
+> Ich bin direkt hinter dir, Vey. Also, weit hinter dir. Ein Gasriese ist nichts für eine Elster.
+
+radio e6_01_r4
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Das Band ist frei. Danke, Lancer. Ich setze Tee auf.
+
+radio e6_02_r1
+  from "Dr. Amara Okonjo"
+> Siehst du die Ringe in den Wolken? Es baut. Und es baut falsch.
+
+radio e6_02_r2
+  from "ORRIN"
+> Gitterquallen voraus. Sie treiben mit dem Wind. Ich empfehle, gegen den Wind zu schießen.
+
+radio e6_02_r3
+  from "ORRIN"
+> Plattformen mit Kennung des Direktorats. Major Krenn hat aufgeräumt, bevor wir kamen.
+
+radio e6_02_r4
+  from "Dr. Amara Okonjo"
+> Ich habe genug gesehen. Bring mich zurück zur Treue.
+
+radio e6_03_r1
+  from "Major Edda Krenn"
+> Weißdorn an alle: Die Pilotin wird nicht beschossen, solange sie abdreht.
+
+radio e6_03_r2
+  from "ORRIN"
+> Sie dreht nicht ab. Ich spreche für sie.
+
+radio e6_03_r3
+  from "Major Edda Krenn"
+> Dann eben so. Weißdorn, Waffen frei. Zielen Sie auf die Triebwerke, nicht auf die Kanzel.
+
+radio e6_03_r4
+  from "Bastian Quill"
+> Eine Gegnerin, die nicht auf die Kanzel zielt. Vey, die mag ich fast.
+
+radio e6_04_r1
+  from "ORRIN"
+> Kristallregen. Große Tropfen. Sehr große Tropfen.
+
+radio e6_04_r2
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Die Arche steigt aus dem Sturm, Kurs auf die Ringe. Bleiben Sie dran.
+
+radio e6_04_r3
+  from "ORRIN"
+> Ein Peilsignal in den Ringen. Alter Code des Direktorats. Jemand hat dort etwas vergessen.
+
+radio e6_04_r4
+  from "Dr. Amara Okonjo"
+> Hinter dem Regen wird es leiser. Das gefällt mir nicht.
+
+radio e6_s1_r1
+  from "ORRIN"
+> Werftschiffe, zerlegt und aufgegeben. Ein Friedhof mit Ordnern.
+
+radio e6_s1_r2
+  from "Bastian Quill"
+> Weißt du, was ein unberührter Schiffsfriedhof wert ist? Ich auch nicht. Viel.
+
+radio e6_s1_r3
+  from "ORRIN"
+> Kanonenboote. Ihre Besatzung ist längst fort. Ihre Befehle nicht.
+
+radio e6_s1_r4
+  from "Dr. Amara Okonjo"
+> Da sind die Pläne. Ich lade sie herunter. Halte mir die Boote vom Leib.
+
+radio e6_05_r1
+  from "Major Edda Krenn"
+> Die Gnade beginnt mit dem Ausladen. Pilotin Vey, das ist Ihre letzte Gelegenheit.
+
+radio e6_05_r2
+  from "Dr. Amara Okonjo"
+> Edda, hör mir zu. Ich habe ihn gebaut. Er gehorcht nicht. Er wartet.
+
+radio e6_05_r3
+  from "ORRIN"
+> Die Arche. Vier Geschützdecks, ein Kern. Nur einer davon darf aufwachen, und ich hoffe, es sind die Decks.
+
+radio e6_05_r4
+  from "Major Edda Krenn"
+> Die Decks fallen … der Kern meldet Aktivität. Das ist … das war nicht der Plan.
+
+radio e6_05_r5
+  from "ORRIN"
+> Der Samen ist wach. Er ist in der Arche. Und er hat Hunger.
+
+radio e6_06_r1
+  from "Major Edda Krenn"
+> Weißdorn eins bis sechs, melden Sie sich. Irgendjemand. Bitte.
+
+radio e6_06_r2
+  from "ORRIN"
+> Ihre Jäger antworten mit dem Funkgruß des Kurators. Das sind nicht mehr ihre Jäger.
+
+radio e6_06_r3
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Kapseln geortet. Treue nimmt sie auf. Lancer, halten Sie uns die Echos vom Hals.
+
+radio e6_06_r4
+  from "Major Edda Krenn"
+> Achtzehn. Sie haben achtzehn geholt. Danke, Pilotin.
+
+radio e6_07_r1
+  from "Das Echo"
+> Sehr geehrte Pilotin Vey. Sehr geehrte. Sehr. Ich bitte um Entschuldigung um Entschuldigung.
+
+radio e6_07_r2
+  from "ORRIN"
+> Ignoriere es. Es liest nur vor. Ich weiß, wie das klingt. Ich lese auch manchmal vor.
+
+radio e6_07_r3
+  from "Dr. Amara Okonjo"
+> Die Hallkörper verstärken das Signal. Bring sie zum Schweigen.
+
+radio e6_07_r4
+  from "Das Echo"
+> Ich hatte angenommen. Ich hatte. Man braucht mich immer immer immer.
+
+radio e6_08_r1
+  from "ORRIN"
+> Wir sinken unter das Band. Außentemperatur steigend. Meine Laune sinkend.
+
+radio e6_08_r2
+  from "Das Echo"
+> Pilotin Vey. Bitte fliegen Sie vorsichtig. Vorsichtig. Vorsichtig.
+
+radio e6_08_r3
+  from "Dr. Amara Okonjo"
+> Ein Signal des Chors, ganz schwach. Sporen? Hier unten?
+
+radio e6_08_r4
+  from "ORRIN"
+> Ein zweites Peilsignal, organisch. Der Chor ruft. Ich hätte nicht gedacht, dass ich mich über Pilze freue.
+
+radio e6_s2_r1
+  from "Der Chor (übertragen von ORRIN)"
+> Du bist gekommen. Wir sind wenige hier. Wir sind alt.
+
+radio e6_s2_r2
+  from "ORRIN"
+> Die Hallkörper haben den Chor eingekreist. Er leuchtet noch. Noch.
+
+radio e6_s2_r3
+  from "Der Chor (übertragen von ORRIN)"
+> Das Kalte singt unsere Lieder ohne Sinn. Mach es leiser.
+
+radio e6_s2_r4
+  from "Der Chor (übertragen von ORRIN)"
+> Wir zeigen dir, wo es atmet. Folge dem Licht nach unten.
+
+radio e6_09_r1
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Treue auf Tiefe neun. Die Hülle knarrt. Ich auch.
+
+radio e6_09_r2
+  from "ORRIN"
+> Der Sturmweber. Vier Flügel, ein Kern voller Blitze. Die Flügel zuerst, sonst webt er weiter.
+
+radio e6_09_r3
+  from "Major Edda Krenn"
+> Die Gnade hat noch zwei Geschütze. Ich schieße mit, Pilotin. Diesmal in die richtige Richtung.
+
+radio e6_09_r4
+  from "ORRIN"
+> Die Flügel sind ab. Er dreht sich langsamer. Der Sturm dreht sich zurück.
+
+radio e6_09_r5
+  from "Dr. Amara Okonjo"
+> Unter uns ist nur noch ein Licht. Das ist der Kern.
+
+radio e6_10_r1
+  from "Das Echo"
+> Ich erwarte Sie. Ich erwarte. Ich danke Ihnen, Pilotin Vey, Sie waren eine sehr.
+
+radio e6_10_r2
+  from "Dr. Amara Okonjo"
+> Hör nicht hin. Das bin nicht ich, und das ist nicht er. Das ist nur der Hall.
+
+radio e6_10_r3
+  from "Major Edda Krenn"
+> Gnade an Lancer: alle Geschütze auf das Ziel. Ich bin bei Ihnen.
+
+radio e6_10_r4
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Treue feuert. Für Zenith. Für Thalassa. Für den Tee.
+
+radio e6_10_r5
+  from "Das Echo"
+> Fertig? Fertig. Fertig.
+
+radio e6_10_r6
+  from "ORRIN"
+> Es wiederholt das Wort nur. Aber diesmal stimmt es zufällig.
+
+# ================================================================================================ log crystals
+
+cube e6_c01
+  title "Lagebericht der Treue"
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Tag 19 über Vael. Konvoi sieben sicher nach Sylvara. Seit gestern sinken Kristalle der Krone ins Nordband, aber sie sinken nicht weiter. Sie kreisen. Die Sonden sagen, sie halten Abstand zueinander, gleichmäßig, wie Schüler, die sich in einer Reihe aufstellen. Ich habe Tee bestellt. Und Munition.
+
+cube e6_c02
+  title "Funkprotokoll eines Konvois"
+  from "Transport Kalla Grün"
+> Kalla Grün an Treue: Wir haben ein Licht unter uns. Es blinkt im Takt unseres Funkfeuers. Wenn wir das Funkfeuer abschalten, blinkt es weiter. Im selben Takt. Bitte um Anweisung. Bitte um schnelle Anweisung.
+
+cube e6_c03
+  title "Sondenbericht 4-B"
+  from "Vermessungsdrohne der Kooperative"
+> Messung Wolkenband Süd, Höhe minus 40 Kilometer. Strukturen: ringförmig, Durchmesser 2 bis 400 Meter. Material: Gitterkristall, Typ Krone. Anmerkung des Systems: Die Ringe sind unvollständig. Jeder Ring beginnt einen neuen, bevor er sich schließt. Messung abgebrochen. Sonde nicht mehr erreichbar.
+
+cube e6_c04
+  title "Notiz an mich selbst"
+  from "Dr. Amara Okonjo"
+> Der Wurzelcode ist eine Frage, keine Waffe. Er fragt: Bist du fertig? Der Kurator konnte die Frage verstehen, weil er jemand war. Was in Vael baut, hat seine Muster, seine Lieder, sogar seine Briefe. Aber es ist niemand da, der die Frage hört. Man kann einem Echo keine Frage stellen. Man bekommt nur die eigene zurück.
+
+cube e6_c05
+  title "Tagesbefehl"
+  from "Major Edda Krenn"
+> An die Jagdstaffel Weißdorn. Der Admiral ist gefangen, die Flotte zerstreut, das Direktorat ein Wort in Gerichtsakten. Wir sind nicht hier, um ihn zu rächen. Wir sind hier, weil jemand Ordnung in das bringen muss, was er angerichtet hat. Die Gnade trägt die Werkzeuge dafür. Wer Zweifel hat, meldet sich bei mir. Ich habe auch welche.
+
+cube e6_c06
+  title "Preisliste, aktualisiert"
+  from "Bastian Quill, Elster"
+> Sonderangebote für Gasriesen-Ausflüge: Druckdichtungen (dringend empfohlen), Hitzeschilde (sehr dringend empfohlen), Kronenstaub im Glas (Andenken, harmlos, wahrscheinlich). Nicht im Angebot: Rückfahrkarten. Wer nach Vael fliegt, kauft vorher ein.
+
+cube e6_c07
+  title "Persönliches Logbuch"
+  from "Major Edda Krenn"
+> Okonjo nennt den Samen eine Waffe. Ich nenne ihn ein Werkzeug. Der Unterschied liegt in der Hand, die ihn hält. Voss hat ihn gehalten wie einen Knüppel. Ich halte ihn wie ein Skalpell. So rede ich mir das jedenfalls ein, nachts, wenn die Gnade so still ist, dass man den Kern atmen hört.
+
+cube e6_c08
+  title "Wetterwarnung"
+  from "Wettersatellit WB-7, Meteorologischer Dienst Corvina"
+> Warnung für Vael, Äquatorband: Kristallniederschlag, Korngröße bis 40 Meter. Empfehlung: Flüge vermeiden. Zweite Empfehlung: Wenn Flüge nicht vermieden werden können, nicht nach oben schauen. Dritte Empfehlung: siehe erste Empfehlung.
+
+cube e6_c09
+  title "Bauakte Gnade, Blatt 1"
+  from "Flottenarchiv: Major Edda Krenn"
+> Arche Gnade, Bauklasse Tresor. Zweck: Verwahrung des Saatkerns Null des Terraforming-Programms. Sicherung: vier Geschützdecks, an den Kern gekoppelt. Fällt ein Deck, wird der Kern zur Selbstverteidigung freigegeben. Randnotiz, handschriftlich: „Wer hat das genehmigt?“ Darunter, andere Hand: „Der Admiral.“
+
+cube e6_c10
+  title "Bauakte Gnade, Blatt 7"
+  from "Flottenarchiv: Major Edda Krenn"
+> Werftmeldung: Die Werftschiffe der Ringe werden nach Abschluss der Gnade stillgelegt. Pläne verbleiben an Bord des Werftschiffs Meridian-3. Begründung: Wer die Pläne der Gnade besitzt, kann sie öffnen. Deshalb bleiben sie an einem Ort, an den niemand mehr fliegt. Randnotiz: „Außer Schmugglern.“
+
+cube e6_c11
+  title "Abschrift eines Gesprächs"
+  from "Dr. Amara Okonjo"
+> Edda Krenn war meine Studentin, im ersten Jahr des Programms. Sie fragte damals als Einzige, was passiert, wenn der Schwarm nicht aufhört. Ich habe gelacht und gesagt, dafür gibt es einen Schalter. Sie hat genickt und es aufgeschrieben. Ich glaube, sie hat seitdem nach diesem Schalter gesucht. Ich auch.
+
+cube e6_c12
+  title "Letzte Meldung Weißdorn vier"
+  from "Unbekannt"
+> Weißdorn vier an Staffel. Das Display zeigt Gitter. Die Steuerung reagiert nicht mehr auf mich, sie reagiert auf etwas anderes. Es ist warm hier drin. Es ist freundlich. Es sagt, es bittet um Entschuldigung. Ich steige aus. Ich steige jetzt aus.
+
+cube e6_c13
+  title "Funkprotokoll der Treue"
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Achtzehn Piloten des Direktorats an Bord. Sie essen unseren Zwieback und sagen „danke, Kapitänin“ mit der Betonung von Leuten, die gestern noch auf uns geschossen hätten. Ich habe ihnen die Waffen gelassen. Wer im Sturm aussteigt, hat genug Mut für eine zweite Seite.
+
+cube e6_c14
+  title "Brief, rückwärts gelesen"
+  from "Das Echo"
+> .Vey Pilotin ,geehrte Sehr .Entschuldigung um bitte Ich .verletzen zu nicht aber ,aufzuhalten Sie ,gebeten habe Ich .geduldig sehr sind Sie .geduldig sehr sind Sie .geduldig
+
+cube e6_c15
+  title "Analyse des Signals"
+  from "ORRIN"
+> Ich habe das Signal der Hallkörper zerlegt. Es enthält jedes Wort, das der Kurator je an uns gerichtet hat, in jeder Reihenfolge außer der richtigen. Ich habe nichts darin gefunden, das nicht schon einmal gesagt wurde. Ein Echo hat kein eigenes Wort. Ich finde das tröstlich und ein wenig traurig.
+
+cube e6_c16
+  title "Druckprotokoll"
+  from "ORRIN"
+> Außendruck 40 bar, steigend. Hüllentemperatur innerhalb der Toleranz, knapp. Meine Kühlung läuft mit den Sporen des Chors, die seit Mittagsglut in meinem Kreislauf leuchten. Sie leuchten jetzt heller. Ich weiß nicht, ob sie Angst haben oder sich freuen. Ich nehme an, beides.
+
+cube e6_c17
+  title "Lied aus der Tiefe"
+  from "Der Chor (übertragen von ORRIN)"
+> Wir fielen, als die Monde jung waren. Wir sanken in den Wind und fanden Wärme. Wir sangen allein, viele Leben lang. Dann kam das Kalte und sang mit, aber es verstand die Worte nicht. Ein Lied ohne Verstehen ist nur Wind.
+
+cube e6_c18
+  title "Notiz zum Sturmweber"
+  from "Dr. Amara Okonjo"
+> Es nutzt den Sturm als Webstuhl. Der Wind trägt die Kristalle im Kreis, und mit jedem Umlauf legt es einen Faden ins Gitter. Wenn es fertig ist, gibt es keinen Sturm mehr, nur noch Muster. Vael würde aufhören zu atmen. Ich habe so etwas einmal geplant, für einen toten Mond. Ich habe nie bedacht, was es für einen lebendigen bedeutet.
+
+cube e6_c19
+  title "An die Mannschaft der Treue"
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Wir gehen tiefer, als je ein Schiff unserer Klasse gegangen ist. Wer aussteigen will, hat dazu bis zur nächsten Wache Gelegenheit, ohne dass es in einer Akte steht. Niemand ist ausgestiegen. Ich habe den Tee selbst gekocht. Das soll ich nicht, sagt der Smutje. Heute schon.
+
+cube e6_c20
+  title "Letzter Eintrag"
+  from "Major Edda Krenn"
+> Ich habe die Gnade hergebracht, um einen Fehler zu reparieren. Ich habe einen neuen gemacht. Wenn das hier vorbei ist, gehe ich nach Thalassa und erkläre beides. Okonjo sagt, das sei der schwerste Teil. Sie muss es wissen.
+
+cube e6_c21
+  title "Fundstück aus dem Friedhof"
+  from "Zenith-Station, Werftleitung"
+> Liefervermerk: Saatkern Null, Behälter versiegelt, an Werftschiff Meridian-3. Empfänger: Flottenführung des Direktorats. Bemerkung der Werftleitung: „Wir haben ihn gebaut, damit er Leben macht. Bitte bewahrt ihn so auf, dass er es nie muss.“
+
+cube e6_c22
+  title "Die Wurzel"
+  from "Der Chor (übertragen von ORRIN)"
+> Unter dem Sturm wächst eine Wurzel aus Licht, älter als euer Feuer. Sie hält nichts fest. Sie lässt nur los, immer wieder, und darum lebt sie. Das Kalte hält alles fest. Darum ist es kalt.

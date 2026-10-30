@@ -41,6 +41,17 @@ Deck (Linux build, 1280×800, pad).
   of the same seed, a point every second step (`<user>/ghosts/*.bin`), drawn as a pale ring.
 - **Flugschule** – nine lessons on a field without a timeline (`src/AppArchive.cpp`): each puts what it needs on the
   field (targets, slow bullets to graze, a row of drones for a chain) and waits for its goal; the pilot cannot die.
+- **Nachspiel** (episode 6, *Nachglut*, `epilogue 1` in its episode file) – after episode 5's ending the campaign
+  ends as before (scores, credits, the boss rush and the next difficulty open), then the slot goes on into the
+  epilogue (its intro waits for the slot's next start: `Campaign::m_intro`); New Game+ follows the epilogue's end.
+- **Medaillen** – each mission's best (`Profile::m_medals`, `App::medalOf`): bronze for a win; from Normal on silver
+  (70 % of the enemies, no loss) and gold (85 %, damage under one hull's armour, the boss at the first try).
+- **Herausforderung** – a survival flight from a code (`challengeCode`/`readChallenge`: 32 bits of seed, 3 of
+  difficulty, 8 of rules, 2 of version, 5 of check in ten Crockford base-32 letters), with its own ghost and best.
+- **Bossjagd für zwei**, the **arcade ghost** (an arcade mission flown alone, by mission and difficulty), the **photo
+  mode** (pause: pan, zoom, a picture without the HUD) and the **wave editor** (`src/AppEditor.cpp`, the Mods screen:
+  events of waves, ground targets, obstacles, bosses and pickups; the preview flies the autopilot unhurt to the chosen
+  moment; saved as the mod `editor` with the editor's own `.edit` file beside the mission).
 - **Archiv** – the enemies met (`Profile::m_seen`, filled while they are on the field) as turning models with their
   numbers, the music room (`data/lang/music.txt`, pieces heard: `Profile::m_heard`) and the paints (`paints()`: a
   colour that replaces the hull's own and keeps its shading; opened by achievements; `Settings::m_paint`).
@@ -116,6 +127,16 @@ speaks as **the Curator** (der Kurator), calm and polite, convinced it is helpin
 - **Admiral Dacian Voss** – commands the Directorate fleet. Claims to fight the swarm; holds its command keys and
   wants to rule through it.
 - **The Choir** – Sylvara's living mind; speaks in images, through spores and bioluminescence.
+
+**The epilogue**
+
+6. **Nachglut** (Vael) – three weeks after the Crown let go its crystals gather again in the gas giant's storms:
+   the swarm's echo, its shape and songs without the Curator's mind, which no Root Code can reach. Major Edda Krenn,
+   the last Directorate officer who did not follow Voss, brings the Ark Mercy with seed core zero to put the swarm
+   "back in order"; the seed wakes in the Ark and takes her squadron. With Captain Halvard's frigate Fealty, Krenn
+   and the Choir's spores in Vael's deep, Nadia tears the Stormweaver apart and silences the Echo. Bosses: Ark
+   Mercy, the Stormweaver, the Echo. Secrets: the ring graveyard of the Directorate's shipyards, the Choir of the
+   deep.
 
 **The story by episode**
 

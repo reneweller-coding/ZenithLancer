@@ -14,7 +14,7 @@
 #
 # The counters the game feeds (when each is counted: counterKeys() in src/Achieve.h): kills bosses boss_nohit
 # bossretries missions nodamage allkills deaths seconds credits spent max_credits max_front cubes plans secrets
-# episode1..episode5 campaign_diff (0 Kadett .. 6 Zenit) campaign_coop coop_missions arcade_runs arcade2_runs
+# episode1..episode6 campaign_diff (0 Kadett .. 6 Zenit) campaign_coop coop_missions arcade_runs arcade2_runs
 # arcade_clean bossrush_done bossrush_best survival_seconds survival_daily ngplus practice replays_watched
 # max_chain grazes school weekly seen heard gold challenges
 
@@ -218,6 +218,13 @@ achievement episode5
   desc "Beende die Kampagne. Es ist Mittag, und es wird wieder hell."
   desc_en "Finish the campaign. It is noon, and the light is coming back."
   need episode5 1
+
+achievement episode6
+  title "Abend"
+  title_en "Evening"
+  desc "Beende das Nachspiel über Vael. Diesmal weißt du, wo zu Hause ist."
+  desc_en "Finish the epilogue over Vael. This time you know where home is."
+  need episode6 1
 
 achievement campaign_hard
   title "Nichts geschenkt"

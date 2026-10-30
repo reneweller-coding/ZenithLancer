@@ -358,7 +358,7 @@ const std::vector<std::string> &counterKeys()
         "kills",          "bosses",       "boss_nohit",   "bossretries",    "missions",      "nodamage",
         "allkills",       "deaths",       "seconds",      "credits",        "spent",         "max_credits",
         "max_front",      "cubes",        "plans",        "secrets",        "episode1",      "episode2",
-        "episode3",       "episode4",     "episode5",     "campaign_diff",  "campaign_coop", "coop_missions",
+        "episode3",       "episode4",     "episode5",     "episode6",       "campaign_diff",  "campaign_coop", "coop_missions",
         "arcade_runs",    "arcade2_runs", "arcade_clean", "bossrush_done",  "bossrush_best", "survival_seconds",
         "survival_daily", "ngplus",       "practice",     "replays_watched", "max_chain",   "grazes",
         "school",         "weekly",       "seen",         "heard",           "gold",        "challenges"

@@ -63,17 +63,18 @@ const BulletKind EnemyBullets[] = { { "orb", 6, 6 },     { "needle", 4, 5 }, { "
 
 Loadout midLoadout( const Catalog &cat, int episode )
 {
-    static const char *mid[6] = {
+    static const char *mid[7] = {
         "",
         "ship=lancer,front=pulse:5,rear=tailgun:2,left=pip,right=-,gen=dynamo,shield=ward,special=nova_s",
         "ship=bastion,front=hornet:5,rear=sweep:3,left=glimmer,right=pip,gen=fusion,shield=mantle,special=drones",
         "ship=corsair,front=prism:5,rear=orbiter:4,left=warden,right=lancet,gen=plasmaheart,shield=fortress,special=timeslow",
         "ship=warhawk,front=helix:6,rear=halo:4,left=hydra,right=phoenix,gen=starforge,shield=prismshield,special=supernova",
-        "ship=seraphim,front=tempest:7,rear=hailstorm:5,left=seraph,right=mirror,gen=singularity,shield=halo_s,special=lance" };
+        "ship=seraphim,front=tempest:7,rear=hailstorm:5,left=seraph,right=mirror,gen=singularity,shield=halo_s,special=lance",
+        "ship=seraphim,front=tempest:9,rear=hailstorm:7,left=seraph,right=mirror,gen=singularity,shield=halo_s,special=lance" };
     Loadout o;
     auto    ep = cat.m_episodes.find( episode );
     if ( ep != cat.m_episodes.end() ) o = ep->second.m_loadout;
-    if ( episode >= 1 && episode <= 5 ) parseLoadout( o, mid[episode] );
+    if ( episode >= 1 && episode <= 6 ) parseLoadout( o, mid[episode] );
     // Goods this data does not know fall back to the episode's own.
     if ( ep != cat.m_episodes.end() )
     {
@@ -101,7 +102,7 @@ LevelDef bossRush( const Catalog &cat )
     // The great bosses: those of each episode's middle, its last but one and its last mission, in order, each
     // episode over its own ground.
     std::vector<std::pair<const EnemyDef *, std::string>> bosses;
-    const char *grounds[] = { "space", "foundry", "ocean", "asteroid", "jungle", "corona" };
+    const char *grounds[] = { "space", "foundry", "ocean", "asteroid", "jungle", "corona", "e6_storm" };
     for ( const auto &[id, ep] : cat.m_episodes )
         for ( const char *m : { "_05", "_09", "_10" } )
             if ( const LevelDef *lv = cat.level( "e" + std::to_string( id ) + m ) )
@@ -111,7 +112,7 @@ LevelDef bossRush( const Catalog &cat )
                         {
                             bool seen = false;
                             for ( const auto &have : bosses ) seen = seen || have.first == b;
-                            if ( !seen ) bosses.push_back( { b, id >= 1 && id <= 5 ? grounds[id] : "space" } );
+                            if ( !seen ) bosses.push_back( { b, id >= 1 && id <= 6 ? grounds[id] : "space" } );
                         }
     float       t = 2.0f;
     std::string ground = "space";
@@ -151,7 +152,7 @@ LevelDef bossRush( const Catalog &cat )
     end.m_type = "end";
     end.m_p.m_key = "end";
     rush.m_events.push_back( end );
-    rush.m_length = t + 5.0f + 60.0f * bosses.size();   // the bosses hold the timeline: room for the fights
+    rush.m_length = t + 5.0f + 90.0f * bosses.size();   // the bosses hold the timeline: room for the fights
     return rush;
 }
 
@@ -2489,6 +2490,10 @@ SimResult simulate( const Catalog &cat, const LevelDef &level, int difficulty, c
     r.m_plans = (int)w->m_stats.m_plans.size();
     r.m_timeline = w->m_time;
     r.m_bosses = w->m_stats.m_bossKills;
+    // What still holds the field when the time ran out (a boss that cannot be beaten shows here).
+    if ( !r.m_won && !w->failed() )
+        for ( const Enemy &e : w->m_enemies )
+            if ( !e.m_dead && !e.m_gone && e.m_def->m_kind == EnemyKindE::BOSS ) r.m_stuck = e.m_def->m_name;
     delete w;
     return r;
 }

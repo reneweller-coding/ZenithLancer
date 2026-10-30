@@ -65,7 +65,7 @@ def density(mono, sr):
 def main():
     torch.set_num_threads(max(1, (os.cpu_count() or 4) // 2))
     cues = {}
-    for name in ("music.json", "music_calm.json"):
+    for name in ("music.json", "music_calm.json", "music_e6.json"):
         spec = json.load(open(os.path.join(ROOT, "tools", name), encoding="utf-8"))
         cues.update({c["id"]: c["style"] for c in spec["cues"]})
     # --files A B ...: candidates elsewhere (new takes before they replace a piece), each judged as the cue its name

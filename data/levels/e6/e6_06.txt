@@ -1,0 +1,49 @@
+# Episode 6, mission 6: Whitethorn's fighters belong to the echo now; its pilots drift in escape pods in the storm.
+
+level e6_06
+  title    "Weißdorns letzte Staffel"
+  title_en "Whitethorn's Last Squadron"
+  episode  6
+  theme    e6_storm
+  music    e6_b
+  scroll   70
+  length   188
+  next     e6_08
+  map      0.66 0.16
+  briefing e6_06_brief
+  debrief  e6_06_after
+
+  at 1   text e6_06_r1
+  at 3   wave e6_remnant n=6 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=260 dur=4.5 mirror=1
+  at 10  text e6_06_r2
+  at 12  wave e6_hunter n=4 form=line x=360 spacing=160 path=chase turn=90 dur=2.2
+  at 18  pickup credits x=200 value=780
+  at 22  wave e6_remnant n=8 form=random range=600 gap=0.35 path=dive turn=40 speed=230
+  at 30  text e6_06_r3
+  at 32  wave e6_glimmer n=12 form=column x=620 gap=0.25 path=swoop side=-1 cx=340 cy=260 dur=4
+  at 38  pickup cube x=200 item=e6_c13
+  at 42  wave e6_gunboat x=0 path=strafe side=1 y=120 speed=70
+  at 48  wave e6_remnant n=6 form=v x=360 spacing=70 path=dive turn=50
+  at 54  pickup credits x=360 value=800
+  at 58  wave e6_hunter n=6 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 66  wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 72  pickup credits x=480 value=800
+  at 76  wave e6_remnant n=10 form=grid cols=5 x=360 spacing=90 dy=55 path=straight speed=140 drop=credits value=1000
+  at 84  wave e6_gunboat x=720 path=strafe side=-1 y=150 speed=70
+  at 86  wave e6_gunboat x=0 path=strafe side=1 y=90 speed=70 diff=3
+  at 96  pickup cube x=360 item=e6_c14
+  at 100 wave e6_reverb x=360 path=hover stop=140 wait=10
+  at 110 wave e6_splinter n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=290
+  at 118 pickup credits x=200 value=820
+  at 122 text e6_06_r4
+  # the last stretch: everything the echo has
+  at 128 wave e6_hunter n=4 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 134 wave e6_glimmer n=14 form=random range=640 gap=0.2 path=dive turn=40 speed=260
+  at 140 wave e6_reverb x=360 path=hover stop=150 wait=9
+  at 142 obstacle e6_shard n=3 form=random range=600 gap=1.2 path=drift speed=70
+  at 150 wave e6_splinter n=12 form=sides gap=0.3 path=dive turn=50
+  at 156 wave e6_remnant n=6 form=v x=360 spacing=70 path=dive turn=50
+  at 160 wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 164 wave e6_hunter n=3 form=line x=360 spacing=220 path=chase turn=90 dur=2.2 diff=3
+  at 168 pickup credits x=360 value=900
+  at 178 end

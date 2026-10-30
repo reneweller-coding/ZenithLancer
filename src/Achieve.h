@@ -229,7 +229,7 @@ std::string achievementsPath( const std::string &dataDir );
  *          across the branches)
  *        - plans: once( "plans", item ) for every blueprint in Stats::m_plans
  *        - secrets: once( "secrets", mission ) for every secret mission (LevelDef::m_isSecret) won
- *        - episode1 .. episode5: max with 1 when that campaign episode is finished (its ending shown)
+ *        - episode1 .. episode6: max with 1 when that campaign episode is finished (its ending shown)
  *        - campaign_diff: max with the difficulty index (0 Cadet .. 6 Zenith) when the campaign's last episode is
  *          finished
  *        - campaign_coop: max with 1 when the campaign's last episode is finished in co-op

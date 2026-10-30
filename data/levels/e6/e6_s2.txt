@@ -1,0 +1,45 @@
+# Episode 6, secret mission 2: the Choir's spores that fell into Vael when Sylvara was young, surrounded by the
+# echo's singers.
+
+level e6_s2
+  title    "Der Chor der Tiefe"
+  title_en "The Choir of the Deep"
+  episode  6
+  theme    e6_deep
+  music    secret
+  scroll   45
+  length   154
+  next     e6_09
+  issecret 1
+  map      0.92 0.10
+  briefing e6_s2_brief
+  debrief  e6_s2_after
+
+  at 1   text e6_s2_r1
+  at 3   wave e6_glimmer n=8 form=column x=100 gap=0.3 path=orbit cx=360 cy=250 r=160 dur=4 side=1 mirror=1
+  at 10  pickup credits x=200 value=1000
+  at 12  pickup credits x=520 value=1000
+  at 14  text e6_s2_r2
+  at 16  wave e6_reverb n=2 form=line x=360 spacing=320 path=hover stop=150 wait=11
+  at 28  pickup cube x=360 item=e6_c22
+  at 32  wave e6_jelly n=4 form=line x=360 spacing=170 path=hover stop=170 wait=6
+  at 38  text e6_s2_r3
+  at 40  wave e6_hunter n=6 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 48  pickup credits x=360 value=1050
+  at 52  wave e6_reverb n=3 form=line x=360 spacing=230 path=hover stop=150 wait=12
+  at 66  wave e6_glimmer n=12 form=grid cols=6 x=360 spacing=80 dy=55 path=straight speed=120 drop=credits value=1600
+  at 74  pickup cube x=200 item=e6_c19
+  at 78  text e6_s2_r4
+  at 80  wave e6_splinter n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=290
+  at 88  pickup credits x=480 value=1050
+  # the last stretch: everything the echo has
+  at 94  wave e6_hunter n=4 form=sides gap=0.45 path=chase turn=90 dur=2.4
+  at 100 wave e6_glimmer n=14 form=random range=640 gap=0.2 path=dive turn=40 speed=260
+  at 106 wave e6_reverb x=360 path=hover stop=150 wait=9
+  at 108 obstacle e6_shard n=3 form=random range=600 gap=1.2 path=drift speed=70
+  at 116 wave e6_splinter n=12 form=sides gap=0.3 path=dive turn=50
+  at 122 wave e6_remnant n=6 form=v x=360 spacing=70 path=dive turn=50
+  at 126 wave e6_jelly n=3 form=line x=360 spacing=230 path=hover stop=170 wait=6
+  at 130 wave e6_hunter n=3 form=line x=360 spacing=220 path=chase turn=90 dur=2.2 diff=3
+  at 134 pickup credits x=360 value=900
+  at 144 end

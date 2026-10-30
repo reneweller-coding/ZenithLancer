@@ -48,8 +48,10 @@ radio child Mila, 9 Jahre
 radio child Mila, aged 9
 choir choir Der Chor
 choir choir The Choir
+curator curator Das Echo
 curator curator Der Kurator
 curator curator The Curator
+curator curator The Echo
 halvard halvard Captain Imre Halvard
 halvard halvard Captain Imre Halvard, frigate Fealty
 halvard halvard Kapitänin Imre Halvard
@@ -80,6 +82,7 @@ radio man The founders of Vulcan Deep
 radio man Transport Kalla Green
 radio man Transport Kalla Grün
 radio man Zenith Station, Shipyard Management
+radio man Zenith Station, shipyard management
 radio man Zenith-Station, Werftleitung
 radio man2 Arche Langmut, Siedlungsjahr 1
 radio man2 Ark Forbearance, Settlement Year 1
@@ -125,6 +128,9 @@ radio man2 Unknown transmitter
 - narrator Sylvara, Mond des Vael
 - narrator Sylvara, moon of Vael
 - narrator Thalassa, 2614
+- narrator Vael
+- narrator Vael, drei Wochen später
+- narrator Vael, three weeks later
 directorate officer Admiralstab des Direktorats
 directorate officer Brandtrupp 4
 directorate officer Burn Crew 4
