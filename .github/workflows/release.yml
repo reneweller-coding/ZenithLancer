@@ -1,0 +1,103 @@
+# Zenith Lancer for Windows and Linux, built on GitHub's runners.
+#
+# A tag v* (or "Run workflow" by hand): Release builds with the headless tests (ctest -R "data|missions": every data
+# file, every mission flown to its end by the autopilot), packed by the same scripts as at home -- Deploy/build_release.ps1
+# -NoLinux makes ZenithLancer-<version>-windows-x64.zip (MSVC, the msvc preset, static runtime) and
+# Deploy/build_linux.sh makes ZenithLancer-<version>-linux-x86_64.tar.gz (GCC 12 on Ubuntu 22.04 with the linux
+# preset's settings, so it runs on glibc 2.35 and newer, SteamOS included). Both scripts let the packed program check
+# the data beside it (--validate). The archives are kept as the run's artifacts and, for a tag, attached to the tag's
+# DRAFT release where it lacks them: Deploy/publish_release.ps1 creates that draft with the archives built at home,
+# and then this run is the check that the tag builds and passes its tests on clean machines. Publishing the draft
+# stays a step by hand. raylib is fetched by CMake.
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-2025
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build, test, pack
+        # build.ps1 configures the msvc preset (Visual Studio 18 2026, which the runner image carries), the script then
+        # runs the headless tests, --validate, and packs dist\ZenithLancer-<version>-windows-x64.zip.
+        shell: pwsh
+        run: ./Deploy/build_release.ps1 -NoLinux
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: dist/*.zip
+          if-no-files-found: error
+
+  linux:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: The compiler and the headers GLFW needs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends g++-12 ninja-build libx11-dev libxrandr-dev \
+            libxinerama-dev libxcursor-dev libxi-dev libxext-dev libgl1-mesa-dev
+
+      - name: Build, test, pack
+        # build/linux is the linux preset's build folder.
+        env:
+          CC: gcc-12
+          CXX: g++-12
+        run: bash Deploy/build_linux.sh "$PWD/build/linux"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux
+          path: dist/*.tar.gz
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [windows, linux]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Attach to the draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="$GITHUB_REF_NAME"
+          version="${tag#v}"
+          # The tag must name the version of CMakeLists.txt.
+          grep -q "^project( ZenithLancer VERSION $version " CMakeLists.txt ||
+            { echo "CMakeLists.txt is not at version $version"; exit 1; }
+          ( cd dist && sha256sum * > SHA256SUMS.txt )
+          if ! gh release view "$tag" -R "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            # No release yet (the tag was pushed without Deploy/publish_release.ps1): a draft with the changelog's
+            # section for this version as its text.
+            awk -v a="## [$version]" -v b="## $version" '
+              index($0, a) == 1 || index($0, b " ") == 1 || $0 == b { on = 1; next }
+              on && /^## / { exit }
+              on { print }' CHANGELOG.md > notes.md
+            [ -s notes.md ] || { echo "CHANGELOG.md has no section for $version"; exit 1; }
+            gh release create "$tag" -R "$GITHUB_REPOSITORY" --draft --verify-tag \
+              --title "Zenith Lancer $version" --notes-file notes.md
+          fi
+          # Only what the release lacks: the archives published with Deploy/publish_release.ps1 (and their checksums)
+          # stay; this build is then the check that the tag builds and passes its tests on clean machines.
+          for f in dist/*; do
+            gh release upload "$tag" "$f" -R "$GITHUB_REPOSITORY" || echo "kept the release's own $(basename "$f")"
+          done
