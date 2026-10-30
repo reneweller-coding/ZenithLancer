@@ -108,7 +108,7 @@ Check ($stale.Count -eq 0) "README.md links the downloads of $Tag only" "README.
 
 $shots = @([regex]::Matches($readme, 'docs/shots/[A-Za-z0-9_.-]+\.png') | ForEach-Object { $_.Value } | Select-Object -Unique)
 $missingShots = @($shots | Where-Object { -not (Test-Path (Join-Path $root $_)) })
-Check ($missingShots.Count -eq 0) "the $($shots.Count) pictures README.md shows are there" "README.md shows $($missingShots.Count) of $($shots.Count) pictures that are missing: $(($missingShots | ForEach-Object { Split-Path -Leaf $_ }) -join ', ')"
+Check ($missingShots.Count -eq 0) "the $($shots.Count) pictures README.md shows are there" "$($missingShots.Count) of the $($shots.Count) pictures README.md shows are missing in docs\shots: $(($missingShots | ForEach-Object { Split-Path -Leaf $_ }) -join ', ')"
 
 $archives = @(
     @{ File = "ZenithLancer-$version-windows-x64.zip";
@@ -132,6 +132,7 @@ foreach ($a in $archives) {
 $pub = Join-Path $root "work\publish\$Tag"
 New-Item -ItemType Directory -Force $pub | Out-Null
 $sums = Join-Path $pub "SHA256SUMS.txt"
+if (Test-Path $sums) { Remove-Item -Force $sums }
 $files | ForEach-Object { "{0}  {1}" -f (Get-FileHash -Algorithm SHA256 $_).Hash.ToLower(), (Split-Path -Leaf $_) } |
     Set-Content -Encoding ascii $sums
 $lines = @($archives | ForEach-Object { "- **{0}** -- {1}." -f $_.File, $_.Says })
@@ -152,7 +153,7 @@ Write-Host "Release text and checksums: $pub"
 $gh = Get-Command gh -ErrorAction SilentlyContinue
 $title = "Zenith Lancer $version"
 $upload = @($files) + @($sums)
-$uploadNames = ($upload | ForEach-Object { Split-Path -Leaf $_ }) -join " "
+$uploadNames = (@($archives | ForEach-Object { $_.File }) + @("SHA256SUMS.txt")) -join " "
 Write-Host ""
 Write-Host "Steps"
 Write-Host "  1. gh repo create $Repo --public --description `"...`"$(if (-not $hasOrigin) { ' --source . --remote origin' }) (only where the repository is missing)"
