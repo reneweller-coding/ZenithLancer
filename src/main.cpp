@@ -166,6 +166,19 @@ int main( int argc, char **argv )
     }
     if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_test.empty() ) o.m_mute = true;
     if ( !o.m_shot.empty() ) o.m_auto = true;
+    if ( !o.m_test.empty() )
+    {
+        // An app test starts from nothing: its test folder's saves, profile and settings go first.
+        const char *home = getenv( "ZENITH_HOME" );
+        if ( !home || !*home )
+        {
+            printf( "--apptest needs ZENITH_HOME (a test folder; the real saves stay untouched)\n" );
+            return 2;
+        }
+        std::error_code e;
+        for ( const char *f : { "slot1.txt", "slot2.txt", "slot3.txt", "profile.txt", "settings.txt" } )
+            std::filesystem::remove( std::filesystem::path( home ) / f, e );
+    }
     App app;
     if ( !app.init( o ) ) return 1;
     if ( !o.m_test.empty() )
