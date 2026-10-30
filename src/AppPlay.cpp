@@ -204,7 +204,20 @@ void App::play( float dt )
                     }
                 }
                 else if ( e.m_type == EvE::WARN )
+                {
                     m_warnT = 3.0f;
+                    // The boss's music, unless the mission chose its own.
+                    bool own = false;
+                    if ( m_world.m_level )
+                        for ( const LevelEvent &ev : m_world.m_level->m_events )
+                            if ( ev.m_type == "music" ) own = true;
+                    if ( !own )
+                    {
+                        int ep = m_world.m_level ? m_world.m_level->m_episode : 0;
+                        bool last = m_world.m_level && m_world.m_level->m_next.empty() && m_mode == ModeE::CAMPAIGN;
+                        m_audio.music( ep == 5 && last ? "final" : ep >= 1 && ep <= 5 ? "e" + std::to_string( ep ) + "_boss" : "boss" );
+                    }
+                }
                 // The pad shakes with what the pilot feels: hits, big blasts nearby, a boss going down.
                 auto shake = [&]( float low, float high, float t ) {
                     if ( !m_set.m_rumble ) return;

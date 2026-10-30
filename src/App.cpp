@@ -228,6 +228,34 @@ void App::go( ScreenE s )
 
 void App::frame( float dt )
 {
+    // Each screen its piece: the title's theme in the menus, the plan's between missions, Quill's groove in the
+    // workshop, quiet music under the stories (and the ending's own under the endings). A mission sets its own.
+    const char *piece = nullptr;
+    switch ( m_screen )
+    {
+    case ScreenE::TITLE:
+    case ScreenE::MAIN:
+    case ScreenE::SCORES:
+    case ScreenE::CREDITS:
+    case ScreenE::SLOTS:
+    case ScreenE::DIFFICULTY:
+    case ScreenE::EPISODE:
+    case ScreenE::PILOTS:
+    case ScreenE::NAME: piece = "title"; break;
+    case ScreenE::PLAN:
+    case ScreenE::RESULTS:
+    case ScreenE::FAILED: piece = m_mode == ModeE::CAMPAIGN ? "plan" : "title"; break;
+    case ScreenE::LOGBOOK: piece = m_back == ScreenE::PLAN ? "plan" : "title"; break;
+    case ScreenE::SHOP: piece = "shop"; break;
+    case ScreenE::STORY:
+    {
+        const StoryDef *st = m_stories.empty() ? nullptr : m_cat.story( m_stories.front() );
+        piece = st && st->m_type == "ending" ? "ending" : "story";
+        break;
+    }
+    default: break;
+    }
+    if ( piece ) m_audio.music( piece );
     switch ( m_screen )
     {
     case ScreenE::TITLE: title( dt ); break;

@@ -484,10 +484,14 @@ void Audio::music( const std::string &name )
         UnloadMusicStream( m_music[next] );
         m_has[next] = false;
     }
+    // A piece may come in two takes (<name>.ogg, <name>_2.ogg): one of them, by chance.
+    std::string file = name;
+    if ( !name.empty() && std::filesystem::exists( m_assets + "/music/" + name + "_2.ogg" ) && GetRandomValue( 0, 1 ) == 1 )
+        file = name + "_2";
     if ( !name.empty() )
         for ( const char *ext : { ".ogg", ".mp3", ".wav", ".flac" } )
         {
-            std::string path = m_assets + "/music/" + name + ext;
+            std::string path = m_assets + "/music/" + file + ext;
             if ( !std::filesystem::exists( path ) ) continue;
             m_music[next] = LoadMusicStream( path.c_str() );
             if ( IsMusicValid( m_music[next] ) )
