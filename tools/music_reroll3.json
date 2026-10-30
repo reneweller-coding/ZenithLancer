@@ -1,0 +1,13 @@
+{
+  "name": "Zenith Lancer reroll 3",
+  "style": "instrumental video game soundtrack with modern production, clear genre, high quality mix",
+  "key": "E minor",
+  "bpm": 150,
+  "timesig": "4",
+  "takes": 4,
+  "format": "flac",
+  "seed": 7707,
+  "cues": [
+    {"id": "e6_b", "type": "loop", "bars": 24, "bpm": 150, "key": "E minor", "style": "dark electronic breakbeat music for flying through a hurricane, fast broken beat drums, deep rolling sub bass, glitchy crystal arpeggios, rain and thunder, ominous minor synth pads, no guitars, no rock, no vocals", "hint": "instrumental electronic video game level music, constant energy, no intro, no ending"}
+  ]
+}

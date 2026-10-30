@@ -42,7 +42,9 @@ The app tests, the playing and the pictures use the graphics card: check that no
   test flight and the saved mission in practice after a restart; the battery profile on the Deck.
 - **Listening:** every piece of music once (title, shop, plan, story, each episode's missions and boss, secret, final,
   ending) against the effects; the music layers rising and falling without clicks; the voiced radio calls against
-  music and effects, the right speaker and portrait, nothing clipped or garbled, in German and in English.
+  music and effects, the right speaker and portrait, nothing clipped or garbled, in German and in English. Before
+  listening, `tools/check_voices.py [prefix]` (VoiceLab's Python) lists the takes far from their figure's usual pace,
+  pitch or silence, and `tools/clap_music.py` ranks each piece against its description.
 - **Languages:** the new screens once in German and once in English (Options > Language).
 - **Steam Deck:** the Linux archive on the Deck, added as a non-Steam game, started in Gaming Mode: full screen at
   1280 x 800, the Deck's controls, each graphics quality, the benchmark's numbers (for `docs/STORE.md`), suspend and

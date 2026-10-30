@@ -24,11 +24,23 @@ def games_running():
     return any(g in out for g in GAMES)
 
 
+def gpu_working():
+    """Whether the GPU is busy anyway (a job without the flag): more than 8 GB in use or more than half its load.
+    The desktop alone uses 2 to 3 GB and a few per cent; Windows does not tell the memory per process."""
+    try:
+        out = subprocess.run(["nvidia-smi", "--query-gpu=utilization.gpu,memory.used", "--format=csv,noheader,nounits"],
+                             capture_output=True, text=True, timeout=20, creationflags=paths.NO_WINDOW).stdout
+        load, used = (float(v) for v in out.strip().splitlines()[0].split(","))
+        return load > 50.0 or used > 8000.0
+    except (OSError, ValueError, IndexError, subprocess.SubprocessError):
+        return False
+
+
 def main():
     cmd = sys.argv[1:]
     quiet_since = None
     while True:
-        busy = games_running() or os.path.exists(PAUSE) or os.path.exists(FLAG)
+        busy = games_running() or os.path.exists(PAUSE) or os.path.exists(FLAG) or gpu_working()
         if busy:
             quiet_since = None
         elif quiet_since is None:
@@ -42,8 +54,10 @@ def main():
                 continue
             break
         time.sleep(5)
-    with os.fdopen(fd, "w", encoding="utf-8") as f:
-        f.write("Zenith Lancer: %s, started %s\n" % (" ".join(os.path.basename(c) for c in cmd[:3]), time.strftime("%H:%M")))
+    mine = "Zenith Lancer: %s, started %s, pid %d\n" % (" ".join(os.path.basename(c) for c in cmd[:3]),
+                                                       time.strftime("%H:%M"), os.getpid())
+    with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as f:
+        f.write(mine)
     print("GPU free, starting", flush=True)
     try:
         flags = 0x00004000 | paths.NO_WINDOW if os.name == "nt" else 0   # BELOW_NORMAL_PRIORITY_CLASS
@@ -51,7 +65,14 @@ def main():
         r = subprocess.run(cmd, creationflags=flags, stdout=sys.stdout, stderr=sys.stderr)
         sys.exit(r.returncode)
     finally:
-        os.remove(FLAG)
+        # Only our own flag goes (another job's, written while ours was gone, stays).
+        try:
+            with open(FLAG, encoding="utf-8", newline="\n") as f:
+                ours = f.read() == mine
+            if ours:
+                os.remove(FLAG)
+        except OSError:
+            pass
 
 
 if __name__ == "__main__":

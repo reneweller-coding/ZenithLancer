@@ -81,3 +81,7 @@ foreach( flow campaign arcade boss modes )
     add_test( NAME app_${flow} COMMAND ZenithLancer --apptest ${CMAKE_SOURCE_DIR}/tools/apptest_${flow}.txt )
     set_tests_properties( app_${flow} PROPERTIES ENVIRONMENT "ZENITH_HOME=${CMAKE_BINARY_DIR}/testhome_${flow}" )
 endforeach()
+# The campaign's end and the epilogue: episode 5's last mission flown with strong gear, then the slot continued.
+add_test( NAME app_epilogue COMMAND ZenithLancer --apptest ${CMAKE_SOURCE_DIR}/tools/apptest_epilogue.txt --level e5_10
+          --difficulty 1 --loadout "front=tempest:11,rear=hailstorm:9,gen=singularity,shield=halo_s" )
+set_tests_properties( app_epilogue PROPERTIES ENVIRONMENT "ZENITH_HOME=${CMAKE_BINARY_DIR}/testhome_epilogue" )

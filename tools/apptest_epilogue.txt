@@ -1,0 +1,21 @@
+# The campaign's end and the epilogue (ZenithLancer --apptest tools/apptest_epilogue.txt --level e5_10 with ZENITH_HOME
+# set; CTest passes the gear and difficulty): episode 5's last mission flown to its end, the ending, the score list -
+# then the same slot continued shows episode 6's intro before the plan.
+until:play:5
+until:results:900       # the Curator falls (the autopilot flies, two seconds a frame)
+wait wait wait wait wait wait
+accept                  # the debriefing, the ending
+expect:story
+back                    # all stories skipped
+until:name:30           # the campaign's score
+accept
+expect:scores
+back
+expect:main
+accept                  # Kampagne
+expect:slots
+accept                  # slot 1: the campaign, now in episode 6
+accept                  # Fortsetzen
+expect:story            # the epilogue's intro, waiting since the credits
+back
+expect:plan
