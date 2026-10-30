@@ -42,6 +42,7 @@ VOICE_LUFS = -16.0   # over the music and the guns
 QUALITY = 3          # OGG Vorbis, mono 24 kHz: ~50 kbit/s
 PEAK_DB = -2.0
 BATCH = 16           # parts per generation (sorted by length, so a batch ends together)
+CANDIDATES = 4       # takes of a voice with a pitch range (tools/voices.json "pitch")
 PART = 220           # characters at most in one part (whole sentences)
 SAMPLE = {"de": "Wir fliegen weiter, solange die Maschine hält. Was danach kommt, sehen wir, wenn wir dort sind.",
           "en": "We keep flying as long as the machine holds. What comes after, we will see when we get there."}
@@ -152,7 +153,11 @@ def design(jobs, voices, langs, whos):
             continue
         lines = [p for (l, _), (w, _, ps) in jobs.items() if l == lang and w == v for p, _ in ps]
         todo.append((v, lang, design_text(lines, lang)))
+    # A figure with a pitch range gets a few takes, and the one nearest the middle of its range is kept (a description
+    # alone sometimes lands an octave off: the general men came out as women, 30.10.2026).
+    todo = [d for d in todo for _ in range(CANDIDATES if "pitch" in voices[d[0]] else 1)]
     todo.sort(key=lambda d: len(d[2]))
+    takes = collections.defaultdict(list)
     for attempt in range(3):
         again = []
         for i in range(0, len(todo), BATCH):
@@ -162,15 +167,31 @@ def design(jobs, voices, langs, whos):
                                                    language=[LANGS[d[1]] for d in batch])
             for (v, lang, text), wav in zip(batch, wavs):
                 if plausible(wav, sr, text) or attempt == 2:
-                    sf.write(os.path.join(REFS, "%s_%s.flac" % (v, lang)), wav, sr)
-                    with open(os.path.join(REFS, "%s_%s.txt" % (v, lang)), "w", encoding="utf-8") as f:
-                        f.write(text + "\n")
-                    print("designed", v, lang, flush=True)
+                    takes[(v, lang, text)].append((wav, sr))
                 else:
                     again.append((v, lang, text))
         todo = again
+    for (v, lang, text), got in sorted(takes.items(), key=lambda kv: kv[0][:2]):
+        wav, sr = got[0]
+        if "pitch" in voices[v]:
+            lo, hi = voices[v]["pitch"]
+            heard = [(pitch(w, r), w, r) for w, r in got]
+            f0, wav, sr = min(heard, key=lambda h: abs(np.log(max(h[0], 1.0) / np.sqrt(lo * hi))))
+            print("  %s %s: %s Hz, kept %.0f" % (v, lang, " ".join("%.0f" % h[0] for h in heard), f0))
+        sf.write(os.path.join(REFS, "%s_%s.flac" % (v, lang)), wav, sr)
+        with open(os.path.join(REFS, "%s_%s.txt" % (v, lang)), "w", encoding="utf-8") as f:
+            f.write(text + "\n")
+        print("designed", v, lang, flush=True)
     del model
     torch.cuda.empty_cache()
+
+
+def pitch(wav, sr):
+    """The median pitch of a voice (Hz)."""
+    import librosa
+    x = librosa.resample(np.asarray(wav, dtype=np.float32), orig_sr=sr, target_sr=16000)
+    f0, _, _ = librosa.pyin(x, fmin=60, fmax=500, sr=16000, frame_length=1024)
+    return float(np.nanmedian(f0)) if np.any(np.isfinite(f0)) else 1.0
 
 
 def listening_sheet(lang):

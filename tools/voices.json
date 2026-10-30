@@ -37,10 +37,12 @@
     "describe": "A woman ship captain in her fifties, calm commanding mezzo-soprano, steady and a little weary."
   },
   "man": {
-    "describe": "A man in his thirties, an ordinary working voice, clear natural baritone, earnest."
+    "describe": "A man in his thirties with a deep male voice, an ordinary dock worker, clear low baritone, earnest, clearly male.",
+    "pitch": [90, 140]
   },
   "man2": {
-    "describe": "A man in his fifties, gravelly tenor, a little nervous and hurried."
+    "describe": "A man in his fifties with a low gravelly male voice, a weathered miner, rough baritone, a little nervous and hurried, clearly male.",
+    "pitch": [90, 140]
   },
   "woman": {
     "describe": "A woman in her thirties, clear warm mezzo-soprano, natural and direct."
