@@ -249,8 +249,12 @@ Each `shot` line fires at levels `lv=a-b`; numbers may be ranges over that span.
 `wave` (`amp freq`), `burst` (random within `spread`), `flame`, `bomb` (`radius` blast), `bounce` (`bounce`
 walls), `orbit` (circles the ship: `range spin life`), `beam` (a column: `width`, all in it take `dmg` each volley;
 `pierce=1` goes through everything), `chain` (lightning: `range chain`). Common: `angle` (0 = straight ahead),
-`speed dmg size life pierce accel drag x y every split length color sprite`. Sprites: pulse bolt laser plasma
-rocket flame spark star ripple bomb rail petal needle_p orbit.
+`speed dmg size life pierce accel drag x y every split length color sprite`, `jitter` (degrees of random scatter),
+`slow` (slows to a stop: flames), `phase` (degrees: where a weaving shot starts its swing; a negative `amp` swings the
+other way), `split` (bursts into n weaker splinters on impact or at the end of its life), `angle` (also for homing
+fans). Beams fire as often as `rate` says (60 for a steady beam) and burn where their shot line's `x`/`y` puts them
+(sidekicks' beams from the sidekick). Sprites: pulse bolt laser plasma rocket flame spark star ripple bomb rail petal
+needle_p orbit.
 
 Rear guns: `rear <name>` with `mode1 "Name"` and `mode2 "Name"`; shot lines take `mode=1` or `mode=2`.
 
@@ -259,7 +263,9 @@ Sidekicks: `sidekick <name>` with `model`, `place` (fixed orbit trail front), `a
 
 Hulls: `ship <name>` with `model armor speed accel radius gen` (gen: generator bonus 0.1 = +10 %).
 Generators: `power` (energy/s) `capacity`. Shields: `max regen cost delay`. Specials: `kind` (nova barrier drones
-timeslow repair magnet lance) `charges` and values (`radius power time color`).
+timeslow repair magnet lance shield missiles mines) `charges` and values (`radius power time color count`): shield
+fills shield and generator at once (`time` without harm), missiles fires `count` homing missiles of `power`, mines
+lays a ring of `count` mines (`power`, `radius`, `time` until they burst).
 
 ## Episodes (`data/episodes/eN.txt`), arcade pilots (`data/arcade.txt`), difficulties (`data/difficulty.txt`)
 
