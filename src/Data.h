@@ -446,4 +446,21 @@ int upgradePrice( const WeaponDef &w, int lv );
 /** @return what a gun at level lv has cost in all (itself and its upgrades) */
 int weaponValue( const WeaponDef &w, int lv );
 
+/**
+ * @brief A gun's damage a second at a level if every shot hits (the workshop's and the balance's estimate).
+ * @param[in] w     the gun
+ * @param[in] lv    its level 1..11
+ * @param[in] mode  rear guns: 1 or 2
+ * @return damage a second
+ */
+float weaponDps( const WeaponDef &w, int lv, int mode = 1 );
+
+/**
+ * @brief Reads a loadout written as "ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=spark,gen=dynamo,
+ *        shield=ward,special=nova_s" (what is not named stays as it was).
+ * @param[in,out] o     the loadout
+ * @param[in]     text  the text
+ */
+void parseLoadout( Loadout &o, const std::string &text );
+
 }   // namespace zenith

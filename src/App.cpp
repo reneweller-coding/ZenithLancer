@@ -97,6 +97,8 @@ bool App::init( const Options &o )
         m_camp.m_episode = m_episode;
         if ( ep != m_cat.m_episodes.end() ) m_camp.m_load = ep->second.m_loadout;
         if ( m_mode == ModeE::ARCADE && !m_cat.m_arcadeShips.empty() ) m_carry[0] = m_cat.m_arcadeShips[0].m_loadout;
+        parseLoadout( m_camp.m_load, o.m_loadout );
+        parseLoadout( m_carry[0], o.m_loadout );
         m_lives[0] = 3;
         startMission( o.m_level );
     }

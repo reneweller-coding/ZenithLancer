@@ -38,6 +38,7 @@ struct Options
     std::string m_mode = "campaign";
     std::string m_gallery;              ///< a picture of every model
     std::string m_shop;                 ///< a picture of the workshop
+    std::string m_loadout;              ///< --loadout: the gear for --level (Data.h parseLoadout)
 };
 
 /** @brief The screens. */

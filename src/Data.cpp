@@ -867,4 +867,55 @@ int weaponValue( const WeaponDef &w, int lv )
     return v;
 }
 
+float weaponDps( const WeaponDef &w, int lv, int mode )
+{
+    float t = ( lv - 1 ) / 10.0f, per = 0.0f;
+    for ( const ShotDef &s : w.m_shots )
+    {
+        if ( lv < s.m_from || lv > s.m_to || ( s.m_mode != 0 && s.m_mode != mode ) ) continue;
+        float u = s.m_to > s.m_from ? ( lv - s.m_from ) / (float)( s.m_to - s.m_from ) : 0.0f;
+        float n = std::max( 1.0f, std::round( s.m_p.range( "n", 1 ).at( u ) ) );
+        float d = s.m_p.range( "dmg", 4 ).at( u );
+        float every = std::max( 1.0f, s.m_p.num( "every", 1 ) );
+        if ( s.m_kind == "side" ) n *= 2;
+        if ( s.m_kind == "chain" ) n = 1.0f + 0.7f * s.m_p.range( "chain", 2 ).at( u );
+        if ( s.m_kind == "flame" ) n *= 1.5f;
+        per += n * d / every;
+    }
+    return per * w.m_rate.at( t );
+}
+
+void parseLoadout( Loadout &o, const std::string &text )
+{
+    size_t a = 0;
+    while ( a < text.size() )
+    {
+        size_t      b = text.find( ',', a );
+        std::string one = text.substr( a, b == std::string::npos ? std::string::npos : b - a );
+        size_t      eq = one.find( '=' );
+        if ( eq != std::string::npos )
+        {
+            std::string k = one.substr( 0, eq ), v = one.substr( eq + 1 );
+            int         lv = 1;
+            size_t      colon = v.find( ':' );
+            if ( colon != std::string::npos )
+            {
+                lv = std::clamp( atoi( v.substr( colon + 1 ).c_str() ), 1, 11 );
+                v = v.substr( 0, colon );
+            }
+            if ( v == "-" ) v.clear();
+            if ( k == "ship" ) o.m_ship = v;
+            else if ( k == "front" ) o.m_front = v, o.m_frontLv = lv;
+            else if ( k == "rear" ) o.m_rear = v, o.m_rearLv = lv;
+            else if ( k == "left" ) o.m_sideL = v;
+            else if ( k == "right" ) o.m_sideR = v;
+            else if ( k == "gen" ) o.m_gen = v;
+            else if ( k == "shield" ) o.m_shield = v;
+            else if ( k == "special" ) o.m_special = v;
+        }
+        if ( b == std::string::npos ) break;
+        a = b + 1;
+    }
+}
+
 }   // namespace zenith

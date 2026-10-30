@@ -32,24 +32,7 @@ struct Row
     bool        m_fitted = false;
 };
 
-/** @brief A gun's damage a second at a level (an estimate for the list). */
-float dps( const WeaponDef &w, int lv, int mode )
-{
-    float t = ( lv - 1 ) / 10.0f, per = 0.0f;
-    for ( const ShotDef &s : w.m_shots )
-    {
-        if ( lv < s.m_from || lv > s.m_to || ( s.m_mode != 0 && s.m_mode != mode ) ) continue;
-        float u = s.m_to > s.m_from ? ( lv - s.m_from ) / (float)( s.m_to - s.m_from ) : 0.0f;
-        float n = std::max( 1.0f, std::round( s.m_p.range( "n", 1 ).at( u ) ) );
-        float d = s.m_p.range( "dmg", 4 ).at( u );
-        float every = std::max( 1.0f, s.m_p.num( "every", 1 ) );
-        if ( s.m_kind == "side" ) n *= 2;
-        if ( s.m_kind == "chain" ) n = 1.0f + 0.7f * s.m_p.range( "chain", 2 ).at( u );
-        if ( s.m_kind == "flame" ) n *= 1.5f;
-        per += n * d / every;
-    }
-    return per * w.m_rate.at( t );
-}
+float dps( const WeaponDef &w, int lv, int mode ) { return weaponDps( w, lv, mode ); }
 
 }   // namespace
 

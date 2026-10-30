@@ -7,6 +7,8 @@
  *   ZenithLancer --validate                       every data file, every reference (no window)
  *   ZenithLancer --sim NAME [--difficulty N] [--seed S] [--mortal]   one mission by the autopilot (no window)
  *   ZenithLancer --simall [--difficulty N] [--episode E]            every mission by the autopilot (no window)
+ *                (both take --loadout "ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,...")
+ *   ZenithLancer --weapons                         every gun's damage and energy a second at levels 1, 6, 11
  *   ZenithLancer --shot FILE --level NAME [--at SECONDS]           a picture of a mission
  *   ZenithLancer --gallery FILE                    a picture of every model
  *   ZenithLancer --dumpsfx DIR                     every sound effect as a WAV
@@ -68,7 +70,27 @@ int validate( const std::string &dir )
     return cat.m_errors.empty() ? 0 : 1;
 }
 
-int sim( const std::string &dir, const std::string &level, int diff, uint32_t seed, bool mortal, int episode )
+int weapons( const std::string &dir )
+{
+    Catalog cat;
+    cat.load( dir );
+    for ( const std::string &e : cat.m_errors ) printf( "error: %s\n", e.c_str() );
+    printf( "%-12s %-5s %-4s %7s %6s %6s %6s %7s %7s %7s\n", "gun", "slot", "tier", "price", "dps1", "dps6", "dps11", "nrg/s1", "nrg/s6", "nrg/s11" );
+    for ( int tier = 0; tier <= 6; ++tier )
+        for ( const auto &[n, w] : cat.m_weapons )
+        {
+            if ( w.m_tier != tier && !( tier == 6 && ( w.m_tier < 0 || w.m_tier > 5 ) ) ) continue;
+            float e[3];
+            int   lv[3] = { 1, 6, 11 };
+            for ( int i = 0; i < 3; ++i ) e[i] = w.m_energy.at( ( lv[i] - 1 ) / 10.0f ) * w.m_rate.at( ( lv[i] - 1 ) / 10.0f );
+            printf( "%-12s %-5s %-4d %7d %6.0f %6.0f %6.0f %7.0f %7.0f %7.0f%s\n", n.c_str(), w.m_slot.c_str(), w.m_tier, w.m_price,
+                    weaponDps( w, 1 ), weaponDps( w, 6 ), weaponDps( w, 11 ), e[0], e[1], e[2], w.m_hidden ? "  (plan)" : "" );
+        }
+    return 0;
+}
+
+int sim( const std::string &dir, const std::string &level, int diff, uint32_t seed, bool mortal, int episode,
+         const std::string &loadout )
 {
     Catalog cat;
     cat.load( dir );
@@ -80,7 +102,9 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
     {
         if ( !level.empty() && n != level ) continue;
         if ( episode > 0 && lv.m_episode != episode ) continue;
-        SimResult r = simulate( cat, lv, diff, simLoadout( cat, lv ), seed, !mortal );
+        Loadout load = simLoadout( cat, lv );
+        parseLoadout( load, loadout );
+        SimResult r = simulate( cat, lv, diff, load, seed, !mortal );
         printf( "%-22s %5s %6.0fs %4d/%-4d %8d %7.0f %6d %5.0fs\n", n.c_str(), r.m_won ? "yes" : "NO", r.m_time, r.m_kills,
                 r.m_spawned, r.m_credits, r.m_damage, r.m_deaths, r.m_bossTime );
         fflush( stdout );
@@ -94,8 +118,8 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
 int main( int argc, char **argv )
 {
     Options     o;
-    std::string simLevel, dumpDir;
-    bool        doValidate = false, doSimAll = false, mortal = false;
+    std::string simLevel, dumpDir, loadout;
+    bool        doValidate = false, doSimAll = false, mortal = false, doWeapons = false;
     uint32_t    seed = 1;
     int         episode = 0;
     for ( int i = 1; i < argc; ++i )
@@ -122,9 +146,12 @@ int main( int argc, char **argv )
         else if ( a == "--mortal" ) mortal = true;
         else if ( a == "--episode" ) episode = atoi( next().c_str() );
         else if ( a == "--dumpsfx" ) dumpDir = next();
+        else if ( a == "--loadout" ) loadout = o.m_loadout = next();
+        else if ( a == "--weapons" ) doWeapons = true;
     }
+    if ( doWeapons ) return weapons( dataDir( o.m_data ) );
     if ( doValidate ) return validate( dataDir( o.m_data ) );
-    if ( !simLevel.empty() || doSimAll ) return sim( dataDir( o.m_data ), simLevel, o.m_difficulty, seed, mortal, episode );
+    if ( !simLevel.empty() || doSimAll ) return sim( dataDir( o.m_data ), simLevel, o.m_difficulty, seed, mortal, episode, loadout );
     if ( !dumpDir.empty() )
     {
         Audio::dump( dumpDir );
