@@ -1,0 +1,84 @@
+# Episode 3, mission 1: the edge of the Shatter. Rock fields, the first borers, a brood carrier at the end.
+
+level e3_01
+  title "Splitterkante"
+  episode 3
+  theme asteroid
+  music e3_a
+  scroll 50
+  length 205
+  next e3_02
+  arcade 1
+  map 0.06 0.16
+  briefing e3_01_brief
+
+  at 1   text e3_01_r1
+  at 3   wave e3_chip n=6 form=line x=360 spacing=80 path=sine amp=40 freq=0.5 speed=150
+  at 7   obstacle e3_pebble n=5 form=random range=600 gap=0.7 path=drift speed=80
+  at 9   wave e3_chip n=7 form=column x=140 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4
+  at 13  wave e3_chip n=7 form=column x=580 gap=0.3 path=swoop side=-1 cx=360 cy=300 dur=4
+  at 17  obstacle e3_rock x=200 path=drift speed=60
+  at 18  obstacle e3_rock x=520 path=drift speed=65
+  at 19  wave e3_mite n=6 form=random range=520 gap=0.4 path=dive turn=90
+  at 24  pickup credits x=360 value=400
+  at 26  wave e3_shardwing n=4 form=column x=100 gap=0.5 path=swoop side=1 cx=380 cy=260 dur=4.5
+  at 28  wave e3_mite n=6 form=random range=560 gap=0.35 path=dive turn=100 diff=3
+  at 31  text e3_01_r2
+  at 33  wave e3_borer n=2 form=line x=360 spacing=300 path=straight speed=90
+  at 36  obstacle e3_pebble n=8 form=random range=640 gap=0.5 path=drift speed=100
+  at 40  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120 drop=credits value=500
+  at 46  pickup cube x=150 item=e3_c01
+
+  # A breath, then the first iron rocks: they cannot be shot, only flown around.
+  at 50  text e3_01_r3
+  at 52  obstacle e3_ironrock x=180 path=drift speed=45
+  at 54  obstacle e3_rock n=3 form=random range=520 gap=1.0 path=drift speed=70
+  at 56  wave e3_shardwing n=3 form=v x=520 spacing=60 path=dive turn=60 speed=200
+  at 60  obstacle e3_ironrock x=560 path=drift speed=50
+  at 62  wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=70
+  at 66  wave e3_borer x=360 path=straight speed=100
+  at 68  wave e3_shardwing n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=340 cy=260 dur=4.5 diff=3
+  at 72  pickup credits x=540 value=400
+  at 74  wave e3_chip n=8 form=column x=360 gap=0.25 path=orbit cx=360 cy=260 r=150 dur=5 side=1
+  at 80  text e3_01_r4
+  at 82  wave e3_hauler x=240 path=hover stop=170 wait=6
+  at 84  obstacle e3_pebble n=6 form=random range=640 gap=0.6 path=drift speed=90
+  at 88  wave e3_mite n=6 form=random range=600 gap=0.3 path=dive turn=110
+  at 94  pickup cube x=600 item=e3_c02
+  at 96  wave e3_chip n=6 form=line x=360 spacing=90 path=sine amp=60 freq=0.6 speed=170 repeat=3 every=4
+  at 100 wave e3_hauler x=500 path=hover stop=150 wait=6 diff=3
+
+  # The rubble field: rocks from everywhere, borers chewing their way through.
+  at 108 text e3_01_r5
+  at 110 scroll 85
+  at 110 obstacle e3_pebble n=14 form=random range=660 gap=0.35 path=drift speed=120
+  at 112 obstacle e3_rock n=4 form=random range=600 gap=1.4 path=drift speed=90
+  at 113 obstacle e3_ironrock x=360 path=drift speed=70
+  at 115 wave e3_borer n=3 form=line x=360 spacing=220 path=straight speed=110
+  at 119 obstacle e3_crystalrock x=160 path=drift speed=70
+  at 120 obstacle e3_crystalrock x=560 path=drift speed=70
+  at 122 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=90
+  at 124 obstacle e3_ironrock x=120 path=drift speed=75 diff=3
+  at 126 pickup credits x=360 value=500
+  at 128 obstacle e3_pebble n=10 form=random range=660 gap=0.4 path=drift speed=110
+  at 131 wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=240 r=90 speed=200
+  at 136 scroll 50
+  at 138 pickup cube x=80 item=e3_c03
+
+  # The last stretch before the station's beacon: a worm, then the swarm's brood carrier.
+  at 142 text e3_01_r6
+  at 144 wave e3_tunneler x=260 path=straight speed=55
+  at 147 wave e3_chip n=8 form=column x=600 gap=0.3 path=swoop side=-1 cx=300 cy=320 dur=4
+  at 151 wave e3_shardwing n=4 form=line x=360 spacing=120 path=dive turn=60
+  at 154 obstacle e3_rock n=3 form=random range=560 gap=1.2 path=drift speed=75
+  at 157 wave e3_mite n=10 form=sides x=50 gap=0.25 path=arc side=1 turn=80 drop=credits value=500
+  at 162 pickup credits x=200 value=400
+  at 164 wave e3_tunneler x=500 path=straight speed=55 diff=3
+  at 166 text e3_01_r7
+  at 168 wave e3_carrier x=360 path=hover stop=140 wait=16 amp=140
+  at 172 wave e3_chip n=6 form=line x=360 spacing=100 path=sine amp=50 freq=0.5 speed=140
+  at 180 wave e3_mite n=6 form=random range=560 gap=0.4 path=dive turn=90
+  at 188 wave e3_shardwing n=3 form=v x=360 spacing=70 path=dive turn=50
+  at 196 pickup credits x=360 value=600
+  at 200 text e3_01_r8
+  at 203 end

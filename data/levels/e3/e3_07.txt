@@ -1,0 +1,86 @@
+# Episode 3, mission 6a (fork): through the drifting wrecks of the Aster fleet, which the swarm uses as nests. Wrecks
+# to shoot apart for salvage or to fly around, brood carriers in the old flagship's shadow.
+
+level e3_07
+  title "Die Treibende Flotte"
+  episode 3
+  theme space
+  music e3_b
+  scroll 45
+  length 210
+  next e3_09
+  map 0.72 0.28
+  briefing e3_07_brief
+
+  at 1   text e3_07_r1
+  at 3   obstacle e3_hulk x=200 path=drift speed=40
+  at 5   wave e3_chip n=8 form=column x=600 gap=0.3 path=swoop side=-1 cx=360 cy=300 dur=4
+  at 9   wave e3_chip n=8 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4
+  at 12  obstacle e3_hulk x=540 path=drift speed=45
+  at 14  wave e3_mite n=8 form=random range=560 gap=0.35 path=dive turn=90
+  at 18  wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=340 cy=260 dur=4.5
+  at 22  obstacle e3_pebble n=6 form=random range=640 gap=0.5 path=drift speed=80
+  at 24  pickup credits x=360 value=400
+  at 26  wave e3_borer n=2 form=line x=360 spacing=300 path=straight speed=90
+  at 28  wave e3_shardwing n=4 form=column x=100 gap=0.45 path=swoop side=1 cx=380 cy=260 dur=4.5 diff=3
+  at 31  text e3_07_r2
+  at 33  obstacle e3_hulk x=360 path=drift speed=40
+  at 35  wave e3_chip n=10 form=sides x=60 gap=0.25 path=arc side=1 turn=70
+  at 40  wave e3_hauler x=180 path=hover stop=160 wait=6
+  at 42  wave e3_mine n=5 form=random range=560 gap=0.6 path=drift speed=60
+  at 46  pickup cube x=600 item=e3_c19
+
+  # Hunters picking over the wrecks, and what lives in them.
+  at 50  text e3_07_r3
+  at 52  wave e3_hunter n=4 form=column x=140 gap=0.4 path=arc side=1 turn=60
+  at 55  wave e3_hunter n=4 form=column x=580 gap=0.4 path=arc side=-1 turn=60
+  at 58  obstacle e3_hulk x=160 path=drift speed=45
+  at 59  obstacle e3_hulk x=560 path=drift speed=45
+  at 61  wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100
+  at 66  wave e3_frigate x=360 path=hover stop=150 wait=6
+  at 70  pickup credits x=200 value=400
+  at 72  wave e3_chip n=8 form=column x=360 gap=0.25 path=orbit cx=360 cy=250 r=150 dur=5 side=1
+  at 76  wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=230 r=90 speed=200
+  at 80  wave e3_hauler x=540 path=hover stop=180 wait=6 diff=3
+  at 84  text e3_07_r4
+  at 86  wave e3_mine n=6 form=line x=360 spacing=110 path=drift speed=60
+  at 90  pickup cube x=140 item=e3_c20
+
+  # The battle line: wreck after wreck, the narrow way between them.
+  at 94  text e3_07_r5
+  at 96  scroll 70
+  at 96  obstacle e3_hulk x=120 path=drift speed=55
+  at 98  obstacle e3_ironrock x=420 path=drift speed=50
+  at 100 obstacle e3_hulk x=600 path=drift speed=55
+  at 102 wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 106 obstacle e3_hulk x=300 path=drift speed=55
+  at 108 wave e3_borer n=3 form=line x=360 spacing=220 path=straight speed=110
+  at 112 obstacle e3_hulk x=560 path=drift speed=60
+  at 113 obstacle e3_pebble n=8 form=random range=640 gap=0.4 path=drift speed=100
+  at 116 wave e3_shardwing n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 120 obstacle e3_hulk x=160 path=drift speed=55 diff=3
+  at 122 wave e3_chip n=10 form=random range=600 gap=0.25 path=sine amp=40 freq=0.6 speed=180 drop=credits value=500
+  at 126 scroll 45
+  at 128 pickup credits x=360 value=500
+
+  # A breath in the lee of a cruiser's wreck.
+  at 132 text e3_07_r6
+  at 136 wave e3_tunneler x=240 path=straight speed=55
+  at 140 wave e3_chip n=8 form=column x=600 gap=0.3 path=swoop side=-1 cx=300 cy=320 dur=4
+  at 144 wave e3_hunter n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 148 pickup cube x=480 item=e3_c21
+  at 150 wave e3_frigate n=2 form=line x=360 spacing=320 path=hover stop=160 wait=6
+  at 156 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
+  at 160 pickup credits x=200 value=400
+
+  # The flagship Aster itself: two brood carriers rise out of its hangars.
+  at 164 text e3_07_r7
+  at 166 obstacle e3_hulk n=2 form=line x=360 spacing=440 path=drift speed=35
+  at 168 wave e3_carrier x=200 path=hover stop=130 wait=14 amp=60
+  at 176 wave e3_carrier x=520 path=hover stop=170 wait=14 amp=60
+  at 180 wave e3_shardwing n=4 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 188 wave e3_chip n=8 form=line x=360 spacing=80 path=sine amp=50 freq=0.5 speed=150
+  at 194 wave e3_tunneler x=360 path=straight speed=55 diff=3
+  at 198 pickup credits x=360 value=600
+  at 202 text e3_07_r8
+  at 206 end

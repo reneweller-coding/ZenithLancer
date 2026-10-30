@@ -1,0 +1,88 @@
+# Episode 3, mission 2: the miners' station Halde Sieben, its machines turned by the swarm. The secret key to the
+# crystal garden lies at the far left edge between two cutting lasers (about 128 s). Mini-boss: the Ore Colossus.
+
+level e3_02
+  title "Halde Sieben"
+  episode 3
+  theme station
+  music e3_a
+  scroll 60
+  length 180
+  next e3_03 e3_04
+  secret e3_s1 key=e3_key_garden
+  map 0.2 0.32
+  briefing e3_02_brief
+  debrief e3_02_after
+
+  at 1   text e3_02_r1
+  at 3   wave e3_prospector n=6 form=line x=360 spacing=90 path=sine amp=50 freq=0.4 speed=140
+  at 6   ground e3_drillturret x=160
+  at 6   ground e3_drillturret x=560
+  at 9   wave e3_chip n=8 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=280 dur=4
+  at 13  wave e3_prospector n=6 form=column x=600 gap=0.4 path=swoop side=-1 cx=380 cy=300 dur=4.5
+  at 16  ground e3_drillturret x=360 n=3 form=line spacing=160
+  at 20  wave e3_mite n=6 form=random range=560 gap=0.35 path=dive turn=90
+  at 24  pickup credits x=200 value=400
+  at 26  text e3_02_r2
+  at 27  wave e3_hauler x=360 path=hover stop=160 wait=6
+  at 30  wave e3_chip n=8 form=sides x=60 gap=0.25 path=arc side=1 turn=70
+  at 33  ground e3_cutter x=120
+  at 35  wave e3_prospector n=8 form=grid cols=4 x=360 spacing=80 dy=60 path=straight speed=110 drop=credits value=500
+  at 40  ground e3_drillturret x=600 n=2 form=line spacing=80
+  at 42  wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=340 cy=260 dur=4.5
+  at 44  wave e3_mite n=6 form=random range=600 gap=0.3 path=dive diff=3
+  at 48  pickup cube x=520 item=e3_c04
+
+  # A breath under the station's spine, then its cutting lasers wake up.
+  at 52  text e3_02_r3
+  at 56  ground e3_cutter x=200
+  at 56  ground e3_cutter x=520
+  at 58  wave e3_chip n=10 form=column x=360 gap=0.22 path=orbit cx=360 cy=240 r=160 dur=5 side=-1
+  at 63  ground e3_drillturret x=360
+  at 64  wave e3_hauler x=180 path=hover stop=150 wait=7
+  at 66  wave e3_hauler x=540 path=hover stop=200 wait=7 diff=3
+  at 70  wave e3_prospector n=6 form=v x=360 spacing=60 path=straight speed=160
+  at 74  pickup credits x=360 value=400
+  at 76  wave e3_shardwing n=6 form=column x=100 gap=0.4 path=loop stop=220 r=80 speed=210
+  at 80  ground e3_drillturret x=360 n=2 form=line spacing=420
+  at 84  text e3_02_r4
+  at 86  wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=110
+  at 92  pickup cube x=140 item=e3_c05
+
+  # The ore hall: the conveyors speed up, cutters on both walls, haulers in the middle.
+  at 96  scroll 95
+  at 98  ground e3_cutter x=100 n=2 form=column gap=2.5
+  at 98  ground e3_cutter x=620 n=2 form=column gap=2.5
+  at 100 wave e3_prospector n=8 form=sides x=80 gap=0.3 path=sine amp=40 freq=0.5 speed=170
+  at 104 wave e3_hauler n=2 form=line x=360 spacing=260 path=hover stop=170 wait=5
+  at 108 ground e3_drillturret x=360 n=3 form=line spacing=120
+  at 110 wave e3_chip n=8 form=column x=360 gap=0.25 path=dive turn=60
+  at 114 wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=360 cy=300 dur=4 mirror=1 diff=3
+  at 116 scroll 60
+  at 118 pickup credits x=500 value=500
+
+  # Debris from the hall. Far left, between two lasers, something the foreman would rather nobody found.
+  at 120 text e3_02_r5
+  at 124 obstacle e3_pebble n=6 form=random range=640 gap=0.5 path=drift speed=90
+  at 126 ground e3_cutter x=60
+  at 127 ground e3_cutter x=250
+  at 128 pickup key x=36 item=e3_key_garden
+  at 130 wave e3_mite n=8 form=sides x=50 gap=0.3 path=arc side=1 turn=80
+  at 134 wave e3_prospector n=6 form=line x=360 spacing=100 path=sine amp=60 freq=0.5 speed=150 repeat=2 every=5
+  at 140 wave e3_hauler x=360 path=hover stop=170 wait=6
+  at 144 ground e3_drillturret x=360 n=2 form=line spacing=320
+  at 146 wave e3_shardwing n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 150 pickup cube x=360 item=e3_c06
+  at 154 wave e3_chip n=10 form=random range=600 gap=0.25 path=sine amp=40 freq=0.6 speed=180
+  at 158 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive diff=3
+  at 162 pickup credits x=360 value=500
+
+  # The ore crusher has been turned too.
+  at 166 text e3_02_r6
+  at 168 warn
+  at 168 music boss
+  at 171 text e3_02_r7
+  at 172 boss e3_ore_titan
+  at 174 text e3_02_r8
+  at 175 pickup credits x=300 value=600
+  at 178 end

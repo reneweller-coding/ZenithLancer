@@ -1,0 +1,88 @@
+# Episode 3, mission 8: inside the hollow asteroid, the Bell Stone. The lattice grows from every wall; at its heart
+# waits the Quarry Mind with the Root Code. The end of the episode.
+
+level e3_10
+  title "Der Steinbruchgeist"
+  episode 3
+  theme lattice
+  music e3_b
+  scroll 50
+  length 195
+  next
+  arcade 1
+  map 0.95 0.72
+  briefing e3_10_brief
+  debrief e3_10_after
+
+  at 1   text e3_10_r1
+  at 3   wave e3_chip n=8 form=line x=360 spacing=75 path=sine amp=40 freq=0.5 speed=140
+  at 6   ground e3_drillturret x=140
+  at 6   ground e3_drillturret x=580
+  at 8   wave e3_mite n=8 form=column x=120 gap=0.28 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 13  obstacle e3_crystalrock x=360 path=drift speed=55
+  at 15  wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=340 cy=260 dur=4.5
+  at 19  wave e3_borer n=2 form=line x=360 spacing=320 path=straight speed=100
+  at 22  ground e3_cutter x=360
+  at 24  pickup credits x=200 value=300
+  at 26  wave e3_chip n=10 form=sides x=60 gap=0.25 path=arc side=1 turn=70
+  at 28  wave e3_shardwing n=4 form=column x=100 gap=0.45 path=swoop side=1 cx=380 cy=260 dur=4.5 diff=3
+  at 31  text e3_10_r2
+  at 33  wave e3_tunneler x=240 path=straight speed=55
+  at 36  ground e3_drillturret x=520 n=2 form=line spacing=120
+  at 38  wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100 drop=credits value=300
+  at 44  obstacle e3_crystalrock n=2 form=line x=360 spacing=360 path=drift speed=55
+  at 46  pickup cube x=480 item=e3_c28
+
+  # The galleries of the old mine, grown shut with lattice.
+  at 50  text e3_10_r3
+  at 52  ground e3_cutter x=120
+  at 52  ground e3_cutter x=600
+  at 54  wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=230 r=90 speed=200
+  at 59  wave e3_borer n=3 form=line x=360 spacing=220 path=straight speed=110
+  at 62  wave e3_mine n=6 form=line x=360 spacing=110 path=drift speed=60
+  at 66  ground e3_drillturret x=360 n=3 form=line spacing=180
+  at 68  wave e3_hauler x=360 path=hover stop=160 wait=6
+  at 70  pickup credits x=540 value=300
+  at 72  wave e3_chip n=10 form=column x=360 gap=0.22 path=orbit cx=360 cy=250 r=160 dur=5 side=1
+  at 76  wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=-1 turn=80
+  at 78  wave e3_tunneler x=500 path=straight speed=60 diff=3
+  at 84  wave e3_shardwing n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 90  pickup cube x=160 item=e3_c29
+
+  # The nave: the hollow opens, crystal rocks drift in its draught, the brood rises.
+  at 94  text e3_10_r4
+  at 96  scroll 75
+  at 96  obstacle e3_crystalrock n=3 form=line x=360 spacing=230 path=drift speed=65
+  at 98  obstacle e3_pebble n=8 form=random range=640 gap=0.4 path=drift speed=100
+  at 100 wave e3_carrier x=360 path=hover stop=130 wait=14 amp=150
+  at 104 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
+  at 108 obstacle e3_ironrock x=160 path=drift speed=55
+  at 110 wave e3_shardwing n=4 form=column x=620 gap=0.4 path=swoop side=-1 cx=360 cy=300 dur=4 mirror=1
+  at 116 obstacle e3_ironrock x=560 path=drift speed=55
+  at 118 wave e3_borer n=4 form=line x=360 spacing=150 path=straight speed=120
+  at 122 scroll 50
+  at 124 pickup credits x=360 value=200
+
+  # A breath. Okonjo talks you to the heart.
+  at 128 text e3_10_r5
+  at 132 wave e3_chip n=8 form=line x=360 spacing=80 path=sine amp=50 freq=0.6 speed=150
+  at 136 ground e3_cutter x=200
+  at 136 ground e3_cutter x=520
+  at 138 wave e3_tunneler n=2 form=line x=360 spacing=320 path=straight speed=55
+  at 144 pickup cube x=600 item=e3_c30
+  at 146 wave e3_shardwing n=6 form=sides x=60 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4
+  at 152 wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100
+  at 156 obstacle e3_crystalrock n=2 form=line x=360 spacing=300 path=drift speed=60 diff=3
+  at 160 pickup credits x=200 value=200
+  at 162 wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120
+  at 168 pickup credits x=520 value=300
+
+  # The heart of the Bell Stone.
+  at 172 text e3_10_r6
+  at 174 warn
+  at 174 music e3_boss
+  at 177 text e3_10_r7
+  at 178 boss e3_mind
+  at 180 text e3_10_r8
+  at 182 pickup credits x=360 value=400
+  at 186 end

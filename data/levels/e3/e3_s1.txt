@@ -1,0 +1,72 @@
+# Episode 3, secret mission 1 (key in e3_02): a pocket of the nebula where the swarm grows crystals for no one -
+# a garden worth a fortune to whoever dares to harvest it. Back into the main path at the first fork.
+
+level e3_s1
+  title "Kristallgarten"
+  episode 3
+  theme nebula
+  music secret
+  scroll 40
+  length 185
+  next e3_03 e3_04
+  issecret 1
+  map 0.12 0.62
+  briefing e3_s1_brief
+  debrief e3_s1_after
+
+  at 1   text e3_s1_r1
+  at 3   obstacle e3_crystalrock x=200 path=drift speed=45
+  at 5   obstacle e3_crystalrock x=520 path=drift speed=45
+  at 7   wave e3_chip n=8 form=line x=360 spacing=75 path=sine amp=40 freq=0.5 speed=140
+  at 11  wave e3_mite n=8 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 16  obstacle e3_crystalrock x=360 path=drift speed=50
+  at 18  wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=340 cy=260 dur=4.5
+  at 22  pickup credits x=200 value=600
+  at 24  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=110 drop=credits value=800
+  at 28  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100 diff=3
+  at 30  text e3_s1_r2
+  at 32  obstacle e3_crystalrock n=3 form=line x=360 spacing=220 path=drift speed=50
+  at 36  wave e3_borer n=2 form=line x=360 spacing=300 path=straight speed=90
+  at 40  wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=230 r=90 speed=200
+  at 44  pickup cube x=520 item=e3_c31
+
+  # The gardener: a brood carrier tending the crystals.
+  at 48  text e3_s1_r3
+  at 50  wave e3_carrier x=360 path=hover stop=140 wait=14 amp=140
+  at 54  obstacle e3_crystalrock x=120 path=drift speed=45
+  at 56  obstacle e3_crystalrock x=600 path=drift speed=45
+  at 60  wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 66  wave e3_chip n=8 form=column x=360 gap=0.25 path=orbit cx=360 cy=260 r=150 dur=5 side=-1
+  at 70  pickup credits x=360 value=600
+  at 74  wave e3_tunneler x=240 path=straight speed=50
+  at 78  wave e3_shardwing n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 82  pickup credits x=540 value=600
+  at 86  wave e3_mine n=6 form=random range=600 gap=0.5 path=drift speed=60
+
+  # The deep garden: crystal on crystal, all of it singing.
+  at 90  text e3_s1_r4
+  at 92  scroll 60
+  at 92  obstacle e3_crystalrock n=4 form=line x=360 spacing=170 path=drift speed=60
+  at 96  wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100 drop=credits value=800
+  at 100 obstacle e3_crystalrock n=3 form=line x=360 spacing=230 path=drift speed=60
+  at 104 wave e3_borer n=3 form=line x=360 spacing=220 path=straight speed=110
+  at 108 wave e3_chip n=10 form=random range=600 gap=0.25 path=sine amp=50 freq=0.6 speed=170
+  at 110 obstacle e3_crystalrock n=2 form=line x=360 spacing=420 path=drift speed=60 diff=3
+  at 112 scroll 40
+  at 114 pickup cube x=160 item=e3_c32
+  at 118 pickup credits x=360 value=800
+
+  # Two gardeners at once, and worms in the beds.
+  at 122 text e3_s1_r5
+  at 124 wave e3_carrier x=200 path=hover stop=130 wait=14 amp=60
+  at 130 wave e3_carrier x=520 path=hover stop=170 wait=14 amp=60
+  at 134 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
+  at 140 wave e3_tunneler x=360 path=straight speed=55
+  at 146 wave e3_shardwing n=4 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 152 obstacle e3_crystalrock n=3 form=line x=360 spacing=220 path=drift speed=55
+  at 156 pickup credits x=200 value=600
+  at 160 wave e3_chip n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.5 speed=150
+  at 166 wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 172 pickup credits x=360 value=1000
+  at 176 text e3_s1_r6
+  at 180 end

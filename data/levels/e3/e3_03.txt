@@ -1,0 +1,77 @@
+# Episode 3, mission 3a (fork): the Directorate's hunters comb the belt for Okonjo. A prisoner convoy, swarm mines in
+# the way, and the hunters' tracker ship at the end (mini-boss).
+
+level e3_03
+  title "Jagdsaison"
+  episode 3
+  theme space
+  music e3_a
+  scroll 55
+  length 200
+  next e3_05
+  arcade 1
+  map 0.34 0.14
+  briefing e3_03_brief
+
+  at 1   text e3_03_r1
+  at 3   wave e3_hunter n=4 form=column x=140 gap=0.4 path=arc side=1 turn=60
+  at 6   wave e3_hunter n=4 form=column x=580 gap=0.4 path=arc side=-1 turn=60
+  at 10  wave e3_chip n=8 form=line x=360 spacing=70 path=sine amp=40 freq=0.5 speed=150
+  at 14  wave e3_mine n=5 form=random range=560 gap=0.6 path=drift speed=70
+  at 17  wave e3_hunter n=5 form=v x=360 spacing=60 path=dive turn=50 speed=230
+  at 21  wave e3_frigate x=220 path=hover stop=150 wait=6
+  at 24  pickup credits x=500 value=400
+  at 26  wave e3_chip n=8 form=column x=600 gap=0.3 path=swoop side=-1 cx=360 cy=300 dur=4
+  at 28  wave e3_hunter n=4 form=column x=100 gap=0.4 path=arc side=1 turn=80 diff=3
+  at 31  text e3_03_r2
+  at 33  wave e3_hunter n=6 form=sides x=60 gap=0.35 path=swoop side=1 cx=360 cy=260 dur=3.6
+  at 38  wave e3_mine n=6 form=line x=360 spacing=110 path=drift speed=60
+  at 41  wave e3_frigate x=500 path=hover stop=170 wait=6
+  at 44  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120 drop=credits value=500
+  at 48  pickup cube x=180 item=e3_c07
+
+  # The convoy: a prisoner transport and its frigate escort cross from the left.
+  at 54  text e3_03_r3
+  at 56  wave e3_frigate n=3 form=column x=0 gap=2.6 path=strafe side=1 y=150 amp=40 freq=0.2 speed=70
+  at 58  wave e3_hunter n=4 form=column x=600 gap=0.4 path=dive turn=60
+  at 63  wave e3_hunter n=4 form=column x=120 gap=0.4 path=dive turn=60
+  at 66  text e3_03_r4
+  at 68  wave e3_mine n=4 form=random range=500 gap=0.8 path=drift speed=80
+  at 70  wave e3_hunter n=6 form=column x=360 gap=0.3 path=loop stop=230 r=90 speed=230
+  at 74  wave e3_frigate x=360 path=hover stop=140 wait=6 diff=3
+  at 76  pickup credits x=360 value=500
+  at 80  wave e3_chip n=8 form=column x=120 gap=0.25 path=orbit cx=360 cy=250 r=150 dur=5 side=1
+  at 84  wave e3_chip n=8 form=column x=600 gap=0.25 path=orbit cx=360 cy=250 r=150 dur=5 side=-1
+  at 90  pickup cube x=560 item=e3_c08
+
+  # A breath, then the swarm's own hunters arrive: mites and shardwings through the minefield.
+  at 94  text e3_03_r5
+  at 98  wave e3_mine n=8 form=random range=640 gap=0.4 path=drift speed=90
+  at 100 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
+  at 104 wave e3_shardwing n=4 form=column x=120 gap=0.45 path=swoop side=1 cx=360 cy=280 dur=4 mirror=1
+  at 110 wave e3_borer n=2 form=line x=360 spacing=280 path=straight speed=100
+  at 113 wave e3_hunter n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 116 pickup credits x=200 value=400
+  at 118 wave e3_frigate n=2 form=line x=360 spacing=320 path=hover stop=160 wait=6
+  at 122 wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80 diff=3
+  at 126 wave e3_chip n=6 form=line x=360 spacing=100 path=sine amp=60 freq=0.6 speed=170 repeat=3 every=3.5
+
+  # The hunt closes in: hunters in pairs from every side.
+  at 138 text e3_03_r6
+  at 140 wave e3_hunter n=2 form=line x=200 spacing=60 path=arc side=1 turn=70 repeat=4 every=2.5
+  at 141 wave e3_hunter n=2 form=line x=520 spacing=60 path=arc side=-1 turn=70 repeat=4 every=2.5
+  at 152 wave e3_mine n=6 form=random range=600 gap=0.5 path=drift speed=80
+  at 154 wave e3_frigate x=240 path=hover stop=150 wait=6
+  at 156 wave e3_frigate x=480 path=hover stop=190 wait=6
+  at 160 pickup cube x=360 item=e3_c09
+  at 162 wave e3_hunter n=6 form=random range=560 gap=0.35 path=dive turn=60
+  at 168 pickup credits x=360 value=500
+
+  # Their tracker ship.
+  at 172 text e3_03_r7
+  at 174 warn
+  at 174 music boss
+  at 177 boss e3_tracker
+  at 179 text e3_03_r8
+  at 180 pickup credits x=420 value=600
+  at 184 end

@@ -1,0 +1,343 @@
+# Episode 3, "Der Splitter": the asteroid belt. Tessellate borers and crystal swarms (dark violet hulls, magenta and
+# cyan lattice), the miners' machines the swarm has turned (ochre, rust, with crystals growing out of them), the
+# Directorate's hunters (white and navy, amber lights), drifting wrecks of old fleets and colony ships, rocks of every
+# size, and the Quarry Mind. Nose towards -z.
+
+# ------------------------------------------------------------------------------------------------ the swarm's small fry
+
+model e3_chip
+  part crystal r=5 len=16 seg=5 color=#3a3448
+  part crystal r=2.4 len=10 x=5 z=3 rot=25 seg=4 color=#ff50d0 emit=0.7 mirror=1
+  part crystal r=1.8 len=7 y=3 z=5 pitch=-35 seg=4 color=#40e0ff emit=0.8
+  part ring r=7.5 thick=0.9 color=#40e0ff emit=0.8 group=spin spin=300
+  part light r=1.6 y=3 z=-4 color=#ff70f0
+
+model e3_mite
+  part hull len=20 wid=11 hgt=7 shape=blob color=#4a4458 noise=0.1
+  part cone r=4.8 len=11 z=-13 seg=6 color=#8a8098 noise=0.14
+  part ring r=5 thick=0.9 z=-9 color=#ff50d0 emit=0.8
+  part spike r=1 len=9 x=5 z=1 rot=-60 color=#2a2436 mirror=1
+  part spike r=1 len=9 x=5 z=6 rot=-110 color=#2a2436 mirror=1
+  part crystal r=1.8 len=7 y=4 z=3 pitch=-40 seg=4 color=#40e0ff emit=0.8
+  part light r=1.3 y=4 z=-3 color=#ff70f0
+
+model e3_mine
+  part crystal r=7 len=16 seg=4 color=#3a3448
+  part crystal r=7 len=16 seg=4 rot=90 color=#443c54
+  part spike r=1.4 len=9 z=-9 color=#ff50d0 emit=0.6
+  part spike r=1.4 len=9 z=-9 rot=90 color=#ff50d0 emit=0.6
+  part spike r=1.4 len=9 z=-9 rot=180 color=#ff50d0 emit=0.6
+  part spike r=1.4 len=9 z=-9 rot=270 color=#ff50d0 emit=0.6
+  part ring r=9 thick=0.7 color=#40e0ff emit=0.7
+  part light r=2.4 y=5 color=#ff4080
+
+# ------------------------------------------------------------------------------------------------ the swarm's warships
+
+model e3_shardwing
+  part hull len=30 wid=8 hgt=6 shape=needle color=#3a3448
+  part wing span=17 root=14 tip=3 sweep=12 z=3 thick=1.2 color=#2e2a3a stripe=#ff50d0
+  part wing span=8 root=8 tip=2 sweep=-3 z=-8 thick=1 color=#3a3448
+  part crystal r=2 len=14 x=11 z=5 seg=4 color=#ff60e0 emit=0.75 mirror=1
+  part crystal r=1.6 len=10 x=17 z=9 seg=4 color=#40e0ff emit=0.7 mirror=1
+  part engine r=2.2 len=6 z=15 glow=#ff50d0 color=#2a2436
+  part dome rx=2.6 ry=2 rz=6 z=-3 y=2.5 color=#40e0ff emit=0.6
+  part greeble n=5 w=5 d=12 z=4 y=3 size=1.3 seed=4 color=#4a4458
+
+model e3_borer
+  part hull len=40 wid=16 hgt=12 shape=cigar seg=6 color=#3a3448 noise=0.12
+  part cone r=8 len=16 z=-24 seg=6 color=#7a7090 noise=0.16
+  part spike r=2 len=9 x=6 z=-18 rot=15 color=#ff50d0 emit=0.6 mirror=1
+  part spike r=2 len=9 y=5 z=-18 pitch=15 color=#ff50d0 emit=0.6
+  part ring r=9 thick=1.4 z=-14 color=#40e0ff emit=0.8
+  part crystal r=3 len=10 x=6 y=5 z=4 seg=4 pitch=-30 color=#d050ff emit=0.7 mirror=1
+  part box w=6 h=3 d=12 x=9 z=8 color=#2a2436 mirror=1
+  part engine r=3 len=6 z=22 glow=#ff50d0 color=#2a2436
+  part greeble n=12 w=12 d=30 y=5 size=2 seed=17 color=#4a4458
+
+model e3_tunneler
+  part cone r=16 len=28 z=-44 seg=8 color=#8a8098 noise=0.16
+  part ring r=17 thick=2.5 z=-31 color=#ff50d0 emit=0.8
+  part spike r=3 len=14 x=12 z=-36 rot=12 color=#40e0ff emit=0.7 mirror=1
+  part sphere rx=16 ry=12 rz=14 z=-20 color=#3a3448 noise=0.12
+  part sphere rx=14 ry=11 rz=13 z=0 color=#4a4458 noise=0.12
+  part sphere rx=12 ry=10 rz=12 z=18 color=#3a3448 noise=0.12
+  part sphere rx=9 ry=8 rz=10 z=34 color=#4a4458 noise=0.12
+  part crystal r=3 len=14 y=10 z=-18 pitch=-35 color=#40e0ff emit=0.8
+  part crystal r=3 len=12 y=9 z=2 pitch=-35 color=#ff60e0 emit=0.8
+  part crystal r=2.6 len=10 y=8 z=19 pitch=-35 color=#40e0ff emit=0.8
+  part spike r=2.5 len=13 x=13 z=-4 rot=-80 color=#2a2436 mirror=1
+  part spike r=2.5 len=12 x=12 z=14 rot=-100 color=#2a2436 mirror=1
+  part spike r=2 len=10 x=9 z=30 rot=-120 color=#2a2436 mirror=1
+  part light r=2.5 x=8 y=6 z=-25 color=#ff60e0 mirror=1
+  part greeble n=14 w=20 d=50 y=8 size=2.5 seed=19 color=#5a5468
+
+model e3_carrier
+  part hull len=124 wid=56 hgt=24 shape=blob color=#3a3448 noise=0.12
+  part sphere rx=30 ry=18 rz=36 y=8 z=8 color=#4a4458 noise=0.14
+  part sphere rx=20 ry=12 rz=22 x=24 y=4 z=30 color=#3e3850 noise=0.14 mirror=1
+  part crystal r=8 len=40 y=24 z=-4 color=#ff50d0 emit=0.85
+  part crystal r=6 len=28 x=18 y=18 z=14 rot=-30 color=#40e0ff emit=0.85 mirror=1
+  part crystal r=5 len=24 x=28 y=12 z=-22 rot=-60 color=#d050ff emit=0.8 mirror=1
+  part crystal r=4 len=20 x=22 y=14 z=44 rot=-150 color=#40e0ff emit=0.8 mirror=1
+  part ring r=40 thick=1.5 y=14 z=6 color=#ff60e0 emit=0.4 group=spin spin=30
+  part box w=16 h=9 d=16 x=24 z=-46 color=#2a2436 mirror=1
+  part light r=3.2 x=24 z=-55 color=#40e0ff mirror=1
+  part engine r=7 len=14 x=16 z=58 glow=#ff50d0 color=#2a2436
+  part greeble n=36 w=44 d=100 y=10 size=4 seed=61 color=#4a4458
+
+# ------------------------------------------------------------------------------------------------ miners' machines the swarm turned
+
+model e3_prospector
+  part box w=14 h=7 d=16 color=#c89a30 noise=0.1
+  part box w=5 h=5 d=13 x=10 color=#5a5048 mirror=1
+  part engine r=2.2 len=6 x=10 z=8 glow=#ffb060 color=#3a3430
+  part disc r=5 h=1.5 y=4 z=-2 color=#9a9088
+  part gun r=1 len=8 z=-11 color=#3a3430
+  part crystal r=2.5 len=10 x=-4 y=5 z=4 pitch=-45 color=#d050ff emit=0.75
+  part crystal r=1.8 len=7 x=4 y=5 z=6 pitch=-45 rot=40 color=#40e0ff emit=0.75
+  part light r=1.4 z=-8 y=2 color=#ff50d0
+  part greeble n=6 w=12 d=14 y=3.5 size=1.6 seed=5 color=#8a7a50
+
+model e3_hauler
+  part box w=30 h=14 d=50 color=#a07828 noise=0.1
+  part box w=24 h=10 d=16 z=-32 y=2 taper=0.3 color=#7a6a50
+  part box w=10 h=8 d=40 x=21 z=4 color=#5a5048 mirror=1
+  part box w=32 h=2 d=4 y=7.5 z=-14 color=#202020
+  part box w=32 h=2 d=4 y=7.5 z=14 color=#202020
+  part engine r=5 len=10 x=21 z=28 glow=#ffa040 color=#3a3430
+  part engine r=6 len=10 z=30 glow=#ff50d0 color=#3a3430
+  part crystal r=6 len=20 y=12 z=-4 pitch=-70 color=#ff50d0 emit=0.75
+  part crystal r=4 len=14 x=8 y=10 z=10 pitch=-60 rot=20 color=#40e0ff emit=0.75 mirror=1
+  part gun r=1.8 len=16 x=8 z=-38 color=#2a2436
+  part light r=2 x=15 z=-38 color=#ffb040 mirror=1
+  part greeble n=20 w=26 d=44 y=7 size=3 seed=23 color=#8a6a30
+
+model e3_drillturret
+  part disc r=16 h=6 seg=6 color=#5a5048
+  part box w=30 h=1.5 d=6 y=6 color=#c8a030
+  part box w=6 h=1.5 d=30 y=6 color=#c8a030
+  part light r=1.4 x=13 y=6 color=#ffb040 mirror=1
+  part disc r=10 h=5 y=6 seg=8 color=#7a6a50 group=head pivot=0,0
+  part box w=12 h=7 d=14 y=9 color=#a08040 group=head pivot=0,0
+  part gun r=2 len=20 x=4 y=10 z=-12 color=#2a2430 group=head pivot=0,0 mirror=1
+  part crystal r=2.5 len=12 x=-6 y=13 z=4 rot=40 color=#ff50d0 emit=0.75 group=head pivot=0,0
+  part light r=1.8 y=13 z=-4 color=#ff50d0 group=head pivot=0,0
+
+model e3_cutter
+  part box w=26 h=6 d=26 color=#4a4a52
+  part greeble n=8 w=24 d=24 y=3 size=2.4 seed=51 color=#5a5a64
+  part box w=4 h=10 d=4 x=11 y=5 z=8 color=#c8a030 mirror=1
+  part disc r=9 h=8 y=4 color=#6a6a74 group=head pivot=0,0
+  part ring r=7 thick=1.4 y=10 color=#ffb040 emit=0.7 group=head pivot=0,0
+  part gun r=3.5 len=22 y=10 z=-12 color=#3a3a44 group=head pivot=0,0
+  part ring r=4.6 thick=0.9 y=10 z=-18 color=#ffb040 emit=0.7 group=head pivot=0,0
+  part sphere r=3.5 y=10 z=-24 color=#ff6040 emit=0.9 group=head pivot=0,0
+
+# ------------------------------------------------------------------------------------------------ the Directorate's hunters
+
+model e3_hunter
+  part hull len=34 wid=9 hgt=6 shape=dart color=#c4cad4
+  part hull len=20 wid=5 hgt=4 shape=cigar x=10 z=6 color=#1e2a5a mirror=1
+  part wing span=18 root=12 tip=5 sweep=-4 z=2 thick=1.3 color=#a6aebb stripe=#1e2a5a
+  part fin h=6 root=7 tip=3 sweep=3 x=10 z=12 y=2 color=#1e2a5a mirror=1
+  part dome rx=2.4 ry=2 rz=6 z=-6 y=2.4 color=#ffb040 emit=0.5
+  part engine r=2.2 len=6 x=10 z=16 glow=#ffb040 color=#4a5260
+  part gun r=0.9 len=10 x=4 z=-14 color=#3a4250
+  part light r=1.1 x=18 z=4 color=#ffb040 mirror=1
+
+model e3_frigate
+  part hull len=78 wid=22 hgt=12 shape=wedge color=#bcc3ce
+  part hull len=40 wid=10 hgt=8 shape=cigar x=18 z=10 color=#1e2a5a mirror=1
+  part wing span=24 root=26 tip=10 sweep=14 z=8 thick=2 color=#8e98a8 stripe=#1e2a5a
+  part box w=10 h=8 d=18 y=8 z=8 taper=0.3 color=#98a0ad
+  part dome rx=3 ry=2.5 rz=6 y=12 z=4 color=#ffb040 emit=0.5
+  part gun r=2.2 len=22 z=-46 color=#3a4250
+  part ring r=3.2 thick=0.8 z=-50 color=#ffb040 emit=0.8
+  part gun r=1.4 len=14 x=18 z=-14 color=#3a4250
+  part engine r=4 len=10 x=18 z=34 glow=#ffb040 color=#4a5260
+  part engine r=5 len=10 z=40 glow=#ffc060 color=#4a5260
+  part light r=1.8 x=30 z=14 color=#ffb040 mirror=1
+  part greeble n=16 w=18 d=50 y=6 size=2.4 seed=31 color=#7c8494
+
+model e3_tracker
+  part hull len=110 wid=34 hgt=16 shape=arrow color=#bcc3ce
+  part hull len=60 wid=12 hgt=10 shape=cigar x=28 z=16 color=#1e2a5a mirror=1
+  part wing span=30 root=40 tip=12 sweep=20 z=14 thick=2.5 color=#8e98a8 stripe=#1e2a5a
+  part disc r=16 h=3 y=12 color=#98a0ad
+  part ring r=16 thick=1.5 y=13 color=#ffb040 emit=0.6 group=spin spin=50
+  part box w=3 h=10 d=3 y=16 group=spin spin=50 color=#bcc3ce
+  part dome rx=6 ry=5 rz=12 y=8 z=-30 color=#ffb040 emit=0.5
+  part gun r=2 len=26 x=10 z=-58 color=#3a4250
+  part box w=12 h=8 d=20 x=28 z=-10 color=#98a0ad mirror=1
+  part engine r=6 len=14 x=28 z=48 glow=#ffb040 color=#4a5260
+  part engine r=7 len=14 z=54 glow=#ffc060 color=#4a5260
+  part light r=2.4 x=44 z=24 color=#ffb040 mirror=1
+  part greeble n=30 w=30 d=80 y=8 size=3 seed=81 color=#7c8494
+
+# ------------------------------------------------------------------------------------------------ wrecks (derelict fleets, the first colony ships)
+
+model e3_hulk
+  part hull len=110 wid=38 hgt=22 shape=box round=3 z=6 color=#8e8a80 noise=0.16
+  part box w=34 h=18 d=4 z=-50 color=#3a3836
+  part box w=3 h=20 d=3 x=14 z=-58 color=#4a4846 mirror=1
+  part box w=3 h=20 d=3 x=6 z=-63 color=#4a4846 mirror=1
+  part box w=30 h=3 d=3 y=8 z=-61 color=#4a4846
+  part box w=40 h=1.5 d=10 y=11 z=-10 color=#7a3a2a
+  part box w=40 h=1.5 d=4 y=11 z=6 color=#7a3a2a
+  part hull len=50 wid=14 hgt=12 shape=cigar x=24 z=20 color=#6e6a62 noise=0.14 mirror=1
+  part engine r=7 len=12 z=62 glow=#3a2a20 color=#3a3836
+  part greeble n=30 w=34 d=100 y=11 size=3 seed=131 color=#6a665e
+  part light r=1.6 x=12 y=12 z=-40 color=#ff9040
+
+# ------------------------------------------------------------------------------------------------ rocks
+
+model e3_pebble
+  part sphere rx=12 ry=9 rz=11 seg=6 color=#6a5e52 noise=0.22
+  part sphere rx=6 ry=5 rz=6 seg=5 x=6 z=5 y=2 color=#5a5046 noise=0.22
+  part sphere rx=5 ry=4 rz=5 seg=5 x=-6 z=-4 y=1 color=#7a6e60 noise=0.22
+
+model e3_rock
+  part sphere rx=26 ry=17 rz=22 seg=7 color=#5e544a noise=0.2
+  part sphere rx=14 ry=11 rz=12 seg=6 x=14 z=10 y=4 color=#4e463e noise=0.2
+  part sphere rx=11 ry=9 rz=10 seg=5 x=-15 z=-8 y=3 color=#6e6458 noise=0.2
+  part crystal r=2 len=9 x=-6 y=13 z=4 rot=40 pitch=-30 color=#ffa040 emit=0.55
+  part crystal r=1.6 len=7 x=8 y=12 z=-8 rot=-30 pitch=-30 color=#ffa040 emit=0.55
+  part greeble n=8 w=28 d=26 y=10 size=3 seed=41 color=#4a4038
+
+model e3_ironrock
+  part sphere rx=52 ry=30 rz=44 seg=8 color=#2e2a2a noise=0.14
+  part sphere rx=28 ry=22 rz=26 seg=7 x=26 z=18 y=6 color=#3a2e28 noise=0.14
+  part sphere rx=24 ry=18 rz=22 seg=6 x=-28 z=-16 y=4 color=#2a2624 noise=0.14
+  part sphere rx=18 ry=14 rz=16 seg=6 x=-10 z=30 y=8 color=#4a3022 noise=0.16
+  part ring r=52 thick=3.5 y=2 color=#6a3a22 noise=0.12
+  part box w=10 h=8 d=10 x=52 y=3 color=#8a8a90 mirror=1
+  part box w=10 h=8 d=10 z=-52 y=3 color=#8a8a90
+  part box w=10 h=8 d=10 z=52 y=3 color=#8a8a90
+  part greeble n=22 w=60 d=60 y=18 size=5 seed=43 color=#5a3a28
+  part box w=4 h=16 d=4 x=10 y=26 z=-6 color=#8a8a90
+  part box w=14 h=2 d=2 x=10 y=32 z=-6 color=#8a8a90
+  part light r=3.6 x=10 y=36 z=-6 color=#ff3020
+  part light r=2.4 x=52 y=8 color=#ff3020 mirror=1
+
+model e3_crystalrock
+  part sphere rx=24 ry=16 rz=20 seg=7 color=#4a4250 noise=0.18
+  part sphere rx=12 ry=9 rz=12 seg=6 x=-12 z=10 y=3 color=#3e3846 noise=0.18
+  part crystal r=5 len=28 y=14 rot=10 color=#ff50d0 emit=0.85
+  part crystal r=4 len=22 x=12 y=11 z=6 rot=-60 color=#40e0ff emit=0.85
+  part crystal r=3.5 len=18 x=-12 y=11 z=-4 rot=55 color=#d050ff emit=0.85
+  part crystal r=3 len=16 x=-6 y=10 z=14 rot=130 color=#ff60e0 emit=0.85
+  part crystal r=2.5 len=12 x=14 y=9 z=-10 rot=-140 color=#40e0ff emit=0.85
+  part ring r=25 thick=0.8 y=4 color=#ff50d0 emit=0.4 group=spin spin=40
+
+# ------------------------------------------------------------------------------------------------ mini-bosses
+
+model e3_ore_titan
+  part box w=70 h=24 d=80 color=#9a7030 noise=0.1
+  part box w=50 h=14 d=40 y=16 z=10 taper=0.25 color=#6a5a48
+  part box w=72 h=3 d=6 y=12.5 z=-30 color=#1c1c1c
+  part box w=72 h=3 d=6 y=12.5 z=-18 color=#1c1c1c
+  part hull len=60 wid=14 hgt=14 shape=box x=44 z=-6 color=#5a5048 mirror=1
+  part cone r=10 len=26 x=44 z=-48 seg=7 color=#9a90a0 noise=0.15 mirror=1
+  part ring r=11 thick=2 x=44 z=-34 color=#ff50d0 emit=0.8 mirror=1
+  part crystal r=10 len=36 y=30 pitch=-70 color=#ff50d0 emit=0.85
+  part crystal r=6 len=22 x=20 y=26 z=24 pitch=-50 rot=20 color=#40e0ff emit=0.85 mirror=1
+  part crystal r=5 len=18 x=-24 y=22 z=-14 pitch=-50 rot=-60 color=#d050ff emit=0.8
+  part engine r=8 len=14 x=24 z=44 glow=#ffa040 color=#3a3430
+  part light r=3 x=30 y=14 z=-40 color=#ffb040 mirror=1
+  part greeble n=40 w=64 d=74 y=12 size=4 seed=71 color=#8a6a30
+
+# ------------------------------------------------------------------------------------------------ the Borer Queen
+
+model e3_queen
+  part hull len=170 wid=130 hgt=36 shape=blob color=#3a3448 noise=0.12
+  part plate pts="0,-62;34,-54;60,-26;72,8;60,40;32,62;0,72" thick=5 y=16 color=#4a4458 noise=0.1 mirror=1
+  part plate pts="0,-24;24,-16;40,4;36,30;18,46;0,52" thick=4 y=21 z=10 color=#2e2a3a mirror=1
+  part cone r=24 len=46 z=-102 seg=8 color=#8a80a0 noise=0.16
+  part ring r=26 thick=3 z=-80 color=#ff50d0 emit=0.85
+  part spike r=4 len=22 x=18 z=-96 rot=8 color=#40e0ff emit=0.7 mirror=1
+  part crystal r=9 len=64 y=26 z=-8 color=#ff50d0 emit=0.85
+  part crystal r=6 len=44 x=34 y=21 z=-24 rot=-25 color=#40e0ff emit=0.85 mirror=1
+  part crystal r=5 len=40 x=50 y=17 z=18 rot=-60 color=#d050ff emit=0.8 mirror=1
+  part crystal r=4 len=30 x=28 y=19 z=50 rot=-20 color=#40e0ff emit=0.8 mirror=1
+  part spike r=5 len=42 x=58 z=-28 rot=-60 color=#2a2436 mirror=1
+  part spike r=4.5 len=38 x=64 z=10 rot=-90 color=#2a2436 mirror=1
+  part spike r=4 len=34 x=56 z=48 rot=-120 color=#2a2436 mirror=1
+  part ring r=70 thick=1.2 y=10 color=#ff60e0 emit=0.3 group=spin spin=25
+  part greeble n=50 w=110 d=130 y=18 size=5 seed=91 color=#5a5468
+  part light r=4 x=20 y=26 z=-54 color=#40e0ff mirror=1
+  part light r=5 x=26 y=10 z=80 color=#ff50d0 mirror=1
+
+model e3_queen_jaw
+  part box w=16 h=12 d=24 color=#4a4458 noise=0.1
+  part cone r=9 len=30 z=-26 seg=6 color=#9a90a8 noise=0.15
+  part ring r=10 thick=1.6 z=-14 color=#ff50d0 emit=0.8
+  part spike r=2 len=10 x=6 z=-30 rot=10 color=#40e0ff emit=0.7 mirror=1
+  part crystal r=3 len=12 y=8 z=4 pitch=-60 color=#40e0ff emit=0.8
+  part light r=2 y=7 z=-8 color=#ff60e0
+
+model e3_queen_sac
+  part sphere rx=16 ry=13 rz=18 color=#5a2a6a emit=0.35 noise=0.1
+  part ring r=17 thick=1.4 y=2 color=#ff50d0 emit=0.8 group=spin spin=90
+  part crystal r=3 len=14 x=8 y=8 rot=40 pitch=-50 color=#40e0ff emit=0.85 mirror=1
+  part light r=3.5 y=12 color=#ff80f0
+
+# ------------------------------------------------------------------------------------------------ the hunter cruiser Weißdorn
+
+model e3_whitethorn
+  part hull len=210 wid=84 hgt=26 shape=wedge color=#bcc3ce
+  part hull len=130 wid=26 hgt=18 shape=cigar x=58 z=24 color=#1e2a5a mirror=1
+  part wing span=104 root=80 tip=26 sweep=40 z=40 thick=4 color=#8e98a8 stripe=#1e2a5a
+  part box w=6 h=3 d=150 x=28 y=13 color=#1e2a5a mirror=1
+  part box w=40 h=2 d=46 y=13 z=-40 color=#24306a
+  part box w=26 h=2 d=60 x=60 y=6 z=40 color=#24306a mirror=1
+  part box w=30 h=22 d=44 y=18 z=40 taper=0.35 color=#98a0ad
+  part dome rx=10 ry=6 rz=14 y=28 z=30 color=#ffb040 emit=0.5
+  part fin h=26 root=44 tip=16 sweep=14 y=26 z=70 color=#1e2a5a
+  part gun r=6 len=70 z=-130 color=#3a4250
+  part ring r=8 thick=1.8 z=-152 color=#ffb040 emit=0.85
+  part ring r=8 thick=1.8 z=-132 color=#ffb040 emit=0.85
+  part ring r=8 thick=1.8 z=-112 color=#ffb040 emit=0.85
+  part box w=22 h=10 d=34 x=92 z=40 color=#98a0ad mirror=1
+  part light r=3 x=100 z=26 color=#ffb040 mirror=1
+  part engine r=9 len=18 x=58 z=94 glow=#ffb040 color=#4a5260
+  part engine r=11 len=18 z=104 glow=#ffc060 color=#4a5260
+  part light r=2.4 x=30 z=-70 color=#ffb040 mirror=1
+  part greeble n=70 w=80 d=180 y=12 size=4 seed=101 color=#7c8494
+
+model e3_wt_gun
+  part disc r=14 h=6 seg=8 color=#98a0ad
+  part ring r=14 thick=1.2 y=3 color=#1e2a5a
+  part box w=14 h=8 d=16 y=6 color=#bcc3ce group=head pivot=0,0
+  part gun r=2.2 len=22 x=4 y=8 z=-12 color=#3a4250 group=head pivot=0,0 mirror=1
+  part light r=2 y=11 z=2 color=#ffb040 group=head pivot=0,0
+
+# ------------------------------------------------------------------------------------------------ the Quarry Mind
+
+model e3_mind
+  part sphere rx=120 ry=46 rz=104 seg=10 color=#4a4248 noise=0.18
+  part sphere rx=60 ry=30 rz=54 y=30 z=-6 color=#1e1428 emit=0.15 noise=0.08
+  part sphere r=22 y=44 z=-6 color=#ff50d0 emit=0.9
+  part ring r=38 thick=3 y=50 z=-6 color=#40e0ff emit=0.8
+  part crystal r=12 len=60 x=40 y=40 z=-52 rot=-35 color=#ff50d0 emit=0.9 mirror=1
+  part crystal r=10 len=54 x=58 y=36 z=20 rot=-100 color=#40e0ff emit=0.85 mirror=1
+  part crystal r=8 len=40 x=30 y=40 z=62 rot=-160 color=#d050ff emit=0.85 mirror=1
+  part crystal r=9 len=50 y=40 z=-84 color=#40e0ff emit=0.85
+  part ring r=100 thick=3 y=30 color=#ff60e0 emit=0.5 group=spin spin=18
+  part greeble n=90 w=200 d=180 y=32 size=7 seed=111 color=#5a5058
+  part light r=5 x=70 y=36 z=-60 color=#ff50d0 mirror=1
+  part light r=4 x=92 y=30 z=40 color=#40e0ff mirror=1
+
+model e3_mind_eye
+  part sphere rx=16 ry=10 rz=16 color=#3a3448 noise=0.12
+  part spike r=2.5 len=14 x=14 z=-2 rot=-90 color=#2a2436 mirror=1
+  part sphere r=8 y=6 color=#40e0ff emit=0.9 group=head pivot=0,0
+  part ring r=12 thick=1.6 y=6 color=#ff50d0 emit=0.8 group=head pivot=0,0
+  part crystal r=3 len=16 y=6 z=-12 color=#ff60e0 emit=0.9 group=head pivot=0,0
+
+model e3_mind_shard
+  part sphere rx=26 ry=14 rz=34 seg=6 color=#5a5058 noise=0.2
+  part crystal r=3.5 len=34 y=13 color=#ff50d0 emit=0.85
+  part crystal r=2.5 len=22 x=9 y=11 z=8 rot=-30 color=#40e0ff emit=0.85
+  part crystal r=2.5 len=20 x=-9 y=11 z=-8 rot=150 color=#40e0ff emit=0.85
+  part greeble n=10 w=30 d=40 y=12 size=3 seed=121 color=#6a6068
+  part gun r=2.5 len=16 z=-32 color=#2a2436

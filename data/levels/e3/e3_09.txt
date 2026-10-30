@@ -1,0 +1,84 @@
+# Episode 3, mission 7: the ring station Kalla round the hollow asteroid, held by the Directorate. Hunters, frigates,
+# the ring's own guns, and Major Krenn's hunter cruiser Weißdorn (boss). The plan of the "Sonnenherz" lies at the far
+# left edge between the frigates' convoy and two cutting lasers (about 132 s).
+
+level e3_09
+  title "Weißdorn"
+  episode 3
+  theme station
+  music e3_b
+  scroll 60
+  length 185
+  next e3_10
+  arcade 1
+  map 0.86 0.46
+  briefing e3_09_brief
+
+  at 1   text e3_09_r1
+  at 3   wave e3_hunter n=4 form=column x=140 gap=0.4 path=arc side=1 turn=60
+  at 5   ground e3_drillturret x=180
+  at 5   ground e3_drillturret x=540
+  at 7   wave e3_hunter n=4 form=column x=580 gap=0.4 path=arc side=-1 turn=60
+  at 11  wave e3_prospector n=6 form=line x=360 spacing=100 path=sine amp=50 freq=0.4 speed=140
+  at 15  ground e3_cutter x=360
+  at 17  wave e3_hunter n=5 form=v x=360 spacing=60 path=dive turn=60 speed=230
+  at 21  wave e3_frigate x=200 path=hover stop=150 wait=6
+  at 24  pickup credits x=540 value=400
+  at 26  wave e3_chip n=8 form=column x=600 gap=0.3 path=swoop side=-1 cx=360 cy=300 dur=4
+  at 28  wave e3_hunter n=4 form=column x=100 gap=0.4 path=arc side=1 turn=80 diff=3
+  at 31  text e3_09_r2
+  at 33  ground e3_drillturret x=360 n=3 form=line spacing=200
+  at 35  wave e3_hunter n=6 form=sides x=60 gap=0.35 path=swoop side=1 cx=360 cy=260 dur=3.6
+  at 40  wave e3_frigate x=520 path=hover stop=170 wait=6
+  at 43  wave e3_mine n=6 form=random range=600 gap=0.5 path=drift speed=70
+  at 46  pickup cube x=160 item=e3_c25
+
+  # The docking ring: the Directorate has bolted its own guns to the miners' hull.
+  at 50  text e3_09_r3
+  at 52  ground e3_cutter x=120
+  at 52  ground e3_cutter x=600
+  at 55  wave e3_hunter n=6 form=column x=360 gap=0.3 path=loop stop=230 r=90 speed=230
+  at 60  ground e3_drillturret x=360 n=2 form=line spacing=280
+  at 62  wave e3_hauler x=360 path=hover stop=160 wait=6
+  at 66  wave e3_frigate x=180 path=hover stop=180 wait=6 diff=3
+  at 68  pickup credits x=360 value=500
+  at 70  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120 drop=credits value=500
+  at 76  wave e3_hunter n=4 form=column x=620 gap=0.35 path=swoop side=-1 cx=360 cy=280 dur=3.6 mirror=1
+  at 82  text e3_09_r4
+  at 84  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
+  at 88  pickup cube x=560 item=e3_c26
+
+  # The cargo lanes: a frigate convoy at full burn, cutting lasers on the hull. Far left: the plan.
+  at 94  text e3_09_r5
+  at 96  scroll 95
+  at 98  wave e3_frigate n=3 form=column x=720 gap=2.4 path=strafe side=-1 y=140 amp=40 freq=0.2 speed=80
+  at 100 ground e3_cutter x=140 n=2 form=column gap=3
+  at 100 ground e3_cutter x=580 n=2 form=column gap=3
+  at 104 wave e3_hunter n=6 form=random range=600 gap=0.35 path=dive turn=60
+  at 110 ground e3_drillturret x=360 n=3 form=line spacing=140
+  at 112 wave e3_shardwing n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 116 wave e3_hunter n=4 form=column x=100 gap=0.4 path=arc side=1 turn=80
+  at 118 scroll 60
+  at 120 pickup credits x=360 value=500
+  at 124 wave e3_mine n=8 form=random range=640 gap=0.4 path=drift speed=80
+  at 126 ground e3_cutter x=70
+  at 127 ground e3_cutter x=260
+  at 128 wave e3_frigate n=2 form=column x=0 gap=2.4 path=strafe side=1 y=130 amp=30 freq=0.2 speed=90
+  at 132 pickup plan x=34 item=sunheart
+  at 134 wave e3_hunter n=5 form=v x=480 spacing=60 path=dive turn=60
+  at 140 wave e3_hauler n=2 form=line x=360 spacing=300 path=hover stop=160 wait=5
+  at 146 pickup cube x=360 item=e3_c27
+  at 148 wave e3_hunter n=2 form=line x=200 spacing=60 path=arc side=1 turn=70 repeat=3 every=3
+  at 149 wave e3_hunter n=2 form=line x=520 spacing=60 path=arc side=-1 turn=70 repeat=3 every=3
+  at 158 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100 diff=3
+  at 160 pickup credits x=200 value=500
+
+  # The Weißdorn.
+  at 164 text e3_09_r6
+  at 166 warn
+  at 166 music e3_boss
+  at 169 text e3_09_r7
+  at 170 boss e3_whitethorn
+  at 172 text e3_09_r8
+  at 174 pickup credits x=360 value=800
+  at 178 end

@@ -1,0 +1,76 @@
+# Episode 3, secret mission 2 (key in e3_06): the graveyard of the first colony ships, hidden in the dust for four
+# hundred years. Directorate looters strip the arks, the swarm nibbles at them; the hunters' tracker leads the looting.
+# Back into the main path at the second fork.
+
+level e3_s2
+  title "Friedhof der Ersten"
+  episode 3
+  theme space
+  music secret
+  scroll 35
+  length 190
+  next e3_07 e3_08
+  issecret 1
+  map 0.5 0.88
+  briefing e3_s2_brief
+  debrief e3_s2_after
+
+  at 1   text e3_s2_r1
+  at 3   obstacle e3_hulk x=180 path=drift speed=30
+  at 6   obstacle e3_hulk x=540 path=drift speed=32
+  at 8   wave e3_chip n=6 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=120
+  at 12  wave e3_hunter n=4 form=column x=600 gap=0.4 path=arc side=-1 turn=60
+  at 16  obstacle e3_hulk x=360 path=drift speed=30
+  at 18  wave e3_hunter n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60
+  at 22  pickup credits x=360 value=600
+  at 24  wave e3_frigate x=200 path=hover stop=150 wait=6
+  at 28  wave e3_mine n=6 form=random range=600 gap=0.5 path=drift speed=50
+  at 30  text e3_s2_r2
+  at 32  obstacle e3_hulk n=2 form=line x=360 spacing=420 path=drift speed=32
+  at 34  wave e3_chip n=8 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 40  wave e3_hunter n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 44  pickup cube x=560 item=e3_c33
+
+  # The looters' salvage line: haulers stuffed with the arks' plating.
+  at 48  text e3_s2_r3
+  at 50  wave e3_hauler n=3 form=column x=0 gap=3 path=strafe side=1 y=160 amp=30 freq=0.2 speed=60
+  at 54  wave e3_hunter n=4 form=column x=580 gap=0.35 path=dive turn=60
+  at 58  obstacle e3_hulk x=240 path=drift speed=35
+  at 60  wave e3_frigate x=480 path=hover stop=160 wait=6
+  at 64  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=90
+  at 68  pickup credits x=200 value=600
+  at 70  wave e3_hunter n=6 form=column x=360 gap=0.3 path=loop stop=230 r=90 speed=220 drop=credits value=800
+  at 76  wave e3_mine n=6 form=line x=360 spacing=110 path=drift speed=50
+  at 78  wave e3_frigate x=240 path=hover stop=180 wait=6 diff=3
+  at 82  pickup credits x=540 value=600
+  at 86  pickup cube x=160 item=e3_c34
+
+  # The arks' own graveyard: the great hulls lie close together, the swarm grows between them.
+  at 90  text e3_s2_r4
+  at 92  obstacle e3_hulk x=140 path=drift speed=40
+  at 94  obstacle e3_hulk x=580 path=drift speed=40
+  at 96  obstacle e3_crystalrock x=360 path=drift speed=45
+  at 98  wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=360 cy=280 dur=4 mirror=1
+  at 104 obstacle e3_hulk x=360 path=drift speed=40
+  at 106 wave e3_borer n=2 form=line x=360 spacing=300 path=straight speed=90
+  at 110 wave e3_chip n=10 form=random range=600 gap=0.25 path=sine amp=50 freq=0.6 speed=160
+  at 114 obstacle e3_hulk n=2 form=line x=360 spacing=440 path=drift speed=40 diff=3
+  at 116 pickup credits x=360 value=800
+  at 120 wave e3_carrier x=360 path=hover stop=130 wait=12 amp=120
+  at 126 wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 132 pickup cube x=360 item=e3_c35
+
+  # The looters regroup.
+  at 136 text e3_s2_r5
+  at 138 wave e3_hunter n=2 form=line x=200 spacing=60 path=arc side=1 turn=70 repeat=3 every=3
+  at 139 wave e3_hunter n=2 form=line x=520 spacing=60 path=arc side=-1 turn=70 repeat=3 every=3
+  at 148 wave e3_frigate n=2 form=line x=360 spacing=320 path=hover stop=160 wait=6
+  at 154 obstacle e3_hulk x=200 path=drift speed=35
+  at 156 pickup credits x=540 value=600
+  at 160 text e3_s2_r6
+  at 162 warn
+  at 162 music boss
+  at 165 boss e3_tracker
+  at 167 text e3_s2_r7
+  at 168 pickup credits x=360 value=1000
+  at 172 end

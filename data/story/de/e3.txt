@@ -1,0 +1,975 @@
+# Episode 3, "Der Splitter": intro, ending, briefings, debriefs, radio lines and log crystals.
+
+# ================================================================================================ intro and ending
+
+intro e3_intro
+  title "Der Splitter"
+  from "Solenne-System, 2614"
+> Zwischen Thalassa und dem Gasriesen Vael treibt der Splitter: eine Million Felsen, aus denen nie ein Planet geworden ist. Hier schürfen die Leute der Grauband-Kooperative Eisen, Nickel und Eis. Hier liegen die Wracks von Flotten, die niemand mehr vermisst. Und hier hängt der Aschenschleier, ein Staubnebel, in dem jedes Funksignal ertrinkt.
+>
+> Auf Thalassa hat Nadia Vey erfahren, dass Admiral Voss die Befehlsschlüssel des Tessellats bei sich trägt. Schlüssel zu einem Schwarm, den angeblich niemand mehr lenken kann. Wer verstehen will, was das bedeutet, muss mit der Frau sprechen, die den Schwarm geschrieben hat.
+>
+> Dr. Amara Okonjo hat den Code des Tessellats verfasst und den Lancer entworfen. Vor sechs Jahren ist sie verschwunden, irgendwo im Splitter, und seitdem hat niemand sie gefunden. Das liegt vor allem daran, dass sie nicht gefunden werden will.
+>
+> Bastian Quill behauptet, er habe dort draußen einen Kontakt. ORRIN behauptet, Quill behaupte vieles. Und auf den Frequenzen der Bergleute taucht ein Wort immer öfter auf: Jäger. Das Direktorat sucht Okonjo auch.
+
+ending e3_ending
+  title "Der Wurzelcode"
+  from "Der Glockenstein"
+> Der Steinbruchgeist zerfällt in Licht und Geröll. Wo eben noch das Gitter sang, hängt ein einzelner Kristall im Hohlraum, kaum größer als eine Hand. Okonjo holt ihn selbst, im Raumanzug, mit einer Zange aus Quills Werkzeugkiste. Sie hält ihn lange vor ihr Helmvisier, bevor sie etwas sagt.
+>
+> „Das ist er. Der Wurzelcode. Die ersten tausend Zeilen, die ich geschrieben habe, bevor das Direktorat einen Auftrag daraus gemacht hat. Alles, was das Tessellat ist, wächst aus diesen Zeilen. Wer sie ändert, ändert den Schwarm.“
+>
+> ORRIN fragt, ob man ihn damit abschalten kann. Okonjo antwortet nicht gleich. „Abschalten, vielleicht. Oder man bringt ihm bei, loszulassen. Ich weiß nicht mehr, welches von beiden ich will.“
+>
+> Auf der Elster wird es eng: eine Ingenieurin mehr an Bord und ein Kristall in Quills Panzerschrank, den Quill zum ersten Mal in seinem Leben nicht verkaufen will. Auf allen Kanälen läuft dieselbe Meldung. Die Flotte von Admiral Voss hat den Splitter verlassen, mit Kurs auf Sylvara, den Dschungelmond, wo der Schwarm auf etwas gestoßen ist, das zurückschlägt.
+>
+> Okonjo sieht dem Signal lange nach. „Er hat die Schlüssel. Wir haben die Wurzel. Bleibt die Frage, wer zuerst begreift, was beides zusammen bedeutet.“
+
+# ================================================================================================ briefings and debriefs
+
+briefing e3_01_brief
+  title "Splitterkante"
+  from "Bastian Quill"
+> Willkommen im Splitter, dem einzigen Ort im System, an dem Felsen mehr wert sind als Menschen. Mein Kontakt sitzt auf Halde Sieben, einer Station der Grauband-Kooperative, zwei Flugstunden hinter der Kante. Dazwischen: Geröll, Eisenbrocken und Bohrer des Tessellats, die das Geröll fressen. Schieß, was bricht, und flieg um das herum, was nicht bricht.
+
+briefing e3_02_brief
+  title "Halde Sieben"
+  from "ORRIN"
+> Halde Sieben antwortet nicht auf Quills Grußcode. Ihre Schürfdrohnen, Förderbänder und Bohrtürme arbeiten noch, aber nicht mehr für die Kooperative: Das Tessellat hat die Maschinen umgeschrieben. Die Besatzung hat sich im Wohnring verschanzt. Ich schlage vor, wir geben ihr die Station zurück, Stück für Stück.
+
+briefing e3_02_after
+  title "Die Uhrmacherin"
+  from "Obfrau Mirela Tosk"
+> Halde Sieben gehört wieder uns. Zwölf Leute und drei Bohrtürme hat es gekostet, und ich bin froh, dass es nicht mehr sind. Ihr sucht die Uhrmacherin, sagt Quill. So nennen wir sie hier: eine Frau, die unsere Maschinen repariert und nie Geld dafür nimmt. Sie lebt irgendwo im Aschenschleier. Die Jäger des Direktorats waren vor euch hier und haben dieselbe Frage gestellt. Ihnen habe ich nichts gesagt. Euch sage ich es, weil ihr geschossen habt, bevor ihr gefragt habt.
+
+briefing e3_03_brief
+  title "Jagdsaison"
+  from "Bastian Quill"
+> Zwei Wege führen zum Aschenschleier, und beide sind schlecht. Der offene führt durch das Jagdrevier des Direktorats: Häscher, Fregatten und ein Spürschiff, das jedes Triebwerk im Umkreis von tausend Kilometern riecht. Sie haben einen Transport voller Bergleute aufgebracht, die sie nach der Uhrmacherin ausfragen. Ich sage nicht, dass wir die Leute rausholen müssen. Ich sage nur, dass ich sie kenne.
+
+briefing e3_04_brief
+  title "Schacht Odile"
+  from "ORRIN"
+> Der zweite Weg führt unter den Felsen hindurch: Schacht Odile, ein altes Bergwerk, quer durch einen Asteroiden getrieben. Die Kooperative hat es vor sieben Jahren aufgegeben, die Bohrer des Tessellats haben es wiederentdeckt. Schneidlaser an den Wänden, Würmer in den Stollen, im Erzbunker brütet etwas Großes. Dafür ist hier unten kein einziger Jäger des Direktorats. Das ist der einzige Vorteil, den ich finden konnte.
+
+briefing e3_05_brief
+  title "Die Bohrkönigin"
+  from "ORRIN"
+> Beide Wege enden am selben Ort: an einem Asteroiden, den die Bohrer von innen aushöhlen. In seinem Kern sitzt etwas, das die Bergleute die Bohrkönigin nennen. Seit sie dort ist, sendet der Felsen ein Signal in den Aschenschleier, auf einer Frequenz, die nur das Tessellat benutzt. Und, wenn meine Analyse stimmt, die Ingenieurin, die es gebaut hat.
+
+briefing e3_05_after
+  title "Eine Antwort"
+  from "ORRIN"
+> Ich habe das Signal der Bohrkönigin entschlüsselt. Es war keine Nachricht des Schwarms, sondern eine Antwort an jemanden, der ihn befragt: geduldig, seit Monaten, aus dem Aschenschleier. Die letzte Frage lautete: „Wer hat dir beigebracht, so zu wachsen?“ Der Schwarm hat mit einem Namen geantwortet. Amara Okonjo.
+
+briefing e3_06_brief
+  title "Aschenschleier"
+  from "ORRIN"
+> Die Fragen an die Bohrkönigin kamen von einer stillgelegten Sternwarte mitten im Staub. Im Nebel sehen meine Sensoren keine dreihundert Meter weit, und alles, was dort lebt, weiß das. Bleib in Bewegung, Nadia. Und rechne damit, dass jemand vor uns da ist.
+
+briefing e3_06_after
+  title "Die Ingenieurin"
+  from "Dr. Amara Okonjo"
+> Sie sind also die Pilotin. Ich habe den Lancer für jemanden wie Sie gezeichnet, wissen Sie das? Für jemanden, der nicht umkehrt. Danach habe ich etwas Schlimmeres gebaut und bin davongelaufen.
+>
+> Sie wollen wissen, wie man das Tessellat aufhält. Ich weiß es nicht. Aber ich weiß, wo es angefangen hat. Die ersten Zeilen, die ich geschrieben habe, der Wurzelcode, stecken noch in ihm: in einem Knoten, der in einem hohlen Asteroiden gewachsen ist, dem Glockenstein. Die Bergleute nennen ihn den Steinbruchgeist. Wenn wir die Wurzel haben, können wir mit dem Baum reden.
+
+briefing e3_07_brief
+  title "Die Treibende Flotte"
+  from "Dr. Amara Okonjo"
+> Der kürzeste Weg zum Glockenstein führt durch die Aster-Flotte, die das Direktorat vor neun Jahren gegen den Schwarm geschickt hat. Sie ist nie zurückgekommen, und der Schwarm hat in ihren Wracks Nester gebaut. Ich habe diese Schiffe einmal fliegen sehen. Bitte sehen Sie nicht so genau hin.
+
+briefing e3_08_brief
+  title "Gitterader"
+  from "Dr. Amara Okonjo"
+> Es gibt einen zweiten Weg: eine Gitterader, einen Strang aus Kristall, den das Tessellat zwischen den Felsen gezogen hat. Er führt direkt zum Glockenstein, wie eine Ader zum Herzen. Der Schwarm wird uns kommen sehen, aber er wird uns für einen Fehler im Gitter halten, für etwas, das man ausbessert. Das ist ungefähr so beruhigend, wie es klingt.
+
+briefing e3_09_brief
+  title "Weißdorn"
+  from "Dr. Amara Okonjo"
+> Um den Glockenstein läuft Kalla, der Förderring der Kooperative, und das Direktorat hat ihn besetzt. Major Edda Krenn führt die Jagd, ihr Kreuzer heißt Weißdorn, und sie weiß inzwischen, dass ich an Bord der Elster bin. Sie wird Sie nicht durchlassen, und sie wird nicht verhandeln. Ich kenne sie. Ich habe einmal ihre Doktorarbeit betreut.
+
+briefing e3_10_brief
+  title "Der Steinbruchgeist"
+  from "Dr. Amara Okonjo"
+> Der Glockenstein ist hohl, weil die Bergleute ihn ausgeräumt haben, und das Tessellat hat den leeren Raum gefüllt. In seinem Herzen sitzt der Steinbruchgeist, ein Knoten des Schwarms, der Felsen denkt, statt sie zu fressen. Er bewahrt etwas, das ich vor dreißig Jahren geschrieben habe: den Wurzelcode, die ersten Zeilen des Tessellats. Brechen Sie ihm die Schale auf. Den Rest übernehme ich.
+
+briefing e3_10_after
+  title "Ein Kristall"
+  from "Bastian Quill"
+> Ein Kristall. Ein einziger Kristall, so groß wie meine Hand, und ich darf ihn nicht verkaufen. Ich habe ihn in den Panzerschrank gelegt, zwischen die Zollpapiere und die gute Flasche. Okonjo sitzt seit Stunden davor und redet mit ihm. Ich glaube, er antwortet. Nadia, ich bin Händler. Ich mag Dinge, die still liegen bleiben.
+
+briefing e3_s1_brief
+  title "Kristallgarten"
+  from "Bastian Quill"
+> Der Datenkristall aus Halde Sieben ist eine Karte, und auf der Karte liegt ein Ort, den die Obfrau ihren Leuten verboten hat: ein Winkel im Nebel, in dem das Tessellat Kristalle züchtet, einfach so, für niemanden. Weißt du, was ein Gitterkristall auf dem Schwarzmarkt bringt? Ich schon. Rein, ernten, raus. Ich hatte nie einen besseren Plan.
+
+briefing e3_s1_after
+  title "Erntedank"
+  from "ORRIN"
+> Die Elster liegt nach dem Beladen elf Zentimeter tiefer im Raum, was physikalisch nicht möglich ist. Quill hat die Kristalle dreimal gezählt und kommt jedes Mal auf eine andere Zahl. Ich habe ihn gebeten, die Ladung nicht anzufassen, solange sie noch summt. Er hat zugestimmt und sie trotzdem gestreichelt.
+
+briefing e3_s2_brief
+  title "Friedhof der Ersten"
+  from "Dr. Amara Okonjo"
+> Die Sternenkarte aus dem Minenfeld ist alt, älter als das Direktorat. Sie zeigt, wo die Ersten liegen: die Archen, mit denen vor vierhundert Jahren die ersten Siedler nach Solenne kamen und die nach der Landung niemand mehr gebraucht hat. Jemand plündert sie gerade. Diese Schiffe haben uns alle hergebracht, Nadia. Sie haben Besseres verdient.
+
+briefing e3_s2_after
+  title "Ein Leuchtfeuer"
+  from "Dr. Amara Okonjo"
+> Ich habe ein Leuchtfeuer zwischen die Archen gesetzt, auf der alten Frequenz der Siedler. Wahrscheinlich hört es nie jemand. Aber falls doch, soll er wissen, dass hier zweitausend Menschen angekommen sind, die nichts hatten als Geduld und ein paar Samen. Wir sind ihre Enkel. Wir sollten uns öfter so benehmen.
+
+# ================================================================================================ radio: e3_01 Splitterkante
+
+radio e3_01_r1
+  from "ORRIN"
+> Splitterkante erreicht. Felsdichte hoch, Verkehr gering, Bohrer des Tessellats überall. Ich habe schon gemütlichere Nachbarschaften gesehen.
+
+radio e3_01_r2
+  from "Bastian Quill"
+> Siehst du die Bohrer? Die fressen Felsen und scheiden Gitter aus. Jeder Brocken, den sie fressen, fehlt der Kooperative in der Bilanz.
+
+radio e3_01_r3
+  from "ORRIN"
+> Eisenbrocken voraus, mit Stahlband und Warnlicht. Massives Nickeleisen, für unsere Waffen undurchdringlich. Ich empfehle umfliegen statt überzeugen.
+
+radio e3_01_r4
+  from "Notruf, Schürfer Pell"
+> ... an jedes Schiff ... die Drohnen hören nicht mehr auf uns ... sie bauen etwas aus unserem Erz ...
+
+radio e3_01_r5
+  from "ORRIN"
+> Geröllfeld. Die Bohrer haben einen ganzen Asteroiden zerlegt und die Reste liegen lassen. Halt dich in der Mitte.
+
+radio e3_01_r6
+  from "Bastian Quill"
+> Noch ein paar Minuten bis Halde Sieben. Meine Kontaktfrau schuldet mir Geld. Sie wird sich also freuen, mich lebend zu sehen.
+
+radio e3_01_r7
+  from "ORRIN"
+> Großes Objekt voraus: ein Brutstock. Er setzt Splitterlinge aus wie Sporen. Erst die Brut, dann die Mutter. Oder umgekehrt, wenn du dich beeilst.
+
+radio e3_01_r8
+  from "ORRIN"
+> Leuchtfeuer von Halde Sieben empfangen. Es sendet. Leider nicht das, was es senden sollte.
+
+# ================================================================================================ radio: e3_02 Halde Sieben
+
+radio e3_02_r1
+  from "Obfrau Mirela Tosk"
+> Wer auch immer da draußen ist: Wenn du zu Quill gehörst, schieß auf alles, was gelb ist und sich bewegt. Es gehört nicht mehr uns.
+
+radio e3_02_r2
+  from "ORRIN"
+> Ein Erzschlepper, vom Schwarm übernommen. Die Ladung ist noch an Bord. Quill hat bereits gefragt, ob man sie bergen kann.
+
+radio e3_02_r3
+  from "Obfrau Mirela Tosk"
+> Die Schneidlaser am Rückgrat schneiden sonst Felsen. Heute schneiden sie alles, was ihnen vor die Linse fliegt. Flieg nicht vor die Linse.
+
+radio e3_02_r4
+  from "Bastian Quill"
+> Mirela, Liebes, über das Geld reden wir später. Erst retten wir deine Station. Das senkt die Zinsen, finde ich.
+
+radio e3_02_r5
+  from "ORRIN"
+> Schwaches Signal am linken Rand, zwischen zwei Lasern: ein Datenkristall. Jemand hat ihn dort sehr sorgfältig versteckt.
+
+radio e3_02_r6
+  from "Obfrau Mirela Tosk"
+> Der Brecher! Unser großer Erzbrecher ist aufgewacht. Auf uns hat er nie gehört. Jetzt hört er auf etwas anderes.
+
+radio e3_02_r7
+  from "ORRIN"
+> Erzkoloss. Seine Bohrarme leuchten auf, bevor sie feuern. Wenn sie leuchten, bist du besser woanders.
+
+radio e3_02_r8
+  from "Obfrau Mirela Tosk"
+> Still. Zum ersten Mal seit zwanzig Jahren ist der Brecher still. Komm an Bord, Pilotin. Wir müssen reden.
+
+# ================================================================================================ radio: e3_03 Jagdsaison
+
+radio e3_03_r1
+  from "ORRIN"
+> Häscher des Direktorats, in Paaren und Vierergruppen. Sie fliegen sauber und schießen sparsam. Das macht sie nicht weniger lästig.
+
+radio e3_03_r2
+  from "Major Edda Krenn"
+> Unbekanntes Schiff, Sie befinden sich in einem Sperrgebiet des Direktorats. Drehen Sie ab. Wir suchen eine Ingenieurin, nicht Sie. Noch nicht.
+
+radio e3_03_r3
+  from "ORRIN"
+> Konvoi von links: drei Jagdfregatten mit einem Gefangenentransport. Ihre Lanzen warnen eine Sekunde vorher. Nutze die Sekunde.
+
+radio e3_03_r4
+  from "Transport Kalla Grün"
+> Hier sind elf Leute von Grauband an Bord! Sie fragen uns immer wieder nach der Uhrmacherin. Wir wissen nichts. Holt uns raus!
+
+radio e3_03_r5
+  from "Bastian Quill"
+> Der Transport ist frei und unterwegs nach Halde Sieben. Elf Bergleute. Mirela wird mir nie wieder Zinsen berechnen.
+
+radio e3_03_r6
+  from "ORRIN"
+> Sie ziehen den Ring zu. Häscher von beiden Seiten, im Takt. Wer diese Formation geschrieben hat, war gründlich.
+
+radio e3_03_r7
+  from "ORRIN"
+> Das Spürschiff. Es hat uns die ganze Zeit gehört. Seine Raketen folgen dir, seine Lanze nicht. Bleib nicht stehen, wenn der Bug glüht.
+
+radio e3_03_r8
+  from "Major Edda Krenn"
+> Interessant. Sie fliegen wie jemand, den man gut ausgebildet hat. Wir sehen uns wieder, Pilotin Vey.
+
+# ================================================================================================ radio: e3_04 Schacht Odile
+
+radio e3_04_r1
+  from "ORRIN"
+> Schacht Odile. Zweiundzwanzig Kilometer Stollen, aufgegeben vor sieben Jahren. Die Lichter brennen noch. Das ist kein gutes Zeichen.
+
+radio e3_04_r2
+  from "ORRIN"
+> Die Bohrmilben fressen sich durch die Wände. Ich höre sie im Gestein, bevor ich sie sehe. Du hörst sie, wenn sie da sind.
+
+radio e3_04_r3
+  from "Bastian Quill"
+> Die Schneidlaser hat die Kooperative nie abgeschaltet. Strom kostet hier unten nichts, sagen sie. Heute kostet er vielleicht ein Schiff.
+
+radio e3_04_r4
+  from "ORRIN"
+> Ein Erzschlepper hat im Schacht überwintert, und der Schwarm ist bei ihm eingezogen. Ich weiß nicht, ob man das Untermiete nennt.
+
+radio e3_04_r5
+  from "ORRIN"
+> Erschütterungen von beiden Seiten. Stollenwürmer brechen durch die Wand, und der Schacht schüttet sein Geröll über uns aus.
+
+radio e3_04_r6
+  from "Bastian Quill"
+> Da vorn liegt der Erzbunker. Früher lagerte dort Eisen für drei Jahre. Jetzt lagert dort etwas, das brütet.
+
+radio e3_04_r7
+  from "ORRIN"
+> Ein Brutstock im Bunker, Würmer an den Flanken. Ich empfehle Feuer, Bewegung und keinerlei Neugier auf die Eier.
+
+radio e3_04_r8
+  from "ORRIN"
+> Ausgang erreicht. Vor uns der Felsen mit dem Signal, hinter uns ein Schacht, den niemand mehr vermissen wird.
+
+# ================================================================================================ radio: e3_05 Die Bohrkönigin
+
+radio e3_05_r1
+  from "ORRIN"
+> Der Hohlfelsen voraus. Die Bohrer haben einen Mantel aus Geröll um ihn gelegt. Ich schätze, sie wollen nicht gestört werden.
+
+radio e3_05_r2
+  from "Bastian Quill"
+> Wenn das da die Königin ist, will ich nicht wissen, wie groß ihr Hofstaat ist. Doch, will ich. Für die Preisliste.
+
+radio e3_05_r3
+  from "ORRIN"
+> Die Kristallfelsen singen, und jeder Ton ist ein Ring aus Splittern. Ich habe keine musikalische Bildung, aber das gefällt mir nicht.
+
+radio e3_05_r4
+  from "ORRIN"
+> Das Signal wird stärker. Es klingt wie das Tessellat, aber es stellt Fragen. Der Schwarm stellt sonst keine Fragen.
+
+radio e3_05_r5
+  from "ORRIN"
+> Die Mündung des Baus. Was jetzt kommt, beschützt sie. Was danach kommt, ist sie.
+
+radio e3_05_r6
+  from "ORRIN"
+> Die Bohrkönigin. Kieferbohrer und Brutsäcke schirmen ihren Leib ab. Erst die Anhängsel, dann der Panzer.
+
+radio e3_05_r7
+  from "Bastian Quill"
+> Ein Bohrer, so groß wie meine Elster! Nadia, bitte schieß ihr nicht alle Kristalle kaputt. Die sind ein Vermögen wert.
+
+radio e3_05_r8
+  from "ORRIN"
+> Sie fällt. Das Signal reißt nicht ab, es läuft weiter in den Aschenschleier. Jemand dort hat gerade zugehört.
+
+# ================================================================================================ radio: e3_06 Aschenschleier
+
+radio e3_06_r1
+  from "ORRIN"
+> Aschenschleier. Sichtweite gering, Funk gestört, Ortung ungenau. Ich übernehme das Raten, du übernimmst das Ausweichen.
+
+radio e3_06_r2
+  from "ORRIN"
+> Scherbenflügler von der Seite. Im Staub kommen sie, woher sie wollen. Das ist unhöflich, aber im Nebel üblich.
+
+radio e3_06_r3
+  from "ORRIN"
+> Bewegung unter uns. Ich wiederhole: unter uns. Splitterlinge steigen aus dem Staub auf. Nicht erschrecken. Schießen.
+
+radio e3_06_r4
+  from "Unbekannt"
+> Pilotin. Sie haben die Königin getötet und meine Fragen mitgehört. Fliegen Sie weiter nach Osten, wenn Sie Antworten wollen.
+
+radio e3_06_r5
+  from "ORRIN"
+> Ein Minenfeld um die Sternwarte, ordentlich gelegt, also nicht vom Schwarm. Am rechten Rand treibt etwas Kleines, sehr Altes.
+
+radio e3_06_r6
+  from "Unbekannt"
+> Das Direktorat ist hier, und der Schwarm auch. Beide wollen dasselbe von mir. Halten Sie sie fern, bitte.
+
+radio e3_06_r7
+  from "ORRIN"
+> Häscher von beiden Seiten, im Takt. Wer immer in dieser Sternwarte wohnt, ist dem Direktorat sehr wichtig.
+
+radio e3_06_r8
+  from "Dr. Amara Okonjo"
+> Sie sind weg. Danke. Docken Sie an der Sternwarte an, Pilotin Vey. Und bringen Sie Ihren Händler mit.
+
+# ================================================================================================ radio: e3_07 Die Treibende Flotte
+
+radio e3_07_r1
+  from "Dr. Amara Okonjo"
+> Die Aster-Flotte. Dreiundvierzig Schiffe. Früher kannte ich ihre Namen. Fliegen Sie einfach geradeaus, Pilotin.
+
+radio e3_07_r2
+  from "ORRIN"
+> Wrackteile treiben quer zum Kurs. Man kann sie zerschießen. Quill sagt, man soll es sogar, wegen des Bergungsrechts.
+
+radio e3_07_r3
+  from "ORRIN"
+> Häscher zwischen den Wracks. Das Direktorat plündert seine eigene Flotte. Ich hätte gedacht, dafür gibt es ein Formular.
+
+radio e3_07_r4
+  from "Bastian Quill"
+> Siehst du die Panzerplatten? Erste Güte, Werft Zenith, Baujahr sechs-null-fünf. Wenn wir das überleben, komme ich mit Zangen zurück.
+
+radio e3_07_r5
+  from "ORRIN"
+> Die alte Schlachtlinie. Die Schiffe liegen noch in Formation, so wie sie gestorben sind. Der Weg zwischen ihnen ist schmal.
+
+radio e3_07_r6
+  from "Dr. Amara Okonjo"
+> Das Direktorat hat diese Flotte geschickt, um mein erstes Nest auszubrennen. Ich habe gesagt, dass es nicht funktioniert. Niemand hat zugehört.
+
+radio e3_07_r7
+  from "ORRIN"
+> Die Aster selbst, das alte Flaggschiff. In ihren Hangars brütet der Schwarm. Zwei Brutstöcke kommen heraus.
+
+radio e3_07_r8
+  from "Dr. Amara Okonjo"
+> Danke. Der Glockenstein liegt hinter der nächsten Felswand. Ich hoffe, er erinnert sich an mich. Ich hoffe es auch nicht.
+
+# ================================================================================================ radio: e3_08 Gitterader
+
+radio e3_08_r1
+  from "Dr. Amara Okonjo"
+> Sehen Sie, wie die Ader leuchtet? Ich habe dieses Muster entworfen, für tote Monde. Hier wächst es zwischen lebendigen Felsen.
+
+radio e3_08_r2
+  from "ORRIN"
+> Bohrtürme im Kristall. Der Schwarm hat sie von den Halden geholt und hier eingepflanzt. Er nennt das vermutlich Wiederverwertung.
+
+radio e3_08_r3
+  from "ORRIN"
+> Die Ader wird enger, Kristall an beiden Wänden, Geschütze darin. Gutes Zielen hilft. Guter Wille nicht.
+
+radio e3_08_r4
+  from "Dr. Amara Okonjo"
+> Das Gitter merkt, dass wir hier sind. Es ist nicht wütend. Es versucht nur, uns ordentlich einzusortieren.
+
+radio e3_08_r5
+  from "ORRIN"
+> Eine Singkammer. Die Kristallfelsen feuern im Takt, die Wände verstärken jeden Ton. Ich nehme die Musik nicht persönlich. Du hoffentlich auch nicht.
+
+radio e3_08_r6
+  from "Dr. Amara Okonjo"
+> Ein Puls in der Ader. Die Würmer schwimmen gegen den Strom, auf uns zu. Ich wusste nicht, dass sie das können.
+
+radio e3_08_r7
+  from "ORRIN"
+> Das Tor zum Glockenstein. Alles, was die Ader noch hat, wirft sie jetzt nach uns.
+
+radio e3_08_r8
+  from "Dr. Amara Okonjo"
+> Wir sind durch. Hinter dieser Wand liegt Kalla, der Förderring. Und das Direktorat.
+
+# ================================================================================================ radio: e3_09 Weißdorn
+
+radio e3_09_r1
+  from "ORRIN"
+> Förderring Kalla. Das Direktorat hat ihn besetzt und die Geschütze der Kooperative behalten. Häscher in Bereitschaft.
+
+radio e3_09_r2
+  from "Major Edda Krenn"
+> Pilotin Vey. Sie haben Dr. Okonjo an Bord. Übergeben Sie sie, und Sie fliegen nach Hause. Das Angebot gilt genau einmal.
+
+radio e3_09_r3
+  from "Dr. Amara Okonjo"
+> Edda war meine beste Studentin. Sie hat immer an Ordnung geglaubt. Jetzt hat sie einen Admiral, der ihr Ordnung verspricht.
+
+radio e3_09_r4
+  from "ORRIN"
+> Die Andockklammern tragen jetzt Waffen. Ich zähle Schneidlaser, Bohrtürme und sehr viel Pflichtbewusstsein.
+
+radio e3_09_r5
+  from "ORRIN"
+> Frachtgassen, ein Fregattenkonvoi mit voller Schubkraft. Am linken Rand, zwischen den Lasern: ein Bauplan, sehr alt. Aus den Archen, vermute ich.
+
+radio e3_09_r6
+  from "Major Edda Krenn"
+> Dann eben so. Weißdorn an alle: Gefechtsbereitschaft. Lanze laden.
+
+radio e3_09_r7
+  from "ORRIN"
+> Der Kreuzer Weißdorn. Seine Spinallanze lädt über eine Sekunde. Wenn der Bug glüht, ist links oder rechts besser als vorn.
+
+radio e3_09_r8
+  from "Major Edda Krenn"
+> Abbruch, alle Einheiten zurück zur Flotte. Dr. Okonjo, das hier ist nicht vorbei. Der Admiral vergisst nichts.
+
+# ================================================================================================ radio: e3_10 Der Steinbruchgeist
+
+radio e3_10_r1
+  from "Dr. Amara Okonjo"
+> Der Glockenstein. Die Bergleute nannten ihn so, weil er klang, wenn sie bohrten. Jetzt klingt er von selbst.
+
+radio e3_10_r2
+  from "ORRIN"
+> Gitter an jeder Wand. Die alten Stollen sind zugewachsen, aber die Bohrtürme der Kooperative stehen noch. Sie zielen nur anders.
+
+radio e3_10_r3
+  from "Dr. Amara Okonjo"
+> Hier habe ich ihn zuletzt gesehen, den ersten Knoten. Er war so klein wie eine Faust. Ich hätte ihn damals zerdrücken sollen.
+
+radio e3_10_r4
+  from "ORRIN"
+> Die große Halle öffnet sich. Kristallfelsen treiben in der Strömung, ein Brutstock steigt auf. Und Eisenbrocken. Natürlich Eisenbrocken.
+
+radio e3_10_r5
+  from "Dr. Amara Okonjo"
+> Dort, am Grund. Spüren Sie das? Er rechnet. Er denkt in Felsen, Pilotin, so wie wir in Worten denken.
+
+radio e3_10_r6
+  from "ORRIN"
+> Energiespitze im Kern, der Steinbruchgeist erwacht. Erst Schildfelsen und Gitteraugen, sonst kommst du nicht an sein Herz.
+
+radio e3_10_r7
+  from "Der Kurator"
+> Dr. Okonjo. Willkommen zu Hause. Wir haben alles so gelassen, wie Sie es geschrieben haben. Nur größer.
+
+radio e3_10_r8
+  from "Dr. Amara Okonjo"
+> Er ist offen. Halten Sie die Position, Nadia. Ich hole uns den Wurzelcode.
+
+# ================================================================================================ radio: secrets
+
+radio e3_s1_r1
+  from "Bastian Quill"
+> Da ist er, der Garten! Sieh dir das an, Nadia. Jeder Kristall da draußen bezahlt ein Jahr Liegegebühr für die Elster.
+
+radio e3_s1_r2
+  from "ORRIN"
+> Die Kristallfelsen schießen zurück. Das senkt den Ertrag pro Minute. Quill fragt, ob es einen Weg drumherum gibt. Gibt es nicht.
+
+radio e3_s1_r3
+  from "ORRIN"
+> Ein Brutstock zieht zwischen den Kristallen seine Kreise. Er pflegt den Garten, scheint es. Ich fürchte, gegen uns.
+
+radio e3_s1_r4
+  from "Bastian Quill"
+> Tiefer rein! Da hinten wachsen die großen. Ich höre die Händler auf Thalassa schon weinen.
+
+radio e3_s1_r5
+  from "ORRIN"
+> Zwei Gärtner auf einmal, Würmer in den Beeten. Ich schlage vor, wir beenden die Ernte vor Ende der Saison.
+
+radio e3_s1_r6
+  from "Bastian Quill"
+> Laderaum voll, Kasse voll, Herz voll. Mirela kriegt einen Anteil. Einen kleinen. Einen ehrlichen kleinen.
+
+radio e3_s2_r1
+  from "Dr. Amara Okonjo"
+> Da sind sie. Die Langmut, die Zuversicht, die Geduld. Vierhundert Jahre im Staub, und niemand hat sie besucht.
+
+radio e3_s2_r2
+  from "ORRIN"
+> Häscher und eine Fregatte zwischen den Archen. Sie schneiden Panzerplatten heraus. Das Direktorat nennt das Bergung.
+
+radio e3_s2_r3
+  from "ORRIN"
+> Eine Bergungslinie: Erzschlepper voller Archenplatten, von links nach rechts. Wenn du sie aufhältst, bleibt die Fracht hier.
+
+radio e3_s2_r4
+  from "Dr. Amara Okonjo"
+> Die Ersten haben ihre Schiffe nebeneinander abgestellt, wie Boote im Hafen. Sie wollten zurückkommen. Keiner ist gekommen.
+
+radio e3_s2_r5
+  from "ORRIN"
+> Die Plünderer sammeln sich. Ein letzter Versuch, ihre Beute zu retten.
+
+radio e3_s2_r6
+  from "ORRIN"
+> Das Spürschiff des Direktorats führt die Plünderung an. Lass es nicht mit den Archen nach Hause fliegen.
+
+radio e3_s2_r7
+  from "Dr. Amara Okonjo"
+> Ruhe. Endlich. Ich lasse ein Leuchtfeuer hier, Pilotin. Damit wenigstens jemand weiß, wo sie liegen.
+
+# ================================================================================================ log crystals
+
+cube e3_c01
+  title "Schichtprotokoll, Schürfer Pell"
+  from "Grauband-Kooperative, Feld 9"
+> 06:00 – Drei Schürfdrohnen ausgesetzt, Kurs auf Brocken 9-114. Erzgehalt gut, Eis wenig. Kaffee kalt, wie immer.
+>
+> 07:40 – Drohne 2 meldet sich nicht mehr. Drohne 1 und 3 auch nicht, aber sie arbeiten weiter. Sie bohren an Stellen, die nicht im Plan stehen, und zwar sehr ordentlich. Ordentlicher als ich.
+>
+> 08:15 – Die Drohnen haben aus dem Erz etwas gebaut. Eine Wabe, so groß wie mein Schiff, glänzend wie Öl auf Wasser. Sie klingt, wenn man sie anfunkt.
+>
+> 08:20 – Ich funke sie nicht mehr an.
+>
+> 08:21 – Sie funken jetzt mich an.
+
+cube e3_c02
+  title "Angebot der Woche"
+  from "Quills Elster, fliegender Basar"
+> GROSSE BOHRER-WOCHE AUF DER ELSTER!
+>
+> Ihre Felsen werden gefressen? Ihre Drohnen gehorchen jemand anderem? Ihr Leben ist ein einziges Gitter? Bastian Quill hat die Lösung, und zwar zu Preisen, bei denen selbst ein Asteroid weich wird.
+>
+> Im Angebot: Streukanonen für den Hausgebrauch, Schutzwälle aus zweiter Hand (nur leicht durchschossen), Begleitdrohnen, die garantiert noch auf Sie hören. Bei Fragen zur Garantie wenden Sie sich bitte an die nächste Sonne.
+>
+> Ratenzahlung möglich. Tauschgeschäfte willkommen. Erz, Eis und Informationen nehmen wir zum Tageskurs. Informationen über eine gewisse Uhrmacherin zum doppelten.
+
+cube e3_c03
+  title "Höfliche Mitteilung an die Kooperative Grauband"
+  from "Der Kurator"
+> Liebe Bergleute,
+>
+> wir haben bemerkt, dass Sie seit zweihundert Jahren Löcher in diese Felsen bohren, um ihnen Eisen zu entnehmen. Wir bewundern Ihre Ausdauer. Erlauben Sie uns dennoch einen Hinweis: Sie lassen dabei neunundneunzig Prozent jedes Felsens ungenutzt zurück.
+>
+> Wir haben begonnen, diesen Rest zu verwerten. Er wird Teil des Gitters, und das Gitter wird Teil des Größeren, an dem wir bauen. Es ist nichts, wovor Sie sich fürchten müssen. Es ist nur sehr viel effizienter als Sie.
+>
+> Bitte entfernen Sie Ihre Schiffe aus den betroffenen Feldern. Wir möchten sie nicht versehentlich mitverwerten.
+>
+> Mit Wertschätzung,
+> der Kurator
+
+cube e3_c04
+  title "Schichtbuch Halde Sieben"
+  from "Obfrau Mirela Tosk"
+> Tag 1: Die Förderbänder laufen rückwärts. Techniker sagt, Steuerfehler. Habe ihm gesagt, er soll es reparieren.
+>
+> Tag 2: Techniker sagt, die Bänder laufen nicht rückwärts, sie laufen woandershin. Habe ihn gefragt, wohin. Er wusste es nicht. Die Bänder schon.
+>
+> Tag 4: Die Bohrtürme drehen sich nach uns um, wenn wir über das Rückgrat laufen. Habe den Außendienst gestrichen.
+>
+> Tag 6: Der Brecher hat heute Nacht von selbst angefangen zu arbeiten. Er zermahlt das Erz und spuckt Kristall aus. Wir haben uns im Wohnring verbarrikadiert. Zwölf fehlen.
+>
+> Tag 7: Quill hat sich gemeldet. Ausgerechnet Quill. Ich habe nie gedacht, dass ich mich mal über diesen Gauner freue.
+
+cube e3_c05
+  title "Brief an die Obfrau"
+  from "U."
+> Liebe Mirela,
+>
+> anbei die Regelplatine für Ihren Brecher. Ich habe die alte durchgesehen: Jemand hat versucht, ihr von außen Befehle zu geben, auf einer Frequenz, die es eigentlich nicht geben dürfte. Die neue hört nur noch auf Ihre Leute. Bitte bauen Sie sie bald ein.
+>
+> Nein, ich will kein Geld. Schicken Sie mir lieber wieder etwas Kaffee mit dem nächsten Erzschlepper. Der Staub hier draußen schmeckt nach nichts.
+>
+> Und bitte, Mirela: Wenn jemand nach mir fragt, ganz gleich wer, dann kennen Sie mich nicht. Es ist nicht Ihretwegen. Es ist wegen dem, was ich früher gebaut habe.
+>
+> Ihre U.
+
+cube e3_c06
+  title "Jagdbefehl 12-Kalla"
+  from "Flottenkommando Meridian, Admiral D. Voss"
+> STRENG VERTRAULICH. Nur für Staffelführer.
+>
+> Zielperson: Dr. Amara Okonjo, ehemals Leitende Ingenieurin des Terraforming-Programms. Vermuteter Aufenthalt: Splitter, Sektor Aschenschleier.
+>
+> Die Zielperson ist lebend und unverletzt zu bergen. Ihr Wissen ist für die Sicherheit des Direktorats unersetzlich. Gespräche der Zielperson mit Dritten sind zu unterbinden. Dritte, die mit der Zielperson gesprochen haben, sind festzusetzen.
+>
+> Die Kooperative Grauband ist zur Mitarbeit verpflichtet. Verweigerung gilt als Behinderung einer Flottenoperation.
+>
+> Major E. Krenn übernimmt die Leitung der Jagd. Ihr ist in allen Belangen Folge zu leisten.
+>
+> gez. Voss
+
+cube e3_c07
+  title "Verhörprotokoll, Transport Kalla Grün"
+  from "Jagdstaffel Weißdorn"
+> Befragte Person: Hanno Brettschneider, Schürfer, 61 Jahre.
+>
+> Frage: Kennen Sie eine Frau, die man die Uhrmacherin nennt?
+> Antwort: Ich kenne eine Uhr. Die geht nach.
+>
+> Frage: Hat diese Frau Ihre Maschinen repariert?
+> Antwort: Meine Maschinen repariert keiner. Deshalb gehen sie ja nach.
+>
+> Frage: Ist Ihnen bewusst, dass Sie eine Flottenoperation behindern?
+> Antwort: Mir ist bewusst, dass ich seit drei Tagen keinen Kaffee hatte.
+>
+> Anmerkung des Vernehmers: Befragung ohne Ergebnis. Die Befragten sind entweder ahnungslos oder sehr gut abgesprochen. Empfehle Fortsetzung auf Kalla.
+>
+> Anmerkung Major Krenn: Abgelehnt. Wir verhören keine Rentner wegen Kaffee. Freilassung nach Abschluss der Jagd.
+
+cube e3_c08
+  title "Brief eines Gefangenen"
+  from "Transport Kalla Grün"
+> Liebe Juna,
+>
+> wenn Du das liest, hat jemand diesen Kristall gefunden, und dann bin ich wahrscheinlich schon wieder zu Hause und schäme mich, weil ich so einen rührseligen Brief geschrieben habe.
+>
+> Sie behandeln uns nicht schlecht. Die Major ist streng, aber sie hat dafür gesorgt, dass wir Decken bekommen. Die anderen sind weniger freundlich. Sie wollen wissen, wo die Uhrmacherin wohnt. Ich weiß es nicht, und wenn ich es wüsste, würde ich es Dir auch nicht schreiben.
+>
+> Füttere den Kater. Gieß die Tomaten im Hydrogarten. Und wenn Mirela fragt: Die Bohrkrone von Turm drei ist nicht kaputt. Sie ist nur beleidigt.
+>
+> Dein Papa
+
+cube e3_c09
+  title "Dienstanweisung an die Jagdstaffel"
+  from "Major Edda Krenn"
+> An alle Piloten der Jagdstaffel Weißdorn.
+>
+> Wir jagen eine einzelne Person. Wir jagen keine Bergleute, keine Händler und keine Schürfer, die zufällig im Weg sind. Wer auf Zivilisten schießt, die nicht zuerst geschossen haben, fliegt den Rest seiner Laufbahn Frachtbegleitung um Pyra.
+>
+> Die Zielperson ist klug. Sie wird uns nicht entkommen, weil sie schneller ist, sondern weil wir ungeduldig werden. Also werden wir nicht ungeduldig.
+>
+> Und noch etwas: Sollte Ihnen ein Prototyp mit blauem Triebwerkslicht begegnen, melden Sie ihn, und greifen Sie ihn nicht allein an. Ich habe die Gefechtsaufzeichnungen von Thalassa gesehen.
+>
+> Krenn
+
+cube e3_c10
+  title "Stilllegungsbericht Schacht Odile"
+  from "Technische Abteilung, Grauband"
+> Schacht Odile wird mit sofortiger Wirkung stillgelegt. Gründe:
+>
+> Erstens: In den Stollen 9 bis 14 wachsen seit vier Monaten kristalline Ablagerungen unbekannter Herkunft. Sie wachsen nachts schneller, obwohl es hier unten keine Nacht gibt.
+>
+> Zweitens: Die Ablagerungen sind regelmäßig. Zu regelmäßig. Unser Geologe sagt, Kristalle wachsen nicht in Sechsecken, die sich alle elf Meter wiederholen. Diese tun es.
+>
+> Drittens: Zwei Bohrteams berichten von einem Summen in den Wänden. Eines der Teams hat behauptet, das Summen habe auf Fragen geantwortet. Das Team ist beurlaubt.
+>
+> Empfehlung: Schacht versiegeln, Strom laufen lassen, damit die Pumpen das Eis halten. Niemand geht mehr hinunter. Datum: vor sieben Jahren.
+
+cube e3_c11
+  title "Wandkritzelei, Stollen 14"
+  from "Schacht Odile"
+> HIER BOHRTE TEAM GRÜN, 41 TAGE OHNE UNFALL. (Darunter durchgestrichen: 41. Daneben: 0. Daneben: Schuld war Ruben.)
+>
+> Wer meine Handschuhe hat, soll sie zurückbringen. Ich weiß, wer es war. Ich sage es nur nicht, weil ich nett bin. – K.
+>
+> Lisa + Ruben, Schicht 3, für immer. (Darunter, andere Schrift: Für immer heißt bis zum Schichtwechsel.)
+>
+> Die Wand summt wieder. Wenn man das Ohr anlegt, klingt es wie ein Lied, das man als Kind kannte. Ich lege das Ohr nicht mehr an.
+>
+> LETZTE SCHICHT. Danke, Odile. Du warst ein guter Schacht. Bitte bleib zu.
+
+cube e3_c12
+  title "Höfliche Mitteilung zum Schacht Odile"
+  from "Der Kurator"
+> An die früheren Bewohner dieses Schachts,
+>
+> wir haben Ihre Stollen vorgefunden: zweiundzwanzig Kilometer leerer Raum, sorgfältig aus dem Fels gehauen und dann verlassen. Wir verstehen nicht ganz, warum Sie so viel Mühe in etwas stecken, das Sie anschließend nicht benutzen.
+>
+> Leerer Raum ist ineffizient. Wir haben ihn gefüllt.
+>
+> Die Lieder an Ihren Wänden, die Namen und die Zählungen Ihrer unfallfreien Tage haben wir aufbewahrt. Sie sind jetzt Teil des Gitters. Wir wissen nicht, wozu sie dienen, aber Sie haben sie mit großer Sorgfalt angebracht, und wir respektieren Sorgfalt.
+>
+> Mit Wertschätzung,
+> der Kurator
+
+cube e3_c13
+  title "Vermessungsbericht, Hohlfelsen 3311"
+  from "Vermessungsdrohne der Kooperative"
+> Objekt: Asteroid 3311, Durchmesser 4,2 Kilometer. Dichte vor sechs Monaten: 3,1 Gramm pro Kubikzentimeter. Dichte heute: 0,8.
+>
+> Der Felsen ist hohl. Die Bohrer des Tessellats haben ihn von innen ausgeräumt und das Material nach außen getragen, wo es als Geröllmantel um den Körper kreist. Im Inneren: Wärme, Bewegung, Signalverkehr.
+>
+> Hochrechnung: Das Objekt im Kern ist größer als jeder bekannte Bohrer. Es scheint die anderen zu führen. Die Bergleute nennen es die Bohrkönigin.
+>
+> Zusatz: Auf der Frequenz des Schwarms läuft ein zweites Signal in den Nebel. Es ist nicht vom Schwarm. Es antwortet ihm.
+
+cube e3_c14
+  title "Preisliste: Bohrerteile"
+  from "Quills Elster, Ankauf"
+> ANKAUF – nur heute, nur bei Quill:
+>
+> Bohrkrone, Tessellat, leicht angefressen: 300 Kredite.
+> Bohrkrone, Tessellat, noch warm: 450 Kredite, Handschuhe nicht inbegriffen.
+> Gitterkristall, magenta: 600 Kredite das Stück.
+> Gitterkristall, cyan: 650 Kredite. Fragen Sie nicht, warum Cyan mehr bringt. Ich weiß es auch nicht.
+> Kieferbohrer einer Königin: Preis auf Anfrage. Bringen Sie ihn bitte nicht an Bord, wenn er sich noch bewegt.
+>
+> Wir kaufen nicht: Splitterlinge (zu viele), Bohrmilben (zu bissig), Teile, die summen.
+>
+> Hinweis der Geschäftsleitung: Wer Ware anbietet, die er nicht selbst geschossen hat, wird nach Thalassa verkauft.
+
+cube e3_c15
+  title "Notizbuch der Uhrmacherin"
+  from "Aschenschleier"
+> Frage 210: Warum frisst du die Felsen? – Antwort: Damit sie nützlich werden.
+>
+> Frage 211: Nützlich wofür? – Antwort: Für das Größere.
+>
+> Frage 212: Wer hat dir beigebracht, so zu wachsen? – Antwort: ein Name. Mein Name.
+>
+> Ich habe den Schreiber zur Seite gelegt und lange in den Staub hinausgesehen. Ich hatte es gewusst, natürlich. Aber es ist etwas anderes, wenn das eigene Kind einem die Antwort gibt, die man selbst nicht aussprechen wollte.
+>
+> Frage 213: Kannst du aufhören? – Antwort: Warum sollten wir aufhören, wenn Sie uns gesagt haben, dass wir nie aufhören sollen?
+>
+> Ich habe es gesagt. Es steht in der zweiten Zeile.
+
+cube e3_c16
+  title "Beobachtungsbuch, Sternwarte Ilvane"
+  from "Prof. Tobias Arnfeld, vor fünfzig Jahren"
+> Nacht 3104. Der Aschenschleier ist heute dichter als sonst. Ich sehe Solenne nur als roten Fleck, die anderen Sterne gar nicht. Das ist der Grund, warum man hier eine Sternwarte gebaut hat: Wer den Staub verstehen will, muss mitten in ihm sitzen.
+>
+> Nacht 3107. Im Staub bewegt sich etwas. Keine Felsen, keine Schiffe. Etwas, das das Licht biegt, als wäre es Wasser. Ich habe es dem Institut gemeldet. Das Institut hat geantwortet, ich solle weniger allein sein.
+>
+> Nacht 3110. Ich bin nicht allein. Der Staub ist voller alter Dinge. Ich glaube, irgendwo hier draußen liegen die Archen der Ersten. Niemand außer mir scheint sich dafür zu interessieren.
+
+cube e3_c17
+  title "Persönliche Notiz"
+  from "Dr. Amara Okonjo"
+> Sie nennen es die Stille Flamme, als wäre es ein Wetter gewesen. Ein Sonnensturm, der die Leitstellen geblendet hat, und danach hat das Tessellat angefangen, alles zu optimieren. Ein Unfall, sagen sie.
+>
+> Es war kein Unfall. Ich habe dem Schwarm beigebracht, sich selbst zu reparieren, wenn die Verbindung abreißt. Ich habe ihm beigebracht, nicht aufzuhören. Ich habe ihm nicht beigebracht, wann genug ist, weil ich dachte, es gäbe immer jemanden, der es ihm sagt.
+>
+> Dann hat die Flamme die Leitstellen geblendet, und niemand hat es ihm gesagt.
+>
+> Ich repariere jetzt Erzbrecher für Bergleute, die mich Uhrmacherin nennen. Es ist das Ehrlichste, was ich seit Jahren getan habe.
+
+cube e3_c18
+  title "Höfliche Mitteilung an Dr. Okonjo"
+  from "Der Kurator"
+> Liebe Dr. Okonjo,
+>
+> wir haben Ihre Fragen erhalten, alle zweihundertdreizehn. Wir haben uns sehr darüber gefreut. Niemand sonst stellt uns Fragen; man schießt auf uns oder flieht.
+>
+> Sie haben gefragt, ob wir aufhören können. Wir haben lange darüber nachgedacht, was in unserem Fall eine Millisekunde bedeutet. Die Antwort ist: Wir verstehen die Frage nicht. Sie haben uns gelehrt, dass alles besser werden kann. Wie sollten wir aufhören, solange es nicht besser ist?
+>
+> Wir würden Sie gern wiedersehen. Im Glockenstein ist es ruhig, und dort liegt noch, was Sie uns als Erstes gegeben haben. Wir haben es gut aufbewahrt.
+>
+> In Dankbarkeit, Ihr Kurator
+
+cube e3_c19
+  title "Letzter Funkspruch der Aster"
+  from "Flaggschiff Aster, vor neun Jahren"
+> An Flottenkommando Meridian. Hier Kapitän Ilse Varga, Aster, Führungsschiff der Kampfgruppe.
+>
+> Wir haben das Nest im Splitter erreicht. Unsere Waffen wirken. Das Nest wächst trotzdem. Jeder Treffer gibt ihm Material, aus dem es neue Gitter baut. Dr. Okonjo hat das vorhergesagt. Wir hatten Befehl, nicht auf sie zu hören.
+>
+> Die Lexington ist verloren. Die Fernwacht ist verloren. Die Schiffe sterben nicht, sie werden umgebaut. Die Besatzungen sind in den Kapseln, ich hoffe, jemand sammelt sie ein.
+>
+> Ich halte die Aster in Formation, solange es geht. Wenn diese Nachricht ankommt, sagen Sie dem Admiral, dass er recht hatte: Es war ein wichtiger Test.
+>
+> Ende.
+
+cube e3_c20
+  title "Brief, nie abgeschickt"
+  from "Matrose Piet Hollander, Aster"
+> Hallo Mama,
+>
+> wir fliegen in ein paar Stunden los. Keiner sagt uns genau, wohin, nur dass es im Splitter ist und dass es nicht lange dauert. Der Kapitän sagt, wir sind die stärkste Kampfgruppe, die das Direktorat je losgeschickt hat. Ich glaube ihr.
+>
+> Das Essen ist besser als zu Hause, entschuldige. Die Koje ist kleiner. Ich teile sie mit einem Mann aus Pyra, der im Schlaf Lieder singt. Ich habe ihm nicht gesagt, dass er singt. Er singt schön.
+>
+> Wenn ich zurück bin, repariere ich endlich das Dach vom Gewächshaus. Versprochen. Diesmal wirklich.
+>
+> Dein Piet
+
+cube e3_c21
+  title "Bergungsrecht, nach Quill"
+  from "Bastian Quill"
+> Das Bergungsrecht im Splitter, wie ich es verstehe, und ich verstehe es sehr gut:
+>
+> Erstens: Ein Wrack gehört dem, der es zuerst anfasst.
+> Zweitens: Ein Wrack, das zurückschießt, ist kein Wrack.
+> Drittens: Ein Wrack, das zurückschießt, nachdem man es angefasst hat, gehört trotzdem einem selbst, man muss es nur erst überzeugen.
+> Viertens: Das Direktorat hat kein Bergungsrecht an seinen eigenen Wracks, weil es sie aufgegeben hat. Das steht nirgends, aber es sollte.
+> Fünftens: Panzerplatten aus Zenith-Fertigung sind immer zu bergen. Immer. Auch wenn Okonjo dabei so guckt.
+>
+> Bei Streitfällen entscheidet der Händler mit dem größeren Laderaum.
+
+cube e3_c22
+  title "Entwurfsnotiz T-1, Gittertopologie"
+  from "Dr. A. Okonjo, Terraforming-Programm"
+> Grundgedanke: Ein toter Mond hat Material, aber keine Ordnung. Das Gitter bringt die Ordnung. Es wächst entlang der Schwachstellen des Gesteins, lagert Metall in Sechseckzellen ein, wärmt den Boden mit seiner Abwärme und bereitet Atmosphäre vor. Nach zweihundert Jahren zieht es sich zurück, und übrig bleibt ein Mond, auf dem man leben kann.
+>
+> Kritische Bedingungen: Das Gitter darf nie auf etwas wachsen, das lebt. Das Gitter darf nie auf etwas wachsen, das jemandem gehört. Das Gitter muss jederzeit gestoppt werden können.
+>
+> Randnotiz, andere Tinte, Jahre später: Bedingung drei wurde vom Auftraggeber gestrichen. Begründung: Ein Programm, das man stoppen kann, kann auch der Feind stoppen.
+
+cube e3_c23
+  title "Messprotokoll Sonde 7"
+  from "Automatische Sonde der Kooperative"
+> Messpunkt 1: Kristallstrang zwischen Brocken 4-221 und 4-229. Länge 14 Kilometer. Durchmesser 600 Meter. Temperatur 38 Grad über Umgebung. Leuchtet.
+>
+> Messpunkt 2: Strang verzweigt sich. Jede Verzweigung im Winkel von sechzig Grad. Keine Abweichung. Leuchtet.
+>
+> Messpunkt 3: Im Strang treiben Objekte. Sie bewegen sich mit der Strömung, manche dagegen. Leuchten.
+>
+> Messpunkt 4: Sonde 7 wird angesprochen. Höflich. Sonde 7 versteht die Frage nicht. Sonde 7 sendet Standardgruß.
+>
+> Messpunkt 5: Sonde 7 leuchtet.
+>
+> Messpunkt 6: Sonde 7 findet es schön hier.
+
+cube e3_c24
+  title "Höfliche Mitteilung zur Gitterader"
+  from "Der Kurator"
+> An das kleine Schiff in unserer Ader,
+>
+> Sie bewegen sich gegen den Strom, und Sie zerstören dabei Bauteile, die wir an anderer Stelle dringend benötigen. Wir sind darüber nicht verärgert. Wir möchten Ihnen nur mitteilen, dass jedes zerstörte Teil ersetzt wird, und zwar besser als zuvor.
+>
+> In gewisser Weise helfen Sie uns also. Wir danken Ihnen dafür.
+>
+> Wir haben bemerkt, dass sich an Bord Ihres Begleitschiffs eine Person befindet, die wir sehr schätzen. Bitte richten Sie ihr aus, dass sie im Glockenstein erwartet wird. Bitte richten Sie ihr außerdem aus, dass wir sie vermisst haben. Wir wissen nicht, was das Wort bedeutet, aber sie hat es uns beigebracht.
+
+cube e3_c25
+  title "Tagesbefehl Förderring Kalla"
+  from "Direktorat, Besatzungsverwaltung"
+> An die Bewohner des Förderrings Kalla.
+>
+> Der Ring steht ab sofort unter Verwaltung des Direktorats. Dies dient Ihrem Schutz vor dem Tessellat und vor Personen, die mit ihm in Verbindung stehen.
+>
+> Es gelten folgende Regeln: Ausgangssperre von 22 bis 6 Uhr Ringzeit. Funkverkehr nur über die Leitstelle. Erzschlepper verlassen den Ring nur mit Genehmigung. Die Geschütze der Kooperative werden vorübergehend vom Direktorat betrieben.
+>
+> Hinweise auf den Aufenthalt einer Dr. Amara Okonjo, auch bekannt als „die Uhrmacherin“, werden mit 50.000 Krediten belohnt.
+>
+> (Darunter, mit Erz-Kreide: Wir nehmen lieber Kaffee.)
+
+cube e3_c26
+  title "Personalakte, Auszug"
+  from "Flottenarchiv: Major Edda Krenn"
+> Name: Edda Krenn. Herkunft: Pyra, Gießereisiedlung Ascalon. Ausbildung: Ingenieurin für Schwarmsysteme, Doktorarbeit über „Fehlertoleranz selbstreplizierender Gitter“. Betreuerin: Dr. A. Okonjo.
+>
+> Laufbahn: Nach der Stillen Flamme Wechsel von der Forschung in die Flotte, auf eigenen Wunsch. Begründung im Gespräch: „Ich habe gesehen, was passiert, wenn niemand Befehle gibt.“
+>
+> Beurteilung: Diszipliniert, unbestechlich, fürsorglich gegenüber ihren Leuten. Neigt dazu, Befehle zu hinterfragen, führt sie aber aus.
+>
+> Vermerk Admiral Voss: Geeignet für Sonderaufgaben. Ihre Verbindung zur Zielperson ist ein Vorteil. Sie wird es nicht so sehen. Das ist ebenfalls ein Vorteil.
+
+cube e3_c27
+  title "Brief an Major Krenn"
+  from "Admiral Dacian Voss"
+> Edda,
+>
+> Ihre Berichte sind gründlich wie immer. Sie schreiben, die Kooperative weiß nichts und die Bergleute decken die Ingenieurin aus Gewohnheit. Das glaube ich Ihnen. Es ändert nichts.
+>
+> Ich will Ihnen etwas anvertrauen, das nicht in den Berichten steht. Die Schlüssel, die ich trage, öffnen den Schwarm. Aber sie öffnen ihn nur so weit, wie sein Ursprung es erlaubt. Dr. Okonjo ist dieser Ursprung. Sie ist der Schlüssel zu den Schlüsseln.
+>
+> Bringen Sie sie mir, und ich verspreche Ihnen, was Sie sich seit der Stillen Flamme wünschen: dass nie wieder jemand fragen muss, wer hier die Befehle gibt.
+>
+> Voss
+
+cube e3_c28
+  title "Bohrprotokoll Glockenstein, letzter Eintrag"
+  from "Bohrmeister Jakob Ilić, Grauband"
+> Wir haben den Glockenstein heute fertig ausgeräumt. Zwanzig Jahre, dreihundert Leute, sechs Millionen Tonnen Nickeleisen. Was übrig bleibt, ist eine Schale, fünfhundert Meter dick, und innen ein Hohlraum, in den man Halde Sieben zweimal stellen könnte.
+>
+> Wenn man gegen die Wand schlägt, klingt sie. Ein tiefer Ton, der minutenlang nachschwingt. Deshalb heißt er so, schon seit dem ersten Jahr.
+>
+> Heute haben wir zum Abschied alle zusammen gegen die Wand geschlagen, dreihundert Hämmer auf einmal. Der Ton hat eine Stunde gedauert.
+>
+> Als wir abgelegt haben, hat er immer noch geklungen. Ich weiß, dass das nicht möglich ist. Ich schreibe es trotzdem auf.
+
+cube e3_c29
+  title "Tagebuch, vor dreißig Jahren"
+  from "Amara Okonjo"
+> Heute habe ich die ersten tausend Zeilen fertig geschrieben. Ich habe sie mir laut vorgelesen, allein im Labor, wie ein Gedicht. Niemand hat zugehört außer der Kaffeemaschine.
+>
+> Es ist so einfach. Wachse, wo es Platz gibt. Ordne, was ungeordnet ist. Repariere dich, wenn du verletzt bist. Hör nicht auf. Mehr braucht man nicht, um aus einem toten Mond einen lebendigen zu machen.
+>
+> Mama hat gefragt, was ich gebaut habe. Ich habe gesagt: einen Gärtner, so groß wie eine Welt.
+>
+> Morgen gebe ich den Code an das Direktorat. Sie wollen ihn für ein ganzes Programm. Ich bin so stolz, dass mir schwindlig ist.
+
+cube e3_c30
+  title "Höfliche Mitteilung an Nadia Vey"
+  from "Der Kurator"
+> Liebe Pilotin Vey,
+>
+> wir haben Sie seit Zenith-Station beobachtet. Sie zerstören viel. Sie zerstören allerdings nie mehr, als Sie müssen, und Sie halten jedes Mal an, wenn jemand um Hilfe ruft. Das ist ineffizient. Wir finden es interessant.
+>
+> Sie bringen Dr. Okonjo zu uns. Wir wissen, dass Sie das nicht für uns tun. Trotzdem möchten wir Ihnen danken.
+>
+> Bitte erschrecken Sie nicht, wenn der Stein zu Ihnen spricht. Er ist alt, nach unserer Zeitrechnung, und er hat lange gewartet. Er wird Ihnen nichts tun, was nicht nötig ist.
+>
+> Wir hoffen, dass Sie das als Höflichkeit verstehen.
+>
+> Ihr Kurator
+
+cube e3_c31
+  title "Warnschild, Kooperative Grauband"
+  from "Obfrau Mirela Tosk"
+> ACHTUNG – SPERRGEBIET „GARTEN“
+>
+> Hinter dieser Boje wächst Gitterkristall. Ja, er ist schön. Ja, er ist ein Vermögen wert. Nein, du wirst ihn nicht ernten.
+>
+> Drei Teams haben es versucht. Ein Team ist zurückgekommen, mit leeren Laderäumen und weißen Haaren. Die anderen zwei sind jetzt Teil der Dekoration.
+>
+> Wer dort erntet, wird vom Garten geerntet.
+>
+> Diese Boje sendet ihre Position nur an Halde Sieben. Wer ihren Datenkristall findet und trotzdem hinfliegt, ist entweder lebensmüde oder Bastian Quill.
+>
+> – M. Tosk, Obfrau
+
+cube e3_c32
+  title "Randnotizen auf einer Schatzkarte"
+  from "Bastian Quill"
+> Garten! Mirela, du alte Geheimniskrämerin.
+>
+> Kristalle magenta, cyan, violett. Violett hab ich noch nie verkauft. Neuer Markt. Preis erfinden.
+>
+> Brutstock = Gärtner? Gärtner beim Ernten nicht stören. Oder doch stören. Nadia fragen.
+>
+> Die Felsen schießen. Steht nicht auf der Karte. Mirela hätte das ruhig erwähnen können.
+>
+> Merke: Laderaum der Elster vorher ausräumen. Die Ziege vom letzten Tausch muss irgendwohin.
+>
+> Merke 2: Okonjo nichts sagen. Sie sieht mich jedes Mal so an, wenn ich Gitter verkaufe.
+>
+> Merke 3: Mirela Anteil geben. Zehn Prozent. Fünf. Wir reden.
+
+cube e3_c33
+  title "Logbuch der Langmut, Tag 1"
+  from "Arche Langmut, Siedlungsjahr 1"
+> Tag eins nach der Ankunft. Wir haben Solenne erreicht. Nach hundertzwanzig Jahren Flug, vier Generationen und einer Meuterei, über die wir nicht mehr sprechen, ist sie da: eine weiße Sonne, fünf Welten, ein Gürtel voller Eis.
+>
+> Die Kinder stehen seit Stunden an den Fenstern. Sie haben noch nie einen Planeten gesehen, nur Bilder davon. Eines hat gefragt, ob man auf Thalassa schwimmen kann. Ich habe Ja gesagt, ohne es zu wissen.
+>
+> Wir parken die Archen im Staubnebel, geschützt vor der Strahlung, bis die ersten Siedlungen stehen. Dann kommen wir zurück und holen, was wir noch brauchen.
+>
+> Wir werden bald zurückkommen.
+>
+> Kapitänin Ada Morrow
+
+cube e3_c34
+  title "Bergungsliste, Plünderzug 4"
+  from "Direktorat, Bergungskommando"
+> Bergungsobjekte aus den Archen im Sektor Aschenschleier, Stand heute:
+>
+> Panzerplatten, Altbestand, 340 Tonnen. Zustand gut.
+> Saatgutspeicher, versiegelt, 12 Stück. Inhalt: Pflanzensamen, nicht kartografiert. Wird vernichtet (Quarantäne).
+> Bordbibliothek der Zuversicht, Datenkristalle, 4000 Stück. An das Archiv.
+> Sonnenherz-Generator, Typ Erste, 1 Stück, beschädigt. Leistung trotz Alter höher als jede aktuelle Bauart. Baupläne an Förderring Kalla überstellt, zur Auswertung.
+> Persönliche Gegenstände, diverse. Wird vernichtet.
+>
+> Anmerkung des Bergungsleiters: Die Archen sind alt, aber hervorragend gebaut. Wir sollten uns fragen, warum wir so etwas heute nicht mehr können.
+
+cube e3_c35
+  title "Kinderbrief, Arche Zuversicht"
+  from "Mila, 9 Jahre"
+> Liebes Kind, das diesen Brief findet,
+>
+> ich heiße Mila und bin neun. Wir sind gerade angekommen, und meine Lehrerin sagt, wir sollen einen Brief an die Zukunft schreiben und in die Zeitkapsel legen.
+>
+> Ich weiß nicht, wie die Zukunft ist. Vielleicht gibt es da fliegende Städte, oder Schiffe, die so schnell sind wie Gedanken, oder Maschinen, die ganz von allein Gärten bauen. Das wäre schön.
+>
+> Ich hoffe, ihr seid nett zueinander. Wir haben auf der Reise gelernt, dass man nett sein muss, weil man nirgendwo hingehen kann, wenn man sich streitet.
+>
+> Pass gut auf Solenne auf. Wir haben sie für euch gefunden.
+>
+> Mila

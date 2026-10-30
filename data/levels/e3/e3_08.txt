@@ -1,0 +1,86 @@
+# Episode 3, mission 6b (fork): along a lattice vein the swarm has grown between the rocks, straight to the hollow
+# asteroid. Crystal rocks, assimilated turrets, worms that swim through crystal as through water.
+
+level e3_08
+  title "Gitterader"
+  episode 3
+  theme lattice
+  music e3_b
+  scroll 55
+  length 205
+  next e3_09
+  map 0.74 0.7
+  briefing e3_08_brief
+
+  at 1   text e3_08_r1
+  at 3   wave e3_chip n=8 form=line x=360 spacing=75 path=sine amp=40 freq=0.5 speed=150
+  at 6   ground e3_drillturret x=160
+  at 6   ground e3_drillturret x=560
+  at 9   wave e3_mite n=8 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4
+  at 12  obstacle e3_crystalrock x=480 path=drift speed=55
+  at 14  wave e3_mite n=8 form=column x=600 gap=0.3 path=swoop side=-1 cx=360 cy=300 dur=4
+  at 18  wave e3_borer n=2 form=line x=360 spacing=280 path=straight speed=100
+  at 21  ground e3_drillturret x=360 n=3 form=line spacing=200
+  at 24  pickup credits x=360 value=400
+  at 26  wave e3_shardwing n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 28  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100 diff=3
+  at 31  text e3_08_r2
+  at 33  obstacle e3_crystalrock x=200 path=drift speed=55
+  at 34  obstacle e3_crystalrock x=540 path=drift speed=55
+  at 36  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120 drop=credits value=500
+  at 42  wave e3_tunneler x=360 path=straight speed=55
+  at 46  pickup cube x=600 item=e3_c22
+
+  # The vein narrows: crystal on both walls, turrets in the crystal.
+  at 50  text e3_08_r3
+  at 52  ground e3_drillturret x=100 n=2 form=column gap=2
+  at 52  ground e3_drillturret x=620 n=2 form=column gap=2
+  at 55  wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=230 r=90 speed=200
+  at 60  wave e3_mine n=6 form=line x=360 spacing=100 path=drift speed=60
+  at 63  wave e3_borer n=3 form=line x=360 spacing=220 path=straight speed=110
+  at 66  obstacle e3_crystalrock x=360 path=drift speed=60
+  at 68  ground e3_cutter x=360 diff=3
+  at 70  pickup credits x=200 value=400
+  at 72  wave e3_chip n=8 form=column x=360 gap=0.25 path=orbit cx=360 cy=260 r=150 dur=5 side=1
+  at 76  wave e3_mite n=10 form=sides x=60 gap=0.25 path=arc side=1 turn=80
+  at 82  wave e3_tunneler n=2 form=line x=360 spacing=320 path=straight speed=55
+  at 86  text e3_08_r4
+  at 90  pickup cube x=120 item=e3_c23
+
+  # The singing chamber: the crystal pulses, everything in it fires in rings.
+  at 94  text e3_08_r5
+  at 96  scroll 80
+  at 96  obstacle e3_crystalrock n=3 form=line x=360 spacing=220 path=drift speed=70
+  at 100 wave e3_chip n=10 form=random range=640 gap=0.25 path=sine amp=50 freq=0.6 speed=180
+  at 103 obstacle e3_crystalrock n=2 form=line x=360 spacing=420 path=drift speed=70
+  at 106 wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=360 cy=280 dur=4 mirror=1
+  at 112 ground e3_drillturret x=360 n=3 form=line spacing=160
+  at 114 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
+  at 118 obstacle e3_crystalrock x=360 path=drift speed=70 diff=3
+  at 120 scroll 55
+  at 122 pickup credits x=360 value=500
+
+  # A pulse in the vein: worms swim upstream against you.
+  at 128 text e3_08_r6
+  at 130 wave e3_tunneler x=180 path=straight speed=60
+  at 132 wave e3_tunneler x=540 path=straight speed=60
+  at 136 wave e3_chip n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.5 speed=150
+  at 140 wave e3_borer n=4 form=line x=360 spacing=150 path=straight speed=120 drop=credits value=600
+  at 146 pickup cube x=360 item=e3_c24
+  at 148 wave e3_shardwing n=6 form=sides x=60 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4
+  at 154 wave e3_mine n=8 form=random range=640 gap=0.4 path=drift speed=70
+  at 158 pickup credits x=540 value=400
+
+  # The gate of the hollow asteroid: everything the vein has left.
+  at 162 text e3_08_r7
+  at 164 ground e3_cutter x=200
+  at 164 ground e3_cutter x=520
+  at 166 wave e3_shardwing n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 170 obstacle e3_crystalrock n=2 form=line x=360 spacing=300 path=drift speed=60
+  at 172 wave e3_tunneler x=360 path=straight speed=55
+  at 176 wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100
+  at 182 wave e3_chip n=10 form=column x=360 gap=0.22 path=orbit cx=360 cy=240 r=160 dur=5 side=-1
+  at 188 wave e3_shardwing n=4 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1 diff=3
+  at 194 pickup credits x=360 value=600
+  at 198 text e3_08_r8
+  at 202 end

@@ -1,0 +1,81 @@
+# Episode 3, mission 5: the dust nebula. Ambushes from every side, a minefield, and an old observatory under siege,
+# where Okonjo hides. The key to the graveyard of the first colony ships drifts at the right edge of the minefield
+# (about 112 s).
+
+level e3_06
+  title "Aschenschleier"
+  episode 3
+  theme nebula
+  music e3_b
+  scroll 45
+  length 205
+  next e3_07 e3_08
+  secret e3_s2 key=e3_key_graveyard
+  arcade 1
+  map 0.6 0.5
+  briefing e3_06_brief
+  debrief e3_06_after
+
+  at 1   text e3_06_r1
+  at 4   wave e3_chip n=6 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=130
+  at 8   wave e3_shardwing n=3 form=column x=0 gap=0.6 path=strafe side=1 y=180 amp=40 freq=0.4 speed=200
+  at 11  wave e3_shardwing n=3 form=column x=720 gap=0.6 path=strafe side=-1 y=260 amp=40 freq=0.4 speed=200
+  at 15  wave e3_mine n=5 form=random range=560 gap=0.7 path=drift speed=60
+  at 18  wave e3_chip n=8 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=360 dur=4.5 mirror=1
+  at 24  pickup credits x=360 value=400
+  at 26  wave e3_hunter n=4 form=column x=620 gap=0.4 path=arc side=-1 turn=70
+  at 28  wave e3_hunter n=4 form=column x=100 gap=0.4 path=arc side=1 turn=70 diff=3
+  at 31  text e3_06_r2
+  at 33  wave e3_shardwing n=6 form=sides x=60 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4
+  at 38  wave e3_borer n=2 form=line x=360 spacing=300 path=straight speed=90
+  at 40  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=110 drop=credits value=500
+  at 46  pickup cube x=200 item=e3_c16
+
+  # Out of the dust from below: the swarm likes to come where nobody looks.
+  at 50  text e3_06_r3
+  at 53  wave e3_chip n=6 form=line x=360 spacing=100 path=rise amp=40 freq=0.4 speed=140
+  at 56  wave e3_shardwing n=4 form=v x=360 spacing=70 path=dive turn=60
+  at 60  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
+  at 64  wave e3_frigate x=360 path=hover stop=150 wait=7
+  at 66  wave e3_hunter n=6 form=column x=0 gap=0.35 path=swoop side=1 cx=360 cy=260 dur=3.8
+  at 70  pickup credits x=540 value=400
+  at 72  wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=230 r=90 speed=200
+  at 76  wave e3_mine n=6 form=line x=360 spacing=110 path=drift speed=55
+  at 80  wave e3_chip n=8 form=column x=600 gap=0.25 path=orbit cx=360 cy=280 r=160 dur=5 side=-1
+  at 86  text e3_06_r4
+  at 88  pickup cube x=560 item=e3_c17
+
+  # The minefield round the observatory. The key to the arks drifts at its right edge.
+  at 94  text e3_06_r5
+  at 96  wave e3_mine n=10 form=random range=660 gap=0.35 path=drift speed=70
+  at 100 wave e3_shardwing n=4 form=column x=0 gap=0.5 path=strafe side=1 y=140 amp=50 freq=0.3 speed=180
+  at 104 wave e3_mine n=8 form=random range=660 gap=0.4 path=drift speed=80
+  at 106 obstacle e3_crystalrock x=240 path=drift speed=50
+  at 108 wave e3_hunter n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 112 pickup key x=684 item=e3_key_graveyard
+  at 112 wave e3_mine n=6 form=column x=640 gap=0.8 path=drift speed=70
+  at 116 wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 120 wave e3_mine n=8 form=random range=660 gap=0.35 path=drift speed=80 diff=3
+  at 122 pickup credits x=200 value=500
+
+  # The siege of the observatory: the Directorate from one side, the swarm from the other.
+  at 128 text e3_06_r6
+  at 130 wave e3_frigate x=180 path=hover stop=160 wait=7
+  at 132 wave e3_hunter n=4 form=column x=620 gap=0.35 path=arc side=-1 turn=80
+  at 135 wave e3_carrier x=540 path=hover stop=130 wait=12 amp=60
+  at 140 wave e3_hunter n=6 form=sides x=60 gap=0.35 path=swoop side=1 cx=360 cy=280 dur=3.6
+  at 144 wave e3_chip n=8 form=line x=360 spacing=80 path=sine amp=50 freq=0.6 speed=160
+  at 148 pickup cube x=360 item=e3_c18
+  at 150 wave e3_frigate n=2 form=line x=360 spacing=320 path=hover stop=150 wait=6
+  at 154 wave e3_shardwing n=6 form=random range=600 gap=0.4 path=dive turn=60
+  at 158 wave e3_hunter n=4 form=v x=360 spacing=60 path=dive turn=60 diff=3
+  at 162 pickup credits x=360 value=500
+  at 166 text e3_06_r7
+  at 168 wave e3_hunter n=2 form=line x=200 spacing=60 path=arc side=1 turn=70 repeat=3 every=3
+  at 169 wave e3_hunter n=2 form=line x=520 spacing=60 path=arc side=-1 turn=70 repeat=3 every=3
+  at 178 wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100
+  at 184 wave e3_frigate x=360 path=hover stop=150 wait=8
+  at 190 wave e3_chip n=6 form=line x=360 spacing=100 path=sine amp=40 freq=0.5 speed=150
+  at 196 pickup credits x=360 value=600
+  at 200 text e3_06_r8
+  at 204 end

@@ -1,0 +1,19 @@
+# Episode 3: the Shatter, the asteroid belt. Nadia searches for Dr. Amara Okonjo, finds her, and learns of the Root Code
+# inside the Quarry Mind. The Directorate's hunters want Okonjo too.
+
+episode 3
+  title "Der Splitter"
+  subtitle "Im Asteroidengürtel versteckt sich die Frau, die das Tessellat geschrieben hat. Das Direktorat jagt sie. Das Tessellat frisst die Felsen. Und irgendwo im Staub wartet ein Stein, der denkt."
+  first e3_01
+  intro e3_intro
+  ending e3_ending
+  credits 30000
+  # intended: ship corsair, front arc 3, rear orbiter 3, side warden lancet, gen plasmaheart, shield fortress, special timeslow
+  ship kestrel
+  front scatter 5
+  rear tailgun 4
+  side pip spark
+  gen dynamo
+  shield ward
+  special barrier
+  arcade e3_01 e3_03 e3_05 e3_06 e3_09 e3_10
