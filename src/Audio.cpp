@@ -392,13 +392,8 @@ void Audio::init( bool on, const std::string &assets )
 void Audio::shutdown()
 {
     if ( !m_on ) return;
-    for ( int i = 0; i < 2; ++i )
-        if ( m_has[i] )
-        {
-            StopMusicStream( m_music[i] );
-            UnloadMusicStream( m_music[i] );
-            m_has[i] = false;
-        }
+    for ( int i = 0; i < 2; ++i ) drop( i );
+    voice( "", "" );
     for ( int e = 0; e < (int)SfxE::COUNT; ++e )
     {
         for ( int v = 1; v < Voices; ++v ) UnloadSoundAlias( m_sounds[e][v] );
@@ -473,17 +468,28 @@ void Audio::events( const World &w )
     }
 }
 
+void Audio::drop( int i )
+{
+    if ( m_has[i] )
+    {
+        StopMusicStream( m_music[i] );
+        UnloadMusicStream( m_music[i] );
+        m_has[i] = false;
+    }
+    if ( m_hasLow[i] )
+    {
+        StopMusicStream( m_low[i] );
+        UnloadMusicStream( m_low[i] );
+        m_hasLow[i] = false;
+    }
+}
+
 void Audio::music( const std::string &name )
 {
     if ( !m_on || name == m_name ) return;
     m_name = name;
     int next = 1 - m_cur;
-    if ( m_has[next] )
-    {
-        StopMusicStream( m_music[next] );
-        UnloadMusicStream( m_music[next] );
-        m_has[next] = false;
-    }
+    drop( next );
     // A piece may come in two takes (<name>.ogg, <name>_2.ogg): one of them, by chance.
     std::string file = name;
     if ( !name.empty() && std::filesystem::exists( m_assets + "/music/" + name + "_2.ogg" ) && GetRandomValue( 0, 1 ) == 1 )
@@ -500,6 +506,19 @@ void Audio::music( const std::string &name )
                 m_music[next].looping = true;
                 m_gain[next] = 0.0f;
                 SetMusicVolume( m_music[next], 0.0f );
+                // The quiet layer is just as long: started in the same breath, the two stay in step.
+                std::string low = m_assets + "/music/" + file + "_low" + ext;
+                if ( std::filesystem::exists( low ) )
+                {
+                    m_low[next] = LoadMusicStream( low.c_str() );
+                    m_hasLow[next] = IsMusicValid( m_low[next] );
+                    if ( m_hasLow[next] )
+                    {
+                        m_low[next].looping = true;
+                        SetMusicVolume( m_low[next], 0.0f );
+                        PlayMusicStream( m_low[next] );
+                    }
+                }
                 PlayMusicStream( m_music[next] );
             }
             break;
@@ -510,20 +529,51 @@ void Audio::music( const std::string &name )
 void Audio::update( float dt )
 {
     if ( !m_on ) return;
+    // A voice: the music steps back while it speaks.
+    if ( m_hasVoice )
+    {
+        UpdateMusicStream( m_voice );
+        SetMusicVolume( m_voice, m_voiceVolume );
+        if ( !IsMusicStreamPlaying( m_voice ) ) voice( "", "" );
+    }
+    m_duck += clampf( ( m_hasVoice ? 0.5f : 1.0f ) - m_duck, -dt * 3.0f, dt * 1.0f );
+    m_mix += clampf( m_mixGoal - m_mix, -dt * 0.35f, dt * 0.6f );
     for ( int i = 0; i < 2; ++i )
     {
         if ( !m_has[i] ) continue;
         float goal = i == m_cur ? 1.0f : 0.0f;
         m_gain[i] += clampf( goal - m_gain[i], -dt / 1.2f, dt / 1.2f );
-        SetMusicVolume( m_music[i], m_gain[i] * m_musicVolume );
+        float full = m_hasLow[i] ? std::sqrt( m_mix ) : 1.0f, low = std::sqrt( 1.0f - m_mix );
+        SetMusicVolume( m_music[i], m_gain[i] * m_musicVolume * m_duck * full );
         UpdateMusicStream( m_music[i] );
-        if ( i != m_cur && m_gain[i] <= 0.0f )
+        if ( m_hasLow[i] )
         {
-            StopMusicStream( m_music[i] );
-            UnloadMusicStream( m_music[i] );
-            m_has[i] = false;
+            SetMusicVolume( m_low[i], m_gain[i] * m_musicVolume * m_duck * low );
+            UpdateMusicStream( m_low[i] );
         }
+        if ( i != m_cur && m_gain[i] <= 0.0f ) drop( i );
     }
+}
+
+bool Audio::voice( const std::string &key, const std::string &lang )
+{
+    if ( !m_on ) return false;
+    if ( m_hasVoice )
+    {
+        StopMusicStream( m_voice );
+        UnloadMusicStream( m_voice );
+        m_hasVoice = false;
+    }
+    if ( key.empty() || m_voiceVolume <= 0.01f ) return false;
+    std::string path = m_assets + "/voice/" + lang + "/" + key + ".ogg";
+    if ( !std::filesystem::exists( path ) ) return false;
+    m_voice = LoadMusicStream( path.c_str() );
+    if ( !IsMusicValid( m_voice ) ) return false;
+    m_voice.looping = false;
+    SetMusicVolume( m_voice, m_voiceVolume );
+    PlayMusicStream( m_voice );
+    m_hasVoice = true;
+    return true;
 }
 
 void Audio::dump( const std::string &dir )

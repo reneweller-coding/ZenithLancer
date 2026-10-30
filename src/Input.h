@@ -64,6 +64,8 @@ public:
     /** @return the shop's tabs (Q/E, LB/RB) */
     bool prevTab();
     bool nextTab();
+    /** @return the other choice of a screen (Tab, Y): the workshop's other pilot, a replay's speed */
+    bool other();
 
     /** @return a label for an action's binding ("Leertaste / Z", "A / RT") */
     std::string label( ActE a, bool pad ) const;

@@ -16,6 +16,7 @@
 #include "Sim.h"
 
 #include <deque>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -42,14 +43,22 @@ struct Options
     std::string m_theme;                ///< --theme: another ground for --level (to look at themes)
     std::string m_screen;               ///< --screen: --shot takes a picture of this screen instead
     std::string m_test;                 ///< --apptest: a script of presses and expectations (docs in main.cpp)
+    bool        m_bench = false;        ///< --bench: fly the heavy missions and measure the frame times
 };
 
 /** @brief The screens. */
 enum class ScreenE : int
 {
     TITLE, MAIN, OPTIONS, CONTROLS, SCORES, CREDITS, LOGBOOK, SLOTS, DIFFICULTY, EPISODE, STORY, PLAN, SHOP, PLAY,
-    RESULTS, FAILED, PILOTS, CONTINUE, NAME, QUIT
+    RESULTS, FAILED, PILOTS, CONTINUE, NAME, PRACTICE, SURVIVAL, REPLAYS, STATS, MODS, QUIT
 };
+
+/**
+ * @brief The data folders of mods by their names (<user>/mods/<name>/data, else beside the game).
+ * @param[in] names  the mods switched on
+ * @return the folders that exist, in order
+ */
+std::vector<std::string> modDataDirs( const std::vector<std::string> &names );
 
 /** @brief The program. */
 class App
@@ -109,6 +118,11 @@ private:
     void pilots( float dt );
     void continueScreen( float dt );
     void nameEntry( float dt );
+    void practice( float dt );
+    void survivalMenu( float dt );
+    void replays( float dt );
+    void stats( float dt );
+    void mods( float dt );
 
     // Helpers.
     int  menu( const std::vector<std::string> &items, float x, float y, float w, int &sel, float size = 40.0f,
@@ -133,6 +147,16 @@ private:
     Loadout previewLoad() const;
     void previewSetup();
     void drawShipCard( const Loadout &o, Rectangle r );
+    void join2();
+    void leave2();
+    void startPractice( bool boss );
+    Loadout practiceLoad( const LevelDef &lv ) const;
+    void toBoss();
+    void logMission( const char *result );
+    float menuSize( size_t items, float most ) const;
+    void loadCatalog();
+    const Texture2D *portrait( const std::string &from );
+    int  quality() const;
 
     Options          m_opt;
     Catalog          m_cat;
@@ -200,7 +224,19 @@ private:
     int              m_bossTries = 0;
     void retryBoss();
 
+    // Ways to play beside the campaign.
+    bool             m_practice = false;       ///< a practice flight: nothing is kept
+    bool             m_practiceBoss = false;   ///< ... that starts at the boss
+    int              m_practiceGear = 0;       ///< its gear: 0 the episode's, 1..3 a save slot's
+    int              m_practiceStep = 0;       ///< 0 the list, 1 the chosen mission's choices
+    std::vector<std::string> m_practiceList;
+    bool             m_survival = false;       ///< the survival flight (arcade rules, endless waves)
+    bool             m_daily = false;          ///< ... with the day's seed
+    uint32_t         m_survivalSeed = 1;
+    int              m_earned2 = 0;            ///< the second pilot's money of the mission
+
     // The workshop.
+    int              m_shopPilot = 0;          ///< the pilot served (the campaign for two)
     int              m_tab = 0;
     int              m_item = 0;
     std::string      m_shopMsg;
@@ -216,6 +252,12 @@ private:
     int              m_bindWait = -1;          ///< rebinding: the action waiting (-1 none)
     bool             m_bindPad = false;
     std::vector<std::string> m_logList;
+
+    // Who speaks: the portrait beside a text (data/lang/speakers.txt, assets/portraits), the voice speaking it.
+    std::map<std::string, std::string> m_portraitOf;
+    std::map<std::string, Texture2D>   m_portraits;
+    std::string      m_voiceFor;               ///< the story entry whose voice was started
+    float            m_autoBombT[2] = { 0, 0 };
 };
 
 }   // namespace zenith

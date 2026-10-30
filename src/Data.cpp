@@ -383,7 +383,7 @@ void unknown( const Block &b, const Line &l, std::vector<std::string> &errors )
 
 }   // namespace
 
-bool Catalog::load( const std::string &dir )
+bool Catalog::load( const std::string &dir, const std::vector<std::string> &mods )
 {
     m_dir = dir;
     const std::vector<std::string> types = { "model",  "enemy",     "front",  "rear",   "sidekick", "ship",
@@ -397,25 +397,36 @@ bool Catalog::load( const std::string &dir )
         m_errors.push_back( "no data folder: " + dir );
         return false;
     }
-    for ( const auto &entry : fs::recursive_directory_iterator( dir, e ) )
-    {
-        if ( !entry.is_regular_file() || entry.path().extension() != ".txt" ) continue;
-        std::string rel = fs::relative( entry.path(), dir, e ).generic_string();
-        // Stories: German always; English (story/en) is read into its own map below.
-        if ( rel.rfind( "story/en/", 0 ) == 0 ) enFiles.push_back( entry.path().string() );
-        if ( rel.rfind( "story/", 0 ) == 0 && rel.rfind( "story/de/", 0 ) != 0 ) continue;
-        if ( rel.rfind( "lang/", 0 ) == 0 ) continue;
-        files.push_back( entry.path().string() );
-    }
-    std::sort( files.begin(), files.end() );
+    // The game's data, then each mod's on top: a mod's entry of the same name replaces the game's.
     std::vector<Block> blocks;
-    for ( const std::string &f : files ) readBlocks( f, types, blocks, m_errors );
-
-    for ( const Block &b : blocks )
+    size_t             own = 0;   // the blocks before this are the game's own (twice defined there is an error)
+    std::vector<std::string> dirs = { dir };
+    dirs.insert( dirs.end(), mods.begin(), mods.end() );
+    for ( const std::string &d : dirs )
     {
+        std::vector<std::string> here;
+        for ( const auto &entry : fs::recursive_directory_iterator( d, e ) )
+        {
+            if ( !entry.is_regular_file() || entry.path().extension() != ".txt" ) continue;
+            std::string rel = fs::relative( entry.path(), d, e ).generic_string();
+            // Stories: German always; English (story/en) is read into its own map below.
+            if ( rel.rfind( "story/en/", 0 ) == 0 ) enFiles.push_back( entry.path().string() );
+            if ( rel.rfind( "story/", 0 ) == 0 && rel.rfind( "story/de/", 0 ) != 0 ) continue;
+            if ( rel.rfind( "lang/", 0 ) == 0 || rel == "mod.txt" ) continue;
+            here.push_back( entry.path().string() );
+        }
+        std::sort( here.begin(), here.end() );
+        for ( const std::string &f : here ) readBlocks( f, types, blocks, m_errors );
+        files.insert( files.end(), here.begin(), here.end() );
+        if ( d == dir ) own = blocks.size();
+    }
+
+    for ( size_t bi = 0; bi < blocks.size(); ++bi )
+    {
+        const Block &b = blocks[bi];
         std::string where = b.m_head.where();
         auto        dup = [&]( bool exists ) {
-            if ( exists ) m_errors.push_back( where + ": " + b.m_type + " \"" + b.m_name + "\" is defined twice" );
+            if ( exists && bi < own ) m_errors.push_back( where + ": " + b.m_type + " \"" + b.m_name + "\" is defined twice" );
         };
         if ( b.m_name.empty() && b.m_type != "theme" )
         {
@@ -773,7 +784,10 @@ bool Catalog::load( const std::string &dir )
                 else if ( k == "hidden" ) d.m_hidden = l.argNum( 0, 1 ) != 0;
                 else unknown( b, l, m_errors );
             }
-            m_difficulties.push_back( d );
+            // A mod's difficulty of a known name replaces it, a new one is added.
+            auto same = std::find_if( m_difficulties.begin(), m_difficulties.end(), [&]( const DifficultyDef &x ) { return x.m_name == d.m_name; } );
+            if ( same != m_difficulties.end() ) *same = d;
+            else m_difficulties.push_back( d );
         }
         else if ( b.m_type == "pilot" )
         {
@@ -787,7 +801,9 @@ bool Catalog::load( const std::string &dir )
                 else if ( l.m_key == "desc_en" ) a.m_descEn = l.arg( 0 );
                 else loadoutLine( a.m_loadout, l );
             }
-            m_arcadeShips.push_back( a );
+            auto same = std::find_if( m_arcadeShips.begin(), m_arcadeShips.end(), [&]( const ArcadeShip &x ) { return x.m_name == a.m_name; } );
+            if ( same != m_arcadeShips.end() ) *same = a;
+            else m_arcadeShips.push_back( a );
         }
         else if ( b.m_type == "theme" )
             m_themes.push_back( b );
@@ -805,7 +821,7 @@ bool Catalog::load( const std::string &dir )
             m_errors.push_back( b.m_head.where() + ": only stories belong in story/en" );
             continue;
         }
-        if ( m_storyEn.count( b.m_name ) ) m_errors.push_back( b.m_head.where() + ": story \"" + b.m_name + "\" is defined twice" );
+        if ( mods.empty() && m_storyEn.count( b.m_name ) ) m_errors.push_back( b.m_head.where() + ": story \"" + b.m_name + "\" is defined twice" );
         StoryDef &s = m_storyEn[b.m_name];
         s = {};
         s.m_type = b.m_type;

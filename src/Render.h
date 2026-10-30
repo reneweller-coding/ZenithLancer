@@ -14,6 +14,7 @@
 
 #include <raylib.h>
 
+#include <cmath>
 #include <string>
 #include <utility>
 #include <vector>
@@ -61,10 +62,11 @@ class Renderer
 public:
     /**
      * @brief Makes the targets for a picture size (the shaders and sprites are shared and made once).
-     * @param[in] w  width in pixels
-     * @param[in] h  height
+     * @param[in] w      width in pixels
+     * @param[in] h      height
+     * @param[in] scale  the share of that size actually drawn (the graphics setting; present() scales it up)
      */
-    void init( int w, int h );
+    void init( int w, int h, float scale = 1.0f );
 
     /**
      * @brief Looks at a part of the field only (the workshop's test range): a field point in the middle of the
@@ -117,15 +119,15 @@ public:
     /** @return a field point in the output picture's pixels */
     Vector2 toPixels( Vector2 field ) const;
 
-    /** @return pixels per field unit */
-    float pixelScale() const { return m_scale; }
+    /** @return pixels per field unit (in the size given to init) */
+    float pixelScale() const { return m_scale * m_up; }
 
     /** @return the field's rectangle in the output picture's pixels */
     Rectangle fieldRect() const;
 
-    /** @return the picture's size */
-    int width() const { return m_w; }
-    int height() const { return m_h; }
+    /** @return the picture's size (as given to init) */
+    int width() const { return (int)std::lround( m_w * m_up ); }
+    int height() const { return (int)std::lround( m_h * m_up ); }
 
     /** @brief Clears particles and lights (a new mission). */
     void reset();
@@ -135,6 +137,9 @@ public:
     bool  m_showHitbox = false;   ///< draw the pilot's hit circle
     float m_time = 0.0f;
     float m_fade = 0.0f;          ///< 0 clear .. 1 black (mission start and end)
+    int   m_quality = 2;          ///< 0 performance, 1 balanced, 2 quality (bloom passes, particles; the size is init's)
+    int   m_bulletStyle = 0;      ///< enemy bullets: 0 as made, 1 strong, 2 for red-green, 3 for blue-yellow colour blindness
+    bool  m_softFlash = false;    ///< flashes, the hit's red and explosions' light dimmed
 
     static Forge s_forge;         ///< the models, shared by every renderer
     /** @brief A picture being drawn around the renderer (pictures of screens): drawn into again after draw(). */
@@ -157,8 +162,9 @@ private:
     Vector3 groundPoint( Vector2 field, double scroll ) const;
     void setLights( const World &w );
 
-    int               m_w = 0, m_h = 0;
-    float             m_scale = 1.0f;     ///< pixels per field unit
+    int               m_w = 0, m_h = 0;     ///< the targets' size
+    float             m_up = 1.0f;        ///< init's size over the targets'
+    float             m_scale = 1.0f;     ///< pixels per field unit (in the targets)
     float             m_halfH = FieldH * 0.5f;
     Vector2           m_center = { FieldW * 0.5f, FieldH * 0.5f };   ///< the field point in the picture's middle
     RenderTexture2D   m_hdr = {};

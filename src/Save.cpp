@@ -51,12 +51,12 @@ std::string join( const std::set<std::string> &s )
     return out;
 }
 
-void writeLoadout( FILE *f, const Loadout &o )
+void writeLoadout( FILE *f, const Loadout &o, const char *pre = "" )
 {
-    fprintf( f, "ship %s\nfront %s %d\nrear %s %d\nside %s %s\ngen %s\nshield %s\nspecial %s\n", o.m_ship.c_str(),
-             o.m_front.c_str(), o.m_frontLv, o.m_rear.empty() ? "-" : o.m_rear.c_str(), o.m_rearLv,
-             o.m_sideL.empty() ? "-" : o.m_sideL.c_str(), o.m_sideR.empty() ? "-" : o.m_sideR.c_str(), o.m_gen.c_str(),
-             o.m_shield.c_str(), o.m_special.empty() ? "-" : o.m_special.c_str() );
+    fprintf( f, "%sship %s\n%sfront %s %d\n%srear %s %d\n%sside %s %s\n%sgen %s\n%sshield %s\n%sspecial %s\n", pre,
+             o.m_ship.c_str(), pre, o.m_front.c_str(), o.m_frontLv, pre, o.m_rear.empty() ? "-" : o.m_rear.c_str(),
+             o.m_rearLv, pre, o.m_sideL.empty() ? "-" : o.m_sideL.c_str(), o.m_sideR.empty() ? "-" : o.m_sideR.c_str(),
+             pre, o.m_gen.c_str(), pre, o.m_shield.c_str(), pre, o.m_special.empty() ? "-" : o.m_special.c_str() );
 }
 
 bool readLoadout( Loadout &o, const std::string &k, const std::string &v )
@@ -109,6 +109,13 @@ void Settings::load( const std::string &path )
         else if ( k == "language" ) m_language = v;
         else if ( k == "textsize" ) m_textSize = f;
         else if ( k == "bind" ) m_binds.push_back( "bind " + v );
+        else if ( k == "voices" ) m_voices = f;
+        else if ( k == "bullets" ) m_bullets = (int)f;
+        else if ( k == "speed" ) m_speed = f;
+        else if ( k == "autobomb" ) m_autoBomb = f != 0;
+        else if ( k == "softflash" ) m_softFlash = f != 0;
+        else if ( k == "quality" ) m_quality = (int)f;
+        else if ( k == "mod" ) m_mods.push_back( v );
     }
 }
 
@@ -121,6 +128,9 @@ bool Settings::save( const std::string &path ) const
     fprintf( f, "autofire %d\nmouse %d\nhitbox %d\ntextsize %.2f\nrumble %d\n", m_autofire ? 1 : 0, m_mouse ? 1 : 0,
              m_hitbox ? 1 : 0, m_textSize, m_rumble ? 1 : 0 );
     if ( !m_language.empty() ) fprintf( f, "language %s\n", m_language.c_str() );
+    fprintf( f, "voices %.2f\nbullets %d\nspeed %.2f\nautobomb %d\nsoftflash %d\nquality %d\n", m_voices, m_bullets,
+             m_speed, m_autoBomb ? 1 : 0, m_softFlash ? 1 : 0, m_quality );
+    for ( const std::string &m : m_mods ) fprintf( f, "mod %s\n", m.c_str() );
     for ( const std::string &b : m_binds ) fprintf( f, "%s\n", b.c_str() );
     return endWrite( f, path );
 }
@@ -137,6 +147,15 @@ void Profile::load( const std::string &path )
         else if ( k == "seconds" ) m_seconds = atof( v.c_str() );
         else if ( k == "cubes" )
             for ( const std::string &c : split( v ) ) m_cubes.insert( c );
+        else if ( k == "flown" )
+            for ( const std::string &c : split( v ) ) m_flown.insert( c );
+        else if ( k == "bosses" )
+            for ( const std::string &c : split( v ) ) m_bosses.insert( c );
+        else if ( k == "daily" )
+        {
+            std::vector<std::string> w = split( v );
+            if ( w.size() >= 2 ) m_daily[w[0]] = atoll( w[1].c_str() );
+        }
         else if ( k == "score" )
         {
             // score <list> <score> <episode> <pilot> <name with spaces>
@@ -158,6 +177,8 @@ bool Profile::save( const std::string &path ) const
     if ( !f ) return false;
     fprintf( f, "episodes %d\narcade %d\nmaxdiff %d\nbossrush %d\nkills %lld\nseconds %.0f\ncubes %s\n", m_episodes,
              m_arcadeEpisodes, m_maxDiff, m_bossRush ? 1 : 0, m_kills, m_seconds, join( m_cubes ).c_str() );
+    fprintf( f, "flown %s\nbosses %s\n", join( m_flown ).c_str(), join( m_bosses ).c_str() );
+    for ( const auto &[day, best] : m_daily ) fprintf( f, "daily %s %lld\n", day.c_str(), best );
     for ( const auto &[k, list] : m_scores )
         for ( const HighScore &h : list )
             fprintf( f, "score %s %lld %d %s %s\n", k.c_str(), h.m_score, h.m_episode, h.m_pilot.empty() ? "-" : h.m_pilot.c_str(),
@@ -193,7 +214,14 @@ void Campaign::load( const std::string &path )
     for ( const auto &[k, v] : pairs( path ) )
     {
         if ( readLoadout( m_load, k, v ) ) continue;
+        // The second pilot's gear: the same lines with "p2." before them.
+        if ( k.rfind( "p2.", 0 ) == 0 && readLoadout( m_load2, k.substr( 3 ), v ) ) continue;
         if ( k == "difficulty" ) m_difficulty = atoi( v.c_str() );
+        else if ( k == "coop" ) m_coop = atoi( v.c_str() ) != 0;
+        else if ( k == "has2" ) m_has2 = atoi( v.c_str() ) != 0;
+        else if ( k == "credits2" ) m_credits2 = atoll( v.c_str() );
+        else if ( k == "score2" ) m_score2 = atoll( v.c_str() );
+        else if ( k == "plus" ) m_plus = atoi( v.c_str() );
         else if ( k == "episode" ) m_episode = atoi( v.c_str() );
         else if ( k == "choices" ) m_choices = split( v );
         else if ( k == "last" ) m_last = v;
@@ -227,6 +255,12 @@ bool Campaign::save( const std::string &path ) const
     writeLoadout( f, m_load );
     fprintf( f, "done %s\ncubes %s\nplans %s\nkeys %s\nowned %s\n", join( m_done ).c_str(), join( m_cubes ).c_str(),
              join( m_plans ).c_str(), join( m_keys ).c_str(), join( m_owned ).c_str() );
+    fprintf( f, "coop %d\nplus %d\n", m_coop ? 1 : 0, m_plus );
+    if ( m_has2 )
+    {
+        fprintf( f, "has2 1\ncredits2 %lld\nscore2 %lld\n", m_credits2, m_score2 );
+        writeLoadout( f, m_load2, "p2." );
+    }
     return endWrite( f, path );
 }
 

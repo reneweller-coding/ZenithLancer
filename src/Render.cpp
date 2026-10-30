@@ -398,11 +398,16 @@ Vector3 v3( Color c, float s = 1.0f ) { return { c.r / 255.0f * s, c.g / 255.0f 
 }   // namespace
 
 
-void Renderer::init( int w, int h )
+void Renderer::init( int w, int h, float scale )
 {
     if ( g.m_users++ == 0 ) makeShared();
-    m_w = w;
-    m_h = h;
+    // Drawn smaller when the graphics setting asks (the Steam Deck), and scaled up on present().
+    scale = clampf( scale, 0.4f, 1.0f );
+    m_w = std::max( 64, (int)std::lround( w * scale ) );
+    m_h = std::max( 64, (int)std::lround( h * scale ) );
+    m_up = w / (float)m_w;
+    w = m_w;
+    h = m_h;
     m_hdr = hdrTarget( w, h, true );
     m_out = LoadRenderTexture( w, h );
     SetTextureFilter( m_out.texture, TEXTURE_FILTER_BILINEAR );
@@ -412,7 +417,7 @@ void Renderer::init( int w, int h )
     SetTextureWrap( m_shadow.texture, TEXTURE_WRAP_CLAMP );
     m_lightOrder.reserve( 64 );
     int bw = w / 2, bh = h / 2;
-    for ( int i = 0; i < 6 && bw >= 4 && bh >= 4; ++i )
+    for ( int i = 0; i < ( m_quality == 0 ? 4 : 6 ) && bw >= 4 && bh >= 4; ++i )
     {
         m_bloom.push_back( hdrTarget( bw, bh, false ) );
         bw /= 2;
@@ -481,7 +486,7 @@ void Renderer::reset()
 Rectangle Renderer::fieldRect() const
 {
     Vector2 a = toPixels( { 0, 0 } ), b = toPixels( { FieldW, FieldH } );
-    return { a.x, a.y, b.x - a.x, b.y - a.y };
+    return { a.x * m_up, a.y * m_up, ( b.x - a.x ) * m_up, ( b.y - a.y ) * m_up };
 }
 
 void Renderer::setView( Vector2 center, float halfH )
@@ -612,7 +617,7 @@ void Renderer::explode( Vector2 at, int size, bool ground, Color tint )
     L.m_pos.y += 30.0f;
     L.m_color = { 255, 170, 90, 255 };
     L.m_radius = 160 * s;
-    L.m_power = 3.0f;
+    L.m_power = m_softFlash ? 1.1f : 3.0f;
     L.m_life = 0.3f + 0.12f * s;
     m_lights.push_back( L );
     if ( !ground )
@@ -661,7 +666,7 @@ void Renderer::events( const World &w )
         }
         case EvE::PLAYERHIT:
         {
-            if ( e.m_b < 0.5f ) m_hurt = std::min( 1.0f, m_hurt + 0.35f + e.m_a * 0.02f );
+            if ( e.m_b < 0.5f ) m_hurt = std::min( m_softFlash ? 0.35f : 1.0f, m_hurt + ( 0.35f + e.m_a * 0.02f ) * ( m_softFlash ? 0.4f : 1.0f ) );
             Particle p;
             p.m_pos = e.m_pos;
             p.m_tex = e.m_b > 0.5f ? T_HEX : T_SOFT;
@@ -755,7 +760,8 @@ void Renderer::events( const World &w )
         default: break;
         }
     }
-    if ( m_parts.size() > 6000 ) m_parts.erase( m_parts.begin(), m_parts.begin() + (long)( m_parts.size() - 6000 ) );
+    size_t most = m_quality == 0 ? 2500 : m_quality == 1 ? 4000 : 6000;
+    if ( m_parts.size() > most ) m_parts.erase( m_parts.begin(), m_parts.begin() + (long)( m_parts.size() - most ) );
     if ( m_lights.size() > 40 ) m_lights.erase( m_lights.begin(), m_lights.begin() + (long)( m_lights.size() - 40 ) );
 }
 
@@ -986,7 +992,10 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
         if ( b.m_player ) continue;
         Vector2 dir = len( b.m_vel ) > 1 ? norm( b.m_vel ) : Vector2{ 0, -1 };
         bool    longShot = b.m_sprite == 1 || b.m_sprite == 10 || b.m_sprite == 18 || b.m_sprite == 9;
-        sprite( T_SOFT, b.m_pos, b.m_radius * 5.2f, { 0, 0, 0, 165 }, 0, longShot ? 1.6f : 0.0f, dir );
+        // The aid "strong bullets": a wider, darker halo.
+        bool strong = m_bulletStyle > 0;
+        sprite( T_SOFT, b.m_pos, b.m_radius * ( strong ? 6.6f : 5.2f ), { 0, 0, 0, (unsigned char)( strong ? 235 : 165 ) }, 0,
+                longShot ? 1.6f : 0.0f, dir );
     }
     for ( const Laser &l : w.m_lasers )
         if ( !l.m_dead && l.m_t >= l.m_warn )
@@ -1093,6 +1102,9 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
         Vector2 dir = len( b.m_vel ) > 1 ? norm( b.m_vel ) : Vector2{ 0, -1 };
         float   r = b.m_radius;
         Color   c = b.m_color;
+        // Colour-blind aids: every enemy bullet in one colour that stands apart from the pilots' blue shots.
+        if ( !b.m_player && m_bulletStyle == 2 ) c = { 255, 196, 40, 255 };
+        else if ( !b.m_player && m_bulletStyle == 3 ) c = { 255, 50, 120, 255 };
         switch ( b.m_sprite )
         {
         case 0:   // orb
@@ -1338,8 +1350,8 @@ void Renderer::post()
     BeginTextureMode( m_out );
     Shader &f = g.m_final;
     float   exposure = L.m_exposure, bloom = L.m_bloom * 0.55f;
-    Rectangle fr = fieldRect();
-    Vector4 field = { fr.x / m_w, fr.y / m_h, ( fr.x + fr.width ) / m_w, ( fr.y + fr.height ) / m_h };
+    Vector2 fa = toPixels( { 0, 0 } ), fb = toPixels( { FieldW, FieldH } );
+    Vector4 field = { fa.x / m_w, fa.y / m_h, fb.x / m_w, fb.y / m_h };
     SetShaderValue( f, GetShaderLocation( f, "exposure" ), &exposure, SHADER_UNIFORM_FLOAT );
     SetShaderValue( f, GetShaderLocation( f, "bloom" ), &bloom, SHADER_UNIFORM_FLOAT );
     SetShaderValue( f, GetShaderLocation( f, "hurt" ), &m_hurt, SHADER_UNIFORM_FLOAT );

@@ -424,11 +424,13 @@ struct Catalog
     std::vector<std::string>            m_warnings;
 
     /**
-     * @brief Reads everything in a data folder (data/ and its subfolders).
-     * @param[in] dir  the folder
+     * @brief Reads everything in a data folder (data/ and its subfolders), then the mods' data folders over it (an
+     *        entry of a name the game has replaces the game's; new names add to it).
+     * @param[in] dir   the folder
+     * @param[in] mods  the mods' data folders, in order
      * @return false if there were errors (m_errors)
      */
-    bool load( const std::string &dir );
+    bool load( const std::string &dir, const std::vector<std::string> &mods = {} );
 
     /** @brief Checks what refers to what (models, enemies, missions, stories); adds to m_errors and m_warnings. */
     void check();

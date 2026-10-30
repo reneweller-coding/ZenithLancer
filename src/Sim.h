@@ -148,6 +148,7 @@ struct Bullet
     int         m_lastHit = -1;      ///< the enemy it hit last (piercing shots hit each once)
     bool        m_dead = false;
     bool        m_mine = false;
+    const EnemyDef *m_src = nullptr; ///< the enemy that fired it (the play log names it)
     float       m_slow = 0.0f;       ///< flame: slows to a stop
     float       m_length = 0.0f;     ///< drawn this long along its way
     float       m_phase = 0.0f;      ///< weaving shots: where in their swing they start (radians)
@@ -249,6 +250,17 @@ struct Player
     float               m_damageTaken = 0.0f;
 };
 
+/** @brief Where and by what a pilot was shot down (the play log). */
+struct DeathNote
+{
+    int         m_pilot = 0;
+    float       m_t = 0.0f;           ///< seconds into the mission
+    Vector2     m_pos = { 0, 0 };
+    std::string m_by;                 ///< the enemy (its name) or ""
+    std::string m_how;                ///< bullet, laser, ram
+    bool        m_boss = false;       ///< in a boss fight
+};
+
 /** @brief What a mission came to. */
 struct Stats
 {
@@ -262,6 +274,7 @@ struct Stats
     float                    m_time = 0.0f;     ///< seconds flown
     float                    m_damage = 0.0f;   ///< damage taken
     int                      m_deaths = 0;
+    std::vector<DeathNote>   m_deathNotes;
 };
 
 /** @brief The field and all on it. */
@@ -290,6 +303,12 @@ public:
     void refit( int i );
 
     /**
+     * @brief New Game+: the enemies tougher, faster and harder hitting with every round finished (after begin()).
+     * @param[in] plus  the rounds finished before (0: the first round, nothing changes)
+     */
+    void setPlus( int plus );
+
+    /**
      * @brief One step (1/60 s).
      * @param[in] in  the two pilots' input
      */
@@ -316,6 +335,7 @@ public:
     const LevelDef      *m_level = nullptr;
     ModeE                m_mode = ModeE::CAMPAIGN;
     int                  m_diffIndex = 2;
+    int                  m_plus = 0;           ///< New Game+ (setPlus)
     DifficultyDef        m_diff;
     Rng                  m_rng;
     float                m_clock = 0.0f;       ///< seconds since the start
@@ -394,7 +414,8 @@ private:
     void collide();
     void hitEnemy( int idx, float dmg, int owner, Vector2 at );
     void killEnemy( int idx, int owner );
-    void hurtPlayer( int i, float dmg, Vector2 at );
+    void hurtPlayer( int i, float dmg, Vector2 at, const EnemyDef *by = nullptr, const char *how = "bullet" );
+    void revive( Player &p );
     void drop( const Enemy &e, const DropDef &d );
     void dropAt( PickE k, Vector2 at, int value, const std::string &item );
     void take( int i, Pickup &p );
@@ -446,6 +467,15 @@ SimResult simulate( const Catalog &cat, const LevelDef &level, int difficulty, c
  * @return the mission (name "bossrush")
  */
 LevelDef bossRush( const Catalog &cat );
+
+/**
+ * @brief The gear a player has bought by the middle of an episode (docs/DESIGN.md's prices against the credits an
+ *        episode earns): the autopilot's balance runs and the practice flights fly with it.
+ * @param[in] cat      the catalog
+ * @param[in] episode  the episode (1..5)
+ * @return the gear
+ */
+Loadout midLoadout( const Catalog &cat, int episode );
 
 /** @return the sprite index of a bullet kind name (orb, needle, big ...) */
 int spriteOf( const std::string &name );

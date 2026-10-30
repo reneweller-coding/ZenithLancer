@@ -1,0 +1,254 @@
+# Who speaks the story texts (written by tools/speakers.py): <portrait> <voice> <the "from" as written>.
+# The portrait is assets/portraits/<portrait>.png (- none), the voice tools/voices.json's figure.
+machine announcer Archiv der Ersten
+machine announcer Archiv der Ersten, Liedersammlung
+machine announcer Archiv der Ersten, Tafel 1
+machine announcer Archive of the First
+machine announcer Archive of the First, Tablet 1
+machine announcer Archive of the First, song collection
+machine announcer Ascalon Foundry, Shipping
+machine announcer Ascalon Primus Design Office
+machine announcer Ascalon cooling cellars
+machine announcer Ascalon, Durchsage in Schleife
+machine announcer Ascalon, looped announcement
+machine announcer Automatic ship's log
+machine announcer Automatische Sonde der Kooperative
+machine announcer Automatisches Bordlogbuch
+machine announcer Cold Chamber, automated system
+machine announcer Cooperative automatic probe
+machine announcer Cooperative survey drone
+machine announcer Corvina Harbour Office
+machine announcer Engineering Department, Greyband
+machine announcer Gießerei Ascalon, Versand
+machine announcer Hafenmeisterei Corvina
+machine announcer Kaltkammer, Automatik
+machine announcer Kessa Signal Box
+machine announcer Konstruktionsbüro Ascalon Primus
+machine announcer Kühlkeller Ascalon
+machine announcer Lancer Programme
+machine announcer Lancer-Programm
+machine announcer Platform, welcome message
+machine announcer Plattform, Begrüßungsansage
+machine announcer Radio Corvina
+machine announcer Rundfunk Corvina
+machine announcer Stellwerk Kessa
+machine announcer Technische Abteilung, Grauband
+machine announcer Vermessungsdrohne der Kooperative
+machine announcer Weather satellite WB-7, Corvina Meteorological Service
+machine announcer Werksicherheit Ascalon Primus
+machine announcer Wettersatellit WB-7, Meteorologischer Dienst Corvina
+machine announcer Works Security, Ascalon Primus
+machine announcer Zenith Station, automatic log
+machine announcer Zenith-Station, automatisches Logbuch
+radio child Lio, 8 Jahre, Neu-Maren
+radio child Lio, age 8, New Maren
+radio child Mika, 7 Jahre
+radio child Mika, age 7
+radio child Mila, 9 Jahre
+radio child Mila, aged 9
+choir choir Der Chor
+choir choir The Choir
+curator curator Der Kurator
+curator curator The Curator
+halvard halvard Captain Imre Halvard
+halvard halvard Captain Imre Halvard, frigate Fealty
+halvard halvard Kapitänin Imre Halvard
+halvard halvard Kapitänin Imre Halvard, Fregatte Treue
+krenn krenn Fleet Archive: Major Edda Krenn
+krenn krenn Flottenarchiv: Major Edda Krenn
+krenn krenn Major Edda Krenn
+radio man Chalk on the canteen wall, Ascalon
+radio man Convoy 12, two days old
+radio man Die Gründer der Vulkantiefe
+radio man Distress call, prospector Pell
+radio man Dr. Lio Marchetti, Sonnenwarte Zenith
+radio man Dr. Lio Marchetti, Zenith Solar Observatory
+radio man Grauband-Kooperative, Feld 9
+radio man Greyband Cooperative, Field 9
+radio man Konvoi 12, zwei Tage alt
+radio man Kreide an der Kantinenwand, Ascalon
+radio man Notruf, Schürfer Pell
+radio man Odile Shaft
+radio man Pump keeper Henrik Olt
+radio man Pumpwart Henrik Olt
+radio man Schacht Odile
+radio man Schichtbuch, Schmelzmeister Oren Kask
+radio man Shift log, Smeltmaster Oren Kask
+radio man Teodor, Hafenarbeiter in Corvina
+radio man Teodor, dock worker in Corvina
+radio man The founders of Vulcan Deep
+radio man Transport Kalla Green
+radio man Transport Kalla Grün
+radio man Zenith Station, Shipyard Management
+radio man Zenith-Station, Werftleitung
+radio man2 Arche Langmut, Siedlungsjahr 1
+radio man2 Ark Forbearance, Settlement Year 1
+radio man2 Aschenschleier
+radio man2 Bohrmeister Jakob Ilić, Grauband
+radio man2 C.
+radio man2 Cold Chamber, Lab 3
+radio man2 Crewman Piet Hollander, Aster
+radio man2 Der erste Keim
+radio man2 Distress call, Deck 4
+radio man2 Distress call, Hangar 3
+radio man2 Drill Master Jakob Ilić, Greyband
+radio man2 Flaggschiff Aster, vor neun Jahren
+radio man2 Flagship Aster, nine years ago
+radio man2 Gießmeister Tomas Brenn
+radio man2 Kalmar Command
+radio man2 Kaltkammer, Labor 3
+radio man2 Kommandantur Kalmar
+radio man2 Master caster Tomas Brenn
+radio man2 Matrose Piet Hollander, Aster
+radio man2 Notruf, Deck 4
+radio man2 Notruf, Hangar 3
+radio man2 Pumping Station 4, distress call
+radio man2 Pumpstation 4, Notruf
+radio man2 The Ash Veil
+radio man2 The First Seed
+radio man2 U.
+radio man2 Unbekannt
+radio man2 Unbekannter Sender
+radio man2 Unknown
+radio man2 Unknown transmitter
+- narrator Colony ship Dawncall, 2391
+- narrator Corvina, Thalassa
+- narrator Kolonieschiff Morgenruf, 2391
+- narrator Orbit above Sylvara
+- narrator Orbit über Sylvara
+- narrator Pyra, drei Tage nach Zenith
+- narrator Pyra, three days after Zenith
+- narrator Solenne System
+- narrator Solenne system, 2614
+- narrator Solenne-System
+- narrator Solenne-System, 2614
+- narrator Sylvara, Mond des Vael
+- narrator Sylvara, moon of Vael
+- narrator Thalassa, 2614
+directorate officer Admiralstab des Direktorats
+directorate officer Brandtrupp 4
+directorate officer Burn Crew 4
+directorate officer Chief Petty Officer K. Ruhl, Northwatch Station
+directorate officer Corporal Ben Arlo, Burn Crew 4
+directorate officer Cruiser Mandate
+directorate officer Directorate Admiralty Staff
+directorate officer Directorate Fleet Command
+directorate officer Directorate supply freighter
+directorate officer Directorate, Occupation Authority
+directorate officer Directorate, Salvage Command
+directorate officer Directorate, Special Projects Division
+directorate officer Direktorat, Abteilung Sonderprojekte
+directorate officer Direktorat, Bergungskommando
+directorate officer Direktorat, Besatzungsverwaltung
+directorate officer Festung Kalmar
+directorate officer Flottenführung des Direktorats
+directorate officer Flusspatrouille Kalmar
+directorate officer Fort Kalmar
+directorate officer Fregatte Treue
+directorate officer Fregatte Treue, Brücke
+directorate officer Frigate Fealty
+directorate officer Frigate Fealty, bridge
+directorate officer Gefreiter Tomas Wendl, Quarantänekommando
+directorate officer Jagdstaffel Weißdorn
+directorate officer Kalmar River Patrol
+directorate officer Kreuzer Mandat
+directorate officer Leutnant Esra Vohl, Brandroder
+directorate officer Lieutenant Esra Vohl, the Scorcher
+directorate officer Meridian Directorate, Fleet Command
+directorate officer Meridian Directorate, Industrial Oversight Pyra
+directorate officer Meridian Directorate, Planning Department
+directorate officer Meridian Directorate, Pyra Transport Office
+directorate officer Meridian Directorate, Zenith Custody Office
+directorate officer Meridian-Direktorat, Abteilung Planung
+directorate officer Meridian-Direktorat, Flottenkommando
+directorate officer Meridian-Direktorat, Industrieaufsicht Pyra
+directorate officer Meridian-Direktorat, Verkehrsamt Pyra
+directorate officer Meridian-Direktorat, Verwahrstelle Zenith
+directorate officer Obermaat K. Ruhl, Station Nordwacht
+directorate officer Private Tomas Wendl, Quarantine Command
+directorate officer Quarantänekommando Sylvara
+directorate officer Sylvara Quarantine Command
+directorate officer Unteroffizier Ben Arlo, Brandtrupp 4
+directorate officer Versorgungsfrachter des Direktorats
+directorate officer Whitethorn Hunt Squadron
+okonjo okonjo Amara Okonjo
+okonjo okonjo Amara Okonjo, 19 Jahre
+okonjo okonjo Amara Okonjo, age 19
+okonjo okonjo Dr. A. Okonjo, Terraforming Programme
+okonjo okonjo Dr. A. Okonjo, Terraforming-Programm
+okonjo okonjo Dr. Amara Okonjo
+radio oldman Der Alte der Tiefe
+radio oldman Der Archivar
+radio oldman Prof. Tobias Arnfeld, fifty years ago
+radio oldman Prof. Tobias Arnfeld, vor fünfzig Jahren
+radio oldman The Archivist
+radio oldman The Old One of the Deep
+choir orrin Der Chor (übertragen von ORRIN)
+orrin orrin ORRIN
+choir orrin The Choir (translated by ORRIN)
+quill quill Bastian Quill
+quill quill Bastian Quill, Elster
+quill quill Bastian Quill, Magpie
+quill quill Bastian Quill, Werbefunk
+quill quill Bastian Quill, nicht zum Lesen bestimmt
+quill quill Bastian Quill, not meant to be read
+quill quill Bastian Quill, radio advert
+quill quill Die Elster, Bastian Quill
+quill quill Quill's Magpie, Purchasing
+quill quill Quill's Magpie, flying bazaar
+quill quill Quills Elster, Ankauf
+quill quill Quills Elster, fliegender Basar
+quill quill The Magpie, Bastian Quill
+salgado salgado Bootsmann Iker, Salgados Crew
+salgado salgado Bosun Iker, Salgado's crew
+salgado salgado Captain Rui Salgado
+salgado salgado Funkerin Dalia, Salgados Crew
+salgado salgado Kapitän Rui Salgado
+salgado salgado Radio operator Dalia, Salgado's crew
+salgado salgado Rui Salgado
+salgado salgado Rui Salgado, Kapitän
+salgado salgado Rui Salgado, captain
+tosk tosk Forewoman Mirela Tosk
+tosk tosk Obfrau Mirela Tosk
+vey vey Nadia
+voss voss Admiral D. Voss an alle Einheiten
+voss voss Admiral D. Voss to all units
+voss voss Admiral Dacian Voss
+voss voss Flottenkommando Meridian, Admiral D. Voss
+voss voss Meridian Fleet Command, Admiral D. Voss
+radio woman Bürgermeisterin Hanne Corvo
+radio woman Captain Ilona Marek
+radio woman Commander S. Arvelo, Zenith Station
+radio woman Convoy leader Ada Krell
+radio woman Der Glockenstein
+radio woman Engine driver Pia Sorrent
+radio woman Ilse Marrow, Gießerin in Ascalon
+radio woman Ilse Marrow, caster at Ascalon
+radio woman Kapitänin zur See Ilona Marek
+radio woman Kommandantin S. Arvelo, Zenith-Station
+radio woman Konvoiführerin Ada Krell
+radio woman Lia Fenwick, Hafenamt Pyra-Verwaltung
+radio woman Lia Fenwick, Port Office, Pyra Administration
+radio woman Lokführerin Pia Sorrent
+radio woman Marisol City Council, emergency radio
+radio woman Mayor Hanne Corvo
+radio woman Schichtleiter K. Imre, Zenith-Station
+radio woman Shift Supervisor K. Imre, Zenith Station
+radio woman Stadtrat Marisol, Notfunk
+radio woman The Bellstone
+radio woman2 Bootsführerin Mara Kesk, Neu-Maren
+radio woman2 Botanikerin Selma Arden
+radio woman2 Botanist Selma Arden
+radio woman2 Dr. Henrike Saal, Polarforschung
+radio woman2 Dr. Henrike Saal, polar research
+radio woman2 Engineer Bryn Halloway
+radio woman2 Forewoman T. Ansel
+radio woman2 Geologin R. Tamsin
+radio woman2 Geologist R. Tamsin
+radio woman2 Ingenieurin Bryn Halloway
+radio woman2 Meteorologin S. Varga
+radio woman2 Meteorologist S. Varga
+radio woman2 Nell Abara, Ascalon Primus works radio
+radio woman2 Nell Abara, Werksfunk Ascalon Primus
+radio woman2 Skipper Mara Kesk, New Maren
+radio woman2 Vorarbeiterin T. Ansel

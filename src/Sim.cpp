@@ -61,6 +61,35 @@ const BulletKind EnemyBullets[] = { { "orb", 6, 6 },     { "needle", 4, 5 }, { "
 
 }   // namespace
 
+Loadout midLoadout( const Catalog &cat, int episode )
+{
+    static const char *mid[6] = {
+        "",
+        "ship=lancer,front=pulse:5,rear=tailgun:2,left=pip,right=-,gen=dynamo,shield=ward,special=nova_s",
+        "ship=bastion,front=hornet:5,rear=sweep:3,left=glimmer,right=pip,gen=fusion,shield=mantle,special=drones",
+        "ship=corsair,front=prism:5,rear=orbiter:4,left=warden,right=lancet,gen=plasmaheart,shield=fortress,special=timeslow",
+        "ship=warhawk,front=helix:6,rear=halo:4,left=hydra,right=phoenix,gen=starforge,shield=prismshield,special=supernova",
+        "ship=seraphim,front=tempest:7,rear=hailstorm:5,left=seraph,right=mirror,gen=singularity,shield=halo_s,special=lance" };
+    Loadout o;
+    auto    ep = cat.m_episodes.find( episode );
+    if ( ep != cat.m_episodes.end() ) o = ep->second.m_loadout;
+    if ( episode >= 1 && episode <= 5 ) parseLoadout( o, mid[episode] );
+    // Goods this data does not know fall back to the episode's own.
+    if ( ep != cat.m_episodes.end() )
+    {
+        const Loadout &e = ep->second.m_loadout;
+        if ( !cat.ship( o.m_ship ) ) o.m_ship = e.m_ship;
+        if ( !cat.weapon( o.m_front ) ) o.m_front = e.m_front;
+        if ( !o.m_rear.empty() && !cat.weapon( o.m_rear ) ) o.m_rear = e.m_rear;
+        if ( !o.m_sideL.empty() && !cat.sidekick( o.m_sideL ) ) o.m_sideL = e.m_sideL;
+        if ( !o.m_sideR.empty() && !cat.sidekick( o.m_sideR ) ) o.m_sideR = e.m_sideR;
+        if ( !cat.generator( o.m_gen ) ) o.m_gen = e.m_gen;
+        if ( !cat.shield( o.m_shield ) ) o.m_shield = e.m_shield;
+        if ( !o.m_special.empty() && !cat.special( o.m_special ) ) o.m_special = e.m_special;
+    }
+    return o;
+}
+
 LevelDef bossRush( const Catalog &cat )
 {
     LevelDef rush;
@@ -164,6 +193,19 @@ void World::addPlayer( int i, const Loadout &load, int lives )
     p.m_energy = p.m_energyMax;
     p.m_charges = p.m_special ? p.m_special->m_charges : 0;
     p.m_invuln = 1.5f;
+}
+
+void World::setPlus( int plus )
+{
+    // Each round finished: tougher hulls, more and faster fire, harder hits, and the money to answer it.
+    m_plus = std::max( 0, plus );
+    float k = (float)m_plus;
+    m_diff.m_hp *= 1.0f + 0.35f * k;
+    m_diff.m_fire *= 1.0f + 0.2f * k;
+    m_diff.m_speed *= 1.0f + 0.06f * k;
+    m_diff.m_damage *= 1.0f + 0.15f * k;
+    m_diff.m_credits *= 1.0f + 0.25f * k;
+    if ( m_plus >= 2 ) m_diff.m_revenge = true;
 }
 
 void World::refit( int i )
@@ -677,16 +719,11 @@ void World::movePlayer( int i, const PlayerInput &in )
         if ( p.m_lives > 0 && p.m_dead > 1.6f )
         {
             --p.m_lives;
-            p.m_alive = true;
-            p.m_dead = 0;
-            p.m_pos = { FieldW * 0.5f, FieldH - 100.0f };
-            p.m_vel = { 0, 0 };
-            p.m_armor = p.m_armorMax;
-            p.m_shield = p.m_shieldDef ? p.m_shieldDef->m_max : 0;
-            p.m_energy = p.m_energyMax;
-            p.m_invuln = 3.0f;
-            if ( p.m_special ) p.m_charges = std::max( p.m_charges, p.m_special->m_charges );
+            revive( p );
         }
+        // The campaign for two: a pilot shot down comes back after a while, as long as the other one still flies.
+        const Player &o = m_players[1 - i];
+        if ( m_mode == ModeE::CAMPAIGN && o.m_active && o.m_alive && p.m_dead > 8.0f ) revive( p );
         return;
     }
     float   speed = p.m_ship ? p.m_ship->m_speed : 330.0f;
@@ -1436,6 +1473,7 @@ void World::enemyBullet( const Enemy &e, const FireDef &f, Vector2 at, float dir
     b.m_player = false;
     b.m_pos = b.m_origin = at;
     b.m_vel = mul( dirOf( dir ), speed * m_diff.m_speed );
+    b.m_src = e.m_def;
     int k = spriteOf( f.m_bullet );
     if ( k > 7 ) k = 0;
     b.m_sprite = k;
@@ -1925,7 +1963,20 @@ void World::killEnemy( int idx, int owner )
     }
 }
 
-void World::hurtPlayer( int i, float dmg, Vector2 at )
+void World::revive( Player &p )
+{
+    p.m_alive = true;
+    p.m_dead = 0;
+    p.m_pos = { FieldW * 0.5f, FieldH - 100.0f };
+    p.m_vel = { 0, 0 };
+    p.m_armor = p.m_armorMax;
+    p.m_shield = p.m_shieldDef ? p.m_shieldDef->m_max : 0;
+    p.m_energy = p.m_energyMax;
+    p.m_invuln = 3.0f;
+    if ( p.m_special ) p.m_charges = std::max( p.m_charges, p.m_special->m_charges );
+}
+
+void World::hurtPlayer( int i, float dmg, Vector2 at, const EnemyDef *by, const char *how )
 {
     Player &p = m_players[i];
     if ( !p.m_alive || p.m_invuln > 0 ) return;
@@ -1959,6 +2010,14 @@ void World::hurtPlayer( int i, float dmg, Vector2 at )
         p.m_alive = false;
         p.m_dead = 0;
         ++m_stats.m_deaths;
+        DeathNote note;
+        note.m_pilot = i;
+        note.m_t = m_clock;
+        note.m_pos = p.m_pos;
+        note.m_by = by ? by->m_name : "";
+        note.m_how = how;
+        note.m_boss = boss() >= 0;
+        m_stats.m_deathNotes.push_back( note );
         emit( EvE::PLAYERDIE, p.m_pos );
         SimEvent ev;
         ev.m_type = EvE::EXPLODE;
@@ -2142,7 +2201,7 @@ void World::collide()
             if ( dist2( b.m_pos, p.m_pos ) < ( r + b.m_radius * 0.85f ) * ( r + b.m_radius * 0.85f ) )
             {
                 b.m_dead = true;
-                hurtPlayer( i, b.m_damage, b.m_pos );
+                hurtPlayer( i, b.m_damage, b.m_pos, b.m_src, "bullet" );
                 if ( !p.m_alive ) break;
             }
         }
@@ -2154,7 +2213,9 @@ void World::collide()
             float   along = rel.x * d.x + rel.y * d.y;
             if ( along < 0 ) continue;
             float across = std::fabs( rel.x * -d.y + rel.y * d.x );
-            if ( across < l.m_width * 0.5f + r * 0.7f ) hurtPlayer( i, l.m_damage * Dt * 4.0f, p.m_pos );
+            if ( across < l.m_width * 0.5f + r * 0.7f )
+                hurtPlayer( i, l.m_damage * Dt * 4.0f, p.m_pos,
+                            l.m_owner >= 0 && l.m_owner < (int)m_enemies.size() ? m_enemies[(size_t)l.m_owner].m_def : nullptr, "laser" );
         }
         for ( size_t e = 0; e < m_enemies.size(); ++e )
         {
@@ -2165,7 +2226,7 @@ void World::collide()
             {
                 if ( p.m_invuln <= 0 && p.m_barrier <= 0 )
                 {
-                    hurtPlayer( i, en.m_def->m_contact, p.m_pos );
+                    hurtPlayer( i, en.m_def->m_contact, p.m_pos, en.m_def, "ram" );
                     p.m_invuln = std::max( p.m_invuln, 0.5f );
                     if ( en.m_def->m_kind == EnemyKindE::AIR ) hitEnemy( (int)e, en.m_def->m_contact * 2.0f, i, en.m_pos );
                 }

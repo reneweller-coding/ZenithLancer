@@ -1,0 +1,67 @@
+{
+  "_": "Who speaks how (tools/make_voices.py): a description for Qwen3-TTS VoiceDesign (once per figure and language, then cloned for every line) and effects after the voice: machine (a soft metal comb), shimmer (the Curator's even calm), chorus (the Choir: several voices at once), pa (a loudspeaker), radio (added by the game's radio calls in flight for everyone without an effect of their own). data/speakers.txt says which story speaker has which voice.",
+  "orrin": {
+    "describe": "A calm, precise male voice in his forties, warm mid-baritone, exact articulation, dry understated wit, quietly protective; the on-board mind of a fighter craft, never hurried.",
+    "fx": ["machine"]
+  },
+  "quill": {
+    "describe": "A chatty, warm man in his fifties, a smuggler and trader, lively tenor-baritone with a grin in the voice, quick pace, theatrical salesman flourishes, slightly hoarse from talking too much."
+  },
+  "okonjo": {
+    "describe": "A brilliant, tired woman in her early sixties, an engineer and scientist, low warm alto, thoughtful and precise, quiet guilt and steady resolve, measured pace."
+  },
+  "salgado": {
+    "describe": "A weathered sea captain in his mid-forties who leads fishers and dock workers, rough strong baritone, direct and warm-hearted, used to shouting over wind and waves."
+  },
+  "voss": {
+    "describe": "A cold, formal admiral in his late fifties, clipped precise baritone, completely controlled, never raises his voice, quietly menacing authority."
+  },
+  "curator": {
+    "describe": "A calm, polite, gentle male voice, perfectly even and soft, unsettlingly kind, slow measured pace, like a patient museum guide explaining something obvious.",
+    "fx": ["shimmer"]
+  },
+  "choir": {
+    "describe": "A soft, breathy, otherworldly voice, slow and dreamy, gentle and ancient, speaking in images, almost whispering.",
+    "fx": ["chorus"]
+  },
+  "vey": {
+    "describe": "A woman test pilot in her early thirties, dry and stubborn, few words, cool clear mid-range voice, slightly husky, calm under pressure."
+  },
+  "tosk": {
+    "describe": "A forewoman of a mining cooperative in her fifties, firm earthy alto, blunt and practical, a hint of humour."
+  },
+  "krenn": {
+    "describe": "A woman officer, a major in her forties, crisp disciplined alto, military clarity, restrained and correct."
+  },
+  "halvard": {
+    "describe": "A woman ship captain in her fifties, calm commanding mezzo-soprano, steady and a little weary."
+  },
+  "man": {
+    "describe": "A man in his thirties, an ordinary working voice, clear natural baritone, earnest."
+  },
+  "man2": {
+    "describe": "A man in his fifties, gravelly tenor, a little nervous and hurried."
+  },
+  "woman": {
+    "describe": "A woman in her thirties, clear warm mezzo-soprano, natural and direct."
+  },
+  "woman2": {
+    "describe": "A young woman in her twenties, bright quick voice, a little breathless."
+  },
+  "oldman": {
+    "describe": "A very old man, thin and slightly cracked voice, slow and wise, gentle."
+  },
+  "child": {
+    "describe": "A child of about eight years, bright high voice, earnest and a little shy."
+  },
+  "announcer": {
+    "describe": "A neutral automated female announcement voice, perfectly even and friendly, very clear, calm synthetic politeness.",
+    "fx": ["pa"]
+  },
+  "officer": {
+    "describe": "A formal male military officer in his forties, clipped bureaucratic baritone, emotionless and correct."
+  },
+  "narrator": {
+    "describe": "A warm, calm narrator, a woman in her forties, soft low mezzo-soprano, unhurried documentary tone."
+  }
+}

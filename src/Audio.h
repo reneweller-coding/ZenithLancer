@@ -1,8 +1,10 @@
 /**
  * @file Audio.h
  * @brief The sound: effects synthesised at the start (no sample files: the guns, hits, explosions, pickups, the
- *        boss siren, the menus), panned by where they happen on the field; and the music, streamed from
- *        assets/music/<name>.ogg (or .mp3, .wav) with a crossfade between pieces. Without an audio device (--mute)
+ *        boss siren, the menus), panned by where they happen on the field; the music, streamed from
+ *        assets/music/<name>.ogg (or .mp3, .wav) with a crossfade between pieces and, where a piece has a quiet
+ *        layer (<name>_low.ogg), a fade between the two by how much happens; and the voices of the story
+ *        (assets/voice/<language>/<key>.ogg), with the music ducking under them. Without an audio device (--mute)
  *        every call does nothing.
  * @author Rene Weller
  */
@@ -69,6 +71,23 @@ public:
     void update( float dt );
 
     /**
+     * @brief How much happens: the music fades from its quiet layer (0) to the full piece (1).
+     * @param[in] x  0..1 (pieces without a quiet layer always play full)
+     */
+    void intensity( float x ) { m_mixGoal = x < 0 ? 0 : x > 1 ? 1 : x; }
+
+    /**
+     * @brief Speaks a story text, if it has a voice; the one speaking stops.
+     * @param[in] key   the story entry ("" only stops)
+     * @param[in] lang  the language's folder (de, en)
+     * @return whether it speaks
+     */
+    bool voice( const std::string &key, const std::string &lang );
+
+    /** @return whether a voice speaks */
+    bool speaking() const { return m_hasVoice; }
+
+    /**
      * @brief Writes every effect as a WAV (to listen to them, to level them).
      * @param[in] dir  the folder
      */
@@ -76,6 +95,7 @@ public:
 
     float m_musicVolume = 0.7f;
     float m_effectVolume = 0.8f;
+    float m_voiceVolume = 0.9f;
     bool  m_on = false;
 
 private:
@@ -86,9 +106,17 @@ private:
     std::string m_assets;
     Music       m_music[2] = {};
     bool        m_has[2] = { false, false };
+    Music       m_low[2] = {};               ///< each piece's quiet layer, running in step with it
+    bool        m_hasLow[2] = { false, false };
     float       m_gain[2] = { 0, 0 };
+    float       m_mix = 1.0f, m_mixGoal = 1.0f;
     int         m_cur = 0;
     std::string m_name;
+    Music       m_voice = {};
+    bool        m_hasVoice = false;
+    float       m_duck = 1.0f;               ///< the music under a voice
+
+    void drop( int i );
 };
 
 }   // namespace zenith

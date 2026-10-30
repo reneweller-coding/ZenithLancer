@@ -27,9 +27,22 @@ void App::startMission( const std::string &name )
     m_level = name;
     crash::context( "mission " + name );
     uint32_t seed = (uint32_t)( GetTime() * 1000.0 ) ^ 0x5eed;
-    m_world.begin( &m_cat, lv, m_mode, m_mode == ModeE::CAMPAIGN ? m_camp.m_difficulty : m_diff, seed );
-    if ( m_mode == ModeE::CAMPAIGN )
+    bool     camp = m_mode == ModeE::CAMPAIGN && !m_practice;
+    m_world.begin( &m_cat, lv, m_mode, camp ? m_camp.m_difficulty : m_diff, seed );
+    m_prof.m_flown.insert( name );
+    if ( camp )
+    {
+        // The campaign: New Game+ makes it harder; for two, the second pilot flies with gear of their own.
+        m_world.setPlus( m_camp.m_plus );
+        m_players = m_camp.m_coop ? 2 : 1;
         m_world.addPlayer( 0, m_camp.m_load, 0 );
+        if ( m_camp.m_coop ) m_world.addPlayer( 1, m_camp.m_load2, 0 );
+    }
+    else if ( m_practice )
+    {
+        m_players = 1;
+        m_world.addPlayer( 0, practiceLoad( *lv ), 0 );
+    }
     else
         for ( int i = 0; i < m_players; ++i )
         {
@@ -76,6 +89,13 @@ void App::endMission( bool won )
 {
     m_last = m_world.m_stats;
     m_prof.m_kills += m_last.m_kills;
+    logMission( won ? "won" : "lost" );
+    if ( m_practice )
+    {
+        // A practice flight keeps nothing but the log.
+        go( won ? ScreenE::RESULTS : ScreenE::FAILED );
+        return;
+    }
     for ( const std::string &c : m_last.m_cubes ) m_prof.m_cubes.insert( c );
     if ( m_mode == ModeE::CAMPAIGN )
     {
@@ -88,6 +108,14 @@ void App::endMission( bool won )
         m_earned = p.m_credits;
         m_camp.m_credits += p.m_credits;
         m_camp.m_score += p.m_score;
+        m_earned2 = 0;
+        if ( m_camp.m_coop )
+        {
+            const Player &p2 = m_world.m_players[1];
+            m_earned2 = p2.m_credits;
+            m_camp.m_credits2 += p2.m_credits;
+            m_camp.m_score2 += p2.m_score;
+        }
         m_camp.m_done.insert( m_level );
         m_camp.m_last = m_level;
         ++m_camp.m_missions;
@@ -145,7 +173,8 @@ void App::play( float dt )
     if ( !m_paused && !IsWindowFocused() && !m_in.scripted() && m_outroT < 0 && m_screen == ScreenE::PLAY ) m_paused = true;
     if ( !m_paused )
     {
-        m_acc += dt;
+        // The aid "game speed" slows the whole game down.
+        m_acc += dt * clampf( m_set.m_speed, 0.5f, 1.0f );
         int steps = 0;
         // The mouse on the field (the renderer's pixels are the screen's).
         Vector2 mp = GetMousePosition();
@@ -159,6 +188,18 @@ void App::play( float dt )
             {
                 if ( !m_world.m_players[i].m_active ) continue;
                 in[i] = m_opt.m_auto || m_in.scripted() ? autopilot( m_world, i ) : m_in.player( i, m_players, m_set.m_mouse ? &mf : nullptr, m_set.m_autofire );
+                // The aid "auto-bomb": the special fires by itself when the armour is nearly gone and a bullet is close.
+                const Player &p = m_world.m_players[i];
+                m_autoBombT[i] = std::max( 0.0f, m_autoBombT[i] - Dt );
+                if ( m_set.m_autoBomb && p.m_alive && p.m_special && p.m_charges > 0 && m_autoBombT[i] <= 0 &&
+                     p.m_armor < p.m_armorMax * 0.25f )
+                    for ( const Bullet &b : m_world.m_bullets )
+                        if ( !b.m_player && !b.m_dead && dist2( b.m_pos, p.m_pos ) < 110.0f * 110.0f )
+                        {
+                            in[i].m_special = true;
+                            m_autoBombT[i] = 2.0f;
+                            break;
+                        }
             }
             m_world.step( in );
             m_in.consumed();
@@ -166,11 +207,15 @@ void App::play( float dt )
             m_audio.events( m_world );
             // The checkpoint: the campaign and the boss rush may fight a lost boss again from here.
             for ( const SimEvent &e : m_world.m_events )
-                if ( e.m_type == EvE::BOSSSTART && ( m_mode == ModeE::CAMPAIGN || m_mode == ModeE::BOSSRUSH ) )
+                if ( e.m_type == EvE::BOSSSTART )
                 {
-                    m_bossSave = m_world;
-                    m_hasBossSave = true;
-                    m_bossTries = 0;
+                    m_prof.m_bosses.insert( m_level );
+                    if ( m_mode == ModeE::CAMPAIGN || m_mode == ModeE::BOSSRUSH )
+                    {
+                        m_bossSave = m_world;
+                        m_hasBossSave = true;
+                        m_bossTries = 0;
+                    }
                 }
             for ( const SimEvent &e : m_world.m_events )
             {
@@ -185,6 +230,7 @@ void App::play( float dt )
                         m_radioFrom = st->m_from;
                         m_radioT = 0;
                         m_audio.play( SfxE::BLIP );
+                        m_audio.voice( e.m_name, language() );
                     }
                 }
                 else if ( e.m_type == EvE::THEME )
@@ -245,6 +291,18 @@ void App::play( float dt )
         if ( steps >= 5 ) m_acc = 0;
         m_introT += dt;
         m_radioT += dt;
+        // A call stays on screen while its voice speaks.
+        if ( m_audio.speaking() && m_radioT > 5.5f ) m_radioT = 5.5f;
+        // The music follows the field: its quiet layer while little happens, the full piece in a fight.
+        {
+            int enemies = 0, shots = 0;
+            for ( const Enemy &e : m_world.m_enemies )
+                if ( !e.m_dead && !e.m_gone && e.m_entered && e.m_def->m_kind != EnemyKindE::OBSTACLE ) ++enemies;
+            for ( const Bullet &b : m_world.m_bullets )
+                if ( !b.m_player ) ++shots;
+            float x = m_world.boss() >= 0 ? 1.0f : clampf( enemies / 7.0f + shots / 40.0f, 0.0f, 1.0f );
+            m_audio.intensity( 0.25f + 0.75f * x );
+        }
         if ( m_themeT > 0 )
         {
             float before = m_themeT;
@@ -297,8 +355,11 @@ void App::play( float dt )
     m_view.present( { 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() } );
     if ( m_themeT > 0 )
     {
-        float a = 1.0f - std::fabs( m_themeT - 0.5f ) * 2.0f;
-        DrawRectangle( 0, 0, GetScreenWidth(), GetScreenHeight(), { 235, 245, 255, (unsigned char)( 255 * clampf( a, 0, 1 ) ) } );
+        float a = ( 1.0f - std::fabs( m_themeT - 0.5f ) * 2.0f ) * ( m_set.m_softFlash ? 0.85f : 1.0f );
+        // Dimmed flashes turn the white-out into a fade through dark blue.
+        Color c = m_set.m_softFlash ? Color{ 10, 20, 40, 255 } : Color{ 235, 245, 255, 255 };
+        c.a = (unsigned char)( 255 * clampf( a, 0, 1 ) );
+        DrawRectangle( 0, 0, GetScreenWidth(), GetScreenHeight(), c );
     }
     hud();
     if ( m_paused ) pauseMenu( dt );
@@ -364,16 +425,15 @@ void App::hud()
     auto status = [&]( const Player &p, Rectangle r, int idx ) {
         ui::panel( r, 0.55f );
         float x = r.x + 18 * k, y = r.y + 16 * k, w = r.width - 36 * k;
-        (void)idx;
         ui::text( "PUNKTE", x, y, 18, ui::Dim );
         y += 22 * k;
         ui::text( fmt( p.m_score ), x, y, 34, WHITE );
         y += 44 * k;
-        if ( m_mode == ModeE::CAMPAIGN )
+        if ( m_mode == ModeE::CAMPAIGN && !m_practice )
         {
             ui::text( "KREDITE", x, y, 18, ui::Dim );
             y += 22 * k;
-            ui::text( fmt( m_camp.m_credits + p.m_credits ), x, y, 28, ui::Gold );
+            ui::text( fmt( ( idx == 1 ? m_camp.m_credits2 : m_camp.m_credits ) + p.m_credits ), x, y, 28, ui::Gold );
             ui::text( "+" + fmt( p.m_credits ), x + w, y + 4 * k, 20, ui::Gold, ui::AlignE::RIGHT );
             y += 40 * k;
         }
@@ -452,8 +512,19 @@ void App::hud()
         Rectangle r = { x, y, bw, 130 * k };
         DrawRectangleRec( r, { 4, 10, 20, (unsigned char)( 200 * a ) } );
         DrawRectangleLinesEx( r, 2 * k, { 90, 200, 255, (unsigned char)( 160 * a ) } );
-        ui::text( m_radioFrom, x + 20 * k, y + 10 * k, 20, { 255, 205, 100, (unsigned char)( 255 * a ) } );
-        for ( size_t i = 0; i < lines.size(); ++i ) ui::text( lines[i], x + 20 * k, y + 38 * k + i * 28 * k, 24, { 226, 236, 248, (unsigned char)( 255 * a ) } );
+        // The caller's face at the left of the box.
+        float tx = x + 20 * k;
+        if ( const Texture2D *pt = portrait( m_radioFrom ) )
+        {
+            float ps = 112 * k;
+            DrawTexturePro( *pt, { 0, 0, (float)pt->width, (float)pt->height }, { x + 9 * k, y + 9 * k, ps, ps }, { 0, 0 }, 0,
+                            { 255, 255, 255, (unsigned char)( 255 * a ) } );
+            tx = x + ps + 24 * k;
+            lines = ui::wrap( m_radio.substr( 0, (size_t)( m_radioT * 70.0f ) ), x + bw - 20 * k - tx, 24 );
+            if ( lines.size() > 3 ) lines.erase( lines.begin(), lines.end() - 3 );
+        }
+        ui::text( m_radioFrom, tx, y + 10 * k, 20, { 255, 205, 100, (unsigned char)( 255 * a ) } );
+        for ( size_t i = 0; i < lines.size(); ++i ) ui::text( lines[i], tx, y + 38 * k + i * 28 * k, 24, { 226, 236, 248, (unsigned char)( 255 * a ) } );
     }
     // The mission's title at its start.
     if ( lv && m_introT < 4.0f && m_screen == ScreenE::PLAY )
@@ -534,7 +605,13 @@ void App::pauseMenu( float dt )
     else if ( c == 2 )
     {
         m_paused = false;
-        if ( m_mode == ModeE::CAMPAIGN )
+        logMission( "abort" );
+        if ( m_practice )
+        {
+            m_practiceStep = 1;
+            go( ScreenE::PRACTICE );
+        }
+        else if ( m_mode == ModeE::CAMPAIGN )
             go( ScreenE::PLAN );
         else
         {

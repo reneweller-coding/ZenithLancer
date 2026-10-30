@@ -32,6 +32,13 @@ struct Settings
     std::string m_language;                  ///< de, en ("" the system's)
     float       m_textSize = 1.0f;
     std::vector<std::string> m_binds;        ///< Input's lines
+    float       m_voices = 0.9f;             ///< the speakers' volume (0: silent, the texts stay)
+    int         m_bullets = 0;               ///< enemy bullets: 0 as made, 1 strong (outlined), 2 red-green, 3 blue-yellow
+    float       m_speed = 1.0f;              ///< the game's pace (an aid: 0.7 .. 1)
+    bool        m_autoBomb = false;          ///< the special fires by itself when the armour is nearly gone
+    bool        m_softFlash = false;         ///< flashes and white-outs dimmed
+    int         m_quality = -1;              ///< graphics: 0 performance, 1 balanced, 2 quality (-1: by the machine)
+    std::vector<std::string> m_mods;         ///< the mods switched on (folders in <user>/mods)
 
     /** @brief Reads them (missing values stay at their defaults). */
     void load( const std::string &path );
@@ -59,6 +66,9 @@ struct Profile
     std::map<std::string, std::vector<HighScore>> m_scores;            ///< "<mode>_<difficulty>" -> the top ten
     long long                                    m_kills = 0;
     double                                       m_seconds = 0;
+    std::set<std::string>                        m_flown;              ///< missions ever flown (the practice lists them)
+    std::set<std::string>                        m_bosses;             ///< missions whose boss was met (practice: the boss alone)
+    std::map<std::string, long long>             m_daily;              ///< survival: the best score of a day (YYYYMMDD)
 
     void load( const std::string &path );
     bool save( const std::string &path ) const;
@@ -94,6 +104,12 @@ struct Campaign
     long long                m_kills = 0;
     double                   m_seconds = 0;
     std::string              m_stamp;           ///< when it was saved
+    bool                     m_coop = false;    ///< two pilots fly
+    bool                     m_has2 = false;    ///< the second pilot has flown here (has gear and money)
+    Loadout                  m_load2;           ///< the second pilot's gear
+    long long                m_credits2 = 0;    ///< ... money
+    long long                m_score2 = 0;      ///< ... score
+    int                      m_plus = 0;        ///< New Game+: the rounds finished before this one
 
     void load( const std::string &path );
     bool save( const std::string &path ) const;

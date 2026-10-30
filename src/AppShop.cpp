@@ -54,8 +54,19 @@ void App::shop( float dt )
 {
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     DrawRectangleGradientV( 0, 0, (int)W, (int)H, { 10, 16, 30, 255 }, { 2, 4, 10, 255 } );
-    heading( "Werkstatt", "Quills fliegender Basar" );
-    Loadout &o = m_camp.m_load;
+    // The campaign for two: each pilot has gear and money of their own; Tab or Y serves the other one.
+    bool two = m_camp.m_coop;
+    if ( !two ) m_shopPilot = 0;
+    if ( two && m_in.other() )
+    {
+        m_shopPilot = 1 - m_shopPilot;
+        m_item = 0;
+        m_previewKey.clear();
+        m_audio.play( SfxE::MOVE );
+    }
+    heading( "Werkstatt", two ? tf( "Quills fliegender Basar  ·  Pilot %d", m_shopPilot + 1 ) : std::string( T( "Quills fliegender Basar" ) ) );
+    Loadout   &o = m_shopPilot ? m_camp.m_load2 : m_camp.m_load;
+    long long &money = m_shopPilot ? m_camp.m_credits2 : m_camp.m_credits;
     // The tabs.
     if ( m_in.prevTab() )
     {
@@ -160,7 +171,7 @@ void App::shop( float dt )
     float rowH = 50 * k;
     int   rowsFit = std::max( 1, (int)( ( list.height - 20 * k ) / rowH ) );
     int   first = std::clamp( m_item - rowsFit / 2, 0, std::max( 0, n - rowsFit ) );
-    long long credits = m_camp.m_credits;
+    long long credits = money;
     int curValue = slot && !slot->empty() ? value( *slot ) : 0;
     for ( int i = first; i < std::min( n, first + rowsFit ); ++i )
     {
@@ -369,7 +380,8 @@ void App::shop( float dt )
         m_shopMsgT -= dt;
         ui::text( m_shopMsg, list.x + list.width * 0.5f, list.y + list.height + 16 * k, 26, ui::Gold, ui::AlignE::CENTER );
     }
-    hints( "Hoch/Runter: wählen    Eingabe / A: kaufen und einbauen    Links/Rechts: Leistung    Esc / B: fertig" );
+    hints( two ? "Hoch/Runter: wählen    Eingabe / A: kaufen    Links/Rechts: Leistung    Tab / Y: anderer Pilot    Esc / B: fertig"
+               : "Hoch/Runter: wählen    Eingabe / A: kaufen und einbauen    Links/Rechts: Leistung    Esc / B: fertig" );
     if ( m_in.back() )
     {
         saveCampaign();
@@ -389,14 +401,14 @@ void App::shop( float dt )
         if ( w && ( m_in.right() || m_in.accept() ) )
         {
             if ( lv >= 11 ) say( "Höchste Stufe erreicht." );
-            else if ( upgradePrice( *w, lv ) > m_camp.m_credits )
+            else if ( upgradePrice( *w, lv ) > money )
             {
                 say( "Nicht genug Kredite." );
                 m_audio.play( SfxE::DENY );
             }
             else
             {
-                m_camp.m_credits -= upgradePrice( *w, lv );
+                money -= upgradePrice( *w, lv );
                 ++lv;
                 m_audio.play( SfxE::BUY );
             }
@@ -404,7 +416,7 @@ void App::shop( float dt )
         if ( w && m_in.left() && lv > 1 )
         {
             --lv;
-            m_camp.m_credits += upgradePrice( *w, lv );
+            money += upgradePrice( *w, lv );
             m_audio.play( SfxE::BACK );
         }
         return;
@@ -412,13 +424,13 @@ void App::shop( float dt )
     if ( m_in.accept() && !sel->m_fitted )
     {
         int cost = sel->m_price - curValue;
-        if ( !sel->m_name.empty() && cost > m_camp.m_credits )
+        if ( !sel->m_name.empty() && cost > money )
         {
             say( "Nicht genug Kredite." );
             m_audio.play( SfxE::DENY );
             return;
         }
-        m_camp.m_credits -= cost;
+        money -= cost;
         *slot = sel->m_name;
         if ( m_tab == 1 ) o.m_frontLv = 1;
         if ( m_tab == 2 ) o.m_rearLv = 1;

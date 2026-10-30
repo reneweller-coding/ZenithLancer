@@ -265,6 +265,7 @@ bool Input::back() { if ( m_scripted ) return take( "back" ); return IsKeyPresse
 bool Input::pause() { if ( m_scripted ) return take( "pause" ); return IsKeyPressed( KEY_ESCAPE ) || IsKeyPressed( KEY_P ) || anyPadPressed( GAMEPAD_BUTTON_MIDDLE_RIGHT ); }
 bool Input::prevTab() { if ( m_scripted ) return take( "prevtab" ); return IsKeyPressed( KEY_Q ) || IsKeyPressed( KEY_PAGE_UP ) || anyPadPressed( GAMEPAD_BUTTON_LEFT_TRIGGER_1 ); }
 bool Input::nextTab() { if ( m_scripted ) return take( "nexttab" ); return IsKeyPressed( KEY_E ) || IsKeyPressed( KEY_PAGE_DOWN ) || anyPadPressed( GAMEPAD_BUTTON_RIGHT_TRIGGER_1 ); }
+bool Input::other() { if ( m_scripted ) return take( "other" ); return IsKeyPressed( KEY_TAB ) || anyPadPressed( GAMEPAD_BUTTON_RIGHT_FACE_UP ); }
 
 int Input::capturedKey()
 {

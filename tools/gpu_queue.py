@@ -30,9 +30,15 @@ def main():
         elif quiet_since is None:
             quiet_since = time.time()
         elif time.time() - quiet_since >= 60:
+            # The flag made atomically: of two queues that saw the GPU free at once, only one goes.
+            try:
+                fd = os.open(FLAG, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            except FileExistsError:
+                quiet_since = None
+                continue
             break
         time.sleep(5)
-    with open(FLAG, "w", encoding="utf-8") as f:
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
         f.write("Zenith Lancer: %s, started %s\n" % (" ".join(os.path.basename(c) for c in cmd[:3]), time.strftime("%H:%M")))
     print("GPU free, starting", flush=True)
     try:
