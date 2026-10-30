@@ -1,0 +1,75 @@
+# Episode 1, mission 5: the foundry Ascalon, the first one the swarm has taken whole. It still casts, only not for
+# people any more. In its crucible hall waits the crucible colossus.
+
+level e1_05
+  title "Gießerei Ascalon"
+  episode 1
+  theme foundry
+  music e1_a
+  scroll 60
+  length 174
+  next e1_06
+  arcade 1
+  map 0.36 0.5
+  briefing e1_05_brief
+  debrief e1_05_after
+
+  at 1   text e1_05_r1
+  at 3   ground e1_slagturret n=2 form=line x=360 spacing=360
+  at 4   wave e1_mote n=8 form=column x=200 gap=0.25 path=swoop side=1 cx=420 cy=280 dur=4
+  at 8   wave e1_mote n=8 form=column x=520 gap=0.25 path=swoop side=-1 cx=300 cy=280 dur=4
+  at 12  wave e1_latticewing n=3 form=v x=360 spacing=90 path=straight speed=130
+  at 15  ground e1_crawler n=2 form=line x=360 spacing=200 path=ground dir=180 speed=20
+  at 18  wave e1_shard n=6 form=column x=120 gap=0.3 path=dive turn=90 mirror=1
+  at 22  pickup credits x=360 value=150
+  at 24  wave e1_crane x=360 path=hover stop=180 wait=7
+  at 27  ground e1_slagturret n=3 form=line x=360 spacing=200 diff=3
+  at 30  text e1_05_r2
+  at 32  wave e1_weaver x=200 path=hover stop=160 wait=6
+  at 34  wave e1_mote n=10 form=grid cols=5 x=360 spacing=70 dy=50 path=straight speed=140
+  at 38  ground e1_furnace x=540
+  at 42  wave e1_latticewing n=4 form=column x=640 gap=0.6 path=swoop side=-1 cx=300 cy=260 dur=5
+  at 46  pickup cube x=180 item=e1_c14
+  at 48  wave e1_shard n=5 form=v x=360 spacing=55 path=dive turn=60
+  at 52  ground e1_crawler n=3 form=column x=680 gap=1.4 path=ground dir=90 speed=50
+  at 55  wave e1_weaver x=520 path=hover stop=170 wait=6
+  at 58  wave e1_mote n=12 form=random range=600 gap=0.25 path=dive turn=40 speed=200
+  at 62  text e1_05_r3
+  # The casting hall: flare stacks burn their beams across the floor; slow down and read them.
+  at 64  scroll 45
+  at 66  ground e1_flaretower x=160
+  at 66  ground e1_flaretower x=560
+  at 70  wave e1_latticewing n=3 form=line x=360 spacing=200 path=sine amp=60 freq=0.3 speed=120
+  at 74  ground e1_furnace x=360
+  at 76  wave e1_shard n=6 form=sides x=60 gap=0.35 path=arc side=1 turn=80
+  at 80  ground e1_flaretower n=2 form=line x=360 spacing=300 diff=3
+  at 82  wave e1_mote n=8 form=v x=360 spacing=45 path=straight speed=160
+  at 86  pickup credits x=360 value=150
+  at 88  wave e1_crane x=200 path=hover stop=200 wait=7
+  at 92  scroll 60
+  at 94  text e1_05_r4
+  at 96  wave e1_mote n=14 form=column x=360 gap=0.15 path=sine amp=200 freq=0.25 speed=160
+  at 100 ground e1_slagturret n=4 form=line x=360 spacing=170
+  at 104 wave e1_weaver n=2 form=line x=360 spacing=300 path=hover stop=170 wait=6
+  at 108 pickup cube x=620 item=e1_c15
+  at 110 wave e1_shard n=8 form=sides x=60 gap=0.3 path=dive turn=70
+  at 114 wave e1_crane x=520 path=hover stop=190 wait=7
+  at 118 wave e1_latticewing n=5 form=arc x=360 spacing=60 path=straight speed=140
+  at 122 ground e1_furnace x=200
+  at 122 ground e1_furnace x=520 diff=3
+  at 126 wave e1_mote n=10 form=random range=600 gap=0.3 path=dive turn=50 speed=210
+  at 130 text e1_05_r5
+  at 132 pickup credits x=300 value=150
+  at 134 wave e1_hivecarrier x=360 path=hover stop=150 wait=9
+  at 138 wave e1_skimmer n=8 form=sides x=40 gap=0.3 path=strafe y=260 amp=40 freq=0.5 speed=260
+  at 142 ground e1_crawler n=4 form=line x=360 spacing=150 path=ground
+  at 146 wave e1_shard n=5 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
+  at 152 pickup cube x=360 item=e1_c16
+  at 154 wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=70 freq=0.35 speed=130
+  at 158 wave e1_weaver x=360 path=hover stop=160 wait=6 diff=3
+  at 162 music e1_boss
+  at 164 warn
+  at 166 text e1_05_r6
+  at 167 boss e1_crucible
+  at 169 text e1_05_r7
+  at 173 end

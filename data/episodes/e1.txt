@@ -1,3 +1,6 @@
+# Episode 1 (Pyra): from the fall of Zenith Station to the Foundry Warden of Ascalon Primus. Two forks (e1_03 or
+# e1_04, e1_07 or e1_08), two secret missions (e1_s1 from e1_03, e1_s2 from e1_08).
+
 episode 1
   title "Glutgürtel"
   subtitle "Zenith-Station fällt in einer Nacht. Mit dem Lancer-Prototyp fliehst du zu den Gießereien von Pyra – und das Tessellat ist schon dort."
@@ -11,4 +14,4 @@ episode 1
   gen cell
   shield veil
   special nova_s
-  arcade e1_01
+  arcade e1_01 e1_02 e1_04 e1_05 e1_08 e1_10

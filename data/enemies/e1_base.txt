@@ -1,24 +1,25 @@
-# Episode 1: the first mission's boss (the dock guardian of Zenith Station). The Episode 1 author adds the rest
-# in data/enemies/e1.txt.
+# Episode 1: the first mission's boss (the dock guardian of Zenith Station). The rest of the episode lives in
+# data/enemies/e1.txt.
 
+# Its two dock guns sit on the bow and shield it: they fall first, then the core opens.
 enemy e1_dockwarden
   title "Dockwächter"
   model e1_dockwarden
   kind boss
   hp 900
   radius 52
-  score 1500
+  score 800
   speed 120
-  path boss stop=170 amp=150 freq=0.35
+  path boss stop=170 amp=120 freq=0.24
   face down
   shielded 1
-  part e1_dock_gun x=-46 z=6
-  part e1_dock_gun x=46 z=6
+  part e1_dock_gun x=-22 z=46
+  part e1_dock_gun x=22 z=46
   fire fan n=7 spread=12 every=2.6 delay=2 speed=180 bullet=orb color=#ff60e0
-  fire spiral n=3 rot=17 every=0.16 delay=1 speed=170 bullet=needle color=#ff90ff from=0.6
-  fire laser warn=1.0 dur=1.4 width=16 damage=40 every=6 delay=3 color=#ff40c0 from=0.35
+  fire spiral n=3 rot=17 every=0.18 delay=1 speed=170 bullet=needle color=#ff90ff from=0.6
+  fire laser warn=1.1 dur=1.4 width=16 damage=30 every=6 delay=3 color=#ff40c0 z=40 from=0.35
   fire spawn spawn=drone every=5 delay=4 x=0 z=-30 until=0.2
-  drop credits 1 value=1000
+  drop credits 1 value=400
   explode huge
 
 enemy e1_dock_gun
@@ -27,7 +28,7 @@ enemy e1_dock_gun
   kind part
   hp 180
   radius 18
-  score 300
+  score 200
   face down
   aimhead 1
   fire aimed n=3 spread=10 every=1.6 delay=1.2 speed=230 bullet=orb color=#ff70d0

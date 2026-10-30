@@ -1,0 +1,69 @@
+# Episode 1, mission 2: down the gravity well from Zenith towards Pyra, through the slag ring the foundries have
+# thrown into orbit for three hundred years. The swarm hunts the Lancer; at the end a trader calls.
+
+level e1_02
+  title "Glutsturz"
+  episode 1
+  theme asteroid
+  music e1_b
+  scroll 80
+  length 186
+  next e1_03 e1_04
+  arcade 1
+  map 0.13 0.5
+  briefing e1_02_brief
+  debrief e1_02_after
+
+  at 1   text e1_02_r1
+  at 3   wave e1_mote n=8 form=column x=140 gap=0.25 path=swoop side=1 cx=360 cy=260 dur=4
+  at 6   wave e1_mote n=8 form=column x=580 gap=0.25 path=swoop side=-1 cx=360 cy=260 dur=4
+  at 10  obstacle rock n=3 form=random range=560 gap=1.2 path=drift speed=60
+  at 12  wave e1_shard n=5 form=v x=360 spacing=60 path=dive turn=60
+  at 16  wave e1_shard n=4 form=line x=360 spacing=160 path=dive turn=100 diff=3
+  at 18  wave e1_mote n=10 form=grid cols=5 x=360 spacing=70 dy=50 path=straight speed=130
+  at 23  pickup credits x=220 value=150
+  at 25  wave e1_latticewing n=3 form=line x=360 spacing=200 path=sine amp=80 freq=0.3 speed=140
+  at 29  obstacle e1_slagrock n=2 form=random range=500 gap=1.5
+  at 31  text e1_02_r2
+  at 33  wave e1_weaver x=220 path=hover stop=160 wait=6
+  at 35  wave e1_mote n=6 form=column x=620 gap=0.3 path=orbit cx=420 cy=260 r=120 dur=4 side=-1
+  at 39  wave e1_shard n=6 form=sides x=60 gap=0.35 path=arc side=1 turn=80
+  at 44  wave e1_latticewing n=3 form=column x=100 gap=0.7 path=swoop side=1 cx=360 cy=300 dur=5 mirror=1
+  at 47  wave e1_weaver x=500 path=hover stop=200 wait=6 diff=3
+  at 50  pickup cube x=520 item=e1_c04
+  at 52  obstacle e1_slagrock n=3 form=random range=600 gap=1.1
+  at 54  wave e1_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=210
+  at 60  text e1_02_r3
+  at 62  wave e1_hivecarrier x=360 path=hover stop=150 wait=10
+  at 64  wave e1_shard n=4 form=line x=360 spacing=140 path=dive turn=90 repeat=2 every=6
+  at 72  wave e1_latticewing n=3 form=v x=360 spacing=80 path=straight speed=150 diff=3
+  at 77  pickup credits x=360 value=200
+  at 81  wave e1_mote n=6 form=v x=200 spacing=40 path=straight speed=170 mirror=1
+  at 84  obstacle rock n=4 form=random range=600 gap=0.8 path=drift speed=70
+  at 86  wave e1_weaver x=470 path=hover stop=180 wait=6
+  at 90  wave e1_shard n=5 form=column x=200 gap=0.35 path=loop stop=260 r=70 mirror=1
+  at 96  pickup cube x=150 item=e1_c05
+  at 98  text e1_02_r4
+  at 100 scroll 125
+  at 100 obstacle e1_slagrock n=6 form=random range=640 gap=0.7 speed=110
+  at 104 wave e1_shard n=5 form=v x=360 spacing=55 path=straight speed=320 repeat=3 every=4
+  at 108 wave e1_hivecarrier x=200 path=hover stop=140 wait=8
+  at 110 wave e1_hivecarrier x=520 path=hover stop=170 wait=8 diff=3
+  at 116 wave e1_latticewing n=5 form=column gap=0.6 path=strafe side=1 y=120 amp=60 freq=0.4 speed=150
+  at 122 wave e1_mote n=14 form=random range=640 gap=0.2 path=dive turn=50 speed=220
+  at 128 pickup credits x=260 value=200
+  at 130 obstacle e1_slagrock n=4 form=random range=600 gap=0.9 speed=90
+  at 132 wave e1_weaver x=360 path=hover stop=150 wait=7
+  at 136 wave e1_shard n=8 form=sides x=80 gap=0.3 path=dive turn=70
+  at 140 text e1_02_r5
+  at 142 scroll 80
+  at 144 wave e1_latticewing n=5 form=arc x=360 spacing=60 path=straight speed=140
+  at 148 wave e1_mote n=8 form=column x=140 gap=0.2 path=swoop side=1 cx=360 cy=300 dur=3.5 mirror=1
+  at 152 pickup cube x=360 item=e1_c06
+  at 155 wave e1_weaver x=240 path=hover stop=170 wait=6
+  at 160 wave e1_shard n=6 form=random range=560 gap=0.4 path=dive diff=3
+  at 164 wave e1_hivecarrier x=360 path=hover stop=130 wait=9
+  at 166 wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=70 freq=0.35 speed=130
+  at 172 wave e1_mote n=12 form=grid cols=6 x=360 spacing=60 dy=50 path=straight speed=150 drop=credits value=200
+  at 178 text e1_02_r6
+  at 184 end

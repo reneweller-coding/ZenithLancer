@@ -6,20 +6,20 @@ level e1_01
   theme station
   music e1_a
   scroll 70
-  length 190
+  length 156
   next e1_02
   arcade 1
-  map 0.08 0.12
+  map 0.03 0.3
   briefing e1_01_brief
 
   at 1   text e1_01_r1
   at 3   wave drone n=5 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=150
   at 8   wave dart n=5 form=column x=160 gap=0.35 path=swoop side=1 cx=360 cy=320 dur=3.6
   at 12  wave dart n=5 form=column x=560 gap=0.35 path=swoop side=-1 cx=360 cy=320 dur=3.6
-  at 16  ground turret x=150
-  at 16  ground turret x=570
-  at 19  wave drone n=6 form=v x=360 spacing=55 path=sine amp=30 freq=0.3 speed=140 drop=credits value=400
-  at 24  pickup credits x=200 value=250
+  at 16  ground turret x=150 path=ground
+  at 16  ground turret x=570 path=ground
+  at 19  wave drone n=6 form=v x=360 spacing=55 path=sine amp=30 freq=0.3 speed=140 drop=credits value=150
+  at 24  pickup credits x=200 value=150
   at 26  wave dart n=4 form=line x=360 spacing=110 path=dive turn=90
   at 27  wave drone n=6 form=random range=560 gap=0.5 path=zigzag amp=50 freq=0.6 diff=3
   at 31  text e1_01_r2
@@ -28,7 +28,7 @@ level e1_01
   at 40  wave dart n=8 form=sides x=80 gap=0.3 path=arc side=1 turn=80
   at 46  pickup cube x=420 item=e1_c01
   at 48  wave drone n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=120 drop=shield
-  at 55  ground turret x=260 n=3 form=line spacing=100
+  at 55  ground turret x=260 n=3 form=line spacing=100 path=ground
   at 58  wave dart n=6 form=column x=200 gap=0.25 path=dive turn=120 mirror=1
   at 64  wave gunship x=480 path=hover stop=150 wait=7 amp=60
   at 66  wave gunship x=240 path=hover stop=220 wait=6 diff=3
@@ -36,18 +36,23 @@ level e1_01
   at 74  wave mine n=6 form=random range=600 gap=0.6 path=drift speed=70
   at 80  wave drone n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=260 r=140 dur=5 side=1
   at 84  wave drone n=8 form=column x=120 gap=0.3 path=orbit cx=360 cy=260 r=140 dur=5 side=-1
-  at 90  pickup credits x=360 value=500
+  at 90  pickup credits x=360 value=300
   at 92  ground tank x=120 n=2 form=line spacing=140 path=ground dir=-90 speed=25
   at 96  wave dart n=10 form=random range=600 gap=0.25 path=dive turn=60
-  at 104 wave gunship n=2 form=line x=360 spacing=300 path=hover stop=160 wait=8
+  at 101 text e1_01_r6
+  at 104 wave gunship x=480 path=hover stop=160 wait=8
+  at 105 wave gunship x=240 path=hover stop=200 wait=7 diff=3
   at 112 pickup cube x=180 item=e1_c02
   at 116 scroll 110
   at 117 text e1_01_r4
   at 118 wave dart n=6 form=v x=360 spacing=50 path=straight speed=320 repeat=4 every=4
-  at 122 ground turret x=360 n=4 form=line spacing=150
+  at 122 ground turret x=360 n=4 form=line spacing=150 path=ground
+  at 129 pickup cube x=640 item=e1_c03
   at 134 wave drone n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=220
   at 142 scroll 70
+  at 144 music e1_boss
   at 145 warn
+  at 147 text e1_01_r5
   at 148 boss e1_dockwarden
-  at 150 text e1_01_r5
-  at 152 end
+  at 150 text e1_01_r7
+  at 154 end

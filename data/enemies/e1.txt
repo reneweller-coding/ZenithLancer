@@ -1,0 +1,471 @@
+# Episode 1 (Pyra, "Glutgürtel"): the swarm's fliers, Pyra's converted foundry machinery and the episode's bosses.
+# The swarm fires magenta and cyan, converted machinery ember orange, the Directorate's old guns pale blue.
+
+# ------------------------------------------------------------------------------------------------ the swarm
+
+enemy e1_mote
+  title "Funkenmotte"
+  model e1_mote
+  hp 5
+  radius 10
+  score 10
+  speed 190
+  path sine amp=50 freq=0.6
+  face move
+  fire aimed every=3.2 delay=1.4 speed=180 bullet=orb color=#ff60e0 cap=1 diff=1
+  drop credits 0.06 value=20
+  drop power 0.02 mode=arcade
+  explode small
+  contact 10
+
+enemy e1_shard
+  title "Splitterjäger"
+  model e1_shard
+  hp 14
+  radius 12
+  score 25
+  speed 250
+  path dive turn=80
+  face move
+  fire aimed every=1.8 delay=0.5 speed=250 bullet=needle color=#ff70f0 cap=2
+  drop credits 0.12 value=30
+  explode small
+  contact 15
+
+enemy e1_latticewing
+  title "Gitterschwinge"
+  model e1_latticewing
+  hp 26
+  radius 18
+  score 40
+  speed 160
+  path sine amp=90 freq=0.3
+  face move
+  fire fan n=3 spread=20 every=2.4 delay=1.0 speed=190 bullet=shard color=#60e0ff
+  drop credits 0.2 value=40
+  explode small
+  contact 18
+
+enemy e1_weaver
+  title "Weber"
+  model e1_weaver
+  hp 110
+  radius 26
+  score 125
+  speed 100
+  path hover stop=170 wait=6 amp=80 freq=0.25 exit=0
+  face down
+  fire ring n=10 rot=9 every=1.8 delay=1.4 speed=140 bullet=orb color=#e060ff
+  fire aimed n=2 spread=6 every=2.6 delay=2.2 speed=240 bullet=needle color=#60e0ff x=14 z=10 mirror=1
+  drop credits 1 value=40
+  drop power 0.35 mode=arcade
+  explode medium
+  contact 25
+
+enemy e1_hivecarrier
+  title "Wabenträger"
+  model e1_hivecarrier
+  hp 260
+  radius 36
+  score 245
+  speed 50
+  path hover stop=140 wait=9 amp=70 freq=0.15 exit=0
+  face down
+  fire spawn spawn=e1_mote every=1.8 delay=1.6 x=27 z=4 mirror=1 cap=6
+  fire aimed n=3 spread=12 every=3.0 delay=2.2 speed=200 bullet=orb color=#ff60e0
+  fire ring n=12 every=4 delay=3 speed=120 bullet=shard color=#60e0ff diff=3
+  drop credits 1 value=100
+  drop power 0.6 mode=arcade
+  explode large
+  contact 30
+
+# ------------------------------------------------------------------------------------------------ Pyra's machines, converted
+
+enemy e1_skimmer
+  title "Ascheläufer"
+  model e1_skimmer
+  hp 12
+  radius 12
+  score 25
+  speed 300
+  path arc side=1 turn=70
+  face move
+  fire aimed every=2.0 delay=0.6 speed=240 bullet=needle color=#ff9040 cap=1
+  drop credits 0.12 value=30
+  explode small
+  contact 15
+
+enemy e1_crane
+  title "Pfannenträger"
+  model e1_crane
+  hp 150
+  radius 32
+  score 175
+  speed 70
+  path hover stop=190 wait=7 amp=100 freq=0.2 exit=0
+  face down
+  fire rain n=3 spread=22 every=1.5 delay=1.6 speed=150 bullet=big size=8 damage=9 color=#ff8030
+  fire mine n=2 every=5 delay=3 speed=110 color=#ffb040
+  drop credits 1 value=70
+  drop power 0.4 mode=arcade
+  explode large
+  contact 30
+
+enemy e1_patrol
+  title "Wachboot"
+  model e1_patrol
+  hp 40
+  radius 18
+  score 65
+  speed 160
+  path swoop side=1 cx=360 cy=260 dur=4.5
+  face move
+  fire aimed n=2 spread=10 every=1.6 delay=0.8 speed=230 bullet=needle color=#a0c0ff cap=3
+  drop credits 0.3 value=40
+  explode medium
+  contact 20
+
+enemy e1_slagturret
+  title "Schlackengeschütz"
+  model e1_slagturret
+  kind ground
+  hp 45
+  radius 18
+  scale 1.3
+  score 55
+  path ground
+  face down
+  aimhead 1
+  fire aimed every=2.2 delay=1.0 speed=210 bullet=big color=#ff8030
+  fire aimed n=3 spread=14 every=3.4 delay=2.4 speed=200 bullet=orb color=#ffa040 diff=3
+  drop credits 0.4 value=40
+  explode medium
+
+enemy e1_crawler
+  title "Glutkriecher"
+  model e1_crawler
+  kind ground
+  hp 70
+  radius 20
+  scale 1.3
+  score 75
+  path ground
+  face fixed
+  aimhead 1
+  fire aimed n=2 spread=8 every=2.6 delay=1.2 speed=220 bullet=orb color=#ff7a30
+  drop credits 0.5 value=40
+  explode medium
+
+enemy e1_furnace
+  title "Schmelzofen"
+  model e1_furnace
+  kind ground
+  hp 200
+  radius 30
+  scale 1.25
+  score 170
+  path ground
+  face down
+  fire ring n=10 rot=15 every=2.8 delay=1.5 speed=120 bullet=big size=8 damage=8 color=#ff7020
+  fire aimed n=3 spread=10 every=3.6 delay=2.5 speed=220 bullet=orb color=#ffb040
+  drop credits 1 value=60
+  drop power 0.5 mode=arcade
+  explode large
+
+enemy e1_flaretower
+  title "Fackelturm"
+  model e1_flaretower
+  kind ground
+  hp 120
+  radius 22
+  scale 1.3
+  score 120
+  path ground
+  face down
+  fire laser warn=1.4 dur=1.2 width=14 damage=20 every=6.5 delay=2.0 color=#ff50d0
+  fire ring n=8 every=3.0 delay=3.5 speed=130 bullet=shard color=#60e0ff diff=3
+  drop credits 1 value=40
+  explode large
+
+enemy e1_orewagon
+  title "Erzwaggon"
+  model e1_orewagon
+  kind ground
+  hp 80
+  radius 22
+  scale 1.3
+  score 85
+  path ground
+  face fixed
+  fire aimed every=3.4 delay=2.0 speed=200 bullet=orb color=#ff9040 diff=3
+  drop credits 1 value=40
+  explode medium
+
+enemy e1_oreloco
+  title "Erzlok"
+  model e1_oreloco
+  kind ground
+  hp 420
+  radius 32
+  scale 1.25
+  score 490
+  path ground
+  face fixed
+  fire fan n=5 spread=18 every=2.4 delay=1.5 speed=170 bullet=big color=#ff7020
+  fire aimed n=3 spread=8 every=1.9 delay=2.0 speed=240 bullet=orb color=#ffb040 x=10 z=-20 mirror=1
+  fire spawn spawn=e1_skimmer every=5 delay=4 z=30 cap=3
+  drop credits 1 value=210
+  drop power 1 mode=arcade
+  explode huge
+
+enemy e1_slagrock
+  title "Schlackebrocken"
+  model e1_slagrock
+  kind obstacle
+  hp 90
+  radius 22
+  scale 1.2
+  score 20
+  speed 75
+  path drift
+  face spin
+  drop credits 0.3 value=40
+  explode medium
+  contact 30
+
+# ------------------------------------------------------------------------------------------------ bosses and their parts
+
+# Mini-boss of the lava fields (e1_03).
+enemy e1_cindermaw
+  title "Schlackenschlund"
+  model e1_cindermaw
+  kind boss
+  hp 800
+  radius 46
+  score 560
+  speed 110
+  path boss stop=180 amp=110 freq=0.24
+  face down
+  fire fan n=7 spread=16 every=2.4 delay=1.6 speed=170 bullet=big color=#ff7020 z=44
+  fire rain n=4 spread=35 every=0.9 delay=2 speed=190 bullet=orb color=#ffa040 z=30 from=0.6
+  fire laser warn=1.2 dur=1.0 width=18 damage=30 every=6 delay=3 color=#ff6020 z=40 from=0.4
+  fire spawn spawn=e1_mote every=4 delay=3 x=30 z=10 mirror=1 until=0.25
+  drop credits 1 value=210
+  explode huge
+  contact 40
+
+# Mini-boss of the ash pass (e1_04).
+enemy e1_sandreaver
+  title "Sandreißer"
+  model e1_sandreaver
+  kind boss
+  hp 800
+  radius 48
+  score 560
+  speed 110
+  path boss stop=170 amp=120 freq=0.22
+  face down
+  fire ring n=14 rot=7 every=1.7 delay=1.5 speed=140 bullet=shard color=#ffb060
+  fire aimed n=3 spread=10 every=2.2 delay=2.5 speed=240 bullet=needle color=#ff9040 x=20 z=30 mirror=1
+  fire spiral n=3 rot=19 every=0.2 delay=1 speed=150 bullet=orb color=#ff60e0 from=0.5
+  fire spawn spawn=e1_skimmer every=5 delay=4 x=40 mirror=1 until=0.25
+  drop credits 1 value=210
+  explode huge
+  contact 40
+
+# Mid-boss of the foundry Ascalon (e1_05): the crucible colossus with two ladle arms.
+enemy e1_crucible
+  title "Tiegelkoloss"
+  model e1_crucible
+  kind boss
+  hp 1500
+  radius 56
+  score 800
+  speed 110
+  path boss stop=175 amp=110 freq=0.22
+  face down
+  part e1_crucible_arm x=-80 z=4
+  part e1_crucible_arm x=80 z=4
+  fire fan n=7 spread=13 every=2.6 delay=2 speed=170 bullet=big color=#ff7020 z=50
+  fire ring n=14 rot=11 every=1.7 delay=1 speed=135 bullet=orb color=#ffa040 from=0.66
+  fire laser warn=1.2 dur=1.4 width=20 damage=30 every=7 delay=3 color=#ff6020 z=50 from=0.66
+  fire spiral n=3 rot=17 every=0.22 delay=1 speed=160 bullet=shard color=#ff60e0 from=0.33
+  fire spawn spawn=e1_mote every=3.5 delay=2 z=40 from=0.33
+  drop credits 1 value=350
+  explode huge
+  contact 40
+
+enemy e1_crucible_arm
+  title "Pfannenarm"
+  model e1_crucible_arm
+  kind part
+  hp 260
+  radius 24
+  score 150
+  face down
+  fire aimed n=3 spread=9 every=2.0 delay=1.5 speed=230 bullet=orb color=#ffb040 z=-24
+  fire mine n=2 every=5 delay=3 speed=120 color=#ff8030 z=-18
+  explode large
+
+# Boss of the empty quarters (e1_07): the frigate "Gehorsam"; its two bow turrets shield it.
+enemy e1_frigate
+  title "Fregatte Gehorsam"
+  model e1_frigate
+  kind boss
+  hp 1500
+  radius 58
+  score 800
+  speed 100
+  path boss stop=190 amp=100 freq=0.22
+  face down
+  shielded 1
+  part e1_frigate_gun x=-20 z=80
+  part e1_frigate_gun x=20 z=80
+  fire fan n=5 spread=16 every=2.8 delay=2 speed=180 bullet=needle color=#a0c0ff x=40 z=20 mirror=1
+  fire missile n=2 spread=40 every=4.2 delay=3 speed=150 turn=70 color=#ff60e0 x=30 z=-40 mirror=1
+  fire laser warn=1.3 dur=1.6 width=22 damage=30 every=6 delay=2 color=#ff40c0 z=100 from=0.6
+  fire spawn spawn=e1_patrol every=6 delay=3 z=-90 from=0.9 until=0.3
+  fire ring n=18 rot=10 every=1.4 delay=1 speed=130 bullet=shard color=#e060ff from=0.35
+  drop credits 1 value=400
+  explode huge
+  contact 40
+
+enemy e1_frigate_gun
+  title "Bugturm"
+  model e1_frigate_gun
+  kind part
+  hp 220
+  radius 18
+  score 150
+  face down
+  aimhead 1
+  fire aimed n=2 spread=6 every=1.4 delay=1.0 speed=250 bullet=needle color=#a0c0ff
+  explode medium
+
+# Boss of the magma river (e1_08): the ember wyrm and its three segments.
+enemy e1_magmawyrm
+  title "Glutwurm"
+  model e1_magmawyrm
+  kind boss
+  hp 1500
+  radius 48
+  score 1120
+  speed 110
+  path boss stop=250 amp=140 freq=0.18
+  face down
+  part e1_wyrm_segment z=-66
+  part e1_wyrm_segment z=-122
+  part e1_wyrm_segment z=-176
+  fire fan n=7 spread=14 every=2.4 delay=2 speed=180 bullet=big color=#ff6a1a z=40
+  fire aimed n=3 spread=8 every=1.8 delay=1.5 speed=240 bullet=orb color=#ffb040 z=30 from=0.7
+  fire laser warn=1.2 dur=1.4 width=20 damage=30 every=6.5 delay=3 color=#ff5010 z=40 from=0.7
+  fire ring n=20 rot=9 every=1.4 delay=1 speed=130 bullet=orb color=#ff7a30 from=0.35
+  fire spawn spawn=e1_mote every=4 delay=2 z=-30 from=0.5
+  drop credits 1 value=490
+  explode huge
+  contact 40
+
+enemy e1_wyrm_segment
+  title "Glutwurm-Glied"
+  model e1_wyrm_segment
+  kind part
+  hp 260
+  radius 26
+  score 210
+  face fixed
+  fire fan n=3 spread=12 dir=60 every=2.8 delay=1.5 speed=160 bullet=orb color=#ff8030 x=24
+  fire fan n=3 spread=12 dir=-60 every=2.8 delay=2.9 speed=160 bullet=orb color=#ff8030 x=-24
+  explode large
+
+# The episode boss (e1_10): the Foundry Warden. Its pouring maw shields it; the hammers hang on the maw.
+enemy e1_warden
+  title "Gießerei-Wächter"
+  model e1_warden
+  kind boss
+  hp 1500
+  radius 64
+  score 1400
+  speed 100
+  path boss stop=185 amp=100 freq=0.2
+  face down
+  shielded 1
+  part e1_warden_maw z=74
+  fire fan n=5 spread=22 every=3.2 delay=3 speed=150 bullet=orb color=#e060ff until=0.995
+  fire ring n=14 rot=8 every=1.7 delay=0.5 speed=130 bullet=big color=#ff7020 from=0.995 until=0.5
+  fire aimed n=5 spread=8 every=2.4 delay=1 speed=250 bullet=needle color=#ff60e0 z=40 from=0.995
+  fire laser warn=1.3 dur=1.5 width=24 damage=30 every=5.5 delay=2 color=#ff40c0 z=60 from=0.995 until=0.5
+  fire spiral n=3 rot=13 every=0.24 delay=0.5 speed=145 bullet=shard color=#ff60e0 from=0.5
+  fire laser warn=1.8 dur=2.0 width=18 damage=30 every=8 delay=3 dir=-30 rot=22 color=#ff9040 x=50 from=0.5
+  fire laser warn=1.8 dur=2.0 width=18 damage=30 every=8 delay=3 dir=30 rot=-22 color=#ff9040 x=-50 from=0.5
+  fire spawn spawn=e1_mote every=3.5 delay=1 x=40 z=20 mirror=1 from=0.5 cap=8
+  fire rain n=3 spread=40 every=1.3 delay=1 speed=165 bullet=big color=#ff8030 from=0.25
+  drop credits 1 value=500
+  explode huge
+  contact 50
+
+enemy e1_warden_maw
+  title "Gießmaul"
+  model e1_warden_maw
+  kind part
+  hp 600
+  radius 34
+  score 420
+  face down
+  part e1_warden_hammer x=-96 z=-64
+  part e1_warden_hammer x=96 z=-64
+  fire fan n=7 spread=14 every=2.8 delay=2 speed=165 bullet=big color=#ff7020 z=20
+  fire laser warn=1.4 dur=1.6 width=26 damage=30 every=7 delay=5 dir=0 color=#ff6020 z=20
+  explode huge
+
+enemy e1_warden_hammer
+  title "Schmiedehammer"
+  model e1_warden_hammer
+  kind part
+  hp 260
+  radius 26
+  score 210
+  face down
+  fire aimed n=3 spread=12 every=2.2 delay=1.5 speed=230 bullet=orb color=#ffb040 z=-34
+  fire ring n=8 every=4 delay=2.5 speed=145 bullet=big color=#ff8030 z=-34
+  explode large
+
+# Secret boss of Vulcan Deep (e1_s1): an old guardian machine that still keeps its last order.
+enemy e1_oldsmelter
+  title "Der Alte der Tiefe"
+  model e1_oldsmelter
+  kind boss
+  hp 1400
+  radius 54
+  score 1260
+  speed 100
+  path boss stop=180 amp=110 freq=0.2
+  face down
+  part e1_crucible_arm x=-84 z=0
+  part e1_crucible_arm x=84 z=0
+  fire fan n=5 spread=18 every=2.4 delay=2 speed=150 bullet=wave color=#ffd060 z=40
+  fire ring n=16 rot=11 every=1.8 delay=1 speed=130 bullet=ring color=#ffb040 from=0.7
+  fire laser warn=1.3 dur=1.4 width=20 damage=30 every=6 delay=3 color=#ffc040 z=40 from=0.5
+  fire spiral n=2 rot=23 every=0.15 delay=1 speed=160 bullet=orb color=#ffd060 from=0.3
+  drop credits 1 value=700
+  explode huge
+  contact 40
+
+# Secret boss of the glass garden (e1_s2): the Gardener, which plants the lattice and means no harm.
+enemy e1_gardener
+  title "Der Gärtner"
+  model e1_gardener
+  kind boss
+  hp 1100
+  radius 50
+  score 1120
+  speed 100
+  path boss stop=190 amp=90 freq=0.2
+  face down
+  fire ring n=24 rot=5 every=2.0 delay=1.5 speed=110 bullet=shard color=#60e0ff
+  fire spiral n=5 rot=7 every=0.35 delay=1 speed=120 bullet=orb color=#ff80f0 from=0.75
+  fire spawn spawn=e1_mote every=3.2 delay=2 x=40 mirror=1 until=0.2 cap=10
+  fire laser warn=1.5 dur=1.2 width=16 damage=30 every=6 delay=3 color=#a0f0ff z=30 from=0.5
+  fire mine n=2 every=3.5 delay=2 speed=100 color=#ff60e0 from=0.3
+  drop credits 1 value=630
+  explode huge
+  contact 40

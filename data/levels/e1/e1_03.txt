@@ -1,0 +1,75 @@
+# Episode 1, mission 3 (first fork, the short and hot way): across the lava fields towards Ascalon. An old beacon
+# lies at the edge of the field; whoever picks it up finds the way down to Vulcan Deep.
+
+level e1_03
+  title "Schlackefelder"
+  episode 1
+  theme lava
+  music e1_a
+  scroll 60
+  length 182
+  next e1_05
+  secret e1_s1 key=e1_key_vulcan
+  map 0.24 0.24
+  briefing e1_03_brief
+
+  at 1   text e1_03_r1
+  at 3   wave e1_skimmer n=6 form=column x=120 gap=0.3 path=arc side=1 turn=60
+  at 6   wave e1_skimmer n=6 form=column x=600 gap=0.3 path=arc side=-1 turn=60
+  at 9   ground e1_slagturret x=180
+  at 9   ground e1_slagturret x=540
+  at 12  wave e1_mote n=10 form=v x=360 spacing=40 path=straight speed=150
+  at 16  obstacle e1_slagrock n=2 form=line x=360 spacing=300
+  at 18  wave e1_shard n=5 form=column x=360 gap=0.3 path=dive turn=90
+  at 22  ground e1_crawler x=600 path=ground dir=90 speed=40
+  at 24  pickup credits x=300 value=150
+  at 26  wave e1_latticewing n=3 form=line x=360 spacing=220 path=sine amp=70 freq=0.3 speed=130
+  at 29  wave e1_skimmer n=8 form=sides x=40 gap=0.35 path=strafe y=220 amp=40 freq=0.5 speed=260 diff=3
+  at 31  text e1_03_r2
+  at 33  ground e1_crawler n=3 form=line x=360 spacing=160 path=ground dir=0 speed=20
+  at 36  wave e1_weaver x=240 path=hover stop=170 wait=6
+  at 40  wave e1_mote n=8 form=column x=600 gap=0.25 path=swoop side=-1 cx=300 cy=280 dur=4
+  at 44  obstacle e1_slagrock n=4 form=random range=560 gap=0.9
+  at 46  wave e1_shard n=4 form=v x=200 spacing=60 path=dive turn=70 mirror=1
+  at 50  pickup cube x=140 item=e1_c07
+  at 52  ground e1_slagturret n=3 form=line x=360 spacing=220
+  at 56  wave e1_latticewing n=4 form=column x=80 gap=0.6 path=swoop side=1 cx=360 cy=260 dur=5
+  at 60  wave e1_skimmer n=6 form=column x=360 gap=0.25 path=zigzag amp=120 freq=0.5 speed=220
+  at 64  text e1_03_r3
+  at 66  ground e1_furnace x=200
+  at 70  wave e1_mote n=12 form=grid cols=6 x=360 spacing=60 dy=50 path=straight speed=140
+  at 72  ground e1_furnace x=520 diff=3
+  at 76  wave e1_weaver x=480 path=hover stop=150 wait=6
+  at 81  pickup credits x=420 value=200
+  at 86  obstacle e1_slagrock n=3 form=random range=600 gap=1.2 speed=60
+  at 88  wave e1_shard n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=90
+  at 92  ground e1_crawler n=2 form=line x=200 spacing=320 path=ground dir=180 speed=30
+  at 94  wave e1_latticewing n=3 form=v x=360 spacing=90 path=straight speed=140
+  at 98  text e1_03_r4
+  # The beacon: at the left edge behind a line of slag, while skimmers run down that very lane.
+  at 100 obstacle e1_slagrock n=3 form=line x=100 spacing=60 speed=55
+  at 101 wave e1_skimmer n=10 form=column x=60 gap=0.3 path=sine amp=40 freq=0.6 speed=200
+  at 103 pickup key x=40 item=e1_key_vulcan
+  at 104 wave e1_weaver x=560 path=hover stop=180 wait=7
+  at 106 text e1_03_r5
+  at 108 wave e1_mote n=10 form=random range=600 gap=0.3 path=dive turn=40 speed=200
+  at 114 ground e1_slagturret n=4 form=line x=360 spacing=170
+  at 118 wave e1_shard n=5 form=column x=500 gap=0.3 path=loop stop=280 r=70 mirror=1
+  at 124 pickup cube x=600 item=e1_c08
+  at 126 wave e1_hivecarrier x=360 path=hover stop=140 wait=8
+  at 132 wave e1_skimmer n=8 form=sides x=40 gap=0.3 path=strafe y=300 amp=50 freq=0.5 speed=260
+  at 136 ground e1_furnace x=360
+  at 140 wave e1_latticewing n=4 form=line x=360 spacing=140 path=sine amp=60 freq=0.3 speed=140
+  at 144 obstacle e1_slagrock n=4 form=random range=600 gap=0.8
+  at 147 pickup credits x=200 value=200
+  at 150 wave e1_mote n=14 form=random range=640 gap=0.2 path=dive turn=50 speed=220
+  at 154 wave e1_shard n=5 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
+  at 158 wave e1_weaver n=2 form=line x=360 spacing=300 path=hover stop=170 wait=6 diff=3
+  at 160 ground e1_crawler n=4 form=line x=360 spacing=150 path=ground
+  at 165 text e1_03_r6
+  at 169 music boss
+  at 171 warn
+  at 173 text e1_03_r7
+  at 174 boss e1_cindermaw
+  at 176 text e1_03_r8
+  at 180 end

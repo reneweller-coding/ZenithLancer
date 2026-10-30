@@ -1,0 +1,77 @@
+# Episode 1, mission 9: the outer works of Ascalon Primus, the greatest foundry on Pyra: a gate of flare stacks,
+# a row of furnaces, carriers over the roofs. Behind the ridge waits the Elster; behind the works, the Warden.
+
+level e1_09
+  title "Die äußeren Werke"
+  episode 1
+  theme foundry
+  music e1_a
+  scroll 70
+  length 204
+  next e1_10
+  map 0.76 0.52
+  briefing e1_09_brief
+
+  at 1   text e1_09_r1
+  at 3   wave e1_shard n=5 form=v x=360 spacing=55 path=dive turn=70
+  at 6   ground e1_slagturret n=2 form=line x=360 spacing=400
+  at 8   wave e1_mote n=8 form=column x=160 gap=0.2 path=swoop side=1 cx=420 cy=280 dur=4 mirror=1
+  at 13  wave e1_latticewing n=3 form=line x=360 spacing=220 path=sine amp=70 freq=0.3 speed=130
+  at 16  ground e1_crawler n=3 form=line x=360 spacing=200 path=ground dir=180 speed=25
+  at 19  wave e1_skimmer n=6 form=sides x=40 gap=0.3 path=strafe y=220 amp=40 freq=0.5 speed=270
+  at 22  pickup credits x=360 value=150
+  at 24  wave e1_crane x=520 path=hover stop=180 wait=7
+  at 27  wave e1_shard n=6 form=column x=120 gap=0.3 path=dive turn=90 diff=3
+  at 30  text e1_09_r2
+  # The laser gate: flare stacks in staggered pairs; slow scroll, read the warning lines.
+  at 32  scroll 50
+  at 33  ground e1_flaretower x=140
+  at 33  ground e1_flaretower x=580
+  at 36  wave e1_mote n=8 form=v x=360 spacing=40 path=straight speed=150
+  at 40  ground e1_flaretower x=360
+  at 42  wave e1_latticewing n=4 form=column x=640 gap=0.6 path=swoop side=-1 cx=300 cy=260 dur=5
+  at 46  ground e1_furnace x=200
+  at 46  ground e1_furnace x=520 diff=3
+  at 50  wave e1_shard n=6 form=sides x=60 gap=0.35 path=arc side=1 turn=80
+  at 54  ground e1_flaretower n=2 form=line x=360 spacing=380
+  at 56  pickup cube x=360 item=e1_c28
+  at 60  scroll 70
+  at 62  text e1_09_r3
+  at 64  wave e1_weaver x=200 path=hover stop=160 wait=6
+  at 66  wave e1_mote n=12 form=grid cols=6 x=360 spacing=60 dy=50 path=straight speed=140
+  at 70  ground e1_slagturret n=4 form=line x=360 spacing=170
+  at 74  wave e1_weaver x=520 path=hover stop=180 wait=6
+  at 78  pickup credits x=200 value=150
+  at 80  wave e1_skimmer n=8 form=column x=360 gap=0.25 path=zigzag amp=150 freq=0.5 speed=230
+  at 84  wave e1_crane x=360 path=hover stop=200 wait=7
+  at 88  ground e1_crawler n=4 form=column x=40 gap=1.3 path=ground dir=-90 speed=60
+  at 92  text e1_09_r4
+  at 94  wave e1_latticewing n=5 form=arc x=360 spacing=60 path=straight speed=140
+  at 98  wave e1_shard n=8 form=sides x=60 gap=0.3 path=dive turn=70
+  at 102 pickup cube x=600 item=e1_c29
+  # The furnace row: three furnaces across the field, cranes and a carrier above them.
+  at 104 ground e1_furnace n=3 form=line x=360 spacing=230
+  at 108 wave e1_crane x=200 path=hover stop=170 wait=8
+  at 112 wave e1_mote n=10 form=random range=600 gap=0.3 path=dive turn=40 speed=200
+  at 116 wave e1_crane x=520 path=hover stop=210 wait=7 diff=3
+  at 118 wave e1_hivecarrier x=360 path=hover stop=140 wait=9
+  at 124 wave e1_shard n=5 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
+  at 130 pickup credits x=360 value=200
+  at 132 text e1_09_r5
+  at 134 ground e1_flaretower n=2 form=line x=360 spacing=400
+  at 134 ground e1_flaretower x=360 diff=3
+  at 138 wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=70 freq=0.35 speed=130
+  at 142 wave e1_weaver n=2 form=line x=360 spacing=300 path=hover stop=170 wait=6
+  at 148 wave e1_skimmer n=10 form=random range=600 gap=0.25 path=dive turn=40 speed=260
+  at 152 ground e1_slagturret n=4 form=line x=360 spacing=170
+  at 156 wave e1_mote n=14 form=column x=360 gap=0.15 path=sine amp=220 freq=0.25 speed=170
+  at 160 pickup cube x=140 item=e1_c32
+  at 162 wave e1_hivecarrier x=200 path=hover stop=150 wait=8
+  at 164 wave e1_hivecarrier x=520 path=hover stop=170 wait=8 diff=3
+  at 168 wave e1_shard n=8 form=sides x=60 gap=0.3 path=dive turn=70
+  at 174 text e1_09_r6
+  at 176 wave e1_latticewing n=6 form=column gap=0.5 path=strafe side=-1 y=150 amp=60 freq=0.4 speed=160
+  at 182 wave e1_weaver x=360 path=hover stop=160 wait=7
+  at 188 wave e1_mote n=12 form=grid cols=6 x=360 spacing=60 dy=50 path=straight speed=150 drop=armor
+  at 194 text e1_09_r7
+  at 200 end

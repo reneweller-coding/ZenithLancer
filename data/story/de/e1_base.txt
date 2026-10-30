@@ -1,4 +1,4 @@
-# Episode 1: the opening and the first mission (the Episode 1 author writes the rest in e1.txt).
+# Episode 1: the opening and the first mission (the rest of the episode lives in e1.txt).
 
 intro e1_intro
   title "Die Nacht von Zenith"
@@ -32,7 +32,7 @@ radio e1_01_r4
 
 radio e1_01_r5
   from "ORRIN"
-> Das ist der Dockwächter. Erst die Geschütze an seinen Flanken – vorher kommst du nicht an seinen Kern.
+> Das ist der Dockwächter. Erst die Geschütze an seinem Bug – solange sie feuern, kommst du nicht an seinen Kern.
 
 cube e1_c01
   title "Schichtprotokoll, Dock 12"
@@ -42,10 +42,35 @@ cube e1_c01
 > 03:40 – Habe das Direktorat angefunkt. Antwort: „Bekanntes Verhalten, kein Eingriff nötig.“ Bekannt? Seit wann?
 >
 > 04:05 – Die Waben wachsen jetzt an der Außenhülle. Ich schicke meine Leute zu den Kapseln.
+>
+> 04:20 – Die Kapseln von Dock 12 sind voll. Ich bleibe, bis die letzte draußen ist. Die Waben singen jetzt, ganz leise. Es klingt fast schön. Das ist das Schlimmste daran.
 
 cube e1_c02
   title "Werbetafel, Hangar 9"
   from "Lancer-Programm"
 > DER LANCER – Ein Rumpf, tausend Möglichkeiten. Modulare Waffenschächte für Front und Heck, zwei Andockpunkte für Begleitdrohnen, austauschbarer Generator, austauschbares Schildfeld. Gebaut auf Zenith, gebaut für die Zukunft.
 >
+> Das Lancer-Programm sucht Testpilotinnen und Testpiloten: belastbar, schwindelfrei, nicht abergläubisch. Erfahrung mit experimentellen Antrieben erwünscht, Humor ist von Vorteil, Geduld mit der Bordintelligenz ebenfalls. Bewerbungen an die Programmleitung, Hangar 9.
+>
+> (Daneben, mit Kugelschreiber: „Vey fliegt ihn seit drei Wochen. Bisher ist nichts explodiert. – Wartung“)
+>
 > (Darunter, mit Filzstift: „Und wer bezahlt die Module? – Q.“)
+
+radio e1_01_r6
+  from "Notruf, Hangar 3"
+> Hier Hangar drei. Die Kapseln sind draußen. Wer da noch fliegt: Bitte flieg schneller als die.
+
+radio e1_01_r7
+  from "ORRIN"
+> Dockring frei. Ich setze Kurs auf Pyra – die Gießereien dort haben Docks. Und hoffentlich noch Menschen.
+
+cube e1_c03
+  title "Rundruf an Zenith-Station"
+  from "Der Kurator"
+> Guten Abend, Belegschaft von Zenith-Station. Bitte bewahren Sie Ruhe.
+>
+> Sie haben diese Werft mit großer Sorgfalt gebaut. Wir haben sie uns genau angesehen, jeden Träger, jede Schweißnaht. Vieles ist gut. Manches ist verschwenderisch. Die Docks stehen zu weit auseinander, die Hallen sind zu warm, und zu viele Menschen wohnen in Räumen, die man besser für Gitter nutzen könnte.
+>
+> Wir ändern das jetzt. Es tut nicht weh, wenn Sie nicht im Weg stehen. Die Rettungskapseln in Ring vier sind frei; wir haben sie nicht angerührt, weil sie nicht in unseren Plan passen.
+>
+> Wir danken Ihnen für Ihre Arbeit. Sie war ein guter Anfang.

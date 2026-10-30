@@ -1,0 +1,69 @@
+# Episode 1, mission 7 (second fork, the station): the Directorate's administration platform above Pyra. Nobody
+# answers. The docking logs tell why; the frigate "Gehorsam" still lies at its moorings, grown through by the swarm.
+
+level e1_07
+  title "Die leeren Quartiere"
+  episode 1
+  theme station
+  music e1_a
+  scroll 60
+  length 168
+  next e1_09
+  map 0.6 0.3
+  briefing e1_07_brief
+  debrief e1_07_after
+
+  at 1   text e1_07_r1
+  at 3   wave drone n=6 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=150
+  at 6   ground turret x=160 path=ground
+  at 6   ground turret x=560 path=ground
+  at 8   wave e1_patrol n=3 form=column x=100 gap=0.8 path=swoop side=1 cx=380 cy=260 dur=4.5
+  at 13  wave e1_patrol n=3 form=column x=620 gap=0.8 path=swoop side=-1 cx=340 cy=260 dur=4.5
+  at 17  wave e1_mote n=10 form=v x=360 spacing=40 path=straight speed=150
+  at 20  pickup credits x=360 value=150
+  at 22  wave e1_shard n=6 form=column x=200 gap=0.3 path=dive turn=90 mirror=1
+  at 26  ground tank n=2 form=line x=360 spacing=300 path=ground dir=180 speed=20
+  at 28  wave e1_patrol n=4 form=line x=360 spacing=150 path=dive turn=60 diff=3
+  at 30  text e1_07_r2
+  at 32  wave gunship x=240 path=hover stop=170 wait=6
+  at 35  wave e1_mote n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=260 r=140 dur=5 side=1
+  at 39  wave e1_latticewing n=3 form=line x=360 spacing=220 path=sine amp=70 freq=0.3 speed=130
+  at 42  ground turret n=3 form=line x=360 spacing=200 path=ground
+  at 46  pickup cube x=140 item=e1_c20
+  at 48  wave e1_patrol n=4 form=column x=360 gap=0.5 path=loop stop=250 r=80
+  at 52  wave e1_weaver x=500 path=hover stop=160 wait=6
+  at 56  wave drone n=12 form=grid cols=6 x=360 spacing=60 dy=50 path=straight speed=130 drop=shield
+  at 60  text e1_07_r3
+  # The hangar deck: rows of guns, patrol boats launching from the bays.
+  at 62  ground turret n=3 form=line x=360 spacing=220 path=ground
+  at 64  wave e1_patrol n=6 form=sides x=60 gap=0.5 path=arc side=1 turn=70
+  at 68  wave gunship x=200 path=hover stop=170 wait=7
+  at 69  wave gunship x=520 path=hover stop=190 wait=7 diff=3
+  at 72  wave e1_shard n=5 form=v x=360 spacing=55 path=dive turn=60
+  at 76  ground tank n=3 form=column x=680 gap=1.5 path=ground dir=90 speed=50
+  at 78  wave e1_weaver x=200 path=hover stop=190 wait=6 diff=3
+  at 82  pickup credits x=360 value=150
+  at 86  text e1_07_r4
+  at 88  wave mine n=6 form=random range=600 gap=0.6 path=drift speed=70
+  at 92  wave e1_latticewing n=4 form=column x=80 gap=0.6 path=swoop side=1 cx=360 cy=280 dur=5 mirror=1
+  at 98  pickup cube x=600 item=e1_c21
+  at 100 wave e1_mote n=14 form=random range=640 gap=0.2 path=dive turn=50 speed=210
+  at 104 wave e1_patrol n=4 form=line x=360 spacing=150 path=dive turn=60
+  at 108 wave e1_hivecarrier x=360 path=hover stop=150 wait=9
+  at 112 ground turret n=3 form=line x=360 spacing=220 path=ground
+  at 116 wave e1_shard n=8 form=sides x=60 gap=0.3 path=dive turn=70
+  at 120 text e1_07_r5
+  at 122 pickup credits x=200 value=150
+  at 124 wave e1_weaver x=480 path=hover stop=160 wait=7
+  at 128 wave e1_patrol n=6 form=column x=120 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 134 wave e1_latticewing n=5 form=arc x=360 spacing=60 path=straight speed=140
+  at 138 pickup cube x=360 item=e1_c22
+  at 140 wave e1_weaver n=2 form=line x=360 spacing=300 path=hover stop=170 wait=6
+  at 146 wave drone n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=220 drop=armor
+  at 150 wave e1_patrol n=4 form=v x=360 spacing=60 path=straight speed=260 diff=3
+  at 155 music e1_boss
+  at 157 warn
+  at 159 text e1_07_r6
+  at 160 boss e1_frigate
+  at 162 text e1_07_r7
+  at 166 end

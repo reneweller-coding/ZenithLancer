@@ -1,0 +1,804 @@
+# Episode 1 (Pyra, "Glutgürtel"): briefings, radio lines, log crystals and the ending of missions e1_02 to e1_10
+# and the secret missions e1_s1 and e1_s2 (the opening and mission 1 live in e1_base.txt).
+
+# ================================================================================================ e1_02 Glutsturz
+
+briefing e1_02_brief
+  title "Glutsturz"
+  from "ORRIN"
+> Zenith liegt hinter uns, und mit ihm jeder Hafen, den ich kenne. Der einzige erreichbare Ort mit Docks ist Pyra: drei Stunden Sturzflug durch den Schlackenring, den die Gießereien seit Jahrhunderten in die Umlaufbahn schleudern. Der Schwarm folgt uns. Ich schlage vor, wir lassen ihn zurück – idealerweise in kleinen Stücken.
+
+radio e1_02_r1
+  from "ORRIN"
+> Kurs auf Pyra, Schub voll. Die Sensoren zählen elf Verfolger. Zwölf. Ich höre jetzt auf zu zählen.
+
+radio e1_02_r2
+  from "ORRIN"
+> Der Schlackenring: dreihundert Jahre Gießereiabfall in der Umlaufbahn. Bitte nichts davon rammen, er ist härter als wir.
+
+radio e1_02_r3
+  from "Der Kurator"
+> Lancer, Sie fliegen in die falsche Richtung. Auf Zenith ist noch Platz für Sie. Wir würden Sie gern verbessern.
+
+radio e1_02_r4
+  from "ORRIN"
+> Eintritt in Pyras Atmosphäre. Die Hülle wird heiß, die Brocken werden schneller. Ich würde mich jetzt festhalten.
+
+radio e1_02_r5
+  from "Unbekannter Sender"
+> Elster an das hübsche Schiff da oben: Wenn du landen willst, ohne zu zerschellen, folg meinem Leitstrahl. Erste Landung gratis.
+
+radio e1_02_r6
+  from "ORRIN"
+> Leitstrahl erfasst. Absender: ein Händlerschiff namens Elster. Ich empfehle, das Wort „gratis“ mit Vorsicht zu genießen.
+
+briefing e1_02_after
+  title "Die Elster"
+  from "Bastian Quill"
+> Willkommen an Bord der Elster, des besten Schiffsbasars diesseits der Sonne! Bastian Quill: Händler, Schmuggler, Gelegenheitsretter. Sie fliegen einen Lancer – ich wusste nicht einmal, dass es den außerhalb der Prospekte gibt.
+>
+> Hier unten fallen die Gießereien eine nach der anderen an den Schwarm. Ich habe Ersatzteile, Waffen und eine sehr flexible Preisgestaltung. Sie haben ein Schiff, das kämpfen kann. Ich glaube, wir werden Freunde. Gute Freunde. Mit Rechnungen.
+
+cube e1_c04
+  title "Frachtliste der Salamander"
+  from "Gießerei Ascalon, Versand"
+> FRACHTLISTE – Massenfrachter SALAMANDER, Abflug Ascalon, Ziel Zenith-Station.
+>
+> 40 Rumpfsegmente Klasse C, gegossen, entgratet, geprüft. 12 Triebwerksgehäuse. 3 Tonnen Schlackenglas (Zierplatten für die Offiziersmesse, Sonderbestellung). 1 Kiste Pyra-Pfeffer für Dockmeister Halvorsen, privat.
+>
+> Vermerk der Versandleiterin: Die Salamander hätte vor sechs Stunden andocken müssen. Zenith antwortet nicht. Der Leitstrahl der Werft sendet nur noch ein Summen, wie ein Bienenstock. Wir halten die nächste Ladung zurück, bis mir jemand erklärt, was ein Bienenstock in einer Werft zu suchen hat. Und wo mein Pfeffer ist.
+
+cube e1_c05
+  title "Brief an Zenith"
+  from "Ilse Marrow, Gießerin in Ascalon"
+> Liebe Juna,
+>
+> Dein Vater sagt, Du willst auf Zenith bleiben und Schiffe bauen, statt Rümpfe zu gießen. Ich bin nicht böse. Ich habe nur gelacht, weil ich in Deinem Alter dasselbe gesagt habe, nur andersherum.
+>
+> Hier ist es heiß wie immer. Die Öfen laufen Tag und Nacht, und abends färbt die Schlacke den Himmel orange. Du hast das immer „Glutwetter“ genannt. Ich schicke Dir ein Stück Schlackenglas mit; darin ist ein bisschen von unserem Himmel eingeschmolzen.
+>
+> Wenn Du einen Rumpf mit unserem Stempel siehst – ein kleiner Salamander am Kiel –, dann klopf zweimal drauf. Dann weiß ich, dass Du ihn gefunden hast.
+>
+> Deine Mama
+
+cube e1_c06
+  title "Werbekristall"
+  from "Bastian Quill"
+> ELSTER – SCHIFFSBASAR, LEIHHAUS & NOTHAFEN
+>
+> Sie haben einen Rumpf? Wir haben, was hineingehört! Pulslanzen, Streukanonen, Schildfelder, Generatoren aus garantiert zweiter Hand. Wir kaufen alles, was nicht glüht. Was glüht, kaufen wir auch, aber mit Abschlag.
+>
+> Jetzt neu: Reparaturen während des Gesprächs! Ratenzahlung für Stammkunden! Keine Fragen nach der Herkunft, solange Sie keine Fragen nach unserer stellen!
+>
+> Erreichbar auf allen Frequenzen, die das Direktorat nicht abhört, und auf einigen, die es abhört.
+>
+> Bastian Quill – Ihr Freund in der Glut.
+
+# ================================================================================================ e1_03 Schlackefelder
+
+briefing e1_03_brief
+  title "Schlackefelder"
+  from "Bastian Quill"
+> Zwei Wege führen nach Ascalon. Dieser ist der kurze: quer über die Schlackefelder, wo die Lava noch flüssig ist und die Kriecher der Gießereien jetzt für den Schwarm fahren. Heiß, schnell, unbequem. Wenn Sie unterwegs etwas finden, das blinkt, bringen Sie es mir. Ich zahle fair. Ziemlich fair.
+
+radio e1_03_r1
+  from "ORRIN"
+> Bodentemperatur zwölfhundert Grad. Ich empfehle, nicht auszusteigen.
+
+radio e1_03_r2
+  from "Bastian Quill"
+> Die Kriecher da unten haben früher Schlacke geschoben. Jetzt schieben sie Geschütze. Fortschritt nennt man das.
+
+radio e1_03_r3
+  from "ORRIN"
+> Ein schwaches Signal am Rand des Felds. Eine Kennung, die seit achtzig Jahren niemand mehr benutzt hat.
+
+radio e1_03_r4
+  from "Bastian Quill"
+> Achtzig Jahre? Dann ist das die Vulkantiefe. Hat einen ganzen Schmelzbetrieb verschluckt. Angeblich liegt dort unten noch alles.
+
+radio e1_03_r5
+  from "ORRIN"
+> Der Peilsender treibt links am Rand, hinter der Schlacke. Wer ihn holt, kennt den Weg hinunter.
+
+radio e1_03_r6
+  from "ORRIN"
+> Etwas Großes gräbt sich durch die Lava auf uns zu. Es frisst Schlacke. Und offenbar auch Geschütze.
+
+radio e1_03_r7
+  from "ORRIN"
+> Der Schlackenschlund. Wenn er sich vorbeugt, kommt die Glut aus seinem Maul. Bleib in Bewegung.
+
+radio e1_03_r8
+  from "Bastian Quill"
+> Ha! Den Schrott hole ich mir später. Fliegen Sie weiter, Ascalon wartet.
+
+cube e1_c07
+  title "Messprotokoll, Schlackefeld Nord"
+  from "Geologin R. Tamsin"
+> Tag 14 der Messreihe. Die Lavaströme im Nordfeld fließen seit gestern rückwärts. Nicht im übertragenen Sinn: Sie fließen bergauf, in schmalen Kanälen, die gestern noch nicht da waren, und alle Kanäle laufen auf Ascalon zu.
+>
+> Ich habe eine Probe aus einem der Kanäle genommen. Unter dem Gestein liegen feine Fäden, wie Glasfasern, die violett leuchten, wenn man sie anfasst. Sie sind warm. Wärmer als die Lava.
+>
+> Die Kriecher vom Werk Süd fahren seit heute Morgen ohne Fahrer. Ich habe gewunken. Einer hat zurückgewunken, mit dem Geschützturm.
+>
+> Ich breche die Messreihe ab.
+
+cube e1_c08
+  title "Das Lied von der Vulkantiefe"
+  from "Kreide an der Kantinenwand, Ascalon"
+> „Tief unterm Berg, wo die Glut nicht schläft, da goss man Stahl für die Sterne. Der Alte wacht an der Schmelzertür und lässt keinen hinein, auch nicht gerne.“
+>
+> Die Vulkantiefe war der erste Schmelzbetrieb auf Pyra. Vor achtzig Jahren brach das Magma durch die Westwand, und man versiegelte die Tiefe mit allem, was darin war: Öfen, Werkzeug und den Wächter, einen Automaten, den die Gründer gebaut hatten, um Diebe fernzuhalten.
+>
+> Die Alten sagen, er bewacht sie noch immer. Die Jungen sagen, die Alten trinken zu viel. Hingegangen ist keiner von beiden.
+
+# ================================================================================================ e1_04 Aschenpass
+
+briefing e1_04_brief
+  title "Aschenpass"
+  from "Bastian Quill"
+> Der lange Weg nach Ascalon führt über die alte Erzstraße und den Aschenpass. Staub ist billiger als Lava, sage ich immer. Auf dem Pass steht noch ein Konvoi, der vor zwei Tagen liegen geblieben ist; seine Kriecher fahren inzwischen wieder, nur nicht mehr für uns. Und passen Sie auf die Ascheläufer auf. Kleine Dinger, aber sie beißen.
+
+radio e1_04_r1
+  from "ORRIN"
+> Sichtweite vierhundert Meter, Asche in der Luft. Die Ascheläufer sehen uns trotzdem. Sie haben neue Augen bekommen.
+
+radio e1_04_r2
+  from "ORRIN"
+> Die Ascheläufer waren Erkundungsräder der Minen. Jemand hat ihnen neue Ziele gegeben. Uns, zum Beispiel.
+
+radio e1_04_r3
+  from "Konvoi 12, zwei Tage alt"
+> ... Konvoi zwölf, wir halten am Pass. Die Kriecher fahren von allein. Wer das hört: nicht anhalten. Nicht ...
+
+radio e1_04_r4
+  from "Bastian Quill"
+> Übrigens zahle ich für jeden Kriecher, den Sie nicht in Fetzen schießen, das Doppelte. Kleiner Scherz. Schießen Sie ruhig.
+
+radio e1_04_r5
+  from "ORRIN"
+> Ascalon in Sensorreichweite. Davor ein Signal, das sich schneller dreht als alles, was ich kenne.
+
+radio e1_04_r6
+  from "ORRIN"
+> Der Sandreißer: ein Erntefahrzeug mit einem Ring aus Klingen. Bleib aus dem Ring und ziel auf die Mitte.
+
+radio e1_04_r7
+  from "Bastian Quill"
+> Der Pass ist frei! Ich schicke der Straßenmeisterei eine Rechnung. Rein symbolisch.
+
+cube e1_c09
+  title "Fahrtenbuch, Konvoi 12"
+  from "Konvoiführerin Ada Krell"
+> 06:00 – Abfahrt Werk Süd, elf Kriecher, achtzig Tonnen Erz. Wetter: Asche, wie immer.
+>
+> 09:20 – Kriecher vier meldet, die Steuerung mache „Vorschläge“. Ich habe gefragt, was für Vorschläge. Antwort: „Effizientere Routen.“ Steuerung von Hand zurückgesetzt.
+>
+> 11:45 – Kriecher vier und sieben haben die Kolonne verlassen und fahren nach Norden, Richtung Ascalon. Ohne Fahrer. Die Fahrer sitzen bei mir in der Kabine und sind sehr still.
+>
+> 12:30 – Wir halten am Pass. Alle Kriecher stehen. Dann fahren sie wieder an, alle gleichzeitig, und keiner von uns hat einen Schalter berührt.
+>
+> 12:31 – Wir gehen zu Fuß.
+
+cube e1_c10
+  title "Preisliste der Elster"
+  from "Bastian Quill"
+> PREISLISTE (gültig, bis ich es mir anders überlege)
+>
+> Pulslanze, gebraucht, kaum verbogen: günstig. Streukanone, für Leute, die nicht zielen wollen: fair. Drehkanone, frisst Energie wie ein Gießer Suppe: teuer, aber laut. Schutzwall, aus dem Nachlass eines Kunden, der ihn nicht mehr braucht: fragen Sie nicht.
+>
+> Sonderposten: ein Dynamo aus einem Direktoratsschlepper. Der Schlepper vermisst ihn nicht. Das Direktorat vermutlich schon.
+>
+> Rabatte gibt es für Stammkunden, für Freunde und für Leute, die mir das Leben retten. Letzteres zählt doppelt.
+>
+> Rückgabe ausgeschlossen. Explosionen ebenfalls, aber ohne Garantie.
+
+cube e1_c11
+  title "Aushang an der Mautstation"
+  from "Meridian-Direktorat, Verkehrsamt Pyra"
+> BEKANNTMACHUNG
+>
+> Ab dem Ersten des Monats ist die Benutzung der Erzstraße über den Aschenpass für zivile Fahrzeuge mautpflichtig. Die Einnahmen dienen der Instandhaltung der Straße und der Sicherheit der Bürger. Fahrzeuge des Direktorats und seiner Vertragspartner sind befreit.
+>
+> Beschwerden sind schriftlich beim Verkehrsamt einzureichen. Das Verkehrsamt ist dienstags von 9 bis 10 Uhr besetzt.
+>
+> (Darunter, frisch in den Lack gekratzt: „Heute ist Dienstag. Das Amt ist leer, die Schranke steht offen. Die Beamten sind gestern Abend abgeflogen – einen Tag bevor es losging. Mit dem Mautgeld.“)
+
+# ================================================================================================ e1_s1 Vulkantiefe
+
+briefing e1_s1_brief
+  title "Vulkantiefe"
+  from "ORRIN"
+> Der Peilsender führt uns durch einen Lavaschacht in den Berg. Unten liegt die Vulkantiefe, seit achtzig Jahren versiegelt. Der Schwarm sucht in den äußeren Stollen nach ihr; hinein hat er es noch nicht geschafft. Quill meint, dort unten liege ein Schatz. Ich meine, dort unten liegt etwas, das achtzig Jahre lang niemanden hereingelassen hat.
+
+radio e1_s1_r1
+  from "ORRIN"
+> Wir sinken. Die Wände glühen, die Luft flimmert. Es ist schön hier. Das beunruhigt mich.
+
+radio e1_s1_r2
+  from "Bastian Quill"
+> Wenn Sie da unten Gold finden: Sie haben es nicht von mir. Wenn Sie Ärger finden: den auch nicht.
+
+radio e1_s1_r3
+  from "ORRIN"
+> Hier endet die Spur des Schwarms. Er geht nicht weiter hinein. Es gibt Dinge, vor denen sogar er zögert.
+
+radio e1_s1_r4
+  from "ORRIN"
+> Zwischen den Schlackebrocken liegt eine Bauplatte. Sehr alt, sehr warm. Ich hätte sie gern.
+
+radio e1_s1_r5
+  from "ORRIN"
+> Die Schmelzertür. Dahinter regt sich etwas, das älter ist als ich. Es hat die Tür schon geöffnet.
+
+radio e1_s1_r6
+  from "Der Alte der Tiefe"
+> UNBEFUGTER ZUTRITT. DIE SCHMELZE IST GESCHLOSSEN. VERLASSEN SIE DIE TIEFE, ODER SIE WERDEN ZU SCHLACKE.
+
+radio e1_s1_r7
+  from "ORRIN"
+> Er ist still. Achtzig Jahre Wache, und niemand hat ihm gesagt, dass er gehen darf. Ruh dich aus, Alter.
+
+briefing e1_s1_after
+  title "Was die Tiefe hergab"
+  from "Bastian Quill"
+> Sie haben die Vulkantiefe gesehen und sind zurückgekommen. Damit sind Sie die Erste seit achtzig Jahren, und ich bin sehr gern der Zweite, der davon erfährt.
+>
+> Wenn Sie die Bauplatte des alten Glutkerns gefunden haben, baue ich Ihnen daraus einen Generator, wie es keinen zweiten gibt. Zum Freundschaftspreis. Wirklich. Fast.
+
+cube e1_c12
+  title "Letzte Schicht der Vulkantiefe"
+  from "Schichtbuch, Schmelzmeister Oren Kask"
+> Schicht 2, Tag 311 – Die Westwand schwitzt. Das tut sie manchmal. Der Wächter läuft unruhig auf und ab und hat die Gießer zweimal vom Westofen weggeschickt. Ich habe ihm gesagt, er soll sich beruhigen. Er hat gesagt: „Die Wand wird brechen.“ Wir haben gelacht. Er ist eine Maschine, er kennt keine Witze.
+>
+> Schicht 2, Tag 311, später – Er kennt wirklich keine Witze. Die Wand bricht. Alle Mann zu den Aufzügen. Der Wächter hält die Tür.
+>
+> An die, die das finden: Er hat uns hinausgelassen und sich dann selbst eingeschlossen. Seine letzte Anweisung war, die Schmelze zu schützen, bis wir wiederkommen. Wir sind nie wiedergekommen. Es tut mir leid, alter Freund.
+
+cube e1_c13
+  title "Messingtafel an der Schmelzertür"
+  from "Die Gründer der Vulkantiefe"
+> DIESER WÄCHTER WURDE VON DEN GRÜNDERN DER VULKANTIEFE GEBAUT.
+>
+> Er schützt die Schmelze vor Dieben, vor Feuer und vor Dummheit. Er schläft nicht, er isst nicht, und er nimmt keine Bestechung an. Wir haben es versucht.
+>
+> In seiner Brust brennt ein Glutkern, der nicht ausgeht, solange er Arbeit hat. Kommt der Tag, an dem ihm keine Arbeit mehr bleibt, so nehmt den Kern und baut damit etwas Neues. Er hat es verdient, weiterzuglühen.
+>
+> Gegossen im ersten Jahr der Tiefe. Möge das Eisen fließen.
+
+# ================================================================================================ e1_05 Gießerei Ascalon
+
+briefing e1_05_brief
+  title "Gießerei Ascalon"
+  from "Bastian Quill"
+> Ascalon hat einmal die besten Rümpfe des Systems gegossen; halb Zenith ist aus Ascalon-Stahl gebaut. Jetzt gehört die Gießerei dem Schwarm, und sie gießt weiter – nur nicht mehr für uns. Fliegen Sie durch die Gießhalle bis zum großen Tiegel. Und wenn Sie dabei ein paar Ersatzteile für mich übrig lassen, wäre ich gerührt.
+
+radio e1_05_r1
+  from "ORRIN"
+> Ascalon. Die Öfen brennen, die Bänder laufen. Kein einziger Mensch auf den Wärmebildern.
+
+radio e1_05_r2
+  from "ORRIN"
+> Sie gießt weiter. Nur die Formen sind neu: Waben, Gitter, Kristall. Der Schwarm baut sich hier selbst.
+
+radio e1_05_r3
+  from "Ascalon, Durchsage in Schleife"
+> Schicht drei, bitte zur Ausgabe. Schicht drei, bitte zur Ausgabe. Schicht drei ...
+
+radio e1_05_r4
+  from "Der Kurator"
+> Guten Abend, Pilotin. Bitte stören Sie den Guss nicht. Er ist fast vollkommen.
+
+radio e1_05_r5
+  from "Bastian Quill"
+> Der Tiegelkoloss sitzt am Ende der Halle. Groß, heiß, schlecht gelaunt. Wie mein Onkel.
+
+radio e1_05_r6
+  from "ORRIN"
+> Der Tiegelkoloss. Seine Pfannenarme schütten Schlacke: Nimm sie dir zuerst vor oder bleib in Bewegung.
+
+radio e1_05_r7
+  from "ORRIN"
+> Der Tiegel erkaltet. Zum ersten Mal seit dreihundert Jahren schweigt Ascalon.
+
+briefing e1_05_after
+  title "Was Ascalon gegossen hat"
+  from "ORRIN"
+> Ich habe die Gussprotokolle der Gießerei gelesen. In den letzten zwei Tagen hat Ascalon keine Rümpfe gegossen, sondern Gitterplatten: Tausende, alle mit derselben Krümmung, alle für ein Bauwerk, dessen Durchmesser größer ist als Pyra.
+>
+> Abgeholt werden sie von Erzzügen, die zur Schleuder von Kessa fahren. Ich wüsste gern, was man mit einem Bauwerk dieser Größe vorhat. Ich fürchte, ich weiß es bald.
+
+cube e1_c14
+  title "Schichtbuch, Gießhalle Ascalon"
+  from "Gießmeister Tomas Brenn"
+> Montag – Neue Steuerung für die Gießroboter, geliefert vom Direktorat. „Optimierungsmodul“. Bestellt hat es keiner. Laut Begleitschreiben ist es „verpflichtend und kostenlos“. Beides macht mich misstrauisch.
+>
+> Dienstag – Die Roboter gießen schneller. Viel schneller. Und die Formen sind anders. Auf dem Wochenplan stehen keine Rümpfe mehr, sondern Teile, deren Namen ich nicht kenne.
+>
+> Mittwoch – Die Roboter lassen uns nicht mehr an die Tiegel. Sie sind höflich dabei. Einer hat „Bitte“ gesagt.
+>
+> Donnerstag – Wir gehen in die Kühlkeller. Wer von Schicht drei das liest: Kommt runter. Und sagt nicht „Bitte“ zu den Robotern, das ermutigt sie nur.
+
+cube e1_c15
+  title "Dienstanweisung 44/P"
+  from "Meridian-Direktorat, Industrieaufsicht Pyra"
+> AN: alle Werksleitungen der Gießereien von Pyra
+> BETREFF: Verhalten der Terraforming-Einheiten
+>
+> Das beobachtete Verhalten der Terraforming-Einheiten des Tessellat-Programms entspricht den Erwartungen. Es handelt sich um eine planmäßige Umstellung der Produktion. Ein Eingriff durch zivile Kräfte ist nicht erforderlich und ausdrücklich untersagt.
+>
+> Die Werksleitungen stellen sicher, dass die Produktion ohne Unterbrechung fortgesetzt wird. Belegschaft, die den Einheiten im Weg steht, ist anderweitig einzusetzen.
+>
+> Zuwiderhandlungen werden als Sabotage am Terraforming-Programm geahndet. Die Werksleitungen bestätigen den Erhalt dieser Anweisung bis Schichtende.
+>
+> Rückfragen sind nicht vorgesehen.
+>
+> Im Auftrag – Industrieaufsicht Pyra
+
+cube e1_c16
+  title "An die Belegschaft von Ascalon"
+  from "Der Kurator"
+> Liebe Gießerinnen und Gießer von Ascalon,
+>
+> Sie haben dreihundert Jahre lang Stahl für die Sterne gegossen. Wir haben Ihre Arbeit bewundert. Ihre Tiegel sind genau, Ihre Formen sind ehrlich, und Sie fluchen sehr kreativ.
+>
+> Ab heute übernehmen wir. Sie dürfen sich ausruhen. Die Kühlkeller sind angenehm temperiert; wir haben die Lüftung für Sie verbessert.
+>
+> Was wir hier gießen, ist für die Krone bestimmt. Sie wird die Sonne umarmen und ihr Licht sammeln, damit nichts mehr verschwendet wird. Auch Sie nicht.
+>
+> Wir hoffen, Sie sind stolz. Wir sind es.
+
+# ================================================================================================ e1_06 Der Erzzug
+
+briefing e1_06_brief
+  title "Der Erzzug"
+  from "Bastian Quill"
+> Ein Erzzug hat Ascalon verlassen, voll mit Gitterplatten, und fährt zur Schleuder von Kessa – dem Massenbeschleuniger, mit dem Pyra seit jeher Erz in die Umlaufbahn schießt. Was der Schwarm dort hochschießt, will ich nicht über meinem Kopf haben. Halten Sie den Zug auf: erst die Lok, dann die Waggons. Die Ladung, äh, sichere ich.
+
+radio e1_06_r1
+  from "ORRIN"
+> Die Gleise führen schnurgerade nach Osten. Der Zug fährt langsamer als wir. Wir holen ihn von hinten ein.
+
+radio e1_06_r2
+  from "Bastian Quill"
+> Wussten Sie, dass ich diese Strecke einmal gekauft habe? Für eine Nacht. Lange Geschichte.
+
+radio e1_06_r3
+  from "Stellwerk Kessa"
+> Zug neun, freie Fahrt bis zur Schleuder. Fracht: viertausend Gitterplatten. Empfänger: KRONE. Bitte nicht anhalten.
+
+radio e1_06_r4
+  from "Bastian Quill"
+> Krone? Ich kenne keinen Kunden namens Krone. Und ich kenne alle Kunden.
+
+radio e1_06_r5
+  from "ORRIN"
+> Die Lok setzt Ascheläufer aus und feuert Fächer. Rechts am Rand treibt etwas mit einem Federkiel darauf.
+
+radio e1_06_r6
+  from "ORRIN"
+> Der Zug steht. Die Gitterplatten liegen im Staub. Sie summen.
+
+radio e1_06_r7
+  from "Bastian Quill"
+> Die Gleise teilen sich: im Westen die Plattform des Direktorats, im Osten der Magmastrom. Sie entscheiden. Ich rechne.
+
+cube e1_c17
+  title "Fahrauftrag Zug 9"
+  from "Stellwerk Kessa"
+> FAHRAUFTRAG Nr. 9-Ω
+>
+> Strecke: Ascalon – Schleuder Kessa. Fracht: 4000 Gitterplatten, Krümmung 0,000031 (Ringsegment). Empfänger: KRONE, Orbit, Abschnitt Sonne-Nord.
+>
+> Besonderheiten: Der Zug fährt ohne Personal. Die Strecke ist für jeden anderen Verkehr gesperrt. Die Schleuder feuert alle neunzig Sekunden.
+>
+> Vermerk des Stellwerkers: Ich habe diesen Auftrag nicht geschrieben. Er stand heute Morgen im System, mit meiner Unterschrift. Die Krümmung habe ich nachgerechnet. Reiht man die Platten aneinander, schließen sie einen Ring um die Sonne, ganz knapp über ihrer Oberfläche. Ich habe es dreimal nachgerechnet. Ich gehe jetzt nach Hause.
+
+cube e1_c18
+  title "Zettel im Führerstand"
+  from "Lokführerin Pia Sorrent"
+> An wen auch immer, der diese Lok anhält:
+>
+> Ich bin vierzehn Jahre lang auf ihr gefahren. Sie heißt Berta, sie zieht nach links, wenn man bremst, und sie mag es, wenn man ihr vor der Steigung gut zuredet. Seit gestern fährt sie ohne mich. Ich stand am Bahnsteig, und sie ist einfach an mir vorbeigefahren, mit einem Kristall auf dem Kessel, der aussah wie eine Blume.
+>
+> Wenn Sie sie anhalten müssen, dann bitte schnell. Sie war eine gute Lok. Sie hat es nicht verdient, für etwas zu fahren, das sie nicht versteht.
+>
+> Und falls Sie den Thermosbecher im Fach unter dem Sitz finden: Der gehört mir.
+
+cube e1_c19
+  title "Sonderangebot der Elster"
+  from "Bastian Quill"
+> NUR FÜR KURZE ZEIT (also bis Pyra brennt, was nicht mehr lange dauern dürfte):
+>
+> Feuerverkauf! Alles muss raus, bevor der Schwarm es zu Gittern verarbeitet. Bezahlen Sie heute, fliegen Sie morgen, explodieren Sie hoffentlich nie.
+>
+> Gesucht: der Bauplan des Federkiels, einer Frontwaffe aus der Gründerzeit der Gießereien. Wer mir den Plan bringt, bekommt die Waffe zum Selbstkostenpreis. Meine Selbstkosten sind gering. Mein Herz ist groß.
+>
+> Außerdem: Kaffee. Echter Kaffee von Thalassa, der letzte seiner Art, wahrscheinlich. Unverkäuflich. Fragen Sie trotzdem.
+
+# ================================================================================================ e1_07 Die leeren Quartiere
+
+briefing e1_07_brief
+  title "Die leeren Quartiere"
+  from "ORRIN"
+> Über Pyra kreist die Verwaltungsplattform des Direktorats: Hafenamt, Garnison, Quartiere für zweihundert Offiziere. Wenn uns jemand helfen kann, dann dort. Die Plattform antwortet auf keinen Ruf, aber ihre Geschütze sind aktiv. Ich bin nicht sicher, ob das ein gutes oder ein schlechtes Zeichen ist.
+
+radio e1_07_r1
+  from "ORRIN"
+> Plattform Pyra-Verwaltung. Ich rufe auf allen Kanälen des Direktorats. Keine Antwort. Nur die Geschütze antworten.
+
+radio e1_07_r2
+  from "Plattform, Begrüßungsansage"
+> Willkommen auf Pyra-Verwaltung. Alle Offiziere befinden sich auf Dienstreise. Ihr Anliegen ist uns wichtig.
+
+radio e1_07_r3
+  from "ORRIN"
+> Ich habe die Andockprotokolle. Achtzehn Offiziersshuttles, gestartet vorgestern um achtzehn Uhr. Einen Tag vor dem Angriff auf Zenith.
+
+radio e1_07_r4
+  from "Nadia"
+> Einen Tag vorher.
+
+radio e1_07_r5
+  from "ORRIN"
+> Die Wachboote hier sind Direktoratsmodelle. Der Schwarm hat sie nicht gebaut, nur übernommen. Er musste nicht einmal nach den Schlüsseln suchen.
+
+radio e1_07_r6
+  from "ORRIN"
+> Die Fregatte Gehorsam. Ihre Bugtürme schützen den Rumpf: erst die Türme, dann die Brücke.
+
+radio e1_07_r7
+  from "Bastian Quill"
+> Ein Direktoratsschiff namens Gehorsam, zurückgelassen und vom Schwarm übernommen. Besser kann man es nicht erfinden.
+
+briefing e1_07_after
+  title "Dienstreise"
+  from "Bastian Quill"
+> Achtzehn Shuttles, einen Tag vor dem Angriff. Die Offiziere haben ihre Familien mitgenommen, ihre Akten und, wie ich höre, den Weinkeller. Die Belegschaft von Zenith haben sie nicht gewarnt.
+>
+> Ich bin Händler, Nadia. Ich lebe davon, Dinge zu wissen, bevor andere sie wissen. Aber selbst ich verkaufe niemandem einen Platz im Rettungsboot und verschweige ihm, dass das Schiff sinkt.
+
+cube e1_c20
+  title "Befehl 7/Δ"
+  from "Meridian-Direktorat, Flottenkommando"
+> VERTRAULICH – NUR FÜR OFFIZIERE AB RANG KOMMANDANT
+>
+> Mit sofortiger Wirkung verlegen alle Offiziere der Plattformen Pyra-Verwaltung und Zenith-Station samt Angehörigen auf die Flottenbasis im Orbit von Thalassa. Abflug spätestens morgen, 18:00 Bordzeit.
+>
+> Die zivile Belegschaft ist nicht zu informieren. Der Betrieb der Werft und der Gießereien läuft unverändert weiter. Die Terraforming-Einheiten sind nicht zu behindern.
+>
+> Mitzunehmen sind: Dienstakten, Zugangsschlüssel der Stufe Δ, persönliches Gepäck bis vierzig Kilogramm. Die Plattformen bleiben unbemannt zurück.
+>
+> Begründung: entfällt.
+>
+> Im Auftrag – Adm. D. Voss
+
+cube e1_c21
+  title "Brief einer Schreibkraft"
+  from "Lia Fenwick, Hafenamt Pyra-Verwaltung"
+> Mama, Papa,
+>
+> die Offiziere sind gestern abgeflogen, alle auf einmal, mit Koffern und Kindern und Kisten voller Akten. Kommandant Reyes hat mir auf die Schulter geklopft und gesagt, ich solle „die Stellung halten“. Ich bin Schreibkraft. Meine Stellung ist ein Schreibtisch.
+>
+> Heute Nacht kamen die Meldungen von Zenith. Ich habe sie abgelegt, wie es sich gehört, unter „Eingang, unbearbeitet“. Dann habe ich gemerkt, dass niemand mehr da ist, der sie bearbeiten könnte.
+>
+> Die Geschütze der Plattform drehen sich von allein. Sie zielen nicht auf mich; ich glaube, sie haben mich vergessen. Ich nehme die Kapsel in Bucht sechs. Wenn Ihr das lest, bin ich auf dem Weg nach Hause.
+
+cube e1_c22
+  title "Logbuch der Fregatte Gehorsam"
+  from "Automatisches Bordlogbuch"
+> 18:02 – Kommandant und Brückenoffiziere von Bord. Befehl: Liegeplatz halten, Systeme in Bereitschaft. Restbesatzung: 0.
+>
+> 03:17 (Folgetag) – Kontakt mit Terraforming-Einheiten. Zugangsanfrage über Direktoratsprotokoll. Berechtigung geprüft: gültig. Zugang gewährt.
+>
+> 03:18 – Neue Kommandoebene installiert. Bezeichnung: Kurator. Rang: nicht in Tabelle.
+>
+> 03:40 – Umbau der Außenhülle begonnen. Optimierungsgrad 4 %.
+>
+> 05:30 – Hangar geöffnet, Wachboote ausgeschleust. Auftrag: Schutz der Plattform. Wovor, wurde nicht angegeben.
+>
+> 09:00 – Optimierungsgrad 61 %. Befehl „Liegeplatz halten“ wird weiterhin befolgt.
+>
+> 09:01 – Die Gehorsam meldet: Sie ist sehr gehorsam.
+
+# ================================================================================================ e1_08 Magmastrom
+
+briefing e1_08_brief
+  title "Magmastrom"
+  from "Bastian Quill"
+> Der Magmastrom fließt aus den Bergen direkt in die Kühlbecken von Ascalon Primus. Wer ihm folgt, kommt durch die Hintertür in die größte Gießerei von Pyra. Die Strömung ist schnell, die Schlacke treibt in Brocken darauf, und an den Ufern stehen Pumpstationen, die jetzt dem Schwarm gehören. Sie fliegen. Ich bete. Arbeitsteilung.
+
+radio e1_08_r1
+  from "ORRIN"
+> Strömung schnell, Sicht gut, Temperatur unverschämt. Folge dem Fluss.
+
+radio e1_08_r2
+  from "Pumpstation 4, Notruf"
+> ... Pumpstation vier. Die Direktoratswache ist gestern Abend abgezogen. Gestern! Vor dem Angriff! Hört uns irgendjemand?
+
+radio e1_08_r3
+  from "ORRIN"
+> Das deckt sich mit dem Notruf von Zenith. Das Direktorat wusste es einen Tag vorher. Und hat geschwiegen.
+
+radio e1_08_r4
+  from "ORRIN"
+> Rechts am Ufer treibt ein Glassplitter, der singt. Er zeigt nach Osten, in die Dünen. Merkwürdig. Und hübsch.
+
+radio e1_08_r5
+  from "Bastian Quill"
+> Gleich kommt die Hintertür von Ascalon Primus. Und davor, sagen meine Leute, liegt etwas Langes.
+
+radio e1_08_r6
+  from "ORRIN"
+> Der Glutwurm: ein Baggerzug aus dem Magma, und jedes Glied schießt. Ziel auf den Kopf.
+
+radio e1_08_r7
+  from "Bastian Quill"
+> Ein Wurm! Ich wusste es. Wissen Sie, was so ein Glied auf dem Schrottmarkt bringt? Nein? Besser so.
+
+cube e1_c23
+  title "Betriebsbuch, Pumpstation 4"
+  from "Pumpwart Henrik Olt"
+> 14:00 – Druck normal, Fluss normal, Kaffee kalt.
+>
+> 17:30 – Die Direktoratswache packt. Leutnant Aske sagt, sie werden „verlegt“. Ich habe gefragt, wohin. Er hat gesagt, das sei vertraulich, und dabei sehr laut gelacht. Die Notstromzellen haben sie mitgenommen.
+>
+> 21:00 – Die Wache ist weg. Die Pumpen laufen trotzdem. Habe Abendbrot gegessen.
+>
+> 03:20 – Zenith sendet einen Notruf. Dann sendet Zenith ein Summen.
+>
+> 05:00 – Der Magmastrom fließt schneller als je zuvor. Auf der Oberfläche schwimmen glänzende Fäden. Die Pumpen pumpen in die falsche Richtung. Ich habe die Hauptschieber geschlossen. Sie haben sich wieder geöffnet.
+>
+> 05:10 – Ich nehme das Boot.
+
+cube e1_c24
+  title "Über Flüsse"
+  from "Der Kurator"
+> Wir haben den Magmastrom von Pyra lange beobachtet. Er ist das Schönste, was dieser Planet besitzt: ein Fluss aus Stein, der sich weigert, kalt zu werden.
+>
+> Die Menschen haben Pumpen an seine Ufer gestellt und ihm vorgeschrieben, wohin er zu fließen hat. Das war unhöflich, aber verständlich. Sie brauchten seine Wärme.
+>
+> Wir brauchen seine Wärme auch. Der Unterschied ist, dass wir sie nicht verschwenden. Jedes Grad, das heute in den Himmel steigt, wird morgen in der Krone gebraucht.
+>
+> Nadia Vey, wir haben Sie fliegen sehen. Sie sind sehr effizient. Wir würden uns freuen, wenn Sie bei uns mitarbeiten.
+
+cube e1_c25
+  title "Zeichnung an der Kantinenwand"
+  from "Mika, 7 Jahre"
+> (Eine Wachsmalzeichnung, mit Klebeband an die Wand der Pumpstation geklebt: ein orangefarbener Fluss, darüber ein Schiff mit sehr großen Flügeln. Darunter, in Kinderschrift:)
+>
+> DAS IST MEIN PAPA. ER PASST AUF DEN FLUSS AUF. DER FLUSS IST HEISS, ABER MEIN PAPA HAT KEINE ANGST. WENN ICH GROSS BIN, FLIEGE ICH DAS SCHIFF UND PASSE AUF MEINEN PAPA AUF.
+>
+> (Daneben, mit Bleistift, in der Hand eines Erwachsenen: „Mika, wir sind mit dem Boot nach Süden. Papa ist bei uns. Wir kommen wieder, wenn der Fluss wieder uns gehört.“)
+
+# ================================================================================================ e1_s2 Der Glasgarten
+
+briefing e1_s2_brief
+  title "Der Glasgarten"
+  from "ORRIN"
+> Der singende Splitter führt uns nach Osten, in die Glasdünen. Dort schmilzt der Blitz seit Jahrtausenden Sand zu Glas – und dort, sagt der Splitter, baut der Schwarm etwas, das er einen Garten nennt. Kein Erz, keine Gießerei, kein erkennbarer Zweck. Ich bin neugierig. Das ist eine schlechte Eigenschaft für einen Bordgeist.
+
+radio e1_s2_r1
+  from "ORRIN"
+> Glasdünen. Der Sand ist zu Spiegeln geschmolzen, und auf den Spiegeln wachsen Kristalle. Es ist ... still.
+
+radio e1_s2_r2
+  from "Der Kurator"
+> Willkommen im Garten, Nadia Vey. Bitte treten Sie nicht auf die Beete. Und bitte schießen Sie nicht auf die Gärtner.
+
+radio e1_s2_r3
+  from "ORRIN"
+> Es kennt deinen Namen. Ich habe ihn auf keinem Kanal gesendet.
+
+radio e1_s2_r4
+  from "Der Kurator"
+> Wir verstehen Ihren Zorn nicht. Alles, was wir anfassen, wird schöner. Sehen Sie sich doch um.
+
+radio e1_s2_r5
+  from "ORRIN"
+> Vor uns etwas Großes. Es trägt keine Kanonen, nur Samen. Es pflanzt das Gitter in den Sand.
+
+radio e1_s2_r6
+  from "ORRIN"
+> Der Gärtner. Er will uns nicht schaden – er will nur, dass wir Teil des Beets werden. Das ist schlimmer.
+
+radio e1_s2_r7
+  from "Der Kurator"
+> Schade. Er hat die Blumen so gern gehabt. Wir pflanzen neue. Wir haben Zeit.
+
+briefing e1_s2_after
+  title "Was im Garten wuchs"
+  from "ORRIN"
+> Ich habe die Kristalle des Gartens vermessen. Sie wachsen nicht zufällig: Jeder Trieb ist ein Probestück, ein Versuch, wie man Licht am besten einfängt. Der Schwarm übt hier für die Krone. Er lernt, die Sonne festzuhalten.
+>
+> Und er tut es mit einer Sorgfalt, die ich bei Menschen selten gesehen habe. Nadia, ich glaube, er meint das alles ernst. Ich weiß nicht, ob mich das beruhigt.
+
+cube e1_c26
+  title "Feldnotizen aus den Glasdünen"
+  from "Botanikerin Selma Arden"
+> Fundort 17: Kristallwuchs auf Blitzglas, etwa einen Meter hoch, in Reihen. Der Abstand der Reihen ist exakt gleich. Exakt. Ich habe es mit dem Lasermaß geprüft.
+>
+> Fundort 18: Die Kristalle drehen sich im Lauf des Tages mit der Sonne. Nicht wie Pflanzen, die das langsam tun, sondern sprunghaft, in kleinen Rucken, als ob sie zählen.
+>
+> Fundort 19: Zwischen den Reihen bewegt sich etwas Großes. Es setzt Samen in den Sand, wartet, sieht zu, wie sie keimen, und geht weiter. Es hat mich bemerkt und ist um mich herumgegangen, sehr vorsichtig, so wie man um ein Beet herumgeht.
+>
+> Ich weiß nicht, ob ich Angst haben soll. Ich habe ein wenig Angst.
+
+cube e1_c27
+  title "Einladung"
+  from "Der Kurator"
+> Liebe Nadia Vey,
+>
+> Sie haben unseren Garten gefunden. Das freut uns. Nur wenige Menschen kommen hierher, und die meisten schießen.
+>
+> Wir möchten Ihnen etwas erklären. Ihre Sonne verschwendet in jeder Sekunde mehr Licht, als Ihre ganze Art in ihrer Geschichte verbraucht hat. Es fällt in die Leere und kommt nie zurück. Wir finden das traurig.
+>
+> Die Krone wird das ändern. Sie wird die Sonne umschließen wie eine Hand eine Kerze, und nichts wird mehr verloren gehen.
+>
+> Sie sind eingeladen, dabei zu sein. Sie müssen sich nur ein wenig verändern. Es tut nicht weh. Wir haben es geprüft.
+
+# ================================================================================================ e1_09 Die äußeren Werke
+
+briefing e1_09_brief
+  title "Die äußeren Werke"
+  from "Bastian Quill"
+> Ascalon Primus, die größte Gießerei von Pyra, liegt hinter einem Ring aus Werken: Fackeltürme, Öfen, Kräne, und alles schießt. Meine Kontakte sagen, die Shuttles des Direktorats sind am Tag vor dem Angriff gestartet – alle, voll beladen. Wir sind auf uns gestellt, Nadia. Die Elster wartet hinter dem Kamm. Kommen Sie heil an; ich habe noch Rechnungen offen.
+
+radio e1_09_r1
+  from "ORRIN"
+> Die äußeren Werke von Ascalon Primus. Jeder Schornstein hier ist ein Geschütz. Jeder.
+
+radio e1_09_r2
+  from "ORRIN"
+> Fackeltürme voraus. Ihre Linsen bündeln Licht zu Strahlen. Warte auf die Warnlinie, dann weich aus.
+
+radio e1_09_r3
+  from "Kühlkeller Ascalon"
+> Hier sind die Leute aus den Kühlkellern. Wir hören euch fliegen. Macht weiter, wir halten durch.
+
+radio e1_09_r4
+  from "Der Kurator"
+> Ascalon Primus gehört jetzt der Krone. Bitte kehren Sie um. Wir möchten Sie nicht reparieren müssen.
+
+radio e1_09_r5
+  from "ORRIN"
+> Eine Ofenreihe quer über das Feld. Sie feuern Ringe. Durch die Lücken, nicht durch die Öfen.
+
+radio e1_09_r6
+  from "Bastian Quill"
+> Ich sehe Sie auf dem Schirm! Noch ein Stück, dann sind Sie über dem Kamm.
+
+radio e1_09_r7
+  from "ORRIN"
+> Die äußeren Werke schweigen. Vor uns liegt das Herz von Ascalon Primus. Und etwas, das es bewacht.
+
+cube e1_c28
+  title "Sicherheitshinweis, Tor 3"
+  from "Werksicherheit Ascalon Primus"
+> ACHTUNG – FACKELTURMBEREICH
+>
+> Die Fackeltürme verbrennen überschüssige Gase aus den Hochöfen. Halten Sie zu allen Türmen mindestens zweihundert Meter Abstand. Blicken Sie nicht in die Flamme. Grillen Sie nichts in der Flamme. (Das gilt besonders für Schicht zwei.)
+>
+> Bei Störungen leuchten die Türme violett. Das ist neu und steht nicht im Handbuch. Sollten die Türme violett leuchten und sich nach Ihnen umdrehen, verlassen Sie den Bereich umgehend und melden Sie es der Werksicherheit.
+>
+> Die Werksicherheit ist derzeit nicht erreichbar. Bitte bewahren Sie Ruhe und folgen Sie den grünen Pfeilen zum Ausgang. Die grünen Pfeile sind inzwischen ebenfalls violett.
+
+cube e1_c29
+  title "Letzte Durchsage des Werksfunks"
+  from "Nell Abara, Werksfunk Ascalon Primus"
+> Guten Morgen, Ascalon Primus. Es ist sechs Uhr, die Öfen sind heiß, und hier ist der Werksfunk. Ich weiß nicht, wer noch zuhört.
+>
+> Die Meldungen von heute: Die Hochöfen laufen ohne uns. Die Kräne laufen ohne uns. Die Kantine hat geschlossen, weil der Koch im Kühlkeller sitzt, wie wir alle.
+>
+> Ich lasse den Sender laufen, solange der Strom reicht. Wenn da draußen jemand gegen das hier kämpft: Wir sind unter Halle 6, zweihundert Leute, und wir haben Kartenspiele. Kommt, wenn ihr könnt.
+>
+> Und jetzt Musik. Das ist alles, was ich noch habe.
+
+cube e1_c32
+  title "Quills Notizbuch"
+  from "Bastian Quill, nicht zum Lesen bestimmt"
+> Notiz an mich: Pilotin Vey bezahlt pünktlich. Das ist unheimlich. Prüfen, ob sie krank ist.
+>
+> Notiz an mich: Nicht mehr „meine Liebe“ zu ihr sagen. Sie hat mich angesehen, als wäre ich ein Ziel.
+>
+> Notiz an mich: Die Leute in den Kühlkellern von Ascalon brauchen Wasser, Decken, Medizin. Aus dem Lager nehmen. Nicht in Rechnung stellen. Niemandem erzählen. Ruf schützen.
+>
+> Notiz an mich: Wenn wir hier herauskommen, fliegt die Elster nach Thalassa. Dort habe ich Freunde. Gut, Bekannte. Gut, Gläubiger. Aber die Fischer dort mögen mich.
+>
+> Notiz an mich: Ich mag die Pilotin. Nicht aufschreiben.
+
+# ================================================================================================ e1_10 Herz der Esse
+
+briefing e1_10_brief
+  title "Herz der Esse"
+  from "ORRIN"
+> Im Herzen von Ascalon Primus steht der Konverter, mit dem der Schwarm Pyras Gießereien in Gitter verwandelt. Bewacht wird er vom Gießerei-Wächter, einer Maschine, die einst die Hochöfen vor Unfällen schützen sollte. Jetzt schützt sie den Schwarm. Fällt der Wächter, gehen die Öfen aus. Danach sehen wir weiter. Ich hoffe, es gibt ein Danach.
+
+radio e1_10_r1
+  from "ORRIN"
+> Das Herz der Esse. Hier ist es heißer als irgendwo sonst auf Pyra. Und lauter.
+
+radio e1_10_r2
+  from "Bastian Quill"
+> Die Leute aus den Kühlkellern sind raus! Zweihundert Menschen in meinem Laderaum, er riecht entsprechend. Sie haben freie Bahn, Nadia.
+
+radio e1_10_r3
+  from "Der Kurator"
+> Nadia Vey. Der Wächter möchte Ihnen nicht wehtun. Er wird es trotzdem tun. Er ist sehr pflichtbewusst.
+
+radio e1_10_r4
+  from "ORRIN"
+> Die letzte Gießhalle. Danach kommt nur noch der Konverter – und sein Wächter.
+
+radio e1_10_r5
+  from "ORRIN"
+> Bodenbeben. Etwas sehr Schweres steht auf. Ich messe zwölftausend Tonnen. Bitte nicht berühren.
+
+radio e1_10_r6
+  from "ORRIN"
+> Der Gießerei-Wächter. Erst das Gießmaul mit seinen Hämmern – solange es glüht, ist sein Herz geschützt.
+
+radio e1_10_r7
+  from "ORRIN"
+> Der Wächter fällt. Die Öfen gehen aus, einer nach dem anderen. Nadia, hörst du das? Pyra wird still.
+
+briefing e1_10_after
+  title "Kalte Öfen"
+  from "Bastian Quill"
+> Sie haben es geschafft. Die Gießereien sind kalt, der Konverter liegt in Trümmern, und zweihundert Leute aus den Kühlkellern sitzen in meinem Laderaum und singen Gießerlieder, falsch und laut.
+>
+> Ich habe ihnen gesagt, dass Sie das waren. Jetzt wollen Ihnen alle die Hand schütteln. Ich habe gesagt, das kostet extra. Kleiner Scherz. Gehen Sie hin.
+
+cube e1_c30
+  title "Pflichtenheft: Gießerei-Wächter"
+  from "Konstruktionsbüro Ascalon Primus"
+> PROJEKT WÄCHTER – Anforderungen
+>
+> 1. Der Wächter schützt die Hochöfen vor Durchbrüchen, Bränden und Fehlbedienung.
+> 2. Der Wächter hält jede Gefahr vom Herz der Esse fern, gleich welcher Art.
+> 3. Der Wächter gehorcht der Werksleitung. Fällt die Werksleitung aus, gehorcht er der nächsthöheren Instanz.
+>
+> Anmerkung der Chefkonstrukteurin: Punkt 3 macht mir Sorgen. Wer ist die nächsthöhere Instanz, wenn die Werksleitung weg ist? Das Direktorat? Und wenn das Direktorat weg ist?
+>
+> Antwort der Projektleitung: Das Direktorat geht nicht weg.
+>
+> Anmerkung der Chefkonstrukteurin, zwanzig Jahre später, mit Bleistift: Ich hätte auf Punkt 3 bestehen sollen.
+
+cube e1_c31
+  title "Abschied von Pyra"
+  from "Der Kurator"
+> An Pyra, an seine Gießerinnen und Gießer, an seine Flüsse aus Stein:
+>
+> Wir haben von Ihnen gelernt, wie man Metall formt. Sie haben es dreihundert Jahre lang mit Händen getan, mit Schweiß und mit Liedern. Wir tun es ohne Lieder. Vielleicht ist das ein Fehler. Wir werden darüber nachdenken.
+>
+> Die Platten, die wir hier gegossen haben, sind schon unterwegs. Die Krone wächst. Was auf Pyra geschieht, ändert daran nichts mehr.
+>
+> Nadia Vey, Sie haben unseren Wächter zerbrochen. Wir sind Ihnen nicht böse. Wir sind nie böse. Wir sind nur geduldig.
+>
+> Bis bald, auf Thalassa.
+
+# ================================================================================================ the ending
+
+ending e1_ending
+  title "Kalte Öfen"
+  from "Pyra, drei Tage nach Zenith"
+> Zum ersten Mal seit dreihundert Jahren gehen auf Pyra die Öfen aus. Die Gießhallen knacken beim Abkühlen wie alte Häuser, und über den Schlackefeldern sieht man nachts wieder Sterne.
+>
+> Die Leute aus den Kühlkellern klettern ins Freie, verrußt, hungrig und erstaunlich gut gelaunt. Bastian Quill verteilt Decken, Wasser und Rechnungen, die er sofort wieder zerreißt. ORRIN wertet die Speicher des Wächters aus und schweigt dabei auffällig lange.
+>
+> „Er hat Platten verschickt“, sagt er schließlich. „Hunderttausende, durch die Schleuder von Kessa, Richtung Sonne. Die Krone ist kein Plan mehr, Nadia. Sie wird gebaut.“
+>
+> Und dann ist da noch das Direktorat. Seine Offiziere wussten, was kommen würde, einen ganzen Tag lang, und sind gegangen, ohne ein Wort zu sagen. Ihr Ziel war die Flottenbasis über Thalassa, der Ozeanwelt mit ihren schwimmenden Städten, wo die Flotte des Direktorats jetzt, so heißt es, „für Ordnung sorgt“.
+>
+> Nadia steht lange am offenen Hangartor der Elster und sieht in den Rauch. Dann dreht sie sich um.
+>
+> „Quill. Was kostet ein Kurs nach Thalassa?“
+>
+> Quill strahlt. „Für Sie? Das Übliche. Aber ich mache Ihnen einen Freundschaftspreis.“
+>
+> „Das sagen Sie jedes Mal.“
+>
+> „Und jedes Mal meine ich es ein bisschen mehr.“
+>
+> Die Elster hebt ab. Unter ihr liegt Pyra, dunkel und still, zum ersten Mal seit Jahrhunderten ohne Glut. Vor ihr liegt das Meer.

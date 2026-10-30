@@ -1,0 +1,393 @@
+# Episode 1 (Pyra, "Glutgürtel"): the Tessellate's fliers (dark violet and gunmetal hulls, glowing magenta and cyan
+# lattice crystals), Pyra's foundry machinery the swarm has converted (rust and iron, ember glow, crystals growing
+# through the plates), a Directorate patrol boat, and the episode's bosses. Nose towards -z.
+
+# ------------------------------------------------------------------------------------------------ the swarm
+
+# Popcorn: a crystal moth with two glowing vanes and three motes circling it.
+model e1_mote
+  part crystal r=4.5 len=13 seg=5 color=#241b38
+  part wing span=9 root=9 tip=2 sweep=7 z=2 thick=0.8 color=#191427 stripe=#ff5ae0
+  part crystal r=2.2 len=7 y=3 z=-1 color=#ff7af0 emit=0.9
+  part light r=1.1 x=8 color=#60e8ff group=spin spin=320
+  part light r=1.1 x=-4 z=7 color=#ff70f0 group=spin
+  part light r=1.1 x=-4 z=-7 color=#60e8ff group=spin
+
+# Fighter: a faceted needle with two forward crystal blades.
+model e1_shard
+  part hull len=32 wid=7 hgt=5 shape=needle round=3 color=#29203d
+  part crystal r=2.6 len=18 x=7 z=2 rot=-14 color=#d050ff emit=0.6 mirror=1
+  part wing span=11 root=10 tip=2 sweep=4 z=7 thick=1 color=#1b142d stripe=#ff50d0
+  part engine r=1.8 len=6 z=15 glow=#ff60e0 color=#140f22
+  part light r=1.3 z=-11 y=2 color=#60e0ff
+  part greeble n=5 w=4 d=12 y=2 z=2 size=1.2 seed=5 color=#362b4c
+
+# Fighter: a broad flying wing with lattice spars and crystals along its trailing edge.
+model e1_latticewing
+  part hull len=30 wid=12 hgt=6 shape=wedge color=#2b2243
+  part wing span=25 root=20 tip=5 sweep=15 z=2 thick=1.4 color=#1e182f stripe=#e060ff
+  part wing span=14 root=8 tip=3 sweep=9 z=12 thick=0.8 color=#191225
+  part crystal r=2.4 len=10 x=13 y=1.5 z=6 color=#50e0ff emit=0.8 mirror=1
+  part crystal r=2 len=8 x=22 y=1 z=13 color=#ff60e0 emit=0.8 mirror=1
+  part engine r=2.2 len=7 x=5 z=14 glow=#ff50d0 color=#191225
+  part dome rx=3 ry=2 rz=6 z=-6 y=3 color=#ff80f0 emit=0.6
+  part greeble n=8 w=10 d=16 y=3 z=4 size=1.5 seed=12 color=#362b4c
+
+# Gunship: a hex hull with two pods, a spinning lattice ring and a cyan crystal on its spine.
+model e1_weaver
+  part hull len=50 wid=24 hgt=11 shape=hex round=3 color=#281f3b
+  part hull len=30 wid=8 hgt=7 shape=cigar x=18 z=6 color=#1f182f mirror=1
+  part wing span=12 root=16 tip=6 sweep=5 x=20 z=6 thick=2 color=#1b142d stripe=#ff50d0
+  part crystal r=5 len=14 y=9 pitch=90 color=#50e0ff emit=0.8
+  part crystal r=2.5 len=9 x=10 y=6 z=-12 rot=30 color=#ff60e0 emit=0.8 mirror=1
+  part gun r=1.5 len=14 x=18 z=-14 color=#140f22
+  part engine r=3 len=8 x=18 z=22 glow=#ff50d0 color=#140f22
+  part greeble n=14 w=18 d=30 y=6 z=6 size=2 seed=17 color=#362b4c
+  part light r=1.5 x=12 z=-22 color=#60e0ff mirror=1
+  part ring r=17 thick=1.3 y=7 color=#e060ff emit=0.7 group=spin spin=90
+  part crystal r=2.2 len=8 x=17 y=7 rot=90 color=#ff70f0 emit=0.9 group=spin
+  part crystal r=2.2 len=8 x=-17 y=7 rot=90 color=#ff70f0 emit=0.9 group=spin
+  part crystal r=2.2 len=8 z=17 y=7 color=#60e0ff emit=0.9 group=spin
+  part crystal r=2.2 len=8 z=-17 y=7 color=#60e0ff emit=0.9 group=spin
+
+# Carrier: a long hull with glowing honeycomb bays along both sides; motes hatch from them.
+model e1_hivecarrier
+  part hull len=96 wid=34 hgt=16 shape=hex round=3 color=#241b38
+  part hull len=62 wid=14 hgt=10 shape=box x=27 z=8 color=#1e182f mirror=1
+  part box w=10 h=6 d=10 x=27 y=6 z=-12 taper=0.35 color=#ff50d0 emit=0.6 mirror=1
+  part box w=10 h=6 d=10 x=27 y=6 z=2 taper=0.35 color=#ff50d0 emit=0.6 mirror=1
+  part box w=10 h=6 d=10 x=27 y=6 z=16 taper=0.35 color=#ff50d0 emit=0.6 mirror=1
+  part box w=10 h=6 d=10 x=27 y=6 z=30 taper=0.35 color=#c040ff emit=0.5 mirror=1
+  part wing span=20 root=30 tip=12 sweep=10 x=33 z=16 thick=2.5 color=#1b142d stripe=#50e0ff
+  part crystal r=8 len=26 y=12 z=-20 color=#e060ff emit=0.8
+  part crystal r=4 len=14 x=8 y=10 z=-40 rot=-20 color=#50e0ff emit=0.8 mirror=1
+  part engine r=4 len=10 x=14 z=50 glow=#ff50d0 color=#140f22
+  part engine r=5 len=10 z=52 glow=#ff70e0 color=#140f22
+  part greeble n=30 w=24 d=80 y=8 size=3 seed=31 color=#362b4c
+  part light r=2 x=18 z=-44 color=#60e0ff mirror=1
+  part ring r=13 thick=1.4 y=12 z=0 color=#50e0ff emit=0.7 group=spin spin=70
+  part crystal r=2 len=7 x=13 y=12 rot=90 color=#ff70f0 emit=0.9 group=spin
+  part crystal r=2 len=7 x=-13 y=12 rot=90 color=#ff70f0 emit=0.9 group=spin
+
+# ------------------------------------------------------------------------------------------------ Pyra's machines, converted
+
+# A mining scout bike from the ash roads: rust body, outrigger pontoons, a crystal growing on its back.
+model e1_skimmer
+  part hull len=26 wid=7 hgt=5 shape=cigar color=#55280e
+  part hull len=18 wid=4 hgt=4 shape=cigar x=10 z=3 color=#31231b mirror=1
+  part box w=18 h=2 d=4 z=2 color=#261d18
+  part box w=18 h=2 d=3 z=8 color=#261d18
+  part engine r=1.8 len=6 x=10 z=13 glow=#ff8a30 color=#1b1613
+  part dome rx=2.5 ry=2 rz=5 z=-4 y=2 color=#ffb050 emit=0.5
+  part crystal r=1.8 len=7 y=3 z=4 pitch=60 color=#ff60e0 emit=0.9
+  part light r=0.9 x=10 z=-6 color=#ffd080 mirror=1
+
+# A flying foundry crane: an iron H-frame on four rotors, carrying a ladle of molten metal.
+model e1_crane
+  part box w=58 h=6 d=12 color=#30261e
+  part box w=10 h=7 d=52 x=26 color=#3c2b1e mirror=1
+  part disc r=10 h=2 x=26 y=4 z=-22 seg=12 color=#1e1714 mirror=1
+  part disc r=10 h=2 x=26 y=4 z=22 seg=12 color=#1e1714 mirror=1
+  part ring r=11 thick=1 x=26 y=4 z=-22 color=#542c11 mirror=1
+  part ring r=11 thick=1 x=26 y=4 z=22 color=#542c11 mirror=1
+  part sphere rx=15 ry=9 rz=15 seg=12 y=-2 color=#271911
+  part ring r=15 thick=1.8 y=6 color=#49240f
+  part disc r=12 h=1 y=6 seg=14 color=#ff7a20 emit=0.85
+  part crystal r=3 len=13 x=14 y=7 z=-8 rot=40 pitch=30 color=#e060ff emit=0.8
+  part crystal r=2.4 len=10 x=-16 y=7 z=9 rot=-50 pitch=30 color=#50e0ff emit=0.8
+  part light r=1.6 x=31 y=5 z=-27 color=#ffb040 mirror=1
+  part greeble n=16 w=54 d=10 y=3 size=2 seed=44 color=#463326
+
+# A Directorate patrol boat (ivory, navy stripes), its cockpit and spine overgrown by the lattice.
+model e1_patrol
+  part hull len=44 wid=12 hgt=8 shape=dart color=#6f798b
+  part hull len=22 wid=6 hgt=5 shape=cigar x=11 z=8 color=#525969 mirror=1
+  part wing span=18 root=18 tip=6 sweep=10 z=6 thick=1.6 color=#60697d stripe=#2a3a6a
+  part fin h=7 root=10 tip=4 sweep=4 z=14 y=3 color=#1a2442
+  part dome rx=3.5 ry=2.6 rz=7 z=-6 y=3 color=#ff70e0 emit=0.6
+  part crystal r=3 len=12 x=6 y=4 z=2 rot=-30 pitch=40 color=#e060ff emit=0.8
+  part crystal r=2 len=9 x=-7 y=3 z=10 rot=40 pitch=40 color=#50e0ff emit=0.8
+  part engine r=2.6 len=7 x=11 z=20 glow=#ff60e0 color=#383c45
+  part light r=1 x=19 z=12 color=#3a6aff mirror=1
+  part greeble n=6 w=6 d=14 y=4 z=8 size=1.5 seed=23 color=#74839f
+
+# Ground: a slag gun on an octagonal iron base; its head turns, the barrel glows at the muzzle.
+model e1_slagturret
+  part disc r=16 h=6 seg=8 color=#31231b
+  part ring r=16 thick=1.6 y=2 seg=8 color=#55280e
+  part greeble n=8 w=26 d=26 y=3 size=2.5 seed=19 color=#3c2b1e
+  part crystal r=2.4 len=9 x=11 y=3 z=9 pitch=70 color=#e060ff emit=0.8
+  part box w=18 h=8 d=18 y=5 taper=0.35 color=#482d1a group=head pivot=0,0
+  part gun r=2.6 len=22 y=8 z=-12 color=#1e1714 group=head pivot=0,0
+  part light r=2.2 y=8 z=-23 color=#ff8030 group=head pivot=0,0
+  part light r=1.6 y=10 z=4 color=#ffb040 group=head pivot=0,0
+
+# Ground: a tracked ore crawler with a glowing furnace grille and a turret dome.
+model e1_crawler
+  part box w=24 h=8 d=34 color=#49240f
+  part box w=6 h=7 d=38 x=14 color=#1e1714 mirror=1
+  part greeble n=9 w=4 d=34 x=14 y=3 size=2 seed=9 color=#31231b mirror=1
+  part box w=16 h=3 d=8 y=5 z=12 color=#ff6a20 emit=0.7
+  part crystal r=2 len=8 x=-8 y=5 z=10 pitch=60 color=#ff60e0 emit=0.8
+  part dome rx=9 ry=6 rz=9 y=4 z=-2 color=#3c281b group=head pivot=0,-2
+  part gun r=2 len=20 y=8 z=-14 color=#1b1613 group=head pivot=0,-2
+  part light r=1.5 y=10 z=-2 color=#ff9040 group=head pivot=0,-2
+
+# Ground: a smelting furnace with a glowing mouth, two chimneys and crystals breaking through.
+model e1_furnace
+  part box w=58 h=8 d=58 color=#261d18
+  part greeble n=22 w=52 d=52 y=4 size=3 seed=50 color=#3b2d23
+  part disc r=22 h=18 y=10 seg=10 color=#3d2516
+  part ring r=22 thick=2 y=14 seg=10 color=#55280e
+  part disc r=14 h=2 y=20 seg=10 color=#ff7a20 emit=0.85
+  part disc r=5 h=22 x=22 y=11 z=22 seg=8 color=#1e1714 mirror=1
+  part light r=2.4 x=22 y=23 z=22 color=#ff9040 mirror=1
+  part crystal r=4 len=16 x=-18 y=8 z=-20 pitch=60 color=#e060ff emit=0.8
+  part crystal r=3 len=12 x=20 y=6 z=-16 pitch=50 rot=40 color=#50e0ff emit=0.8
+  part light r=1.8 x=26 y=5 z=-26 color=#ffb040 mirror=1
+
+# Ground: a foundry flare stack crowned with a lattice lens that burns a beam.
+model e1_flaretower
+  part disc r=19 h=4 seg=6 color=#261d18
+  part greeble n=8 w=30 d=30 y=2 size=3 seed=27 color=#3c2b1e
+  part disc r=10 h=30 y=15 seg=6 color=#3c281b
+  part ring r=10 thick=1.4 y=20 seg=6 color=#55280e
+  part crystal r=2.5 len=12 x=13 y=4 rot=90 color=#50e0ff emit=0.8 mirror=1
+  part crystal r=2.5 len=12 z=13 y=4 color=#50e0ff emit=0.8
+  part crystal r=6 len=18 y=34 pitch=90 color=#ff60e0 emit=0.9
+  part ring r=13 thick=1.2 y=30 seg=6 color=#e060ff emit=0.7 group=spin spin=120
+  part crystal r=2 len=7 x=13 y=30 rot=90 color=#ff80f0 emit=0.9 group=spin
+  part crystal r=2 len=7 x=-13 y=30 rot=90 color=#ff80f0 emit=0.9 group=spin
+
+# Ground: an ore wagon full of glowing ore, with a crystal growing out of the load.
+model e1_orewagon
+  part box w=26 h=10 d=48 color=#3e2310
+  part box w=28 h=3 d=50 y=-2 color=#1e1714
+  part greeble n=16 w=20 d=40 y=5 size=4 seed=61 color=#ff8a30 emit=0.45
+  part box w=10 h=3 d=6 z=-27 color=#1e1714
+  part box w=10 h=3 d=6 z=27 color=#1e1714
+  part crystal r=3 len=12 x=5 y=10 z=-10 pitch=60 color=#e060ff emit=0.8
+  part light r=1.2 x=13 y=4 z=-23 color=#ffb040 mirror=1
+
+# Ground: the ore locomotive: a long iron body, a boiler, a cab with lit windows and a glowing plough.
+model e1_oreloco
+  part box w=30 h=12 d=82 color=#31231b
+  part box w=34 h=4 d=86 y=-3 color=#1e1714
+  part greeble n=24 w=28 d=70 y=6 size=3 seed=71 color=#3b2d23
+  part gun r=11 len=46 y=11 z=-10 color=#482d1a
+  part ring r=11 thick=1.2 y=11 z=-26 pitch=90 color=#5f3717
+  part ring r=11 thick=1.2 y=11 z=6 pitch=90 color=#5f3717
+  part box w=26 h=14 d=20 y=12 z=28 color=#3e2310
+  part box w=20 h=2 d=14 y=19 z=28 color=#ffb040 emit=0.6
+  part disc r=4 h=10 y=21 z=-26 color=#1e1714
+  part light r=3 y=27 z=-26 color=#ff8030
+  part box w=34 h=6 d=8 y=2 z=-42 taper=0.3 color=#ff6a20 emit=0.6
+  part crystal r=4 len=16 x=10 y=18 z=4 pitch=60 color=#e060ff emit=0.8
+  part crystal r=3 len=12 x=-10 y=16 z=-4 pitch=55 rot=30 color=#50e0ff emit=0.8
+  part light r=1.6 x=15 y=6 z=-40 color=#ffd080 mirror=1
+
+# Obstacle: a lump of slag thrown up by the foundries, still glowing in its cracks.
+model e1_slagrock
+  part sphere rx=22 ry=13 rz=18 seg=7 color=#1e1612 noise=0.22
+  part sphere rx=12 ry=9 rz=11 seg=6 x=11 z=9 y=3 color=#261b14 noise=0.22
+  part sphere rx=10 ry=8 rz=9 seg=5 x=-12 z=-7 y=2 color=#18110e noise=0.22
+  part crystal r=2.5 len=16 x=3 y=10 z=-2 rot=30 color=#ff6a20 emit=0.9
+  part crystal r=2 len=12 x=-6 y=9 z=6 rot=-60 color=#ff8a30 emit=0.9
+  part light r=2 x=-14 y=8 z=-3 color=#ff7020
+  part light r=1.5 x=12 y=11 z=10 color=#ffa040
+
+# ------------------------------------------------------------------------------------------------ bosses and their parts
+
+# Mini-boss: a lava dredger turned by the swarm: a scoop full of magma, four legs, crystals on its back.
+model e1_cindermaw
+  part hull len=90 wid=50 hgt=22 shape=blob color=#321e14
+  part box w=58 h=10 d=20 y=-2 z=-44 taper=0.2 color=#1e1714
+  part box w=46 h=4 d=14 y=4 z=-46 color=#ff6a20 emit=0.85
+  part wing span=30 root=14 tip=6 sweep=-8 x=18 z=-14 thick=4 color=#271911 stripe=#5a3a26
+  part wing span=30 root=14 tip=6 sweep=12 x=18 z=16 thick=4 color=#271911 stripe=#5a3a26
+  part disc r=6 h=14 x=14 y=12 z=26 seg=8 color=#1e1714 mirror=1
+  part light r=2.6 x=14 y=20 z=26 color=#ff8030 mirror=1
+  part greeble n=30 w=40 d=66 y=10 size=3 seed=81 color=#482d1a
+  part crystal r=6 len=22 y=18 z=4 pitch=60 color=#e060ff emit=0.8
+  part crystal r=4 len=16 x=12 y=14 z=-4 pitch=50 rot=40 color=#50e0ff emit=0.8
+  part crystal r=4 len=14 x=-14 y=14 z=10 pitch=50 rot=-40 color=#ff60e0 emit=0.8
+  part light r=2.2 x=21 y=6 z=-36 color=#ffb040 mirror=1
+
+# Mini-boss: an ash-road harvester wrapped in a spinning ring of cutting blades.
+model e1_sandreaver
+  part hull len=84 wid=30 hgt=16 shape=hammer color=#482d17
+  part box w=18 h=8 d=26 x=20 z=12 color=#3d2613 mirror=1
+  part box w=60 h=5 d=8 z=-30 color=#261c15
+  part engine r=5 len=12 x=12 z=44 glow=#ff8030 color=#1e1714
+  part dome rx=8 ry=4 rz=10 y=6 z=-24 color=#ffb050 emit=0.5
+  part crystal r=6 len=20 y=12 z=-4 pitch=60 color=#e060ff emit=0.8
+  part crystal r=3 len=12 x=12 y=10 z=8 pitch=50 rot=40 color=#50e0ff emit=0.8 mirror=1
+  part greeble n=26 w=24 d=70 y=8 size=3 seed=88 color=#53381d
+  part light r=2 x=28 y=4 z=-32 color=#ffd080 mirror=1
+  part ring r=48 thick=2.2 seg=24 y=2 color=#31231b group=spin spin=-110
+  part spike r=3.5 len=18 x=48 y=2 color=#b7721e group=spin
+  part spike r=3.5 len=18 x=24 y=2 z=41.6 rot=-60 color=#b7721e group=spin
+  part spike r=3.5 len=18 x=-24 y=2 z=41.6 rot=-120 color=#b7721e group=spin
+  part spike r=3.5 len=18 x=-48 y=2 rot=180 color=#b7721e group=spin
+  part spike r=3.5 len=18 x=-24 y=2 z=-41.6 rot=120 color=#b7721e group=spin
+  part spike r=3.5 len=18 x=24 y=2 z=-41.6 rot=60 color=#b7721e group=spin
+  part light r=1.8 x=34 y=4 z=34 color=#ff8030 group=spin
+  part light r=1.8 x=-34 y=4 z=-34 color=#ff8030 group=spin
+
+# Mid-boss: the crucible colossus: a giant crucible of molten metal on an iron frame, its rim grown with crystals.
+model e1_crucible
+  part disc r=52 h=10 seg=12 color=#261c15
+  part greeble n=40 w=96 d=96 y=5 size=4 seed=91 color=#3b2d23
+  part box w=124 h=8 d=18 y=6 z=-6 color=#31231b
+  part sphere rx=40 ry=22 rz=40 seg=14 y=8 color=#3d2312 noise=0.1
+  part ring r=40 thick=4 y=20 seg=18 color=#55280e
+  part disc r=34 h=2 y=22 seg=18 color=#ff7a1a emit=0.85
+  part light r=5 y=26 color=#ffd080
+  part crystal r=6 len=22 x=36 y=24 z=-14 pitch=55 rot=-30 color=#e060ff emit=0.8
+  part crystal r=5 len=18 x=-30 y=24 z=24 pitch=55 rot=40 color=#ff60e0 emit=0.8
+  part crystal r=5 len=16 x=-20 y=24 z=-34 pitch=50 rot=-60 color=#50e0ff emit=0.8
+  part crystal r=4 len=14 x=26 y=24 z=30 pitch=50 rot=60 color=#50e0ff emit=0.8
+  part box w=24 h=12 d=24 y=4 z=50 color=#261c15
+  part engine r=7 len=14 x=22 z=56 glow=#ff8030 color=#1e1714
+  part light r=3 y=8 z=-54 color=#ffb040
+  part light r=2.4 x=48 y=8 z=-20 color=#ff7a20 mirror=1
+
+model e1_crucible_arm
+  part box w=16 h=8 d=42 color=#3c281b
+  part box w=20 h=6 d=10 y=2 z=14 color=#261c15
+  part sphere rx=12 ry=8 rz=12 y=2 z=-18 color=#271911
+  part disc r=8 h=1 y=8 z=-18 color=#ff7a20 emit=0.85
+  part gun r=2.2 len=16 x=7 y=6 z=-26 color=#1b1613
+  part crystal r=3 len=12 y=8 z=10 pitch=60 color=#e060ff emit=0.8
+  part light r=1.6 y=6 z=16 color=#ffb040
+
+# Boss: the Directorate frigate "Gehorsam", left behind at its moorings and grown through by the lattice.
+model e1_frigate
+  part hull len=210 wid=44 hgt=22 shape=dart round=3 color=#6f798b
+  part hull len=120 wid=16 hgt=16 shape=cigar x=34 z=40 color=#525969 mirror=1
+  part wing span=40 root=60 tip=20 sweep=26 x=10 z=40 thick=4 color=#60697d stripe=#2a3a6a
+  part box w=26 h=18 d=34 y=14 z=36 taper=0.3 color=#74839f
+  part box w=18 h=6 d=12 y=24 z=28 color=#1a2442
+  part fin h=16 root=24 tip=10 sweep=8 y=20 z=60 color=#1a2442
+  part engine r=8 len=18 x=34 z=104 glow=#ff60e0 color=#383c45
+  part engine r=10 len=16 z=106 glow=#ff70e0 color=#383c45
+  part greeble n=50 w=36 d=170 y=10 size=4 seed=101 color=#74839f
+  part box w=60 h=3 d=4 y=11 z=-20 color=#1a2442
+  part crystal r=9 len=34 x=6 y=22 z=-6 pitch=60 rot=-20 color=#e060ff emit=0.8
+  part crystal r=6 len=24 x=-12 y=20 z=10 pitch=55 rot=40 color=#ff60e0 emit=0.8
+  part crystal r=5 len=20 x=20 y=18 z=-36 pitch=50 rot=-60 color=#50e0ff emit=0.8
+  part crystal r=6 len=22 x=-40 y=10 z=70 pitch=50 rot=30 color=#e060ff emit=0.8
+  part crystal r=4 len=16 x=44 y=10 z=80 pitch=50 rot=-40 color=#50e0ff emit=0.8
+  part light r=2 x=60 y=6 z=58 color=#3a6aff mirror=1
+  part light r=2.4 y=12 z=-98 color=#ff60e0
+
+model e1_frigate_gun
+  part disc r=14 h=5 seg=10 color=#60697d
+  part ring r=14 thick=1.2 y=2 color=#1a2442
+  part crystal r=2.4 len=9 x=-9 y=3 z=8 pitch=60 color=#e060ff emit=0.8
+  part box w=14 h=7 d=16 y=5 color=#74839f group=head pivot=0,0
+  part gun r=1.6 len=20 x=3.5 y=7 z=-12 color=#242932 group=head pivot=0,0 mirror=1
+  part light r=1.6 y=9 z=3 color=#ff60e0 group=head pivot=0,0
+
+# Boss: the ember wyrm: a magma dredge that coils through the lava rivers, its plates glowing at the seams.
+model e1_magmawyrm
+  part hull len=86 wid=46 hgt=24 shape=tear color=#271912
+  part box w=50 h=6 d=10 y=-2 z=-34 taper=0.3 color=#1a1414
+  part box w=40 h=3 d=8 y=3 z=-36 color=#ff6a1a emit=0.85
+  part spike r=5 len=26 x=20 y=4 z=-40 rot=-20 color=#3c281b mirror=1
+  part box w=40 h=4 d=6 y=11 z=-8 color=#ff6a1a emit=0.9
+  part box w=34 h=4 d=6 y=10 z=10 color=#ff6a1a emit=0.9
+  part greeble n=26 w=34 d=60 y=10 size=3.5 seed=111 color=#3c281b
+  part crystal r=6 len=22 y=18 z=6 pitch=60 color=#e060ff emit=0.8
+  part crystal r=4 len=16 x=12 y=14 z=16 pitch=50 rot=50 color=#50e0ff emit=0.8 mirror=1
+  part light r=3 x=12 y=10 z=-24 color=#ffd060 mirror=1
+  part wing span=16 root=26 tip=10 sweep=6 x=20 z=12 thick=3 color=#1e1612 stripe=#ff6a1a
+
+model e1_wyrm_segment
+  part sphere rx=28 ry=14 rz=24 seg=10 color=#271912 noise=0.12
+  part box w=50 h=4 d=6 y=10 color=#ff6a1a emit=0.9
+  part box w=40 h=6 d=8 y=10 z=10 color=#1e1612
+  part spike r=4 len=18 x=26 y=4 rot=90 color=#3c281b mirror=1
+  part crystal r=4 len=14 y=14 z=-6 pitch=60 color=#ff60e0 emit=0.8
+  part greeble n=12 w=30 d=30 y=8 size=3 seed=117 color=#3c281b
+  part light r=1.8 x=14 y=8 z=-10 color=#ffb040 mirror=1
+
+# The episode boss: the Foundry Warden of Ascalon: an iron giant with a burning heart crowned by the lattice.
+model e1_warden
+  part hull len=150 wid=130 hgt=30 shape=hex round=3 color=#261c17
+  part greeble n=60 w=110 d=120 y=14 size=5 seed=121 color=#3b2d23
+  part box w=150 h=10 d=26 y=8 z=-30 color=#31231b
+  part box w=40 h=24 d=40 y=12 z=46 color=#1e1714
+  part disc r=7 h=30 x=40 y=15 z=50 seg=8 color=#1b1613 mirror=1
+  part light r=3.6 x=40 y=31 z=50 color=#ff8030 mirror=1
+  part disc r=34 h=12 y=16 seg=14 color=#3d2516
+  part ring r=34 thick=3 y=22 seg=18 color=#5f3717
+  part dome r=26 ry=14 y=22 seg=16 color=#ff7a1a emit=0.85
+  part light r=6 y=36 color=#ffe0a0
+  part crystal r=8 len=34 x=28 y=30 z=-20 pitch=55 rot=-30 color=#e060ff emit=0.85
+  part crystal r=7 len=30 x=-30 y=30 z=-14 pitch=55 rot=35 color=#ff60e0 emit=0.85
+  part crystal r=6 len=26 x=10 y=32 z=26 pitch=60 rot=120 color=#50e0ff emit=0.85
+  part crystal r=5 len=22 x=-24 y=30 z=24 pitch=55 rot=-120 color=#50e0ff emit=0.85
+  part engine r=9 len=16 x=24 z=78 glow=#ff8030 color=#1e1714
+  part light r=2.6 x=62 y=10 z=-34 color=#ffb040 mirror=1
+  part ring r=46 thick=1.6 y=34 seg=24 color=#e060ff emit=0.7 group=spin spin=40
+  part crystal r=3 len=10 x=46 y=34 rot=90 color=#ff80f0 emit=0.9 group=spin
+  part crystal r=3 len=10 x=-46 y=34 rot=90 color=#ff80f0 emit=0.9 group=spin
+  part crystal r=3 len=10 z=46 y=34 color=#60e8ff emit=0.9 group=spin
+  part crystal r=3 len=10 z=-46 y=34 color=#60e8ff emit=0.9 group=spin
+
+model e1_warden_maw
+  part box w=70 h=18 d=40 taper=0.25 color=#31231b
+  part box w=56 h=4 d=10 y=9 z=-14 color=#ff6a1a emit=0.85
+  part box w=74 h=6 d=8 y=4 z=-20 color=#1e1714
+  part spike r=5 len=20 x=30 y=4 z=-22 color=#3c281b mirror=1
+  part greeble n=16 w=60 d=30 y=9 size=3 seed=131 color=#463326
+  part crystal r=4 len=16 x=-18 y=14 z=8 pitch=60 rot=30 color=#e060ff emit=0.8
+  part light r=2.4 x=24 y=12 z=10 color=#ffb040 mirror=1
+
+model e1_warden_hammer
+  part box w=18 h=10 d=60 color=#31231b
+  part box w=40 h=20 d=26 y=4 z=-34 taper=0.15 color=#261c17
+  part box w=36 h=3 d=22 y=14 z=-34 color=#ff7a20 emit=0.9
+  part disc r=10 h=12 y=4 z=24 seg=10 color=#1e1714
+  part greeble n=10 w=14 d=50 y=6 size=2.5 seed=137 color=#463326
+  part crystal r=3.4 len=14 x=6 y=10 z=6 pitch=60 color=#50e0ff emit=0.8
+  part light r=2 y=12 z=24 color=#ff8030
+
+# Secret boss: the old guardian of Vulcan Deep: brass and bronze, never touched by the swarm.
+model e1_oldsmelter
+  part disc r=50 h=10 seg=16 color=#3d2b13
+  part ring r=50 thick=3 y=6 seg=24 color=#6e4e19
+  part greeble n=36 w=80 d=80 y=6 size=4 seed=141 color=#533819
+  part disc r=30 h=20 y=10 seg=12 color=#492e13
+  part ring r=30 thick=2.6 y=20 seg=16 color=#946b1a
+  part dome r=22 ry=12 y=20 seg=14 color=#ffc040 emit=0.85
+  part light r=5 y=32 color=#fff0c0
+  part box w=110 h=6 d=12 y=6 z=-4 color=#3d2b13
+  part gun r=4 len=40 x=20 y=12 z=-30 rot=20 color=#5e431b
+  part gun r=4 len=40 x=-20 y=12 z=30 rot=20 color=#5e431b
+  part disc r=6 h=24 x=34 y=12 z=34 seg=8 color=#32200f mirror=1
+  part light r=3 x=34 y=25 z=34 color=#ffd060 mirror=1
+  part light r=2.4 y=10 z=-52 color=#ffe080
+  part ring r=40 thick=1.4 y=28 seg=20 color=#ffd060 emit=0.6 group=spin spin=-30
+  part box w=6 h=3 d=6 x=40 y=28 color=#ffe080 emit=0.9 group=spin
+  part box w=6 h=3 d=6 x=-40 y=28 color=#ffe080 emit=0.9 group=spin
+  part box w=6 h=3 d=6 z=40 y=28 color=#ffe080 emit=0.9 group=spin
+  part box w=6 h=3 d=6 z=-40 y=28 color=#ffe080 emit=0.9 group=spin
+
+# Secret boss: the Gardener: a lattice flower the swarm grows on the glass dunes. It does not hate anything.
+model e1_gardener
+  part plate pts="0,-60;14,-16;56,-20;20,6;36,48;0,22;-36,48;-20,6;-56,-20;-14,-16" thick=3 color=#241b38
+  part plate pts="0,-44;10,-12;40,-14;14,4;26,34;0,16;-26,34;-14,4;-40,-14;-10,-12" thick=2 y=3 color=#e060ff emit=0.55
+  part crystal r=9 len=30 y=12 pitch=90 color=#60e8ff emit=0.9
+  part sphere r=12 seg=10 y=4 color=#2b2243
+  part light r=4 y=22 color=#ffffff
+  part crystal r=4 len=18 x=30 y=6 z=-14 rot=-60 color=#ff60e0 emit=0.85 mirror=1
+  part crystal r=4 len=18 x=22 y=6 z=30 rot=-150 color=#50e0ff emit=0.85 mirror=1
+  part ring r=62 thick=1.2 y=8 seg=30 color=#50e0ff emit=0.6 group=spin spin=25
+  part crystal r=3 len=12 x=62 y=8 rot=90 color=#ff80f0 emit=0.9 group=spin
+  part crystal r=3 len=12 x=-31 y=8 z=53.7 rot=-30 color=#ff80f0 emit=0.9 group=spin
+  part crystal r=3 len=12 x=-31 y=8 z=-53.7 rot=30 color=#ff80f0 emit=0.9 group=spin
+  part light r=2 x=31 y=8 z=53.7 color=#a0f8ff group=spin
+  part light r=2 x=31 y=8 z=-53.7 color=#a0f8ff group=spin
+  part light r=2 x=-62 y=8 color=#a0f8ff group=spin
