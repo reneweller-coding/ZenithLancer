@@ -595,6 +595,7 @@ int main( int argc, char **argv )
         else if ( a == "--fps" ) o.m_videoFps = atoi( next().c_str() );
         else if ( a == "--from" ) o.m_videoFrom = (float)atof( next().c_str() );
         else if ( a == "--boss" ) o.m_videoBoss = true;
+        else if ( a == "--lang" ) o.m_lang = next();
         else if ( a == "--deckcheck" ) o.m_deckCheck = true;
         else if ( a == "--goldenmake" ) goldenMakeDir = next();
         else if ( a == "--goldentest" ) goldenTestDir = next();

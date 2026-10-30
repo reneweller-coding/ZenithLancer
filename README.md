@@ -41,6 +41,14 @@ Windows' SmartScreen may warn once ("More info", "Run anyway").
 | ![A radio call](docs/shots/radio.png) | ![The log book](docs/shots/logbook.png) |
 | A radio call and its speaker | The log book and its crystals |
 
+### In motion
+
+| ![The Curator's last phase](docs/shots/motion_curator.gif) | ![A storm over Vael](docs/shots/motion_vael.gif) | ![Two pilots](docs/shots/motion_coop.gif) |
+|:---:|:---:|:---:|
+| The Curator | Over the gas giant Vael | Arcade for two |
+
+The trailer (about a minute) comes with each release.
+
 ## The game
 
 The Solenne system, in the 27th century. A self-replicating terraforming swarm, the Tessellate, has begun to

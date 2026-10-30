@@ -43,7 +43,7 @@ SHOTS = [
     ("clip", "echo", ["--level", "e6_10", "--boss"], 6.0),
     ("card", "ZENITH LANCER", "Free and open source  ·  Windows  ·  Linux  ·  Steam Deck", 4.0),
 ]
-GIFS = [("motion_curator", "curator", 4.0), ("motion_vael", "vael", 4.0), ("motion_coop", "coop", 4.0)]
+GIFS = [("motion_curator", "curator", 3.5), ("motion_vael", "vael", 3.5), ("motion_coop", "coop", 3.5)]
 
 
 def run(cmd, cwd=None):
@@ -82,7 +82,7 @@ def main():
         elif kind == "still":
             png = os.path.join(WORK, name + ".png")
             if not (reuse and os.path.exists(png)):
-                run([EXE, "--size", "1920x1080", "--mute"] + extra + ["--shot", png])
+                run([EXE, "--size", "1920x1080", "--mute", "--lang", "en"] + extra + ["--shot", png])
             # A slow push in on the picture.
             frames = int(secs * FPS)
             run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", png, "-vf",
@@ -91,7 +91,7 @@ def main():
         else:
             clip = os.path.join(WORK, name + ".mp4")
             if not (reuse and os.path.exists(clip)):
-                run([EXE, "--video", clip, "--seconds", "%.2f" % (secs + 0.5), "--fps", str(FPS)] + extra)
+                run([EXE, "--video", clip, "--seconds", "%.2f" % (secs + 0.5), "--fps", str(FPS), "--lang", "en"] + extra)
             run(["ffmpeg", "-y", "-loglevel", "error", "-i", clip, "-t", "%.2f" % secs, "-an", "-vf", fade] + encode_args() + [seg])
         parts.append(seg)
         print("%-9s %-10s %.1f s" % (kind, name if kind != "card" else "", secs), flush=True)
@@ -111,8 +111,8 @@ def main():
     for gif, name, secs in GIFS:
         out = os.path.join(ROOT, "docs", "shots", gif + ".gif")
         run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.4", "-t", "%.2f" % secs, "-i", os.path.join(WORK, name + ".mp4"), "-vf",
-             "crop=ih*0.62:ih:(iw-ih*0.62)/2:0,fps=15,scale=320:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96[p];"
-             "[b][p]paletteuse=dither=bayer:bayer_scale=4", out])
+             "crop=ih*0.62:ih:(iw-ih*0.62)/2:0,fps=12,scale=256:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=48:stats_mode=diff[p];"
+             "[b][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle", out])
         print("gif: %s (%.1f MB)" % (os.path.basename(out), os.path.getsize(out) / 1e6), flush=True)
 
 

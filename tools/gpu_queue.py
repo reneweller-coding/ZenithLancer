@@ -47,7 +47,8 @@ def main():
     print("GPU free, starting", flush=True)
     try:
         flags = 0x00004000 | paths.NO_WINDOW if os.name == "nt" else 0   # BELOW_NORMAL_PRIORITY_CLASS
-        r = subprocess.run(cmd, creationflags=flags)
+        # The output handed on by name: a child without a console window would otherwise write into nothing.
+        r = subprocess.run(cmd, creationflags=flags, stdout=sys.stdout, stderr=sys.stderr)
         sys.exit(r.returncode)
     finally:
         os.remove(FLAG)

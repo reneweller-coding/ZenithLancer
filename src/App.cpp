@@ -88,7 +88,7 @@ bool App::init( const Options &o )
     }
     m_prof.load( userDir() + "profile.txt" );
     for ( const std::string &b : m_set.m_binds ) m_in.load( b );
-    setLanguage( m_set.m_language.empty() ? systemLanguage() : m_set.m_language );
+    setLanguage( !o.m_lang.empty() ? o.m_lang : m_set.m_language.empty() ? systemLanguage() : m_set.m_language );
     loadUiTexts( data );
     if ( m_prof.m_maxDiff < 0 ) m_prof.m_maxDiff = 0;
     int visible = 0;

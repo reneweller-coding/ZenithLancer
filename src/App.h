@@ -57,6 +57,7 @@ struct Options
     bool        m_deckCheck = false;    ///< --deckcheck: every screen at 1280x800, the smallest text measured
     float       m_videoFrom = 0.0f;     ///< --from: the video of a mission begins this many seconds in
     bool        m_videoBoss = false;    ///< --boss: ... or at its boss
+    std::string m_lang;                 ///< --lang de|en: this run's language (the settings keep theirs)
 };
 
 /** @brief The screens. */
