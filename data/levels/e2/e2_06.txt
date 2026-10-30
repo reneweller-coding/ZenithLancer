@@ -1,0 +1,69 @@
+# Episode 2, mission 6: up to the Directorate fleet's anchorage in orbit with Salgado's recordings. Admiral Voss
+# answers with an arrest order, and the fleet that "protects" Thalassa opens fire. Boss: the cruiser Mandat.
+# A weather satellite's data core (the key to secret e2_s2) tumbles down the right edge mid-battle.
+
+level e2_06
+  title "Orbitalanker"
+  episode 2
+  theme space
+  music e2_b
+  scroll 70
+  length 170
+  next e2_07 e2_08
+  secret e2_s2 key=e2_key_storm
+  arcade 1
+  map 0.52 0.55
+  briefing e2_06_brief
+  debrief e2_06_after
+
+  at 1   text e2_06_r1
+  at 3   wave e2_mote n=6 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=150
+  at 6   wave e2_swallow n=6 form=column x=120 gap=0.3 path=swoop side=1 cx=380 cy=320 dur=3.4 mirror=1
+  at 12  wave e2_ray n=3 form=column x=600 gap=0.6 path=swoop side=-1 cx=320 cy=260 dur=5
+  at 16  wave e2_jelly n=2 form=line x=360 spacing=300 path=hover stop=180 wait=6
+  at 20  wave e2_mote n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=120 drop=shield
+  at 24  pickup credits x=300 value=200
+  at 26  text e2_06_r2
+  at 28  wave e2_lancefish n=3 form=line x=360 spacing=150 path=dive turn=80
+  at 30  wave e2_harvester x=360 path=hover stop=160 wait=8
+  at 34  wave e2_swallow n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90 speed=240
+  at 36  wave e2_ray n=3 form=v x=360 spacing=90 path=dive turn=40 speed=150 diff=3
+  at 38  pickup cube x=180 item=e2_c14
+  at 44  wave e2_mote n=8 form=column x=120 gap=0.3 path=orbit cx=360 cy=240 r=150 dur=5 side=1 mirror=1
+  at 48  wave e2_jelly n=3 form=line x=360 spacing=220 path=hover stop=190 wait=6
+  at 52  wave e2_ray n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=300 cy=280 dur=4.6
+  at 56  wave e2_lancefish n=4 form=column x=200 gap=0.4 path=dive turn=90 mirror=1 diff=3
+  at 60  text e2_06_r3
+  at 62  wave e2_swallow n=6 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
+  at 68  pickup credits x=500 value=300
+  at 70  text e2_06_r4
+  at 74  wave e2_sentry n=6 form=v x=360 spacing=60 path=sine amp=30 freq=0.4 speed=150
+  at 76  text e2_06_r5
+  at 78  wave e2_interceptor n=4 form=column x=120 gap=0.4 path=swoop side=1 cx=380 cy=280 dur=3.4 mirror=1
+  at 84  wave e2_frigate x=240 path=hover stop=150 wait=8
+  at 86  wave e2_sentry n=8 form=random range=600 gap=0.3 path=dive turn=50 speed=200
+  at 90  wave e2_interceptor n=3 form=v x=480 spacing=70 path=dive turn=60 speed=260
+  at 94  wave e2_freighter n=3 form=column x=-40 y=160 gap=2.5 path=straight dir=-90 speed=70
+  at 96  pickup cube x=600 item=e2_c15
+  at 100 wave e2_frigate x=500 path=hover stop=170 wait=8
+  at 102 wave e2_sentry n=6 form=column x=600 gap=0.3 path=orbit cx=360 cy=260 r=140 dur=5 side=-1
+  at 106 wave e2_bomber n=2 form=line x=360 spacing=300 path=straight speed=100
+  at 110 pickup credits x=360 value=350
+  at 112 wave e2_interceptor n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90 speed=280
+  at 116 text e2_06_r6
+  at 116 wave e2_frigate n=2 form=line x=360 spacing=360 path=hover stop=150 wait=9 diff=3
+  at 118 pickup key x=660 item=e2_key_storm
+  at 120 wave e2_sentry n=10 form=random range=600 gap=0.25 path=dive turn=40 speed=220
+  at 124 wave e2_interceptor n=4 form=column x=600 gap=0.4 path=swoop side=-1 cx=340 cy=300 dur=3.4
+  at 128 wave e2_freighter n=3 form=column x=760 y=120 gap=2.5 path=straight dir=90 speed=70
+  at 134 wave e2_bomber n=3 form=line x=360 spacing=220 path=straight speed=100
+  at 138 wave e2_sentry n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.4 speed=150
+  at 142 pickup credits x=200 value=300
+  at 144 wave e2_interceptor n=4 form=v x=360 spacing=70 path=dive turn=60 speed=260 diff=3
+  at 150 pickup cube x=360 item=e2_c16
+  at 156 music e2_boss
+  at 157 warn
+  at 158 text e2_06_r7
+  at 160 boss e2_mandat
+  at 161 text e2_06_r8
+  at 165 end

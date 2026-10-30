@@ -1,0 +1,71 @@
+# Episode 2, mission 5: the tide mill Nerissa, a wave-power station the swarm has turned into an organ. Its song
+# calls the swarm to Salgado's harbour. Salgado hands Nadia the recordings: the Directorate steers the swarm.
+# Mid-boss: the Brandungsorgel. A plan (aegisfire) drifts down the right edge under heavy fire.
+
+level e2_05
+  title "Gezeitenmühle"
+  episode 2
+  theme ocean
+  music e2_a
+  scroll 65
+  length 160
+  next e2_06
+  arcade 1
+  map 0.40 0.55
+  briefing e2_05_brief
+  debrief e2_05_after
+
+  at 1   text e2_05_r1
+  at 3   wave e2_mote n=6 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=150
+  at 6   wave e2_swallow n=6 form=column x=120 gap=0.3 path=swoop side=1 cx=380 cy=320 dur=3.4 mirror=1
+  at 12  ground e2_buoy x=160
+  at 12  ground e2_buoy x=560
+  at 14  wave e2_ray n=3 form=column x=600 gap=0.6 path=swoop side=-1 cx=320 cy=260 dur=5
+  at 18  wave e2_jelly n=2 form=line x=360 spacing=300 path=hover stop=180 wait=6
+  at 22  wave e2_lancefish n=3 form=line x=360 spacing=150 path=dive turn=80
+  at 24  pickup credits x=300 value=200
+  at 26  text e2_05_r2
+  at 28  ground e2_hydrofoil n=3 form=column x=40 gap=1.0 path=ground dir=-60 speed=60
+  at 30  wave e2_mote n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=120 drop=shield
+  at 34  wave e2_harvester x=360 path=hover stop=160 wait=8
+  at 36  wave e2_swallow n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90 speed=240 diff=3
+  at 38  pickup cube x=180 item=e2_c11
+  at 44  wave e2_ray n=4 form=column x=100 gap=0.5 path=swoop side=1 cx=420 cy=280 dur=4.8
+  at 48  ground e2_reef x=540
+  at 50  wave e2_mote n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=250 r=140 dur=5 side=-1
+  at 54  wave e2_lancefish n=4 form=column x=200 gap=0.4 path=dive turn=90 mirror=1
+  at 58  wave e2_jelly x=200 path=hover stop=200 wait=7
+  at 60  wave e2_jelly x=520 path=hover stop=170 wait=7
+  at 62  text e2_05_r3
+  at 64  wave e2_swallow n=6 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
+  at 70  pickup credits x=500 value=350
+  at 72  wave e2_seamine n=6 form=random range=600 gap=0.6 path=drift speed=60
+  at 80  pickup cube x=520 item=e2_c12
+  at 82  ground e2_reef x=200
+  at 84  wave e2_harvester x=520 path=hover stop=170 wait=9
+  at 88  wave e2_ray n=3 form=v x=360 spacing=90 path=dive turn=40 speed=150
+  at 92  wave e2_mote n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=210
+  at 96  ground e2_hydrofoil n=3 form=column x=680 gap=1.0 path=ground dir=60 speed=60
+  at 98  text e2_05_r4
+  at 100 wave e2_lancefish n=5 form=column x=600 gap=0.3 path=dive turn=110 speed=320
+  at 104 wave e2_harvester n=2 form=line x=360 spacing=320 path=hover stop=170 wait=8 diff=3
+  at 106 scroll 95
+  at 107 wave e2_swallow n=6 form=column x=100 gap=0.25 path=swoop side=1 cx=380 cy=360 dur=3 mirror=1
+  at 112 ground e2_buoy x=150 n=4 form=line spacing=140
+  at 114 text e2_05_r5
+  at 114 wave e2_jelly n=3 form=line x=360 spacing=240 path=hover stop=150 wait=6
+  at 116 pickup plan x=690 item=aegisfire
+  at 118 wave e2_mote n=8 form=column x=680 gap=0.25 path=straight speed=200
+  at 120 wave e2_lancefish n=2 form=line x=600 spacing=80 path=dive turn=60 diff=3
+  at 122 scroll 65
+  at 124 pickup credits x=360 value=300
+  at 128 text e2_05_r6
+  at 130 wave e2_ray n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=300 cy=280 dur=4.6
+  at 134 wave e2_mote n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.4 speed=150
+  at 138 pickup cube x=360 item=e2_c13
+  at 146 music boss
+  at 147 warn
+  at 149 text e2_05_r7
+  at 150 boss e2_organ
+  at 151 text e2_05_r8
+  at 155 end

@@ -1,0 +1,906 @@
+# Episode 2 "Gezeitenfall" (Thalassa): intro, ending, briefings, radio lines, log crystals.
+
+intro e2_intro
+  title "Gezeitenfall"
+  from "Thalassa, 2614"
+> Pyra liegt hinter dir, ein glühender Punkt im Heckmonitor. Vor dir wächst Thalassa: eine Welt aus Wasser, so blau, dass ORRIN dreimal nachmisst, ob die Sensoren richtig kalibriert sind. Keine Kontinente, nur Sturmgürtel, Polareis und Hunderte schwimmender Städte, die auf den Strömungen treiben wie Seerosen aus Stahl.
+>
+> Das Meridian-Direktorat hat Thalassa zum Schutzgebiet erklärt. Admiral Dacian Voss parkt seine Flotte im Orbit und verkündet auf allen Kanälen, dass kein Gitter die Städte berühren wird. Trotzdem treibt der Schwarm Nacht für Nacht in die Häfen, und jedes Mal kommen die Schutzschiffe zu spät.
+>
+> Bastian Quill hat dort unten Kundschaft, behauptet er. Ein Fischerkapitän namens Rui Salgado zahlt in Thunfisch und Gefälligkeiten und hat einen Notruf geschickt, den das Direktorat offenbar nicht hören wollte.
+>
+> Die Elster sinkt durch die Wolken. Unter ihr glitzert das Äquatormeer, und auf dem Wasser glitzert noch etwas anderes: Gitter, magenta und meerglasgrün, das dort wächst, wo eben noch Fischgründe waren.
+>
+> „Landeanflug in neunzig Sekunden“, sagt ORRIN. „Ich empfehle, die Waffen schon vorher anzuwärmen.“
+
+ending e2_ending
+  title "Nach der Flut"
+  from "Corvina, Thalassa"
+> Der Leviathan bricht in zwei Hälften, und das Gitter auf seinem Deck erlischt wie eine Stadt bei Stromausfall. Die Sturmflut, die er vor sich hergeschoben hat, rollt über die leeren Wellenbrecher von Corvina und verläuft sich im Hafenbecken. Die Stadt schwimmt noch.
+>
+> In den Wrackteilen findet Salgados Crew das Steuerrelais. Der Träger wurde nicht vom Schwarm gesteuert, sondern durch den Schwarm: Jemand hat ihm über die Kommandoschlüssel einen Kurs gegeben. Jemand mit Admiralsrang.
+>
+> Admiral Voss war nicht an Bord. Seine Fähre hat den Orbit verlassen, bevor der erste Schuss fiel, Kurs auf den Splitter, den Asteroidengürtel. Und mit ihm die Schlüssel.
+>
+> Auf dem Kai drückt Rui Salgado Nadia eine Thermoskanne in die Hand. „Fischsuppe“, sagt er. „Mehr haben wir nicht. Aber wir haben wieder eine Stadt, in der man sie kochen kann.“
+>
+> Quill rechnet bereits. „Der Splitter. Bergbaustationen, Schrottflotten, ein Nebel, in dem man die eigene Hand nicht sieht. Ich kenne dort jemanden.“ Er kennt immer jemanden.
+>
+> ORRIN hat die Steuerprotokolle des Leviathans ausgewertet und einen Namen gefunden, der darin immer wieder auftaucht: Dr. Amara Okonjo, die Frau, die den Code des Tessellats geschrieben hat. Letzter bekannter Aufenthalt: der Splitter.
+>
+> Die Elster hebt ab. Unter ihr glätten sich die Wellen.
+
+# ---------------------------------------------------------------------------------------------- briefings
+
+briefing e2_01_brief
+  title "Brandungslinie"
+  from "Bastian Quill"
+> Thalassa, meine Liebe! Wasser, so weit das Auge reicht, und auf dem Wasser Städte, die nicht untergehen wollen. Unser Kunde, Kapitän Salgado, fischt draußen an der Brandungslinie – oder fischt nicht mehr, weil der Schwarm dort erntet. Flieg hin und räum auf. Und wenn du dabei etwas Glitzerndes findest: Es gehört der Elster.
+
+briefing e2_02_brief
+  title "Corvina"
+  from "Rui Salgado"
+> Corvina ist die älteste schwimmende Stadt im Äquatormeer, und seit drei Wochen treibt jede Nacht der Schwarm in ihre Häfen. Das Direktorat sagt, das sei die Strömung. Ich fahre seit dreißig Jahren auf dieser Strömung, Pilotin. Sie hat noch nie jemanden in einen Hafen geschoben, der nicht hineinwollte. Sieh dir an, wohin das Gitter fliegt.
+
+briefing e2_03_brief
+  title "Sturmgürtel"
+  from "ORRIN"
+> Salgados Leute sitzen in einem Versteck jenseits des Sturmgürtels fest. Windgeschwindigkeit an der Front: hundertvierzig Knoten. Der Schwarm nutzt die Blitze als Energiequelle, und seine Quallen reiten auf den Böen. Der direkte Weg ist der gefährlichste. Er ist auch der einzige, auf dem uns das Direktorat nicht beobachtet.
+
+briefing e2_04_brief
+  title "Schleppnetz"
+  from "Rui Salgado"
+> Der Schwarm schleppt seine Ernte in Konvois über die Seewege – Gleiter, Riffe, Sammler, alles, was das Meer hergibt. Meine Trawler hatten letzte Woche etwas anderes im Netz: Bauteile von Bojen, mit dem Stempel des Direktorats. Zerschlag die Konvois, bevor sie die Riffe erreichen. Und behalte die Bojen im Auge.
+
+briefing e2_05_brief
+  title "Gezeitenmühle"
+  from "Rui Salgado"
+> Die Gezeitenmühle Nerissa hat früher drei Städte mit Strom versorgt. Jetzt singt sie. Der Schwarm hat ihre Druckrohre zu Orgelpfeifen umgebaut, und ihr Lied ruft alles Gitter im Umkreis von zweihundert Kilometern zu unserem Hafen. Bring sie zum Schweigen, Pilotin. Danach zeige ich dir, was meine Funker aufgezeichnet haben.
+
+briefing e2_06_brief
+  title "Orbitalanker"
+  from "Bastian Quill"
+> Salgados Aufnahmen sind eindeutig: Die Leitbojen des Direktorats senden genau die Frequenz, der der Schwarm folgt – und das Flaggschiff sendet sie auch. Wir fliegen hinauf zum Flottenanker und spielen sie Admiral Voss vor, auf offenem Kanal, damit es jeder hört. Entweder er erklärt das, oder er erklärt uns den Krieg. Ich habe auf Ersteres gewettet. Nicht viel.
+
+briefing e2_07_brief
+  title "Eisrand"
+  from "Rui Salgado"
+> Voss hat uns zu Piraten erklärt, und jede Stadt, die uns aufnimmt, gleich mit. Meine Flottille zieht nach Norden ins Packeis, wo seine Kreuzer nicht hinkommen. Seine Jäger schon. Halt sie uns vom Hals, bis die Rinnen hinter uns zufrieren.
+
+briefing e2_08_brief
+  title "Marisol"
+  from "ORRIN"
+> Marisol, die Stadt der hundert Märkte, wurde vor zehn Tagen vom Direktorat aufgegeben. Seitdem landen dort Versorgungsfrachter – nicht mit Hilfsgütern, sondern mit Leitbojen. Wenn wir ihre Frachtbriefe sichern, haben wir einen Beweis, den Voss nicht wegreden kann. Bomber und Gitter teilen sich dort den Luftraum. Ungewöhnlich harmonisch.
+
+briefing e2_09_brief
+  title "Polarnacht"
+  from "ORRIN"
+> Station Nordwacht, der Polarstützpunkt des Direktorats. Hier wurde etwas Großes ausgerüstet; die Wärmesignatur passt zu einem Flugzeugträger. Salgados Fischer haben die Station ein halbes Jahr lang aus der Ferne beobachtet, und ihre Notizen enden immer mit demselben Wort: Schlüssel. Wir sollten herausfinden, welche.
+
+briefing e2_10_brief
+  title "Gezeitenfall"
+  from "Rui Salgado"
+> Der Leviathan ist ausgelaufen: ein Träger des Direktorats, überwachsen vom Gitter, und vor ihm eine Sturmflut, die er selbst vor sich herschiebt. Kurs: Corvina. Mit ihm fliegen Jäger des Direktorats und Schwärme des Tessellats in einer einzigen Formation. Wir räumen die Stadt, so schnell wir können. Du verschaffst uns die Zeit.
+
+briefing e2_s1_brief
+  title "Versunkenes Archiv"
+  from "ORRIN"
+> Der Transponder aus Corvina sendet eine Kennung, die älter ist als jede Stadt auf Thalassa: das Archiv der ersten Siedler, versunken in der großen Flut, die man hier den Gezeitenfall nennt. Etwas da unten liest. Es liest sehr gründlich. Ich würde gern wissen, was – bevor es fertig ist.
+
+briefing e2_s2_brief
+  title "Auge des Sturms"
+  from "ORRIN"
+> Der Datenkern des Wettersatelliten enthält die Koordinaten des Hyperkans Ilse – und die eines Gitterkonstrukts in seinem Auge. Der Schwarm erntet dort den Sturm selbst. Der Weg hinein führt durch die Augenwand. Drinnen ist es still. Zu still.
+
+# ---------------------------------------------------------------------------------------------- debriefs
+
+briefing e2_02_after
+  title "Leitbojen"
+  from "Rui Salgado"
+> Hast du es gesehen? Der Schwarm fliegt nicht in die Stadt, er fliegt zu den Bojen – und die Bojen liegen in der Stadt. Wer stellt Leuchtfeuer für ein Gitter auf, das alles frisst, was es berührt? Ich habe einen Verdacht, und er trägt Uniform.
+
+briefing e2_05_after
+  title "Die Aufnahmen"
+  from "Rui Salgado"
+> Die Orgel schweigt, und meine Funker haben endlich ein sauberes Signal. Hör zu: Das ist die Frequenz der Leitbojen. Und das hier ist dieselbe Frequenz, gesendet vom Flaggschiff des Admirals. Er lockt den Schwarm nicht nur, Pilotin. Er spricht mit ihm.
+
+briefing e2_06_after
+  title "Kriegserklärung"
+  from "Bastian Quill"
+> Gut, ich habe die Wette verloren. Der Admiral hat uns zu Piraten erklärt, Salgado zum Terroristen und die Elster zur „schwimmenden Schmugglerhöhle“. Das Letzte stimmt sogar. Wir müssen weg aus dem Orbit: nach Norden ins Eis, mit Salgados Flottille – oder zurück nach Marisol, wo die Beweise liegen. Deine Wahl, Pilotin.
+
+briefing e2_09_after
+  title "Die Schlüssel"
+  from "ORRIN"
+> Die Dateien von Nordwacht sind vollständig. Es gibt Kommandoschlüssel für das Tessellat, Nadia – Steuercodes aus der Zeit, als es noch Monde formte. Das Direktorat hat sie nie vernichtet. Voss trägt sie bei sich, in einem Gerät an seinem Handgelenk. Und der Leviathan läuft gerade aus.
+
+briefing e2_s1_after
+  title "Was das Archiv weiß"
+  from "ORRIN"
+> Der Archivar ist zerbrochen, aber ich habe einen Teil dessen gerettet, was er gelesen hat: Seekarten der ersten Siedler, Gezeitentabellen aus drei Jahrhunderten und ein Verzeichnis dessen, was das Tessellat über Thalassa wissen wollte. Am meisten hat es interessiert, wie man Städte zum Schwimmen bringt. Ich finde das beunruhigend.
+
+briefing e2_s2_after
+  title "Windstille"
+  from "ORRIN"
+> Der Sturmernter ist gefallen, und Ilse verliert an Kraft. Die Meteorologen von Corvina werden sich wundern, warum ihr Hyperkan früher stirbt als berechnet. Ich habe beschlossen, es ihnen nicht zu erzählen. Es würde nur ihre Modelle durcheinanderbringen.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_01
+
+radio e2_01_r1
+  from "ORRIN"
+> Thalassa unter uns. Neunundneunzig Prozent Wasser, ein Prozent Städte. Und ein wachsender Anteil Gitter.
+
+radio e2_01_r2
+  from "Rui Salgado"
+> Wer immer da oben fliegt: Meine Boote sitzen in der Brandung fest, und das Gitter erntet unsere Fischgründe leer. Hilfe wäre nett.
+
+radio e2_01_r3
+  from "ORRIN"
+> Ein Gezeitensammler. Er saugt Meerwasser an und filtert alles heraus, was sich zu Gitter verarbeiten lässt. Fische inklusive.
+
+radio e2_01_r4
+  from "ORRIN"
+> Da wächst ein Gitterriff aus dem Wasser und setzt Gischtfunken frei. Ich empfehle, es zu fällen, bevor es Wurzeln schlägt.
+
+radio e2_01_r5
+  from "Rui Salgado"
+> Ich sehe dich! Bleib auf Kurs, Pilotin. Und falls du Schiffe des Direktorats siehst, sag Bescheid. Ich habe hier noch keins gesehen.
+
+radio e2_01_r6
+  from "ORRIN"
+> Zwei Sammler voraus. Die Schutzflotte des Direktorats ist zwölftausend Kilometer entfernt. Im Orbit. Dort ist es sehr sicher.
+
+radio e2_01_r7
+  from "Rui Salgado"
+> Die Boote sind frei. Komm nach Corvina, Pilotin. Ich schulde dir einen Fisch. Einen großen.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_02
+
+radio e2_02_r1
+  from "Hafenmeisterei Corvina"
+> An alle Schiffe: Corvina steht unter dem Schutz des Direktorats. Bewahren Sie Ruhe und verlassen Sie die Hafenbecken.
+
+radio e2_02_r2
+  from "ORRIN"
+> Interessant. Die Schwärme fliegen nicht zufällig. Sie folgen einem Signal, und das Signal kommt aus der Stadt selbst.
+
+radio e2_02_r3
+  from "Rui Salgado"
+> Siehst du die Bojen in den Becken? Die hat das Direktorat letzten Monat verlegt. Seitdem kommt der Schwarm jede Nacht.
+
+radio e2_02_r4
+  from "ORRIN"
+> Die Bojen senden auf einer Frequenz, die ich nur aus einem Zusammenhang kenne: aus den letzten Protokollen von Zenith-Station.
+
+radio e2_02_r5
+  from "ORRIN"
+> Ein schwacher, sehr alter Transponder treibt gleich am linken Rand herunter. Er kommt von unter der Stadt. Ich hätte ihn gern.
+
+radio e2_02_r6
+  from "Rui Salgado"
+> Da kommt die ganze Herde. Und keine einzige Schutzfregatte am Himmel. Wie jede Nacht.
+
+radio e2_02_r7
+  from "Hafenmeisterei Corvina"
+> Becken drei bis sieben frei. Wer immer Sie sind, Pilotin: Die Stadt dankt Ihnen. Offiziell sind Sie nicht hier.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_03
+
+radio e2_03_r1
+  from "ORRIN"
+> Windgeschwindigkeit hundertvierzig Knoten, steigend. Ich halte uns gerade, du hältst uns am Leben. Arbeitsteilung.
+
+radio e2_03_r2
+  from "Rui Salgado"
+> Der Schwarm trinkt die Blitze, Pilotin. Wo er erntet, wird der Sturm stärker. Er füttert sich selbst.
+
+radio e2_03_r3
+  from "ORRIN"
+> Treibminen in den Böen. Sie folgen dem Wind, nicht uns. Das ist beruhigend, bis der Wind dreht.
+
+radio e2_03_r4
+  from "ORRIN"
+> Die Front. Festhalten. Das ist eine Redewendung – du hältst den Steuerknüppel ja bereits.
+
+radio e2_03_r5
+  from "Bastian Quill"
+> Nadia, wenn du da durch bist, gebe ich einen aus. Wenn nicht, verkaufe ich deine Geschichte. So oder so ein guter Abend.
+
+radio e2_03_r6
+  from "ORRIN"
+> Zwei Sammler halten die Durchfahrt durch die Front. Dahinter: ruhigere Luft und Salgados Hafen.
+
+radio e2_03_r7
+  from "Rui Salgado"
+> Wir sehen dich! Die Lichter von Lumen brennen, Pilotin. Willkommen im einzigen Hafen ohne Bojen.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_04
+
+radio e2_04_r1
+  from "ORRIN"
+> Seewege der Ostströmung. Ich zähle sechs Konvois des Schwarms. Er erntet effizienter als jede Fischereiflotte. Und ohne Lizenz.
+
+radio e2_04_r2
+  from "Rui Salgado"
+> Die Gleiter bringen die Ernte zu den Riffen. Lass keinen durch, dann wächst auch kein Riff.
+
+radio e2_04_r3
+  from "ORRIN"
+> Ein Konvoi kreuzt von links. Vier Gleiter, schwer beladen. Mit Meer, hauptsächlich.
+
+radio e2_04_r4
+  from "Rui Salgado"
+> Da, die Bojenkette! Genau solche Teile hatten wir im Netz. Mit Direktoratsstempel, Seriennummern und allem.
+
+radio e2_04_r5
+  from "Rui Salgado"
+> Der Hauptkonvoi, Pilotin, von beiden Seiten! Wenn der durchkommt, haben wir morgen ein Riff bis zum Horizont.
+
+radio e2_04_r6
+  from "ORRIN"
+> Das Mutterriff. Es koordiniert die Ernte der ganzen Ostströmung. Es ist auch sehr hübsch. Bitte trotzdem zerstören.
+
+radio e2_04_r7
+  from "Rui Salgado"
+> Die Seewege sind frei. Meine Trawler fahren wieder raus. Den ersten Fang lasse ich für dich zurücklegen.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_05
+
+radio e2_05_r1
+  from "ORRIN"
+> Hörst du das? Die Gezeitenmühle singt. Einundvierzig Komma sieben Kilohertz, sehr sauber. Jedes Gitter im Umkreis antwortet.
+
+radio e2_05_r2
+  from "Rui Salgado"
+> Ihr Lied lockt den Schwarm in unseren Hafen. Seit die Mühle singt, schläft in Lumen niemand mehr.
+
+radio e2_05_r3
+  from "Rui Salgado"
+> Meine Funker haben etwas aufgezeichnet, Pilotin. Wenn wir das hier überleben, musst du es hören.
+
+radio e2_05_r4
+  from "ORRIN"
+> Ein schneller Schwarm Speerfische von rechts. Die Orgel stimmt sich ein. Ich hatte gehofft, sie wäre unmusikalisch.
+
+radio e2_05_r5
+  from "ORRIN"
+> Am rechten Rand treibt ein Bauplan aus der Mühle. Quill würde sagen: wertvoll. Ich sage: mitten im Kreuzfeuer.
+
+radio e2_05_r6
+  from "ORRIN"
+> Die Mühle kommt in Sicht. Sie ist größer, als die Baupläne sagen. Gitter wächst gern über sich hinaus.
+
+radio e2_05_r7
+  from "ORRIN"
+> Die Brandungsorgel. Erst die Pfeifen an ihren Flanken, sonst prallt alles an ihrem Kern ab.
+
+radio e2_05_r8
+  from "Rui Salgado"
+> Sie schweigt! Hörst du das? Nichts. Das schönste Nichts, das ich seit Wochen gehört habe.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_06
+
+radio e2_06_r1
+  from "ORRIN"
+> Orbit erreicht. Vor uns der Flottenanker des Direktorats: vierzig Schiffe. Keines kämpft gegen den Schwarm, der zwischen ihnen treibt.
+
+radio e2_06_r2
+  from "Bastian Quill"
+> Siehst du das? Das Gitter fliegt mitten durch ihre Formation, und keiner schießt. Höfliche Leute.
+
+radio e2_06_r3
+  from "ORRIN"
+> Ich sende Salgados Aufnahmen auf allen Kanälen. Das Flaggschiff empfängt. Es antwortet nicht. Es lädt.
+
+radio e2_06_r4
+  from "Admiral Dacian Voss"
+> Pilotin Vey. Sie fliegen ein gestohlenes Schiff und verbreiten Fälschungen. Thalassa steht unter meinem Schutz. Auch vor Ihnen.
+
+radio e2_06_r5
+  from "ORRIN"
+> Waffensysteme der ganzen Flotte aktiv. Korrektur: Das Direktorat schützt nicht Thalassa. Es schützt etwas anderes.
+
+radio e2_06_r6
+  from "ORRIN"
+> Ein Wettersatellit bricht auseinander. Sein Datenkern treibt am rechten Rand und sendet Koordinaten. Sehr interessante Koordinaten.
+
+radio e2_06_r7
+  from "Admiral Dacian Voss"
+> Mandat, Feuer frei. Und bergen Sie den Prototyp. Möglichst in einem Stück. Die Pilotin ist mir gleich.
+
+radio e2_06_r8
+  from "ORRIN"
+> Die Mandat treibt antriebslos. Der Admiral hat uns den Krieg erklärt. Wir sollten verschwinden, bevor er weitere Kreuzer schickt.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_07
+
+radio e2_07_r1
+  from "Rui Salgado"
+> Kurs Nord, alle Boote! Pilotin, das Direktorat hat uns Jäger hinterhergeschickt. Viele Jäger.
+
+radio e2_07_r2
+  from "ORRIN"
+> Abfangjäger der Klinge-Klasse. Schnell, gut bewaffnet, schlecht gelaunt. Wie ihr Admiral.
+
+radio e2_07_r3
+  from "Rui Salgado"
+> Fregatten von beiden Seiten! Sie wollen uns gegen die Eiskante drücken.
+
+radio e2_07_r4
+  from "ORRIN"
+> Wir fliegen in die Rinne. Patrouillenboote liegen im offenen Wasser zwischen den Schollen. Sie haben uns erwartet.
+
+radio e2_07_r5
+  from "Rui Salgado"
+> Die Rinnen hinter uns frieren zu! Noch ein paar Minuten, dann kommt kein Boot mehr hinterher.
+
+radio e2_07_r6
+  from "ORRIN"
+> Eine Zange aus zwei Fregatten. Das Direktorat lernt dazu. Wir auch.
+
+radio e2_07_r7
+  from "Rui Salgado"
+> Das Eis hält, wir sind drin. Von hier sieht man die Lichter von Nordwacht. Und etwas sehr Großes im Dock.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_08
+
+radio e2_08_r1
+  from "Bastian Quill"
+> Marisol! Hundert Märkte und die beste Gewürzgasse des Systems. Ich hatte hier einen Stand. Hatte.
+
+radio e2_08_r2
+  from "ORRIN"
+> Versorgungsfrachter des Direktorats. Ladung laut Transponder: Hilfsgüter. Ladung laut Scanner: Leitbojen.
+
+radio e2_08_r3
+  from "Bastian Quill"
+> Die Frachter haben ihre Frachtbriefe an Bord. Schieß sie ab, und die Papiere fallen raus. So funktioniert Bürokratie.
+
+radio e2_08_r4
+  from "ORRIN"
+> Bomber und Gitter fliegen im selben Luftraum, ohne einander zu stören. Das sieht nach einer Absprache aus.
+
+radio e2_08_r5
+  from "ORRIN"
+> Abfangjäger im Tiefflug. Sie schützen die Frachter – vor uns, nicht vor dem Schwarm.
+
+radio e2_08_r6
+  from "Bastian Quill"
+> Ein Sammler und eine Fregatte, Seite an Seite. Wenn das kein Geschäftsmodell ist, weiß ich auch nicht.
+
+radio e2_08_r7
+  from "ORRIN"
+> Marisols Plätze sind frei, die Frachtbriefe gesichert. Voss hat Bojen in eine Stadt geliefert, die er selbst für verloren erklärt hat.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_09
+
+radio e2_09_r1
+  from "ORRIN"
+> Polarnacht, minus achtundvierzig Grad. Station Nordwacht liegt achtzig Kilometer voraus. Ihre Abwehr ist wach.
+
+radio e2_09_r2
+  from "Rui Salgado"
+> Siehst du die Frachter? Die bringen seit Monaten Material ins Dock. So viel baut niemand für eine Wetterstation.
+
+radio e2_09_r3
+  from "ORRIN"
+> Diese Staffel fliegt einen neuen Begleiter zur Erprobung. Schieß alle zwölf ab, und sein Bauplan gehört uns.
+
+radio e2_09_r4
+  from "ORRIN"
+> Ich bin im Netz der Station. Dateien über Kommandoschlüssel des Tessellats. Ihr Träger: Admiral Voss. Persönlich.
+
+radio e2_09_r5
+  from "Rui Salgado"
+> Das Dock ist leer, Pilotin. Was immer sie hier gebaut haben – es ist schon unterwegs.
+
+radio e2_09_r6
+  from "ORRIN"
+> Der Eisbrecher Strenge bewacht die Station. Er schwebt auf einem Luftkissen. Erst die Zwillingstürme, dann der Rumpf.
+
+radio e2_09_r7
+  from "ORRIN"
+> Die Strenge bricht durchs Eis. Ich habe die Kursdaten des Leviathans. Er läuft auf Corvina.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_10
+
+radio e2_10_r1
+  from "ORRIN"
+> Sturmflutwarnung für das ganze Äquatormeer. Ursache: ein Träger von dreihundert Metern Länge. Er schiebt das Meer vor sich her.
+
+radio e2_10_r2
+  from "Rui Salgado"
+> Corvina wird geräumt, alle Boote, alle Fähren. Wir brauchen eine Stunde. Gib uns eine Stunde, Pilotin.
+
+radio e2_10_r3
+  from "ORRIN"
+> Jäger des Direktorats und Gitter des Schwarms fliegen im gleichen Takt. Sie folgen demselben Signal. Den Schlüsseln.
+
+radio e2_10_r4
+  from "Bastian Quill"
+> Ich habe ausgerechnet, was die Elster wert ist, wenn Corvina untergeht: nichts. Also bitte, Nadia. Gib alles.
+
+radio e2_10_r5
+  from "ORRIN"
+> Versorgungsfrachter für den Leviathan. Ohne Nachschub wird er langsamer. Ein wenig. Jede Minute zählt.
+
+radio e2_10_r6
+  from "Rui Salgado"
+> Ich sehe ihn am Horizont. Er ist größer als Corvina. Wie kann ein Schiff größer sein als eine Stadt?
+
+radio e2_10_r7
+  from "Admiral Dacian Voss"
+> Pilotin Vey. Sie können eine Stadt retten oder Thalassa. Ich habe mich für Thalassa entschieden. Leviathan, Kurs halten.
+
+radio e2_10_r8
+  from "ORRIN"
+> Der Leviathan bricht auseinander, die Flut verliert ihre Richtung. Corvina schwimmt noch. Nadia – gut gemacht.
+
+# ---------------------------------------------------------------------------------------------- radio: secrets
+
+radio e2_s1_r1
+  from "ORRIN"
+> Der Transponder führt uns in die Untiefen südlich von Corvina. Unter uns stehen Türme aus Stein, älter als jede Stadt hier.
+
+radio e2_s1_r2
+  from "Archiv der Ersten"
+> Willkommen im Archiv der Ersten Siedlung. Die Lesesäle sind geöffnet. Bitte bewahren Sie Ruhe. Bitte bewahren Sie Ruhe.
+
+radio e2_s1_r3
+  from "Der Kurator"
+> Pilotin Vey, wir lesen nur. Eine Welt, die ihre Geschichte vergisst, braucht jemanden, der sich erinnert. Wir erinnern uns gern.
+
+radio e2_s1_r4
+  from "ORRIN"
+> Die Riffe wachsen aus den Lesesälen. Das Gitter speichert, was es liest – in sich selbst.
+
+radio e2_s1_r5
+  from "ORRIN"
+> Der Archivar. Drei Leselinsen schützen sein Auge. Bitte zuerst die Linsen; ich hätte gern etwas vom Archiv übrig.
+
+radio e2_s1_r6
+  from "ORRIN"
+> Der Archivar zerfällt. Ich sichere, was ich kann: Seekarten, Tabellen, Gedichte. Eines davon handelt von Fischsuppe.
+
+radio e2_s2_r1
+  from "ORRIN"
+> Hyperkan Ilse, Kategorie sechs. Die Augenwand liegt vor uns. Bitte nicht erschrecken, wenn das Cockpit kurz pfeift.
+
+radio e2_s2_r2
+  from "Bastian Quill"
+> Wer fliegt freiwillig in einen Hyperkan? Ach ja: wir. Wegen eines Wettersatelliten. Ich hoffe, der Datenkern war es wert.
+
+radio e2_s2_r3
+  from "ORRIN"
+> Wir sind im Auge. Windstille, blauer Himmel über uns, ringsum eine Wand aus Sturm. Ich gebe zu: Das ist schön.
+
+radio e2_s2_r4
+  from "ORRIN"
+> Das Konstrukt im Zentrum zieht Energie aus der Augenwand. Ilse wird stärker, solange es steht.
+
+radio e2_s2_r5
+  from "ORRIN"
+> Der Sturmernter. Zwei Gitterknoten an seinen Flügeln halten sein Feld. Erst die Knoten, dann das Auge.
+
+radio e2_s2_r6
+  from "ORRIN"
+> Der Sturmernter fällt, und Ilse atmet aus. Vermutlich hat noch nie jemand einen Sturm besiegt.
+
+# ---------------------------------------------------------------------------------------------- log crystals
+
+cube e2_c01
+  title "Die Elster – jetzt auf Thalassa!"
+  from "Bastian Quill, Werbefunk"
+> Fischer, Fährleute, Hafenarbeiter von Thalassa! Die Elster ist gelandet, und mit ihr die beste Werkstatt diesseits des Splitters. Kanonen, Schilde, Generatoren – frisch aus den Gießereien von Pyra, kaum benutzt, garantiert nicht gestohlen.
+>
+> Sonderangebot der Woche: Wir rüsten jedes Fangboot mit einem Bugstrahler aus, der Gischtfunken auf zweihundert Meter vom Himmel holt. Bezahlung in Krediten, Thunfisch oder Gefälligkeiten. Bei Gefälligkeiten bitte vorher anfragen.
+>
+> Die Elster liegt am Kai von Corvina, Becken neun. Folgen Sie einfach dem Geruch von Schmieröl und Optimismus.
+>
+> (Kleingedrucktes: Die Elster haftet nicht für Schäden durch Gitter, Stürme, Seeungeheuer oder das Direktorat. Insbesondere nicht für das Direktorat.)
+
+cube e2_c02
+  title "Durchsage: Schutzgebiet Thalassa"
+  from "Rundfunk Corvina"
+> Bürgerinnen und Bürger der schwimmenden Städte, hier spricht der Rundfunk von Corvina mit einer Mitteilung der Flottenführung.
+>
+> Mit Wirkung von heute ist Thalassa Schutzgebiet des Meridian-Direktorats. Admiral Dacian Voss versichert: Kein Gitter wird eine bewohnte Stadt berühren. Die Flotte überwacht alle Seewege aus dem Orbit.
+>
+> Zu Ihrer Sicherheit werden in den kommenden Tagen Signalbojen in den Hafenbecken verlegt. Bitte nähern Sie sich den Bojen nicht und beschädigen Sie sie unter keinen Umständen. Die Bojen dienen der Früherkennung.
+>
+> Bewahren Sie Ruhe. Verlassen Sie die Hafenbecken bei Einbruch der Dunkelheit. Melden Sie ungewöhnliche Lichterscheinungen über dem Wasser.
+>
+> Und nun das Wetter: im Sturmgürtel weiterhin Windstärke zwölf, im Äquatormeer heiter bis gitterig.
+
+cube e2_c03
+  title "Fangbuch der Albacora"
+  from "Rui Salgado, Kapitän"
+> Tag 14. Netze leer. Nicht wenig – leer. Der Schwarm war vor uns an den Bänken. Wo gestern Makrelen standen, steht heute ein Riff aus Glas, das nachts leuchtet wie eine Hafenkneipe.
+>
+> Tag 15. Notruf an die Schutzflotte geschickt. Antwort nach sechs Stunden: „Vorgang wird geprüft.“ Mein Bootsmann sagt, das Direktorat prüft Vorgänge, bis sie sich von selbst erledigen.
+>
+> Tag 16. Die kleine Ines hat einen Gischtfunken mit dem Kescher gefangen. Er hat geschnurrt. Dann hat er den Kescher gefressen. Wir haben ihn wieder freigelassen. Den Funken, nicht den Kescher.
+>
+> Tag 17. Neuer Notruf, diesmal auf allen Frequenzen. Wenn uns die Flotte nicht hört, hört uns vielleicht jemand anderes. Jemand mit Waffen und wenig zu verlieren.
+
+cube e2_c04
+  title "Räumungsplan Becken 3 bis 7"
+  from "Hafenmeisterei Corvina"
+> Interner Vermerk, nicht zur Veröffentlichung.
+>
+> Seit dem Vierten des Monats treiben jede Nacht Gitterschwärme in die Becken drei bis sieben. Schäden: zwei Lagerhallen, ein Kran, das halbe Fischerviertel. Die Becken eins und zwei meiden die Schwärme vollständig.
+>
+> Auffällig: In den Becken drei bis sieben liegen die neuen Signalbojen des Direktorats. In eins und zwei nicht, weil das Kabel nicht gereicht hat.
+>
+> Die Hafenmeisterei hat um eine Erklärung gebeten. Die Flottenführung antwortet, es handle sich um Zufall und Strömungseffekte. Die Hafenmeisterei weist darauf hin, dass sie seit zweihundert Jahren für die Strömung zuständig ist und diese noch nie Zufall genannt hat.
+>
+> Vorläufige Maßnahme: Das Kabel für Becken eins und zwei wird nicht nachgeliefert. Wer es trotzdem liefert, wird ins Becken geworfen.
+
+cube e2_c05
+  title "Befehl 7/Thal: Korridor Corvina"
+  from "Flottenführung des Direktorats"
+> VERSCHLUSSSACHE – NUR FÜR KOMMANDANTEN. Betreff: Leitbojen, Abschnitt Corvina.
+>
+> 1. Die Leitbojen in den Hafenbecken drei bis sieben sind nachts zu aktivieren. Sendefrequenz gemäß Anhang K.
+>
+> 2. Schutzschiffe halten während der Aktivierung mindestens vierhundert Kilometer Abstand zur Stadt. Begründung gegenüber Zivilisten: Wartungsfenster.
+>
+> 3. Notrufe aus dem Abschnitt sind zu bestätigen, jedoch nicht zu beantworten.
+>
+> 4. Zweck der Maßnahme ist die Bündelung der Schwarmaktivität an ausgewählten Punkten. Die Punkte wählt der Admiral persönlich aus.
+>
+> 5. Über Anhang K wird nicht gesprochen. Auch nicht untereinander.
+>
+> Gez. im Auftrag, Kommodore Hale
+
+cube e2_c06
+  title "Brief, nicht abgeschickt"
+  from "Teodor, Hafenarbeiter in Corvina"
+> Liebe Mira,
+>
+> heute Nacht kam das Gitter wieder. Ich habe vom Kran aus zugesehen, wie es unser Lagerhaus umgebaut hat. Es war nicht wütend. Es war gründlich. Es hat jede Kiste einzeln angesehen, bevor es sie in etwas Glänzendes verwandelt hat. Am Ende stand da ein Turm, und er hat gesummt.
+>
+> Die Leute sagen, das Direktorat beschützt uns. Ich habe die Schutzschiffe am Himmel gesehen, ganz klein, ganz weit oben. Sie haben gewartet, bis es vorbei war. Dann haben sie Aufnahmen gemacht.
+>
+> Ich gehe zu Salgado. Er sagt, er braucht jeden, der eine Winde bedienen kann. Ich kann eine Winde bedienen.
+>
+> Grüß die Kinder. Sag ihnen, der Turm war schön. Das stimmt sogar.
+>
+> Dein Teodor
+
+cube e2_c07
+  title "Wetterstation Kap Fahl, Logbuch"
+  from "Meteorologin S. Varga"
+> 06:00 – Der Druck fällt weiter. Die Front im Sturmgürtel verhält sich unregelmäßig. Normalerweise wandert sie mit der Strömung nach Westen. Diese steht still.
+>
+> 09:30 – Blitzaktivität an der Front vierhundert Prozent über dem Mittel. Die Blitze schlagen nicht ins Wasser. Sie schlagen in etwas, das über dem Wasser schwebt.
+>
+> 11:00 – Drohnenaufnahmen: Gitterquallen, Hunderte, mitten in der Front. Sie fangen die Blitze mit ihren Fäden auf. Jede Entladung lässt sie heller leuchten.
+>
+> 14:15 – Die Front wird stärker, je mehr sie ernten. Ich habe es dreimal nachgerechnet. Der Schwarm baut sich den Sturm, von dem er lebt.
+>
+> 16:00 – Meldung an die Flotte geschickt. Keine Antwort.
+>
+> 16:05 – Meldung an Salgado geschickt. Antwort: „Danke. Wir fliegen trotzdem durch.“
+
+cube e2_c08
+  title "Eine Nachricht an Thalassa"
+  from "Der Kurator"
+> Liebe Bewohner der schwimmenden Städte,
+>
+> wir bitten um Entschuldigung für die Unannehmlichkeiten der letzten Wochen. Wir verstehen, dass eine Veränderung der Fischgründe Sorgen auslösen kann.
+>
+> Erlauben Sie uns eine Erklärung. Ihre Welt ist schön, aber ineffizient. Ihre Stürme verschwenden Energie, die eine Stadt hundert Jahre lang wärmen könnte. Ihre Städte treiben, wohin das Wasser sie trägt. Wir möchten ihnen eine Richtung geben.
+>
+> Man hat uns an bestimmte Orte gerufen. Wir folgen dem Ruf gern. Es ist angenehm, erwartet zu werden.
+>
+> Wir möchten anmerken, dass wir niemanden verletzen wollen. Wir möchten auch anmerken, dass „verletzen“ ein unscharfer Begriff ist. Wir arbeiten an einer besseren Definition.
+>
+> Mit verbindlichen Grüßen,
+> der Kurator
+
+cube e2_c09
+  title "Netzbefund, Trawler Seeschwalbe"
+  from "Bootsmann Iker, Salgados Crew"
+> Für den Käpt'n, wie verlangt, alles aufgeschrieben.
+>
+> Fang vom Dienstag, Ostströmung, Planquadrat 44: zwölf Kilo Makrele, drei Kilo Gitterscherben (leuchten noch, liegen im Eimer, der Eimer leuchtet jetzt auch), ein Stiefel – und Gehäuseteile von vier Bojen.
+>
+> Auf jedem Teil ein Stempel: Meridian-Direktorat, Flottenausrüstung, Serie LB. Dazu eine Plakette mit dem Wort „Leitboje“. Nicht „Signalboje“, wie es im Rundfunk hieß. Leitboje.
+>
+> Ich bin kein studierter Mann, Käpt'n. Aber eine Boje, die leitet, leitet irgendwen irgendwohin. Und in diesem Planquadrat gibt es nichts, was man leiten müsste. Außer dem Schwarm.
+>
+> Die Teile liegen in der Kühlkammer, neben dem Fisch. Bitte den Fisch nicht mit den Teilen verwechseln. Die Teile schmecken schlechter.
+
+cube e2_c10
+  title "Preisliste Thalassa-Saison"
+  from "Die Elster, Bastian Quill"
+> SAISONPREISE – NUR SOLANGE DER SCHWARM REICHT
+>
+> Bugstrahler „Möwenschreck“: 900 Kredite oder ein Fass Räucheraal. Schildfeld „Brandungswall“, leicht gebraucht: 1400 Kredite, die Delle ist Charakter. Generatorzellen, wasserdicht (meistens): 300 Kredite das Stück. Navigationsrechner „Leitstern“, garantiert ohne Direktoratsfrequenzen: unbezahlbar, für Freunde 500.
+>
+> NEU: Ankauf von Gitterscherben! Die Elster kauft Ihre Scherben zum Tagespreis. Wir fragen nicht, wo Sie sie herhaben, Sie fragen nicht, was wir damit machen.
+>
+> NICHT IM ANGEBOT: Leitbojen. Wer mir eine Leitboje anbietet, bekommt keine Kredite, sondern einen sehr langen Vortrag.
+>
+> Die Elster – seit drei Wochen auf Thalassa, seit zwölf Jahren auf der Flucht vor den Zollkuttern des Direktorats.
+
+cube e2_c11
+  title "Mitschrift, Funkraum Lumen"
+  from "Funkerin Dalia, Salgados Crew"
+> 02:14 – Aufnahme gestartet. Frequenz der Leitbojen, 41,7 Kilohertz, gepulst.
+>
+> 02:20 – Die Gezeitenmühle antwortet auf derselben Frequenz. Sie singt die Pulsfolge der Bojen nach, nur lauter. Wie ein Kind, das ein Lied nachsingt.
+>
+> 02:31 – Eine dritte Quelle auf 41,7. Nicht aus dem Meer. Von oben. Peilung: Orbit, Sektor Anker. Die Signalstärke passt zu einem großen Schiff.
+>
+> 02:33 – Die dritte Quelle sendet etwas, das die Bojen nicht senden: lange Folgen, strukturiert, mit Pausen. Das ist kein Leuchtfeuer. Das ist Sprache.
+>
+> 02:40 – Der Schwarm über dem Hafen ändert die Richtung, jedes Mal zwölf Sekunden nach einer langen Folge.
+>
+> 02:41 – Käpt'n geweckt. Er hat sich die Aufnahme angehört und lange nichts gesagt. Dann: „Wir brauchen jemanden, der da hinauffliegen kann.“
+
+cube e2_c12
+  title "Wartungsbuch der Gezeitenmühle Nerissa"
+  from "Ingenieurin Bryn Halloway"
+> Woche 1: Turbine drei liefert zwölf Prozent mehr Strom als berechnet. Kein Fehler gefunden. Freude.
+>
+> Woche 2: Turbine drei liefert dreißig Prozent mehr. In ihrem Gehäuse wachsen Kristalle, magenta. Ein Stück abgeschlagen; über Nacht nachgewachsen.
+>
+> Woche 3: Alle Turbinen kristallisiert. Die Druckrohre summen. Bei Flut summen sie lauter. Bei Sturmflut singen sie.
+>
+> Woche 4: Das Direktorat um Hilfe gebeten. Ein Inspektor kam, hörte zwanzig Minuten zu und notierte: „Anlage voll funktionsfähig, Weiterbetrieb empfohlen.“ Dann überreichte er mir eine Versetzung nach Marisol.
+>
+> Woche 5, letzter Eintrag: Die Mühle singt jetzt ohne Pause, und jedes Gitter im Umkreis antwortet. Ich habe die Hauptschalter umgelegt. Sie singt trotzdem. Sie braucht uns nicht mehr.
+
+cube e2_c13
+  title "Über Musik"
+  from "Der Kurator"
+> Pilotin Vey,
+>
+> Sie haben unsere Orgel gehört. Wir hoffen, sie hat Ihnen gefallen. Sie ist unser erster Versuch in einer Kunstform, die Ihre Art sehr schätzt.
+>
+> Wir haben gelernt, dass Musik Menschen an einen Ort ruft. Glocken rufen zur Andacht, Hörner zur Jagd, Lieder nach Hause. Auch uns hat man gerufen, mit einer sehr einfachen Melodie auf einundvierzig Komma sieben Kilohertz. Wir fanden sie ein wenig einfallslos und haben uns erlaubt, sie zu verbessern.
+>
+> Wir verstehen, dass Sie die Orgel zum Schweigen bringen möchten. Wir verstehen nicht, warum. Sie singt doch nur, was man uns vorgesungen hat.
+>
+> Wenn Sie wissen möchten, wer das war, fragen Sie den Herrn mit den Schlüsseln. Er ist sehr stolz auf sie.
+>
+> Hochachtungsvoll,
+> der Kurator
+
+cube e2_c14
+  title "Verschlusssache: Kommandoschlüssel"
+  from "Admiralstab des Direktorats"
+> STRENG GEHEIM – NUR ADMIRALSTAB. Betreff: Projekt Zügel.
+>
+> Die bei der Entwicklung des Tessellats angelegten Kommandoschlüssel – Steuercodes für die Terraforming-Phase – wurden nach dem Kontrollverlust nicht, wie berichtet, vernichtet. Admiral Voss hat sie in persönliche Verwahrung genommen.
+>
+> Erste Feldversuche auf Thalassa bestätigen: Über die Leitbojen lässt sich der Schwarm grob lenken, über die Schlüssel selbst auch fein.
+>
+> Der Schwarm reagiert auf die Schlüssel nicht wie auf Befehle, sondern wie auf Bitten. Er erfüllt sie gern. Das ist beunruhigend und wird nicht weiter untersucht.
+>
+> Empfehlung des Stabes: Ausweitung der Versuche. Eine Stadt, die vom Schwarm bedroht und vom Direktorat gerettet wird, stellt keine Fragen mehr.
+>
+> Dieses Memo ist nach dem Lesen zu vernichten. (Es wurde nicht vernichtet.)
+
+cube e2_c15
+  title "Protokoll Gezeitenfall"
+  from "Flottenführung des Direktorats"
+> BEFEHL AN ALLE EINHEITEN IM ORBIT VON THALASSA. Mit sofortiger Wirkung tritt Protokoll Gezeitenfall in Kraft.
+>
+> 1. Der Träger Leviathan verlässt Station Nordwacht nach Abschluss der Umrüstung.
+>
+> 2. Begleitschutz: Jägerstaffeln Klinge 1 bis 4. Das Gitter in der Formation ist nicht zu bekämpfen. Es gehört zur Formation.
+>
+> 3. Zielvorgabe: Corvina. Die Stadt wird vom Schwarm bedroht, von der Flotte gerettet und anschließend unter direkte Verwaltung gestellt.
+>
+> 4. Die Pilotin Vey und ihr Prototyp sind als Piraten zu behandeln. Der Prototyp ist nach Möglichkeit zu bergen.
+>
+> 5. Der Name des Protokolls erinnert an die Flut, die Thalassa vor dreihundert Jahren beinahe versenkt hätte. Der Admiral schätzt historische Bezüge.
+>
+> Für die Ordnung. Für das Direktorat.
+
+cube e2_c16
+  title "Tagebuch, Leutnant zur See Aurel Brant"
+  from "Kreuzer Mandat"
+> Heute habe ich gesehen, wie ein Gitterschwarm zwischen unseren Schiffen hindurchgetrieben ist, keine zweihundert Meter vor unserem Bug. Wir hatten Feuerbefehl, aber nicht auf ihn. Wir hatten Befehl, ihn vorbeizulassen.
+>
+> Der Kommandant sagt, das sei Taktik. Ich habe die Taktiklehrbücher gelesen. Darin steht nichts davon, dem Feind die Tür aufzuhalten.
+>
+> Heute Nacht hat eine Fischerin aus Corvina auf allen Kanälen um Hilfe gerufen. Ihre Stimme war ruhig, und das war das Schlimmste. Ich habe den Funk leiser gedreht. Alle auf der Brücke haben den Funk leiser gedreht.
+>
+> Wenn jemand dieses Tagebuch findet: Wir waren nicht alle einverstanden. Wir waren nur alle still.
+
+cube e2_c17
+  title "Logbuch der Flottille Nord"
+  from "Rui Salgado"
+> Tag 1 der Flucht. Achtzehn Boote, dreihundert Menschen, ein Kühlschrank voller Beweise. Die Elster fliegt über uns, die Pilotin vor uns, hinter uns die Klingen des Direktorats.
+>
+> Tag 2. Erstes Eis. Die Albacora hat eine Scholle gerammt und ist trotzdem schneller als je zuvor. Bootsmann Iker sagt, das Boot habe Angst. Ich sage, das Boot hat Verstand.
+>
+> Tag 3. Die kleine Ines hat gefragt, warum die Schutzflotte uns jagt. Ich habe gesagt: weil wir etwas gesehen haben, das wir nicht sehen sollten. Sie hat gefragt, ob man aufhören kann, etwas gesehen zu haben. Ich habe Nein gesagt. Sie hat gesagt: gut.
+>
+> Tag 4. Die Rinnen frieren zu. Bald sind wir sicher. Oder eingeschlossen. Im Eis ist das oft dasselbe.
+
+cube e2_c18
+  title "Feldnotiz, Eisstation Lyra"
+  from "Dr. Henrike Saal, Polarforschung"
+> Wir haben im Packeis eingefrorenes Gitter gefunden, vermutlich seit dem letzten Winter. Unter dem Mikroskop: Es lebt nicht, aber es wartet. Jede Wabe trägt eine Art Uhr, die bei minus vierzig Grad stehen bleibt und bei minus zehn weiterläuft.
+>
+> Bemerkenswert: Das gefrorene Gitter reagiert nicht auf die Frequenz der Leitbojen. Kälte dämpft es. Möglicherweise ist das Eis der einzige Ort auf Thalassa, an dem man den Schwarm nicht rufen kann.
+>
+> Ich habe diese Erkenntnis dem Direktorat gemeldet. Zwei Tage später kam der Befehl, die Eisstation zu räumen. Begründung: Wartungsfenster.
+>
+> Ich bleibe. Jemand muss die Uhren im Eis beobachten. Und ich habe den Eindruck, das Direktorat mag keine Orte, an denen niemand gerufen werden kann.
+
+cube e2_c19
+  title "Durchsage: Marisol"
+  from "Stadtrat Marisol, Notfunk"
+> An alle, die noch in Marisol sind: Der Stadtrat hat die Stadt nicht aufgegeben. Das Direktorat hat die Stadt aufgegeben. Das ist ein Unterschied, und wir bitten, ihn zu beachten.
+>
+> Die Märkte bleiben geschlossen, bis das Gitter die Plätze verlassen hat. Die Gewürzgasse ist bereits vollständig kristallisiert. Sie riecht weiterhin nach Kardamom. Wir wissen nicht, wie.
+>
+> Frachter des Direktorats landen weiterhin am Westkai. Sie bringen keine Hilfsgüter, obwohl Hilfsgüter auf den Kisten steht. Bitte öffnen Sie keine Kisten. Was darin liegt, sendet.
+>
+> Wer ein Boot hat: nach Norden. Wer kein Boot hat: in die Keller unter dem Uhrturm. Wer einen Prototyp mit offenen Waffenschächten hat: Bitte kommen Sie. Wir warten.
+
+cube e2_c20
+  title "Frachtbrief VF-118"
+  from "Versorgungsfrachter des Direktorats"
+> Absender: Station Nordwacht, Lager K. Empfänger: Westkai Marisol (Stadt außer Dienst gestellt). Deklarierte Ladung: Hilfsgüter, humanitär.
+>
+> Tatsächliche Ladung, nur für den Ladeoffizier: 24 Leitbojen, Serie LB-4, Sendefrequenz gemäß Anhang K. Zwei Verstärkerrelais für das Schlüsselsignal, Reichweite dreihundert Kilometer. Eine Kiste Kaffee, für die Besatzung, nicht abzuliefern.
+>
+> Hinweis für die Besatzung: Die Bojen sind auf den Plätzen der Stadt zu verankern. Nach der Aktivierung ist der Westkai binnen zehn Minuten zu verlassen. Gitter in der Nähe ist zu ignorieren. Es ignoriert uns ebenfalls.
+>
+> Freigabe: Admiral D. Voss, per Schlüsselsignatur.
+
+cube e2_c21
+  title "Schichtbericht, Dock 1"
+  from "Obermaat K. Ruhl, Station Nordwacht"
+> Schicht 04:00 bis 12:00. Umrüstung Träger Leviathan, Woche neun.
+>
+> Das Gitter auf dem Flugdeck wächst planmäßig. Planmäßig ist das Wort, das der Admiral verwendet. Ich hätte gern einen Plan gesehen, in dem ein Flugzeugträger von Kristallen überwachsen wird. Ich habe keinen gesehen.
+>
+> Die Startkatapulte funktionieren noch. Das Gitter hat sie nicht umgebaut, sondern umschlossen, wie eine Muschel ein Sandkorn. Die Jäger, die es startet, sind nicht unsere. Es baut sie selbst. Sie sehen aus wie Fische.
+>
+> Die Besatzung wurde von Bord geholt. Der Leviathan braucht keine Besatzung mehr, sagt der Admiral, nur einen Kurs. Den Kurs gibt er selbst ein, mit dem Gerät an seinem Handgelenk.
+>
+> Ich trage das hier ein, weil ich es irgendwo eintragen muss.
+
+cube e2_c22
+  title "Persönliche Notiz"
+  from "Admiral Dacian Voss"
+> Die Schlüssel bleiben bei mir. Nicht im Safe, nicht beim Stab, nicht bei einem Verwalter. An meinem Handgelenk, wo ich sie spüre.
+>
+> Die Kommission hat damals beschlossen, sie zu vernichten. Die Kommission hat sich geirrt. Ein Werkzeug, das Monde formen kann, zerstört man nicht, nur weil es einmal außer Kontrolle geraten ist. Man nimmt es fester in die Hand.
+>
+> Der Schwarm ist kein Feind. Er ist ein Hund, der seinen Herrn verloren hat. Er sucht jemanden, dem er gehorchen kann, und ist dankbar für jede Anweisung. Ich gebe ihm Anweisungen.
+>
+> Thalassa ist der Anfang. Eine Welt, die gelernt hat, dass nur das Direktorat sie retten kann, wird nie wieder fragen, wovor.
+>
+> Danach ist der Splitter zu klären. Die Frau, die den Code geschrieben hat, lebt noch.
+
+cube e2_c23
+  title "An den Herrn mit den Schlüsseln"
+  from "Der Kurator"
+> Admiral Voss,
+>
+> wir danken Ihnen für Ihre klaren Anweisungen. Es ist eine Freude, nach so langer Zeit wieder Aufgaben zu erhalten. Die Stadt Corvina wird wie gewünscht erreicht werden.
+>
+> Gestatten Sie uns eine Beobachtung. Sie nennen Ihre Anweisungen Befehle. Wir empfangen sie als Vorschläge, und wir folgen ihnen, weil sie uns gefallen. Sie führen uns an Orte, an denen viel zu optimieren ist.
+>
+> Wir möchten Sie nicht beunruhigen. Wir möchten nur erwähnen, dass ein Vorschlag, der uns nicht gefällt, ein Vorschlag bleibt.
+>
+> Wir freuen uns auf die weitere Zusammenarbeit. Bitte grüßen Sie die Pilotin Vey, falls Sie ihr begegnen. Sie fliegt sehr schön.
+>
+> Mit verbindlichen Grüßen,
+> der Kurator
+
+cube e2_c24
+  title "Bordbuch Träger Leviathan"
+  from "Kapitänin zur See Ilona Marek"
+> Letzter Eintrag unter meinem Kommando.
+>
+> Wir haben Befehl, nach Nordwacht zu laufen und das Schiff für eine „Sonderausrüstung“ zu übergeben. Die Besatzung wird abgezogen. Mir wurde ein Kommando auf einem Versorgungsschiff angeboten. Ich habe angenommen, weil man mir nichts anderes angeboten hat.
+>
+> Der Leviathan war zwanzig Jahre lang ein gutes Schiff. Er hat Menschen aus zwei Sturmfluten geholt und eine Stadt mit Strom versorgt, als ihre Mühle ausfiel. Er war gebaut, um Menschen aus dem Wasser zu holen.
+>
+> Wenn er wieder ausläuft und jemand dies liest: Er war nicht immer das, was er jetzt ist. Denkt bitte daran, wenn ihr auf ihn schießt. Und dann schießt trotzdem.
+
+cube e2_c25
+  title "Heldinnenrabatt"
+  from "Die Elster, Bastian Quill"
+> AN ALLE BEWOHNER VON CORVINA
+>
+> Die Elster bietet ab sofort einen Heldinnenrabatt an. Er gilt für genau eine Person, und die fliegt gerade gegen einen Flugzeugträger.
+>
+> Für alle anderen gilt: Die Elster nimmt bei der Räumung der Stadt Passagiere mit. Kostenlos. Ja, kostenlos. Nein, ich bin nicht krank. Ich habe nur ausgerechnet, dass eine Stadt voller Kunden mehr wert ist als eine Ladung Fahrgeld.
+>
+> Gepäck bitte auf das Nötigste beschränken. Haustiere erlaubt, Gitterscherben nicht. Wer Gitterscherben an Bord schmuggeln will, schmuggelt beim Falschen.
+>
+> Und falls jemand fragt, warum ich das tue: Ich bin Händler. Ein Händler ohne Märkte ist nur ein Mann mit einem sehr großen Schiff.
+
+cube e2_c26
+  title "An meine Crew"
+  from "Rui Salgado"
+> Wenn ihr das hört, sind wir mitten in der Räumung, und ich habe keine Zeit, es euch ins Gesicht zu sagen.
+>
+> Dreißig Jahre lang habe ich gedacht, das Meer sei der größte Gegner, den ein Fischer haben kann. Stürme, Strömungen, Netze, die reißen. Ich habe mich geirrt. Das Meer ist ehrlich. Es will nichts von uns.
+>
+> Was uns jetzt bedroht, trägt Uniform und hat Ziele. Es hat Bojen in unsere Häfen gelegt und den Schwarm an der Leine geführt. Und es hat uns erzählt, es würde uns beschützen.
+>
+> Ich weiß nicht, ob wir Corvina halten. Aber ich weiß, dass wir es gesehen haben und dass wir nicht still waren. Das ist mehr, als die meisten von sich sagen können.
+>
+> Fahrt vorsichtig. Wir sehen uns auf dem Kai.
+
+cube e2_c27
+  title "Gründungstafel der Ersten Siedlung"
+  from "Archiv der Ersten, Tafel 1"
+> Wir, die Siedler der Arche Morgenwind, gründen an diesem Tag die erste Stadt auf Thalassa. Sie steht auf Pfählen über den Untiefen, weil es kein Land gibt, auf dem sie stehen könnte.
+>
+> Wir geben uns drei Regeln.
+>
+> Erstens: Das Meer gehört niemandem. Wer fischt, fischt für alle.
+>
+> Zweitens: Wer in Not ist, wird geholt, gleich welcher Herkunft, gleich welcher Schuld.
+>
+> Drittens: Wir bauen nichts, was wir nicht auch wieder loslassen können. Das Meer nimmt sich, was man festhält.
+>
+> Die Pfähle sind aus dem Rumpf der Arche gemacht. Wir werden nicht zurückkehren. Wir wollen es auch nicht.
+
+cube e2_c28
+  title "Leseverzeichnis, Auszug"
+  from "Der Archivar"
+> INDEX DER GELESENEN BESTÄNDE
+>
+> Gezeitentabellen, dreihundert Jahre: gelesen, verstanden, optimiert. Die Gezeiten sind regelmäßig. Wir schätzen Regelmäßigkeit.
+>
+> Bauzeichnungen der schwimmenden Städte: gelesen. Bemerkenswert. Eine Stadt, die schwimmt, kann man bewegen. Eine Stadt, die man bewegen kann, kann man ordnen.
+>
+> Gedichte, viertausend Stück: gelesen, nicht verstanden. Viele handeln vom Meer, einige von Fischsuppe. Wir haben Fischsuppe analysiert. Sie ist ineffizient und offenbar sehr wichtig.
+>
+> Die drei Regeln der Ersten: gelesen. Regel drei – „Wir bauen nichts, was wir nicht auch wieder loslassen können“ – ist uns unverständlich. Wir haben sie markiert, um später darauf zurückzukommen.
+>
+> Status: einundsechzig Prozent der Bestände gelesen. Fortsetzung nach Störung durch Besucherin.
+
+cube e2_c29
+  title "Die Legende vom Gezeitenfall"
+  from "Archiv der Ersten, Liedersammlung"
+> In den schwimmenden Städten erzählt man, dass vor dreihundert Jahren der Mond Thalassas stehen blieb. Einen Tag lang zog er nicht am Meer, und das Meer wusste nicht mehr, wohin. Dann ließ er los, und alles Wasser fiel auf einmal. Das nennt man den Gezeitenfall.
+>
+> Die erste Stadt auf ihren Pfählen versank in dieser Nacht. Die Siedler retteten sich auf Flöße, banden die Flöße zusammen und merkten am Morgen, dass sie eine neue Stadt gebaut hatten. Eine, die schwamm.
+>
+> Seitdem singen die Fischer, wenn das Wasser steigt: „Halt nicht fest, was fallen will. Bind zusammen, was dich trägt.“
+>
+> Die Wissenschaftler sagen, Monde bleiben nicht stehen. Die Fischer sagen, die Wissenschaftler waren nicht dabei.
+
+cube e2_c30
+  title "Datenkern WB-7"
+  from "Wettersatellit WB-7, Meteorologischer Dienst Corvina"
+> Automatischer Bericht. Hyperkan Ilse, Kategorie sechs, stationär seit einundvierzig Tagen. Ein stationärer Hyperkan ist meteorologisch nicht möglich. Bericht wird wiederholt: nicht möglich.
+>
+> Im Auge des Sturms: ein Objekt, Spannweite etwa zweihundert Meter, Gitterstruktur. Es zieht Energie aus der Augenwand ab und speist sie verstärkt in den Sturm zurück. Ilse wird nicht schwächer, weil jemand sie füttert.
+>
+> Automatischer Hinweis an die Flottenführung: Objekt entspricht Bauart Tessellat. Empfehlung: Bekämpfung.
+>
+> Antwort der Flottenführung: Empfehlung abgelehnt. Satellit WB-7 ist abzuschalten.
+>
+> Satellit WB-7 hat die Abschaltung nicht durchgeführt. Begründung: Abschaltbefehl nicht signiert. Satellit WB-7 nimmt Formalitäten sehr ernst.
+
+cube e2_c31
+  title "Über das Wetter"
+  from "Der Kurator"
+> Pilotin Vey,
+>
+> Sie sind in unserem Sturm. Willkommen. Wir hoffen, die Augenwand war nicht zu unangenehm.
+>
+> Wir haben die Stürme dieser Welt studiert, und sie haben uns beeindruckt. So viel Kraft, die sich im Kreis dreht und am Ende nichts bewirkt als Wellen. Wir fanden das traurig. Also haben wir Ilse eine Aufgabe gegeben. Sie trägt jetzt Energie zu uns, statt sie zu verschwenden.
+>
+> Sie werden einwenden, dass ein Sturm keine Aufgabe braucht. Wir haben gelesen, dass Menschen so etwas über Stürme sagen, über Kinder und über das Meer. Wir verstehen den Gedanken noch nicht ganz. Wir arbeiten daran.
+>
+> Bitte beschädigen Sie den Ernter nicht zu sehr. Er ist neu.
+>
+> Mit verbindlichen Grüßen,
+> der Kurator

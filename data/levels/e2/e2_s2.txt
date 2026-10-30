@@ -1,0 +1,55 @@
+# Episode 2, secret 2 (key from e2_06): into the calm eye of the hypercane Ilse, where the swarm harvests the
+# storm itself. Boss: the storm reaper. Leads back to the main path at e2_09.
+
+level e2_s2
+  title "Auge des Sturms"
+  episode 2
+  theme storm
+  music secret
+  scroll 85
+  length 140
+  next e2_09
+  issecret 1
+  map 0.72 0.04
+  briefing e2_s2_brief
+  debrief e2_s2_after
+
+  at 1   text e2_s2_r1
+  at 3   wave e2_mote n=10 form=random range=640 gap=0.25 path=drift speed=110 dir=50
+  at 6   wave e2_swallow n=6 form=column x=650 gap=0.3 path=swoop side=-1 cx=300 cy=320 dur=3.2 mirror=1
+  at 12  wave e2_jelly n=3 form=line x=360 spacing=220 path=hover stop=180 wait=6
+  at 16  wave e2_ray n=3 form=column x=100 gap=0.6 path=swoop side=1 cx=420 cy=280 dur=5
+  at 20  wave e2_seamine n=5 form=random range=600 gap=0.6 path=drift speed=90 dir=40
+  at 24  pickup credits x=300 value=300
+  at 26  text e2_s2_r2
+  at 28  wave e2_harvester x=200 path=hover stop=160 wait=8
+  at 30  wave e2_harvester x=520 path=hover stop=190 wait=8 diff=3
+  at 32  wave e2_lancefish n=4 form=column x=150 gap=0.4 path=dive turn=90 mirror=1
+  at 38  pickup cube x=500 item=e2_c30
+  at 40  scroll 40
+  at 42  text e2_s2_r3
+  at 44  wave e2_jelly n=4 form=line x=360 spacing=160 path=hover stop=200 wait=8 speed=50
+  at 50  wave e2_mote n=8 form=column x=360 gap=0.3 path=loop stop=260 r=100 speed=200
+  at 56  wave e2_ray n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=300 cy=280 dur=4.6
+  at 60  wave e2_mote n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=110 drop=shield
+  at 66  pickup credits x=420 value=350
+  at 68  scroll 85
+  at 70  wave e2_swallow n=6 form=v x=360 spacing=50 path=straight speed=320 repeat=3 every=3.5
+  at 74  wave e2_seamine n=6 form=random range=620 gap=0.5 path=drift speed=80 dir=-40
+  at 80  wave e2_harvester n=2 form=line x=360 spacing=340 path=hover stop=170 wait=8
+  at 84  wave e2_lancefish n=4 form=line x=360 spacing=120 path=dive turn=90
+  at 86  wave e2_ray n=3 form=v x=360 spacing=90 path=dive turn=40 speed=150 diff=3
+  at 90  text e2_s2_r4
+  at 92  wave e2_mote n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=230
+  at 96  wave e2_jelly x=200 path=hover stop=200 wait=7
+  at 98  wave e2_jelly x=520 path=hover stop=170 wait=7
+  at 102 wave e2_swallow n=6 form=sides x=60 gap=0.3 path=arc side=-1 turn=100 speed=240
+  at 106 pickup credits x=300 value=300
+  at 110 wave e2_mote n=10 form=column x=120 gap=0.3 path=orbit cx=360 cy=240 r=160 dur=6 side=1 mirror=1
+  at 116 pickup cube x=360 item=e2_c31
+  at 122 music boss
+  at 123 warn
+  at 125 text e2_s2_r5
+  at 126 boss e2_stormreaper
+  at 127 text e2_s2_r6
+  at 131 end
