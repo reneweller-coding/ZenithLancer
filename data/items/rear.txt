@@ -1,14 +1,222 @@
 # Rear guns: two modes each (the mode button switches); shot lines take mode=1 or mode=2.
+# Balance: about 40-55 % of a front gun of the same tier in either mode (work/calc.py shows both).
+
+# ---------------------------------------------------------------------------------------------------- tier 1
 
 rear tailgun
   title "Heckschütze"
-  desc "Zwei Läufe am Heck. Feuert entweder nach hinten auf Verfolger oder schräg zur Seite."
+  desc "Zwei Läufe am Heck. Hält dir entweder die Verfolger vom Leib oder streut schräg nach vorn zu den Seiten."
   price 600
   tier 1
   rate 4..6
-  energy 2..5
+  energy 1.5..4.5
   sound pulse
   mode1 "Heck"
   mode2 "Seiten"
-  shot back lv=1-11 mode=1 n=1..3 spread=0..30 speed=800 dmg=4..7 size=4 color=#ffb070 sprite=pulse
-  shot side lv=1-11 mode=2 n=1..2 dx=12 angle=60..45 speed=800 dmg=4..6 size=4 color=#ffb070 sprite=pulse
+  shot back lv=1-3 mode=1 n=1 speed=800 dmg=3.2..4.2 size=4 color=#ffb070 sprite=pulse
+  shot back lv=4-7 mode=1 n=2 spread=14..22 speed=800 dmg=3..4 size=4 color=#ffb070 sprite=pulse
+  shot back lv=8-11 mode=1 n=3 spread=24..32 speed=820 dmg=3.6..5.3 size=4.2 color=#ffc080 sprite=pulse
+  shot back lv=6-11 mode=1 n=2 spread=70..90 speed=760 dmg=1.5..3 size=3.5 color=#ffd0a0 sprite=pulse every=2
+  shot side lv=1-5 mode=2 n=1 angle=60..55 speed=800 dmg=1.6..2.6 size=4 color=#ffb070 sprite=pulse
+  shot side lv=6-11 mode=2 n=2 dx=12 angle=55..45 speed=820 dmg=1.7..3.6 size=4 color=#ffb070 sprite=pulse
+  shot side lv=9-11 mode=2 n=1 angle=88 speed=760 dmg=1.5..2.5 size=3.5 color=#ffd0a0 sprite=pulse
+
+rear wingflare
+  title "Flügelfeuer"
+  desc "Glühende Leuchtladungen aus den Flügelspitzen. Fegen die Flanken frei – oder feuern geradeaus und verbreitern so deine Front."
+  price 1500
+  tier 1
+  rate 3.5..5.5
+  energy 1.6..4.8
+  sound flame
+  mode1 "Flanken"
+  mode2 "Bug"
+  shot side lv=1-5 mode=1 n=1 angle=90..84 speed=640 dmg=1.8..2.8 size=4 life=0.9 color=#ff9040 sprite=flame
+  shot side lv=6-11 mode=1 n=2 dx=12 angle=84..78 speed=660 dmg=2.2..3.6 size=4.5 life=0.9 color=#ff9040 sprite=flame
+  shot side lv=9-11 mode=1 n=1 angle=120 speed=600 dmg=2..3 size=4 life=0.8 color=#ffb060 sprite=flame
+  shot row lv=1-11 mode=2 n=1 x=-18 angle=-4 speed=820 dmg=1.8..6 size=3.5 color=#ffa050 sprite=bolt
+  shot row lv=1-11 mode=2 n=1 x=18 angle=4 speed=820 dmg=1.8..6 size=3.5 color=#ffa050 sprite=bolt
+  shot row lv=7-11 mode=2 n=1 x=-10 speed=860 dmg=1..4 size=3 color=#ffc070 sprite=bolt
+  shot row lv=7-11 mode=2 n=1 x=10 speed=860 dmg=1..4 size=3 color=#ffc070 sprite=bolt
+
+# ---------------------------------------------------------------------------------------------------- tier 2
+
+rear mortar
+  title "Mörser"
+  desc "Wirft schwere Granaten, die nach kurzer Strecke in einer Feuerwolke platzen – nach vorn über die eigene Salve hinweg oder hinter dich."
+  price 3500
+  tier 2
+  rate 1.2..2.2
+  energy 4..14.5
+  sound plasma
+  mode1 "Steilfeuer"
+  mode2 "Heckmörser"
+  shot bomb lv=1-5 mode=1 n=1 speed=420 drag=1.4 life=0.85 radius=50..60 dmg=15..24 size=6 color=#ffa040 sprite=bomb
+  shot bomb lv=6-11 mode=1 n=2 dx=34 speed=440 drag=1.4 life=0.9 radius=60..80 dmg=17..33 size=6.5 color=#ffb050 sprite=bomb
+  shot back lv=1-5 mode=2 n=1 speed=360 drag=1.2 life=0.8 radius=50..60 dmg=15..24 size=6 color=#ff8030 sprite=bomb
+  shot back lv=6-11 mode=2 n=2 spread=40..60 speed=380 drag=1.2 life=0.8 radius=60..80 dmg=17..33 size=6.5 color=#ff9040 sprite=bomb
+
+rear sweep
+  title "Fächerheck"
+  desc "Ein breiter Fächer aus Bolzen, der hinter dir den Himmel fegt. Im Schwenkmodus feuert er stattdessen quer nach links und rechts."
+  price 4500
+  tier 2
+  rate 3..5
+  energy 2..6.4
+  sound spread
+  mode1 "Fächer"
+  mode2 "Schwenk"
+  shot back lv=1-11 mode=1 n=3..7 spread=60..140 speed=700 dmg=2..4.1 size=4 life=0.8 color=#ffc860 sprite=bolt
+  shot fan lv=1-11 mode=2 n=1..3 angle=90 spread=0..30 speed=720 dmg=3..4.8 size=4 life=0.8 color=#ffd880 sprite=bolt
+  shot fan lv=1-11 mode=2 n=1..3 angle=-90 spread=0..30 speed=720 dmg=3..4.8 size=4 life=0.8 color=#ffd880 sprite=bolt
+
+rear seeker
+  title "Suchkopf"
+  desc "Lenkraketen mit eigenem Kopf: Sie starten nach hinten oder zur Seite, drehen dann um und jagen das nächste Ziel – oder fliegen als schnelle Salve nach vorn."
+  price 5500
+  tier 2
+  rate 1.5..2.6
+  energy 3.6..12.3
+  sound missile
+  mode1 "Jagd"
+  mode2 "Salve"
+  shot homing lv=1-5 mode=1 n=1 angle=150 speed=360 accel=300 home=300 dmg=10..14 size=4 life=2.4 color=#ff6a50 sprite=rocket
+  shot homing lv=6-8 mode=1 n=2 spread=280..300 speed=380 accel=320 home=320..360 dmg=9..12 size=4 life=2.4 color=#ff6a50 sprite=rocket
+  shot homing lv=9-11 mode=1 n=3 spread=300 speed=400 accel=340 home=380 dmg=11..15.4 size=4 life=2.4 color=#ff8060 sprite=rocket
+  shot homing lv=1-5 mode=2 n=2 spread=30 speed=700 home=180 dmg=5..6.5 size=3.5 life=1.6 color=#ff9070 sprite=rocket
+  shot homing lv=6-8 mode=2 n=3 spread=40..50 speed=720 home=200 dmg=5.5..6.5 size=3.5 life=1.6 color=#ff9070 sprite=rocket
+  shot homing lv=9-11 mode=2 n=4 spread=50..60 speed=740 home=220 dmg=7..11.5 size=3.5 life=1.6 color=#ffa080 sprite=rocket
+
+# ---------------------------------------------------------------------------------------------------- tier 3
+
+rear orbiter
+  title "Kreisläufer"
+  desc "Plasmakugeln, die das Schiff umkreisen und alles zerschlagen, was zu nahe kommt. Im zweiten Modus schleudert er sie schräg nach vorn."
+  price 9000
+  tier 3
+  rate 1.5..2.5
+  energy 5..16
+  sound plasma
+  mode1 "Kreis"
+  mode2 "Schleuder"
+  shot orbit lv=1-11 mode=1 n=2..5 range=44..60 spin=300..360 life=1.3 dmg=7.3..14.4 size=5..6 pierce=1..3 color=#80c0ff sprite=orbit
+  shot side lv=1-5 mode=2 n=1 angle=30..34 speed=600 dmg=7.3..12 size=5 pierce=1 color=#a0d0ff sprite=orbit
+  shot side lv=6-11 mode=2 n=2 dx=10 angle=34..40 speed=620 dmg=7..18 size=5..5.5 pierce=1 color=#a0d0ff sprite=orbit
+
+rear mines
+  title "Minenleger"
+  desc "Legt treibende Minen hinter dir aus, die nach ein paar Sekunden oder bei Berührung detonieren. Oder wirft sie weit zur Seite."
+  price 11000
+  tier 3
+  rate 0.9..1.6
+  energy 8..25
+  sound plasma
+  mode1 "Legen"
+  mode2 "Werfen"
+  shot back lv=1-5 mode=1 n=1 speed=70 drag=0.5 life=2.6..3 radius=60..72 dmg=24.4..40 size=6 color=#ff5050 sprite=bomb
+  shot back lv=6-11 mode=1 n=2 spread=40..60 speed=80 drag=0.5 life=3..3.4 radius=72..90 dmg=24..56 size=7 color=#ff6060 sprite=bomb
+  shot side lv=1-11 mode=2 n=1 angle=80 speed=420 drag=2 life=1.1 radius=55..80 dmg=12.2..56 size=6..7 color=#ff7050 sprite=bomb
+
+rear thunder
+  title "Donnerheck"
+  desc "Ein Gewitter im Heck: Blitze springen auf alles in der Nähe über. Umgeschaltet donnert eine Ladung schwerer Plasmakugeln nach hinten."
+  price 14000
+  tier 3
+  rate 1.6..2.6
+  energy 5..15
+  sound chain
+  mode1 "Gewitter"
+  mode2 "Donnerschlag"
+  shot chain lv=1-11 mode=1 range=280..340 chain=1..3 dmg=8.1..22.3 color=#9ab8ff
+  shot burst lv=1-11 mode=2 angle=180 n=3..6 spread=60..90 speed=600 dmg=4.6..11.5 size=5 life=0.9 color=#7090ff sprite=plasma
+
+# ---------------------------------------------------------------------------------------------------- tier 4
+
+rear halo
+  title "Halo"
+  desc "Ein Kranz aus goldenen Blättern, der dich langsam umkreist. Oder er öffnet sich zu einem Strahlenkranz, der in alle Richtungen zugleich feuert."
+  price 18000
+  tier 4
+  rate 1.4..2.4
+  energy 8..24
+  sound plasma
+  mode1 "Kranz"
+  mode2 "Strahlenkranz"
+  shot orbit lv=1-11 mode=1 n=4..8 range=36..48 spin=240 life=1.6 dmg=5..11.2 size=4.5 pierce=2 color=#ffe890 sprite=petal
+  shot fan lv=1-11 mode=2 n=6..12 spread=300..330 speed=520 dmg=3.3..7.5 size=4 life=1.2 color=#fff4c0 sprite=petal
+
+rear spines
+  title "Stachelkranz"
+  desc "Ein Ring aus Stacheln schießt in alle Richtungen zugleich. Im zweiten Modus bündelt er sie zu wenigen langen Dornen, die nach hinten alles durchbohren."
+  price 22000
+  tier 4
+  rate 1.6..2.8
+  energy 7..19
+  sound spread
+  mode1 "Stachelkranz"
+  mode2 "Rückendorn"
+  shot fan lv=1-11 mode=1 n=8..16 spread=315..337 speed=900 dmg=2.2..4.8 size=3 life=0.9 pierce=1 color=#d0ff80 sprite=needle_p
+  shot back lv=1-11 mode=2 n=2..4 spread=6..18 speed=1400 dmg=8.75..19.2 size=3.5 pierce=2..4 color=#b8ff60 sprite=rail
+
+rear backbeam
+  title "Rückstrahl"
+  desc "Ein Laserkristall im Heck. Er feuert durchschlagende Lichtpfeile nach hinten oder speist einen schmalen Stützstrahl nach vorn."
+  price 28000
+  tier 4
+  rate 60
+  energy 0.18..0.88
+  sound laser
+  mode1 "Heckstrahl"
+  mode2 "Stützstrahl"
+  shot back lv=1-5 mode=1 n=1 speed=1500 dmg=4.7..9 size=3 pierce=2..3 life=0.7 color=#ff60a0 sprite=laser every=10
+  shot back lv=6-8 mode=1 n=2 spread=10..14 speed=1500 dmg=5..7 size=3 pierce=3..4 life=0.7 color=#ff60a0 sprite=laser every=10
+  shot back lv=9-11 mode=1 n=3 spread=16..20 speed=1550 dmg=7..12 size=3.2 pierce=4..5 life=0.7 color=#ff78b0 sprite=laser every=10
+  shot beam lv=1-11 mode=2 width=4..10 dmg=0.47..3.6 color=#ff80c0
+
+# ---------------------------------------------------------------------------------------------------- tier 5
+
+rear hailstorm
+  title "Hagelschauer"
+  desc "Eine Wolke aus Eissplittern, die hinter und neben dir niedergeht. Umgeschaltet prasselt ein dichter Graupel nach vorn."
+  price 36000
+  tier 5
+  rate 3..4.5
+  energy 4.4..15
+  sound spread
+  mode1 "Hagel"
+  mode2 "Graupel"
+  shot burst lv=1-11 mode=1 angle=180 n=6..14 spread=200..240 speed=640 dmg=1.95..4.1 size=3.5 life=0.9 color=#c8ecff sprite=petal
+  shot burst lv=1-11 mode=2 n=3..8 spread=30..50 speed=900 dmg=3.9..7.2 size=3 life=0.9 color=#e0f6ff sprite=petal
+
+rear wyrm
+  title "Wurmfeuer"
+  desc "Feuerschlangen, die sich durch die Luft winden – quer zu den Seiten hinaus oder als lange, durchschlagende Lindwürmer nach vorn."
+  price 44000
+  tier 5
+  rate 4..6
+  energy 3.3..11.3
+  sound flame
+  mode1 "Seitenwurm"
+  mode2 "Kopfwurm"
+  shot wave lv=1-5 mode=1 angle=90 n=1 amp=30 freq=2.5 speed=520 dmg=4.4..9 size=4.5 life=1.4 color=#ff5030 sprite=plasma
+  shot wave lv=1-5 mode=1 angle=-90 n=1 amp=30 freq=2.5 speed=520 dmg=4.4..9 size=4.5 life=1.4 color=#ff5030 sprite=plasma
+  shot wave lv=6-11 mode=1 angle=90 n=2 dx=10 amp=30..36 freq=2.5 speed=540 dmg=5..10.8 size=5 life=1.4 color=#ff6a30 sprite=plasma
+  shot wave lv=6-11 mode=1 angle=-90 n=2 dx=10 amp=30..36 freq=2.5 speed=540 dmg=5..10.8 size=5 life=1.4 color=#ff6a30 sprite=plasma
+  shot wave lv=1-5 mode=2 n=1 amp=40..48 freq=1.6 speed=650 dmg=8.75..15 size=5 pierce=2 life=1.3 color=#ff7040 sprite=plasma
+  shot wave lv=6-11 mode=2 n=2 dx=16 amp=48..56 freq=1.6 speed=660 dmg=9..21.7 size=5.5..6 pierce=3..4 life=1.3 color=#ff8850 sprite=plasma
+
+# ---------------------------------------------------------------------------------------------------- plans
+
+rear aegisfire
+  title "Ägisfeuer"
+  desc "Ein Verteidigungssystem der Thalassa-Werften, nie in Serie gebaut: ein dichter Wall aus Glut um das Schiff – oder Raketen, die jeden Angreifer zurückjagen."
+  price 7500
+  tier 9
+  hidden 1
+  rate 1.8..3
+  energy 4..11
+  sound plasma
+  mode1 "Schildwall"
+  mode2 "Gegenschlag"
+  shot orbit lv=1-11 mode=1 n=6..10 range=30..36 spin=420 life=0.9 dmg=1.85..5.3 size=4 pierce=4 color=#ffd27a sprite=orbit
+  shot homing lv=1-11 mode=2 n=2..4 spread=200..260 speed=420 accel=300 home=300 dmg=5.6..13.3 size=3.5 life=2.2 color=#ffc040 sprite=rocket

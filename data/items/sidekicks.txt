@@ -1,4 +1,8 @@
 # Sidekicks: they fly beside the ship and fire with the trigger (their shot lines use level 1).
+# place: fixed (beside the ship), orbit (circling it), trail (behind), front (ahead). aim: forward or nearest.
+# Balance: tier 1 ~12 dmg/s, tier 5 ~55 (ammo + reload: the sustained rate; charge: one shot per charge).
+
+# ---------------------------------------------------------------------------------------------------- tier 1
 
 sidekick pip
   title "Pip-Drohne"
@@ -9,15 +13,255 @@ sidekick pip
   place fixed
   aim forward
   rate 4
-  shot row speed=900 dmg=4 size=3.5 color=#90ffd0 sprite=pulse
+  shot row speed=900 dmg=3 size=3.5 color=#90ffd0 sprite=pulse
 
 sidekick spark
   title "Funke"
-  desc "Billig, flink und mit eigenem Zielsucher: schießt auf den nächsten Gegner, wo immer er ist."
+  desc "Billig, flink und mit eigenem Zielsucher: kreist um das Schiff und schießt auf den nächsten Gegner, wo immer er ist."
   price 350
   tier 1
   model spark
   place orbit
   aim nearest
   rate 3
-  shot row speed=850 dmg=3 size=3 color=#ffe080 sprite=spark
+  shot row speed=850 dmg=3.3 size=3 color=#ffe080 sprite=spark
+
+sidekick sparrow
+  title "Sperling"
+  desc "Ein winziger Jäger, der vor dir herfliegt und zwei Nadeln im Takt eines Vogelherzens abgibt."
+  price 800
+  tier 1
+  model sparrow
+  place front
+  aim forward
+  rate 6
+  shot row n=2 dx=4 speed=1150 dmg=1.1 size=2.5 color=#ffcf80 sprite=needle_p
+
+sidekick rocketpod
+  title "Raketenkapsel"
+  desc "Sechs Lenkraketen in einer Kapsel. Feuert sie in schneller Folge ab und lädt dann eine nach der anderen nach."
+  price 1600
+  tier 1
+  model rocketpod
+  place fixed
+  aim forward
+  rate 5
+  ammo 6
+  reload 0.9
+  shot homing speed=420 accel=500 home=240 dmg=12 size=3.5 life=1.8 color=#ff8a50 sprite=rocket
+
+sidekick bulwark
+  title "Bollwerk"
+  desc "Ein schwer gepanzerter Begleiter, der hinter dir fliegt und Wachkugeln um dein Schiff kreisen lässt. Was dir zu nahe kommt, prallt dagegen."
+  price 2200
+  tier 1
+  model bulwark
+  place trail
+  aim forward
+  rate 1.2
+  shot orbit n=2 range=34 spin=260 life=1.8 dmg=5 size=4.5 pierce=3 color=#b0c8ff sprite=orbit
+
+# ---------------------------------------------------------------------------------------------------- tier 2
+
+sidekick glimmer
+  title "Glimmer"
+  desc "Ein Kristallsplitter, der um dich kreist und funkelnde Sterne auf jeden Gegner in der Nähe wirft."
+  price 3200
+  tier 2
+  model glimmer
+  place orbit
+  aim nearest
+  rate 5
+  shot row speed=950 dmg=3.6 size=3 color=#e8d0ff sprite=star
+
+sidekick lancet
+  title "Lanzette"
+  desc "Fliegt voraus und sticht mit einem schlanken Laser zu, der durch zwei Gegner hintereinander geht."
+  price 4200
+  tier 2
+  model lancet
+  place front
+  aim forward
+  rate 3
+  shot row speed=1400 dmg=6.5 size=2.8 pierce=2 color=#80ffe0 sprite=laser
+
+sidekick charger
+  title "Ladekanone"
+  desc "Sammelt anderthalb Sekunden lang Energie und entlädt sie dann in einer schweren Plasmakugel, die durch alles bricht."
+  price 5500
+  tier 2
+  model charger
+  place fixed
+  aim forward
+  rate 4
+  charge 1.5
+  shot row speed=520 accel=600 dmg=34 size=9 pierce=4 radius=40 life=1.6 color=#60a0ff sprite=plasma
+
+sidekick flak
+  title "Flakturm"
+  desc "Ein kleiner Geschützturm, der hinter dir herfliegt und Splitterladungen auf den nächsten Gegner feuert. Sie platzen kurz vor dem Ziel."
+  price 6800
+  tier 2
+  model flak
+  place trail
+  aim nearest
+  rate 1.6
+  shot burst n=4 spread=20 speed=900 life=0.45 radius=28 dmg=3.4 size=3 color=#ffb050 sprite=bolt
+
+# ---------------------------------------------------------------------------------------------------- tier 3
+
+sidekick warden
+  title "Wächter"
+  desc "Ein treuer Wachposten an deiner Seite, der jeden Gegner in Reichweite mit grünen Plasmakugeln eindeckt."
+  price 8500
+  tier 3
+  model warden
+  place fixed
+  aim nearest
+  rate 3.5
+  shot row speed=900 dmg=7.5 size=4.5 color=#70ff90 sprite=orbit
+
+sidekick stinger
+  title "Stachel"
+  desc "Fliegt voraus wie eine Wespe und verteilt Dreierfächer aus Giftnadeln, die durch den ersten Gegner hindurchgehen."
+  price 10000
+  tier 3
+  model stinger
+  place front
+  aim forward
+  rate 3
+  shot fan n=3 spread=12 speed=1250 dmg=3.3 size=2.6 pierce=1 color=#ffe040 sprite=needle_p
+
+sidekick cometpod
+  title "Kometenkapsel"
+  desc "Drei Kometen in einer Kapsel: Sie starten träge, werden immer schneller und zerplatzen in einer Glutwolke. Dann wird nachgeladen."
+  price 13000
+  tier 3
+  model cometpod
+  place fixed
+  aim forward
+  rate 3
+  ammo 3
+  reload 1.6
+  shot row speed=260 accel=1300 dmg=46 size=7 pierce=1 radius=40 life=1.5 color=#ff7030 sprite=plasma
+
+sidekick arcpod
+  title "Bogenkapsel"
+  desc "Eine kreisende Spule, die Blitze auf den nächsten Gegner schleudert – und von dort auf zwei weitere."
+  price 15500
+  tier 3
+  model arcpod
+  place orbit
+  aim nearest
+  rate 1.6
+  shot chain range=220 chain=2 dmg=7.5 color=#b080ff
+
+# ---------------------------------------------------------------------------------------------------- tier 4
+
+sidekick phoenix
+  title "Phönix"
+  desc "Ein Feuervogel aus Gießereistahl, der hinter dir fliegt und zwei Flammenzungen nach vorn speit."
+  price 17000
+  tier 4
+  model phoenix
+  place trail
+  aim forward
+  rate 8
+  shot flame n=2 spread=20 speed=520 life=0.5 dmg=1.7 size=5 color=#ff6a20
+
+sidekick hydra
+  title "Hydra"
+  desc "Drei Köpfe, drei Lenkraketen: Jede Salve fächert sich auf und sucht sich drei verschiedene Ziele."
+  price 21000
+  tier 4
+  model hydra
+  place fixed
+  aim forward
+  rate 2.6
+  shot homing n=3 spread=40 speed=480 accel=300 home=280 dmg=5 size=3.5 life=1.8 color=#9cff50 sprite=rocket
+
+sidekick lantern
+  title "Laterne"
+  desc "Eine kreisende Laterne aus Thalassa, die warme Lichtringe auf die Gegner wirft. Jeder Ring rollt durch zwei von ihnen."
+  price 25000
+  tier 4
+  model lantern
+  place orbit
+  aim nearest
+  rate 2.5
+  shot row speed=600 dmg=15 size=6 pierce=2 life=1.2 color=#ffc860 sprite=ripple
+
+sidekick sentinel
+  title "Wachposten"
+  desc "Ein rotes Auge, das vor dir schwebt und jeden Gegner anvisiert. Fünf Schienenbolzen im Magazin, jeder durchschlägt drei Ziele."
+  price 30000
+  tier 4
+  model sentinel
+  place front
+  aim nearest
+  rate 4
+  ammo 5
+  reload 0.6
+  shot row speed=1900 dmg=25 size=3.5 pierce=3 color=#ff6060 sprite=rail
+
+# ---------------------------------------------------------------------------------------------------- tier 5
+
+sidekick mirror
+  title "Spiegel"
+  desc "Eine Spiegelscherbe, die das Licht deiner Front auffängt und als Fächer aus drei Strahlen zurückwirft."
+  price 34000
+  tier 5
+  model mirror
+  place fixed
+  aim forward
+  rate 4
+  shot fan n=3 spread=16 speed=1250 dmg=4 size=3 color=#e0f0ff sprite=laser
+
+sidekick seraph
+  title "Seraph"
+  desc "Ein geflügelter Begleiter aus weißem Gold. Er umkreist dich und schickt Paare suchender Sterne auf jeden Gegner in Sicht."
+  price 42000
+  tier 5
+  model seraph
+  place orbit
+  aim nearest
+  rate 4
+  shot homing n=2 spread=30 speed=700 home=300 dmg=6.5 size=4 life=1.4 color=#fff6c0 sprite=star
+
+sidekick eclipse
+  title "Finsternis"
+  desc "Eine schwarze Kugel mit violetter Korona. Sie trinkt zwei Sekunden lang Licht und lässt es dann als verheerende Dunkelbombe frei."
+  price 50000
+  tier 5
+  model eclipse
+  place trail
+  aim forward
+  rate 2
+  charge 2.2
+  shot bomb speed=380 life=1 radius=110 dmg=125 size=12 color=#9040ff sprite=bomb
+
+# ---------------------------------------------------------------------------------------------------- plans
+
+sidekick talon
+  title "Kralle"
+  desc "Eine Jagddrohne der Fischer von Thalassa, aus Wrackteilen gebaut. Sie greift den nächsten Gegner an, und ihre Bolzen prallen von den Rändern zurück."
+  price 6000
+  tier 9
+  hidden 1
+  model talon
+  place front
+  aim nearest
+  rate 4
+  shot bounce n=2 dx=6 bounce=2 speed=900 dmg=3.3 size=3 color=#ff9030 sprite=bolt
+
+sidekick starling
+  title "Star"
+  desc "Ein Geschenk des Chors: ein Schwarm aus Licht in Vogelgestalt. Er kreist um dich und schickt jeweils drei suchende Funken los."
+  price 26000
+  tier 9
+  hidden 1
+  model starling
+  place orbit
+  aim nearest
+  rate 3.8
+  shot homing n=3 spread=50 speed=650 home=360 dmg=4 size=3 life=1.4 color=#a0ffff sprite=spark

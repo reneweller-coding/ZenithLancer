@@ -1,36 +1,316 @@
 # Front guns. Each shot line fires at the levels lv=a-b; a..b values grow over that span (docs/DATA.md).
+# Balance (work/calc.py, --weapons): tier 1 ~28 dmg/s at level 1 and ~240 at 11, tier 5 ~75 and ~530; homing and
+# beams a little less, wide fans a little more. Energy a second at level 11: tier 1 ~55, tier 5 ~150.
+
+# ---------------------------------------------------------------------------------------------------- tier 1
 
 front pulse
   title "Pulslanze"
-  desc "Der Standard des Lancer-Programms: helle Bolzen, die mit jeder Stufe breiter und schneller werden. Verlässlich, sparsam, nie verkehrt."
+  desc "Der Standard des Lancer-Programms: helle Bolzen, die mit jeder Stufe dichter und schneller werden. Verlässlich, sparsam, nie verkehrt."
   price 400
   tier 1
   rate 6..8.5
-  energy 3..7
+  energy 2.7..6.5
   sound pulse
-  shot row lv=1-3 n=1..2 dx=12 speed=900 dmg=5..6 size=4 color=#78d0ff sprite=pulse
-  shot row lv=4-7 n=2..3 dx=12 speed=950 dmg=6..7 size=4 color=#78d0ff sprite=pulse
-  shot row lv=8-11 n=3..4 dx=11 speed=1000 dmg=7..8 size=4.5 color=#a0e0ff sprite=pulse
-  shot fan lv=6-11 n=2 spread=14..24 speed=900 dmg=4..6 size=3.5 color=#78d0ff sprite=pulse every=2
+  shot row lv=1-2 n=1 speed=900 dmg=4.7..6 size=4..4.8 color=#78d0ff sprite=pulse
+  shot row lv=3-5 n=2 dx=12 speed=920..960 dmg=3.8..5 size=4 color=#78d0ff sprite=pulse
+  shot row lv=6-8 n=3 dx=12 speed=960..1000 dmg=3.6..5 size=4.2 color=#8ad8ff sprite=pulse
+  shot row lv=9-11 n=4 dx=11 speed=1000..1050 dmg=4.2..5.2 size=4.5 color=#a0e0ff sprite=pulse
+  shot fan lv=6-11 n=2 spread=14..26 speed=900 dmg=3..4.5 size=3.5 color=#78d0ff sprite=pulse every=2
+  shot side lv=10-11 n=1 angle=32 speed=880 dmg=3..3.5 size=3.5 color=#c0ecff sprite=pulse every=2
+
+front needle
+  title "Nadelwerfer"
+  desc "Schleudert haarfeine Nadeln mit irrwitzigem Tempo. Jede bohrt sich durch das erste Ziel und sucht sich dahinter ein zweites."
+  price 900
+  tier 1
+  rate 5..8
+  energy 3..7
+  sound laser
+  shot row lv=1-4 n=1 speed=1300 dmg=5.2..7.4 size=2.6 pierce=1 color=#ff70d0 sprite=laser
+  shot row lv=5-8 n=2 dx=8 speed=1350 dmg=4.6..6.4 size=2.6 pierce=1 color=#ff70d0 sprite=laser
+  shot row lv=9-11 n=3 dx=8 speed=1400 dmg=5.4..6.4 size=2.8 pierce=2 color=#ff88dc sprite=laser
+  shot side lv=3-11 n=1 angle=6..14 speed=1250 dmg=2.4..5 size=2.2 pierce=1 color=#ffa8ec sprite=laser every=2
+  shot fan lv=10-11 n=3 spread=30..36 speed=1200 dmg=3..3.6 size=2.2 color=#ffc8f4 sprite=laser every=2
 
 front scatter
   title "Streukanone"
-  desc "Ein Fächer aus kurzen Bolzen. Deckt den halben Himmel ab, verliert aber auf Distanz an Biss."
-  price 900
+  desc "Ein Fächer aus kurzen, glühenden Bolzen. Deckt den halben Himmel ab, verliert aber auf Distanz an Biss."
+  price 1200
   tier 1
-  rate 4.5..6.5
-  energy 4..9
+  rate 4.5..6
+  energy 3.6..9.5
   sound spread
-  shot fan lv=1-11 n=3..9 spread=24..70 speed=780 dmg=4..6 size=4 life=0.85 color=#ffd070 sprite=bolt
-  shot row lv=5-11 n=1..2 dx=14 speed=900 dmg=5..8 size=4 color=#fff0b0 sprite=pulse every=2
+  shot fan lv=1-11 n=3..9 spread=26..72 speed=760 dmg=2.1..3.6 size=4 life=0.8 color=#ffd070 sprite=bolt
+  shot row lv=5-11 n=1 speed=900 dmg=4..7 size=4.5 color=#fff0b0 sprite=pulse every=2
+  shot fan lv=8-11 n=4..6 spread=110..150 speed=700 dmg=2.5..3 size=3.5 life=0.55 color=#ffb050 sprite=bolt every=2
 
 front vulcan
   title "Drehkanone"
-  desc "Ein rotierender Lauf, der kleine Geschosse in einem dichten Strom ausspuckt. Hohe Feuerrate, wenig Streuung, hungrig nach Energie."
-  price 1400
+  desc "Ein rotierender Lauf, der kleine Geschosse in einem dichten Strom ausspuckt. Später kommen zwei Läufe dazu. Hungrig nach Energie."
+  price 1800
   tier 1
   rate 12..20
-  energy 2..4
+  energy 1.5..3.2
   sound pulse
-  shot burst lv=1-11 n=1..2 spread=3..6 speed=1050 dmg=2.6..4.2 size=3 color=#fff4c0 sprite=needle_p
-  shot side lv=7-11 n=1 angle=8 speed=1000 dmg=2..3 size=3 color=#ffe0a0 sprite=needle_p every=2
+  shot burst lv=1-11 n=1 spread=2..5 speed=1100 dmg=2.5..4.6 size=3 color=#fff4c0 sprite=needle_p
+  shot burst lv=3-11 n=1 x=5 spread=5..9 speed=1080 dmg=1.2..3 size=3 color=#ffe8a0 sprite=needle_p
+  shot burst lv=5-11 n=1 x=-5 spread=5..9 speed=1080 dmg=1.2..2.6 size=3 color=#ffe8a0 sprite=needle_p
+  shot side lv=8-11 n=1 angle=8..12 speed=1000 dmg=1..1.6 size=2.6 color=#ffd080 sprite=needle_p every=2
+
+# ---------------------------------------------------------------------------------------------------- tier 2
+
+front ember
+  title "Glutwerfer"
+  desc "Eine Zunge aus Gießereifeuer, abgezweigt aus Pyras Schmelzöfen. Reicht nur über das halbe Feld, aber was hineinfliegt, kommt nicht wieder heraus."
+  price 3500
+  tier 2
+  rate 10..14
+  energy 1.4..5
+  sound flame
+  shot flame lv=1-11 n=1 spread=8..14 speed=1000..1200 dmg=2.6..7 size=3..4 life=0.8..1 color=#ff5a10
+  shot flame lv=4-11 n=1 spread=30..46 speed=650..760 dmg=1..3.6 size=3 life=0.5..0.6 color=#ff3008
+  shot flame lv=8-11 n=1 spread=56..70 speed=560 dmg=1.5..3 size=2.6 life=0.45 color=#ff9020
+
+front frost
+  title "Frostnadel"
+  desc "Kristallnadeln aus unterkühltem Plasma, kalt genug, um Panzerplatten springen zu lassen. Auf hohen Stufen splittert Eis wie Hagel."
+  price 4200
+  tier 2
+  rate 5..7.5
+  energy 2.8..9.3
+  sound laser
+  shot row lv=1-5 n=1 speed=1150 dmg=7.6..9.4 size=3 color=#c8f0ff sprite=needle_p
+  shot row lv=6-11 n=2 dx=10 speed=1200 dmg=6..10 size=3 pierce=1 color=#d8f6ff sprite=needle_p
+  shot side lv=4-11 n=1 angle=10..18 speed=1100 dmg=1.4..4.6 size=2.6 color=#e8faff sprite=needle_p
+  shot fan lv=7-11 n=3..5 spread=50..80 speed=700 dmg=2.4..3.2 size=5 life=0.7 color=#9ad8ff sprite=petal every=2
+
+front ripple
+  title "Wellenbrecher"
+  desc "Feuert Ringe aus verdichtetem Raum, die sich beim Fliegen weiten und durch Reihen von Gegnern rollen wie eine Brandung."
+  price 5000
+  tier 2
+  rate 3.5..5.5
+  energy 4..12.7
+  sound plasma
+  shot fan lv=1-2 n=1 speed=520 dmg=10.9..12 size=8 pierce=1 life=1.1 color=#40e0d0 sprite=ripple
+  shot fan lv=3-5 n=2 spread=14..20 speed=540 dmg=6.8..8.2 size=8.5 pierce=1..2 life=1.1 color=#40e0d0 sprite=ripple
+  shot fan lv=6-8 n=3 spread=24..30 speed=560 dmg=6..7.2 size=9 pierce=2 life=1.1 color=#48e8d8 sprite=ripple
+  shot fan lv=9-11 n=4 spread=30..36 speed=600 dmg=7..9.5 size=9.5..10 pierce=2..3 life=1.1 color=#50f0e0 sprite=ripple
+  shot wave lv=6-11 n=2 dx=24 amp=26..34 freq=2.5 speed=560 dmg=3..6 size=6 pierce=1 life=1.2 color=#80fff0 sprite=ripple
+
+front hornet
+  title "Hornissenschwarm"
+  desc "Ein Bienenstock aus Mini-Raketen: Sie schwärmen aus, suchen sich ihre Ziele selbst und stechen dort zu, wo du nicht hinsiehst."
+  price 6500
+  tier 2
+  rate 4..6
+  energy 3.3..11.5
+  sound missile
+  shot homing lv=1-11 n=2..6 spread=30..70 dx=8 speed=520 accel=600 home=260..330 dmg=3.75..6.67 size=3.5 life=1.6 color=#ffb030 sprite=rocket
+
+front lancebeam
+  title "Lichtlanze"
+  desc "Ein ununterbrochener Strahl, so hell wie ein Schweißbogen. Trifft sofort, was vor dir steht; ab Stufe 9 geht er durch alles hindurch."
+  price 8000
+  tier 2
+  rate 60
+  energy 0.24..1.15
+  sound beam
+  shot beam lv=1-5 width=5..9 dmg=0.57..1.5 color=#40ffc8
+  shot beam lv=6-8 width=11..14 dmg=1.9..2.8 color=#48ffd0
+  shot beam lv=9-11 width=16..20 dmg=3.3..4 pierce=1 color=#60ffd8
+  shot fan lv=7-11 n=2 spread=16..24 speed=1100 dmg=2..3 size=2.5 color=#d0fff4 sprite=laser every=12
+
+# ---------------------------------------------------------------------------------------------------- tier 3
+
+front arc
+  title "Bogenblitz"
+  desc "Ein Kondensator, der Blitze auf den nächsten Gegner wirft – und von dort weiter auf den nächsten. Zielt selbst, reicht aber nicht weit."
+  price 9000
+  tier 3
+  rate 4..6
+  energy 4..15
+  sound chain
+  shot chain lv=1-11 range=230..330 chain=1..4 dmg=6.2..12 color=#c8a0ff
+  shot row lv=5-11 n=1..2 dx=14 speed=900 dmg=3..4 size=3.5 color=#e0d0ff sprite=spark
+
+front prism
+  title "Prismenfächer"
+  desc "Ein weißer Strahl, durch ein Kristallprisma gejagt: Er fächert sich in alle Farben auf, und jede Stufe fügt eine weitere hinzu."
+  price 11000
+  tier 3
+  rate 4.5..6.5
+  energy 3.6..14
+  sound laser
+  shot row lv=1-11 n=1 speed=1250 dmg=5.5..12 size=3.2 color=#ffffff sprite=laser
+  shot fan lv=1-11 n=2 spread=12..30 speed=1200 dmg=3..6 size=3 color=#ff4890 sprite=laser
+  shot fan lv=4-11 n=2 spread=24..46 speed=1150 dmg=1.5..6 size=3 color=#40c8ff sprite=laser
+  shot fan lv=7-11 n=2 spread=36..60 speed=1100 dmg=2..6 size=3 color=#ffd040 sprite=laser
+  shot fan lv=10-11 n=2 spread=50..72 speed=1050 dmg=3..6 size=3 color=#70ff80 sprite=laser
+
+front bloom
+  title "Sternblüte"
+  desc "Schießt Sternsamen, die nach kurzer Strecke in einer Blüte aus Licht aufbrechen – umgeben von einem Kranz glühender Blätter."
+  price 13000
+  tier 3
+  rate 2.5..4
+  energy 6.4..22
+  sound plasma
+  shot bomb lv=1-5 n=1 speed=520 life=0.75..0.85 radius=40..52 dmg=14..22 size=6 color=#ff90e0 sprite=star
+  shot bomb lv=6-11 n=2 dx=18 speed=540 life=0.85..0.95 radius=50..62 dmg=16..30 size=6.5 color=#ffa8e8 sprite=star
+  shot fan lv=1-11 n=4..8 spread=60..120 speed=420 dmg=0.75..2.75 size=3.5 life=0.5 color=#ffc0f0 sprite=petal
+
+front rail
+  title "Schienenkanone"
+  desc "Magnetisch beschleunigte Bolzen aus Wolfram. Langsam im Takt, aber jeder Schuss reißt eine Gasse durch alles, was im Weg steht."
+  price 16000
+  tier 3
+  rate 1.6..2.6
+  energy 10..34
+  sound rail
+  shot row lv=1-11 n=1 speed=1900 dmg=30..70 size=4..6 pierce=2..6 life=1 color=#9a8cff sprite=rail
+  shot side lv=5-11 n=1 angle=3..6 speed=1850 dmg=4..22 size=3.5 pierce=2..4 life=1 color=#beb4ff sprite=rail
+  shot row lv=9-11 n=2 dx=20 speed=1800 dmg=4..14 size=3 pierce=2 life=1 color=#d8d0ff sprite=rail
+
+# ---------------------------------------------------------------------------------------------------- tier 4
+
+front thorn
+  title "Dornenwerfer"
+  desc "Gehärtete Dornen, die schräg davonfliegen und von den Rändern des Feldes zurückprallen. Wer sich in den Ecken versteckt, hat Pech."
+  price 17000
+  tier 4
+  rate 4..6
+  energy 4.5..19
+  sound spread
+  shot bounce lv=1-11 n=1 angle=16..20 bounce=1..3 speed=760 dmg=7.5..18 size=5 pierce=1 life=1.6 color=#70e030 sprite=petal
+  shot bounce lv=1-11 n=1 angle=-16..-20 bounce=1..3 speed=760 dmg=7.5..18 size=5 pierce=1 life=1.6 color=#70e030 sprite=petal
+  shot bounce lv=6-11 n=1 x=6 angle=28..32 bounce=2..3 speed=720 dmg=4..12 size=4.5 pierce=1 life=1.8 color=#a0f050 sprite=petal
+  shot bounce lv=6-11 n=1 x=-6 angle=-28..-32 bounce=2..3 speed=720 dmg=4..12 size=4.5 pierce=1 life=1.8 color=#a0f050 sprite=petal
+  shot row lv=9-11 n=1 speed=950 dmg=10..12 size=3.5 pierce=2 color=#d8ff90 sprite=needle_p
+
+front helix
+  title "Doppelhelix"
+  desc "Zwei Plasmaströme, die sich umeinander winden wie ein Erbgut aus Licht. Später schlingt sich ein zweites, weiteres Paar darum."
+  price 21000
+  tier 4
+  rate 5..7
+  energy 4.5..16.5
+  sound plasma
+  shot wave lv=1-11 n=2 dx=0 amp=18..26 freq=3 speed=760 dmg=6..14 size=5..6 pierce=0..1 life=1.4 color=#ff50c0 sprite=plasma
+  shot wave lv=4-11 n=2 dx=0 amp=40..56 freq=2 speed=740 dmg=1.5..10 size=4.5..5 life=1.4 color=#50e0ff sprite=plasma
+  shot wave lv=8-11 n=2 dx=40 amp=20 freq=4 speed=800 dmg=2.5..7 size=4 life=1.2 color=#ffffff sprite=plasma
+
+front swarm
+  title "Schwarmwerfer"
+  desc "Eine Trommel voller Pfeildrohnen. Jede sucht sich ein eigenes Ziel; ab Stufe 7 fliegen größere Leitdrohnen mit."
+  price 25000
+  tier 4
+  rate 3..4.5
+  energy 6..25.5
+  sound missile
+  shot homing lv=1-11 n=3..8 spread=60..160 speed=380 accel=500 home=380..460 dmg=5.3..8 size=3 life=2 color=#c0ff60 sprite=spark
+  shot homing lv=7-11 n=2 spread=40 speed=420 accel=400 home=300 dmg=10..14 size=4 life=2.2 color=#80ff40 sprite=rocket every=2
+
+front comet
+  title "Kometenwerfer"
+  desc "Schwere Plasmakugeln, die langsam starten und dann immer schneller werden. Sie schlagen durch und zerplatzen in einer Glutwolke."
+  price 29000
+  tier 4
+  rate 2..3.2
+  energy 9..36
+  sound plasma
+  shot row lv=1-11 n=1 speed=300 accel=1400 dmg=28..80 size=7..10 pierce=1..3 radius=30..50 life=1.4 color=#ff9040 sprite=plasma
+  shot side lv=5-11 n=1 angle=10..16 speed=280 accel=1200 dmg=4..24 size=5 radius=24 life=1.4 color=#ffc070 sprite=plasma
+
+front nova
+  title "Novasplitter"
+  desc "Eine Schrotladung aus Sternensplittern, dazwischen ab Stufe 5 eine Sprenggranate. Je näher am Ziel, desto schlimmer für das Ziel."
+  price 34000
+  tier 4
+  rate 3..4.5
+  energy 6.5..25
+  sound spread
+  shot burst lv=1-11 n=5..12 spread=40..70 speed=700..800 dmg=4.4..7.8 size=4 life=0.7 color=#fff080 sprite=star
+  shot bomb lv=5-11 n=1 speed=600 life=0.5 radius=50..80 dmg=20..30 size=6 color=#ff8040 sprite=bomb every=3
+
+# ---------------------------------------------------------------------------------------------------- tier 5
+
+front tempest
+  title "Sturmgitter"
+  desc "Ein Gitter aus Laserbahnen, durch das in jedem zweiten Takt ein Blitz springt. Was zwischen die Linien gerät, wird zerlegt."
+  price 38000
+  tier 5
+  rate 6..8
+  energy 4..20
+  sound laser
+  shot row lv=1-3 n=2 dx=14 speed=1150 dmg=5..6 size=3 color=#80c0ff sprite=laser
+  shot row lv=4-7 n=3 dx=15 speed=1150 dmg=4.6..6 size=3 color=#80c0ff sprite=laser
+  shot row lv=8-11 n=4 dx=16 speed=1200 dmg=5.5..9.5 size=3.2 color=#90c8ff sprite=laser
+  shot chain lv=1-11 range=200..300 chain=1..3 dmg=3.9..12 color=#e0f0ff every=2
+  shot side lv=5-11 n=1 angle=20..28 speed=1100 dmg=2..5 size=3 color=#a0d8ff sprite=laser
+
+front starfall
+  title "Sternenregen"
+  desc "Ein Schauer aus Sternen, der den Himmel vor dir füllt. Dazwischen suchen sich leuchtende Irrsterne ihren eigenen Weg."
+  price 48000
+  tier 5
+  rate 5..7
+  energy 5..23
+  sound spread
+  shot burst lv=1-11 n=3..8 spread=20..46 speed=800..900 dmg=5.5..6.8 size=4 life=1 color=#fff4d0 sprite=star
+  shot homing lv=4-11 n=1..2 spread=60 speed=600 home=300 dmg=4..14 size=4.5 life=1.8 color=#ffb0f0 sprite=star every=2
+  shot fan lv=8-11 n=6 spread=150 speed=600 dmg=2.5..5 size=3 life=0.6 color=#ffe0a0 sprite=spark every=3
+
+front sunspear
+  title "Sonnenspeer"
+  desc "Ein Strahl aus gebündeltem Sonnenlicht, so breit wie ein Gleiter. Ab Stufe 7 durchschlägt er alles bis an den Horizont."
+  price 58000
+  tier 5
+  rate 60
+  energy 0.4..2.5
+  sound beam
+  shot beam lv=1-6 width=10..16 dmg=1.13..3.6 color=#ffc040
+  shot beam lv=7-11 width=18..26 dmg=4.2..6.6 pierce=1 color=#ffb028
+  shot side lv=4-11 n=1 angle=8..14 speed=1300 dmg=2..7 size=3 color=#ffe8a0 sprite=laser every=10
+
+# ---------------------------------------------------------------------------------------------------- plans
+
+front quill
+  title "Federkiel"
+  desc "Ein Prototyp aus Okonjos Werkstatt, in einer Gießerei vergessen: ein weißer Kiel, der alles durchsticht, umweht von goldenen Federn."
+  price 2600
+  tier 9
+  hidden 1
+  rate 5..7
+  energy 3..8.5
+  sound laser
+  shot row lv=1-11 n=1 speed=1250 dmg=5..14 size=3 pierce=1..3 color=#fff8e8 sprite=rail
+  shot wave lv=1-11 n=2 dx=14 amp=14..22 freq=3.5 speed=820 dmg=1.5..10 size=5..6 life=1.2 color=#ffd080 sprite=petal
+  shot fan lv=6-11 n=2 spread=30..50 speed=800 dmg=4..10 size=4.5 color=#ffb060 sprite=petal every=2
+
+front fang
+  title "Reißzahn"
+  desc "Zwei karminrote Schienenbolzen, die sich vor dem Bug kreuzen wie die Kiefer eines Raubtiers. Auf hohen Stufen schnappen weitere Zähne zu."
+  price 18000
+  tier 9
+  hidden 1
+  rate 2.5..4
+  energy 8..26
+  sound rail
+  shot side lv=1-11 n=1 angle=-3..-5 speed=1700 dmg=11.6..30 size=4 pierce=2..4 life=1 color=#ff3040 sprite=rail
+  shot fan lv=5-11 n=2 spread=50..30 speed=1500 dmg=3..16 size=3.5 pierce=1..2 color=#ff7080 sprite=rail
+  shot bomb lv=8-11 n=1 speed=700 life=0.6 radius=40 dmg=16..40 size=6 color=#ff2030 sprite=plasma every=2
+
+front zenith
+  title "Zenitlanze"
+  desc "Die Waffe, für die der Lancer gebaut wurde: ein weißglühender Strahl, der alles durchschlägt, begleitet von Sternlanzen, die selbst jagen."
+  price 68000
+  tier 9
+  hidden 1
+  rate 60
+  energy 0.45..2.9
+  sound beam
+  shot beam lv=1-11 width=12..30 dmg=0.95..7 pierce=1 color=#fff6dc
+  shot homing lv=1-11 n=2..4 spread=40..80 speed=700 home=360 dmg=3.5..7 size=4 life=1.6 color=#ffe080 sprite=star every=12
+  shot side lv=6-11 n=1 angle=4..8 speed=2000 dmg=10..14 size=4 pierce=3 life=0.8 color=#ffffff sprite=rail every=20
