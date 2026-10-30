@@ -29,6 +29,7 @@ struct Settings
     bool        m_mouse = false;             ///< the mouse steers
     bool        m_hitbox = true;             ///< the pilot's hit circle shown
     bool        m_rumble = true;             ///< the pad's motors
+    std::string m_language;                  ///< de, en ("" the system's)
     float       m_textSize = 1.0f;
     std::vector<std::string> m_binds;        ///< Input's lines
 

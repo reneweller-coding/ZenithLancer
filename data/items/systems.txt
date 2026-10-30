@@ -6,7 +6,9 @@
 
 generator cell
   title "Zellblock"
+  title_en "Cell Stack"
   desc "Ein Stapel Batteriezellen. Reicht für eine Kanone und einen dünnen Schild."
+  desc_en "A stack of battery cells. Enough for one gun and a thin shield."
   price 500
   tier 1
   power 34
@@ -14,7 +16,9 @@ generator cell
 
 generator dynamo
   title "Dynamo"
+  title_en "Dynamo"
   desc "Ein kleiner Turbinengenerator. Spürbar mehr Leistung, gerade genug für Front und Heck."
+  desc_en "A small turbine generator. Noticeably more power, just enough for front and rear."
   price 2400
   tier 1
   power 50
@@ -22,7 +26,9 @@ generator dynamo
 
 generator fusion
   title "Fusionskern"
+  title_en "Fusion Core"
   desc "Ein Fusionsreaktor in Koffergröße, wie ihn die Frachter von Thalassa fliegen. Ruhig, zuverlässig und kräftig genug für zwei ausgebaute Waffen."
+  desc_en "A suitcase-sized fusion reactor, the kind Thalassa's freighters fly with. Quiet, reliable and strong enough for two upgraded guns."
   price 6500
   tier 2
   power 70
@@ -30,7 +36,9 @@ generator fusion
 
 generator plasmaheart
   title "Plasmaherz"
+  title_en "Plasma Heart"
   desc "Eine pulsierende Plasmakammer aus einem Bergbaukreuzer des Splitters. Man hört sie schlagen, wenn das Cockpit still ist."
+  desc_en "A pulsing plasma chamber from a mining cruiser of the Shatter. You can hear it beat when the cockpit is quiet."
   price 15000
   tier 3
   power 95
@@ -38,7 +46,9 @@ generator plasmaheart
 
 generator starforge
   title "Sternenschmiede"
+  title_en "Starforge"
   desc "Ein Fusionsfeuer, eingeschlossen in Magnetfeldern, heiß wie die Oberfläche eines Sterns. Speist auch schwere Waffen ohne Murren."
+  desc_en "A fusion fire caged in magnetic fields, as hot as the surface of a star. Feeds even heavy guns without complaint."
   price 32000
   tier 4
   power 125
@@ -46,7 +56,9 @@ generator starforge
 
 generator singularity
   title "Singularität"
+  title_en "Singularity"
   desc "Ein winziges Schwarzes Loch in einem Käfig aus Kraftfeldern. Es gibt mehr Energie ab, als jede Waffe verbrauchen kann – solange der Käfig hält."
+  desc_en "A tiny black hole in a cage of force fields. It gives off more energy than any gun can use – as long as the cage holds."
   price 60000
   tier 5
   power 170
@@ -54,7 +66,9 @@ generator singularity
 
 generator ember_core
   title "Glutkern"
+  title_en "Ember Core"
   desc "Ein Kern aus der Tiefe einer Gießerei, der nie ganz erkaltet. Mehr Leistung als ein Dynamo, aber fast kein Speicher: Wer zu lange feuert, steht im Dunkeln."
+  desc_en "A core from the depths of a foundry that never quite cools. More power than a Dynamo, but almost no storage: fire too long and you're left in the dark."
   price 3000
   tier 9
   hidden 1
@@ -63,7 +77,9 @@ generator ember_core
 
 generator sunheart
   title "Sonnenherz"
+  title_en "Sunheart"
   desc "Okonjos Prototyp aus dem Splitter: ein Speicher aus Sonnenplasma, groß genug für minutenlanges Dauerfeuer, und eine Leistung, die mit den Großen mithält."
+  desc_en "Okonjo's prototype from the Shatter: a store of solar plasma big enough for minutes of sustained fire, and output that keeps up with the big ones."
   price 19000
   tier 9
   hidden 1
@@ -74,7 +90,9 @@ generator sunheart
 
 shield veil
   title "Schleier"
+  title_en "Veil"
   desc "Ein dünnes Feld, das ein paar Treffer schluckt und langsam nachwächst."
+  desc_en "A thin field that swallows a few hits and slowly grows back."
   price 400
   tier 1
   max 10
@@ -84,7 +102,9 @@ shield veil
 
 shield ward
   title "Schutzwall"
+  title_en "Ward"
   desc "Fast doppelt so stark wie der Schleier und schneller wieder da. Zieht dafür mehr Energie."
+  desc_en "Almost twice as strong as the Veil and back up sooner. Draws more energy for it."
   price 2200
   tier 1
   max 18
@@ -94,7 +114,9 @@ shield ward
 
 shield mantle
   title "Mantel"
+  title_en "Mantle"
   desc "Ein dichtes Feld, das sich wie ein schwerer Umhang um das Schiff legt. Hält eine ganze Salve aus und erholt sich zügig."
+  desc_en "A dense field that settles around the ship like a heavy cloak. Takes a whole volley and recovers quickly."
   price 6000
   tier 2
   max 26
@@ -104,7 +126,9 @@ shield mantle
 
 shield fortress
   title "Festung"
+  title_en "Fortress"
   desc "Ein Panzerfeld aus der Werft der Direktoratsflotte. Gewaltig stark, aber es braucht eine Weile, bis es nach einem Treffer wieder wächst."
+  desc_en "An armour field from the Directorate fleet's shipyards. Immensely strong, but it takes a while to grow back after a hit."
   price 14000
   tier 3
   max 38
@@ -114,7 +138,9 @@ shield fortress
 
 shield prismshield
   title "Prismenschild"
+  title_en "Prism Shield"
   desc "Bricht einschlagende Energie wie ein Prisma und verteilt sie über die ganze Hülle. Stark und überraschend schnell wieder voll."
+  desc_en "Refracts incoming energy like a prism and spreads it over the whole hull. Strong and surprisingly quick to refill."
   price 28000
   tier 4
   max 44
@@ -124,7 +150,9 @@ shield prismshield
 
 shield halo_s
   title "Heiligenschein"
+  title_en "Nimbus"
   desc "Ein goldener Ring aus Licht um das Schiff, der sich fast so schnell erneuert, wie man ihn verbraucht."
+  desc_en "A golden ring of light around the ship that renews itself almost as fast as you can use it up."
   price 45000
   tier 5
   max 52
@@ -134,7 +162,9 @@ shield halo_s
 
 shield aegis
   title "Ägis"
+  title_en "Aegis"
   desc "Das stärkste Feld, das je in einen Jäger passte: ein Schild, an dem ganze Breitseiten zerschellen."
+  desc_en "The strongest field ever fitted into a fighter: a shield that whole broadsides shatter against."
   price 62000
   tier 5
   max 60
@@ -144,7 +174,9 @@ shield aegis
 
 shield mirrorshield
   title "Spiegelschild"
+  title_en "Mirror Shield"
   desc "Ein Feld aus lebendem Kristall, gewachsen in Sylvaras Tiefe. Es hält weniger aus als die großen Schilde, schließt sich aber fast im selben Augenblick wieder."
+  desc_en "A field of living crystal, grown in Sylvara's depths. It takes less than the big shields, but closes again almost in the same instant."
   price 24000
   tier 9
   hidden 1
@@ -157,7 +189,9 @@ shield mirrorshield
 
 special nova_s
   title "Nova"
+  title_en "Nova"
   desc "Eine Druckwelle um das Schiff: löscht feindliche Kugeln in der Nähe und trifft alles in Reichweite."
+  desc_en "A shockwave around the ship: wipes out enemy bullets nearby and hits everything in range."
   price 800
   tier 1
   kind nova
@@ -168,7 +202,9 @@ special nova_s
 
 special barrier
   title "Barriere"
+  title_en "Barrier"
   desc "Vier Sekunden lang prallt alles am Schiff ab."
+  desc_en "For four seconds, everything bounces off the ship."
   price 900
   tier 1
   kind barrier
@@ -178,7 +214,9 @@ special barrier
 
 special magnet
   title "Magnet"
+  title_en "Magnet"
   desc "Zehn Sekunden lang fliegt dir jede Kiste, jeder Kristall und jeder Kredit im Feld von selbst zu. Quill liebt dieses Ding."
+  desc_en "For ten seconds every crate, every crystal and every credit on the field flies to you by itself. Quill loves this thing."
   price 600
   tier 1
   kind magnet
@@ -188,7 +226,9 @@ special magnet
 
 special repair
   title "Notreparatur"
+  title_en "Emergency Repair"
   desc "Ein Schwarm Wartungsnaniten, der in Sekunden Risse schweißt und Platten flickt. Bringt einen guten Teil der Panzerung zurück."
+  desc_en "A swarm of maintenance nanites that welds cracks and patches plates in seconds. Brings back a good share of your armour."
   price 4000
   tier 2
   kind repair
@@ -197,7 +237,9 @@ special repair
 
 special drones
   title "Drohnenschwarm"
+  title_en "Drone Swarm"
   desc "Vier Kampfdrohnen lösen sich vom Rumpf, umkreisen dich acht Sekunden lang und feuern selbst auf alles in Sicht."
+  desc_en "Four combat drones detach from the hull, circle you for eight seconds and fire at anything in sight on their own."
   price 6500
   tier 2
   kind drones
@@ -207,7 +249,9 @@ special drones
 
 special timeslow
   title "Zeitlupe"
+  title_en "Slow Motion"
   desc "Ein Feld, das die Zeit um dich herum dehnt: Sechs Sekunden lang kriechen Gegner und Kugeln, nur du nicht."
+  desc_en "A field that stretches time around you: for six seconds enemies and bullets crawl – everything but you."
   price 12000
   tier 3
   kind timeslow
@@ -217,7 +261,9 @@ special timeslow
 
 special supernova
   title "Supernova"
+  title_en "Supernova"
   desc "Die große Schwester der Nova: eine Lichtwelle, die fast das ganze Feld erfasst, alle Kugeln löscht und selbst schwere Ziele zerreißt."
+  desc_en "The Nova's big sister: a wave of light that sweeps almost the whole field, wipes out every bullet and tears apart even heavy targets."
   price 26000
   tier 4
   kind nova
@@ -228,7 +274,9 @@ special supernova
 
 special lance
   title "Sonnenlanze"
+  title_en "Sun Lance"
   desc "Fünf Sekunden lang bricht ein breiter Strahl aus Sonnenlicht aus dem Bug und verbrennt alles, was vor dir liegt."
+  desc_en "For five seconds a broad beam of sunlight bursts from the nose and burns everything in front of you."
   price 48000
   tier 5
   kind lance

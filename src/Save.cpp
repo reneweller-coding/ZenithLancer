@@ -106,6 +106,7 @@ void Settings::load( const std::string &path )
         else if ( k == "mouse" ) m_mouse = f != 0;
         else if ( k == "hitbox" ) m_hitbox = f != 0;
         else if ( k == "rumble" ) m_rumble = f != 0;
+        else if ( k == "language" ) m_language = v;
         else if ( k == "textsize" ) m_textSize = f;
         else if ( k == "bind" ) m_binds.push_back( "bind " + v );
     }
@@ -119,6 +120,7 @@ bool Settings::save( const std::string &path ) const
              m_effects, m_fullscreen ? 1 : 0, m_width, m_height, m_fps, m_vsync ? 1 : 0, m_shake );
     fprintf( f, "autofire %d\nmouse %d\nhitbox %d\ntextsize %.2f\nrumble %d\n", m_autofire ? 1 : 0, m_mouse ? 1 : 0,
              m_hitbox ? 1 : 0, m_textSize, m_rumble ? 1 : 0 );
+    if ( !m_language.empty() ) fprintf( f, "language %s\n", m_language.c_str() );
     for ( const std::string &b : m_binds ) fprintf( f, "%s\n", b.c_str() );
     return endWrite( f, path );
 }

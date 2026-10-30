@@ -2,6 +2,7 @@
 
 enemy drone
   title "Drohne"
+  title_en "Drone"
   model drone
   hp 6
   radius 12
@@ -16,6 +17,7 @@ enemy drone
 
 enemy dart
   title "Pfeil"
+  title_en "Dart"
   model dart
   hp 10
   radius 13
@@ -30,6 +32,7 @@ enemy dart
 
 enemy gunship
   title "Kanonenboot"
+  title_en "Gunship"
   model gunship
   hp 70
   radius 24
@@ -46,6 +49,7 @@ enemy gunship
 
 enemy turret
   title "Geschützturm"
+  title_en "Gun Turret"
   model turret
   kind ground
   hp 40
@@ -60,6 +64,7 @@ enemy turret
 
 enemy tank
   title "Panzer"
+  title_en "Tank"
   model tank
   kind ground
   hp 60
@@ -75,6 +80,7 @@ enemy tank
 
 enemy mine
   title "Mine"
+  title_en "Mine"
   model mine
   hp 14
   radius 13
@@ -88,6 +94,7 @@ enemy mine
 
 enemy rock
   title "Felsbrocken"
+  title_en "Boulder"
   model rock
   kind obstacle
   hp 120
@@ -102,6 +109,7 @@ enemy rock
 
 enemy target
   title "Zielscheibe"
+  title_en "Target"
   model target
   hp 60
   radius 16

@@ -194,6 +194,12 @@ private:
     bool             m_secretFound = false;
     int              m_earned = 0;
 
+    // The boss fight's checkpoint: the field as it was when the boss came (a lost fight starts again from there).
+    World            m_bossSave;
+    bool             m_hasBossSave = false;
+    int              m_bossTries = 0;
+    void retryBoss();
+
     // The workshop.
     int              m_tab = 0;
     int              m_item = 0;

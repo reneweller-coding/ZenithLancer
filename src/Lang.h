@@ -55,6 +55,13 @@ std::string T( const std::string &de );
  */
 const std::string &L( const std::string &de, const std::string &en );
 
+/**
+ * @brief A formatted interface text: the German format passes through T() first, then printf fills it.
+ * @param[in] fmt  the German format
+ * @return the text
+ */
+std::string tf( const char *fmt, ... );
+
 /** @return the German texts T() was asked for that have no English line (for the translators' check) */
 std::vector<std::string> untranslated();
 

@@ -5,6 +5,8 @@
  */
 #include "Ui.h"
 
+#include "Lang.h"
+
 #include <rlgl.h>
 
 #include <cmath>
@@ -72,8 +74,11 @@ float width( const std::string &s, float size )
 
 float height( float size ) { return px( size ); }
 
-float text( const std::string &s, float x, float y, float size, Color c, AlignE align )
+float text( const std::string &s0, float x, float y, float size, Color c, AlignE align )
 {
+    // Every text is looked up in the language's table (a whole literal is its own key; data texts, numbers and
+    // texts built of parts pass unchanged).
+    const std::string s = T( s0 );
     float w = width( s, size );
     if ( align == AlignE::CENTER ) x -= w * 0.5f;
     else if ( align == AlignE::RIGHT ) x -= w;

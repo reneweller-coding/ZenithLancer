@@ -7,6 +7,7 @@
 
 #include "Crash.h"
 #include "Files.h"
+#include "Lang.h"
 #include "IconPng.h"
 #include "Ui.h"
 
@@ -55,6 +56,8 @@ bool App::init( const Options &o )
     m_set.load( userDir() + "settings.txt" );
     m_prof.load( userDir() + "profile.txt" );
     for ( const std::string &b : m_set.m_binds ) m_in.load( b );
+    setLanguage( m_set.m_language.empty() ? systemLanguage() : m_set.m_language );
+    loadUiTexts( data );
     if ( m_prof.m_maxDiff < 0 ) m_prof.m_maxDiff = 0;
     int visible = 0;
     for ( const DifficultyDef &d : m_cat.m_difficulties )
@@ -551,12 +554,13 @@ void App::slots( float dt )
             saved[(size_t)s].load( slotPath( s ) );
             const Campaign &c = saved[(size_t)s];
             auto            ep = m_cat.m_episodes.find( c.m_episode );
-            items.push_back( "Platz " + std::to_string( s + 1 ) + ":  Episode " + std::to_string( c.m_episode ) + " " +
-                             ( ep != m_cat.m_episodes.end() ? ep->second.m_title : "" ) + "  ·  " +
-                             m_cat.difficulty( c.m_difficulty ).m_title + "  ·  " + fmt( c.m_credits ) + " Kr  ·  " + c.m_stamp );
+            items.push_back( tf( "Platz %d:  Episode %d %s  ·  %s  ·  %s Kr  ·  %s", s + 1, c.m_episode,
+                                 ep != m_cat.m_episodes.end() ? L( ep->second.m_title, ep->second.m_titleEn ).c_str() : "",
+                                 L( m_cat.difficulty( c.m_difficulty ).m_title, m_cat.difficulty( c.m_difficulty ).m_titleEn ).c_str(),
+                                 fmt( c.m_credits ).c_str(), c.m_stamp.c_str() ) );
         }
         else
-            items.push_back( "Platz " + std::to_string( s + 1 ) + ":  leer" );
+            items.push_back( tf( "Platz %d:  leer", s + 1 ) );
     }
     float pw = 1300 * k;
     ui::panel( { W * 0.5f - pw * 0.5f, H * 0.3f - 30 * k, pw, 330 * k } );
@@ -579,7 +583,7 @@ void App::slots( float dt )
     else
     {
         static int sub = 0;
-        ui::text( "Platz " + std::to_string( m_slot + 1 ), W * 0.5f, H * 0.62f, 34, ui::Gold, ui::AlignE::CENTER );
+        ui::text( tf( "Platz %d", m_slot + 1 ), W * 0.5f, H * 0.62f, 34, ui::Gold, ui::AlignE::CENTER );
         int c = menu( { "Fortsetzen", "Neu beginnen (überschreibt)", "Zurück" }, W * 0.5f, H * 0.68f, 600 * k, sub, 34, nullptr, true );
         if ( c == 0 )
         {
@@ -610,17 +614,17 @@ void App::difficulty( float dt )
     {
         const DifficultyDef &d = m_cat.m_difficulties[i];
         bool open = (int)i <= m_prof.m_maxDiff;
-        items.push_back( open || !d.m_hidden ? d.m_title : "???" );
+        items.push_back( open || !d.m_hidden ? L( d.m_title, d.m_titleEn ) : "???" );
         en.push_back( open );
     }
     float pw = 1100 * k;
     ui::panel( { W * 0.5f - pw * 0.5f, H * 0.25f - 30 * k, pw, items.size() * ui::height( 38 ) * 1.45f + 200 * k } );
     int c = menu( items, W * 0.5f - pw * 0.5f + 60 * k, H * 0.25f, 400 * k, m_sel, 38, &en );
     const DifficultyDef &d = m_cat.difficulty( m_sel );
-    std::vector<std::string> lines = ui::wrap( en[(size_t)m_sel] ? d.m_desc : "Noch verschlossen.", pw * 0.5f, 26 );
+    std::vector<std::string> lines = ui::wrap( en[(size_t)m_sel] ? L( d.m_desc, d.m_descEn ) : std::string( T( "Noch verschlossen." ) ), pw * 0.5f, 26 );
     for ( size_t i = 0; i < lines.size(); ++i ) ui::text( lines[i], W * 0.5f - pw * 0.5f + 520 * k, H * 0.25f + i * 36 * k, 26, ui::Ink );
     char buf[160];
-    snprintf( buf, sizeof( buf ), "Gegner %d %%   Feuer %d %%   Treffer %d %%   Kredite %d %%", (int)( d.m_hp * 100 ), (int)( d.m_fire * 100 ),
+    snprintf( buf, sizeof( buf ), T( "Gegner %d %%   Feuer %d %%   Treffer %d %%   Kredite %d %%" ), (int)( d.m_hp * 100 ), (int)( d.m_fire * 100 ),
               (int)( d.m_damage * 100 ), (int)( d.m_credits * 100 ) );
     ui::text( buf, W * 0.5f - pw * 0.5f + 520 * k, H * 0.25f + 6 * 36 * k, 22, ui::Dim );
     hints( "Eingabe / A: wählen    Esc / B: zurück" );
@@ -655,7 +659,7 @@ void App::episode( float dt )
     for ( const auto &[id, ep] : m_cat.m_episodes )
     {
         ids.push_back( id );
-        items.push_back( std::to_string( id ) + "  " + ( id <= open ? ep.m_title : "???" ) );
+        items.push_back( std::to_string( id ) + "  " + ( id <= open ? L( ep.m_title, ep.m_titleEn ) : std::string( "???" ) ) );
         en.push_back( id <= open );
     }
     float pw = 1100 * k;
@@ -664,10 +668,10 @@ void App::episode( float dt )
     if ( !ids.empty() && en[(size_t)m_sel] )
     {
         const EpisodeDef &ep = m_cat.m_episodes.at( ids[(size_t)m_sel] );
-        std::vector<std::string> lines = ui::wrap( ep.m_subtitle, pw * 0.42f, 26 );
+        std::vector<std::string> lines = ui::wrap( L( ep.m_subtitle, ep.m_subtitleEn ), pw * 0.42f, 26 );
         for ( size_t i = 0; i < lines.size(); ++i ) ui::text( lines[i], W * 0.5f - pw * 0.5f + 600 * k, H * 0.25f + i * 36 * k, 26, ui::Ink );
         if ( m_mode == ModeE::CAMPAIGN )
-            ui::text( "Startkapital: " + fmt( ep.m_credits ) + " Kr", W * 0.5f - pw * 0.5f + 600 * k, H * 0.25f + 330 * k, 24, ui::Gold );
+            ui::text( tf( "Startkapital: %s Kr", fmt( ep.m_credits ).c_str() ), W * 0.5f - pw * 0.5f + 600 * k, H * 0.25f + 330 * k, 24, ui::Gold );
     }
     hints( "Eingabe / A: wählen    Esc / B: zurück" );
     if ( m_in.back() ) go( ScreenE::DIFFICULTY );
@@ -752,8 +756,11 @@ void App::story( float dt )
     size_t first = lines.size() > maxLines ? lines.size() - maxLines : 0;
     for ( size_t i = first; i < lines.size(); ++i ) ui::text( lines[i], r.x + 40 * k, y + ( i - first ) * lh, 28, ui::Ink );
     if ( !done && (int)( m_storyT * 30 ) % 3 == 0 ) m_audio.play( SfxE::BLIP, -1, 0.4f );
-    ui::text( std::to_string( m_stories.size() > 1 ? m_stories.size() - 1 : 0 ) + ( m_stories.size() > 2 ? " weitere" : m_stories.size() == 2 ? " weiterer" : "" ),
-              r.x + pw - 40 * k, r.y + ph - 50 * k, 22, m_stories.size() > 1 ? ui::Dim : BLANK, ui::AlignE::RIGHT );
+    // How many entries follow this one.
+    size_t more = m_stories.size() > 1 ? m_stories.size() - 1 : 0;
+    if ( more > 0 )
+        ui::text( more == 1 ? std::string( T( "1 weiterer" ) ) : tf( "%d weitere", (int)more ), r.x + pw - 40 * k, r.y + ph - 50 * k, 22,
+                  ui::Dim, ui::AlignE::RIGHT );
     hints( done ? "Eingabe / A: weiter    Esc / B: alle überspringen" : "Eingabe / A: ganz zeigen    Esc / B: alle überspringen" );
     if ( m_in.accept() || IsMouseButtonPressed( MOUSE_BUTTON_LEFT ) )
     {
@@ -778,9 +785,9 @@ void App::plan( float dt )
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     auto  ep = m_cat.m_episodes.find( m_camp.m_episode );
-    std::string epTitle = ep != m_cat.m_episodes.end() ? ep->second.m_title : "";
-    heading( "Einsatzplanung", "Episode " + std::to_string( m_camp.m_episode ) + ": " + epTitle + "   ·   " +
-                                   m_cat.difficulty( m_camp.m_difficulty ).m_title );
+    std::string epTitle = ep != m_cat.m_episodes.end() ? L( ep->second.m_title, ep->second.m_titleEn ) : "";
+    heading( "Einsatzplanung", tf( "Episode %d: %s   ·   %s", m_camp.m_episode, epTitle.c_str(),
+                                   L( m_cat.difficulty( m_camp.m_difficulty ).m_title, m_cat.difficulty( m_camp.m_difficulty ).m_titleEn ).c_str() ) );
     // The map: the episode's missions as points, flown ones bright, open ones pulsing.
     Rectangle map = { W * 0.06f, H * 0.22f, W * 0.48f, H * 0.62f };
     ui::panel( map, 0.7f );
@@ -802,14 +809,14 @@ void App::plan( float dt )
         float r = ( open ? 10 + 3 * std::sin( m_t * 5 ) : 8 ) * k;
         DrawCircleV( a, r, open ? Color{ 255, 210, 100, 255 } : Color{ 110, 200, 255, 255 } );
         if ( lv.m_isSecret ) DrawCircleLinesV( a, r + 5 * k, ui::Good );
-        ui::text( lv.m_title, a.x + 14 * k, a.y - 12 * k, 20, open ? ui::Gold : ui::Dim );
+        ui::text( L( lv.m_title, lv.m_titleEn ), a.x + 14 * k, a.y - 12 * k, 20, open ? ui::Gold : ui::Dim );
     }
     // The choices.
     std::vector<std::string> items;
     for ( const std::string &c : m_camp.m_choices )
     {
         const LevelDef *lv = m_cat.level( c );
-        items.push_back( std::string( "Einsatz: " ) + ( lv ? lv->m_title : c ) + ( lv && lv->m_isSecret ? "  (geheim)" : "" ) );
+        items.push_back( tf( lv && lv->m_isSecret ? "Einsatz: %s  (geheim)" : "Einsatz: %s", lv ? L( lv->m_title, lv->m_titleEn ).c_str() : c.c_str() ) );
     }
     size_t nMissions = items.size();
     items.push_back( "Werkstatt" );
@@ -818,8 +825,8 @@ void App::plan( float dt )
     items.push_back( "Speichern und Hauptmenü" );
     Rectangle side = { W * 0.57f, H * 0.22f, W * 0.37f, H * 0.62f };
     ui::panel( side, 0.8f );
-    ui::text( "Kredite: " + fmt( m_camp.m_credits ), side.x + 30 * k, side.y + 24 * k, 32, ui::Gold );
-    ui::text( "Einsätze: " + std::to_string( m_camp.m_missions ) + "    Logkristalle: " + std::to_string( m_camp.m_cubes.size() ),
+    ui::text( tf( "Kredite: %s", fmt( m_camp.m_credits ).c_str() ), side.x + 30 * k, side.y + 24 * k, 32, ui::Gold );
+    ui::text( tf( "Einsätze: %d    Logkristalle: %d", m_camp.m_missions, (int)m_camp.m_cubes.size() ),
               side.x + 30 * k, side.y + 66 * k, 22, ui::Dim );
     int c = menu( items, side.x + 40 * k, side.y + 120 * k, side.width - 60 * k, m_sel, 30 );
     if ( m_sel < (int)nMissions )
@@ -879,7 +886,7 @@ void App::results( float dt )
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     const LevelDef *lv = m_cat.level( m_level );
-    heading( m_mode == ModeE::ARCADE ? "Abschnitt geschafft" : "Einsatz erfüllt", lv ? lv->m_title : "" );
+    heading( m_mode == ModeE::ARCADE ? "Abschnitt geschafft" : "Einsatz erfüllt", lv ? L( lv->m_title, lv->m_titleEn ) : "" );
     float pw = 900 * k;
     Rectangle r = { W * 0.5f - pw * 0.5f, H * 0.24f, pw, H * 0.56f };
     ui::panel( r );
@@ -898,7 +905,8 @@ void App::results( float dt )
     {
         row( "Kredite verdient", "+" + fmt( m_earned ), ui::Gold );
         row( "Kredite gesamt", fmt( m_camp.m_credits ), ui::Gold );
-        row( "Logkristalle", std::to_string( m_last.m_cubes.size() ) + ( m_newCubes.empty() ? "" : "  (" + std::to_string( m_newCubes.size() ) + " neu)" ), { 90, 255, 230, 255 } );
+        row( "Logkristalle", m_newCubes.empty() ? std::to_string( m_last.m_cubes.size() )
+                                                 : tf( "%d  (%d neu)", (int)m_last.m_cubes.size(), (int)m_newCubes.size() ), { 90, 255, 230, 255 } );
         if ( !m_last.m_plans.empty() ) row( "Baupläne gefunden", std::to_string( m_last.m_plans.size() ), ui::Good );
         if ( m_secretFound ) row( "Geheimer Kurs entdeckt!", "", ui::Good );
     }
@@ -991,21 +999,51 @@ void App::failed( float dt )
 {
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
-    heading( m_mode == ModeE::CAMPAIGN ? "Einsatz gescheitert" : "Spiel vorbei" );
-    std::vector<std::string> items = m_mode == ModeE::CAMPAIGN
-                                         ? std::vector<std::string>{ "Noch einmal versuchen", "Zur Einsatzplanung", "Hauptmenü" }
-                                         : std::vector<std::string>{ "Hauptmenü" };
-    ui::panel( { W * 0.5f - 400 * k, H * 0.35f - 30 * k, 800 * k, 260 * k } );
+    heading( T( m_mode == ModeE::CAMPAIGN ? "Einsatz gescheitert" : m_mode == ModeE::BOSSRUSH ? "Abgeschossen" : "Spiel vorbei" ) );
+    // What can follow: the boss again (from its checkpoint), the whole mission, the plan, the menu.
+    enum ChoiceE { BOSS, MISSION, PLAN, MENU, SCORE };
+    std::vector<ChoiceE>     what;
+    std::vector<std::string> items;
+    if ( m_hasBossSave && ( m_mode == ModeE::CAMPAIGN || m_mode == ModeE::BOSSRUSH ) )
+    {
+        what.push_back( BOSS );
+        items.push_back( T( "Bosskampf wiederholen" ) );
+    }
     if ( m_mode == ModeE::CAMPAIGN )
-        ui::text( "Die Kredite dieses Einsatzes sind verloren.", W * 0.5f, H * 0.28f, 26, ui::Dim, ui::AlignE::CENTER );
-    int c = menu( items, W * 0.5f, H * 0.35f, 700 * k, m_sel, 36, nullptr, true );
-    if ( c < 0 ) return;
-    if ( m_mode == ModeE::CAMPAIGN && c == 0 ) startMission( m_level );
-    else if ( m_mode == ModeE::CAMPAIGN && c == 1 ) go( ScreenE::PLAN );
+    {
+        what.insert( what.end(), { MISSION, PLAN, MENU } );
+        items.insert( items.end(), { T( "Einsatz neu beginnen" ), T( "Zur Einsatzplanung" ), T( "Hauptmenü" ) } );
+    }
+    else if ( m_mode == ModeE::BOSSRUSH )
+    {
+        what.push_back( SCORE );
+        items.push_back( T( "Aufgeben" ) );
+    }
     else
     {
+        what.push_back( MENU );
+        items.push_back( T( "Hauptmenü" ) );
+    }
+    ui::panel( { W * 0.5f - 400 * k, H * 0.35f - 30 * k, 800 * k, items.size() * ui::height( 36 ) * 1.45f + 60 * k } );
+    if ( m_mode == ModeE::CAMPAIGN )
+        ui::text( m_hasBossSave ? T( "Vor dem Boss Verdientes bleibt beim Bosskampf erhalten." )
+                                : T( "Die Kredite dieses Einsatzes sind verloren." ),
+                  W * 0.5f, H * 0.28f, 26, ui::Dim, ui::AlignE::CENTER );
+    int c = menu( items, W * 0.5f, H * 0.35f, 700 * k, m_sel, 36, nullptr, true );
+    if ( c < 0 ) return;
+    switch ( what[(size_t)c] )
+    {
+    case BOSS: retryBoss(); break;
+    case MISSION: startMission( m_level ); break;
+    case PLAN: go( ScreenE::PLAN ); break;
+    case SCORE:
+        m_hasBossSave = false;
+        endMission( false );
+        break;
+    case MENU:
         newDemo();
         go( ScreenE::MAIN );
+        break;
     }
 }
 
@@ -1013,9 +1051,9 @@ void App::pilots( float dt )
 {
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
-    heading( m_players > 1 ? "Pilot " + std::to_string( m_pilotStep + 1 ) + " wählt" : "Wähle dein Schiff", m_mode == ModeE::BOSSRUSH ? "Bossjagd" : "Arcade" );
+    heading( m_players > 1 ? tf( "Pilot %d wählt", m_pilotStep + 1 ) : std::string( "Wähle dein Schiff" ), m_mode == ModeE::BOSSRUSH ? "Bossjagd" : "Arcade" );
     std::vector<std::string> items;
-    for ( const ArcadeShip &a : m_cat.m_arcadeShips ) items.push_back( a.m_title );
+    for ( const ArcadeShip &a : m_cat.m_arcadeShips ) items.push_back( L( a.m_title, a.m_titleEn ) );
     if ( items.empty() )
     {
         go( ScreenE::MAIN );
@@ -1027,7 +1065,7 @@ void App::pilots( float dt )
     int c = menu( items, r.x + 50 * k, r.y + 40 * k, 420 * k, m_sel, 36 );
     const ArcadeShip &a = m_cat.m_arcadeShips[(size_t)m_sel];
     drawShipCard( a.m_loadout, { r.x + 520 * k, r.y + 30 * k, pw - 560 * k, r.height - 60 * k } );
-    std::vector<std::string> lines = ui::wrap( a.m_desc, pw - 600 * k, 24 );
+    std::vector<std::string> lines = ui::wrap( L( a.m_desc, a.m_descEn ), pw - 600 * k, 24 );
     for ( size_t i = 0; i < lines.size(); ++i ) ui::text( lines[i], r.x + 540 * k, r.y + r.height - 150 * k + i * 32 * k, 24, ui::Ink );
     hints( "Eingabe / A: wählen    Esc / B: zurück" );
     if ( m_in.back() )
@@ -1061,23 +1099,23 @@ void App::drawShipCard( const Loadout &o, Rectangle r )
     const ShipDef   *s = m_cat.ship( o.m_ship );
     const WeaponDef *f = m_cat.weapon( o.m_front );
     const WeaponDef *re = o.m_rear.empty() ? nullptr : m_cat.weapon( o.m_rear );
-    row( "Rumpf", s ? s->m_title : o.m_ship );
+    row( "Rumpf", s ? L( s->m_title, s->m_titleEn ) : o.m_ship );
     if ( s )
     {
         row( "Panzerung", std::to_string( (int)s->m_armor ) );
         row( "Tempo", std::to_string( (int)s->m_speed ) );
     }
-    row( "Front", ( f ? f->m_title : o.m_front ) + "  Stufe " + std::to_string( o.m_frontLv ) );
-    row( "Heck", re ? re->m_title : "–" );
+    row( "Front", tf( "%s  Stufe %d", f ? L( f->m_title, f->m_titleEn ).c_str() : o.m_front.c_str(), o.m_frontLv ) );
+    row( "Heck", re ? L( re->m_title, re->m_titleEn ) : "–" );
     const SidekickDef *l = o.m_sideL.empty() ? nullptr : m_cat.sidekick( o.m_sideL );
     const SidekickDef *rr = o.m_sideR.empty() ? nullptr : m_cat.sidekick( o.m_sideR );
-    row( "Begleiter", ( l ? l->m_title : "–" ) + std::string( " / " ) + ( rr ? rr->m_title : "–" ) );
+    row( "Begleiter", ( l ? L( l->m_title, l->m_titleEn ) : std::string( "–" ) ) + " / " + ( rr ? L( rr->m_title, rr->m_titleEn ) : std::string( "–" ) ) );
     const GeneratorDef *g = m_cat.generator( o.m_gen );
     const ShieldDef    *sh = m_cat.shield( o.m_shield );
-    row( "Generator", g ? g->m_title : o.m_gen );
-    row( "Schild", sh ? sh->m_title : o.m_shield );
+    row( "Generator", g ? L( g->m_title, g->m_titleEn ) : o.m_gen );
+    row( "Schild", sh ? L( sh->m_title, sh->m_titleEn ) : o.m_shield );
     const SpecialDef *sp = o.m_special.empty() ? nullptr : m_cat.special( o.m_special );
-    row( "Spezial", sp ? sp->m_title : "–" );
+    row( "Spezial", sp ? L( sp->m_title, sp->m_titleEn ) : "–" );
 }
 
 void App::continueScreen( float dt )
@@ -1127,7 +1165,7 @@ void App::nameEntry( float dt )
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     long long total = m_mode == ModeE::CAMPAIGN ? m_camp.m_score : m_score[0] + m_score[1];
-    heading( "Neuer Rekord!", fmt( total ) + " Punkte" );
+    heading( "Neuer Rekord!", tf( "%s Punkte", fmt( total ).c_str() ) );
     const std::string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ0123456789 -.";
     // Typed letters go straight in; the pad turns letters with up and down.
     int ch = GetCharPressed();
@@ -1209,7 +1247,8 @@ void App::scores( float dt )
     if ( m_in.right() ) m_scoreTab = ( m_scoreTab + 1 ) % total;
     int m = m_scoreTab / nd, d = m_scoreTab % nd;
     std::string key = std::string( modes[m] ) + "_" + m_cat.m_difficulties[(size_t)d].m_name;
-    heading( "Bestenliste", std::string( "◀  " ) + names[m] + "  ·  " + m_cat.m_difficulties[(size_t)d].m_title + "  ▶" );
+    heading( "Bestenliste", std::string( "◀  " ) + T( names[m] ) + "  ·  " +
+                                 L( m_cat.m_difficulties[(size_t)d].m_title, m_cat.m_difficulties[(size_t)d].m_titleEn ) + "  ▶" );
     float pw = 1100 * k;
     Rectangle r = { W * 0.5f - pw * 0.5f, H * 0.22f, pw, H * 0.64f };
     ui::panel( r );
@@ -1224,7 +1263,7 @@ void App::scores( float dt )
             Color c = i == 0 ? ui::Gold : ui::Ink;
             ui::text( std::to_string( i + 1 ) + ".", r.x + 60 * k, y, 32, c );
             ui::text( h.m_name, r.x + 140 * k, y, 32, c );
-            ui::text( "Ep. " + std::to_string( h.m_episode ), r.x + 600 * k, y, 24, ui::Dim );
+            ui::text( tf( "Ep. %d", h.m_episode ), r.x + 600 * k, y, 24, ui::Dim );
             ui::text( fmt( h.m_score ), r.x + pw - 60 * k, y, 32, c, ui::AlignE::RIGHT );
         }
     hints( "Links/Rechts: Liste    Esc / B: zurück" );
@@ -1270,12 +1309,12 @@ void App::logbook( float dt )
 {
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
-    heading( "Logbuch", std::to_string( m_logList.size() ) + " Logkristalle" );
+    heading( "Logbuch", tf( "%d Logkristalle", (int)m_logList.size() ) );
     std::vector<std::string> items;
     for ( const std::string &c : m_logList )
     {
         const StoryDef *s = m_cat.story( c );
-        items.push_back( s ? s->m_title : c );
+        items.push_back( s ? s->m_title : c );   // the story entry comes in the chosen language already
     }
     float pw = 1400 * k;
     Rectangle r = { W * 0.5f - pw * 0.5f, H * 0.2f, pw, H * 0.68f };
@@ -1319,30 +1358,36 @@ void App::options( float dt )
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     heading( "Optionen" );
     auto pct = []( float v ) { return std::to_string( (int)std::lround( v * 100 ) ) + " %"; };
-    std::string fps = m_set.m_fps == 0 ? "ohne Grenze" : std::to_string( m_set.m_fps );
+    std::string fps = m_set.m_fps == 0 ? std::string( T( "ohne Grenze" ) ) : std::to_string( m_set.m_fps );
+    auto        on = [&]( bool b ) { return std::string( T( b ? "an" : "aus" ) ); };
     std::vector<std::string> items = {
-        "Musik:  " + pct( m_set.m_music ),
-        "Effekte:  " + pct( m_set.m_effects ),
-        std::string( "Vollbild:  " ) + ( IsWindowState( FLAG_BORDERLESS_WINDOWED_MODE ) ? "an" : "aus" ),
-        "Bildrate:  " + fps,
-        std::string( "Bildschirmwackeln:  " ) + ( m_set.m_shake <= 0 ? "aus" : m_set.m_shake < 0.75f ? "schwach" : "voll" ),
-        std::string( "Dauerfeuer (Feuer schaltet um):  " ) + ( m_set.m_autofire ? "an" : "aus" ),
-        std::string( "Maussteuerung:  " ) + ( m_set.m_mouse ? "an" : "aus" ),
-        std::string( "Trefferpunkt zeigen:  " ) + ( m_set.m_hitbox ? "an" : "aus" ),
-        "Textgröße:  " + pct( m_set.m_textSize ),
-        std::string( "Vibration:  " ) + ( m_set.m_rumble ? "an" : "aus" ),
+        std::string( T( "Sprache" ) ) + ":  " + ( english() ? "English" : "Deutsch" ),
+        std::string( T( "Musik" ) ) + ":  " + pct( m_set.m_music ),
+        std::string( T( "Effekte" ) ) + ":  " + pct( m_set.m_effects ),
+        std::string( T( "Vollbild" ) ) + ":  " + on( IsWindowState( FLAG_BORDERLESS_WINDOWED_MODE ) ),
+        std::string( T( "Bildrate" ) ) + ":  " + fps,
+        std::string( T( "Bildschirmwackeln" ) ) + ":  " + T( m_set.m_shake <= 0 ? "aus" : m_set.m_shake < 0.75f ? "schwach" : "voll" ),
+        std::string( T( "Dauerfeuer (Feuer schaltet um)" ) ) + ":  " + on( m_set.m_autofire ),
+        std::string( T( "Maussteuerung" ) ) + ":  " + on( m_set.m_mouse ),
+        std::string( T( "Trefferpunkt zeigen" ) ) + ":  " + on( m_set.m_hitbox ),
+        std::string( T( "Textgröße" ) ) + ":  " + pct( m_set.m_textSize ),
+        std::string( T( "Vibration" ) ) + ":  " + on( m_set.m_rumble ),
         "Tasten und Knöpfe ...",
         "Zurück" };
     float pw = 1000 * k;
     ui::panel( { W * 0.5f - pw * 0.5f, H * 0.2f - 30 * k, pw, items.size() * ui::height( 34 ) * 1.45f + 60 * k } );
     int  c = menu( items, W * 0.5f - pw * 0.5f + 60 * k, H * 0.2f, pw - 100 * k, m_sel, 34 );
     int  d = m_in.right() ? 1 : m_in.left() ? -1 : 0;
-    if ( c >= 0 && c <= 9 ) d = 1;
+    if ( c >= 0 && c <= 10 ) d = 1;
     if ( d != 0 )
     {
         m_audio.play( SfxE::MOVE );
-        switch ( m_sel )
+        switch ( m_sel - 1 )
         {
+        case -1:
+            setLanguage( english() ? "de" : "en" );
+            m_set.m_language = language();
+            break;
         case 0: m_set.m_music = clampf( m_set.m_music + d * 0.1f, 0, 1 ); break;
         case 1: m_set.m_effects = clampf( m_set.m_effects + d * 0.1f, 0, 1 ); break;
         case 2:
@@ -1367,12 +1412,12 @@ void App::options( float dt )
         default: break;
         }
         applySettings();
-        if ( m_sel == 0 && m_audio.m_on ) m_audio.play( SfxE::CREDITS );
-        if ( m_sel == 1 ) m_audio.play( SfxE::HIT );
+        if ( m_sel == 1 && m_audio.m_on ) m_audio.play( SfxE::CREDITS );
+        if ( m_sel == 2 ) m_audio.play( SfxE::HIT );
     }
-    if ( c == 10 ) go( ScreenE::CONTROLS );
+    if ( c == 11 ) go( ScreenE::CONTROLS );
     hints( "Links/Rechts: ändern    Esc / B: zurück" );
-    if ( c == 11 || m_in.back() )
+    if ( c == 12 || m_in.back() )
     {
         saveSettings();
         if ( m_back == ScreenE::PLAY )

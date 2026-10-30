@@ -1,0 +1,233 @@
+# The interface in English: "German = English", one text a line (the German text is written in the code; a text
+# without a line here stays German). tools/ui_strings.py lists what the code has and what lacks a line here.
+# Formats (%d %s %.1f %%) must stay in the same order.
+
+# Title and main menu
+Die Lanze des Zenits = The Lance of the Zenith
+Drücke A oder Start = Press A or Start
+Drücke Eingabe = Press Enter
+Kampagne = Campaign
+Arcade = Arcade
+Arcade für zwei = Arcade for two
+Bossjagd = Boss Rush
+Logbuch = Logbook
+Bestenliste = High Scores
+Optionen = Options
+Mitwirkende = Credits
+Beenden = Quit
+Auswählen: Pfeile / Steuerkreuz    Bestätigen: Eingabe / A    Zurück: Esc / B = Select: arrows / D-pad    Confirm: Enter / A    Back: Esc / B
+
+# Save slots, difficulty, episodes
+Wähle einen Speicherplatz = Choose a save slot
+Platz %d:  Episode %d %s  ·  %s  ·  %s Kr  ·  %s = Slot %d:  Episode %d %s  ·  %s  ·  %s Cr  ·  %s
+Platz %d:  leer = Slot %d:  empty
+Platz %d = Slot %d
+Fortsetzen = Continue
+Neu beginnen (überschreibt) = Start anew (overwrites)
+Zurück = Back
+Eingabe / A: wählen    Esc / B: zurück = Enter / A: choose    Esc / B: back
+Schwierigkeit = Difficulty
+Noch verschlossen. = Still locked.
+Gegner %d %%   Feuer %d %%   Treffer %d %%   Kredite %d %% = Enemies %d %%   Fire %d %%   Hits %d %%   Credits %d %%
+Episode = Episode
+Wo beginnt deine Geschichte? = Where does your story begin?
+Wo beginnt der Lauf? = Where does the run begin?
+Startkapital: %s Kr = Starting funds: %s Cr
+
+# Stories
+LOGKRISTALL = LOG CRYSTAL
+EINSATZBESPRECHUNG = BRIEFING
+NACHBESPRECHUNG = DEBRIEFING
+FUNK = RADIO
+1 weiterer = 1 more
+%d weitere = %d more
+Eingabe / A: weiter    Esc / B: alle überspringen = Enter / A: next    Esc / B: skip all
+Eingabe / A: ganz zeigen    Esc / B: alle überspringen = Enter / A: show all    Esc / B: skip all
+
+# The mission plan
+Einsatzplanung = Mission Planning
+Episode %d: %s   ·   %s = Episode %d: %s   ·   %s
+Einsatz: %s  (geheim) = Mission: %s  (secret)
+Einsatz: %s = Mission: %s
+Werkstatt = Workshop
+Speichern und Hauptmenü = Save and main menu
+Kredite: %s = Credits: %s
+Einsätze: %d    Logkristalle: %d = Missions: %d    Log crystals: %d
+Eingabe / A: wählen    Esc / B: Hauptmenü = Enter / A: choose    Esc / B: main menu
+
+# Results and failure
+Abschnitt geschafft = Stage cleared
+Einsatz erfüllt = Mission accomplished
+Abschüsse = Kills
+Flugzeit = Flight time
+Treffer eingesteckt = Damage taken
+Kredite verdient = Credits earned
+Kredite gesamt = Credits in total
+Logkristalle = Log crystals
+%d  (%d neu) = %d  (%d new)
+Baupläne gefunden = Blueprints found
+Geheimer Kurs entdeckt! = Secret course discovered!
+Punkte = Score
+Alles abgeschossen! = Everything shot down!
+Eingabe / A: weiter = Enter / A: continue
+Einsatz gescheitert = Mission failed
+Abgeschossen = Shot down
+Spiel vorbei = Game over
+Bosskampf wiederholen = Retry the boss fight
+Einsatz neu beginnen = Restart the mission
+Zur Einsatzplanung = To mission planning
+Hauptmenü = Main menu
+Aufgeben = Give up
+Vor dem Boss Verdientes bleibt beim Bosskampf erhalten. = What you earned before the boss is kept for the boss fight.
+Die Kredite dieses Einsatzes sind verloren. = This mission's credits are lost.
+
+# Pilots and ship cards
+Pilot %d wählt = Pilot %d chooses
+Wähle dein Schiff = Choose your ship
+Rumpf = Hull
+Panzerung = Armour
+Tempo = Speed
+Front = Front
+%s  Stufe %d = %s  level %d
+Heck = Rear
+Begleiter = Sidekicks
+Generator = Generator
+Schild = Shield
+Spezial = Special
+
+# Continue, names, scores, credits, logbook
+WEITERMACHEN? = CONTINUE?
+Die Punkte beginnen wieder bei null. = Your score starts again from zero.
+Eingabe / A: weiter    Esc / B: aufgeben = Enter / A: continue    Esc / B: give up
+Neuer Rekord! = New record!
+%s Punkte = %s points
+Tippen oder Hoch/Runter: Buchstabe    Links/Rechts: Stelle    Eingabe / Start: fertig = Type or Up/Down: letter    Left/Right: position    Enter / Start: done
+Noch kein Eintrag. = No entries yet.
+Links/Rechts: Liste    Esc / B: zurück = Left/Right: list    Esc / B: back
+Ep. %d = Ep. %d
+Idee und Leitung: Rene Weller = Idea and direction: Rene Weller
+Programm, Welt, Gegner, Waffen und Texte: Claude (Anthropic) mit Rene Weller = Programme, world, enemies, weapons and texts: Claude (Anthropic) with Rene Weller
+Ein Shoot 'em up in der Tradition der großen Neunziger-Jahre-Shooter = A shoot 'em up in the tradition of the great shooters of the nineties
+mit Werkstatt, Kampagne und Arcade. = with a workshop, a campaign and an arcade mode.
+Grafik: raylib (zlib-Lizenz)    Schrift: Barlow (SIL Open Font License) = Graphics: raylib (zlib licence)    Font: Barlow (SIL Open Font License)
+Alle Schiffe, Gegner und Landschaften werden im Programm gebaut. = Every ship, enemy and landscape is built by the programme.
+Alle Geräuscheffekte werden im Programm erzeugt. = Every sound effect is made by the programme.
+Danke fürs Spielen! = Thank you for playing!
+Esc / B: zurück = Esc / B: back
+%d Logkristalle = %d log crystals
+Noch keine Logkristalle gefunden. = No log crystals found yet.
+Eingabe / A: lesen    Esc / B: zurück = Enter / A: read    Esc / B: back
+
+# Options and controls
+ohne Grenze = unlimited
+an = on
+aus = off
+schwach = low
+voll = full
+Sprache = Language
+Musik = Music
+Effekte = Effects
+Vollbild = Fullscreen
+Bildrate = Frame rate
+Bildschirmwackeln = Screen shake
+Dauerfeuer (Feuer schaltet um) = Autofire (fire toggles)
+Maussteuerung = Mouse control
+Trefferpunkt zeigen = Show hit point
+Textgröße = Text size
+Vibration = Rumble
+Tasten und Knöpfe ... = Keys and buttons ...
+Links/Rechts: ändern    Esc / B: zurück = Left/Right: change    Esc / B: back
+Tasten und Knöpfe = Keys and buttons
+Eingabe: Taste ändern    X / Y-Knopf am Pad: Knopf ändern = Enter: change key    X / Y on the pad: change button
+Hoch = Up
+Runter = Down
+Links = Left
+Rechts = Right
+Feuer = Fire
+Langsam (präzise) = Slow (precise)
+Heckwaffe umschalten = Switch rear gun mode
+Spezialwaffe = Special weapon
+Pause = Pause
+Taste drücken ... = Press a key ...
+Knopf drücken ... = Press a button ...
+Alles zurücksetzen = Reset everything
+Eingabe: Taste    X/Y: Knopf    Esc / B: zurück = Enter: key    X/Y: button    Esc / B: back
+
+# The mission's screen
+Logkristall geborgen. = Log crystal recovered.
+Ein Peilsignal ... da draußen ist etwas, das auf keiner Karte steht. = A beacon ... there is something out there that is on no map.
+Bauplan gesichert. Quill wird sich freuen. = Blueprint secured. Quill will be pleased.
+PILOT %d = PILOT %d
+FRONT = FRONT
+HECK = REAR
+LINKS = LEFT
+RECHTS = RIGHT
+SPEZIAL = SPECIAL
+GENERATOR = GENERATOR
+PUNKTE = SCORE
+KREDITE = CREDITS
+LEBEN = LIVES
+SCHILD = SHIELD
+PANZERUNG = ARMOUR
+WARNUNG = WARNING
+Episode %d = Episode %d
+ABSCHNITT GESCHAFFT = STAGE CLEARED
+EINSATZ ERFÜLLT = MISSION ACCOMPLISHED
+PAUSE = PAUSE
+Weiter = Resume
+Einsatz abbrechen = Abort mission
+Spiel beenden = End game
+
+# The workshop
+Frontkanone = Front gun
+Heckkanone = Rear gun
+Begleiter links = Left sidekick
+Begleiter rechts = Right sidekick
+Quills fliegender Basar = Quill's flying bazaar
+Q / E oder LB / RB = Q / E or LB / RB
+Leistung = Power
+– keine – = – none –
+– keiner – = – none –
+– keines – = – none –
++%s Kr = +%s Cr
+%s Kr = %s Cr
+eingebaut = fitted
+Panzerung %d    Tempo %d = Armour %d    Speed %d
+Trefferzone %d    Generator +%d %% = Hit zone %d    Generator +%d %%
+Trefferzone %d = Hit zone %d
+Stufe %d:  ~%d / ~%d Schaden/s (%s / %s)    Energie %.0f/s = Level %d:  ~%d / ~%d damage/s (%s / %s)    Energy %.0f/s
+Stufe 11: ~%d / ~%d Schaden/s = Level 11: ~%d / ~%d damage/s
+Stufe %d:  ~%d Schaden/s    Energie %.0f/s = Level %d:  ~%d damage/s    Energy %.0f/s
+Stufe 11: ~%d Schaden/s = Level 11: ~%d damage/s
+%d Schuss = %d shots
+%.1f Schuss/s    %s    %s = %.1f shots/s    %s    %s
+lädt auf = charges up
+ohne Munitionsgrenze = unlimited ammunition
+zielt selbst = aims by itself
+feuert nach vorn = fires ahead
+Leistung %d je Sekunde    Speicher %d = Output %d a second    Storage %d
+Stärke %d    lädt %.1f/s    kostet %.1f Energie je Punkt = Strength %d    recharges %.1f/s    costs %.1f energy a point
+%d Ladungen je Einsatz = %d charges a mission
+Testgelände = Test range
+Hoch/Runter: wählen    Eingabe / A: kaufen und einbauen    Links/Rechts: Leistung    Esc / B: fertig = Up/Down: choose    Enter / A: buy and fit    Left/Right: power    Esc / B: done
+Höchste Stufe erreicht. = Highest level reached.
+Nicht genug Kredite. = Not enough credits.
+Ausgebaut. = Removed.
+%s eingebaut. = %s fitted.
+
+# Keys and buttons
+Leertaste = Space
+Umschalt = Shift
+Umschalt rechts = Right Shift
+Strg = Ctrl
+Strg rechts = Right Ctrl
+Eingabe = Enter
+Rücktaste = Backspace
+Pfeil hoch = Arrow up
+Pfeil runter = Arrow down
+Pfeil links = Arrow left
+Pfeil rechts = Arrow right
+Kreuz hoch = D-pad up
+Kreuz runter = D-pad down
+Kreuz links = D-pad left
+Kreuz rechts = D-pad right

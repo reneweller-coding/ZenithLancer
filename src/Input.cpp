@@ -5,6 +5,8 @@
  */
 #include "Input.h"
 
+#include "Lang.h"
+
 #include <raylib.h>
 
 #include <cmath>
@@ -293,20 +295,20 @@ std::string Input::keyLabel( int key )
     switch ( key )
     {
     case 0: return "-";
-    case KEY_SPACE: return "Leertaste";
-    case KEY_LEFT_SHIFT: return "Umschalt";
-    case KEY_RIGHT_SHIFT: return "Umschalt rechts";
-    case KEY_LEFT_CONTROL: return "Strg";
-    case KEY_RIGHT_CONTROL: return "Strg rechts";
+    case KEY_SPACE: return T( "Leertaste" );
+    case KEY_LEFT_SHIFT: return T( "Umschalt" );
+    case KEY_RIGHT_SHIFT: return T( "Umschalt rechts" );
+    case KEY_LEFT_CONTROL: return T( "Strg" );
+    case KEY_RIGHT_CONTROL: return T( "Strg rechts" );
     case KEY_LEFT_ALT: return "Alt";
-    case KEY_ENTER: return "Eingabe";
+    case KEY_ENTER: return T( "Eingabe" );
     case KEY_ESCAPE: return "Esc";
     case KEY_TAB: return "Tab";
-    case KEY_BACKSPACE: return "Rücktaste";
-    case KEY_UP: return "Pfeil hoch";
-    case KEY_DOWN: return "Pfeil runter";
-    case KEY_LEFT: return "Pfeil links";
-    case KEY_RIGHT: return "Pfeil rechts";
+    case KEY_BACKSPACE: return T( "Rücktaste" );
+    case KEY_UP: return T( "Pfeil hoch" );
+    case KEY_DOWN: return T( "Pfeil runter" );
+    case KEY_LEFT: return T( "Pfeil links" );
+    case KEY_RIGHT: return T( "Pfeil rechts" );
     default: break;
     }
     if ( key >= KEY_A && key <= KEY_Z ) return std::string( 1, (char)( 'A' + key - KEY_A ) );
@@ -330,10 +332,10 @@ std::string Input::padLabel( int b )
     case GAMEPAD_BUTTON_RIGHT_TRIGGER_2: return "RT";
     case GAMEPAD_BUTTON_MIDDLE_RIGHT: return "Start";
     case GAMEPAD_BUTTON_MIDDLE_LEFT: return "Select";
-    case GAMEPAD_BUTTON_LEFT_FACE_UP: return "Kreuz hoch";
-    case GAMEPAD_BUTTON_LEFT_FACE_DOWN: return "Kreuz runter";
-    case GAMEPAD_BUTTON_LEFT_FACE_LEFT: return "Kreuz links";
-    case GAMEPAD_BUTTON_LEFT_FACE_RIGHT: return "Kreuz rechts";
+    case GAMEPAD_BUTTON_LEFT_FACE_UP: return T( "Kreuz hoch" );
+    case GAMEPAD_BUTTON_LEFT_FACE_DOWN: return T( "Kreuz runter" );
+    case GAMEPAD_BUTTON_LEFT_FACE_LEFT: return T( "Kreuz links" );
+    case GAMEPAD_BUTTON_LEFT_FACE_RIGHT: return T( "Kreuz rechts" );
     case GAMEPAD_BUTTON_LEFT_THUMB: return "L3";
     case GAMEPAD_BUTTON_RIGHT_THUMB: return "R3";
     default: return "#" + std::to_string( b );

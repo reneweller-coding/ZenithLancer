@@ -524,6 +524,8 @@ bool Catalog::load( const std::string &dir )
                 else if ( l.m_key == "energy" ) w.m_energy = toRange( l.arg( 0 ), 5 );
                 else if ( l.m_key == "sound" ) w.m_sound = l.arg( 0 );
                 else if ( l.m_key == "mode1" ) w.m_mode1 = l.arg( 0 );
+                else if ( l.m_key == "mode1_en" ) w.m_mode1En = l.arg( 0 );
+                else if ( l.m_key == "mode2_en" ) w.m_mode2En = l.arg( 0 );
                 else if ( l.m_key == "mode2" )
                 {
                     w.m_mode2 = l.arg( 0 );

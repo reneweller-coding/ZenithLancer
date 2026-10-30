@@ -7,6 +7,7 @@
  */
 #include "App.h"
 
+#include "Lang.h"
 #include "Ui.h"
 
 #include <raylib.h>
@@ -99,7 +100,7 @@ void App::shop( float dt )
     case 0:
         slot = &o.m_ship;
         for ( const auto &[n, s] : m_cat.m_ships )
-            if ( available( n, s.m_tier, s.m_hidden ) ) rows.push_back( { n, s.m_title, s.m_price, n == o.m_ship } );
+            if ( available( n, s.m_tier, s.m_hidden ) ) rows.push_back( { n, L( s.m_title, s.m_titleEn ), s.m_price, n == o.m_ship } );
         break;
     case 1:
     case 2:
@@ -110,7 +111,7 @@ void App::shop( float dt )
         if ( m_tab == 2 ) rows.push_back( { "", "– keine –", 0, o.m_rear.empty() } );
         for ( const auto &[n, w] : m_cat.m_weapons )
             if ( w.m_slot == ( m_tab == 1 ? "front" : "rear" ) && available( n, w.m_tier, w.m_hidden ) )
-                rows.push_back( { n, w.m_title, w.m_price, n == *slot } );
+                rows.push_back( { n, L( w.m_title, w.m_titleEn ), w.m_price, n == *slot } );
         break;
     }
     case 3:
@@ -118,23 +119,23 @@ void App::shop( float dt )
         slot = m_tab == 3 ? &o.m_sideL : &o.m_sideR;
         rows.push_back( { "", "– keiner –", 0, slot->empty() } );
         for ( const auto &[n, s] : m_cat.m_sidekicks )
-            if ( available( n, s.m_tier, s.m_hidden ) ) rows.push_back( { n, s.m_title, s.m_price, n == *slot } );
+            if ( available( n, s.m_tier, s.m_hidden ) ) rows.push_back( { n, L( s.m_title, s.m_titleEn ), s.m_price, n == *slot } );
         break;
     case 5:
         slot = &o.m_gen;
         for ( const auto &[n, g] : m_cat.m_generators )
-            if ( available( n, g.m_tier, g.m_hidden ) ) rows.push_back( { n, g.m_title, g.m_price, n == o.m_gen } );
+            if ( available( n, g.m_tier, g.m_hidden ) ) rows.push_back( { n, L( g.m_title, g.m_titleEn ), g.m_price, n == o.m_gen } );
         break;
     case 6:
         slot = &o.m_shield;
         for ( const auto &[n, s] : m_cat.m_shields )
-            if ( available( n, s.m_tier, s.m_hidden ) ) rows.push_back( { n, s.m_title, s.m_price, n == o.m_shield } );
+            if ( available( n, s.m_tier, s.m_hidden ) ) rows.push_back( { n, L( s.m_title, s.m_titleEn ), s.m_price, n == o.m_shield } );
         break;
     case 7:
         slot = &o.m_special;
         rows.push_back( { "", "– keines –", 0, o.m_special.empty() } );
         for ( const auto &[n, s] : m_cat.m_specials )
-            if ( available( n, s.m_tier, s.m_hidden ) ) rows.push_back( { n, s.m_title, s.m_price, n == o.m_special } );
+            if ( available( n, s.m_tier, s.m_hidden ) ) rows.push_back( { n, L( s.m_title, s.m_titleEn ), s.m_price, n == o.m_special } );
         break;
     }
     std::stable_sort( rows.begin(), rows.end(), []( const Row &a, const Row &b ) {
@@ -174,7 +175,7 @@ void App::shop( float dt )
             int &lv = m_tab == 1 ? o.m_frontLv : o.m_rearLv;
             ui::text( "Leistung", r.x + 16 * k, y + 8 * k, 26, ui::Ink );
             ui::pips( r.x + 170 * k, y + 10 * k, lv, 11, 14, m_tab == 1 ? Color{ 120, 210, 255, 255 } : Color{ 255, 190, 90, 255 } );
-            if ( w && lv < 11 ) ui::text( "+" + fmt( upgradePrice( *w, lv ) ) + " Kr", r.x + r.width - 16 * k, y + 8 * k, 24, ui::Gold, ui::AlignE::RIGHT );
+            if ( w && lv < 11 ) ui::text( tf( "+%s Kr", fmt( upgradePrice( *w, lv ) ).c_str() ), r.x + r.width - 16 * k, y + 8 * k, 24, ui::Gold, ui::AlignE::RIGHT );
             continue;
         }
         int   cost = rw.m_price - curValue;
@@ -183,7 +184,7 @@ void App::shop( float dt )
         if ( rw.m_fitted )
             ui::text( "eingebaut", r.x + r.width - 16 * k, y + 8 * k, 24, ui::Good, ui::AlignE::RIGHT );
         else if ( !rw.m_name.empty() )
-            ui::text( fmt( rw.m_price ) + " Kr", r.x + r.width - 16 * k, y + 8 * k, 24, cost > credits ? Color{ 150, 90, 90, 255 } : ui::Gold, ui::AlignE::RIGHT );
+            ui::text( tf( "%s Kr", fmt( rw.m_price ).c_str() ), r.x + r.width - 16 * k, y + 8 * k, 24, cost > credits ? Color{ 150, 90, 90, 255 } : ui::Gold, ui::AlignE::RIGHT );
     }
 
     // The selected good: its numbers and what it does.
@@ -196,7 +197,7 @@ void App::shop( float dt )
         info = { list.x, list.y + list.height - 200 * k, list.width, 0 };
         prev = { 0, 0, 0, 0 };
     }
-    ui::text( "Kredite: " + fmt( credits ), W - 60 * k, 140 * k, 34, ui::Gold, ui::AlignE::RIGHT );
+    ui::text( tf( "Kredite: %s", fmt( credits ).c_str() ), W - 60 * k, 140 * k, 34, ui::Gold, ui::AlignE::RIGHT );
     Loadout test = o;
     if ( sel && wide )
     {
@@ -209,9 +210,10 @@ void App::shop( float dt )
         {
             if ( const ShipDef *s = m_cat.ship( name ) )
             {
-                desc = s->m_desc;
-                lines.push_back( "Panzerung " + std::to_string( (int)s->m_armor ) + "    Tempo " + std::to_string( (int)s->m_speed ) );
-                lines.push_back( "Trefferzone " + std::to_string( (int)s->m_radius ) + ( s->m_genBonus > 0 ? "    Generator +" + std::to_string( (int)( s->m_genBonus * 100 ) ) + " %" : "" ) );
+                desc = L( s->m_desc, s->m_descEn );
+                lines.push_back( tf( "Panzerung %d    Tempo %d", (int)s->m_armor, (int)s->m_speed ) );
+                lines.push_back( s->m_genBonus > 0 ? tf( "Trefferzone %d    Generator +%d %%", (int)s->m_radius, (int)( s->m_genBonus * 100 ) )
+                                                   : tf( "Trefferzone %d", (int)s->m_radius ) );
                 test.m_ship = name;
             }
         }
@@ -219,22 +221,22 @@ void App::shop( float dt )
         {
             if ( const WeaponDef *w = m_cat.weapon( name ) )
             {
-                desc = w->m_desc;
+                desc = L( w->m_desc, w->m_descEn );
                 int lv = name == *slot ? ( m_tab == 1 ? o.m_frontLv : o.m_rearLv ) : 1;
                 char buf[160];
                 float energy = w->m_energy.at( ( lv - 1 ) / 10.0f ) * w->m_rate.at( ( lv - 1 ) / 10.0f );
                 if ( w->m_modes > 1 )
                 {
-                    snprintf( buf, sizeof( buf ), "Stufe %d:  ~%d / ~%d Schaden/s (%s / %s)    Energie %.0f/s", lv, (int)dps( *w, lv, 1 ),
-                              (int)dps( *w, lv, 2 ), w->m_mode1.c_str(), w->m_mode2.c_str(), energy );
+                    snprintf( buf, sizeof( buf ), T( "Stufe %d:  ~%d / ~%d Schaden/s (%s / %s)    Energie %.0f/s" ), lv, (int)dps( *w, lv, 1 ),
+                              (int)dps( *w, lv, 2 ), L( w->m_mode1, w->m_mode1En ).c_str(), L( w->m_mode2, w->m_mode2En ).c_str(), energy );
                     lines.push_back( buf );
-                    snprintf( buf, sizeof( buf ), "Stufe 11: ~%d / ~%d Schaden/s", (int)dps( *w, 11, 1 ), (int)dps( *w, 11, 2 ) );
+                    snprintf( buf, sizeof( buf ), T( "Stufe 11: ~%d / ~%d Schaden/s" ), (int)dps( *w, 11, 1 ), (int)dps( *w, 11, 2 ) );
                 }
                 else
                 {
-                    snprintf( buf, sizeof( buf ), "Stufe %d:  ~%d Schaden/s    Energie %.0f/s", lv, (int)dps( *w, lv, 1 ), energy );
+                    snprintf( buf, sizeof( buf ), T( "Stufe %d:  ~%d Schaden/s    Energie %.0f/s" ), lv, (int)dps( *w, lv, 1 ), energy );
                     lines.push_back( buf );
-                    snprintf( buf, sizeof( buf ), "Stufe 11: ~%d Schaden/s", (int)dps( *w, 11, 1 ) );
+                    snprintf( buf, sizeof( buf ), T( "Stufe 11: ~%d Schaden/s" ), (int)dps( *w, 11, 1 ) );
                 }
                 lines.push_back( buf );
                 if ( m_tab == 1 ) test.m_front = name, test.m_frontLv = lv;
@@ -245,10 +247,11 @@ void App::shop( float dt )
         {
             if ( const SidekickDef *s = m_cat.sidekick( name ) )
             {
-                desc = s->m_desc;
+                desc = L( s->m_desc, s->m_descEn );
                 char buf[160];
-                snprintf( buf, sizeof( buf ), "%.1f Schuss/s    %s    %s", s->m_rate, s->m_aim == "nearest" ? "zielt selbst" : "feuert nach vorn",
-                          s->m_ammo > 0 ? ( std::to_string( s->m_ammo ) + " Schuss" ).c_str() : s->m_charge > 0 ? "lädt auf" : "ohne Munitionsgrenze" );
+                std::string ammo = s->m_ammo > 0 ? tf( "%d Schuss", s->m_ammo ) : std::string( T( s->m_charge > 0 ? "lädt auf" : "ohne Munitionsgrenze" ) );
+                snprintf( buf, sizeof( buf ), T( "%.1f Schuss/s    %s    %s" ), s->m_rate, T( s->m_aim == "nearest" ? "zielt selbst" : "feuert nach vorn" ),
+                          ammo.c_str() );
                 lines.push_back( buf );
                 ( m_tab == 3 ? test.m_sideL : test.m_sideR ) = name;
             }
@@ -259,8 +262,8 @@ void App::shop( float dt )
         {
             if ( const GeneratorDef *g = m_cat.generator( name ) )
             {
-                desc = g->m_desc;
-                lines.push_back( "Leistung " + std::to_string( (int)g->m_power ) + " je Sekunde    Speicher " + std::to_string( (int)g->m_capacity ) );
+                desc = L( g->m_desc, g->m_descEn );
+                lines.push_back( tf( "Leistung %d je Sekunde    Speicher %d", (int)g->m_power, (int)g->m_capacity ) );
                 test.m_gen = name;
             }
         }
@@ -268,9 +271,9 @@ void App::shop( float dt )
         {
             if ( const ShieldDef *s = m_cat.shield( name ) )
             {
-                desc = s->m_desc;
+                desc = L( s->m_desc, s->m_descEn );
                 char buf[160];
-                snprintf( buf, sizeof( buf ), "Stärke %d    lädt %.1f/s    kostet %.1f Energie je Punkt", (int)s->m_max, s->m_regen, s->m_cost );
+                snprintf( buf, sizeof( buf ), T( "Stärke %d    lädt %.1f/s    kostet %.1f Energie je Punkt" ), (int)s->m_max, s->m_regen, s->m_cost );
                 lines.push_back( buf );
                 test.m_shield = name;
             }
@@ -279,8 +282,8 @@ void App::shop( float dt )
         {
             if ( const SpecialDef *s = m_cat.special( name ) )
             {
-                desc = s->m_desc;
-                lines.push_back( std::to_string( s->m_charges ) + " Ladungen je Einsatz" );
+                desc = L( s->m_desc, s->m_descEn );
+                lines.push_back( tf( "%d Ladungen je Einsatz", s->m_charges ) );
                 test.m_special = name;
             }
         }
@@ -421,7 +424,7 @@ void App::shop( float dt )
         if ( m_tab == 2 ) o.m_rearLv = 1;
         if ( !sel->m_name.empty() ) m_camp.m_owned.insert( sel->m_name );
         m_audio.play( SfxE::BUY );
-        say( sel->m_name.empty() ? "Ausgebaut." : sel->m_title + " eingebaut." );
+        say( sel->m_name.empty() ? std::string( T( "Ausgebaut." ) ) : tf( "%s eingebaut.", sel->m_title.c_str() ) );
     }
 }
 

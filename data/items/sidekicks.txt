@@ -6,7 +6,9 @@
 
 sidekick pip
   title "Pip-Drohne"
+  title_en "Pip Drone"
   desc "Eine kleine Drohne mit einem einzigen Lauf. Schießt geradeaus, immer, ohne zu fragen."
+  desc_en "A small drone with a single barrel. Fires straight ahead, always, without asking."
   price 500
   tier 1
   model pip
@@ -17,7 +19,9 @@ sidekick pip
 
 sidekick spark
   title "Funke"
+  title_en "Spark"
   desc "Billig, flink und mit eigenem Zielsucher: kreist um das Schiff und schießt auf den nächsten Gegner, wo immer er ist."
+  desc_en "Cheap, nimble and with a seeker of its own: circles the ship and fires at the nearest enemy, wherever it is."
   price 350
   tier 1
   model spark
@@ -28,7 +32,9 @@ sidekick spark
 
 sidekick sparrow
   title "Sperling"
+  title_en "Sparrow"
   desc "Ein winziger Jäger, der vor dir herfliegt und zwei Nadeln im Takt eines Vogelherzens abgibt."
+  desc_en "A tiny fighter that flies ahead of you and fires two needles to the beat of a bird's heart."
   price 800
   tier 1
   model sparrow
@@ -39,7 +45,9 @@ sidekick sparrow
 
 sidekick rocketpod
   title "Raketenkapsel"
+  title_en "Rocket Pod"
   desc "Sechs Lenkraketen in einer Kapsel. Feuert sie in schneller Folge ab und lädt dann eine nach der anderen nach."
+  desc_en "Six guided missiles in one pod. Fires them in quick succession, then reloads them one by one."
   price 1600
   tier 1
   model rocketpod
@@ -52,7 +60,9 @@ sidekick rocketpod
 
 sidekick bulwark
   title "Bollwerk"
+  title_en "Bulwark"
   desc "Ein schwer gepanzerter Begleiter, der hinter dir fliegt und Wachkugeln um dein Schiff kreisen lässt. Was dir zu nahe kommt, prallt dagegen."
+  desc_en "A heavily armoured escort that flies behind you and sets guard orbs circling your ship. Whatever comes too close bounces off."
   price 2200
   tier 1
   model bulwark
@@ -65,7 +75,9 @@ sidekick bulwark
 
 sidekick glimmer
   title "Glimmer"
+  title_en "Glimmer"
   desc "Ein Kristallsplitter, der um dich kreist und funkelnde Sterne auf jeden Gegner in der Nähe wirft."
+  desc_en "A crystal shard that circles you and throws sparkling stars at every enemy nearby."
   price 3200
   tier 2
   model glimmer
@@ -76,7 +88,9 @@ sidekick glimmer
 
 sidekick lancet
   title "Lanzette"
+  title_en "Lancet"
   desc "Fliegt voraus und sticht mit einem schlanken Laser zu, der durch zwei Gegner hintereinander geht."
+  desc_en "Flies ahead and stabs with a slender laser that goes through two enemies in a row."
   price 4200
   tier 2
   model lancet
@@ -87,7 +101,9 @@ sidekick lancet
 
 sidekick charger
   title "Ladekanone"
+  title_en "Charger"
   desc "Sammelt anderthalb Sekunden lang Energie und entlädt sie dann in einer schweren Plasmakugel, die durch alles bricht."
+  desc_en "Gathers energy for a second and a half, then unloads it as a heavy plasma ball that breaks through everything."
   price 5500
   tier 2
   model charger
@@ -99,7 +115,9 @@ sidekick charger
 
 sidekick flak
   title "Flakturm"
+  title_en "Flak Tower"
   desc "Ein kleiner Geschützturm, der hinter dir herfliegt und Splitterladungen auf den nächsten Gegner feuert. Sie platzen kurz vor dem Ziel."
+  desc_en "A small gun turret that trails behind you and fires fragmentation charges at the nearest enemy. They burst just short of the target."
   price 6800
   tier 2
   model flak
@@ -112,7 +130,9 @@ sidekick flak
 
 sidekick warden
   title "Wächter"
+  title_en "Warden"
   desc "Ein treuer Wachposten an deiner Seite, der jeden Gegner in Reichweite mit grünen Plasmakugeln eindeckt."
+  desc_en "A loyal guard at your side that showers every enemy in range with green plasma orbs."
   price 8500
   tier 3
   model warden
@@ -123,7 +143,9 @@ sidekick warden
 
 sidekick stinger
   title "Stachel"
+  title_en "Stinger"
   desc "Fliegt voraus wie eine Wespe und verteilt Dreierfächer aus Giftnadeln, die durch den ersten Gegner hindurchgehen."
+  desc_en "Flies ahead like a wasp and hands out three-way fans of poison needles that pass through the first enemy."
   price 10000
   tier 3
   model stinger
@@ -134,7 +156,9 @@ sidekick stinger
 
 sidekick cometpod
   title "Kometenkapsel"
+  title_en "Comet Pod"
   desc "Drei Kometen in einer Kapsel: Sie starten träge, werden immer schneller und zerplatzen in einer Glutwolke. Dann wird nachgeladen."
+  desc_en "Three comets in one pod: they start sluggishly, keep getting faster and burst in a cloud of embers. Then it reloads."
   price 13000
   tier 3
   model cometpod
@@ -147,7 +171,9 @@ sidekick cometpod
 
 sidekick arcpod
   title "Bogenkapsel"
+  title_en "Arc Pod"
   desc "Eine kreisende Spule, die Blitze auf den nächsten Gegner schleudert – und von dort auf zwei weitere."
+  desc_en "A circling coil that hurls lightning at the nearest enemy – and from there on to two more."
   price 15500
   tier 3
   model arcpod
@@ -160,7 +186,9 @@ sidekick arcpod
 
 sidekick phoenix
   title "Phönix"
+  title_en "Phoenix"
   desc "Ein Feuervogel aus Gießereistahl, der hinter dir fliegt und zwei Flammenzungen nach vorn speit."
+  desc_en "A firebird of foundry steel that flies behind you and spits two tongues of flame forward."
   price 17000
   tier 4
   model phoenix
@@ -171,7 +199,9 @@ sidekick phoenix
 
 sidekick hydra
   title "Hydra"
+  title_en "Hydra"
   desc "Drei Köpfe, drei Lenkraketen: Jede Salve fächert sich auf und sucht sich drei verschiedene Ziele."
+  desc_en "Three heads, three guided missiles: every salvo fans out and seeks three different targets."
   price 21000
   tier 4
   model hydra
@@ -182,7 +212,9 @@ sidekick hydra
 
 sidekick lantern
   title "Laterne"
+  title_en "Lantern"
   desc "Eine kreisende Laterne aus Thalassa, die warme Lichtringe auf die Gegner wirft. Jeder Ring rollt durch zwei von ihnen."
+  desc_en "A circling lantern from Thalassa that casts warm rings of light at the enemy. Each ring rolls through two of them."
   price 25000
   tier 4
   model lantern
@@ -193,7 +225,9 @@ sidekick lantern
 
 sidekick sentinel
   title "Wachposten"
+  title_en "Sentinel"
   desc "Ein rotes Auge, das vor dir schwebt und jeden Gegner anvisiert. Fünf Schienenbolzen im Magazin, jeder durchschlägt drei Ziele."
+  desc_en "A red eye that hovers ahead of you and locks onto every enemy. Five rail bolts in the magazine, each one piercing three targets."
   price 30000
   tier 4
   model sentinel
@@ -208,7 +242,9 @@ sidekick sentinel
 
 sidekick mirror
   title "Spiegel"
+  title_en "Mirror"
   desc "Eine Spiegelscherbe, die das Licht deiner Front auffängt und als Fächer aus drei Strahlen zurückwirft."
+  desc_en "A mirror shard that catches the light of your front gun and throws it back as a fan of three beams."
   price 34000
   tier 5
   model mirror
@@ -219,7 +255,9 @@ sidekick mirror
 
 sidekick seraph
   title "Seraph"
+  title_en "Seraph"
   desc "Ein geflügelter Begleiter aus weißem Gold. Er umkreist dich und schickt Paare suchender Sterne auf jeden Gegner in Sicht."
+  desc_en "A winged escort of white gold. It circles you and sends pairs of seeking stars at every enemy in sight."
   price 42000
   tier 5
   model seraph
@@ -230,7 +268,9 @@ sidekick seraph
 
 sidekick eclipse
   title "Finsternis"
+  title_en "Eclipse"
   desc "Eine schwarze Kugel mit violetter Korona. Sie trinkt zwei Sekunden lang Licht und lässt es dann als verheerende Dunkelbombe frei."
+  desc_en "A black sphere with a violet corona. It drinks light for two seconds, then lets it go as a devastating dark bomb."
   price 50000
   tier 5
   model eclipse
@@ -244,7 +284,9 @@ sidekick eclipse
 
 sidekick talon
   title "Kralle"
+  title_en "Talon"
   desc "Eine Jagddrohne der Fischer von Thalassa, aus Wrackteilen gebaut. Sie greift den nächsten Gegner an, und ihre Bolzen prallen von den Rändern zurück."
+  desc_en "A hunting drone the fishers of Thalassa built from wreckage. It goes for the nearest enemy, and its bolts bounce off the edges."
   price 6000
   tier 9
   hidden 1
@@ -256,7 +298,9 @@ sidekick talon
 
 sidekick starling
   title "Star"
+  title_en "Starling"
   desc "Ein Geschenk des Chors: ein Schwarm aus Licht in Vogelgestalt. Er kreist um dich und schickt jeweils drei suchende Funken los."
+  desc_en "A gift from the Choir: a swarm of light in the shape of a bird. It circles you and sends out three seeking sparks at a time."
   price 26000
   tier 9
   hidden 1

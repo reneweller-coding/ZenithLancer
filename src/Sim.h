@@ -58,6 +58,7 @@ enum class EvE : int
     SHAKE,       ///< the screen shakes (m_a: strength)
     MODE,        ///< the rear gun changed its mode (m_a: 1 or 2)
     THEME,       ///< the ground changes (m_name: the theme)
+    BOSSSTART,   ///< a boss enters (the app keeps the field here: a lost fight restarts from it)
     EMPTY        ///< the special has no charges left
 };
 
@@ -335,6 +336,7 @@ public:
     Stats                m_stats;
     std::string          m_music;
     std::string          m_bossTitle;
+    std::string          m_bossTitleEn;
     float                m_bossShown = 0.0f;   ///< the boss bar's fill (0..1)
     float                m_endT = -1.0f;       ///< counting down to the end
     bool                 m_finished = false;

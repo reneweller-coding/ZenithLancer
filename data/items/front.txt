@@ -6,7 +6,9 @@
 
 front pulse
   title "Pulslanze"
+  title_en "Pulse Lance"
   desc "Der Standard des Lancer-Programms: helle Bolzen, die mit jeder Stufe dichter und schneller werden. Verlässlich, sparsam, nie verkehrt."
+  desc_en "The Lancer programme's standard issue: bright bolts that come denser and faster with every level. Reliable, thrifty, never a bad choice."
   price 400
   tier 1
   rate 6..8.5
@@ -21,7 +23,9 @@ front pulse
 
 front needle
   title "Nadelwerfer"
+  title_en "Needler"
   desc "Schleudert haarfeine Nadeln mit irrwitzigem Tempo. Jede bohrt sich durch das erste Ziel und sucht sich dahinter ein zweites."
+  desc_en "Flings hair-thin needles at a ridiculous speed. Each one punches through its first target and goes looking for a second one behind it."
   price 900
   tier 1
   rate 5..8
@@ -35,7 +39,9 @@ front needle
 
 front scatter
   title "Streukanone"
+  title_en "Scattergun"
   desc "Ein Fächer aus kurzen, glühenden Bolzen. Deckt den halben Himmel ab, verliert aber auf Distanz an Biss."
+  desc_en "A fan of short, glowing bolts. Covers half the sky, but loses its bite at range."
   price 1200
   tier 1
   rate 4.5..6
@@ -47,7 +53,9 @@ front scatter
 
 front vulcan
   title "Drehkanone"
+  title_en "Rotary Cannon"
   desc "Ein rotierender Lauf, der kleine Geschosse in einem dichten Strom ausspuckt. Später kommen zwei Läufe dazu. Hungrig nach Energie."
+  desc_en "A spinning barrel that spits small rounds in a dense stream. Later two more barrels join in. Hungry for energy."
   price 1800
   tier 1
   rate 12..20
@@ -62,7 +70,9 @@ front vulcan
 
 front ember
   title "Glutwerfer"
+  title_en "Ember Thrower"
   desc "Eine Zunge aus Gießereifeuer, abgezweigt aus Pyras Schmelzöfen. Reicht nur über das halbe Feld, aber was hineinfliegt, kommt nicht wieder heraus."
+  desc_en "A tongue of foundry fire, tapped from Pyra's smelting furnaces. Reaches only halfway up the field, but whatever flies into it never comes out again."
   price 3500
   tier 2
   rate 10..14
@@ -74,7 +84,9 @@ front ember
 
 front frost
   title "Frostnadel"
+  title_en "Frost Needle"
   desc "Kristallnadeln aus unterkühltem Plasma, kalt genug, um Panzerplatten springen zu lassen. Auf hohen Stufen splittert Eis wie Hagel."
+  desc_en "Crystal needles of supercooled plasma, cold enough to crack armour plating. At high levels the ice splinters like hail."
   price 4200
   tier 2
   rate 5..7.5
@@ -87,7 +99,9 @@ front frost
 
 front ripple
   title "Wellenbrecher"
+  title_en "Wavebreaker"
   desc "Feuert Ringe aus verdichtetem Raum, die sich beim Fliegen weiten und durch Reihen von Gegnern rollen wie eine Brandung."
+  desc_en "Fires rings of compressed space that widen in flight and roll through rows of enemies like surf."
   price 5000
   tier 2
   rate 3.5..5.5
@@ -101,7 +115,9 @@ front ripple
 
 front hornet
   title "Hornissenschwarm"
+  title_en "Hornet Swarm"
   desc "Ein Bienenstock aus Mini-Raketen: Sie schwärmen aus, suchen sich ihre Ziele selbst und stechen dort zu, wo du nicht hinsiehst."
+  desc_en "A hive of mini-missiles: they swarm out, pick their own targets and sting where you aren't looking."
   price 6500
   tier 2
   rate 4..6
@@ -111,7 +127,9 @@ front hornet
 
 front lancebeam
   title "Lichtlanze"
+  title_en "Light Lance"
   desc "Ein ununterbrochener Strahl, so hell wie ein Schweißbogen. Trifft sofort, was vor dir steht; ab Stufe 9 geht er durch alles hindurch."
+  desc_en "An unbroken beam as bright as a welding arc. Instantly hits whatever is in front of you; from level 9 it goes through everything."
   price 8000
   tier 2
   rate 60
@@ -126,7 +144,9 @@ front lancebeam
 
 front arc
   title "Bogenblitz"
+  title_en "Arc Bolt"
   desc "Ein Kondensator, der Blitze auf den nächsten Gegner wirft – und von dort weiter auf den nächsten. Zielt selbst, reicht aber nicht weit."
+  desc_en "A capacitor that throws lightning at the nearest enemy – and from there on to the next. Aims by itself, but doesn't reach far."
   price 9000
   tier 3
   rate 4..6
@@ -137,7 +157,9 @@ front arc
 
 front prism
   title "Prismenfächer"
+  title_en "Prism Fan"
   desc "Ein weißer Strahl, durch ein Kristallprisma gejagt: Er fächert sich in alle Farben auf, und jede Stufe fügt eine weitere hinzu."
+  desc_en "A white beam forced through a crystal prism: it fans out into every colour, and each level adds one more."
   price 11000
   tier 3
   rate 4.5..6.5
@@ -151,7 +173,9 @@ front prism
 
 front bloom
   title "Sternblüte"
+  title_en "Starbloom"
   desc "Schießt Sternsamen, die nach kurzer Strecke in einer Blüte aus Licht aufbrechen – umgeben von einem Kranz glühender Blätter."
+  desc_en "Fires star seeds that burst into a blossom of light after a short flight – ringed by a wreath of glowing petals."
   price 13000
   tier 3
   rate 2.5..4
@@ -163,7 +187,9 @@ front bloom
 
 front rail
   title "Schienenkanone"
+  title_en "Railgun"
   desc "Magnetisch beschleunigte Bolzen aus Wolfram. Langsam im Takt, aber jeder Schuss reißt eine Gasse durch alles, was im Weg steht."
+  desc_en "Magnetically accelerated tungsten slugs. A slow beat, but every shot tears a lane through everything in its way."
   price 16000
   tier 3
   rate 1.6..2.6
@@ -177,7 +203,9 @@ front rail
 
 front thorn
   title "Dornenwerfer"
+  title_en "Thorn Thrower"
   desc "Gehärtete Dornen, die schräg davonfliegen und von den Rändern des Feldes zurückprallen. Wer sich in den Ecken versteckt, hat Pech."
+  desc_en "Hardened thorns that fly off at an angle and bounce back off the edges of the field. Bad luck for anyone hiding in the corners."
   price 17000
   tier 4
   rate 4..6
@@ -191,7 +219,9 @@ front thorn
 
 front helix
   title "Doppelhelix"
+  title_en "Double Helix"
   desc "Zwei Plasmaströme, die sich umeinander winden wie ein Erbgut aus Licht. Später schlingt sich ein zweites, weiteres Paar darum."
+  desc_en "Two plasma streams winding around each other like DNA made of light. Later a second, wider pair coils around them."
   price 21000
   tier 4
   rate 5..7
@@ -203,7 +233,9 @@ front helix
 
 front swarm
   title "Schwarmwerfer"
+  title_en "Swarm Launcher"
   desc "Eine Trommel voller Pfeildrohnen. Jede sucht sich ein eigenes Ziel; ab Stufe 7 fliegen größere Leitdrohnen mit."
+  desc_en "A drum full of dart drones. Each one picks a target of its own; from level 7 bigger lead drones fly along."
   price 25000
   tier 4
   rate 3..4.5
@@ -214,7 +246,9 @@ front swarm
 
 front comet
   title "Kometenwerfer"
+  title_en "Comet Launcher"
   desc "Schwere Plasmakugeln, die langsam starten und dann immer schneller werden. Sie schlagen durch und zerplatzen in einer Glutwolke."
+  desc_en "Heavy plasma balls that start slow and keep getting faster. They punch through and burst in a cloud of embers."
   price 29000
   tier 4
   rate 2..3.2
@@ -225,7 +259,9 @@ front comet
 
 front nova
   title "Novasplitter"
+  title_en "Nova Shards"
   desc "Eine Schrotladung aus Sternensplittern, dazwischen ab Stufe 5 eine Sprenggranate. Je näher am Ziel, desto schlimmer für das Ziel."
+  desc_en "A shotgun load of star shards, with an explosive shell among them from level 5. The closer to the target, the worse for the target."
   price 34000
   tier 4
   rate 3..4.5
@@ -238,7 +274,9 @@ front nova
 
 front tempest
   title "Sturmgitter"
+  title_en "Storm Lattice"
   desc "Ein Gitter aus Laserbahnen, durch das in jedem zweiten Takt ein Blitz springt. Was zwischen die Linien gerät, wird zerlegt."
+  desc_en "A lattice of laser lanes with lightning leaping through it on every second beat. Whatever gets caught between the lines is taken apart."
   price 38000
   tier 5
   rate 6..8
@@ -252,7 +290,9 @@ front tempest
 
 front starfall
   title "Sternenregen"
+  title_en "Starfall"
   desc "Ein Schauer aus Sternen, der den Himmel vor dir füllt. Dazwischen suchen sich leuchtende Irrsterne ihren eigenen Weg."
+  desc_en "A shower of stars that fills the sky ahead of you. Among them, glowing stray stars seek out their own way."
   price 48000
   tier 5
   rate 5..7
@@ -264,7 +304,9 @@ front starfall
 
 front sunspear
   title "Sonnenspeer"
+  title_en "Sunspear"
   desc "Ein Strahl aus gebündeltem Sonnenlicht, so breit wie ein Gleiter. Ab Stufe 7 durchschlägt er alles bis an den Horizont."
+  desc_en "A beam of concentrated sunlight as wide as a glider. From level 7 it pierces everything all the way to the horizon."
   price 58000
   tier 5
   rate 60
@@ -278,7 +320,9 @@ front sunspear
 
 front quill
   title "Federkiel"
+  title_en "White Quill"
   desc "Ein Prototyp aus Okonjos Werkstatt, in einer Gießerei vergessen: ein weißer Kiel, der alles durchsticht, umweht von goldenen Federn."
+  desc_en "A prototype from Okonjo's workshop, forgotten in a foundry: a white quill that pierces everything, wreathed in golden feathers."
   price 2600
   tier 9
   hidden 1
@@ -291,7 +335,9 @@ front quill
 
 front fang
   title "Reißzahn"
+  title_en "Fang"
   desc "Zwei karminrote Schienenbolzen, die sich vor dem Bug kreuzen wie die Kiefer eines Raubtiers. Auf hohen Stufen schnappen weitere Zähne zu."
+  desc_en "Two crimson rail bolts that cross before the nose like a predator's jaws. At high levels more teeth snap shut."
   price 18000
   tier 9
   hidden 1
@@ -304,7 +350,9 @@ front fang
 
 front zenith
   title "Zenitlanze"
+  title_en "Zenith Lance"
   desc "Die Waffe, für die der Lancer gebaut wurde: ein weißglühender Strahl, der alles durchschlägt, begleitet von Sternlanzen, die selbst jagen."
+  desc_en "The weapon the Lancer was built for: a white-hot beam that pierces everything, escorted by star lances that hunt on their own."
   price 68000
   tier 9
   hidden 1

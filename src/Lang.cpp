@@ -5,6 +5,8 @@
  */
 #include "Lang.h"
 
+#include <cstdarg>
+#include <cstdio>
 #include <cstdlib>
 #include <fstream>
 #include <set>
@@ -107,6 +109,16 @@ std::string T( const std::string &de ) { return T( de.c_str() ); }
 const std::string &L( const std::string &de, const std::string &en )
 {
     return g_lang != "de" && !en.empty() ? en : de;
+}
+
+std::string tf( const char *fmt, ... )
+{
+    char    buf[1024];
+    va_list args;
+    va_start( args, fmt );
+    vsnprintf( buf, sizeof( buf ), T( fmt ), args );
+    va_end( args );
+    return buf;
 }
 
 std::vector<std::string> untranslated() { return std::vector<std::string>( g_missing.begin(), g_missing.end() ); }

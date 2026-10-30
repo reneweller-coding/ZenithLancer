@@ -2,7 +2,9 @@
 
 pilot lancer
   title "Lancer"
+  title_en "Lancer"
   desc "Ausgewogen: solide Panzerung, die Pulslanze und ein Heckschütze, der dir den Rücken freihält. Die Nova räumt auf, wenn es eng wird."
+  desc_en "Balanced: solid armour, the Pulse Lance and a Tail Gunner that keeps your back clear. The Nova cleans up when it gets tight."
   ship lancer
   front pulse 1
   rear tailgun 1
@@ -12,7 +14,9 @@ pilot lancer
 
 pilot kestrel
   title "Turmfalke"
+  title_en "Kestrel"
   desc "Schnell und zerbrechlich, mit der gefräßigen Drehkanone und einem Funken als Begleiter. Die Barriere ist dein Rettungsring."
+  desc_en "Fast and fragile, with the energy-hungry Rotary Cannon and a Spark as escort. The Barrier is your lifeline."
   ship kestrel
   front vulcan 1
   side spark -
@@ -22,7 +26,9 @@ pilot kestrel
 
 pilot bastion
   title "Bastion"
+  title_en "Bastion"
   desc "Langsam wie ein Gießereikran, aber kaum kleinzukriegen: Streukanone vorn, Mörser hinten, ein dicker Mantel und Naniten für den Notfall."
+  desc_en "Slow as a foundry crane but hard to bring down: Scattergun up front, Mortar behind, a thick Mantle and nanites for emergencies."
   ship bastion
   front scatter 1
   rear mortar 1
@@ -32,7 +38,9 @@ pilot bastion
 
 pilot wisp
   title "Irrlicht"
+  title_en "Wisp"
   desc "Winzig und flink, mit dem Nadelwerfer und zwei Funken im Schlepptau. Ein Treffer tut weh – also lass dich nicht treffen."
+  desc_en "Tiny and nimble, with the Needler and two Sparks in tow. A hit hurts – so don't get hit."
   ship wisp
   front needle 1
   side spark spark
@@ -42,7 +50,9 @@ pilot wisp
 
 pilot corsair
   title "Korsar"
+  title_en "Corsair"
   desc "Quills alter Schmugglerjäger mit dem Hornissenschwarm, der sich seine Ziele selbst sucht. Ohne Heckwaffe, aber mit einem Schwarm Kampfdrohnen."
+  desc_en "Quill's old smuggler fighter with the Hornet Swarm, which finds its own targets. No rear gun, but a swarm of combat drones."
   ship corsair
   front hornet 1
   gen dynamo
@@ -51,7 +61,9 @@ pilot corsair
 
 pilot halcyon
   title "Eisvogel"
+  title_en "Halcyon"
   desc "Der Aufklärer aus Thalassa mit dem Wellenbrecher, dessen Ringe durch ganze Reihen rollen. Die Zeitlupe verschafft dir Luft."
+  desc_en "The scout from Thalassa with the Wavebreaker, whose rings roll through whole rows. Slow Motion buys you breathing room."
   ship halcyon
   front ripple 1
   gen dynamo

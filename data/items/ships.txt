@@ -2,7 +2,9 @@
 
 ship lancer
   title "Lancer"
+  title_en "Lancer"
   desc "Der Prototyp von Zenith-Station: ausgewogen, robust, mit Platz für alles, was Quill verkauft."
+  desc_en "The prototype from Zenith Station: balanced, tough, with room for everything Quill sells."
   price 2000
   tier 1
   model lancer
@@ -13,7 +15,9 @@ ship lancer
 
 ship kestrel
   title "Turmfalke"
+  title_en "Kestrel"
   desc "Leicht und schnell. Weniger Panzerung, dafür weicht er allem aus, was langsamer ist als ein Gedanke."
+  desc_en "Light and fast. Less armour, but it dodges anything slower than a thought."
   price 3500
   tier 1
   model kestrel
@@ -24,7 +28,9 @@ ship kestrel
 
 ship bastion
   title "Bastion"
+  title_en "Bastion"
   desc "Ein fliegender Bunker aus Pyras Gießereien: dicke Platten, zwei schwere Triebwerke, behäbig in den Kurven. Was ihn trifft, prallt meistens ab."
+  desc_en "A flying bunker from Pyra's foundries: thick plates, two heavy engines, sluggish in the turns. Most of what hits it bounces off."
   price 6500
   tier 2
   model bastion
@@ -35,7 +41,9 @@ ship bastion
 
 ship wisp
   title "Irrlicht"
+  title_en "Wisp"
   desc "Kaum mehr als ein Cockpit mit Flügeln und einem Triebwerk, das heller brennt, als es sollte. Winzig, flink und mit einem Energieüberschuss."
+  desc_en "Little more than a cockpit with wings and an engine that burns brighter than it should. Tiny, nimble and with energy to spare."
   price 8000
   tier 2
   model wisp
@@ -47,7 +55,9 @@ ship wisp
 
 ship corsair
   title "Korsar"
+  title_en "Corsair"
   desc "Ein Schmugglerjäger aus Quills altem Bestand, schwarz lackiert und mit roten Streifen. Schnell genug zum Fliehen, stark genug zum Bleiben."
+  desc_en "A smuggler's fighter from Quill's old stock, painted black with red stripes. Fast enough to run, strong enough to stay."
   price 14000
   tier 3
   model corsair
@@ -59,7 +69,9 @@ ship corsair
 
 ship halcyon
   title "Eisvogel"
+  title_en "Halcyon"
   desc "Ein Aufklärer aus Thalassas Sturmgeschwadern, blau und orange wie der Vogel, nach dem er heißt. Schlank, wendig und mit sparsamen Leitungen."
+  desc_en "A scout from Thalassa's storm squadrons, blue and orange like the kingfisher it is named after. Slim, agile and with thrifty power lines."
   price 18000
   tier 3
   model halcyon
@@ -71,7 +83,9 @@ ship halcyon
 
 ship warhawk
   title "Kriegsfalke"
+  title_en "Warhawk"
   desc "Ein schwerer Jagdbomber des Direktorats, von Salgados Leuten erbeutet. Drei Triebwerke, breite Schwingen und Panzerung für einen Frontflug."
+  desc_en "A heavy Directorate fighter-bomber, captured by Salgado's people. Three engines, broad wings and armour for a run at the front line."
   price 28000
   tier 4
   model warhawk
@@ -83,7 +97,9 @@ ship warhawk
 
 ship seraphim
   title "Seraphim"
+  title_en "Seraphim"
   desc "Ein Kunstwerk aus weißem Stahl und goldenem Glas mit drei Flügelpaaren. Schnell, kaum zu treffen, mit einem Generatorkreis wie ein Herzschlag."
+  desc_en "A work of art in white steel and golden glass with three pairs of wings. Fast, hard to hit, with a generator circuit like a heartbeat."
   price 36000
   tier 4
   model seraphim
@@ -95,7 +111,9 @@ ship seraphim
 
 ship zenithmk2
   title "Zenit Mk II"
+  title_en "Zenith Mk II"
   desc "Okonjos letzter Entwurf: der Lancer, wie er hätte sein sollen. Schwere Panzerung, ein Ring um das Haupttriebwerk und Leistung im Überfluss."
+  desc_en "Okonjo's last design: the Lancer as it should have been. Heavy armour, a ring around the main engine and power to spare."
   price 62000
   tier 5
   model zenithmk2
@@ -107,7 +125,9 @@ ship zenithmk2
 
 ship relic
   title "Relikt"
+  title_en "Relic"
   desc "Ein Jäger aus der Zeit der ersten Kolonieschiffe, vom Chor in den Wurzeln Sylvaras bewahrt. Grünspan auf Bronze, Kristalle, die von innen glühen – und eine Kraft, die niemand mehr bauen kann."
+  desc_en "A fighter from the age of the first colony ships, kept safe by the Choir in Sylvara's roots. Verdigris on bronze, crystals glowing from within – and a power no one can build any more."
   price 40000
   tier 9
   hidden 1

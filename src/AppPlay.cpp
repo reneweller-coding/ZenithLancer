@@ -8,6 +8,7 @@
 
 #include "Crash.h"
 #include "Files.h"
+#include "Lang.h"
 #include "Rumble.h"
 #include "Ui.h"
 
@@ -43,6 +44,8 @@ void App::startMission( const std::string &name )
     m_radio.clear();
     m_radioT = 0;
     m_warnT = 0;
+    m_hasBossSave = false;
+    m_bossTries = 0;
     m_themeT = 0;
     m_themeNext.clear();
     m_introT = 0;
@@ -114,6 +117,11 @@ void App::endMission( bool won )
         m_lives[i] = p.m_lives + ( p.m_alive ? 1 : 0 );
         if ( m_last.m_spawned > 0 && m_last.m_kills >= m_last.m_spawned ) m_score[i] += 10000;
     }
+    if ( m_mode == ModeE::BOSSRUSH && !won && m_hasBossSave )
+    {
+        go( ScreenE::FAILED );
+        return;
+    }
     if ( m_mode == ModeE::BOSSRUSH )
     {
         m_scoreKey = diffKey();
@@ -156,6 +164,14 @@ void App::play( float dt )
             m_in.consumed();
             m_view.events( m_world );
             m_audio.events( m_world );
+            // The checkpoint: the campaign and the boss rush may fight a lost boss again from here.
+            for ( const SimEvent &e : m_world.m_events )
+                if ( e.m_type == EvE::BOSSSTART && ( m_mode == ModeE::CAMPAIGN || m_mode == ModeE::BOSSRUSH ) )
+                {
+                    m_bossSave = m_world;
+                    m_hasBossSave = true;
+                    m_bossTries = 0;
+                }
             for ( const SimEvent &e : m_world.m_events )
             {
                 if ( e.m_type == EvE::TEXT )
@@ -206,19 +222,19 @@ void App::play( float dt )
                 else if ( e.m_type == EvE::EXPLODE && e.m_a >= 2 ) shake( 0.35f, 0.15f, 0.2f );
                 else if ( e.m_type == EvE::PICKUP && e.m_name == "cube" )
                 {
-                    m_radio = "Logkristall geborgen.";
+                    m_radio = T( "Logkristall geborgen." );
                     m_radioFrom = "ORRIN";
                     m_radioT = 0;
                 }
                 else if ( e.m_type == EvE::PICKUP && e.m_name == "key" )
                 {
-                    m_radio = "Ein Peilsignal ... da draußen ist etwas, das auf keiner Karte steht.";
+                    m_radio = T( "Ein Peilsignal ... da draußen ist etwas, das auf keiner Karte steht." );
                     m_radioFrom = "ORRIN";
                     m_radioT = 0;
                 }
                 else if ( e.m_type == EvE::PICKUP && e.m_name == "plan" )
                 {
-                    m_radio = "Bauplan gesichert. Quill wird sich freuen.";
+                    m_radio = T( "Bauplan gesichert. Quill wird sich freuen." );
                     m_radioFrom = "ORRIN";
                     m_radioT = 0;
                 }
@@ -300,13 +316,13 @@ void App::hud()
         ui::panel( r, 0.55f );
         float x = r.x + 18 * k, y = r.y + 16 * k, w = r.width - 36 * k;
         float ps = std::min( 12.0f, ( w / k ) / 11.0f / 1.32f );
-        if ( m_players > 1 ) ui::text( "PILOT " + std::to_string( idx + 1 ), x, y, 22, idx == 0 ? ui::Accent : ui::Gold ), y += 30 * k;
-        if ( p.m_ship ) ui::text( p.m_ship->m_title, x, y, 26, WHITE ), y += 36 * k;
+        if ( m_players > 1 ) ui::text( tf( "PILOT %d", idx + 1 ), x, y, 22, idx == 0 ? ui::Accent : ui::Gold ), y += 30 * k;
+        if ( p.m_ship ) ui::text( L( p.m_ship->m_title, p.m_ship->m_titleEn ), x, y, 26, WHITE ), y += 36 * k;
         if ( p.m_front )
         {
             ui::text( "FRONT", x, y, 18, ui::Dim );
             y += 22 * k;
-            ui::text( p.m_front->m_title, x, y, 22, ui::Ink );
+            ui::text( L( p.m_front->m_title, p.m_front->m_titleEn ), x, y, 22, ui::Ink );
             y += 28 * k;
             ui::pips( x, y, p.m_load.m_frontLv, 11, ps, { 120, 210, 255, 255 } );
             y += ps * 1.4f * k + 14 * k;
@@ -315,8 +331,10 @@ void App::hud()
         {
             ui::text( "HECK", x, y, 18, ui::Dim );
             y += 22 * k;
-            std::string mode = p.m_rear->m_modes > 1 ? ( p.m_rearMode == 1 ? p.m_rear->m_mode1 : p.m_rear->m_mode2 ) : "";
-            ui::text( p.m_rear->m_title + ( mode.empty() ? "" : "  · " + mode ), x, y, 22, ui::Ink );
+            std::string mode = p.m_rear->m_modes > 1 ? ( p.m_rearMode == 1 ? L( p.m_rear->m_mode1, p.m_rear->m_mode1En )
+                                                                           : L( p.m_rear->m_mode2, p.m_rear->m_mode2En ) )
+                                                     : "";
+            ui::text( L( p.m_rear->m_title, p.m_rear->m_titleEn ) + ( mode.empty() ? "" : "  · " + mode ), x, y, 22, ui::Ink );
             y += 28 * k;
             ui::pips( x, y, p.m_load.m_rearLv, 11, ps, { 255, 190, 90, 255 } );
             y += ps * 1.4f * k + 14 * k;
@@ -326,7 +344,7 @@ void App::hud()
             const Sidekick &sk = p.m_side[s];
             if ( !sk.m_def ) continue;
             ui::text( s == 0 ? "LINKS" : "RECHTS", x, y, 18, ui::Dim );
-            ui::text( sk.m_def->m_title, x + 90 * k, y - 2 * k, 20, ui::Ink );
+            ui::text( L( sk.m_def->m_title, sk.m_def->m_titleEn ), x + 90 * k, y - 2 * k, 20, ui::Ink );
             y += 26 * k;
             if ( sk.m_def->m_ammo > 0 ) ui::bar( { x, y, w, 6 * k }, sk.m_ammo / (float)sk.m_def->m_ammo, { 180, 255, 200, 255 } ), y += 14 * k;
             else if ( sk.m_def->m_charge > 0 ) ui::bar( { x, y, w, 6 * k }, sk.m_charge / sk.m_def->m_charge, { 255, 160, 255, 255 } ), y += 14 * k;
@@ -334,7 +352,7 @@ void App::hud()
         if ( p.m_special )
         {
             ui::text( "SPEZIAL", x, y, 18, ui::Dim );
-            ui::text( p.m_special->m_title, x + 100 * k, y - 2 * k, 20, ui::Ink );
+            ui::text( L( p.m_special->m_title, p.m_special->m_titleEn ), x + 100 * k, y - 2 * k, 20, ui::Ink );
             y += 26 * k;
             for ( int c = 0; c < p.m_charges && c < 9; ++c ) DrawCircle( (int)( x + 8 * k + c * 22 * k ), (int)( y + 8 * k ), 7 * k, { 200, 160, 255, 255 } );
             y += 26 * k;
@@ -393,10 +411,10 @@ void App::hud()
         if ( lv )
         {
             float x = f.x + f.width + 15 * k, y = H * 0.86f;
-            ui::text( lv->m_title, x + 18 * k, y, 22, ui::Dim );
+            ui::text( L( lv->m_title, lv->m_titleEn ), x + 18 * k, y, 22, ui::Dim );
             float prog = clampf( m_world.m_time / std::max( 1.0f, lv->m_length ), 0, 1 );
             ui::bar( { x + 18 * k, y + 32 * k, pw - 36 * k, 6 * k }, prog, { 140, 160, 200, 255 } );
-            ui::text( m_cat.difficulty( m_world.m_diffIndex ).m_title, x + 18 * k, y + 48 * k, 18, ui::Dim );
+            ui::text( L( m_cat.difficulty( m_world.m_diffIndex ).m_title, m_cat.difficulty( m_world.m_diffIndex ).m_titleEn ), x + 18 * k, y + 48 * k, 18, ui::Dim );
         }
     }
     else
@@ -413,7 +431,7 @@ void App::hud()
     if ( b >= 0 || m_world.m_bossShown > 0.01f )
     {
         float bw = f.width * 0.7f, x = f.x + ( f.width - bw ) * 0.5f, y = f.y + ( narrow ? 50 : 18 ) * k;
-        ui::text( m_world.m_bossTitle, f.x + f.width * 0.5f, y, 24, { 255, 150, 130, 255 }, ui::AlignE::CENTER );
+        ui::text( L( m_world.m_bossTitle, m_world.m_bossTitleEn ), f.x + f.width * 0.5f, y, 24, { 255, 150, 130, 255 }, ui::AlignE::CENTER );
         ui::bar( { x, y + 32 * k, bw, 12 * k }, m_world.m_bossShown, { 255, 80, 70, 255 } );
     }
     // The warning.
@@ -442,13 +460,50 @@ void App::hud()
     {
         float a = std::min( 1.0f, std::min( m_introT * 2.0f, ( 4.0f - m_introT ) * 1.5f ) );
         float y = f.y + f.height * 0.3f;
-        ui::text( m_mode == ModeE::CAMPAIGN || lv->m_episode > 0 ? "Episode " + std::to_string( lv->m_episode ) : "", f.x + f.width * 0.5f, y, 26,
+        ui::text( m_mode == ModeE::CAMPAIGN || lv->m_episode > 0 ? tf( "Episode %d", lv->m_episode ) : "", f.x + f.width * 0.5f, y, 26,
                   { 110, 200, 255, (unsigned char)( 255 * a ) }, ui::AlignE::CENTER );
-        ui::text( lv->m_title, f.x + f.width * 0.5f, y + 40 * k, 58, { 255, 255, 255, (unsigned char)( 255 * a ) }, ui::AlignE::CENTER );
+        ui::text( L( lv->m_title, lv->m_titleEn ), f.x + f.width * 0.5f, y + 40 * k, 58, { 255, 255, 255, (unsigned char)( 255 * a ) }, ui::AlignE::CENTER );
     }
     if ( m_outroT > 0.2f && m_won )
         ui::text( m_mode == ModeE::ARCADE ? "ABSCHNITT GESCHAFFT" : "EINSATZ ERFÜLLT", f.x + f.width * 0.5f, f.y + f.height * 0.4f, 52, ui::Good, ui::AlignE::CENTER );
     (void)W;
+}
+
+void App::retryBoss()
+{
+    // Back to the moment the boss came, with full armour, shield and energy; what was earned before stays.
+    m_world = m_bossSave;
+    ++m_bossTries;
+    for ( int i = 0; i < 2; ++i )
+    {
+        Player &p = m_world.m_players[i];
+        if ( !p.m_active ) continue;
+        p.m_alive = true;
+        p.m_dead = 0;
+        p.m_armor = p.m_armorMax;
+        p.m_shield = p.m_shieldDef ? p.m_shieldDef->m_max : 0.0f;
+        p.m_energy = p.m_energyMax;
+        p.m_invuln = 2.0f;
+        if ( p.m_special ) p.m_charges = std::max( p.m_charges, p.m_special->m_charges );
+        if ( m_mode == ModeE::BOSSRUSH ) p.m_lives = std::max( p.m_lives, 1 );
+    }
+    // The bullets of the moment go: the fight starts clean.
+    for ( Bullet &b : m_world.m_bullets )
+        if ( !b.m_player ) b.m_dead = true;
+    m_world.m_lasers.clear();
+    m_view.reset();
+    m_acc = 0;
+    m_paused = false;
+    m_radio.clear();
+    m_warnT = 0;
+    m_themeT = 0;
+    m_introT = 10.0f;
+    m_outroT = -1;
+    int ep = m_world.m_level ? m_world.m_level->m_episode : 0;
+    bool last = m_world.m_level && m_world.m_level->m_next.empty() && m_mode == ModeE::CAMPAIGN;
+    m_audio.music( ep == 5 && last ? "final" : ep >= 1 && ep <= 5 && m_mode == ModeE::CAMPAIGN ? "e" + std::to_string( ep ) + "_boss" : "boss" );
+    m_screen = ScreenE::PLAY;
+    m_t = 0;
 }
 
 void App::pauseMenu( float dt )

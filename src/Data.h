@@ -210,6 +210,7 @@ struct WeaponDef
     Range                m_energy = { 5, 5 }; ///< generator energy a volley
     std::string          m_sound = "pulse";   ///< its sound: pulse, laser, missile, plasma, flame, beam, spread, rail
     std::string          m_mode1, m_mode2;    ///< rear guns: the names of their two modes
+    std::string          m_mode1En, m_mode2En; ///< ... in English
     int                  m_modes = 1;
     std::vector<ShotDef> m_shots;
     int                  m_tier = 1;          ///< which episode's workshop offers it first

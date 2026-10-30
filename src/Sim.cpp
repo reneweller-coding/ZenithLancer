@@ -373,6 +373,7 @@ int World::spawn( const EnemyDef *def, Vector2 pos, const Line *pathLine, int pa
     if ( def->m_kind == EnemyKindE::BOSS )
     {
         m_bossTitle = def->m_title.empty() ? def->m_name : def->m_title;
+        m_bossTitleEn = def->m_titleEn;
         m_hold = true;
     }
     return idx;
@@ -510,6 +511,7 @@ void World::runEvent( const LevelEvent &ev )
             pl.m_kv["path"] = p.str( "path", d->m_path.m_key );
             spawn( d, { p.num( "x", FieldW * 0.5f ), p.num( "y", -120.0f ) }, &pl );
             m_hold = true;
+            emit( EvE::BOSSSTART, { FieldW * 0.5f, 0 }, 0, 0, d->m_name );
         }
     }
     else if ( t == "pickup" )
