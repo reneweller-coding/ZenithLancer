@@ -7,7 +7,7 @@ the two are the same music, sample for sample in phase, and the fade opens a fil
 arrangements over each other. --cover makes ACE-Step covers instead (the first try, 30.10.2026: they kept the energy,
 CLAP heard nothing calmer, and two arrangements at once blur).
 
-    G:\\Tools\\PythonSkripts\\AudioGenerator\\venv\\Scripts\\python.exe tools\\make_layers.py [--force] [--only e1_a ...]
+    <AudioGenerator>\\venv\\Scripts\\python.exe tools\\make_layers.py [--force] [--only e1_a ...]
         [--cover]   (on the GPU, tools/gpu_queue.py)
 
 Needs ffmpeg with libvorbis on the PATH.
@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import make_music  # noqa: E402  (lufs, peak_db, encode)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AUDIOGEN = r"G:\Tools\PythonSkripts\AudioGenerator"
+import paths   # noqa: E402  (tools/paths.py: where the AudioGenerator lives)
 STAGE = re.compile(r"^(e[1-5]_[ab]|secret)(_2)?$")
 LOW_STYLE = ("stripped back sparse arrangement of the same piece, the melody kept on soft synths, warm pads and a "
              "pulsing bass, light hi-hats instead of the full drum kit, no heavy drums, calmer and quieter, "
@@ -78,9 +78,9 @@ def main():
         print("layers: %d made" % len(todo))
         return
 
-    sys.path.insert(0, AUDIOGEN)
+    sys.path.insert(0, paths.audiogen())
     here = os.getcwd()
-    os.chdir(AUDIOGEN)
+    os.chdir(paths.audiogen())
     from core.backends import backend_class
     from core.config import acestep_env, load_config
     from core.request import SongRequest

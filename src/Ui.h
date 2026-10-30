@@ -45,6 +45,16 @@ enum class AlignE : int
  */
 float text( const std::string &s, float x, float y, float size, Color c, AlignE align = AlignE::LEFT );
 
+/** @brief Starts measuring the smallest text drawn (the Steam Deck check). */
+void resetTextStats();
+
+/**
+ * @brief The smallest text drawn since resetTextStats().
+ * @param[out] what  that text
+ * @return its size in pixels (0 if nothing was drawn)
+ */
+float smallestText( std::string &what );
+
 /** @return the width of a text in pixels */
 float width( const std::string &s, float size );
 

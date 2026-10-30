@@ -1,6 +1,6 @@
 """Runs one GPU job when the GPU is free (the user's rule: one GPU user at a time across all sessions): waits until no
 game instance (KipKepler.exe, SpaceOpera.exe, DarkConcordance2 builds) has run for 60 s and no
-G:/Tools/Games/GPU_PAUSE.txt exists, then writes G:/Tools/Games/GPU_BELEGT.txt, runs the command below normal
+GPU_PAUSE.txt exists, then writes GPU_BELEGT.txt (both in the folder tools/paths.py names), runs the command below normal
 priority and deletes the flag afterwards.
 
     python tools/gpu_queue.py <command> [args...]
@@ -10,8 +10,11 @@ import subprocess
 import sys
 import time
 
-FLAG = r"G:\Tools\Games\GPU_BELEGT.txt"
-PAUSE = r"G:\Tools\Games\GPU_PAUSE.txt"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import paths   # noqa: E402
+
+FLAG = paths.gpu_flag()
+PAUSE = paths.gpu_pause()
 GAMES = ("kipkepler.exe", "spaceopera.exe", "darkconcordance.exe", "darkconcordance2.exe", "zenithlancer.exe")
 
 

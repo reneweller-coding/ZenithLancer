@@ -252,6 +252,8 @@ bool readHeader( FILE *f, ReplayHeader &h, long long &bytes, uint32_t &check, st
         else if ( k == "mission" ) h.m_mission = v;
         else if ( k == "difficulty" ) h.m_difficulty = atoi( v.c_str() );
         else if ( k == "ngplus" ) h.m_ngPlus = atoi( v.c_str() );
+        else if ( k == "rules" ) h.m_rules = atoi( v.c_str() );
+        else if ( k == "data" ) h.m_data = v;
         else if ( k == "seed" ) h.m_seed = (uint32_t)strtoul( v.c_str(), nullptr, 10 );
         else if ( k == "pilots" ) h.m_pilots = atoi( v.c_str() );
         else if ( k.size() == 5 && ( k[4] == '0' || k[4] == '1' ) && k.compare( 0, 4, "load" ) == 0 )
@@ -337,6 +339,7 @@ bool startWorld( World &w, const Catalog &cat, const ReplayHeader &head )
     if ( !lv ) return false;
     w.begin( &cat, lv, head.m_mode, head.m_difficulty, head.m_seed );
     w.setPlus( head.m_ngPlus );
+    w.setRules( head.m_rules );
     for ( int i = 0; i < std::clamp( head.m_pilots, 1, 2 ); ++i )
     {
         w.addPlayer( i, head.m_load[i], head.m_lives[i] );
@@ -478,6 +481,9 @@ bool ReplayRecorder::save( const std::string &path ) const
     fprintf( f, "version %s\nplatform %s\nmode %s\nmission %s\ndifficulty %d\nngplus %d\nseed %u\npilots %d\n",
              h.m_version.c_str(), h.m_platform.c_str(), modeName( h.m_mode ), h.m_mission.c_str(), h.m_difficulty,
              h.m_ngPlus, h.m_seed, h.m_pilots );
+    // Written only where set: a replay without them reads as it did before.
+    if ( h.m_rules ) fprintf( f, "rules %d\n", h.m_rules );
+    if ( !h.m_data.empty() ) fprintf( f, "data %s\n", h.m_data.c_str() );
     for ( int i = 0; i < h.m_pilots; ++i )
         fprintf( f, "load%d %s\nlives%d %d\nscore%d %lld\n", i, loadoutText( h.m_load[i] ).c_str(), i, h.m_lives[i], i,
                  h.m_score[i] );
@@ -669,6 +675,8 @@ std::string replaySelfTest( const std::string &dir )
         h.m_mission = "selftest";
         h.m_difficulty = 4;
         h.m_ngPlus = 2;
+        h.m_rules = 37;
+        h.m_data = "0123456789abcdef";
         h.m_seed = 0xdeadbeefu;
         h.m_pilots = 2;
         parseLoadout( h.m_load[0], "ship=bastion,front=hornet:5,rear=-:3,left=glimmer,right=-,gen=fusion" );
@@ -716,7 +724,8 @@ std::string replaySelfTest( const std::string &dir )
              g.m_score[1] != h.m_score[1] || g.m_lang != "en" || g.m_end != ReplayEndE::WON || g.m_endScore != 4242 ||
              g.m_time != 500.5f || g.m_steps != steps || loadoutText( g.m_load[0] ) != loadoutText( h.m_load[0] ) ||
              loadoutText( g.m_load[1] ) != loadoutText( h.m_load[1] ) || g.m_date != rec.header().m_date ||
-             g.m_platform.empty() || g.m_platform != rec.header().m_platform )
+             g.m_platform.empty() || g.m_platform != rec.header().m_platform || g.m_rules != h.m_rules ||
+             g.m_data != h.m_data )
             return "the header came back otherwise";
         if ( g.m_marks.size() != 2 || g.m_marks[0].m_step != 0 || g.m_marks[1].m_step != 4501 ||
              g.m_marks[1].m_kind != ReplayMarkE::RETRY )

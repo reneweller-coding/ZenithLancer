@@ -16,6 +16,7 @@
 # bossretries missions nodamage allkills deaths seconds credits spent max_credits max_front cubes plans secrets
 # episode1..episode5 campaign_diff (0 Kadett .. 6 Zenit) campaign_coop coop_missions arcade_runs arcade2_runs
 # arcade_clean bossrush_done bossrush_best survival_seconds survival_daily ngplus practice replays_watched
+# max_chain grazes school weekly seen heard
 
 # ---------------------------------------------------------------------------------------------------- the fight
 
@@ -342,6 +343,71 @@ achievement hours_10
   desc_en "Fly for ten hours. The seat has taken your shape."
   need seconds 36000
 
+achievement school
+  title "Flugschein"
+  title_en "Wings"
+  desc "Schließ die Flugschule ab. ORRIN hat den Schein schon ausgedruckt, auf echtem Papier."
+  desc_en "Finish the flight school. ORRIN has already printed the licence, on real paper."
+  need school 1
+
+achievement chain_50
+  title "Kettenreaktion"
+  title_en "Chain Reaction"
+  desc "Schieß 50 Gegner in einer Kette ab, ohne Pause und ohne Treffer."
+  desc_en "Shoot down 50 enemies in one chain, without a pause and without a hit."
+  need max_chain 50
+
+achievement chain_80
+  title "Fünffach"
+  title_en "Fivefold"
+  desc "Bring eine Kette auf 80 Abschüsse: der höchste Multiplikator. Quill will das Video sehen."
+  desc_en "Take a chain to 80 kills: the highest multiplier. Quill wants to see the video."
+  need max_chain 80
+  hidden 1
+
+achievement grazes_1000
+  title "Haarscharf"
+  title_en "By a Hair"
+  desc "Lass 1.000 Kugeln knapp an dir vorbeiziehen. ORRIN hat aufgehört, jedes Mal zu seufzen."
+  desc_en "Let 1,000 bullets graze past you. ORRIN has stopped sighing every time."
+  need grazes 1000
+
+achievement weekly_1
+  title "Sonderregeln"
+  title_en "House Rules"
+  desc "Flieg einen Wochenflug bis zu seinem Ende."
+  desc_en "Fly a weekly flight to its end."
+  need weekly 1
+
+achievement weekly_4
+  title "Stammgast"
+  title_en "Regular"
+  desc "Flieg vier Wochenflüge. Die Regeln wechseln, du bleibst."
+  desc_en "Fly four weekly flights. The rules change, you stay."
+  need weekly 4
+
+achievement seen_100
+  title "Feldforschung"
+  title_en "Field Research"
+  desc "Begegne 100 verschiedenen Gegnern. Das Archiv füllt sich."
+  desc_en "Meet 100 different enemies. The archive is filling up."
+  need seen 100
+
+achievement seen_all
+  title "Bestiarium"
+  title_en "Bestiary"
+  desc "Begegne jedem Gegner, den das Archiv kennt. Okonjo möchte eine Kopie."
+  desc_en "Meet every enemy the archive knows. Okonjo would like a copy."
+  need seen 127
+  hidden 1
+
+achievement heard_all
+  title "Plattensammlung"
+  title_en "Record Collection"
+  desc "Hör jedes Stück der Musik. Quill behauptet, er habe sie alle auf Kassette."
+  desc_en "Hear every piece of the music. Quill claims he has them all on tape."
+  need heard 23
+
 # ---------------------------------------------------------------------------------------------------- statistics
 
 stat seconds
@@ -423,3 +489,13 @@ stat survival_seconds
   title "Längstes Überleben"
   title_en "Longest survival"
   show clock
+
+stat max_chain
+  title "Längste Kette"
+  title_en "Longest chain"
+  show count
+
+stat grazes
+  title "Streifschüsse"
+  title_en "Grazes"
+  show count

@@ -1,0 +1,26 @@
+# The music room (the archive's second page): each piece of assets/music in the order shown, its German and its
+# English title. "<piece> <German title> | <English title>". A piece opens in the room once it has been heard.
+
+title Die Lanze des Zenits | The Lance of the Zenith
+story Stille Flamme | Quiet Flare
+plan Lagekarte | Situation Map
+shop Quills Elster | Quill's Magpie
+e1_a Glutgürtel | Ember Belt
+e1_b Gießerei Ascalon | Ascalon Foundry
+e1_boss Gießerei-Wächter | The Foundry Warden
+e2_a Gezeitenfall | Tidefall
+e2_b Sturmflut | Storm Surge
+e2_boss Leviathan | Leviathan
+e3_a Der Splitter | The Shatter
+e3_b Aschenschleier | The Ash Veil
+e3_boss Steinbruchgeist | The Quarry Mind
+e4_a Grünkrone | Greencrown
+e4_b Im Stock | Inside the Hive
+e4_boss Dornenmutter | The Thornmother
+e5_a Mittagsglut | Noonfire
+e5_b Ringschmied | Ringsmith
+e5_boss Wächter der Krone | Warden of the Crown
+boss Alarm | Alarm
+secret Verborgene Kammer | Hidden Chamber
+final Letzte Order | Last Order
+ending Nach dem Zenit | After the Zenith

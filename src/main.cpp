@@ -381,6 +381,8 @@ int main( int argc, char **argv )
                     "  --shot FILE --level NAME [--at S] | --screen NAME --shot FILE | --gallery FILE\n"
                     "  --apptest SCRIPT           (with ZENITH_HOME set)    --dumpsfx DIR\n"
                     "  --bench [all]              heavy missions flown, frame times measured (<user>/bench.txt)\n"
+                    "  --video FILE (--replay R | --level NAME) [--seconds S] [--fps N] [--size WxH]   an MP4 (ffmpeg)\n"
+                    "  --deckcheck                every screen at 1280x800, the smallest text measured\n"
                     "loadout: \"ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,shield=ward,special=nova_s\"\n" );
             return 0;
         }
@@ -414,6 +416,11 @@ int main( int argc, char **argv )
         else if ( a == "--theme" ) o.m_theme = next();
         else if ( a == "--screen" ) o.m_screen = next();
         else if ( a == "--apptest" ) o.m_test = next();
+        else if ( a == "--video" ) o.m_video = next();
+        else if ( a == "--replay" ) o.m_replay = next();
+        else if ( a == "--seconds" ) o.m_videoSeconds = (float)atof( next().c_str() );
+        else if ( a == "--fps" ) o.m_videoFps = atoi( next().c_str() );
+        else if ( a == "--deckcheck" ) o.m_deckCheck = true;
         else if ( a == "--bench" )
         {
             o.m_bench = true;
@@ -433,7 +440,12 @@ int main( int argc, char **argv )
         Audio::dump( dumpDir );
         return 0;
     }
-    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_test.empty() || o.m_bench ) o.m_mute = true;
+    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_test.empty() || o.m_bench || !o.m_video.empty() || o.m_deckCheck )
+        o.m_mute = true;
+    // A video is 1080p, the Deck check at the Deck's screen, unless --size says otherwise.
+    if ( !o.m_video.empty() && o.m_width <= 0 ) o.m_width = 1920, o.m_height = 1080;
+    if ( o.m_deckCheck && o.m_width <= 0 ) o.m_width = 1280, o.m_height = 800;
+    if ( !o.m_video.empty() && o.m_replay.empty() ) o.m_auto = true;
     if ( !o.m_shot.empty() ) o.m_auto = true;
     if ( !o.m_test.empty() )
     {
@@ -448,12 +460,19 @@ int main( int argc, char **argv )
         for ( const char *f : { "slot1.txt", "slot2.txt", "slot3.txt", "profile.txt", "settings.txt", "feats.txt" } )
             std::filesystem::remove( std::filesystem::path( home ) / f, e );
         std::filesystem::remove_all( std::filesystem::path( home ) / "replays", e );
+        std::filesystem::remove_all( std::filesystem::path( home ) / "ghosts", e );
     }
     App app;
     if ( !app.init( o ) ) return 1;
     if ( !o.m_test.empty() )
     {
         int r = app.appTest();
+        app.shutdown();
+        return r;
+    }
+    if ( !o.m_video.empty() || o.m_deckCheck )
+    {
+        int r = o.m_deckCheck ? app.deckCheck() : app.video();
         app.shutdown();
         return r;
     }

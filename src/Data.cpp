@@ -402,6 +402,7 @@ bool Catalog::load( const std::string &dir, const std::vector<std::string> &mods
     size_t             own = 0;   // the blocks before this are the game's own (twice defined there is an error)
     std::vector<std::string> dirs = { dir };
     dirs.insert( dirs.end(), mods.begin(), mods.end() );
+    uint64_t hash = 14695981039346656037ull;
     for ( const std::string &d : dirs )
     {
         std::vector<std::string> here;
@@ -417,8 +418,23 @@ bool Catalog::load( const std::string &dir, const std::vector<std::string> &mods
         }
         std::sort( here.begin(), here.end() );
         for ( const std::string &f : here ) readBlocks( f, types, blocks, m_errors );
+        // The checksum the replays carry: every file read, by its place and its text (line ends left out, so a
+        // Windows and a Linux checkout agree).
+        for ( const std::string &f : here )
+        {
+            std::string rel = fs::relative( f, d, e ).generic_string() + "\n";
+            for ( char c : rel ) hash = ( hash ^ (unsigned char)c ) * 1099511628211ull;
+            std::ifstream in( f, std::ios::binary );
+            for ( char c; in.get( c ); )
+                if ( c != '\r' ) hash = ( hash ^ (unsigned char)c ) * 1099511628211ull;
+        }
         files.insert( files.end(), here.begin(), here.end() );
         if ( d == dir ) own = blocks.size();
+    }
+    {
+        char hex[20];
+        snprintf( hex, sizeof( hex ), "%016llx", (unsigned long long)hash );
+        m_hash = hex;
     }
 
     for ( size_t bi = 0; bi < blocks.size(); ++bi )

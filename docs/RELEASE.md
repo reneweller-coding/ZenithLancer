@@ -34,14 +34,19 @@ The app tests, the playing and the pictures use the graphics card: check that no
   mission; daily survival (and a new run after midnight); a replay recorded and played back; an achievement unlocked
   and the statistics counting; each accessibility option (bullet contrast, every colour-blind palette, game speed,
   auto-bomb, reduced flashes); each graphics quality and the benchmark; the play log written; the example mod from
-  `mods/example` loaded, and a broken mod reported instead of a crash.
+  `mods/example` loaded, and a broken mod reported instead of a crash; the flight school to its end; the weekly
+  flight with its rules and, flown twice, the ghost; chains and grazes in the HUD; the archive's three pages (a model
+  of an enemy met, a piece played in the music room, a paint on the ship in a mission).
 - **Listening:** every piece of music once (title, shop, plan, story, each episode's missions and boss, secret, final,
   ending) against the effects; the music layers rising and falling without clicks; the voiced radio calls against
   music and effects, the right speaker and portrait, nothing clipped or garbled, in German and in English.
 - **Languages:** the new screens once in German and once in English (Options > Language).
 - **Steam Deck:** the Linux archive on the Deck, added as a non-Steam game, started in Gaming Mode: full screen at
   1280 x 800, the Deck's controls, each graphics quality, the benchmark's numbers (for `docs/STORE.md`), suspend and
-  resume.
+  resume. `ZenithLancer --deckcheck` draws every screen at 1280 x 800 with the Deck's text size and names the smallest
+  text (30.10.2026: 14.9 px, the HUD's labels; Valve asks for at least 9 px).
+- **Trailer:** `ZenithLancer --video trailer.mp4 --replay <a replay> [--seconds 60]` (or `--level e3_05` flown by the
+  autopilot) renders the frames through ffmpeg at 1080p with the mission's music under it.
 - **Linux desktop** (or WSLg): started once from the unpacked archive.
 
 ## 5. Pictures

@@ -55,6 +55,7 @@ uniform vec4 lightPos[16];
 uniform vec4 lightCol[16];
 uniform float flash;
 uniform vec4 tint;
+uniform vec4 paint;
 uniform vec4 fogColor;
 uniform float emitBoost;
 uniform float time;
@@ -63,8 +64,11 @@ out vec4 finalColor;
 void main()
 {
     vec3 n = normalize( fragNormal );
-    vec3 albedo = fragColor.rgb * tint.rgb;
     float em = fragColor.a;
+    vec3 albedo = fragColor.rgb * tint.rgb;
+    // A pilot's paint: the hull's own shading in the paint's colour (what glows keeps its own).
+    float lum = dot( albedo, vec3( 0.3, 0.59, 0.11 ) );
+    albedo = mix( albedo, paint.rgb * ( 0.25 + 0.75 * lum ), paint.a * ( 1.0 - clamp( em * 4.0, 0.0, 1.0 ) ) );
     vec3 v = normalize( camPos - fragPos );
     vec3 l = -sunDir;
     float ndl = dot( n, l );
@@ -245,7 +249,7 @@ struct Shared
     Texture2D m_tex[9] = {};
     int       m_locSun = 0, m_locSunCol = 0, m_locAmbUp = 0, m_locAmbDown = 0, m_locCam = 0, m_locCount = 0,
               m_locLightPos = 0, m_locLightCol = 0, m_locFlash = 0, m_locTint = 0, m_locFog = 0, m_locEmit = 0,
-              m_locTime = 0, m_locBoost = 0, m_locSpec = 0;
+              m_locTime = 0, m_locBoost = 0, m_locSpec = 0, m_locPaint = 0;
 };
 Shared g;
 
@@ -315,6 +319,7 @@ void makeShared()
     g.m_locLightCol = GetShaderLocation( s, "lightCol" );
     g.m_locFlash = GetShaderLocation( s, "flash" );
     g.m_locTint = GetShaderLocation( s, "tint" );
+    g.m_locPaint = GetShaderLocation( s, "paint" );
     g.m_locFog = GetShaderLocation( s, "fogColor" );
     g.m_locEmit = GetShaderLocation( s, "emitBoost" );
     g.m_locTime = GetShaderLocation( s, "time" );
@@ -644,6 +649,21 @@ void Renderer::events( const World &w )
         switch ( e.m_type )
         {
         case EvE::EXPLODE: explode( e.m_pos, (int)e.m_a, e.m_ground, e.m_color ); break;
+        case EvE::GRAZE:
+        {
+            // A graze: a small blue spark where the bullet passed.
+            Particle p;
+            p.m_pos = e.m_pos;
+            p.m_tex = T_SPARK;
+            p.m_life = 0.18f;
+            p.m_size0 = 14;
+            p.m_size1 = 4;
+            p.m_c0 = { 150, 220, 255, 255 };
+            p.m_c1 = { 80, 140, 255, 0 };
+            p.m_boost = 2.5f;
+            m_parts.push_back( p );
+            break;
+        }
         case EvE::HIT:
         case EvE::SPARK:
         {
@@ -899,6 +919,7 @@ void Renderer::drawModel( const ModelMesh &m, Vector3 at, float face, float bank
     SetShaderValue( s, g.m_locFlash, &f, SHADER_UNIFORM_FLOAT );
     Vector4 t = { tint.r / 255.0f, tint.g / 255.0f, tint.b / 255.0f, 1 };
     SetShaderValue( s, g.m_locTint, &t, SHADER_UNIFORM_VEC4 );
+    SetShaderValue( s, g.m_locPaint, &m_paintNow, SHADER_UNIFORM_VEC4 );
     drawMeshes( m, modelMatrix( at, face, bank, scale, pitch ), face, head, g.m_mat );
     f = 0;
     SetShaderValue( s, g.m_locFlash, &f, SHADER_UNIFORM_FLOAT );
@@ -1216,6 +1237,13 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
             sprite( T_CORE, p.m_pos, r * 2.0f, { 255, 255, 255, 220 } );
         }
     }
+    // The ghost: the best flight of the same seed, a pale ring where it flew at this moment.
+    if ( m_ghostOn )
+    {
+        boost( 1.2f );
+        sprite( T_SOFT, m_ghost, 64.0f, { 110, 190, 255, 60 } );
+        sprite( T_RING, m_ghost, 44.0f + 4.0f * std::sin( m_time * 5.0f ), { 150, 215, 255, 150 } );
+    }
     rlDrawRenderBatchActive();
     EndBlendMode();
     EndShaderMode();
@@ -1271,11 +1299,13 @@ void Renderer::draw( const World &w, const Catalog &cat )
         }
         drawModel( mm, { e.m_pos.x, bob + e.m_lift, e.m_pos.y }, e.m_face, e.m_bank, e.m_def->m_scale, e.m_flash, e.m_head, tint, pitch );
     }
-    for ( const Player &p : w.m_players )
+    for ( int pi = 0; pi < 2; ++pi )
     {
+        const Player &p = w.m_players[pi];
         if ( !p.m_active || !p.m_alive || !p.m_ship ) continue;
         if ( p.m_invuln > 0 && std::fmod( p.m_invuln, 0.2f ) < 0.08f ) continue;
         const ModelMesh &mm = s_forge.get( cat, p.m_ship->m_model );
+        m_paintNow = { m_paint[pi].r / 255.0f, m_paint[pi].g / 255.0f, m_paint[pi].b / 255.0f, m_paintAmount[pi] };
         drawModel( mm, { p.m_pos.x, 10, p.m_pos.y }, 180.0f, p.m_bank, 1.0f, 0, 180.0f, WHITE, -p.m_vel.y * 0.0006f );
         for ( const Sidekick &s : p.m_side )
             if ( s.m_def )
@@ -1284,6 +1314,7 @@ void Renderer::draw( const World &w, const Catalog &cat )
                 float            charge = s.m_def->m_charge > 0 ? s.m_charge / s.m_def->m_charge : 0.0f;
                 drawModel( sm, { s.m_pos.x, 8, s.m_pos.y }, 180.0f, p.m_bank * 0.5f, 1.0f, charge >= 1.0f ? 0.3f : 0.0f, 180.0f, WHITE );
             }
+        m_paintNow = { 0, 0, 0, 0 };
     }
     // Debris.
     for ( const Debris &d : m_debris )

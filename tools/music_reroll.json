@@ -1,0 +1,15 @@
+{
+  "name": "Zenith Lancer reroll",
+  "style": "instrumental video game soundtrack with modern production, clear genre, high quality mix",
+  "key": "A minor",
+  "bpm": 140,
+  "timesig": "4",
+  "takes": 3,
+  "format": "flac",
+  "seed": 9127,
+  "cues": [
+    {"id": "e2_b", "type": "loop", "bars": 24, "bpm": 172, "key": "B minor", "style": "liquid drum and bass at 172 bpm, fast chopped amen breakbeat, rolling reese sub bass, stormy wide pads, urgent synth lead melody over a raging ocean, thunder, no guitars, no four on the floor kick, no vocals", "hint": "instrumental drum and bass video game level music, constant energy, no intro, no ending"},
+    {"id": "e4_b", "type": "loop", "bars": 24, "bpm": 136, "key": "D minor", "style": "dark organic downtempo electronica inside a living hive, wet clicking percussion, breathing pads, deep growling bass, haunting breathy flute melody, eerie and alive, no chiptune, no square waves, no vocals", "hint": "instrumental dark ambient electronica video game level music, constant mood, no intro, no ending"},
+    {"id": "secret", "type": "loop", "bars": 16, "bpm": 126, "key": "C minor", "style": "mysterious hidden chamber, chiptune melody from a retro sound chip, echoing square wave arpeggios, soft pads, strange and wonderful, electronic, no guitars, no vocals", "hint": "instrumental chiptune video game secret level music, constant mood, no intro, no ending"}
+  ]
+}

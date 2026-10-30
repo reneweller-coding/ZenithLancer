@@ -2,7 +2,7 @@
 descriptions in tools/music.json and with a few plain labels (calm/intense, vocals, genres), and the script measures
 event density and loudness itself. Writes work/music_clap.txt.
 
-    G:\\Tools\\PythonSkripts\\AudioGenerator\\venv\\Scripts\\python.exe tools\\clap_music.py
+    <AudioGenerator>\\venv\\Scripts\\python.exe tools\\clap_music.py
 
 Which cue description fits a piece best tells more than any single caption: a story piece that sits nearest the boss
 descriptions is a wrong piece.
@@ -68,7 +68,11 @@ def main():
     for name in ("music.json", "music_calm.json"):
         spec = json.load(open(os.path.join(ROOT, "tools", name), encoding="utf-8"))
         cues.update({c["id"]: c["style"] for c in spec["cues"]})
-    only = set(sys.argv[1:])
+    # --files A B ...: candidates elsewhere (new takes before they replace a piece), each judged as the cue its name
+    # starts with ("e2_b_main_t1.flac" as e2_b); written to work/music_clap_files.txt.
+    args = sys.argv[1:]
+    files = args[args.index("--files") + 1:] if "--files" in args else []
+    only = set(args[:args.index("--files")] if files else args)
     ids = list(cues)
     model = ClapModel.from_pretrained(MODEL).eval()
     proc = ClapProcessor.from_pretrained(MODEL)
@@ -82,10 +86,13 @@ def main():
     pair_emb = [text([a, b]) for _, a, b in PAIRS]
     genre_emb = text(["%s music" % g for g in GENRES])
     lines = []
-    for path in sorted(glob.glob(os.path.join(ROOT, "assets", "music", "*.ogg"))):
-        name = os.path.basename(path)[:-4]
+    paths = files or sorted(glob.glob(os.path.join(ROOT, "assets", "music", "*.ogg")))
+    for path in paths:
+        name = os.path.splitext(os.path.basename(path))[0]
         cue = name[:-4] if name.endswith("_low") else name
         cue = cue[:-2] if cue.endswith("_2") else cue
+        if files:
+            cue = max((i for i in ids if name.startswith(i)), key=len, default=cue)
         if cue not in cues or (only and cue not in only):
             continue
         wins, mono, sr = windows(path)
@@ -109,7 +116,8 @@ def main():
                      % (name, rank, len(ids), best, "  ".join(probs), ons, rms, genres))
         print(lines[-1], flush=True)
     os.makedirs(os.path.join(ROOT, "work"), exist_ok=True)
-    with open(os.path.join(ROOT, "work", "music_clap.txt"), "w", encoding="utf-8", newline="\n") as f:
+    out = "music_clap_files.txt" if files else "music_clap.txt"
+    with open(os.path.join(ROOT, "work", out), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lines) + "\n")
 
 

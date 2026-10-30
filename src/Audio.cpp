@@ -460,6 +460,7 @@ void Audio::events( const World &w )
         case EvE::NOVA: play( SfxE::NOVA, x, 0.9f ); break;
         case EvE::MODE: play( SfxE::MODE, x, 0.5f ); break;
         case EvE::EMPTY: play( SfxE::EMPTY, x, 0.5f ); break;
+        case EvE::GRAZE: play( SfxE::BLIP, x, 0.12f, 1.6f ); break;
         case EvE::CHAIN: play( SfxE::CHAIN, x, 0.4f ); break;
         case EvE::BOSSDIE: play( SfxE::BOOM3, x, 1.0f, 0.8f ); break;
         case EvE::MUSIC: music( e.m_name ); break;
@@ -486,8 +487,10 @@ void Audio::drop( int i )
 
 void Audio::music( const std::string &name )
 {
-    if ( !m_on || name == m_name ) return;
+    // The name is kept when silent too: the video and the music room ask for it.
+    if ( name == m_name ) return;
     m_name = name;
+    if ( !m_on ) return;
     int next = 1 - m_cur;
     drop( next );
     // A piece may come in two takes (<name>.ogg, <name>_2.ogg): one of them, by chance.

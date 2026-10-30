@@ -2,7 +2,7 @@
 AudioGenerator's Python (diffusers 0.37): a few takes per figure into work/portraits/<name>_<n>.png, the chosen one
 (take 0 unless tools/portraits_pick.json says otherwise) as assets/portraits/<name>.png, 512 x 512.
 
-    G:\\Tools\\PythonSkripts\\AudioGenerator\\venv\\Scripts\\python.exe tools\\make_portraits.py [--force] [--only NAME ...]
+    <AudioGenerator>\\venv\\Scripts\\python.exe tools\\make_portraits.py [--force] [--only NAME ...]
         [--pick]   only copy the chosen takes (after looking at them)
 
 On the GPU (tools/gpu_queue.py). data/lang/speakers.txt says who shows which portrait.

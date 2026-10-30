@@ -35,6 +35,23 @@ Deck (Linux build, 1280×800, pad).
   takes over at the boss), with the episode's middle gear (`midLoadout`) or a save slot's. Nothing is kept.
 - **Bosses again** – a lost boss fight in the campaign, the practice and the boss rush starts again at the boss
   (`EvE::BOSSSTART` keeps the World), with full armour and what was earned before.
+- **Wochenflug** – the survival flight with the week's seed (`thisWeek()`, ISO week) and two of eight rules picked by
+  it (`weeklyRules`, `RuleE`: Double Fire, Glass Cannon, Rush, No Shield, One Life, Armoured, Haste, Rear Only;
+  `World::setRules`, kept in the replay's header). Daily and weekly flights fly against a **ghost**: the best flight
+  of the same seed, a point every second step (`<user>/ghosts/*.bin`), drawn as a pale ring.
+- **Flugschule** – nine lessons on a field without a timeline (`src/AppArchive.cpp`): each puts what it needs on the
+  field (targets, slow bullets to graze, a row of drones for a chain) and waits for its goal; the pilot cannot die.
+- **Archiv** – the enemies met (`Profile::m_seen`, filled while they are on the field) as turning models with their
+  numbers, the music room (`data/lang/music.txt`, pieces heard: `Profile::m_heard`) and the paints (`paints()`: a
+  colour that replaces the hull's own and keeps its shading; opened by achievements; `Settings::m_paint`).
+
+## Score: chains and grazes
+
+Every kill within `ChainTime` (2 s) of the pilot's last kill or graze lengthens the chain; the score of a kill is
+multiplied by `chainMult` (1 + 0.05 a kill, at most 5). Any hit breaks the chain. An enemy bullet that passes within
+`GrazeRange` (20) of the hit circle grazes once: 10 points times the multiplier, and the chain waits on. Credits stay
+unmultiplied, so the workshop's economy is the same. Score lists made before the chain are kept apart (`old_` keys,
+`Profile::m_scoring`).
 
 ## Replays, achievements, the play log
 
@@ -67,7 +84,10 @@ own (`tools/music_calm.json`): a spec's style goes in front of every one of its 
 
 Kadett, Leicht, Normal, Schwer, Unmöglich, Selbstmord, and the hidden Zenit (opens after the campaign is won on
 Selbstmord). They scale enemy strength, fire rate, bullet speed, damage taken and credits; from Selbstmord on
-dying ships leave a last bullet. Missions add waves on harder difficulties (`diff=3` lines).
+dying ships leave a last bullet. Missions add waves on harder difficulties (`diff=3` lines). The extra strength,
+fire and damage above Normal grow in over the first two episodes, while the gear is still small: 60 % of it in
+episode 1, 85 % in episode 2 (`World::begin`). The autopilot (mortal, the episode's middle gear) wins 58–59 of 60 on
+Unmöglich, 43 on Selbstmord and 16 on Zenit (30.10.2026).
 
 ## The world
 

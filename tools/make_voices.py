@@ -1,4 +1,4 @@
-"""Speaks the story with Qwen3-TTS (local, G:\\Tools\\VoiceLab): every radio call, briefing, debriefing, intro and
+"""Speaks the story with Qwen3-TTS (local, the VoiceLab of tools/paths.py): every radio call, briefing, debriefing, intro and
 ending of data/story/<language>, per language, in the voice of its speaker (data/lang/speakers.txt -> tools/voices.json).
 The log crystals stay unspoken (documents to read).
 
@@ -11,8 +11,8 @@ The log crystals stay unspoken (documents to read).
              one loudness, OGG Vorbis mono -> assets/voice/<language>/<key>.ogg
 
     set PYTHONNOUSERSITE=1
-    G:\\Tools\\VoiceLab\\env-qwen\\python.exe tools\\make_voices.py [--lang de] [--who orrin ...] [--only KEY ...]
-    G:\\Tools\\VoiceLab\\env-qwen\\python.exe tools\\make_voices.py --list
+    <VoiceLab>\\env-qwen\\python.exe tools\\make_voices.py [--lang de] [--who orrin ...] [--only KEY ...]
+    <VoiceLab>\\env-qwen\\python.exe tools\\make_voices.py --list
 
 Runs below normal priority, on the GPU (tools/gpu_queue.py). Needs ffmpeg with libvorbis on the PATH.
 """
@@ -32,7 +32,8 @@ import make_music  # noqa: E402  (lufs, encode)
 import story  # noqa: E402
 
 ROOT = story.ROOT
-MODELS = r"G:\Tools\VoiceLab\models"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import paths   # noqa: E402  (tools/paths.py: where the VoiceLab lives)
 REFS = os.path.join(ROOT, "tools", "voices")
 WORK = os.path.join(ROOT, "work", "voice")
 LANGS = {"de": "German", "en": "English"}
@@ -143,7 +144,7 @@ def design(jobs, voices, langs, whos):
         return
     import torch
     from qwen_tts import Qwen3TTSModel
-    model = Qwen3TTSModel.from_pretrained(os.path.join(MODELS, "Qwen3-TTS-12Hz-1.7B-VoiceDesign"), device_map="cuda:0",
+    model = Qwen3TTSModel.from_pretrained(os.path.join(paths.voicelab(), "models", "Qwen3-TTS-12Hz-1.7B-VoiceDesign"), device_map="cuda:0",
                                           dtype=torch.bfloat16, attn_implementation="sdpa")
     os.makedirs(REFS, exist_ok=True)
     todo = []
@@ -227,7 +228,7 @@ def speak(jobs, langs, whos, only, force):
         return
     import torch
     from qwen_tts import Qwen3TTSModel
-    model = Qwen3TTSModel.from_pretrained(os.path.join(MODELS, "Qwen3-TTS-12Hz-1.7B-Base"), device_map="cuda:0",
+    model = Qwen3TTSModel.from_pretrained(os.path.join(paths.voicelab(), "models", "Qwen3-TTS-12Hz-1.7B-Base"), device_map="cuda:0",
                                           dtype=torch.bfloat16, attn_implementation="sdpa")
     total = sum(len(g) for g in groups.values())
     done = 0

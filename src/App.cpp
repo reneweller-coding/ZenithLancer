@@ -88,7 +88,8 @@ bool App::init( const Options &o )
     int  h = o.m_height > 0 ? o.m_height : m_set.m_height > 0 ? m_set.m_height : deck ? 800 : 900;
     unsigned flags = FLAG_WINDOW_RESIZABLE;
     if ( m_set.m_vsync && !o.m_bench ) flags |= FLAG_VSYNC_HINT;
-    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_shop.empty() || !o.m_test.empty() ) flags = FLAG_WINDOW_HIDDEN;
+    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_shop.empty() || !o.m_test.empty() || !o.m_video.empty() || o.m_deckCheck )
+        flags = FLAG_WINDOW_HIDDEN;
     SetConfigFlags( flags );
     SetTraceLogLevel( LOG_WARNING );
     InitWindow( w, h, "Zenith Lancer" );
@@ -102,8 +103,8 @@ bool App::init( const Options &o )
     }
     SetWindowMinSize( 640, 400 );
     bool full = o.m_fullscreen >= 0 ? o.m_fullscreen == 1 : ( m_set.m_fullscreen || ( deck && m_set.m_width == 0 ) );
-    if ( full && o.m_shot.empty() ) ToggleBorderlessWindowed();
-    SetTargetFPS( o.m_shot.empty() && o.m_test.empty() ? m_set.m_fps : 0 );
+    if ( full && o.m_shot.empty() && o.m_video.empty() && !o.m_deckCheck ) ToggleBorderlessWindowed();
+    SetTargetFPS( o.m_shot.empty() && o.m_test.empty() && o.m_video.empty() && !o.m_deckCheck ? m_set.m_fps : 0 );
     if ( !o.m_mute ) InitAudioDevice();
     m_audio.init( !o.m_mute, m_assets );
     m_audio.m_musicVolume = m_set.m_music;
@@ -180,13 +181,18 @@ void App::loadCatalog()
     m_hasBossSave = false;
     m_shopWorld = World();
     m_previewKey.clear();
+    loadArchive();
     if ( IsWindowReady() ) newDemo();
 }
 
 void App::shutdown()
 {
-    saveSettings();
-    m_prof.save( userDir() + "profile.txt" );
+    // A video, a picture or the Deck check leaves the player's settings and profile as they were.
+    if ( m_opt.m_video.empty() && !m_opt.m_deckCheck && m_opt.m_shot.empty() )
+    {
+        saveSettings();
+        m_prof.save( userDir() + "profile.txt" );
+    }
     m_view.shutdown();
     m_preview.shutdown();
     for ( auto &[n, t] : m_portraits )
@@ -212,8 +218,9 @@ void App::applySettings()
         m_view.m_quality = quality();
         resize();
     }
-    if ( m_opt.m_test.empty() && m_opt.m_shot.empty() ) SetTargetFPS( m_set.m_fps );
-    ui::setTextSize( m_set.m_textSize * ( steamDeck() ? 1.12f : 1.0f ) );
+    if ( m_opt.m_test.empty() && m_opt.m_shot.empty() && m_opt.m_video.empty() && !m_opt.m_deckCheck ) SetTargetFPS( m_set.m_fps );
+    ui::setTextSize( m_set.m_textSize * ( steamDeck() || m_opt.m_deckCheck ? 1.12f : 1.0f ) );
+    applyPaints();
 }
 
 void App::saveSettings()
@@ -347,6 +354,7 @@ void App::frame( float dt )
     case ScreenE::REPLAYS:
     case ScreenE::STATS:
     case ScreenE::MODS: piece = "title"; break;
+    case ScreenE::ARCHIVE: piece = m_archivePiece.empty() ? "title" : m_archivePiece.c_str(); break;
     case ScreenE::PLAN:
     case ScreenE::RESULTS:
     case ScreenE::FAILED: piece = m_mode == ModeE::CAMPAIGN ? "plan" : "title"; break;
@@ -361,6 +369,12 @@ void App::frame( float dt )
     default: break;
     }
     if ( piece ) m_audio.music( piece );
+    // A piece heard opens in the music room (its takes count as the piece).
+    if ( !m_audio.piece().empty() && !m_replaying )
+    {
+        const std::string &p = m_audio.piece();
+        m_prof.m_heard.insert( p.size() > 2 && p.compare( p.size() - 2, 2, "_2" ) == 0 ? p.substr( 0, p.size() - 2 ) : p );
+    }
     // A screen sees its first frame once: one that goes on to another leaves that one its own.
     ScreenE before = m_screen;
     switch ( m_screen )
@@ -389,6 +403,7 @@ void App::frame( float dt )
     case ScreenE::REPLAYS: replays( dt ); break;
     case ScreenE::STATS: stats( dt ); break;
     case ScreenE::MODS: mods( dt ); break;
+    case ScreenE::ARCHIVE: archive( dt ); break;
     case ScreenE::QUIT: m_running = false; break;
     }
     if ( m_screen == before ) m_enter = false;
@@ -470,7 +485,7 @@ void App::drawBackdrop( float dt, bool dim )
 // ---------------------------------------------------------------------------------------------------- helpers
 
 int App::menu( const std::vector<std::string> &items, float x, float y, float w, int &sel, float size,
-               const std::vector<bool> *enabled, bool center )
+               const std::vector<bool> *enabled, bool center, const std::vector<bool> *dim )
 {
     int n = (int)items.size();
     if ( n == 0 ) return -1;
@@ -508,7 +523,8 @@ int App::menu( const std::vector<std::string> &items, float x, float y, float w,
             chosen = i;
         }
         if ( i == sel ) ui::highlight( r, m_t );
-        Color c = !ok( i ) ? Color{ 80, 90, 105, 255 } : i == sel ? WHITE : ui::Ink;
+        bool  dull = dim && i < (int)dim->size() && ( *dim )[(size_t)i];
+        Color c = !ok( i ) || ( dull && i != sel ) ? Color{ 80, 90, 105, 255 } : i == sel ? WHITE : ui::Ink;
         ui::text( items[(size_t)i], center ? x : x, y + i * rowH, size, c, center ? ui::AlignE::CENTER : ui::AlignE::LEFT );
     }
     if ( m_in.accept() && ok( sel ) ) chosen = sel;
@@ -543,7 +559,7 @@ std::string App::fmt( long long v ) const
 
 std::string App::diffKey() const
 {
-    const char *m = m_survival ? ( m_daily ? "daily" : "survival" )
+    const char *m = m_survival ? ( m_weekly ? "weekly" : m_daily ? "daily" : "survival" )
                   : m_mode == ModeE::ARCADE ? ( m_players > 1 ? "arcade2" : "arcade" )
                   : m_mode == ModeE::BOSSRUSH ? "bossrush" : m_camp.m_coop ? "campaign2" : "campaign";
     return std::string( m ) + "_" + m_cat.difficulty( m_mode == ModeE::CAMPAIGN ? m_camp.m_difficulty : m_diff ).m_name;
@@ -611,8 +627,8 @@ void App::mainMenu( float dt )
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     ui::text( "ZENITH LANCER", W * 0.5f, H * 0.06f, 84, WHITE, ui::AlignE::CENTER );
     std::vector<std::string> items = { "Kampagne", "Kampagne für zwei", "Arcade", "Arcade für zwei", "Überleben",
-                                       "Bossjagd", "Übung", "Wiederholungen", "Logbuch", "Erfolge und Statistik",
-                                       "Bestenliste", "Optionen", "Mods", "Mitwirkende", "Beenden" };
+                                       "Bossjagd", "Übung", "Flugschule", "Wiederholungen", "Logbuch", "Archiv",
+                                       "Erfolge und Statistik", "Bestenliste", "Optionen", "Mods", "Mitwirkende", "Beenden" };
     std::vector<bool>        en( items.size(), true );
     en[5] = m_prof.m_bossRush;
     en[6] = !m_prof.m_flown.empty();
@@ -623,7 +639,8 @@ void App::mainMenu( float dt )
     int c = menu( items, W * 0.5f, top, pw - 40 * k, m_sel, size, &en, true );
     hints( "Auswählen: Pfeile / Steuerkreuz    Bestätigen: Eingabe / A    Zurück: Esc / B" );
     if ( m_in.back() ) go( ScreenE::TITLE );
-    m_practice = m_survival = m_daily = false;
+    m_practice = m_survival = m_daily = m_weekly = m_school = false;
+    m_rules = 0;
     switch ( c )
     {
     case 0:
@@ -657,24 +674,31 @@ void App::mainMenu( float dt )
             return ( la ? la->m_episode : 9 ) < ( lb ? lb->m_episode : 9 );
         } );
         m_practiceList.erase( std::remove_if( m_practiceList.begin(), m_practiceList.end(),
-                                              [&]( const std::string &n ) { return !m_cat.level( n ) || n == "bossrush"; } ),
+                                              [&]( const std::string &n ) {
+                                                  return !m_cat.level( n ) || n == "bossrush" || n == "survival" || n == "school";
+                                              } ),
                               m_practiceList.end() );
         go( ScreenE::PRACTICE );
         break;
-    case 7: go( ScreenE::REPLAYS ); break;
-    case 8:
+    case 7: startSchool(); break;
+    case 8: go( ScreenE::REPLAYS ); break;
+    case 9:
         m_logList.assign( m_prof.m_cubes.begin(), m_prof.m_cubes.end() );
         go( ScreenE::LOGBOOK );
         break;
-    case 9: go( ScreenE::STATS ); break;
-    case 10: go( ScreenE::SCORES ); break;
-    case 11:
+    case 10:
+        m_archiveTab = 0;
+        go( ScreenE::ARCHIVE );
+        break;
+    case 11: go( ScreenE::STATS ); break;
+    case 12: go( ScreenE::SCORES ); break;
+    case 13:
         m_back = ScreenE::MAIN;
         go( ScreenE::OPTIONS );
         break;
-    case 12: go( ScreenE::MODS ); break;
-    case 13: go( ScreenE::CREDITS ); break;
-    case 14: go( ScreenE::QUIT ); break;
+    case 14: go( ScreenE::MODS ); break;
+    case 15: go( ScreenE::CREDITS ); break;
+    case 16: go( ScreenE::QUIT ); break;
     default: break;
     }
 }
@@ -1109,6 +1133,7 @@ void App::results( float dt )
     int secs = (int)m_last.m_time;
     row( "Flugzeit", std::to_string( secs / 60 ) + ":" + ( secs % 60 < 10 ? "0" : "" ) + std::to_string( secs % 60 ) );
     row( "Treffer eingesteckt", fmt( (long long)m_last.m_damage ) );
+    row( "Längste Kette  ·  Streifschüsse", tf( "%d  ·  %d", m_last.m_bestChain, m_last.m_grazes ) );
     if ( m_practice )
         row( "Übungsflug", T( m_practiceBoss ? "nur der Boss" : "ganzer Einsatz" ), ui::Accent );
     else if ( m_mode == ModeE::CAMPAIGN )
@@ -1492,10 +1517,10 @@ void App::scores( float dt )
 {
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
-    const char *modes[] = { "arcade", "arcade2", "campaign", "campaign2", "bossrush", "survival", "daily" };
-    const char *names[] = { "Arcade", "Arcade für zwei", "Kampagne", "Kampagne für zwei", "Bossjagd", "Überleben", "Tagesflug" };
+    const char *modes[] = { "arcade", "arcade2", "campaign", "campaign2", "bossrush", "survival", "daily", "weekly" };
+    const char *names[] = { "Arcade", "Arcade für zwei", "Kampagne", "Kampagne für zwei", "Bossjagd", "Überleben", "Tagesflug", "Wochenflug" };
     int nd = (int)m_cat.m_difficulties.size();
-    int total = 7 * nd;
+    int total = 8 * nd;
     if ( m_enter && !m_scoreKey.empty() )
         for ( int i = 0; i < total; ++i )
             if ( std::string( modes[i / nd] ) + "_" + m_cat.m_difficulties[(size_t)( i % nd )].m_name == m_scoreKey ) m_scoreTab = i;
@@ -1799,7 +1824,7 @@ namespace
 {
 const char *ScreenNames[] = { "title", "main", "options", "controls", "scores", "credits", "logbook", "slots",
                               "difficulty", "episode", "story", "plan", "shop", "play", "results", "failed", "pilots",
-                              "continue", "name", "practice", "survival", "replays", "stats", "mods", "quit" };
+                              "continue", "name", "practice", "survival", "replays", "stats", "mods", "archive", "quit" };
 }
 
 int App::appTest()
@@ -1915,7 +1940,7 @@ void App::screenShot()
     ScreenE target = ScreenE::TITLE;
     const char *names[] = { "title", "main", "options", "controls", "scores", "credits", "logbook", "slots", "difficulty",
                             "episode", "story", "plan", "shop", "play", "results", "failed", "pilots", "continue", "name",
-                            "practice", "survival", "replays", "stats", "mods" };
+                            "practice", "survival", "replays", "stats", "mods", "archive" };
     for ( int i = 0; i < (int)( sizeof( names ) / sizeof( names[0] ) ); ++i )
         if ( s == names[i] ) target = (ScreenE)i;
     if ( s == "story" )
@@ -1951,6 +1976,41 @@ void App::screenShot()
             target = ScreenE::PLAY;
             m_paused = true;
         }
+    }
+    // The archive's pages as if everything had been met and heard (the profile is not saved after a picture).
+    if ( s == "codex" || s == "music" || s == "paints" )
+    {
+        target = ScreenE::ARCHIVE;
+        m_archiveTab = s == "codex" ? 0 : s == "music" ? 1 : 2;
+        m_prof.m_seen.insert( m_codex.begin(), m_codex.end() );
+        for ( const auto &p : m_pieces ) m_prof.m_heard.insert( p[0] );
+        m_sel = 0;
+        if ( s == "codex" )
+            for ( size_t i = 0; i < m_codex.size(); ++i )
+                if ( m_cat.m_enemies.at( m_codex[i] ).m_kind == EnemyKindE::BOSS )
+                {
+                    m_sel = (int)i;
+                    break;
+                }
+        if ( s == "music" ) m_archivePiece = "e2_b";
+        if ( s == "paints" ) m_sel = 2;
+    }
+    // The flight school at its graze lesson, a few seconds in.
+    if ( s == "school" )
+    {
+        startSchool();
+        m_lesson = 2;
+        m_lessonDone = 1e3f;
+        schoolStep( PlayerInput() );
+        for ( int i = 0; i < 60 * 3; ++i )
+        {
+            PlayerInput in[2] = {};
+            m_world.step( in );
+            m_view.events( m_world );
+            schoolStep( in[0] );
+        }
+        m_introT = 10.0f;
+        target = ScreenE::PLAY;
     }
     m_screen = target;
     m_t = 1.0f;

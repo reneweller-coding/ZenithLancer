@@ -30,6 +30,8 @@ namespace
 Font  g_font = {};
 bool  g_has = false;
 float g_textSize = 1.0f;
+float g_smallest = 0.0f;   ///< the smallest text drawn since resetTextStats (pixels; 0 none)
+std::string g_smallestWhat;
 constexpr int Base = 72;   ///< the size the font is rendered at
 
 }   // namespace
@@ -79,11 +81,28 @@ float text( const std::string &s0, float x, float y, float size, Color c, AlignE
     // Every text is looked up in the language's table (a whole literal is its own key; data texts, numbers and
     // texts built of parts pass unchanged).
     const std::string s = T( s0 );
+    if ( !s.empty() && ( g_smallest <= 0.0f || px( size ) < g_smallest ) )
+    {
+        g_smallest = px( size );
+        g_smallestWhat = s;
+    }
     float w = width( s, size );
     if ( align == AlignE::CENTER ) x -= w * 0.5f;
     else if ( align == AlignE::RIGHT ) x -= w;
     DrawTextEx( g_font, s.c_str(), { std::floor( x ), std::floor( y ) }, px( size ), px( size ) * 0.02f, c );
     return w;
+}
+
+void resetTextStats()
+{
+    g_smallest = 0.0f;
+    g_smallestWhat.clear();
+}
+
+float smallestText( std::string &what )
+{
+    what = g_smallestWhat;
+    return g_smallest;
 }
 
 std::vector<std::string> wrap( const std::string &s, float w, float size )

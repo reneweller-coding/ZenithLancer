@@ -10,6 +10,7 @@
 
 #include "Data.h"
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -59,8 +60,33 @@ enum class EvE : int
     MODE,        ///< the rear gun changed its mode (m_a: 1 or 2)
     THEME,       ///< the ground changes (m_name: the theme)
     BOSSSTART,   ///< a boss enters (the app keeps the field here: a lost fight restarts from it)
-    EMPTY        ///< the special has no charges left
+    EMPTY,       ///< the special has no charges left
+    GRAZE        ///< an enemy bullet passed the pilot closely (m_b: the pilot)
 };
+
+/** @brief The weekly flight's rules (bits of World::m_rules). */
+enum class RuleE : int
+{
+    DOUBLE = 1 << 0,     ///< the enemies fire twice as often
+    GLASS = 1 << 1,      ///< the pilots' guns and the enemies' hits both count twice
+    FAST = 1 << 2,       ///< the enemies and their bullets a third faster
+    NOSHIELD = 1 << 3,   ///< no shield
+    ONELIFE = 1 << 4,    ///< no lives in reserve (the app gives none)
+    TOUGH = 1 << 5,      ///< the enemies hold out 60 % longer and are worth half as much again
+    HASTE = 1 << 6,      ///< the chain breaks after one second instead of two
+    REAR = 1 << 7        ///< the front gun is silent: the rear gun and the sidekicks fight
+};
+
+constexpr int   RuleCount = 8;       ///< the rules (bits 0 .. RuleCount - 1)
+constexpr float ChainTime = 2.0f;    ///< seconds a chain of kills waits for the next kill or graze
+constexpr float GrazeRange = 20.0f;  ///< how close beyond its hit circle a bullet must pass to graze the pilot
+
+/**
+ * @brief The chain's score multiplier: each kill of the chain adds a twentieth, up to five times.
+ * @param[in] chain  kills in the chain
+ * @return the multiplier
+ */
+inline float chainMult( int chain ) { return 1.0f + 0.05f * (float)std::min( std::max( chain, 0 ), 80 ); }
 
 /** @brief One message. */
 struct SimEvent
@@ -152,6 +178,7 @@ struct Bullet
     float       m_slow = 0.0f;       ///< flame: slows to a stop
     float       m_length = 0.0f;     ///< drawn this long along its way
     float       m_phase = 0.0f;      ///< weaving shots: where in their swing they start (radians)
+    bool        m_grazed = false;    ///< it has grazed a pilot (counts once)
 };
 
 /** @brief A pilot's beam this step (the renderer draws it from its muzzle up the field). */
@@ -248,6 +275,10 @@ struct Player
     float               m_magnet = 0.0f;
     int                 m_hits = 0;          ///< hits taken this mission
     float               m_damageTaken = 0.0f;
+    int                 m_chain = 0;         ///< kills in the chain (a hit breaks it, so does a pause of ChainTime)
+    float               m_chainT = 0.0f;     ///< seconds the chain still waits
+    int                 m_bestChain = 0;     ///< the longest chain of the mission
+    int                 m_grazes = 0;        ///< bullets grazed this mission
 };
 
 /** @brief Where and by what a pilot was shot down (the play log). */
@@ -275,6 +306,8 @@ struct Stats
     float                    m_damage = 0.0f;   ///< damage taken
     int                      m_deaths = 0;
     std::vector<DeathNote>   m_deathNotes;
+    int                      m_bestChain = 0;   ///< the longest chain of kills (either pilot)
+    int                      m_grazes = 0;      ///< bullets grazed (both pilots)
 };
 
 /** @brief The field and all on it. */
@@ -309,6 +342,18 @@ public:
     void setPlus( int plus );
 
     /**
+     * @brief The weekly flight's rules (after begin(), before addPlayer()).
+     * @param[in] rules  RuleE bits
+     */
+    void setRules( int rules );
+
+    /** @return whether a rule holds */
+    bool rule( RuleE r ) const { return ( m_rules & (int)r ) != 0; }
+
+    /** @return seconds a chain waits for the next kill */
+    float chainTime() const { return rule( RuleE::HASTE ) ? 1.0f : ChainTime; }
+
+    /**
      * @brief One step (1/60 s).
      * @param[in] in  the two pilots' input
      */
@@ -336,6 +381,7 @@ public:
     ModeE                m_mode = ModeE::CAMPAIGN;
     int                  m_diffIndex = 2;
     int                  m_plus = 0;           ///< New Game+ (setPlus)
+    int                  m_rules = 0;          ///< the weekly flight's rules (setRules)
     DifficultyDef        m_diff;
     Rng                  m_rng;
     float                m_clock = 0.0f;       ///< seconds since the start
@@ -393,6 +439,13 @@ public:
 
     /** @brief Marks the shielded bodies whose parts still live (m_shut). */
     void markShut();
+
+    /**
+     * @brief Turns an enemy and carries its parts along (the archive's models; no step needed).
+     * @param[in] idx   the enemy
+     * @param[in] face  its heading (degrees, 0 = down the screen)
+     */
+    void turn( int idx, float face );
 
 private:
     void runTimeline();

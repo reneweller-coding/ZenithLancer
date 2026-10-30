@@ -68,6 +68,9 @@ public:
      */
     void music( const std::string &name );
 
+    /** @return the piece asked for last (music()'s name: "e1_a", "title" ...) */
+    const std::string &piece() const { return m_name; }
+
     /** @brief Keeps the music running (every frame). */
     void update( float dt );
 

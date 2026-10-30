@@ -17,6 +17,8 @@
 #include "Save.h"
 #include "Sim.h"
 
+#include <array>
+#include <cstdint>
 #include <deque>
 #include <map>
 #include <string>
@@ -48,13 +50,52 @@ struct Options
     bool        m_bench = false;        ///< --bench: fly the heavy missions and measure the frame times
     int         m_pilots = 1;           ///< --pilots 2: --level flies with two pilots
     bool        m_benchAll = false;     ///< --bench all: at each graphics setting
+    std::string m_video;                ///< --video FILE: a replay (--replay) or a mission (--level) rendered to a video
+    std::string m_replay;               ///< --replay FILE: the replay for --video
+    int         m_videoFps = 60;        ///< --fps: the video's frames a second
+    float       m_videoSeconds = 0.0f;  ///< --seconds: the video at most this long (0: the whole mission)
+    bool        m_deckCheck = false;    ///< --deckcheck: every screen at 1280x800, the smallest text measured
 };
 
 /** @brief The screens. */
 enum class ScreenE : int
 {
     TITLE, MAIN, OPTIONS, CONTROLS, SCORES, CREDITS, LOGBOOK, SLOTS, DIFFICULTY, EPISODE, STORY, PLAN, SHOP, PLAY,
-    RESULTS, FAILED, PILOTS, CONTINUE, NAME, PRACTICE, SURVIVAL, REPLAYS, STATS, MODS, QUIT
+    RESULTS, FAILED, PILOTS, CONTINUE, NAME, PRACTICE, SURVIVAL, REPLAYS, STATS, MODS, ARCHIVE, QUIT
+};
+
+/** @brief A paint for the pilots' ships (the archive's third page). */
+struct PaintDef
+{
+    const char *m_name;      ///< as the settings keep it ("" the hull's own colours)
+    Color       m_color;
+    float       m_amount;    ///< how much of the hull takes it
+    const char *m_need;      ///< the achievement that opens it ("" open from the start)
+    const char *m_title;     ///< its name (German; T() gives the English)
+};
+
+/** @return the paints, the hull's own first */
+const std::vector<PaintDef> &paints();
+
+/**
+ * @brief The flight school's gear: the middle of episode 2, with a rear gun of two modes, sidekicks and a special.
+ * @param[in] cat  the catalog
+ * @return the gear
+ */
+Loadout schoolLoadout( const Catalog &cat );
+
+/**
+ * @brief The weekly flight's rules by name.
+ * @param[in] rules  RuleE bits
+ * @return their names, joined ("" for none)
+ */
+std::string ruleNames( int rules );
+
+/** @brief A point of the ghost's flight: where the best flight of the same seed was, and its score then. */
+struct GhostPoint
+{
+    int16_t m_x = 0, m_y = 0;
+    int32_t m_score = 0;
 };
 
 /**
@@ -93,6 +134,20 @@ public:
     /** @brief Renders a picture of every model to a file (and quits). */
     void gallery( const std::string &file );
 
+    /**
+     * @brief Renders a replay (--replay) or a mission flown by the autopilot (--level, --at seconds) frame by frame
+     *        into a video through ffmpeg, with the mission's music under it.
+     * @return 0 when the video was written
+     */
+    int video();
+
+    /**
+     * @brief Draws every screen at the window's size (1280x800 for the Steam Deck) and reports the smallest text
+     *        drawn on each, in pixels.
+     * @return 0 when no text is smaller than 9 pixels
+     */
+    int deckCheck();
+
 private:
     // The flow.
     void go( ScreenE s );
@@ -127,10 +182,11 @@ private:
     void replays( float dt );
     void stats( float dt );
     void mods( float dt );
+    void archive( float dt );
 
     // Helpers.
     int  menu( const std::vector<std::string> &items, float x, float y, float w, int &sel, float size = 40.0f,
-               const std::vector<bool> *enabled = nullptr, bool center = false );
+               const std::vector<bool> *enabled = nullptr, bool center = false, const std::vector<bool> *dim = nullptr );
     void heading( const std::string &title, const std::string &sub = "" );
     void hints( const std::string &text );
     void queueStory( const std::string &key );
@@ -169,6 +225,16 @@ private:
     void countMission( bool won );
     void checkFeats();
     void drawToasts( float dt );
+    void applyPaints();
+    void noteSeen();
+    void loadArchive();
+    void startSchool();
+    void schoolStep( const PlayerInput &in );
+    void drawSchool();
+    std::string ghostPath() const;
+    void loadGhost();
+    void saveGhost();
+    void ghostStep();
 
     Options          m_opt;
     Catalog          m_cat;
@@ -288,6 +354,30 @@ private:
     float            m_toastT = 0.0f;
     bool             m_bossHit = false;        ///< the pilots were hit since the boss came
     int              m_statsTab = 0;
+
+    // The archive: the enemies met, the music heard, the paints.
+    int              m_archiveTab = 0;
+    std::vector<std::string> m_codex;          ///< the enemies it lists, in their order
+    std::vector<std::array<std::string, 3>> m_pieces;   ///< the music room: piece, German title, English title
+    std::string      m_archivePiece;           ///< the music room's piece playing ("" the menu's own)
+    std::string      m_codexShown;             ///< the enemy on the preview's field
+    int              m_paintPilot = 0;         ///< the pilot whose paint is chosen
+
+    // The flight school: lessons one after the other, nothing kept but its being finished.
+    bool             m_school = false;
+    int              m_lesson = 0;
+    float            m_lessonT = 0.0f;         ///< seconds in this lesson
+    float            m_lessonDone = -1.0f;     ///< seconds since it was done (-1: not yet)
+    float            m_lessonMeter = 0.0f;     ///< what it counts (distance flown, seconds of focus ...)
+    Vector2          m_lessonPos = { 0, 0 };
+
+    // The weekly flight and the ghost of the best flight of the same seed (daily and weekly).
+    bool             m_weekly = false;
+    int              m_rules = 0;              ///< the weekly flight's RuleE bits (0 otherwise)
+    std::vector<GhostPoint> m_ghost;           ///< the best flight, a point every second step
+    std::vector<GhostPoint> m_ghostRec;        ///< this flight's, the same way
+    long long        m_ghostBest = 0;          ///< the best flight's score at its end
+    int              m_ghostStep = 0;          ///< steps flown in this flight
 };
 
 }   // namespace zenith

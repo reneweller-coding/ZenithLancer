@@ -177,6 +177,14 @@ void World::begin( const Catalog *cat, const LevelDef *level, ModeE mode, int di
     m_scroll = m_scrollGoal = level ? level->m_scroll : 60.0f;
     m_noTimeline = level == nullptr;
     if ( level ) m_music = level->m_music;
+    // The harder difficulties grow into their full strength over the first two episodes, while the workshop's gear
+    // is still small (the autopilot lost episode 1's boss on Impossible every time, 30.10.2026).
+    if ( level && level->m_episode <= 2 && level->m_name != "survival" && level->m_name != "bossrush" )
+    {
+        float ease = level->m_episode == 1 ? 0.6f : 0.85f;
+        for ( float *v : { &m_diff.m_hp, &m_diff.m_fire, &m_diff.m_damage } )
+            if ( *v > 1.0f ) *v = 1.0f + ( *v - 1.0f ) * ease;
+    }
 }
 
 void World::addPlayer( int i, const Loadout &load, int lives )
@@ -206,6 +214,14 @@ void World::setPlus( int plus )
     m_diff.m_damage *= 1.0f + 0.15f * k;
     m_diff.m_credits *= 1.0f + 0.25f * k;
     if ( m_plus >= 2 ) m_diff.m_revenge = true;
+}
+
+void World::setRules( int rules )
+{
+    m_rules = rules;
+    if ( rule( RuleE::DOUBLE ) ) m_diff.m_fire *= 2.0f;
+    if ( rule( RuleE::FAST ) ) m_diff.m_speed *= 1.33f;
+    if ( rule( RuleE::TOUGH ) ) m_diff.m_hp *= 1.6f;
 }
 
 void World::refit( int i )
@@ -310,6 +326,20 @@ Vector2 World::worldPos( const Enemy &e, Vector2 off ) const
     Vector2 right = { -fwd.y, fwd.x };
     float   s = ( e.m_ground ? GroundFactor : 1.0f ) * e.m_def->m_scale;
     return { e.m_pos.x + ( right.x * off.x + fwd.x * off.y ) * s, e.m_pos.y + ( right.y * off.x + fwd.y * off.y ) * s };
+}
+
+void World::turn( int idx, float face )
+{
+    if ( idx < 0 || idx >= (int)m_enemies.size() ) return;
+    m_enemies[(size_t)idx].m_face = m_enemies[(size_t)idx].m_head = face;
+    // Parts follow their parent (parts of parts come after it in the list).
+    for ( Enemy &e : m_enemies )
+        if ( e.m_parent >= 0 && e.m_parent < (int)m_enemies.size() )
+        {
+            const Enemy &par = m_enemies[(size_t)e.m_parent];
+            e.m_pos = worldPos( par, e.m_off );
+            e.m_face = e.m_head = par.m_face;
+        }
 }
 
 int World::spawn( const EnemyDef *def, Vector2 pos, const Line *pathLine, int parent )
@@ -691,6 +721,8 @@ void World::step( const PlayerInput in[2] )
     moveLasers();
     movePickups();
     collide();
+    for ( Player &p : m_players )
+        if ( p.m_chainT > 0.0f && ( p.m_chainT -= Dt ) <= 0.0f ) p.m_chain = 0;
     compact();
     markShut();
     m_bullets.insert( m_bullets.end(), m_born.begin(), m_born.end() );
@@ -767,7 +799,9 @@ void World::movePlayer( int i, const PlayerInput &in )
     float power = p.m_gen ? p.m_gen->m_power : 30.0f;
     if ( p.m_ship ) power *= 1.0f + p.m_ship->m_genBonus;
     p.m_energy = std::min( p.m_energyMax, p.m_energy + power * Dt );
-    if ( p.m_shieldDef )
+    if ( rule( RuleE::NOSHIELD ) )
+        p.m_shield = 0.0f;
+    else if ( p.m_shieldDef )
     {
         if ( p.m_shieldWait > 0 )
             p.m_shieldWait -= Dt;
@@ -1134,7 +1168,7 @@ void World::firePlayer( int i, const PlayerInput &in )
     }
     if ( !in.m_fire ) return;
     int frontLv = std::clamp( p.m_load.m_frontLv, 1, 11 );
-    if ( p.m_front && p.m_frontT <= 0 )
+    if ( p.m_front && p.m_frontT <= 0 && !rule( RuleE::REAR ) )
     {
         float t = ( frontLv - 1 ) / 10.0f;
         float cost = p.m_front->m_energy.at( t );
@@ -1866,7 +1900,7 @@ void World::hitEnemy( int idx, float dmg, int owner, Vector2 at )
         if ( m_rng.chance( 0.3f ) ) emit( EvE::SPARK, at );
         return;
     }
-    e.m_hp -= dmg;
+    e.m_hp -= rule( RuleE::GLASS ) ? dmg * 2.0f : dmg;
     bool big = e.m_def->m_kind == EnemyKindE::BOSS || e.m_def->m_kind == EnemyKindE::PART || e.m_hpMax > 400.0f;
     // A flicker, not a glare: a new flash only once the last has faded (steady fire would keep a ship white).
     if ( e.m_flash < 0.15f ) e.m_flash = big ? 0.35f : 0.8f;
@@ -1895,7 +1929,15 @@ void World::killEnemy( int idx, int owner )
     int who = owner >= 0 ? owner : 0;
     if ( m_players[who].m_active )
     {
-        m_players[who].m_score += score;
+        // The chain: every kill before the last one's time runs out raises the score's multiplier (the money stays
+        // as it is: the workshop's economy does not ride on it).
+        Player &p = m_players[who];
+        ++p.m_chain;
+        p.m_chainT = chainTime();
+        p.m_bestChain = std::max( p.m_bestChain, p.m_chain );
+        m_stats.m_bestChain = std::max( m_stats.m_bestChain, p.m_chain );
+        float mult = chainMult( p.m_chain ) * ( rule( RuleE::TOUGH ) ? 1.5f : 1.0f );
+        p.m_score += (long long)std::lround( score * mult );
         if ( m_mode == ModeE::CAMPAIGN )
         {
             m_players[who].m_credits += score;
@@ -1993,10 +2035,12 @@ void World::hurtPlayer( int i, float dmg, Vector2 at, const EnemyDef *by, const 
         emit( EvE::SPARK, at );
         return;
     }
-    dmg *= m_diff.m_damage;
+    dmg *= m_diff.m_damage * ( rule( RuleE::GLASS ) ? 2.0f : 1.0f );
     p.m_damageTaken += dmg;
     m_stats.m_damage += dmg;
     ++p.m_hits;
+    p.m_chain = 0;
+    p.m_chainT = 0.0f;
     float fromShield = std::min( p.m_shield, dmg );
     p.m_shield -= fromShield;
     float rest = dmg - fromShield;
@@ -2206,11 +2250,22 @@ void World::collide()
         for ( Bullet &b : m_bullets )
         {
             if ( b.m_dead || b.m_player ) continue;
-            if ( dist2( b.m_pos, p.m_pos ) < ( r + b.m_radius * 0.85f ) * ( r + b.m_radius * 0.85f ) )
+            float hit = r + b.m_radius * 0.85f, d2 = dist2( b.m_pos, p.m_pos );
+            if ( d2 < hit * hit )
             {
                 b.m_dead = true;
                 hurtPlayer( i, b.m_damage, b.m_pos, b.m_src, "bullet" );
                 if ( !p.m_alive ) break;
+            }
+            else if ( !b.m_grazed && p.m_invuln <= 0 && d2 < ( hit + GrazeRange ) * ( hit + GrazeRange ) )
+            {
+                // A graze: a little score, and the chain waits on.
+                b.m_grazed = true;
+                ++p.m_grazes;
+                ++m_stats.m_grazes;
+                p.m_score += (long long)std::lround( 10.0f * chainMult( p.m_chain ) );
+                if ( p.m_chain > 0 ) p.m_chainT = chainTime();
+                emit( EvE::GRAZE, b.m_pos, 0, (float)i );
             }
         }
         for ( Laser &l : m_lasers )

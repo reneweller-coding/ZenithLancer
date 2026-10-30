@@ -30,6 +30,8 @@ In the game: main menu → **Mods** → switch it on (Enter / A). Leaving the sc
 - **Add** anything: a gun (`front` / `rear` in any file under `data/`), a hull, a sidekick, a generator, a shield, a
   special, an enemy and its model, a mission, an arcade pilot, a difficulty, a ground theme.
 - **Replace** anything by its name: a `front pulse` block in a mod is the Pulse Lance from then on.
+- A mod's enemies (with a `title`) show in the archive once they have been met. Replays keep a checksum of the data
+  they were flown with; one recorded with other mods is marked as possibly drifting.
 - **Stories**: German under `data/story/de/`, English under `data/story/en/` (same names as the German ones).
 - **A whole episode**: `data/episodes/e6.txt` with its missions under `data/levels/e6/`. It opens in the campaign after
   episode 5 has been finished.

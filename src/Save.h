@@ -39,6 +39,7 @@ struct Settings
     bool        m_softFlash = false;         ///< flashes and white-outs dimmed
     int         m_quality = -1;              ///< graphics: 0 performance, 1 balanced, 2 quality (-1: by the machine)
     std::vector<std::string> m_mods;         ///< the mods switched on (folders in <user>/mods)
+    std::string m_paint[2];                  ///< each pilot's paint (data/lang/paints.txt; "" the hull's own)
 
     /** @brief Reads them (missing values stay at their defaults). */
     void load( const std::string &path );
@@ -69,6 +70,11 @@ struct Profile
     std::set<std::string>                        m_flown;              ///< missions ever flown (the practice lists them)
     std::set<std::string>                        m_bosses;             ///< missions whose boss was met (practice: the boss alone)
     std::map<std::string, long long>             m_daily;              ///< survival: the best score of a day (YYYYMMDD)
+    std::map<std::string, long long>             m_weekly;             ///< the weekly flight: the best score of a week
+    std::set<std::string>                        m_seen;               ///< enemies met (the archive shows them)
+    std::set<std::string>                        m_heard;              ///< music pieces heard (the archive plays them)
+    bool                                         m_school = false;     ///< the flight school finished
+    int                                          m_scoring = 0;        ///< the scoring the lists were made under (2: chains)
 
     void load( const std::string &path );
     bool save( const std::string &path ) const;

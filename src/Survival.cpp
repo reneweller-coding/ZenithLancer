@@ -417,13 +417,34 @@ uint32_t dailySeed()
     char      date[16];
     snprintf( date, sizeof( date ), "%04d%02d%02d", lt ? lt->tm_year + 1900 : 2026, lt ? lt->tm_mon + 1 : 1,
               lt ? lt->tm_mday : 1 );
-    // FNV-1a over the digits, then stirred: neighbouring days get unrelated seeds.
+    return weekSeed( date );
+}
+
+std::string thisWeek()
+{
+    time_t    now = time( nullptr );
+    const tm *lt = localtime( &now );
+    char      week[16] = "2026-W01";
+    if ( lt ) strftime( week, sizeof( week ), "%G-W%V", lt );
+    return week;
+}
+
+uint32_t weekSeed( const std::string &week )
+{
+    // FNV-1a over the text, then stirred: neighbouring days and weeks get unrelated seeds.
     uint32_t h = 2166136261u;
-    for ( const char *c = date; *c; ++c ) h = ( h ^ (unsigned char)*c ) * 16777619u;
+    for ( char c : week ) h = ( h ^ (unsigned char)c ) * 16777619u;
     h ^= h >> 16;
     h *= 0x7feb352du;
     h ^= h >> 15;
     return h ? h : 1u;
+}
+
+int weeklyRules( uint32_t seed )
+{
+    int a = (int)( seed % 8u ), b = (int)( ( seed >> 8 ) % 7u );
+    if ( b >= a ) ++b;
+    return ( 1 << a ) | ( 1 << b );
 }
 
 }   // namespace zenith

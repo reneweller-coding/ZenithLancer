@@ -44,6 +44,10 @@ Bosse:     Wer einen Bosskampf verliert, darf den Boss direkt noch einmal angehe
            mit voller Panzerung und allem, was vorher verdient war.
 Geheimes:  Manche Einsätze verbergen ein Peilsignal. Wer es findet, entdeckt einen
            geheimen Kurs.
+Kette:     Jeder Abschuss innerhalb von zwei Sekunden nach dem letzten verlängert die
+           Kette und hebt den Punkte-Multiplikator (bis fünffach). Ein Treffer bricht sie.
+           Kugeln, die knapp vorbeiziehen (Streifschuss), bringen Punkte und halten die
+           Kette am Leben. Die Kredite der Kampagne bleiben davon unberührt.
 
 Spielarten
 ----------
@@ -54,11 +58,18 @@ Kampagne für zwei:  Zwei Piloten mit eigener Ausrüstung und eigener Kasse. In 
 Neues Spiel+:       Nach dem Ende der Kampagne geht der Speicherplatz mit aller Ausrüstung
                     wieder in Episode 1 weiter, die Gegner zäher und schneller, alle Waren offen.
 Überleben:          Welle um Welle bis zum letzten Leben. Der Tagesflug hat für alle am selben
-                    Tag dieselben Wellen.
+                    Tag dieselben Wellen, der Wochenflug eine Woche lang dieselben und zwei
+                    Sonderregeln (Doppelfeuer, Glaskanone, Nur Heck ...). Im Tages- und im
+                    Wochenflug fliegt der Geist deines besten Flugs als heller Ring mit.
+Flugschule:         Neun kurze Lektionen: Fliegen, Feuer, Fokus, Streifschuss, Kette, Heckwaffe,
+                    Spezialwaffe, Seitenschiffe, Werkstatt. Hier kann nichts passieren.
+Archiv:             Jeder Gegner, dem du begegnet bist, als Modell mit seinen Werten; das
+                    Musikzimmer mit jedem gehörten Stück; Lackierungen für beide Piloten, die
+                    Erfolge freischalten.
 Übung:              Jeder schon geflogene Einsatz, ganz oder nur sein Boss, mit der Ausrüstung
                     der Episode oder eines Speicherplatzes. Nichts davon zählt.
 Wiederholungen:     Jeder Einsatz wird aufgenommen und lässt sich ansehen (Tab / Y: Tempo).
-Erfolge:            44 Erfolge und eine Statistik über alle Spiele.
+Erfolge:            53 Erfolge und eine Statistik über alle Spiele.
 Mods:               Eigene Waffen, Schiffe, Gegner und Einsätze im Ordner mods (siehe
                     docs/MODDING.md im Quelltext oder mods/example).
 
@@ -130,6 +141,10 @@ Bosses:    lose a boss fight and you may fight the boss again from its start,
            with full armour and everything you earned before it.
 Blueprints: some missions hide blueprints for special equipment.
 Secrets:   some missions hide a beacon. Find it and a secret course opens.
+Chain:     every kill within two seconds of the last one extends the chain and raises
+           the score multiplier (up to five times). A hit breaks it. Bullets that pass
+           close by (grazes) score points and keep the chain alive. The campaign's credits
+           are not touched by it.
 
 Ways to play
 ------------
@@ -140,11 +155,17 @@ Campaign for two:  two pilots with gear and money of their own. In the workshop 
 New Game+:         after the campaign's end the save slot goes on in episode 1 with all its
                    gear, the enemies tougher and faster, every good on sale.
 Survival:          wave after wave until the last life. The daily flight has the same waves
-                   for everyone on the same day.
+                   for everyone on the same day, the weekly flight the same for a week and two
+                   house rules (Double Fire, Glass Cannon, Rear Only ...). In the daily and the
+                   weekly flight the ghost of your best flight flies along as a pale ring.
+Flight school:     nine short lessons: flying, fire, focus, grazes, chains, the rear gun, the
+                   special, sidekicks, the workshop. Nothing can happen to you there.
+Archive:           every enemy you have met as a model with its numbers; the music room with
+                   every piece you have heard; paints for both pilots, opened by achievements.
 Practice:          any mission flown before, whole or just its boss, with the episode's gear
                    or a save slot's. None of it counts.
 Replays:           every mission is recorded and can be watched (Tab / Y: speed).
-Achievements:      44 achievements and statistics across all games.
+Achievements:      53 achievements and statistics across all games.
 Mods:              your own guns, ships, enemies and missions in the mods folder (see
                    docs/MODDING.md in the source or mods/example).
 

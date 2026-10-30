@@ -116,6 +116,8 @@ void Settings::load( const std::string &path )
         else if ( k == "softflash" ) m_softFlash = f != 0;
         else if ( k == "quality" ) m_quality = (int)f;
         else if ( k == "mod" ) m_mods.push_back( v );
+        else if ( k == "paint1" ) m_paint[0] = v;
+        else if ( k == "paint2" ) m_paint[1] = v;
     }
 }
 
@@ -131,6 +133,8 @@ bool Settings::save( const std::string &path ) const
     fprintf( f, "voices %.2f\nbullets %d\nspeed %.2f\nautobomb %d\nsoftflash %d\nquality %d\n", m_voices, m_bullets,
              m_speed, m_autoBomb ? 1 : 0, m_softFlash ? 1 : 0, m_quality );
     for ( const std::string &m : m_mods ) fprintf( f, "mod %s\n", m.c_str() );
+    for ( int i = 0; i < 2; ++i )
+        if ( !m_paint[i].empty() ) fprintf( f, "paint%d %s\n", i + 1, m_paint[i].c_str() );
     for ( const std::string &b : m_binds ) fprintf( f, "%s\n", b.c_str() );
     return endWrite( f, path );
 }
@@ -151,11 +155,17 @@ void Profile::load( const std::string &path )
             for ( const std::string &c : split( v ) ) m_flown.insert( c );
         else if ( k == "bosses" )
             for ( const std::string &c : split( v ) ) m_bosses.insert( c );
-        else if ( k == "daily" )
+        else if ( k == "daily" || k == "weekly" )
         {
             std::vector<std::string> w = split( v );
-            if ( w.size() >= 2 ) m_daily[w[0]] = atoll( w[1].c_str() );
+            if ( w.size() >= 2 ) ( k == "daily" ? m_daily : m_weekly )[w[0]] = atoll( w[1].c_str() );
         }
+        else if ( k == "seen" )
+            for ( const std::string &c : split( v ) ) m_seen.insert( c );
+        else if ( k == "heard" )
+            for ( const std::string &c : split( v ) ) m_heard.insert( c );
+        else if ( k == "school" ) m_school = atoi( v.c_str() ) != 0;
+        else if ( k == "scoring" ) m_scoring = atoi( v.c_str() );
         else if ( k == "score" )
         {
             // score <list> <score> <episode> <pilot> <name with spaces>
@@ -169,6 +179,14 @@ void Profile::load( const std::string &path )
             m_scores[w[0]].push_back( h );
         }
     }
+    // Scores from before the chain (1.0.0's first scoring) are kept apart: the lists start afresh under the new one.
+    if ( m_scoring < 2 )
+    {
+        std::map<std::string, std::vector<HighScore>> kept;
+        for ( auto &[key, list] : m_scores ) kept[key.rfind( "old_", 0 ) == 0 ? key : "old_" + key] = list;
+        m_scores = kept;
+        m_scoring = 2;
+    }
 }
 
 bool Profile::save( const std::string &path ) const
@@ -178,7 +196,10 @@ bool Profile::save( const std::string &path ) const
     fprintf( f, "episodes %d\narcade %d\nmaxdiff %d\nbossrush %d\nkills %lld\nseconds %.0f\ncubes %s\n", m_episodes,
              m_arcadeEpisodes, m_maxDiff, m_bossRush ? 1 : 0, m_kills, m_seconds, join( m_cubes ).c_str() );
     fprintf( f, "flown %s\nbosses %s\n", join( m_flown ).c_str(), join( m_bosses ).c_str() );
+    fprintf( f, "seen %s\nheard %s\nschool %d\nscoring %d\n", join( m_seen ).c_str(), join( m_heard ).c_str(), m_school ? 1 : 0,
+             m_scoring );
     for ( const auto &[day, best] : m_daily ) fprintf( f, "daily %s %lld\n", day.c_str(), best );
+    for ( const auto &[week, best] : m_weekly ) fprintf( f, "weekly %s %lld\n", week.c_str(), best );
     for ( const auto &[k, list] : m_scores )
         for ( const HighScore &h : list )
             fprintf( f, "score %s %lld %d %s %s\n", k.c_str(), h.m_score, h.m_episode, h.m_pilot.empty() ? "-" : h.m_pilot.c_str(),

@@ -10,6 +10,7 @@
 #include "Files.h"
 #include "Lang.h"
 #include "Rumble.h"
+#include "Survival.h"
 #include "Ui.h"
 
 #include <raylib.h>
@@ -37,6 +38,8 @@ void App::startMission( const std::string &name )
     head.m_difficulty = camp ? m_camp.m_difficulty : m_diff;
     // The survival flight's World plays from its own seed too: a day's flight is the same for everyone.
     head.m_seed = m_survival ? m_survivalSeed : (uint32_t)( GetTime() * 1000.0 ) ^ 0x5eed;
+    head.m_rules = m_survival ? m_rules : 0;
+    head.m_data = m_cat.m_hash;
     head.m_lang = language();
     if ( camp )
     {
@@ -63,8 +66,9 @@ void App::startMission( const std::string &name )
     }
     m_players = head.m_pilots;
     startWorld( m_world, m_cat, head );
-    m_prof.m_flown.insert( name );
+    if ( !m_school ) m_prof.m_flown.insert( name );
     m_rec.begin( head );
+    loadGhost();
     {
         char   stamp[32];
         time_t now = time( nullptr );
@@ -115,6 +119,15 @@ void App::startBossRush()
 void App::endMission( bool won )
 {
     m_last = m_world.m_stats;
+    if ( m_school )
+    {
+        // The flight school keeps only that it was finished (schoolStep wrote it down).
+        m_school = m_practice = false;
+        m_prof.save( userDir() + "profile.txt" );
+        newDemo();
+        go( ScreenE::MAIN );
+        return;
+    }
     m_prof.m_kills += m_last.m_kills;
     logMission( won ? "won" : "lost" );
     saveReplay( won );
@@ -181,10 +194,12 @@ void App::endMission( bool won )
     }
     if ( m_survival )
     {
-        // The survival flight: its time counts; a day's flight keeps its best score.
-        if ( m_daily )
+        // The survival flight: its time counts; a day's or a week's flight keeps its best score, and its best
+        // flight becomes the ghost the next flights of the same seed fly against.
+        if ( m_daily || m_weekly )
         {
-            long long &best = m_prof.m_daily[today()];
+            long long &best = m_weekly ? m_prof.m_weekly[thisWeek()] : m_prof.m_daily[today()];
+            if ( m_score[0] > m_ghostBest || m_ghost.empty() ) saveGhost();
             best = std::max( best, m_score[0] );
         }
         m_scoreKey = diffKey();
@@ -214,7 +229,8 @@ void App::play( float dt )
         m_pauseSel = 0;
         m_audio.play( m_paused ? SfxE::BACK : SfxE::OK );
     }
-    if ( !m_paused && !IsWindowFocused() && !m_in.scripted() && m_outroT < 0 && m_screen == ScreenE::PLAY ) m_paused = true;
+    if ( !m_paused && !IsWindowFocused() && !m_in.scripted() && m_opt.m_video.empty() && m_outroT < 0 && m_screen == ScreenE::PLAY )
+        m_paused = true;
     if ( !m_paused )
     {
         // The aid "game speed" slows the whole game down.
@@ -268,6 +284,8 @@ void App::play( float dt )
                 m_rec.push( in );
             }
             m_world.step( in );
+            if ( m_school ) schoolStep( in[0] );
+            ghostStep();
             m_in.consumed();
             m_view.events( m_world );
             m_audio.events( m_world );
@@ -367,6 +385,7 @@ void App::play( float dt )
             ++steps;
         }
         if ( steps >= 5 ) m_acc = 0;
+        noteSeen();
         m_introT += dt;
         m_radioT += dt;
         // A call stays on screen while its voice speaks.
@@ -528,6 +547,24 @@ void App::hud()
         y += 22 * k;
         ui::text( fmt( p.m_score ), x, y, 34, WHITE );
         y += 44 * k;
+        // The chain: its multiplier and the time it still waits; the ghost's score at the same moment.
+        const Color pink = { 255, 120, 220, 255 };
+        if ( p.m_chain > 1 )
+        {
+            ui::text( tf( "KETTE %d", p.m_chain ), x, y, 18, pink );
+            ui::text( tf( "x%.2f", chainMult( p.m_chain ) ), x + w, y - 4 * k, 24, pink, ui::AlignE::RIGHT );
+            ui::bar( { x, y + 24 * k, w, 5 * k }, p.m_chainT / m_world.chainTime(), pink );
+        }
+        else
+            ui::text( "KETTE", x, y, 18, ui::Dim );
+        y += 40 * k;
+        if ( idx == 0 && !m_ghost.empty() )
+        {
+            size_t g = std::min( m_ghost.size() - 1, (size_t)( m_ghostStep / 2 ) );
+            ui::text( "GEIST", x, y, 18, { 150, 215, 255, 255 } );
+            ui::text( fmt( m_ghost[g].m_score ), x + w, y - 2 * k, 22, { 150, 215, 255, 255 }, ui::AlignE::RIGHT );
+            y += 34 * k;
+        }
         if ( m_mode == ModeE::CAMPAIGN && !m_practice )
         {
             ui::text( "KREDITE", x, y, 18, ui::Dim );
@@ -583,13 +620,15 @@ void App::hud()
                 ui::bar( { x + 18 * k, y + 32 * k, pw - 36 * k, 6 * k }, prog, { 140, 160, 200, 255 } );
             }
             ui::text( L( m_cat.difficulty( m_world.m_diffIndex ).m_title, m_cat.difficulty( m_world.m_diffIndex ).m_titleEn ), x + 18 * k, y + 48 * k, 18, ui::Dim );
+            if ( m_world.m_rules ) ui::text( ruleNames( m_world.m_rules ), x + 18 * k, y + 72 * k, 18, ui::Gold );
         }
     }
     else
     {
         // A narrow screen: a thin strip over the field.
         float y = f.y + 8 * k;
-        ui::text( fmt( p0.m_score ), f.x + 12 * k, y, 26, WHITE );
+        float sw = ui::text( fmt( p0.m_score ), f.x + 12 * k, y, 26, WHITE );
+        if ( p0.m_chain > 1 ) ui::text( tf( "x%.2f", chainMult( p0.m_chain ) ), f.x + 24 * k + sw, y + 2 * k, 22, { 255, 120, 220, 255 } );
         ui::bar( { f.x + f.width - 212 * k, y + 4 * k, 200 * k, 8 * k }, p0.m_shieldDef ? p0.m_shield / std::max( 1.0f, p0.m_shieldDef->m_max ) : 0, { 90, 170, 255, 255 } );
         ui::bar( { f.x + f.width - 212 * k, y + 16 * k, 200 * k, 8 * k }, p0.m_armor / std::max( 1.0f, p0.m_armorMax ), { 120, 230, 140, 255 } );
         ui::bar( { f.x + f.width - 212 * k, y + 28 * k, 200 * k, 5 * k }, p0.m_energy / std::max( 1.0f, p0.m_energyMax ), { 255, 220, 90, 255 } );
@@ -639,13 +678,14 @@ void App::hud()
     {
         float a = std::min( 1.0f, std::min( m_introT * 2.0f, ( 4.0f - m_introT ) * 1.5f ) );
         float y = f.y + f.height * 0.3f;
-        ui::text( ( m_mode == ModeE::CAMPAIGN || lv->m_episode > 0 ) && !m_survival && lv->m_name != "bossrush" ? tf( "Episode %d", lv->m_episode ) : "",
+        ui::text( ( m_mode == ModeE::CAMPAIGN || lv->m_episode > 0 ) && !m_survival && !m_school && lv->m_name != "bossrush" ? tf( "Episode %d", lv->m_episode ) : "",
                   f.x + f.width * 0.5f, y, 26,
                   { 110, 200, 255, (unsigned char)( 255 * a ) }, ui::AlignE::CENTER );
         ui::text( L( lv->m_title, lv->m_titleEn ), f.x + f.width * 0.5f, y + 40 * k, 58, { 255, 255, 255, (unsigned char)( 255 * a ) }, ui::AlignE::CENTER );
     }
     if ( m_outroT > 0.2f && m_won && !m_replaying )
         ui::text( m_mode == ModeE::ARCADE ? "ABSCHNITT GESCHAFFT" : "EINSATZ ERFÜLLT", f.x + f.width * 0.5f, f.y + f.height * 0.4f, 52, ui::Good, ui::AlignE::CENTER );
+    drawSchool();
     if ( m_replaying )
     {
         float a = 0.6f + 0.4f * std::sin( m_t * 3.0f );
@@ -713,7 +753,13 @@ void App::pauseMenu( float dt )
         m_paused = false;
         logMission( "abort" );
         saveReplay( false );
-        if ( m_practice )
+        if ( m_school )
+        {
+            m_school = m_practice = false;
+            newDemo();
+            go( ScreenE::MAIN );
+        }
+        else if ( m_practice )
         {
             m_practiceStep = 1;
             go( ScreenE::PRACTICE );

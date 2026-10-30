@@ -140,6 +140,11 @@ public:
     int   m_quality = 2;          ///< 0 performance, 1 balanced, 2 quality (bloom passes, particles; the size is init's)
     int   m_bulletStyle = 0;      ///< enemy bullets: 0 as made, 1 strong, 2 for red-green, 3 for blue-yellow colour blindness
     bool  m_softFlash = false;    ///< flashes, the hit's red and explosions' light dimmed
+    Color m_paint[2] = { WHITE, WHITE };      ///< each pilot's paint (the hull and sidekicks in its colour)
+    float m_paintAmount[2] = { 0.0f, 0.0f };  ///< ... how much of it (0: the hull's own colours)
+    /** @brief Where the ghost (the best flight of the same seed) flies: drawn when m_ghostOn. */
+    Vector2 m_ghost = { 0, 0 };
+    bool    m_ghostOn = false;
 
     static Forge s_forge;         ///< the models, shared by every renderer
     /** @brief A picture being drawn around the renderer (pictures of screens): drawn into again after draw(). */
@@ -185,6 +190,7 @@ private:
     Rng               m_rng;
     double            m_scroll = 0.0;
     float             m_groundV = 0.0f;
+    Vector4           m_paintNow = { 0, 0, 0, 0 };   ///< the paint of the model drawn now (the shader's "paint")
 };
 
 }   // namespace zenith

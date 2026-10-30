@@ -1,0 +1,14 @@
+{
+  "name": "Zenith Lancer reroll 2",
+  "style": "instrumental video game soundtrack with modern production, clear genre, high quality mix",
+  "key": "A minor",
+  "bpm": 140,
+  "timesig": "4",
+  "takes": 4,
+  "format": "flac",
+  "seed": 5501,
+  "cues": [
+    {"id": "e4_b", "type": "loop", "bars": 24, "bpm": 132, "key": "D minor", "style": "dark organic downtempo electronica in an alien hive, wet clicking insect percussion, deep growling sub bass, eerie breathing synth pads, sparse hollow wooden flute motif, slow and alive, instrumental, no vocals, no singing, no piano", "hint": "instrumental dark electronica video game level music, constant mood, no intro, no ending"},
+    {"id": "secret", "type": "loop", "bars": 16, "bpm": 128, "key": "C minor", "style": "8-bit chiptune video game music from a retro sound chip, square wave lead melody, fast echoing arpeggios, triangle bass, noise channel drums, mysterious and playful, instrumental, no vocals, no singing", "hint": "instrumental chiptune video game secret level music, constant mood, no intro, no ending"}
+  ]
+}

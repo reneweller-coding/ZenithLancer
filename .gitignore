@@ -10,3 +10,5 @@ work/
 # dist/ the release packages (Deploy/build_release.ps1).
 dist/
 __pycache__/
+# tools/paths.local.json: where the generators live on this machine (tools/paths.py).
+tools/paths.local.json

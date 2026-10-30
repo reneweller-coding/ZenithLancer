@@ -52,6 +52,8 @@ Free and open source under the AGPL-3.0, in English and German, for Windows, Lin
 - A daily survival run, New Game+, practice for every boss and mission you have reached.
 - Seven difficulties.
 - Replays, achievements and statistics, a play log.
+- Score chains and grazes, a weekly flight with house rules, the ghost of your best daily or weekly flight.
+- A flight school; the archive of every enemy met, a music room and paints for your ship.
 - Accessibility: bullet contrast and colour-blind palettes, game speed, auto-bomb, reduced flashes, text size,
   rebindable keys and buttons, mouse control.
 - Speaker portraits and voiced radio calls; music in layers that follows the fight.
@@ -163,6 +165,8 @@ Frei und quelloffen unter der AGPL-3.0, auf Deutsch und Englisch, für Windows, 
 - Tägliches Überleben, New Game+, Training für jeden erreichten Boss und jede erreichte Mission.
 - Sieben Schwierigkeitsgrade.
 - Wiederholungen, Erfolge und Statistiken, ein Spielprotokoll.
+- Punkteketten und Streifschüsse, ein Wochenflug mit Sonderregeln, der Geist des besten Tages- oder Wochenflugs.
+- Eine Flugschule; das Archiv aller getroffenen Gegner, ein Musikzimmer und Lackierungen fürs Schiff.
 - Barrierefreiheit: Kugelkontrast und Farbpaletten für Farbfehlsichtige, Spieltempo, automatische Bombe, weniger
   Blitze, Textgröße, frei belegbare Tasten und Knöpfe, Maussteuerung.
 - Porträts der Sprecher und gesprochene Funksprüche; Musik in Schichten, die dem Kampf folgt.

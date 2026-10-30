@@ -59,6 +59,7 @@ void App::leave2()
 
 Loadout App::practiceLoad( const LevelDef &lv ) const
 {
+    if ( m_school ) return schoolLoadout( m_cat );
     if ( m_practiceGear >= 1 && m_practiceGear <= 3 && fs::exists( slotPath( m_practiceGear - 1 ) ) )
     {
         Campaign c;
@@ -232,20 +233,21 @@ void App::logMission( const char *result )
 {
     // One line a mission in <user>/playlog.txt (tools/playlog_report.py sums them up): what was flown, how it
     // ended, where and by what the pilots were shot down.
-    if ( !m_opt.m_test.empty() || m_opt.m_bench || !m_world.m_level ) return;
+    if ( !m_opt.m_test.empty() || m_opt.m_bench || !m_world.m_level || m_school || !m_opt.m_video.empty() ) return;
     std::ofstream f( userDir() + "playlog.txt", std::ios::app );
     if ( !f ) return;
     char   stamp[32];
     time_t now = time( nullptr );
     strftime( stamp, sizeof( stamp ), "%Y-%m-%d %H:%M", localtime( &now ) );
     const Stats &st = m_world.m_stats;
-    const char  *mode = m_practice ? "practice" : m_survival ? ( m_daily ? "daily" : "survival" )
+    const char  *mode = m_practice ? "practice" : m_survival ? ( m_weekly ? "weekly" : m_daily ? "daily" : "survival" )
                       : m_mode == ModeE::ARCADE ? "arcade" : m_mode == ModeE::BOSSRUSH ? "bossrush" : "campaign";
     const Loadout &o = m_world.m_players[0].m_load;
     f << stamp << " v=" << ZENITH_VERSION << " mode=" << mode << " mission=" << m_world.m_level->m_name
       << " diff=" << m_cat.difficulty( m_world.m_diffIndex ).m_name << " plus=" << m_world.m_plus << " pilots=" << m_players
       << " result=" << result << " time=" << (int)st.m_time << " deaths=" << st.m_deaths << " damage=" << (int)st.m_damage
       << " kills=" << st.m_kills << "/" << st.m_spawned << " credits=" << st.m_credits << " bosstries=" << m_bossTries
+      << " chain=" << st.m_bestChain << " grazes=" << st.m_grazes << " rules=" << m_world.m_rules
       << " speed=" << m_set.m_speed << " gear=" << o.m_ship << "," << o.m_front << ":" << o.m_frontLv << ","
       << ( o.m_rear.empty() ? "-" : o.m_rear ) << ":" << o.m_rearLv << "," << o.m_gen << "," << o.m_shield;
     if ( !st.m_deathNotes.empty() )
@@ -394,12 +396,39 @@ namespace zenith
 
 // ---------------------------------------------------------------------------------------------------- survival
 
+const char *const RuleTitles[RuleCount] = { "Doppelfeuer", "Glaskanone", "Eile", "Ohne Schild",
+                                             "Ein Leben",   "Gepanzert",  "Hast", "Nur Heck" };
+const char *const RuleTexts[RuleCount] = {
+    "Die Gegner feuern doppelt so oft.",
+    "Deine Waffen und die Treffer der Gegner zählen doppelt.",
+    "Gegner und Kugeln sind ein Drittel schneller.",
+    "Kein Schild.",
+    "Keine Leben in Reserve.",
+    "Die Gegner halten 60 % mehr aus und bringen die Hälfte mehr Punkte.",
+    "Die Kette bricht schon nach einer Sekunde.",
+    "Die Frontkanone schweigt: Heckwaffe und Seitenschiffe kämpfen.",
+};
+
+std::string ruleNames( int rules )
+{
+    std::string out;
+    for ( int i = 0; i < RuleCount; ++i )
+        if ( rules & ( 1 << i ) ) out += ( out.empty() ? "" : "  ·  " ) + std::string( T( RuleTitles[i] ) );
+    return out;
+}
+
 void App::startSurvival()
 {
-    // The endless flight under arcade rules: three lives, no continues, the waves from the seed.
+    // The endless flight under arcade rules: three lives, no continues, the waves from the seed. The weekly flight's
+    // rules may take the lives in reserve or the front gun (then the rear gun fights at the front gun's power).
     m_cat.m_levels["survival"] = survival( m_cat, m_survivalSeed );
     m_carry[0] = m_cat.m_arcadeShips[(size_t)m_pilot[0]].m_loadout;
-    m_lives[0] = 3;
+    if ( m_rules & (int)RuleE::REAR )
+    {
+        if ( m_carry[0].m_rear.empty() || !m_cat.weapon( m_carry[0].m_rear ) ) m_carry[0].m_rear = "tailgun";
+        m_carry[0].m_rearLv = std::max( m_carry[0].m_rearLv, m_carry[0].m_frontLv );
+    }
+    m_lives[0] = m_rules & (int)RuleE::ONELIFE ? 1 : 3;
     m_score[0] = m_score[1] = 0;
     m_continues = 0;
     m_players = 1;
@@ -414,22 +443,40 @@ void App::survivalMenu( float dt )
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     heading( "Überleben", "Welle um Welle, Boss um Boss, bis nichts mehr geht." );
-    std::string day = today();
+    std::string day = today(), week = thisWeek();
+    int         rules = weeklyRules( weekSeed( week ) );
     auto        best = m_prof.m_daily.find( day );
-    std::vector<std::string> items = { tf( "Tagesflug vom %s", day.c_str() ), T( "Freier Flug" ), T( "Zurück" ) };
-    float pw = 900 * k;
-    ui::panel( { W * 0.5f - pw * 0.5f, H * 0.3f - 30 * k, pw, 330 * k } );
+    auto        bestWeek = m_prof.m_weekly.find( week );
+    std::vector<std::string> items = { tf( "Tagesflug vom %s", day.c_str() ), tf( "Wochenflug %s", week.c_str() ), T( "Freier Flug" ),
+                                       T( "Zurück" ) };
+    float pw = 1000 * k;
+    ui::panel( { W * 0.5f - pw * 0.5f, H * 0.3f - 30 * k, pw, 470 * k } );
     int c = menu( items, W * 0.5f, H * 0.3f, pw - 80 * k, m_sel, 36, nullptr, true );
-    const char *about = m_sel == 0 ? "Für alle am selben Tag dieselben Wellen, auf Normal. Dein bester Tagesflug zählt."
-                      : m_sel == 1 ? "Neue Wellen bei jedem Flug, die Schwierigkeit nach Wahl." : "";
-    for ( size_t i = 0; const std::string &l : ui::wrap( T( about ), pw - 100 * k, 24 ) )
-        ui::text( l, W * 0.5f, H * 0.3f + 200 * k + ( i++ ) * 32 * k, 24, ui::Ink, ui::AlignE::CENTER );
-    if ( best != m_prof.m_daily.end() )
-        ui::text( tf( "Heute bester Flug: %s Punkte", fmt( best->second ).c_str() ), W * 0.5f, H * 0.3f + 270 * k, 24, ui::Gold, ui::AlignE::CENTER );
-    hints( "Eingabe / A: wählen    Esc / B: zurück" );
-    if ( c == 2 || m_in.back() )
+    std::string about = m_sel == 0 ? T( "Für alle am selben Tag dieselben Wellen, auf Normal. Dein bester Tagesflug zählt, und sein Geist fliegt mit." )
+                      : m_sel == 1 ? std::string( T( "Eine Woche lang dieselben Wellen und zwei Sonderregeln:" ) ) + " " + ruleNames( rules ) + "."
+                      : m_sel == 2 ? T( "Neue Wellen bei jedem Flug, die Schwierigkeit nach Wahl." ) : "";
+    float ay = H * 0.3f + 250 * k;
+    for ( const std::string &l : ui::wrap( about, pw - 100 * k, 24 ) )
     {
-        m_survival = m_daily = false;
+        ui::text( l, W * 0.5f, ay, 24, ui::Ink, ui::AlignE::CENTER );
+        ay += 32 * k;
+    }
+    if ( m_sel == 1 )
+        for ( int i = 0; i < RuleCount; ++i )
+            if ( rules & ( 1 << i ) )
+            {
+                ui::text( std::string( T( RuleTitles[i] ) ) + ": " + T( RuleTexts[i] ), W * 0.5f, ay, 22, ui::Gold, ui::AlignE::CENTER );
+                ay += 30 * k;
+            }
+    if ( m_sel == 0 && best != m_prof.m_daily.end() )
+        ui::text( tf( "Heute bester Flug: %s Punkte", fmt( best->second ).c_str() ), W * 0.5f, ay, 24, ui::Gold, ui::AlignE::CENTER );
+    if ( m_sel == 1 && bestWeek != m_prof.m_weekly.end() )
+        ui::text( tf( "Diese Woche bester Flug: %s Punkte", fmt( bestWeek->second ).c_str() ), W * 0.5f, ay, 24, ui::Gold, ui::AlignE::CENTER );
+    hints( "Eingabe / A: wählen    Esc / B: zurück" );
+    if ( c == 3 || m_in.back() )
+    {
+        m_survival = m_daily = m_weekly = false;
+        m_rules = 0;
         go( ScreenE::MAIN );
         return;
     }
@@ -438,10 +485,12 @@ void App::survivalMenu( float dt )
     m_players = 1;
     m_survival = true;
     m_daily = c == 0;
-    m_survivalSeed = m_daily ? dailySeed() : (uint32_t)( GetTime() * 1000.0 ) ^ 0x51ab;
-    if ( m_daily )
+    m_weekly = c == 1;
+    m_rules = m_weekly ? rules : 0;
+    m_survivalSeed = m_daily ? dailySeed() : m_weekly ? weekSeed( week ) : (uint32_t)( GetTime() * 1000.0 ) ^ 0x51ab;
+    if ( m_daily || m_weekly )
     {
-        // The day's flight is the same for everyone: Normal.
+        // The day's and the week's flights are the same for everyone: Normal.
         m_diff = std::min( 2, (int)m_cat.m_difficulties.size() - 1 );
         m_pilotStep = 0;
         go( ScreenE::PILOTS );
@@ -560,8 +609,11 @@ void App::replays( float dt )
           h.m_end == ReplayEndE::WON ? ui::Good : ui::Ink );
     bool old = h.m_format > ReplayFormat;
     bool other = h.m_version != ZENITH_VERSION;
+    // Other data (a mod, a changed file) plays another game from the same input.
+    bool data = !h.m_data.empty() && h.m_data != m_cat.m_hash;
     if ( old ) fact( "", T( "Aus einer neueren Fassung: nicht abspielbar." ), ui::Warn );
     else if ( other ) fact( "", tf( "Aufgenommen mit %s: kann abweichen.", h.m_version.c_str() ), ui::Warn );
+    else if ( data ) fact( "", T( "Mit anderen Spieldaten aufgenommen (Mod?): kann abweichen." ), ui::Warn );
     hints( "Eingabe / A: abspielen    Esc / B: zurück" );
     if ( c >= 0 && !old ) startReplay( m_replayList[(size_t)( first + c )] );
     else if ( m_in.back() ) go( ScreenE::MAIN );
@@ -578,6 +630,13 @@ void App::countMission( bool won )
     m_feats.add( "bosses", st.m_bossKills );
     m_feats.add( "deaths", st.m_deaths );
     m_feats.add( "seconds", st.m_time );
+    m_feats.max( "max_chain", st.m_bestChain );
+    m_feats.add( "grazes", st.m_grazes );
+    {
+        int seen = 0;
+        for ( const std::string &n : m_codex ) seen += m_prof.m_seen.count( n ) ? 1 : 0;
+        m_feats.max( "seen", seen );
+    }
     for ( const std::string &c : st.m_cubes ) m_feats.once( "cubes", c );
     for ( const std::string &p : st.m_plans ) m_feats.once( "plans", p );
     if ( won )
@@ -600,6 +659,7 @@ void App::countMission( bool won )
     {
         m_feats.max( "survival_seconds", st.m_time );
         if ( m_daily ) m_feats.add( "survival_daily" );
+        if ( m_weekly ) m_feats.add( "weekly" );
     }
     if ( m_mode == ModeE::BOSSRUSH && won )
     {
@@ -611,7 +671,7 @@ void App::countMission( bool won )
 
 void App::checkFeats()
 {
-    if ( !m_opt.m_test.empty() ) return;
+    if ( !m_opt.m_test.empty() || !m_opt.m_video.empty() || m_opt.m_deckCheck ) return;
     for ( const AchievementDef *a : newlyUnlocked( m_feats, m_achieve, today() ) )
     {
         m_toasts.push_back( a );

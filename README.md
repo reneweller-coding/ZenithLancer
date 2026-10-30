@@ -70,6 +70,8 @@ her from world to world.
 - **Practice:** any mission you have flown, whole or straight to its boss.
 - **Survival:** endless waves and bosses; the daily flight has the same waves for everyone on the same day.
 - **Replays** of your runs, **achievements** and **statistics**.
+- **Chains and grazes** for the score, a **weekly flight** with house rules and the **ghost** of your best flight.
+- A **flight school**, and the **archive**: every enemy met, the music room, paints for your ship.
 - **Accessibility:** bullet contrast and colour-blind palettes, the game speed, auto-bomb, reduced flashes.
 - **Graphics quality** settings and a **benchmark mode**, made for the Steam Deck.
 - **A play log** of your sessions.
@@ -206,6 +208,8 @@ Geräuscheffekte erzeugt das Programm selbst, aus Textdateien, die jeder ändern
 - **Übung:** jeder schon geflogene Einsatz, ganz oder gleich sein Boss.
 - **Überleben:** Wellen und Bosse ohne Ende; der Tagesflug hat für alle am selben Tag dieselben Wellen.
 - **Wiederholungen** der eigenen Läufe, **Erfolge** und **Statistiken**.
+- **Ketten und Streifschüsse** für die Punkte, ein **Wochenflug** mit Sonderregeln und der **Geist** des besten Flugs.
+- Eine **Flugschule** und das **Archiv**: jeder getroffene Gegner, das Musikzimmer, Lackierungen fürs Schiff.
 - **Barrierefreiheit:** Kugelkontrast und Farbpaletten für Farbfehlsichtige, Spieltempo, automatische Bombe, weniger
   Blitze.
 - **Grafikqualität** in Stufen und ein **Benchmark**, gemacht für das Steam Deck.

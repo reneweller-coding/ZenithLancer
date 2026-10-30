@@ -243,6 +243,12 @@ std::string achievementsPath( const std::string &dataDir );
  *        - ngplus: max with the New Game+ level of a campaign when it is started
  *        - practice: add 1 for every practice run started
  *        - replays_watched: add 1 for every replay watched (started)
+ *        - max_chain: max with Stats::m_bestChain (the longest chain of kills)
+ *        - grazes: add Stats::m_grazes
+ *        - school: max with 1 when the flight school is finished
+ *        - weekly: add 1 for every weekly flight played to its end
+ *        - seen: max with the enemies the archive knows (Profile::m_seen)
+ *        - heard: max with the music pieces heard (Profile::m_heard)
  * @return the counters' names
  */
 const std::vector<std::string> &counterKeys();

@@ -27,6 +27,14 @@ the Steam Deck, free software under the AGPL-3.0.
 - Mods through a `mods` folder beside the game, with an example (`mods/example`).
 - Speaker portraits and voiced radio calls.
 - Dynamic music layers.
+- Chains and grazes: kills in quick succession raise a score multiplier up to five times, bullets that pass close
+  score and keep the chain; new score lists.
+- The weekly flight: a week's waves with two house rules; daily and weekly flights fly against the ghost of the best
+  flight.
+- The flight school: nine short lessons.
+- The archive: every enemy met as a turning model, the music room, paints for both pilots.
+- Videos of replays or missions (`--video`), a Steam Deck check of every screen's text size (`--deckcheck`).
+- Replays carry a checksum of the data and warn when it differs.
 
 ### Changed since 0.9.0
 
@@ -37,6 +45,10 @@ the Steam Deck, free software under the AGPL-3.0.
 - The font covers the Latin Extended-A block (names such as Ilić).
 - The music check with CLAP; the calm pieces have their own prompts.
 - An app test for the boss rush.
+- The higher difficulties grow into their strength over the first two episodes (Impossible: the autopilot wins 58–59
+  of 60 missions instead of 54).
+- Three pieces of music made again (e2_b, e4_b, secret), chosen by CLAP; `tools/pick_takes.py`.
+- The asset scripts find the local generators through `tools/paths.py` (no machine paths in the repository).
 
 ### Release
 

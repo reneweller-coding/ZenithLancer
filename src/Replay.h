@@ -56,6 +56,8 @@ struct ReplayHeader
     std::string             m_mission;                 ///< the mission ("bossrush" for the boss rush)
     int                     m_difficulty = 2;          ///< the difficulty's index (World::begin)
     int                     m_ngPlus = 0;              ///< the New Game+ level (0: none)
+    int                     m_rules = 0;               ///< the weekly flight's rules (World::setRules; 0: none)
+    std::string             m_data;                    ///< the data's checksum (Catalog::m_hash; "" in older files)
     uint32_t                m_seed = 0;                ///< the World's seed (World::begin)
     int                     m_pilots = 1;              ///< 1 or 2
     Loadout                 m_load[2];                 ///< each pilot's gear (World::addPlayer)

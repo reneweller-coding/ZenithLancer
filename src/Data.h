@@ -420,6 +420,7 @@ struct Catalog
     std::vector<ArcadeShip>             m_arcadeShips;
     std::vector<Block>                  m_themes;        ///< the grounds' looks (Terrain reads them)
     std::vector<std::string>            m_order;         ///< the goods in the order of their files
+    std::string                         m_hash;          ///< a checksum of the files read (16 hex digits; replays carry it)
     std::vector<std::string>            m_errors;
     std::vector<std::string>            m_warnings;
 

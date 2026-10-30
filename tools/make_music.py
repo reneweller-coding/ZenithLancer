@@ -3,7 +3,7 @@ the action's driving style, which every cue of a spec inherits) -> the AudioGene
 local on the GPU) -> work/music, then every take levelled to the same loudness and written as OGG Vorbis (quality 4, the format raylib
 streams) to assets/music/<cue>.ogg (take 1) and <cue>_2.ogg (take 2; the game picks one of them at random).
 
-    G:\\Tools\\PythonSkripts\\AudioGenerator\\venv\\Scripts\\python.exe tools\\make_music.py [--spec music_calm.json]
+    <AudioGenerator>\\venv\\Scripts\\python.exe tools\\make_music.py [--spec music_calm.json]
         [--encode-only] [--force]
 
 The generator runs below normal priority. Needs numpy, scipy and soundfile (the AudioGenerator's venv has them) and
@@ -23,7 +23,8 @@ from scipy.signal import lfilter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPECS = ("music.json", "music_calm.json")
-AUDIOGEN = r"G:\Tools\PythonSkripts\AudioGenerator"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import paths   # noqa: E402  (tools/paths.py: where the AudioGenerator lives)
 
 # The music sits under the effects: a shooter's guns and explosions must cut through. Bosses a little louder, the
 # quiet pieces (story, plan, ending) a little softer.
@@ -100,6 +101,21 @@ def target(cue):
     return LUFS_BOSS if cue.endswith("boss") or cue in ("boss", "final") else LUFS_DEFAULT
 
 
+def level_and_encode(source, cue, path):
+    """A take levelled to its cue's loudness and written as OGG; returns the gain (dB)."""
+    x, fs = sf.read(source, dtype="float32", always_2d=True)
+    # The loop's seam: where the end does not meet the start, a 3 ms dip on both sides instead of a click.
+    if float(np.max(np.abs(x[-1] - x[0]))) > 0.01:
+        k = int(0.003 * fs)
+        ramp = (0.5 - 0.5 * np.cos(np.linspace(0.0, np.pi, k)))[:, None].astype(np.float32)
+        x = x.copy()
+        x[:k] *= ramp
+        x[-k:] *= ramp[::-1]
+    gain = min(target(cue) - lufs(x, fs), PEAK_DB - peak_db(x))
+    encode(x * 10.0 ** (gain / 20.0), fs, path, 4)
+    return gain
+
+
 def main():
     global FORCE
     ap = argparse.ArgumentParser()
@@ -112,8 +128,8 @@ def main():
     os.makedirs(work, exist_ok=True)
     if not args.encode_only:
         for name in args.spec or SPECS:
-            nice_run([os.path.join(AUDIOGEN, "venv", "Scripts", "python.exe"), "main.py", "--soundtrack",
-                      os.path.join(ROOT, "tools", name), "--soundtrack-out", work], AUDIOGEN,
+            nice_run([paths.audiogen_python(), "main.py", "--soundtrack",
+                      os.path.join(ROOT, "tools", name), "--soundtrack-out", work], paths.audiogen(),
                      os.path.join(work, "gen_%s.log" % name[:-5]))
     found = sorted(d for d in os.listdir(work) if os.path.isfile(os.path.join(work, d, "manifest.json")))
     if not found:
@@ -131,16 +147,7 @@ def main():
                 total += os.path.getsize(path)
                 shown.append("t%d =" % (n + 1))
                 continue
-            x, fs = sf.read(source, dtype="float32", always_2d=True)
-            # The loop's seam: where the end does not meet the start, a 3 ms dip on both sides instead of a click.
-            if float(np.max(np.abs(x[-1] - x[0]))) > 0.01:
-                k = int(0.003 * fs)
-                ramp = (0.5 - 0.5 * np.cos(np.linspace(0.0, np.pi, k)))[:, None].astype(np.float32)
-                x = x.copy()
-                x[:k] *= ramp
-                x[-k:] *= ramp[::-1]
-            gain = min(target(cue["id"]) - lufs(x, fs), PEAK_DB - peak_db(x))
-            encode(x * 10.0 ** (gain / 20.0), fs, path, 4)
+            gain = level_and_encode(source, cue["id"], path)
             total += os.path.getsize(path)
             shown.append("t%d %+.1f dB" % (n + 1, gain))
         print("%-10s %s" % (cue["id"], ", ".join(shown)))

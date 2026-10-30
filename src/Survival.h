@@ -11,6 +11,7 @@
 #include "Data.h"
 
 #include <cstdint>
+#include <string>
 
 namespace zenith
 {
@@ -31,5 +32,25 @@ LevelDef survival( const Catalog &cat, uint32_t seed );
  * @return the seed
  */
 uint32_t dailySeed();
+
+/**
+ * @brief The week of today as ISO year and week ("2026-W44"): the weekly flight's name.
+ * @return the week
+ */
+std::string thisWeek();
+
+/**
+ * @brief The seed of a week: its name hashed. Every player gets the same one in the same week.
+ * @param[in] week  thisWeek()'s text
+ * @return the seed
+ */
+uint32_t weekSeed( const std::string &week );
+
+/**
+ * @brief The weekly flight's rules: two of the RuleE bits (Sim.h), picked by the week's seed.
+ * @param[in] seed  weekSeed()
+ * @return the bits
+ */
+int weeklyRules( uint32_t seed );
 
 }   // namespace zenith

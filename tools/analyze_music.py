@@ -3,7 +3,7 @@ codes), measures tempo and loudness itself, and writes both beside what tools/mu
 work/music_analysis.json and a readable work/music_analysis.txt. A machine's ears, not a person's: it tells whether
 a piece is roughly what was ordered (genre, tempo, mood, voices where there should be none).
 
-    G:\\Tools\\PythonSkripts\\AudioGenerator\\venv\\Scripts\\python.exe tools\\analyze_music.py
+    <AudioGenerator>\\venv\\Scripts\\python.exe tools\\analyze_music.py
 
 Runs the model once for all files (GPU, ~23 GB): no other GPU job and no game instance beside it.
 """
@@ -17,7 +17,7 @@ import numpy as np
 import soundfile as sf
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AUDIOGEN = r"G:\Tools\PythonSkripts\AudioGenerator"
+import paths   # noqa: E402  (tools/paths.py: where the AudioGenerator lives)
 
 
 def tempo(x, fs):
@@ -36,8 +36,8 @@ def tempo(x, fs):
 
 
 def main():
-    sys.path.insert(0, AUDIOGEN)
-    os.chdir(AUDIOGEN)
+    sys.path.insert(0, paths.audiogen())
+    os.chdir(paths.audiogen())
     from core.backends import backend_class
     from core.config import acestep_env, load_config
 
