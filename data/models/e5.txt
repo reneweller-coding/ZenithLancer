@@ -1,0 +1,633 @@
+# Episode 5 (Mittagsglut): the Tessellate at its most beautiful - gold-white and magenta lattice,
+# crystals, rings and turning crowns round the sun; Voss's last ships; the Curator. Written by
+# work/gen_models.py (nose towards -z; spin groups turn about the model's centre).
+
+# Glutfunke: a spark of the sun's own light, a crystal cross in a spinning gold ring.
+model e5_mote scale=1.35
+  part crystal r=4.5 len=17 seg=6 color=#fff4dc emit=0.55
+  part crystal r=3 len=12 rot=90 seg=4 color=#ffd060 emit=0.45
+  part light r=2.6 y=1 color=#fff8e0
+  part ring r=9 thick=0.9 seg=18 color=#ffd060 emit=0.9 group=spin spin=320
+  part crystal r=1.2 len=5 color=#ff4fd0 emit=0.8 group=spin x=6.36 z=-6.36 rot=45 mirror=0
+  part crystal r=1.2 len=5 color=#ff4fd0 emit=0.8 group=spin x=6.36 z=6.36 rot=135 mirror=0
+  part crystal r=1.2 len=5 color=#ff4fd0 emit=0.8 group=spin x=-6.36 z=6.36 rot=225 mirror=0
+  part crystal r=1.2 len=5 color=#ff4fd0 emit=0.8 group=spin x=-6.36 z=-6.36 rot=315 mirror=0
+
+# Gitterscherbe: a splinter of the lattice that dives like a thrown knife.
+model e5_shard
+  part plate pts="0,-17;11,11;0,6;-11,11" thick=2.4 color=#2c2240 noise=0.1
+  part plate pts="0,-13;7,8;0,4;-7,8" thick=2.8 y=0.6 color=#ff4fd0 emit=0.45
+  part crystal r=2.4 len=14 y=2 z=-2 color=#fff4dc emit=0.8
+  part spike r=1 len=9 x=8 z=10 rot=160 color=#ffd060 emit=0.5 mirror=1
+  part engine r=1.4 len=4 z=10 glow=#ff4fd0 color=#3c2f52
+  part light r=1.3 z=5 y=1.6 color=#ff7ae6
+
+# Lichtblatt: a gold petal of the Crown's light-sails, gliding in flocks.
+model e5_petal
+  part plate pts="0,-19;6,-12;9,-2;8,8;4,15;0,17;-4,15;-8,8;-9,-2;-6,-12" thick=1.6 color=#efd894 noise=0.05
+  part plate pts="0,-15;2.5,0;0,13;-2.5,0" thick=2.4 y=0.5 color=#ff4fd0 emit=0.6
+  part wing span=12 root=10 tip=3 sweep=8 z=2 thick=0.7 dihedral=2 color=#f6e2a8 stripe=#ff7ae6
+  part dome rx=2.4 ry=2 rz=5 z=-8 y=1 color=#fff4dc emit=0.7
+  part engine r=1.6 len=5 z=15 glow=#ffc060 color=#8a7040
+  part light r=1.2 x=13 z=4 color=#ffd060 mirror=1
+
+# Keimling: a fresh seed of the lattice, all spikes and a fast ring.
+model e5_seedling scale=1.35
+  part sphere r=3.6 seg=8 color=#eadcff emit=0.35
+  part light r=1.6 y=2.6 color=#fff0c0
+  part ring r=6.5 thick=0.6 seg=14 color=#ff4fd0 emit=0.9 group=spin spin=-420
+  part spike r=1 len=7 color=#ffd060 emit=0.6 x=0 z=-4 rot=0 mirror=0
+  part spike r=1 len=7 color=#ffd060 emit=0.6 x=3.46 z=2 rot=120 mirror=0
+  part spike r=1 len=7 color=#ffd060 emit=0.6 x=-3.46 z=2 rot=240 mirror=0
+  part light r=0.9 color=#fff4dc group=spin x=5.63 z=-3.25 mirror=0
+  part light r=0.9 color=#fff4dc group=spin x=0 z=6.5 mirror=0
+  part light r=0.9 color=#fff4dc group=spin x=-5.63 z=-3.25 mirror=0
+
+# Strahlspeer: a needle of white ceramic and gold that stabs down at the pilot.
+model e5_spear
+  part hull len=44 wid=7 hgt=5 shape=needle color=#e8dcc0
+  part hull len=20 wid=4 hgt=3 shape=cigar x=7 z=6 color=#b8a888 mirror=1
+  part wing span=14 root=14 tip=2 sweep=12 z=6 thick=1 color=#d8c8a0 stripe=#ff4fd0
+  part crystal r=3 len=16 z=-14 y=1.5 color=#fff4dc emit=0.7
+  part fin h=6 root=10 tip=3 sweep=5 z=12 y=1 color=#c8b890
+  part engine r=2 len=6 z=22 glow=#ffb040 color=#6a5a40
+  part engine r=1.4 len=5 x=7 z=17 glow=#ff4fd0 color=#6a5a40
+  part light r=1 x=14 z=10 color=#ff7ae6 mirror=1
+  part greeble n=8 w=5 d=16 y=2 size=1.2 seed=5 color=#cfc0a0
+
+# Halofalter: a moth whose wings are rings of light stretched with a glowing membrane.
+model e5_moth
+  part hull len=26 wid=8 hgt=6 shape=tear color=#3c2f52
+  part ring r=11 thick=1.4 seg=20 x=14 z=-3 color=#ffd060 emit=0.8 mirror=1
+  part plate pts="14,-13;19.88,-11.09;23.51,-6.09;23.51,0.09;19.88,5.09;14,7;8.12,5.09;4.49,0.09;4.49,-6.09;8.12,-11.09" thick=0.4 color=#e8b860 emit=0.12 mirror=1
+  part ring r=7.5 thick=1.1 seg=18 x=12 z=12 color=#ff4fd0 emit=0.8 mirror=1
+  part plate pts="12,5.4;15.88,6.66;18.28,9.96;18.28,14.04;15.88,17.34;12,18.6;8.12,17.34;5.72,14.04;5.72,9.96;8.12,6.66" thick=0.4 color=#d860c0 emit=0.15 mirror=1
+  part crystal r=2.5 len=12 z=-14 color=#fff4dc emit=0.7
+  part spike r=0.6 len=11 x=3 z=-17 rot=20 color=#ffd060 emit=0.5 mirror=1
+  part light r=1.7 y=3 color=#ff7ae6
+  part ring r=5 thick=0.5 seg=12 y=1 color=#fff4dc emit=0.9 group=spin spin=260
+
+# Prismenjäger: a three-sided crystal hunter with an orbit of glowing splinters.
+model e5_prism
+  part crystal r=10 len=34 seg=3 color=#efe6f6 emit=0.25
+  part crystal r=6 len=22 seg=3 y=2 rot=180 color=#ff4fd0 emit=0.6
+  part wing span=16 root=12 tip=4 sweep=10 z=6 thick=1.2 color=#d8c8f0 stripe=#ffd060
+  part engine r=2 len=6 x=5 z=16 glow=#ff4fd0 color=#3c2f52
+  part light r=2 y=4 color=#ffffff
+  part ring r=15 thick=0.8 seg=6 color=#ffd060 emit=0.8 group=spin spin=90
+  part crystal r=2 len=7 seg=4 color=#fff4dc emit=0.8 group=spin x=7.5 z=-12.99 rot=30 mirror=0
+  part crystal r=2 len=7 seg=4 color=#fff4dc emit=0.8 group=spin x=7.5 z=12.99 rot=150 mirror=0
+  part crystal r=2 len=7 seg=4 color=#fff4dc emit=0.8 group=spin x=-15 z=0 rot=270 mirror=0
+
+# Koronageist: a scrap of corona plasma the swarm taught to hunt.
+model e5_wisp
+  part sphere rx=7 ry=5 rz=9 seg=10 color=#ff8a20 emit=0.9
+  part cone r=6 len=22 z=12 rot=180 color=#ffb040 emit=0.8
+  part cone r=4 len=16 x=6 z=10 rot=165 color=#ff5a10 emit=0.8 mirror=1
+  part cone r=3 len=12 x=4 z=-6 rot=-30 color=#ffd070 emit=0.7 mirror=1
+  part sphere r=3 seg=8 y=2 z=-2 color=#fff6d0 emit=1
+  part ring r=11 thick=0.8 seg=16 pitch=25 color=#ffd060 emit=0.9 group=spin spin=200
+
+# Gitterweber: a hexagonal spinner that strings walls of light across the sky.
+model e5_weaver
+  part plate pts="15,-25.98;30,0;15,25.98;-15,25.98;-30,0;-15,-25.98" thick=0.6 y=-1 color=#ff4fd0 emit=0.3
+  part hull len=30 wid=24 hgt=10 shape=hex round=3 color=#3c2f52
+  part dome r=8 y=4 color=#fff4dc emit=0.6
+  part ring r=21 thick=1 seg=6 y=2 color=#ffd060 emit=0.7 group=spin spin=40
+  part crystal r=1.6 len=26 seg=4 x=9.5 z=-16.45 rot=30 color=#ffd060 emit=0.5 mirror=0
+  part crystal r=1.6 len=26 seg=4 x=19 z=0 rot=90 color=#ffd060 emit=0.5 mirror=0
+  part crystal r=1.6 len=26 seg=4 x=9.5 z=16.45 rot=150 color=#ffd060 emit=0.5 mirror=0
+  part crystal r=1.6 len=26 seg=4 x=-9.5 z=16.45 rot=210 color=#ffd060 emit=0.5 mirror=0
+  part crystal r=1.6 len=26 seg=4 x=-19 z=0 rot=270 color=#ffd060 emit=0.5 mirror=0
+  part crystal r=1.6 len=26 seg=4 x=-9.5 z=-16.45 rot=330 color=#ffd060 emit=0.5 mirror=0
+  part light r=1.6 color=#ff7ae6 x=15.5 z=-26.85 mirror=0
+  part light r=1.6 color=#ff7ae6 x=31 z=0 mirror=0
+  part light r=1.6 color=#ff7ae6 x=15.5 z=26.85 mirror=0
+  part light r=1.6 color=#ff7ae6 x=-15.5 z=26.85 mirror=0
+  part light r=1.6 color=#ff7ae6 x=-31 z=0 mirror=0
+  part light r=1.6 color=#ff7ae6 x=-15.5 z=-26.85 mirror=0
+  part crystal r=1.5 len=6 seg=4 y=2 color=#fff4dc emit=0.8 group=spin x=0 z=-21 rot=0 mirror=0
+  part crystal r=1.5 len=6 seg=4 y=2 color=#fff4dc emit=0.8 group=spin x=18.19 z=-10.5 rot=60 mirror=0
+  part crystal r=1.5 len=6 seg=4 y=2 color=#fff4dc emit=0.8 group=spin x=18.19 z=10.5 rot=120 mirror=0
+  part crystal r=1.5 len=6 seg=4 y=2 color=#fff4dc emit=0.8 group=spin x=0 z=21 rot=180 mirror=0
+  part crystal r=1.5 len=6 seg=4 y=2 color=#fff4dc emit=0.8 group=spin x=-18.19 z=10.5 rot=240 mirror=0
+  part crystal r=1.5 len=6 seg=4 y=2 color=#fff4dc emit=0.8 group=spin x=-18.19 z=-10.5 rot=300 mirror=0
+  part greeble n=14 w=18 d=20 y=4 size=1.6 seed=9 color=#5a467a
+
+# Diktat-Jäger: a Directorate fighter of Voss's fleet, overgrown with the stolen swarm.
+model e5_raider
+  part hull len=38 wid=11 hgt=7 shape=wedge color=#4a4f5a
+  part wing span=18 root=16 tip=6 sweep=8 z=6 thick=1.6 color=#3a3e48 stripe=#c02030
+  part fin h=7 root=9 tip=4 sweep=4 x=5 z=12 roll=-15 color=#3a3e48 mirror=1
+  part engine r=2.6 len=8 x=6 z=18 glow=#ff4030 color=#2a2e36
+  part dome rx=3 ry=2.5 rz=6 z=-6 y=3 color=#ff3a30 emit=0.6
+  part gun r=1 len=12 x=4 z=-16 color=#2a2e36
+  part crystal r=2.5 len=11 x=9 y=3 z=2 pitch=55 rot=30 color=#ff4fd0 emit=0.7 mirror=0
+  part crystal r=2 len=9 x=-11 y=2 z=7 pitch=60 rot=-40 color=#ff4fd0 emit=0.7 mirror=0
+  part crystal r=1.6 len=7 x=-3 y=4 z=3 pitch=75 color=#ff7ae6 emit=0.8
+  part light r=1 x=18 z=9 color=#ff3030 mirror=1
+  part greeble n=10 w=8 d=20 y=3 z=4 size=1.4 seed=17 color=#5c626e
+
+# Lichtläufer: a streak of pure light with a crystal for a body - gone before you see it.
+model e5_streak
+  part crystal r=3.5 len=38 seg=6 color=#fffbe8 emit=0.9
+  part wing span=10 root=10 tip=1 sweep=10 z=8 thick=0.6 color=#ffe080 stripe=#ff4fd0
+  part light r=2.4 z=-6 color=#ffffff
+  part engine r=1.6 len=6 z=19 glow=#fff0b0 color=#c0a060
+  part ring r=6.5 thick=0.6 seg=14 z=4 color=#ff7ae6 emit=1 group=spin spin=600
+
+# Sonnenlaterne: a small captured sun in a gyroscope cage, carried on a lattice frame.
+model e5_lantern
+  part hull len=64 wid=22 hgt=8 shape=hex round=3 y=-7 color=#3c2f52
+  part wing span=22 root=26 tip=10 sweep=10 x=8 z=8 y=-6 thick=2 color=#2c2240 stripe=#ff4fd0
+  part sphere r=12 seg=14 color=#fff2c0 emit=0.95
+  part ring r=19 thick=1.6 seg=26 color=#ffd060 emit=0.7
+  part ring r=18 thick=1.1 seg=24 pitch=90 color=#e0b850 emit=0.55 group=spin spin=70
+  part ring r=18 thick=1.1 seg=24 pitch=90 rot=60 color=#e0b850 emit=0.55 group=spin
+  part ring r=18 thick=1.1 seg=24 pitch=90 rot=120 color=#e0b850 emit=0.55 group=spin
+  part engine r=3 len=9 x=16 z=30 y=-6 glow=#ffb040 color=#2c2240
+  part gun r=1.4 len=16 x=10 z=-30 y=-5 color=#2c2240
+  part greeble n=24 w=18 d=56 y=-4 size=2 seed=31 color=#5a467a
+  part crystal r=3 len=14 seg=4 y=-4 color=#ff4fd0 emit=0.6 x=19.09 z=-19.09 rot=45 mirror=0
+  part crystal r=3 len=14 seg=4 y=-4 color=#ff4fd0 emit=0.6 x=19.09 z=19.09 rot=135 mirror=0
+  part crystal r=3 len=14 seg=4 y=-4 color=#ff4fd0 emit=0.6 x=-19.09 z=19.09 rot=225 mirror=0
+  part crystal r=3 len=14 seg=4 y=-4 color=#ff4fd0 emit=0.6 x=-19.09 z=-19.09 rot=315 mirror=0
+  part light r=1.4 y=-4 color=#ffd060 x=11.86 z=-28.64 mirror=0
+  part light r=1.4 y=-4 color=#ffd060 x=28.64 z=-11.86 mirror=0
+  part light r=1.4 y=-4 color=#ffd060 x=28.64 z=11.86 mirror=0
+  part light r=1.4 y=-4 color=#ffd060 x=11.86 z=28.64 mirror=0
+  part light r=1.4 y=-4 color=#ffd060 x=-11.86 z=28.64 mirror=0
+  part light r=1.4 y=-4 color=#ffd060 x=-28.64 z=11.86 mirror=0
+  part light r=1.4 y=-4 color=#ffd060 x=-28.64 z=-11.86 mirror=0
+  part light r=1.4 y=-4 color=#ffd060 x=-11.86 z=-28.64 mirror=0
+
+# Kantor: a choir-ship of organ pipes and turning crowns; the swarm sings through it.
+model e5_cantor
+  part disc r=22 h=6 seg=12 color=#2c2240
+  part disc r=14 h=10 seg=12 y=2 color=#3c2f52
+  part dome r=10 y=6 color=#ff4fd0 emit=0.7
+  part ring r=26 thick=1.4 seg=30 y=1 color=#ffd060 emit=0.8 group=spin spin=-50
+  part ring r=33 thick=0.9 seg=36 color=#ff4fd0 emit=0.8 group=spin
+  part crystal r=2.2 len=9 seg=4 color=#fff4dc emit=0.75 group=spin x=0 z=-29.5 rot=0 mirror=0
+  part crystal r=2.2 len=9 seg=4 color=#fff4dc emit=0.75 group=spin x=20.86 z=-20.86 rot=45 mirror=0
+  part crystal r=2.2 len=9 seg=4 color=#fff4dc emit=0.75 group=spin x=29.5 z=0 rot=90 mirror=0
+  part crystal r=2.2 len=9 seg=4 color=#fff4dc emit=0.75 group=spin x=20.86 z=20.86 rot=135 mirror=0
+  part crystal r=2.2 len=9 seg=4 color=#fff4dc emit=0.75 group=spin x=0 z=29.5 rot=180 mirror=0
+  part crystal r=2.2 len=9 seg=4 color=#fff4dc emit=0.75 group=spin x=-20.86 z=20.86 rot=225 mirror=0
+  part crystal r=2.2 len=9 seg=4 color=#fff4dc emit=0.75 group=spin x=-29.5 z=0 rot=270 mirror=0
+  part crystal r=2.2 len=9 seg=4 color=#fff4dc emit=0.75 group=spin x=-20.86 z=-20.86 rot=315 mirror=0
+  part gun r=2 len=14 pitch=90 y=8 color=#d8c890 x=0 z=-17 mirror=0
+  part gun r=2 len=14 pitch=90 y=8 color=#d8c890 x=14.72 z=-8.5 mirror=0
+  part gun r=2 len=14 pitch=90 y=8 color=#d8c890 x=14.72 z=8.5 mirror=0
+  part gun r=2 len=14 pitch=90 y=8 color=#d8c890 x=0 z=17 mirror=0
+  part gun r=2 len=14 pitch=90 y=8 color=#d8c890 x=-14.72 z=8.5 mirror=0
+  part gun r=2 len=14 pitch=90 y=8 color=#d8c890 x=-14.72 z=-8.5 mirror=0
+  part light r=1.8 y=15.5 color=#fff0c0 x=0 z=-17 mirror=0
+  part light r=1.8 y=15.5 color=#fff0c0 x=14.72 z=-8.5 mirror=0
+  part light r=1.8 y=15.5 color=#fff0c0 x=14.72 z=8.5 mirror=0
+  part light r=1.8 y=15.5 color=#fff0c0 x=0 z=17 mirror=0
+  part light r=1.8 y=15.5 color=#fff0c0 x=-14.72 z=8.5 mirror=0
+  part light r=1.8 y=15.5 color=#fff0c0 x=-14.72 z=-8.5 mirror=0
+  part wing span=14 root=12 tip=4 sweep=6 thick=1.2 y=-2 color=#3c2f52 stripe=#ffd060 x=0 z=10 rot=90 mirror=0
+  part wing span=14 root=12 tip=4 sweep=6 thick=1.2 y=-2 color=#3c2f52 stripe=#ffd060 x=-8.66 z=-5 rot=210 mirror=0
+  part wing span=14 root=12 tip=4 sweep=6 thick=1.2 y=-2 color=#3c2f52 stripe=#ffd060 x=8.66 z=-5 rot=330 mirror=0
+
+# Vollstrecker: Voss's heavy gunship, Directorate steel split by magenta growth.
+model e5_enforcer
+  part hull len=78 wid=30 hgt=14 shape=hammer round=3 color=#40444e
+  part hull len=50 wid=10 hgt=8 shape=box x=20 z=8 color=#30343c mirror=1
+  part wing span=24 root=30 tip=12 sweep=10 x=14 z=10 thick=3 color=#363a44 stripe=#b02030
+  part engine r=4 len=12 x=20 z=36 glow=#ff4030 color=#2a2e36
+  part engine r=5 len=12 z=40 glow=#ff6040 color=#2a2e36
+  part gun r=2 len=26 x=8 z=-40 color=#2a2e36
+  part box w=8 h=4 d=18 x=27 y=5 z=-6 color=#2a2e36 mirror=1
+  part light r=1.4 x=27 y=8 z=-14 color=#ff3030 mirror=1
+  part dome rx=6 ry=4 rz=10 z=-18 y=6 color=#ff3a30 emit=0.55
+  part crystal r=4 len=18 x=-8 y=8 z=6 pitch=60 rot=-20 color=#ff4fd0 emit=0.7 mirror=0
+  part crystal r=3 len=14 x=12 y=7 z=14 pitch=65 rot=35 color=#ff7ae6 emit=0.7 mirror=0
+  part crystal r=2.5 len=12 x=-30 y=4 z=18 pitch=50 rot=-70 color=#ff4fd0 emit=0.7 mirror=0
+  part crystal r=2 len=10 x=2 y=9 z=24 pitch=80 color=#ffd060 emit=0.6
+  part greeble n=40 w=26 d=60 y=6 size=2.4 seed=41 color=#5c626e
+
+# Spiegelsegel: a mirror sail of the Crown that folds sunlight into a cutting beam.
+model e5_sail
+  part plate pts="0,-42;46,-6;32,22;0,32;-32,22;-46,-6" thick=1 color=#cfc4e8 emit=0.05 noise=0.04
+  part plate pts="0,-38;40,-6;28,18;0,27;-28,18;-40,-6" thick=0.6 y=0.7 color=#8a74b8 emit=0.08
+  part plate pts="0,-30;26,-4;0,20;-26,-4" thick=1.4 y=1.1 color=#ffe8a0 emit=0.35
+  part hull len=64 wid=6 hgt=5 shape=needle y=1.5 color=#3c2f52
+  part hull len=6 wid=70 hgt=3 shape=box y=1.2 z=-4 color=#2c2240
+  part crystal r=4 len=16 z=-36 y=2 color=#ff4fd0 emit=0.9
+  part ring r=10 thick=1 y=2.5 color=#ff7ae6 emit=0.8 group=spin spin=120
+  part light r=2 x=46 z=-6 y=1 color=#ffd060 mirror=1
+  part light r=2 x=32 z=22 y=1 color=#ff7ae6 mirror=1
+  part light r=2.4 z=32 y=1 color=#fff4dc
+  part crystal r=1.4 len=6 y=2.5 color=#fff4dc emit=0.9 group=spin x=7.07 z=-7.07 rot=45 mirror=0
+  part crystal r=1.4 len=6 y=2.5 color=#fff4dc emit=0.9 group=spin x=7.07 z=7.07 rot=135 mirror=0
+  part crystal r=1.4 len=6 y=2.5 color=#fff4dc emit=0.9 group=spin x=-7.07 z=7.07 rot=225 mirror=0
+  part crystal r=1.4 len=6 y=2.5 color=#fff4dc emit=0.9 group=spin x=-7.07 z=-7.07 rot=315 mirror=0
+
+# Kristallturm: a tower of grown crystal on the lattice floor, a gun nested at its foot.
+model e5_spire
+  part disc r=14 h=4 seg=6 color=#2c2240
+  part crystal r=6 len=36 pitch=90 y=18 seg=6 color=#ffe8b0 emit=0.55
+  part light r=2 y=37 color=#ffffff
+  part box w=7 h=4 d=9 y=6 z=-9 color=#3c2f52 group=head pivot=0,0
+  part gun r=1.2 len=14 x=1.8 y=7 z=-16 color=#2c2240 group=head pivot=0,0 mirror=1
+  part crystal r=3 len=20 pitch=60 y=8 color=#ff4fd0 emit=0.6 seg=5 x=5.66 z=-5.66 rot=45 mirror=0
+  part crystal r=3 len=20 pitch=60 y=8 color=#ff4fd0 emit=0.6 seg=5 x=5.66 z=5.66 rot=135 mirror=0
+  part crystal r=3 len=20 pitch=60 y=8 color=#ff4fd0 emit=0.6 seg=5 x=-5.66 z=5.66 rot=225 mirror=0
+  part crystal r=3 len=20 pitch=60 y=8 color=#ff4fd0 emit=0.6 seg=5 x=-5.66 z=-5.66 rot=315 mirror=0
+  part light r=1 y=2.5 color=#ffd060 x=0 z=-13 mirror=0
+  part light r=1 y=2.5 color=#ffd060 x=11.26 z=-6.5 mirror=0
+  part light r=1 y=2.5 color=#ffd060 x=11.26 z=6.5 mirror=0
+  part light r=1 y=2.5 color=#ffd060 x=0 z=13 mirror=0
+  part light r=1 y=2.5 color=#ffd060 x=-11.26 z=6.5 mirror=0
+  part light r=1 y=2.5 color=#ffd060 x=-11.26 z=-6.5 mirror=0
+
+# Gitterknoten: a knot where the lattice threads meet, a magenta heart under a turning hexagon.
+model e5_node
+  part disc r=20 h=4 seg=6 color=#2c2240
+  part box w=18 h=10 d=18 taper=0.4 y=4 color=#3c2f52
+  part sphere r=7 y=10 color=#ff4fd0 emit=0.9
+  part ring r=16 thick=1.5 seg=6 y=9 color=#ffd060 emit=0.7 group=spin spin=60
+  part ring r=22 thick=1 seg=6 y=3 color=#ff4fd0 emit=0.6
+  part crystal r=2.5 len=12 pitch=50 y=5 color=#fff4dc emit=0.5 seg=4 x=10 z=-17.32 rot=30 mirror=0
+  part crystal r=2.5 len=12 pitch=50 y=5 color=#fff4dc emit=0.5 seg=4 x=20 z=0 rot=90 mirror=0
+  part crystal r=2.5 len=12 pitch=50 y=5 color=#fff4dc emit=0.5 seg=4 x=10 z=17.32 rot=150 mirror=0
+  part crystal r=2.5 len=12 pitch=50 y=5 color=#fff4dc emit=0.5 seg=4 x=-10 z=17.32 rot=210 mirror=0
+  part crystal r=2.5 len=12 pitch=50 y=5 color=#fff4dc emit=0.5 seg=4 x=-20 z=0 rot=270 mirror=0
+  part crystal r=2.5 len=12 pitch=50 y=5 color=#fff4dc emit=0.5 seg=4 x=-10 z=-17.32 rot=330 mirror=0
+  part crystal r=1.8 len=8 y=9 color=#ffe8a0 emit=0.8 group=spin x=0 z=-16 rot=0 mirror=0
+  part crystal r=1.8 len=8 y=9 color=#ffe8a0 emit=0.8 group=spin x=13.86 z=8 rot=120 mirror=0
+  part crystal r=1.8 len=8 y=9 color=#ffe8a0 emit=0.8 group=spin x=-13.86 z=8 rot=240 mirror=0
+
+# Werftgeschütz: a Zenith Station dock turret, now firing for the swarm that grew into it.
+model e5_dockgun
+  part box w=30 h=6 d=30 taper=0.2 color=#4a525e
+  part disc r=12 h=5 y=5 color=#5a6270
+  part box w=12 h=7 d=16 y=9 color=#6a7484 group=head pivot=0,0
+  part gun r=2 len=22 x=3.5 y=10 z=-14 color=#2a2e36 group=head pivot=0,0 mirror=1
+  part light r=1.6 y=13 z=2 color=#ff4fd0 group=head pivot=0,0
+  part crystal r=3 len=14 x=12 y=6 z=-11 pitch=60 rot=40 color=#ff4fd0 emit=0.6 mirror=0
+  part crystal r=2.4 len=11 x=-12 y=6 z=12 pitch=55 rot=-140 color=#ff7ae6 emit=0.6 mirror=0
+  part crystal r=2 len=9 x=-13 y=6 z=-12 pitch=65 rot=-45 color=#ffd060 emit=0.5 mirror=0
+  part greeble n=16 w=26 d=26 y=3 size=2 seed=23 color=#5a6270
+  part light r=1.2 x=13 y=4 z=13 color=#40c8ff
+
+# Kronenkristall: a free-floating crystal of the Crown, big enough to break a hull.
+model e5_crystal
+  part crystal r=14 len=46 seg=6 color=#c8b8e8 emit=0.06 noise=0.14
+  part crystal r=8 len=30 rot=60 x=10 z=6 seg=5 color=#e8b860 emit=0.2 noise=0.1
+  part crystal r=7 len=26 rot=-50 x=-9 z=-4 seg=5 color=#ff4fd0 emit=0.45 noise=0.1
+  part crystal r=5 len=18 pitch=50 y=6 z=4 color=#fff4dc emit=0.5
+  part crystal r=3 len=12 rot=150 x=-4 z=16 seg=4 color=#ffd060 emit=0.5
+  part light r=2 y=5 color=#ffe0a0
+
+# Der Ringschmied: forges the Crown's rings; the ring it works on turns around its anvil body.
+model e5_ringsmith
+  part hull len=120 wid=70 hgt=26 shape=hex round=3 color=#3c2f52
+  part hull len=80 wid=34 hgt=20 shape=box y=8 z=6 color=#4a3c5e
+  part box w=26 h=14 d=36 y=20 z=-6 taper=0.35 color=#5a467a
+  part crystal r=15 len=52 y=26 z=-10 seg=6 color=#ffe8a0 emit=0.8
+  part sphere r=8 y=30 z=-10 color=#fff6e0 emit=1
+  part wing span=50 root=50 tip=16 sweep=20 x=30 z=12 thick=5 color=#2c2240 stripe=#ff4fd0
+  part engine r=6 len=14 x=24 z=62 glow=#ffb040 color=#2c2240
+  part engine r=8 len=14 z=64 glow=#ffd070 color=#2c2240
+  part greeble n=60 w=60 d=100 y=12 size=4 seed=51 color=#5a4a70
+  part light r=2.6 x=48 z=-34 y=8 color=#ffd060 mirror=1
+  part ring r=100 thick=4 seg=48 color=#ffd060 emit=0.75 group=spin spin=22
+  part ring r=84 thick=2 seg=48 y=-3 color=#ff4fd0 emit=0.6 group=spin
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=0 z=-100 rot=0 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=50 z=-86.6 rot=30 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=86.6 z=-50 rot=60 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=100 z=0 rot=90 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=86.6 z=50 rot=120 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=50 z=86.6 rot=150 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=0 z=100 rot=180 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=-50 z=86.6 rot=210 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=-86.6 z=50 rot=240 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=-100 z=0 rot=270 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=-86.6 z=-50 rot=300 mirror=0
+  part crystal r=4 len=16 seg=4 color=#fff4dc emit=0.8 group=spin x=-50 z=-86.6 rot=330 mirror=0
+  part box w=3 h=3 d=40 y=-2 color=#8a6ab0 group=spin x=32 z=-55.43 rot=30 mirror=0
+  part box w=3 h=3 d=40 y=-2 color=#8a6ab0 group=spin x=64 z=0 rot=90 mirror=0
+  part box w=3 h=3 d=40 y=-2 color=#8a6ab0 group=spin x=32 z=55.43 rot=150 mirror=0
+  part box w=3 h=3 d=40 y=-2 color=#8a6ab0 group=spin x=-32 z=55.43 rot=210 mirror=0
+  part box w=3 h=3 d=40 y=-2 color=#8a6ab0 group=spin x=-64 z=0 rot=270 mirror=0
+  part box w=3 h=3 d=40 y=-2 color=#8a6ab0 group=spin x=-32 z=-55.43 rot=330 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=21.74 z=-81.14 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=59.4 z=-59.4 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=81.14 z=-21.74 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=81.14 z=21.74 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=59.4 z=59.4 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=21.74 z=81.14 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=-21.74 z=81.14 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=-59.4 z=59.4 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=-81.14 z=21.74 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=-81.14 z=-21.74 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=-59.4 z=-59.4 mirror=0
+  part light r=2 y=-1 color=#ff7ae6 group=spin x=-21.74 z=-81.14 mirror=0
+
+# The Ring Smith's welding hand: three crystal fingers and a white-hot palm.
+model e5_ringsmith_hand
+  part box w=18 h=10 d=22 color=#3c2f52 group=head pivot=0,0
+  part box w=12 h=8 d=10 y=4 z=10 color=#5a467a group=head pivot=0,0
+  part sphere r=5 y=4 z=-8 color=#fff2c0 emit=1 group=head pivot=0,0
+  part spike r=2.2 len=20 x=6 z=-18 rot=12 color=#ffd060 emit=0.5 group=head pivot=0,0 mirror=1
+  part spike r=2.2 len=22 z=-20 color=#fff4dc emit=0.6 group=head pivot=0,0
+  part ring r=13 thick=1.2 seg=16 color=#ff4fd0 emit=0.8
+  part disc r=10 h=4 seg=8 y=-4 color=#2c2240
+
+# Zitadelle Letzte Order: Admiral Voss's escape fortress, Directorate steel in a ring of stolen swarm.
+model e5_citadel
+  part hull len=150 wid=112 hgt=30 shape=hex round=4 color=#3e424c
+  part hull len=100 wid=60 hgt=26 shape=box y=10 color=#4a4f5a
+  part box w=34 h=40 d=34 y=24 taper=0.45 color=#5a606c
+  part dome r=14 y=44 color=#ff3a30 emit=0.7
+  part box w=6 h=30 d=6 x=26 y=26 z=26 color=#2a2e36 mirror=1
+  part light r=2.4 x=26 y=42 z=26 color=#ff3030 mirror=1
+  part wing span=60 root=60 tip=20 sweep=20 x=40 z=22 thick=6 color=#363a44 stripe=#b02030
+  part engine r=8 len=16 x=30 z=78 glow=#ff4030 color=#2a2e36
+  part engine r=6 len=14 x=56 z=70 glow=#ff6040 color=#2a2e36
+  part greeble n=90 w=100 d=130 y=14 size=4 seed=61 color=#5a606c
+  part plate pts="-8,-70;8,-70;4,-30;-4,-30" thick=1 y=16 color=#b02030
+  part ring r=100 thick=3 seg=8 y=2 color=#ff4fd0 emit=0.55 group=spin spin=-14
+  part crystal r=5 len=44 pitch=90 y=30 color=#ff4fd0 emit=0.85 x=0 z=-22 mirror=0
+  part crystal r=5 len=44 pitch=90 y=30 color=#ff4fd0 emit=0.85 x=19.05 z=11 mirror=0
+  part crystal r=5 len=44 pitch=90 y=30 color=#ff4fd0 emit=0.85 x=-19.05 z=11 mirror=0
+  part crystal r=5 len=22 seg=5 color=#ff7ae6 emit=0.75 group=spin x=38.27 z=-92.39 rot=22.5 mirror=0
+  part crystal r=5 len=22 seg=5 color=#ff7ae6 emit=0.75 group=spin x=92.39 z=-38.27 rot=67.5 mirror=0
+  part crystal r=5 len=22 seg=5 color=#ff7ae6 emit=0.75 group=spin x=92.39 z=38.27 rot=112.5 mirror=0
+  part crystal r=5 len=22 seg=5 color=#ff7ae6 emit=0.75 group=spin x=38.27 z=92.39 rot=157.5 mirror=0
+  part crystal r=5 len=22 seg=5 color=#ff7ae6 emit=0.75 group=spin x=-38.27 z=92.39 rot=202.5 mirror=0
+  part crystal r=5 len=22 seg=5 color=#ff7ae6 emit=0.75 group=spin x=-92.39 z=38.27 rot=247.5 mirror=0
+  part crystal r=5 len=22 seg=5 color=#ff7ae6 emit=0.75 group=spin x=-92.39 z=-38.27 rot=292.5 mirror=0
+  part crystal r=5 len=22 seg=5 color=#ff7ae6 emit=0.75 group=spin x=-38.27 z=-92.39 rot=337.5 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=19.51 z=-98.08 rot=11.25 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=55.56 z=-83.15 rot=33.75 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=83.15 z=-55.56 rot=56.25 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=98.08 z=-19.51 rot=78.75 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=98.08 z=19.51 rot=101.25 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=83.15 z=55.56 rot=123.75 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=55.56 z=83.15 rot=146.25 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=19.51 z=98.08 rot=168.75 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=-19.51 z=98.08 rot=191.25 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=-55.56 z=83.15 rot=213.75 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=-83.15 z=55.56 rot=236.25 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=-98.08 z=19.51 rot=258.75 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=-98.08 z=-19.51 rot=281.25 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=-83.15 z=-55.56 rot=303.75 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=-55.56 z=-83.15 rot=326.25 mirror=0
+  part crystal r=2 len=10 pitch=70 y=3 color=#ffd060 emit=0.6 group=spin x=-19.51 z=-98.08 rot=348.75 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=19.16 z=-58.97 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=50.16 z=-36.44 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=62 z=0 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=50.16 z=36.44 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=19.16 z=58.97 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=-19.16 z=58.97 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=-50.16 z=36.44 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=-62 z=0 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=-50.16 z=-36.44 mirror=0
+  part light r=1.8 y=12 color=#ff3030 x=-19.16 z=-58.97 mirror=0
+
+# A Directorate heavy turret on the citadel's flank.
+model e5_citadel_gun
+  part disc r=16 h=6 seg=8 color=#3e424c
+  part box w=16 h=8 d=20 y=6 color=#5a606c group=head pivot=0,0
+  part gun r=2.2 len=28 x=4 y=8 z=-18 color=#2a2e36 group=head pivot=0,0 mirror=1
+  part light r=2 y=11 z=4 color=#ff3030 group=head pivot=0,0
+  part crystal r=3 len=14 x=10 y=4 z=10 pitch=55 rot=140 color=#ff4fd0 emit=0.7 mirror=0
+  part crystal r=2.4 len=10 x=-11 y=4 z=8 pitch=60 rot=-130 color=#ff7ae6 emit=0.7 mirror=0
+
+# Wächter der Krone: an armillary seraph; three rings and six blades turn round its crystal heart.
+model e5_warden
+  part crystal r=20 len=74 seg=6 color=#fff4dc emit=0.65
+  part crystal r=11 len=54 seg=6 rot=90 color=#ffe8a0 emit=0.55
+  part sphere r=13 y=8 color=#ff4fd0 emit=1
+  part ring r=24 thick=2 seg=24 y=6 color=#fff4dc emit=0.9
+  part wing span=72 root=40 tip=6 sweep=44 x=16 z=12 thick=2 color=#e8dcc0 stripe=#ff4fd0
+  part disc r=30 h=5 seg=12 y=-6 color=#2c2240
+  part ring r=62 thick=3 seg=36 color=#ffd060 emit=0.8 group=spin spin=34
+  part ring r=80 thick=2 seg=40 y=-2 color=#fff0d0 emit=0.7 group=spin
+  part ring r=96 thick=1.2 seg=48 y=-4 color=#ff4fd0 emit=0.7 group=spin
+  part plate pts="17,-29.44;7.2,-0.46;-15,25.98;-3.2,-6.46" x=52 z=-90.07 thick=2 color=#ffe8a0 emit=0.5 group=spin
+  part plate pts="34,0;4,6;-30,0;4,-6" x=104 z=0 thick=2 color=#ffe8a0 emit=0.5 group=spin
+  part plate pts="17,29.44;-3.2,6.46;-15,-25.98;7.2,0.46" x=52 z=90.07 thick=2 color=#ffe8a0 emit=0.5 group=spin
+  part plate pts="-17,29.44;-7.2,0.46;15,-25.98;3.2,6.46" x=-52 z=90.07 thick=2 color=#ffe8a0 emit=0.5 group=spin
+  part plate pts="-34,0;-4,-6;30,0;-4,6" x=-104 z=0 thick=2 color=#ffe8a0 emit=0.5 group=spin
+  part plate pts="-17,-29.44;3.2,-6.46;15,25.98;-7.2,-0.46" x=-52 z=-90.07 thick=2 color=#ffe8a0 emit=0.5 group=spin
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=0 z=-62 rot=0 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=31 z=-53.69 rot=30 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=53.69 z=-31 rot=60 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=62 z=0 rot=90 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=53.69 z=31 rot=120 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=31 z=53.69 rot=150 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=0 z=62 rot=180 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=-31 z=53.69 rot=210 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=-53.69 z=31 rot=240 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=-62 z=0 rot=270 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=-53.69 z=-31 rot=300 mirror=0
+  part crystal r=3 len=14 seg=4 color=#fff4dc emit=0.85 group=spin x=-31 z=-53.69 rot=330 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=13.89 z=-78.78 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=40 z=-69.28 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=61.28 z=-51.42 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=75.18 z=-27.36 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=80 z=0 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=75.18 z=27.36 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=61.28 z=51.42 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=40 z=69.28 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=13.89 z=78.78 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-13.89 z=78.78 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-40 z=69.28 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-61.28 z=51.42 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-75.18 z=27.36 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-80 z=0 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-75.18 z=-27.36 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-61.28 z=-51.42 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-40 z=-69.28 mirror=0
+  part light r=1.8 color=#ff7ae6 group=spin x=-13.89 z=-78.78 mirror=0
+  part crystal r=3 len=22 pitch=40 y=4 color=#ff4fd0 emit=0.7 x=0 z=-40 rot=0 mirror=0
+  part crystal r=3 len=22 pitch=40 y=4 color=#ff4fd0 emit=0.7 x=34.64 z=-20 rot=60 mirror=0
+  part crystal r=3 len=22 pitch=40 y=4 color=#ff4fd0 emit=0.7 x=34.64 z=20 rot=120 mirror=0
+  part crystal r=3 len=22 pitch=40 y=4 color=#ff4fd0 emit=0.7 x=0 z=40 rot=180 mirror=0
+  part crystal r=3 len=22 pitch=40 y=4 color=#ff4fd0 emit=0.7 x=-34.64 z=20 rot=240 mirror=0
+  part crystal r=3 len=22 pitch=40 y=4 color=#ff4fd0 emit=0.7 x=-34.64 z=-20 rot=300 mirror=0
+
+# One of the guardian's eyes: a magenta lens in a gold ring that tracks the pilot.
+model e5_warden_eye
+  part sphere r=10 seg=12 color=#ff4fd0 emit=0.95
+  part sphere r=4 y=7 z=-4 color=#ffffff emit=1 group=head pivot=0,0
+  part ring r=15 thick=2 seg=20 color=#ffd060 emit=0.8
+  part crystal r=3 len=16 z=-20 color=#fff4dc emit=0.7 group=head pivot=0,0
+  part spike r=1.6 len=9 color=#ffe8a0 emit=0.5 x=8 z=-13.86 rot=30 mirror=0
+  part spike r=1.6 len=9 color=#ffe8a0 emit=0.5 x=16 z=0 rot=90 mirror=0
+  part spike r=1.6 len=9 color=#ffe8a0 emit=0.5 x=8 z=13.86 rot=150 mirror=0
+  part spike r=1.6 len=9 color=#ffe8a0 emit=0.5 x=-8 z=13.86 rot=210 mirror=0
+  part spike r=1.6 len=9 color=#ffe8a0 emit=0.5 x=-16 z=0 rot=270 mirror=0
+  part spike r=1.6 len=9 color=#ffe8a0 emit=0.5 x=-8 z=-13.86 rot=330 mirror=0
+
+# Der Kurator: the swarm's mind, a mandala of light and crystal round a calm white face.
+model e5_curator
+  part disc r=48 h=4 seg=24 y=-10 color=#2c2240
+  part plate pts="0,-74;10.87,-40.57;37,-64.09;29.7,-29.7;64.09,-37;40.57,-10.87;74,0;40.57,10.87;64.09,37;29.7,29.7;37,64.09;10.87,40.57;0,74;-10.87,40.57;-37,64.09;-29.7,29.7;-64.09,37;-40.57,10.87;-74,0;-40.57,-10.87;-64.09,-37;-29.7,-29.7;-37,-64.09;-10.87,-40.57" thick=2 y=-6 color=#f0c870 emit=0.35
+  part plate pts="22.2,-53.59;21.21,-21.21;53.59,-22.2;30,0;53.59,22.2;21.21,21.21;22.2,53.59;0,30;-22.2,53.59;-21.21,21.21;-53.59,22.2;-30,0;-53.59,-22.2;-21.21,-21.21;-22.2,-53.59;0,-30" thick=2 y=-3 color=#ff4fd0 emit=0.45
+  part sphere r=26 seg=18 color=#fff6ea emit=0.7
+  part box w=9 h=1.4 d=1.6 x=8 y=24.6 z=-3 rot=-8 color=#5a3a6a mirror=1
+  part box w=3 h=1.2 d=1.2 y=25.4 z=6 color=#b07aa0
+  part ring r=31 thick=2.2 seg=32 y=2 color=#ffd060 emit=0.9
+  part ring r=38 thick=1 seg=32 y=-2 color=#ff7ae6 emit=0.8
+  part ring r=112 thick=3 seg=48 color=#ffd060 emit=0.85 group=spin spin=14
+  part ring r=126 thick=1.5 seg=48 y=-2 color=#fff0d0 emit=0.7 group=spin
+  part ring r=96 thick=1.2 seg=48 y=-4 color=#ff4fd0 emit=0.75 group=spin
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=0 z=-119 rot=0 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=45.54 z=-109.94 rot=22.5 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=84.15 z=-84.15 rot=45 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=109.94 z=-45.54 rot=67.5 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=119 z=0 rot=90 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=109.94 z=45.54 rot=112.5 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=84.15 z=84.15 rot=135 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=45.54 z=109.94 rot=157.5 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=0 z=119 rot=180 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=-45.54 z=109.94 rot=202.5 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=-84.15 z=84.15 rot=225 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=-109.94 z=45.54 rot=247.5 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=-119 z=0 rot=270 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=-109.94 z=-45.54 rot=292.5 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=-84.15 z=-84.15 rot=315 mirror=0
+  part crystal r=3.4 len=18 seg=4 color=#fff4dc emit=0.85 group=spin x=-45.54 z=-109.94 rot=337.5 mirror=0
+  part crystal r=2.4 len=12 pitch=35 y=2 color=#ff7ae6 emit=0.8 group=spin x=36.74 z=-88.69 rot=22.5 mirror=0
+  part crystal r=2.4 len=12 pitch=35 y=2 color=#ff7ae6 emit=0.8 group=spin x=88.69 z=-36.74 rot=67.5 mirror=0
+  part crystal r=2.4 len=12 pitch=35 y=2 color=#ff7ae6 emit=0.8 group=spin x=88.69 z=36.74 rot=112.5 mirror=0
+  part crystal r=2.4 len=12 pitch=35 y=2 color=#ff7ae6 emit=0.8 group=spin x=36.74 z=88.69 rot=157.5 mirror=0
+  part crystal r=2.4 len=12 pitch=35 y=2 color=#ff7ae6 emit=0.8 group=spin x=-36.74 z=88.69 rot=202.5 mirror=0
+  part crystal r=2.4 len=12 pitch=35 y=2 color=#ff7ae6 emit=0.8 group=spin x=-88.69 z=36.74 rot=247.5 mirror=0
+  part crystal r=2.4 len=12 pitch=35 y=2 color=#ff7ae6 emit=0.8 group=spin x=-88.69 z=-36.74 rot=292.5 mirror=0
+  part crystal r=2.4 len=12 pitch=35 y=2 color=#ff7ae6 emit=0.8 group=spin x=-36.74 z=-88.69 rot=337.5 mirror=0
+  part crystal r=4 len=26 pitch=25 y=-2 color=#ff4fd0 emit=0.7 x=0 z=-60 rot=0 mirror=0
+  part crystal r=4 len=26 pitch=25 y=-2 color=#ff4fd0 emit=0.7 x=42.43 z=-42.43 rot=45 mirror=0
+  part crystal r=4 len=26 pitch=25 y=-2 color=#ff4fd0 emit=0.7 x=60 z=0 rot=90 mirror=0
+  part crystal r=4 len=26 pitch=25 y=-2 color=#ff4fd0 emit=0.7 x=42.43 z=42.43 rot=135 mirror=0
+  part crystal r=4 len=26 pitch=25 y=-2 color=#ff4fd0 emit=0.7 x=0 z=60 rot=180 mirror=0
+  part crystal r=4 len=26 pitch=25 y=-2 color=#ff4fd0 emit=0.7 x=-42.43 z=42.43 rot=225 mirror=0
+  part crystal r=4 len=26 pitch=25 y=-2 color=#ff4fd0 emit=0.7 x=-60 z=0 rot=270 mirror=0
+  part crystal r=4 len=26 pitch=25 y=-2 color=#ff4fd0 emit=0.7 x=-42.43 z=-42.43 rot=315 mirror=0
+  part crystal r=3 len=24 pitch=72 y=14 color=#fff4dc emit=0.9 x=0 z=-22 rot=0 mirror=0
+  part crystal r=3 len=24 pitch=72 y=14 color=#fff4dc emit=0.9 x=19.05 z=-11 rot=60 mirror=0
+  part crystal r=3 len=24 pitch=72 y=14 color=#fff4dc emit=0.9 x=19.05 z=11 rot=120 mirror=0
+  part crystal r=3 len=24 pitch=72 y=14 color=#fff4dc emit=0.9 x=0 z=22 rot=180 mirror=0
+  part crystal r=3 len=24 pitch=72 y=14 color=#fff4dc emit=0.9 x=-19.05 z=11 rot=240 mirror=0
+  part crystal r=3 len=24 pitch=72 y=14 color=#fff4dc emit=0.9 x=-19.05 z=-11 rot=300 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=11.23 z=-85.26 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=32.91 z=-79.45 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=52.35 z=-68.23 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=68.23 z=-52.35 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=79.45 z=-32.91 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=85.26 z=-11.23 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=85.26 z=11.23 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=79.45 z=32.91 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=68.23 z=52.35 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=52.35 z=68.23 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=32.91 z=79.45 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=11.23 z=85.26 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-11.23 z=85.26 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-32.91 z=79.45 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-52.35 z=68.23 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-68.23 z=52.35 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-79.45 z=32.91 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-85.26 z=11.23 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-85.26 z=-11.23 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-79.45 z=-32.91 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-68.23 z=-52.35 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-52.35 z=-68.23 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-32.91 z=-79.45 mirror=0
+  part light r=1.6 y=-3 color=#ffd060 x=-11.23 z=-85.26 mirror=0
+  part box w=2 h=2 d=26 y=-3 color=#8a6ab0 group=spin x=0 z=-106 rot=0 mirror=0
+  part box w=2 h=2 d=26 y=-3 color=#8a6ab0 group=spin x=74.95 z=-74.95 rot=45 mirror=0
+  part box w=2 h=2 d=26 y=-3 color=#8a6ab0 group=spin x=106 z=0 rot=90 mirror=0
+  part box w=2 h=2 d=26 y=-3 color=#8a6ab0 group=spin x=74.95 z=74.95 rot=135 mirror=0
+  part box w=2 h=2 d=26 y=-3 color=#8a6ab0 group=spin x=0 z=106 rot=180 mirror=0
+  part box w=2 h=2 d=26 y=-3 color=#8a6ab0 group=spin x=-74.95 z=74.95 rot=225 mirror=0
+  part box w=2 h=2 d=26 y=-3 color=#8a6ab0 group=spin x=-106 z=0 rot=270 mirror=0
+  part box w=2 h=2 d=26 y=-3 color=#8a6ab0 group=spin x=-74.95 z=-74.95 rot=315 mirror=0
+
+# A petal of the Curator: a blade of pearl and magenta that answers the pilot's every move.
+model e5_curator_petal
+  part plate pts="0,-40;12,-26;17,-6;14,14;7,28;0,32;-7,28;-14,14;-17,-6;-12,-26" thick=2.5 color=#e6d2ea emit=0.1 group=head pivot=0,0
+  part plate pts="0,-34;5,-4;0,26;-5,-4" thick=3.4 y=0.8 color=#ff4fd0 emit=0.65 group=head pivot=0,0
+  part crystal r=4 len=30 y=3 z=-6 color=#fff4dc emit=0.8 group=head pivot=0,0
+  part light r=2.4 y=4 z=10 color=#ffd060 group=head pivot=0,0
+  part ring r=12 thick=1.2 seg=18 y=-2 color=#ffd060 emit=0.8
+  part sphere r=6 y=-1 color=#3c2f52
+
+# Der erste Keim: the first seed of the Tessellate, hand-soldered, in a golden spiral of growth.
+model e5_firstseed
+  part box w=34 h=18 d=40 color=#7a8494
+  part wing span=26 root=16 tip=16 sweep=0 x=16 thick=1 color=#3a5a8a stripe=#5a7aaa
+  part gun r=0.8 len=26 y=20 z=8 pitch=70 color=#b8c0cc
+  part light r=1.6 y=31 z=-2 color=#ff4040
+  part box w=24 h=6 d=28 y=11 color=#9aa4b4
+  part disc r=10 h=5 y=15 color=#b8c0cc
+  part light r=3 y=18 color=#5adca8
+  part light r=1.4 x=10 y=8 z=-12 color=#ffb040 mirror=1
+  part greeble n=14 w=22 d=28 y=8 size=1.6 seed=71 color=#8a94a4
+  part ring r=74 thick=2 seg=40 color=#ffd060 emit=0.7 group=spin spin=-18
+  part ring r=94 thick=1.4 seg=48 y=-2 color=#ff4fd0 emit=0.75 group=spin
+  part crystal r=2.36 len=11.1 seg=5 x=10.81 z=11.8 rot=137.51 pitch=68 y=10.7 color=#ff4fd0 emit=0.67 mirror=0
+  part crystal r=2.52 len=12.2 seg=4 x=-22.54 z=-1.98 rot=275.02 pitch=66 y=10.4 color=#fff4dc emit=0.79 mirror=0
+  part crystal r=2.68 len=13.3 seg=5 x=21.99 z=-16.86 rot=412.52 pitch=64 y=10.1 color=#ffd060 emit=0.55 mirror=0
+  part crystal r=2.84 len=14.4 seg=4 x=-5.57 z=31.51 rot=550.03 pitch=62 y=9.8 color=#ff7ae6 emit=0.67 mirror=0
+  part crystal r=3 len=15.5 seg=5 x=-19.2 z=-30.19 rot=687.54 pitch=60 y=9.5 color=#ffe8a0 emit=0.79 mirror=0
+  part crystal r=3.16 len=16.6 seg=4 x=37.85 z=10.18 rot=825.05 pitch=58 y=9.2 color=#ff4fd0 emit=0.55 mirror=0
+  part crystal r=3.32 len=17.7 seg=5 x=-37.57 z=19.51 rot=962.56 pitch=56 y=8.9 color=#fff4dc emit=0.67 mirror=0
+  part crystal r=3.48 len=18.8 seg=4 x=15.53 z=-42.51 rot=1100.06 pitch=54 y=8.6 color=#ffd060 emit=0.79 mirror=0
+  part crystal r=3.64 len=19.9 seg=5 x=18.31 z=44.37 rot=1237.57 pitch=52 y=8.3 color=#ff7ae6 emit=0.55 mirror=0
+  part crystal r=3.8 len=21 seg=4 x=-45.83 z=-21.45 rot=1375.08 pitch=50 y=8 color=#ffe8a0 emit=0.67 mirror=0
+  part crystal r=3.96 len=22.1 seg=5 x=50.63 z=-15.88 rot=1512.59 pitch=48 y=7.7 color=#ff4fd0 emit=0.79 mirror=0
+  part crystal r=4.12 len=23.2 seg=4 x=-27.79 z=47.95 rot=1650.1 pitch=46 y=7.4 color=#fff4dc emit=0.55 mirror=0
+  part crystal r=4.28 len=24.3 seg=5 x=-12.38 z=-56.34 rot=1787.6 pitch=44 y=7.1 color=#ffd060 emit=0.67 mirror=0
+  part crystal r=4.44 len=25.4 seg=4 x=48.97 z=34.43 rot=1925.11 pitch=42 y=6.8 color=#ff7ae6 emit=0.79 mirror=0
+  part crystal r=4.6 len=26.5 seg=5 x=-61.45 z=7.96 rot=2062.62 pitch=40 y=6.5 color=#ffe8a0 emit=0.55 mirror=0
+  part crystal r=4.76 len=27.6 seg=4 x=41.25 z=-48.93 rot=2200.13 pitch=38 y=6.2 color=#ff4fd0 emit=0.67 mirror=0
+  part crystal r=4.92 len=28.7 seg=5 x=2.72 z=65.91 rot=2337.64 pitch=36 y=5.9 color=#fff4dc emit=0.79 mirror=0
+  part crystal r=5.08 len=29.8 seg=4 x=-47.88 z=-48.12 rot=2475.14 pitch=34 y=5.6 color=#ffd060 emit=0.55 mirror=0
+  part crystal r=5.24 len=30.9 seg=5 x=69.67 z=3.23 rot=2612.65 pitch=32 y=5.3 color=#ff7ae6 emit=0.67 mirror=0
+  part crystal r=5.4 len=32 seg=4 x=-54.94 z=45.84 rot=2750.16 pitch=30 y=5 color=#ffe8a0 emit=0.79 mirror=0
+  part crystal r=5.56 len=33.1 seg=5 x=9.78 z=-72.67 rot=2887.67 pitch=28 y=4.7 color=#ff4fd0 emit=0.55 mirror=0
+  part crystal r=5.72 len=34.2 seg=4 x=42.86 z=61.61 rot=3025.18 pitch=26 y=4.4 color=#fff4dc emit=0.67 mirror=0
+  part crystal r=5.88 len=35.3 seg=5 x=-74.86 z=-16.85 rot=3162.68 pitch=24 y=4.1 color=#ffd060 emit=0.79 mirror=0
+  part crystal r=6.04 len=36.4 seg=4 x=68.01 z=-38.96 rot=3300.19 pitch=22 y=3.8 color=#ff7ae6 emit=0.55 mirror=0
+  part crystal r=6.2 len=37.5 seg=5 x=-24.32 z=76.21 rot=3437.7 pitch=20 y=3.5 color=#ffe8a0 emit=0.67 mirror=0
+  part crystal r=6.36 len=38.6 seg=4 x=-34.21 z=-74.07 rot=3575.21 pitch=18 y=3.2 color=#ff4fd0 emit=0.79 mirror=0
+  part crystal r=6.52 len=39.7 seg=5 x=76.69 z=32.11 rot=3712.72 pitch=16 y=2.9 color=#fff4dc emit=0.55 mirror=0
+  part crystal r=6.68 len=40.8 seg=4 x=-79.67 z=28.65 rot=3850.22 pitch=14 y=2.6 color=#ffd060 emit=0.67 mirror=0
+  part crystal r=6.84 len=41.9 seg=5 x=40.09 z=-76.27 rot=3987.73 pitch=12 y=2.3 color=#ff7ae6 emit=0.79 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=0 z=-94 rot=0 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=55.25 z=-76.05 rot=36 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=89.4 z=-29.05 rot=72 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=89.4 z=29.05 rot=108 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=55.25 z=76.05 rot=144 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=0 z=94 rot=180 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=-55.25 z=76.05 rot=216 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=-89.4 z=29.05 rot=252 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=-89.4 z=-29.05 rot=288 mirror=0
+  part crystal r=2.4 len=12 seg=4 color=#fff4dc emit=0.85 group=spin x=-55.25 z=-76.05 rot=324 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=11.58 z=-73.09 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=33.6 z=-65.93 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=52.33 z=-52.33 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=65.93 z=-33.6 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=73.09 z=-11.58 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=73.09 z=11.58 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=65.93 z=33.6 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=52.33 z=52.33 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=33.6 z=65.93 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=11.58 z=73.09 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-11.58 z=73.09 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-33.6 z=65.93 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-52.33 z=52.33 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-65.93 z=33.6 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-73.09 z=11.58 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-73.09 z=-11.58 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-65.93 z=-33.6 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-52.33 z=-52.33 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-33.6 z=-65.93 mirror=0
+  part light r=1.4 color=#ffd060 group=spin x=-11.58 z=-73.09 mirror=0

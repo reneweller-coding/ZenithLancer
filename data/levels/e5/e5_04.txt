@@ -1,0 +1,80 @@
+# Episode 5, mission 4: the paths merge at the Crown's outer rings. Its keepers circle the rings in orbits,
+# knots and choir-ships sit on the ring surface. Somewhere in the orbits flies the way to the first seed.
+
+level e5_04
+  title "Die äußeren Ringe"
+  episode 5
+  theme lattice
+  music e5_a
+  scroll 75
+  length 225
+  next e5_05
+  secret e5_s1 key=e5_key_keim
+  map 0.31 0.50
+  briefing e5_04_brief
+  debrief e5_04_after
+
+  at 1   text e5_04_r1
+  at 3   wave e5_petal n=6 form=column x=100 gap=0.3 path=orbit cx=360 cy=240 r=170 dur=4 side=1
+  at 7   wave e5_petal n=6 form=column x=620 gap=0.3 path=orbit cx=360 cy=240 r=170 dur=4 side=-1
+  at 12  ground e5_node x=200
+  at 12  ground e5_node x=520 diff=3
+  at 14  wave e5_shard n=8 form=v x=360 spacing=50 path=dive turn=60
+  at 19  wave e5_mote n=10 form=random range=600 gap=0.3 path=sine amp=40 freq=0.4 speed=140
+  at 24  wave e5_cantor x=360 path=hover stop=150 wait=8
+  at 28  pickup credits x=540 value=1100
+  at 30  text e5_04_r2
+  at 32  wave e5_moth n=4 form=column x=150 gap=0.6 path=swoop side=1 cx=380 cy=260 dur=5 mirror=1
+  at 38  ground e5_spire x=120
+  at 38  ground e5_spire x=600
+  at 40  wave e5_spear n=4 form=line x=360 spacing=140 path=dive turn=60
+  at 45  pickup cube x=200 item=e5_c10
+
+  # a breath along the ring's rim
+  at 48  obstacle e5_crystal n=3 form=random range=560 gap=1.2 path=drift speed=50
+  at 54  wave e5_mote n=8 form=grid cols=4 x=360 spacing=90 dy=60 path=straight speed=120 drop=shield
+  at 58  text e5_04_r3
+  at 60  wave e5_sail x=0 path=strafe side=1 y=120 speed=80
+  at 62  wave e5_petal n=8 form=column x=360 gap=0.3 path=orbit cx=360 cy=300 r=120 dur=5 side=1
+  at 68  ground e5_node n=2 form=line x=360 spacing=320
+  at 70  wave e5_prism n=2 form=line x=360 spacing=280 path=hover stop=200 wait=5
+  at 76  wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=280
+  at 80  pickup credits x=360 value=1300
+  at 84  wave e5_lantern n=2 form=line x=360 spacing=340 path=hover stop=150 wait=7
+  at 90  wave e5_moth n=6 form=column x=100 gap=0.4 path=orbit cx=360 cy=260 r=160 dur=4 side=1 diff=3
+
+  # a breath: the next ring rises out of the glare
+  at 96  wave e5_mote n=6 form=line x=360 spacing=100 path=sine amp=30 freq=0.3 speed=120
+  at 100 text e5_04_r4
+  at 102 scroll 110
+  at 103 wave e5_streak n=6 form=random range=600 gap=0.5 path=straight speed=420
+  at 108 wave e5_spear n=6 form=v x=360 spacing=55 path=dive turn=40
+  at 113 ground e5_spire x=120 n=2 form=column gap=2
+  at 113 ground e5_spire x=600 n=2 form=column gap=2
+  at 115 wave e5_weaver x=360 path=hover stop=140 wait=8
+  at 120 pickup credits x=200 value=1300
+  at 122 scroll 75
+  at 124 wave e5_cantor n=2 form=line x=360 spacing=330 path=hover stop=160 wait=8
+
+  # the orbit of the keepers: five moths circle the ring between two choirs; all five carry the way
+  at 131 text e5_04_r5
+  at 132 wave e5_moth n=5 form=column x=100 gap=0.5 path=orbit cx=360 cy=230 r=150 dur=6 side=1 drop=key item=e5_key_keim
+  at 138 wave e5_petal n=8 form=column x=620 gap=0.3 path=swoop side=-1 cx=340 cy=280 dur=4.5
+  at 144 pickup cube x=520 item=e5_c11
+  at 146 ground e5_node x=360
+
+  # a breath, then the last spokes of the ring
+  at 152 obstacle e5_crystal n=2 form=line x=360 spacing=420 path=drift speed=50
+  at 156 wave e5_mote n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.3 speed=130
+  at 160 wave e5_sail x=0 path=strafe side=-1 y=110 speed=80
+  at 163 wave e5_shard n=10 form=column x=100 gap=0.18 path=swoop side=1 cx=360 cy=340 dur=3.4 mirror=1
+  at 170 wave e5_prism n=3 form=line x=360 spacing=220 path=hover stop=190 wait=6
+  at 176 pickup credits x=360 value=1500
+  at 178 wave e5_lantern x=360 path=hover stop=150 wait=8
+  at 182 wave e5_spear n=4 form=column x=200 gap=0.5 path=dive turn=60 mirror=1
+  at 188 wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
+  at 195 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=30 freq=0.3 speed=130 drop=credits value=2000
+  at 202 wave e5_cantor x=360 path=hover stop=140 wait=7 diff=3
+  at 205 wave e5_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=220
+  at 212 text e5_04_r6
+  at 216 end

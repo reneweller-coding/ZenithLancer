@@ -1,0 +1,69 @@
+# Episode 5, mission 5: the forge of the Crown, low over the corona. Here the rings are cast from sunlight;
+# their smith is the first of the Crown's keepers to stand in the Lancer's way.
+
+level e5_05
+  title "Die Ringschmiede"
+  episode 5
+  theme e5_corona
+  music e5_b
+  scroll 70
+  length 165
+  next e5_06 e5_07
+  arcade 1
+  map 0.44 0.52
+  briefing e5_05_brief
+  debrief e5_05_after
+
+  at 1   text e5_05_r1
+  at 3   wave e5_mote n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.4 speed=140
+  at 7   wave e5_wisp n=4 form=line x=360 spacing=150 path=chase turn=50 dur=2.4
+  at 12  ground e5_node x=180
+  at 12  ground e5_node x=540
+  at 15  wave e5_petal n=6 form=column x=100 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 21  wave e5_lantern x=360 path=hover stop=160 wait=7
+  at 25  wave e5_shard n=8 form=random range=560 gap=0.3 path=dive turn=60 diff=3
+  at 27  pickup credits x=300 value=1100
+  at 30  text e5_05_r2
+  at 32  wave e5_weaver x=360 path=hover stop=140 wait=7
+  at 36  wave e5_spear n=4 form=column x=180 gap=0.5 path=dive turn=60 mirror=1
+  at 42  wave e5_mote n=10 form=grid cols=5 x=360 spacing=80 dy=60 path=straight speed=120 drop=shield
+  at 46  pickup cube x=560 item=e5_c12
+
+  # a breath: molten rings drift past below
+  at 49  obstacle e5_crystal n=3 form=random range=560 gap=1.2 path=drift speed=50
+  at 54  wave e5_wisp n=6 form=sides x=60 gap=0.5 path=chase turn=55 dur=2.4
+  at 60  ground e5_spire x=120 n=2 form=column gap=2
+  at 60  ground e5_spire x=600 n=2 form=column gap=2
+  at 62  wave e5_cantor x=360 path=hover stop=150 wait=8
+  at 68  wave e5_moth n=4 form=line x=360 spacing=150 path=sine amp=40 freq=0.25 speed=110
+  at 72  text e5_05_r3
+  at 74  wave e5_sail x=0 path=strafe side=1 y=110 speed=80
+  at 76  wave e5_petal n=8 form=column x=620 gap=0.3 path=orbit cx=360 cy=280 r=150 dur=5 side=-1
+  at 82  pickup credits x=480 value=1300
+  at 85  wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=290
+
+  # a breath, then the forge's floor
+  at 92  wave e5_mote n=6 form=v x=360 spacing=60 path=sine amp=30 freq=0.3 speed=120
+  at 96  scroll 100
+  at 97  ground e5_node n=3 form=line x=360 spacing=240
+  at 100 wave e5_lantern n=2 form=line x=360 spacing=340 path=hover stop=150 wait=7
+  at 105 wave e5_wisp n=5 form=column x=360 gap=0.5 path=chase turn=50 dur=2.6
+  at 110 wave e5_spear n=6 form=v x=360 spacing=55 path=dive turn=40
+  at 112 wave e5_prism x=360 path=hover stop=220 wait=5 diff=3
+  at 116 pickup credits x=200 value=1300
+  at 118 scroll 70
+  at 120 wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
+  at 127 wave e5_weaver n=2 form=line x=360 spacing=320 path=hover stop=150 wait=7
+  at 133 pickup cube x=360 item=e5_c13
+  at 135 wave e5_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=220
+
+  # the smith's anvil: Quill sends a last crate, then the forge falls silent
+  at 143 text e5_05_r4
+  at 147 pickup shield x=360
+  at 148 pickup credits x=200 value=1500
+  at 150 text e5_05_r5
+  at 152 warn
+  at 153 music e5_boss
+  at 155 boss e5_ringsmith
+  at 157 text e5_05_r6
+  at 160 end

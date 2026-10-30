@@ -1,0 +1,68 @@
+# Episode 5, mission 8: the paths merge at Zenith Station's command ring. Admiral Voss makes his last stand
+# with the swarm he stole: his fighters, his gunships, and his escape fortress, the citadel "Letzte Order".
+
+level e5_08
+  title "Letzte Order"
+  episode 5
+  theme station
+  music e5_a
+  scroll 75
+  length 175
+  next e5_09
+  map 0.68 0.50
+  briefing e5_08_brief
+  debrief e5_08_after
+
+  at 1   text e5_08_r1
+  at 3   wave e5_raider n=6 form=column x=150 gap=0.4 path=arc side=1 turn=60 mirror=1
+  at 8   ground e5_dockgun x=140
+  at 8   ground e5_dockgun x=580
+  at 11  wave e5_mote n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.4 speed=140
+  at 16  wave e5_enforcer x=360 path=hover stop=150 wait=7
+  at 21  wave e5_shard n=8 form=random range=560 gap=0.3 path=dive turn=60
+  at 24  wave e5_raider n=6 form=random range=560 gap=0.4 path=dive turn=50 diff=3
+  at 27  pickup credits x=200 value=1200
+  at 29  text e5_08_r2
+  at 31  ground e5_dockgun n=3 form=line x=360 spacing=220
+  at 34  wave e5_lantern x=360 path=hover stop=160 wait=7
+  at 40  wave e5_raider n=6 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=280 dur=4.5 mirror=1
+  at 45  pickup cube x=540 item=e5_c20
+
+  # a breath along the command ring
+  at 48  wave e5_mote n=6 form=line x=360 spacing=100 path=sine amp=30 freq=0.3 speed=120
+  at 52  text e5_08_r3
+  # eight light runners cross the ring at full speed: whoever downs all eight earns what they carry
+  at 54  wave e5_streak n=8 form=random range=600 gap=0.4 path=straight speed=430 drop=plan item=zenith
+  at 60  wave e5_enforcer n=2 form=line x=360 spacing=340 path=hover stop=150 wait=7
+  at 66  ground e5_dockgun x=120 n=2 form=column gap=2
+  at 66  ground e5_dockgun x=600 n=2 form=column gap=2
+  at 70  wave e5_spear n=6 form=v x=360 spacing=55 path=dive turn=40
+  at 75  pickup credits x=360 value=1300
+  at 78  wave e5_raider n=8 form=sides x=70 gap=0.35 path=arc side=1 turn=70 drop=shield
+  at 84  wave e5_cantor x=360 path=hover stop=150 wait=8
+  at 88  wave e5_prism n=2 form=line x=360 spacing=300 path=hover stop=200 wait=5 diff=3
+  at 92  pickup cube x=160 item=e5_c21
+
+  # a breath: the bridge deck, its windows full of sun
+  at 94  pickup credits x=200 value=2000
+  at 95  wave e5_mote n=8 form=grid cols=4 x=360 spacing=90 dy=60 path=straight speed=120
+  at 99  text e5_08_r4
+  at 101 wave e5_raider n=6 form=column x=600 gap=0.4 path=orbit cx=360 cy=260 r=150 dur=4 side=-1
+  at 106 wave e5_enforcer x=200 path=hover stop=140 wait=7
+  at 108 wave e5_lantern x=520 path=hover stop=180 wait=7
+  at 114 wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=280
+  at 118 pickup credits x=480 value=1400
+  at 121 wave e5_raider n=8 form=random range=600 gap=0.35 path=dive turn=50 drop=credits value=2000
+  at 128 pickup cube x=360 item=e5_c22
+
+  # Voss's last stand
+  at 132 text e5_08_r5
+  at 134 pickup shield x=360
+  at 135 pickup credits x=200 value=1500
+  at 136 pickup credits x=520 value=1500
+  at 138 warn
+  at 139 music e5_boss
+  at 140 text e5_08_r6
+  at 141 boss e5_citadel
+  at 143 text e5_08_r7
+  at 146 end

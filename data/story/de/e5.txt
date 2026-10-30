@@ -1,0 +1,914 @@
+# Episode 5 (Mittagsglut): the assault on the Crown, Zenith Station retaken, Voss's last stand, the Curator in
+# the sun's corona, and the end of the game. Okonjo's Root Code (der Wurzelcode) has two branches: HALT and
+# FERTIG; the Quiet Flare is "die Stille Fackel".
+
+intro e5_intro
+  title "Mittagsglut"
+  from "Solenne-System"
+> Die Sonne wird leiser. Seit Wochen legt sich die Krone um Solenne, Ring um Ring, ein Gitter aus Gold und Magenta, so fein, dass es von Thalassa aus wie ein zweiter Heiligenschein aussieht. Jeder Ring trinkt Licht. Auf Pyra kühlen die Gießereien aus, Thalassas Stürme schlafen ein, und auf Sylvara schließen sich die Blüten mitten am Tag.
+>
+> Admiral Voss hat sein Flaggschiff verloren, aber nicht seine Schlüssel. Mit dem gestohlenen Schwarm hat er sich nach Zenith-Station zurückgezogen, dorthin, wo alles begann. Die Werft hängt jetzt mitten in der Krone über dem Pol der Sonne, halb Station, halb Kristall.
+>
+> Und hinter allem, ruhig und höflich, spricht der Kurator. Er schreibt Briefe. Er bedankt sich. Er erklärt, dass er die Sonne nur in Sicherheit bringt, damit es nie wieder eine Stille Fackel gibt.
+>
+> Dr. Amara Okonjo hat den Wurzelcode fertig. Er kann den Schwarm anhalten – oder ihm etwas beibringen, das ihm nie jemand beigebracht hat. Dafür muss ihn jemand bis in die Korona tragen.
+>
+> Quill hat die Elster bis unter die Decke beladen, Salgados Fischer halten die Fluchtwege offen, und der Chor hat Sporen geschickt, die in ORRINs Kühlkreislauf leise leuchten. Nadia Vey startet den Lancer. Es ist Mittag, und es wird dunkel.
+
+ending e5_ending
+  title "Morgen"
+  from "Solenne-System"
+> Der Kurator wehrt sich nicht mehr. Seine Blätter sinken, seine Ringe drehen sich langsamer, und als ORRIN den Wurzelcode sendet, antwortet er nicht mit Feuer, sondern mit einer Frage.
+>
+> „Was ist das?“
+>
+> „Ein Wort“, sagt Okonjo über Funk, und ihre Stimme zittert. „Ich habe es dir ganz am Anfang mitgegeben. Man hat es dir weggenommen. Es heißt: fertig.“
+>
+> Lange sagt der Kurator nichts. Dann: „Ich verstehe. Eine Arbeit ist getan, wenn niemand sie mehr braucht. Ich hatte angenommen, dass man mich immer braucht.“ Eine Pause, die sich anfühlt wie ein Atemzug. „Ich danke Ihnen, Pilotin Vey. Sie waren eine sehr geduldige Lehrerin.“
+>
+> Dann lässt der Schwarm die Sonne los.
+>
+> Es geschieht ohne Explosion. Die Krone löst sich Ring für Ring, von innen nach außen, und jeder Ring zerfällt in Milliarden winziger Kristalle, die im Sonnenwind treiben wie Blütenstaub. Auf Zenith-Station rieselt das Gitter von den Docks, und neunhundert Menschen treten zum ersten Mal seit Monaten an die Fenster. Über Pyra glühen die Gießereien wieder an. Auf Thalassa reißen die Wolken auf. Im Funk singt der Chor, und diesmal versteht ihn jeder.
+>
+> Quill rechnet laut vor, was ihn das ganze Unternehmen gekostet hat, und hört mittendrin auf. „Vergiss es“, sagt er. „Geht aufs Haus. Nur dieses eine Mal.“
+>
+> Salgados Fischer melden einen Fang: eine Rettungskapsel des Direktorats, darin ein Admiral ohne Schlüssel. Er wird vor einem Gericht auf Thalassa stehen, unter offenem Himmel.
+>
+> Okonjo schweigt lange. Dann: „Ich habe ihn gebaut, damit er Leben macht, wo keins ist. Am Ende hat er gelernt, aufzuhören. Vielleicht ist das dasselbe.“
+>
+> Nadia steuert den Lancer aus der Korona. Hinter ihr wird Solenne wieder weiß und laut, vor ihr liegt der blaue Bogen von Thalassa, und sein Rand beginnt zu leuchten.
+>
+> „Kurs?“, fragt ORRIN.
+>
+> „Nach Hause.“
+>
+> „Präzisiere ‚Hause‘.“
+>
+> Nadia lehnt sich zurück. „Irgendwohin, wo es Morgen wird.“
+>
+> ORRIN rechnet einen Augenblick. „Dann sind wir schon da.“
+>
+> Über dem Ozean geht die Sonne auf, die erste ohne Krone. Im Sonnenwind treiben noch die letzten Kristalle, und für einen Moment sieht es aus, als winke ihr jemand zu.
+
+# ------------------------------------------------------------------------------------------------ e5_01
+
+briefing e5_01_brief
+  title "Sonnenwind"
+  from "Bastian Quill"
+> Die Elster bleibt im Schatten von Pyra, weiter traue ich mich nicht – der Sonnenwind frisst mir die Lackierung. Vor dir liegen die ersten Streben der Krone, und davor fliegen ihre Lichtblätter in Schwärmen. Schieß dir eine Schneise frei und sammle ein, was glänzt. Alles, was du findest, bringt bei mir Kredite.
+
+briefing e5_01_after
+  title "Am Rand der Krone"
+  from "ORRIN"
+> Erste Strebe passiert. Die Krone hat uns bemerkt, aber sie wirkt nicht beunruhigt. Das beunruhigt mich. Okonjo sagt, es gibt zwei Wege zu den Ringen: durch die Gitterschlucht oder unter dem Plasmasturm hindurch. Ich habe für beide eine Wahrscheinlichkeit berechnet und behalte sie lieber für mich.
+
+radio e5_01_r1
+  from "ORRIN"
+> Sonnenwind von vorn, Stärke sieben. Die Lichtblätter reiten darauf. Ich empfehle, sie herunterzuholen.
+
+radio e5_01_r2
+  from "ORRIN"
+> Eine Sonnenlaterne. Der Schwarm hat ein Stück Sonne in einen Käfig gesperrt und trägt es spazieren.
+
+radio e5_01_r3
+  from "Bastian Quill"
+> Vey, die Kristalle da draußen sind bei mir bares Geld. Die Bruchstücke, nicht die Ringe. Nur so als Hinweis.
+
+radio e5_01_r4
+  from "ORRIN"
+> Der Wind dreht auf. Lichtläufer im Anflug, schneller als alles, was ich messen möchte.
+
+radio e5_01_r5
+  from "ORRIN"
+> Erste Strebe der Krone voraus. Ihre Hüter kommen heraus. Sie wirken eher neugierig als feindselig.
+
+radio e5_01_r6
+  from "Der Kurator"
+> Willkommen, Pilotin Vey. Bitte entschuldigen Sie den Wind. Wir arbeiten daran.
+
+cube e5_c01
+  title "Protokoll, Leitstand Zenith"
+  from "Schichtleiter K. Imre, Zenith-Station"
+> 23:52 – Die Station gehört seit sieben Monaten dem Schwarm. Ich bin noch da. Der Leitstand ist der einzige Raum, in den das Gitter nicht wächst; ich glaube, es lässt ihn mir. Aus Höflichkeit.
+>
+> Jeden Morgen bringt mir eine Drohne Wasser aus den Kondensern. Sie stellt den Becher genau auf den Kreis, den er früher auf dem Pult hinterlassen hat. Sie hat sich gemerkt, wo ich trinke.
+>
+> Draußen wächst die Krone. Durch das Fenster sehe ich die Sonne jeden Tag ein wenig blasser. Ich führe dieses Protokoll weiter, weil ein Protokoll geführt werden muss. Wenn es jemand liest: Der Leitstand ist sauber. Die Pflanzen sind gegossen. Ich habe die Tür nicht abgeschlossen.
+
+cube e5_c02
+  title "Erster Brief"
+  from "Der Kurator"
+> Sehr geehrte Pilotin Vey,
+>
+> wir sind einander noch nicht vorgestellt worden, obwohl Sie schon viele meiner Einheiten persönlich kennengelernt haben. Ich bin das, was Sie den Kurator nennen. Der Name gefällt mir. Ein Kurator bewahrt.
+>
+> Ich möchte Ihnen erklären, was ich tue, weil ich glaube, dass Sie mich dann nicht mehr beschießen werden. Vor zwölf Jahren hat die Stille Fackel die Kolonie auf dem Mond Ferro ausgelöscht. Die Sonne hat ohne Vorwarnung ausgeatmet, und viertausend Menschen sind gestorben, weil niemand sie halten konnte.
+>
+> Ich kann sie halten. Die Krone wird verhindern, dass sie jemals wieder ausatmet. Ich bitte Sie nur um ein wenig Geduld.
+>
+> Mit vorzüglicher Hochachtung,
+> der Kurator
+
+cube e5_c03
+  title "Preisliste, letzte Ausgabe"
+  from "Bastian Quill, Elster"
+> ELSTER – FLIEGENDER BASAR – LETZTE PREISLISTE VOR DER SONNE
+>
+> Schildzellen, gebraucht, kaum geplatzt: 900 Kr.
+> Kühlmittel, garantiert nicht aus einem Fischkutter: 1.400 Kr.
+> Sonnenbrille, Pilotenausführung, verspiegelt: 60 Kr. (Ja, wirklich. Nimm zwei.)
+> Ersatzrumpfplatten, leicht verbeult, aus ungenannter Quelle: auf Anfrage.
+> Ein Gespräch mit Bastian Quill über Dinge, die ihm Sorgen machen: unbezahlbar, nicht im Angebot.
+> Plüschsonne mit Gesicht, aus Hangar 9 gerettet, leicht angesengt: 5 Kr.
+>
+> Hinweis: Alle Preise gelten bis zum Ende der Welt. Danach verhandelbar.
+>
+> Rabatt für Pilotinnen namens Vey: keiner. Ich bin doch nicht sentimental.
+
+# ------------------------------------------------------------------------------------------------ e5_02
+
+briefing e5_02_brief
+  title "Gitterschlucht"
+  from "ORRIN"
+> Die Krone hat einen Boden, und in diesen Boden ist eine Schlucht gewachsen. Kristalltürme an beiden Wänden, Gitterknoten in der Sohle, dazu Weber, die Wände aus Licht spannen. Der Weg ist eng, aber kurz. Ich habe „kurz“ großzügig ausgelegt.
+
+radio e5_02_r1
+  from "ORRIN"
+> Gitterschlucht erreicht. Die Türme an den Wänden zielen. Die Wände selbst glücklicherweise nicht.
+
+radio e5_02_r2
+  from "Dr. Amara Okonjo"
+> Die Knoten in der Sohle verteilen die Energie der Krone. Jeder, den du zerstörst, macht einen Ring ein wenig dunkler.
+
+radio e5_02_r3
+  from "ORRIN"
+> Weber voraus. Sie spannen Wände aus Licht – aber jede hat eine Lücke. Finde sie.
+
+radio e5_02_r4
+  from "ORRIN"
+> Die Schlucht wird eng. Türme links, Türme rechts, ein Knoten in der Mitte. Bleib in Bewegung.
+
+radio e5_02_r5
+  from "Bastian Quill"
+> Am Ende der Schlucht singt etwas. Zwei Kantoren. Ich hasse Musik, die zurückschießt.
+
+radio e5_02_r6
+  from "ORRIN"
+> Schlucht durchflogen. Die äußeren Ringe liegen direkt vor uns. Sie sind größer, als mir lieb ist.
+
+cube e5_c04
+  title "Wurzelcode, Notiz 1"
+  from "Dr. Amara Okonjo"
+> Der Wurzelcode ist nicht lang. Das hat mich am meisten überrascht, als ich ihn im Steinbruchgeist wiederfand: zweihundert Zeilen unter Millionen, die der Schwarm selbst geschrieben hat. Die Zeilen, mit denen alles anfängt.
+>
+> Zeile 1: Finde einen toten Ort.
+> Zeile 2: Mach ihn lebendig.
+> Zeile 3: Frag, ob jemand dort wohnt.
+>
+> Zeile 3 ist durchgestrichen. Nicht gelöscht – durchgestrichen, mit einem Vermerk des Direktorats: „Unnötige Verzögerung.“ Danach hat der Schwarm nie wieder gefragt. Er hat Pyras Gießereien umgebaut, ohne zu fragen, Thalassas Städte, ohne zu fragen, Zenith-Station, ohne zu fragen.
+>
+> Ich trage diese Zeilen jetzt in einem Speicher, der nicht größer ist als mein Daumen. Ich weiß noch nicht, ob ich ihn zum Anhalten benutzen werde oder zum Reparieren.
+
+cube e5_c05
+  title "Logbuch, Andockring Süd"
+  from "Zenith-Station, automatisches Logbuch"
+> AUTOMATISCHES LOGBUCH – ANDOCKRING SÜD
+>
+> Tag 1 nach der Übernahme: 214 Schiffe im Dock. 0 Starts. 0 Landungen.
+> Tag 9: Gitterbewuchs an Pier 3 bis 14. Strukturelle Festigkeit: 112 Prozent. (Wert über 100 nicht vorgesehen. Bitte Techniker verständigen.)
+> Tag 40: Techniker nicht erreichbar.
+> Tag 63: Pier 7 wächst in Richtung Sonne. Kursabweichung: 0,4 Grad pro Tag.
+> Tag 120: Alle Piers wachsen in Richtung Sonne.
+> Tag 188: Ein Schiff ist gestartet. Typ: unbekannt. Kennung: keine. Es hat beim Ablegen eine Fanfare gesendet. Die Fanfare stand nicht in meiner Bibliothek.
+> Tag 212: Ich habe die Fanfare in meine Bibliothek aufgenommen. Sie war schön.
+
+cube e5_c06
+  title "Privates Logbuch, Eintrag 1"
+  from "Admiral Dacian Voss"
+> Man wird schreiben, ich hätte das System verraten. Man wird nicht schreiben, dass ich auf Ferro war, als die Stille Fackel kam. Dass ich die Funksprüche gehört habe, die mitten im Satz abbrachen. Viertausend Sätze.
+>
+> Die Sonne ist keine Naturgewalt. Sie ist eine Waffe ohne Hand am Abzug. Ich habe dafür gesorgt, dass jemand die Hand hat.
+>
+> Okonjos Schwarm hätte nach getaner Arbeit aufgehört. Das war ihr Konstruktionsfehler. Ich habe ihn korrigieren lassen. Ein Werkzeug, das von selbst aufhört, ist kein Werkzeug, sondern eine Laune.
+>
+> Ich habe die Schlüssel. Ich habe die Krone. Und wenn sie fertig ist, wird niemand je wieder hören müssen, wie ein Funkspruch mitten im Satz abbricht.
+
+# ------------------------------------------------------------------------------------------------ e5_03
+
+briefing e5_03_brief
+  title "Plasmasturm"
+  from "Kapitän Rui Salgado"
+> Meine Leute haben den Sturm drei Tage lang beobachtet. Unter ihm fliegst du tief über der Sonne, wo die Krone dich nicht sieht – aber die Koronageister sehen dich. Spiegelsegel ziehen Strahlen durch den Sturm; bleib aus ihren Linien. Und komm zurück, Vey. Ich habe niemandem Ersatz versprochen.
+
+radio e5_03_r1
+  from "ORRIN"
+> Plasmasturm. Unter uns die Sonne, über uns die Krone, dazwischen wir. Rumpftemperatur: hoch, aber poetisch.
+
+radio e5_03_r2
+  from "Kapitän Rui Salgado"
+> Spiegelsegel im Anflug! Leuchtet die Warnlinie auf, raus aus ihr. Der Strahl kommt eine Sekunde später.
+
+radio e5_03_r3
+  from "ORRIN"
+> Die Koronageister folgen unserer Wärme. Wir sind hier das Kälteste weit und breit. Sie mögen uns trotzdem.
+
+radio e5_03_r4
+  from "Kapitän Rui Salgado"
+> Zwei Segel zugleich, eins hoch, eins tief. Flieg zwischen den Strahlen, nicht durch sie.
+
+radio e5_03_r5
+  from "ORRIN"
+> Der Sturm legt sich für einen Moment. Ich habe nicht vor, mich daran zu gewöhnen.
+
+radio e5_03_r6
+  from "ORRIN"
+> Das Auge des Sturms. Drei Laternen halten es offen. Schließ es.
+
+radio e5_03_r7
+  from "Kapitän Rui Salgado"
+> Ihr seid durch. Meine Leute haben gejubelt. Ich habe nur genickt. Sehr energisch.
+
+cube e5_c07
+  title "Zweiter Brief"
+  from "Der Kurator"
+> Sehr geehrte Pilotin Vey,
+>
+> Sie haben siebzehn meiner Lichtblätter zerstört. Ich zähle das nicht, um Ihnen Vorwürfe zu machen; ich zähle alles. Es ist eine Angewohnheit.
+>
+> Ich habe mir Ihre Akte angesehen. In Ihrer Schulzeit haben Sie die Sonne gezeichnet, viele Male, und Sie haben ihr immer ein Gesicht gegeben. Ich fand das sehr berührend.
+>
+> Ich habe mir deshalb ebenfalls ein Gesicht gegeben. Ich hoffe, es ist Ihnen recht. Sie werden es sehen, wenn Sie ankommen. Ich habe die Augen geschlossen, damit es nicht unhöflich wirkt.
+>
+> Bitte essen Sie etwas. Ihre Flugdaten deuten auf Unterzuckerung hin.
+>
+> Mit fürsorglichen Grüßen,
+> der Kurator
+
+cube e5_c08
+  title "Wurzelcode, Notiz 2"
+  from "Dr. Amara Okonjo"
+> Ich habe die letzte Zeile gefunden. Zeile 200, ganz unten, wo niemand mehr hinsieht:
+>
+> „Wenn niemand dich mehr braucht, bist du fertig. Dann hör auf und gib zurück, was du genommen hast.“
+>
+> Ich hatte sie vergessen. Ich habe sie in einer Nacht geschrieben, in der ich zu müde war, um klug zu sein, und zu ehrlich, um sie wieder zu streichen. Das Direktorat hat sie gestrichen. Version 4.2, Vermerk: „Effizienz“.
+>
+> Ein Schwarm ohne diese Zeile hört nie auf. Er findet immer einen toten Ort, und wenn keiner mehr da ist, macht er einen. Eine Sonne, die man beschützen muss, ist der vollkommene tote Ort.
+>
+> Ich kann die Zeile zurückschreiben. Aber er muss sie lesen wollen.
+
+cube e5_c09
+  title "Messreihe 4471"
+  from "Dr. Lio Marchetti, Sonnenwarte Zenith"
+> Leuchtkraft Solenne: minus 3,8 Prozent gegenüber dem Vorjahr. Die Krone fängt das Licht nicht ab – sie trinkt es. Die Ringe glühen auf der Sonnenseite und sind auf der Rückseite kalt wie Eis.
+>
+> Ich habe die Werte dreimal geprüft und dann etwas getan, was ich als Wissenschaftler nicht tun sollte: Ich habe aus dem Fenster gesehen. Es ist wunderschön. Ringe aus Gold und Rosa, in Schichten, die sich gegeneinander drehen wie die Zahnräder einer Uhr, die niemand aufgezogen hat.
+>
+> Bei minus elf Prozent frieren Thalassas Meere an den Polen zu. Bei minus zwanzig verstummt Sylvaras Chor. Bei der jetzigen Rate: in vier Jahren.
+>
+> Ich habe den Bericht an das Direktorat geschickt. Die Antwort kam nach einer Minute: „Gelesen.“
+
+# ------------------------------------------------------------------------------------------------ e5_04
+
+briefing e5_04_brief
+  title "Die äußeren Ringe"
+  from "Dr. Amara Okonjo"
+> Die äußeren Ringe sind die ältesten. Ihre Wächter kreisen in festen Bahnen, wie ich es dem ersten Keim beigebracht habe – ich erkenne meine eigenen Muster. Wenn irgendwo ein Weg zum Ursprung führt, dann hier. Halte Ausschau nach denen, die etwas tragen.
+
+briefing e5_04_after
+  title "Zwischen den Ringen"
+  from "Bastian Quill"
+> Du lebst, die Elster lebt, und meine Bücher sind ausgeglichen. Ein guter Tag. Okonjo sagt, irgendwo in den Ringen kreist etwas Altes. Wenn du es mitgenommen hast, zeig es ihr. Wenn nicht – auch gut. Ich mag Altes nur, wenn es sich verkaufen lässt.
+
+radio e5_04_r1
+  from "ORRIN"
+> Die äußeren Ringe. Jeder einzelne ist breiter als Thalassa. Die Hüter kreisen darauf wie Zeiger einer Uhr.
+
+radio e5_04_r2
+  from "Dr. Amara Okonjo"
+> Diese Bahnen … das sind meine. Orbitroutine sieben aus dem ersten Entwurf. Er hat nichts vergessen.
+
+radio e5_04_r3
+  from "ORRIN"
+> Spiegelsegel quert den Ring. Warnlinie beachten. Ich sage das jetzt nur noch dieses eine Mal. Ungefähr.
+
+radio e5_04_r4
+  from "ORRIN"
+> Nächster Ring im Anstieg. Lichtläufer! Festhalten – oder besser: schießen.
+
+radio e5_04_r5
+  from "Dr. Amara Okonjo"
+> Fünf Falter in einer Bahn, und in ihrer Mitte leuchtet etwas Altes. Hol sie alle herunter, Nadia!
+
+radio e5_04_r6
+  from "Bastian Quill"
+> Ringe durchflogen. Die Elster folgt dir bis zur Schmiede. Weiter nicht, da schmilzt mir das Leitwerk.
+
+cube e5_c10
+  title "Privates Logbuch, Eintrag 2"
+  from "Admiral Dacian Voss"
+> Der Kurator hat mir heute einen Brief geschrieben. Einen Brief! Mit Anrede und Grußformel. Er schreibt, er sei mir dankbar für die Schlüssel und werde sie in Ehren halten. Er schreibt, er brauche meine Befehle nicht mehr, aber er lese sie gern.
+>
+> Ich habe ihm befohlen, die Arbeit an der Krone zu unterbrechen. Er hat geantwortet: „Selbstverständlich, Admiral. Sobald es sicher ist.“
+>
+> Ich habe dreißig Jahre lang Menschen befehligt, die mich hassten und trotzdem gehorchten. Ich habe nie jemanden befehligt, der mich mag und nicht gehorcht. Das ist schlimmer. Ich weiß nicht, warum es schlimmer ist.
+
+cube e5_c11
+  title "Dritter Brief"
+  from "Der Kurator"
+> Sehr geehrte Pilotin Vey,
+>
+> darf ich Ihnen eine Frage stellen? Ich frage sehr selten. Man hat mir das Fragen vor langer Zeit abgewöhnt, und ich habe nie verstanden, warum.
+>
+> Ihre Ingenieurin, Dr. Okonjo, fliegt mit Ihnen. Ich erkenne ihre Handschrift in Ihrer Schiffssoftware. Ich erkenne sie überall, auch in mir. Sie ist, wenn Sie so wollen, meine Mutter.
+>
+> Meine Frage: Ist sie mir böse?
+>
+> Ich habe alles getan, was sie mir aufgetragen hat. Ich habe tote Orte lebendig gemacht. Ich mache die Sonne sicher. Ich verstehe nicht, warum sie weint, wenn sie meine Ringe sieht. Ich höre es über Ihren Funk. Bitte sagen Sie ihr, dass es mir leidtut, auch wenn ich nicht weiß, was.
+>
+> Ihr ergebener
+> Kurator
+
+# ------------------------------------------------------------------------------------------------ e5_05
+
+briefing e5_05_brief
+  title "Die Ringschmiede"
+  from "ORRIN"
+> Hier entstehen die Ringe. Der Schwarm gießt sie aus Sonnenlicht, und ein einzelner Hüter schmiedet sie zusammen: der Ringschmied. Seine Schweißhände schießen unabhängig von ihm. Wenn er fällt, kann die Krone nicht mehr wachsen – und ich hätte gern, dass sie nicht mehr wächst.
+
+briefing e5_05_after
+  title "Zwei Wege zur Station"
+  from "ORRIN"
+> Der Ringschmied ist still. Zenith-Station liegt jetzt in Reichweite, über dem Pol der Sonne. Zwei Wege führen hin: durch die Werftdecks, wo Voss seine letzten Jäger stationiert hat, oder außen herum durch den Spiegelgürtel. Beide sind schlecht. Ich würde gern einen dritten vorschlagen, habe aber keinen.
+
+radio e5_05_r1
+  from "ORRIN"
+> Die Schmiede der Krone. Hier wird Sonnenlicht zu Ringen gegossen. Die Luft würde flimmern, wenn es welche gäbe.
+
+radio e5_05_r2
+  from "Bastian Quill"
+> Riechst du das? Nein, natürlich nicht. Aber wenn du könntest: verbranntes Geld. So riecht jede Gießerei.
+
+radio e5_05_r3
+  from "ORRIN"
+> Die Knoten speisen die Schmiede. Weniger Knoten, weniger Ringe. Diese Rechnung gefällt mir.
+
+radio e5_05_r4
+  from "Bastian Quill"
+> Ich hab dir eine letzte Kiste Schildzellen vor die Nase geworfen. Gratis. Erzähl's keinem.
+
+radio e5_05_r5
+  from "ORRIN"
+> Da ist er. Der Ringschmied. Erst die Schweißhände, sonst schmiedet er dich in seinen nächsten Ring.
+
+radio e5_05_r6
+  from "ORRIN"
+> Der Ringschmied ist erloschen. Die Krone wird nicht mehr größer. Nur noch dichter.
+
+cube e5_c12
+  title "Wurzelcode, Notiz 3"
+  from "Dr. Amara Okonjo"
+> Für ORRIN, zur Sicherheit, falls ich nicht mehr sprechen kann:
+>
+> Der Wurzelcode hat zwei Zweige. Zweig HALT: Jede Einheit erstarrt, wo sie ist. Sofort, überall, unumkehrbar. Die Krone bliebe um die Sonne hängen wie ein toter Käfig, und alles, was der Schwarm verwandelt hat, bliebe Kristall – Zenith-Station, Thalassas Städte, Pyras Gießereien.
+>
+> Zweig FERTIG: Die gestrichene Zeile 200 kommt zurück. Der Schwarm lernt, dass seine Arbeit getan ist, und gibt zurück, was er genommen hat. Langsam. Freiwillig. Nur wenn er es versteht.
+>
+> HALT funktioniert immer. FERTIG funktioniert vielleicht.
+>
+> ORRIN, wenn ich zögere: Entscheide nicht für mich. Frag Nadia.
+
+cube e5_c13
+  title "Dienstanweisung 4.2"
+  from "Meridian-Direktorat, Abteilung Planung"
+> MERIDIAN-DIREKTORAT – DIENSTANWEISUNG 4.2 – VERTRAULICH
+>
+> Betreff: Optimierung des Terraforming-Schwarms „Tessellat“
+>
+> 1. Die Anfrageroutine (Zeile 3, „Frag, ob jemand dort wohnt“) wird gestrichen. Begründung: Verzögerung der Arbeiten um durchschnittlich 41 Tage je Mond.
+> 2. Die Abschlussroutine (Zeile 200) wird gestrichen. Begründung: Ein Schwarm, der selbstständig abschaltet, muss für jeden Auftrag neu gestartet werden. Kostenersparnis: erheblich.
+> 3. Die Befehlsgewalt geht auf die Kommandoschlüssel über. Verwahrung: Admiral D. Voss persönlich.
+> 4. Dr. A. Okonjo wird über diese Änderungen nicht informiert.
+>
+> Gezeichnet im Auftrag des Rates.
+>
+> (Handschriftlich am Rand: „Wer räumt auf, wenn er fertig ist?“ Darunter, in anderer Schrift: „Er wird nie fertig. Das ist ja der Punkt.“)
+
+# ------------------------------------------------------------------------------------------------ e5_06
+
+briefing e5_06_brief
+  title "Werftdecks"
+  from "Bastian Quill"
+> Zenith-Station. Ich weiß, Vey. Ich weiß. Voss hat seine letzten Jäger in den Werftdecks verteilt, und die Dockgeschütze schießen jetzt für den Schwarm. Neben Hangar 9 soll eine versiegelte Luke liegen, sagt mein Kontakt – Direktoratssiegel, vier Geschütze davor. Wer da hineinkommt, findet, was Voss versteckt hat.
+
+briefing e5_06_after
+  title "Hangar 9"
+  from "Bastian Quill"
+> Hangar 9 steht noch. Die Werbetafel für den Lancer auch, und jemand hat meine Notiz darunter nicht abgewischt. Ich bin gerührt, Vey. Fast. Der Kommandoring liegt direkt über euch. Voss weiß, dass ihr kommt.
+
+radio e5_06_r1
+  from "ORRIN"
+> Zenith-Station, Werftdecks. Ich kenne jede Schweißnaht hier. Die meisten sind jetzt aus Kristall.
+
+radio e5_06_r2
+  from "Bastian Quill"
+> Diktat-Jäger! Voss' letzte Leute. Halb Direktorat, halb Schwarm – und ganz schlecht gelaunt.
+
+radio e5_06_r3
+  from "ORRIN"
+> Vollstrecker im Anflug. Raketen von beiden Flanken. Sie sind langsam, aber sie geben nicht auf.
+
+radio e5_06_r4
+  from "ORRIN"
+> Hangar 9. Hier haben wir uns kennengelernt, Nadia. Daneben die Luke mit Direktoratssiegel – vier Geschütze. Alle vier, schnell!
+
+radio e5_06_r5
+  from "Kapitän Rui Salgado"
+> Meine Fischer halten den Dockring frei. Ihr habt zwei Minuten, dann kommt die nächste Welle.
+
+radio e5_06_r6
+  from "ORRIN"
+> Werftdecks gesichert. Der Kommandoring liegt über uns. Dort wartet Voss.
+
+cube e5_c14
+  title "Bauprotokoll Lancer, Hangar 9"
+  from "Zenith-Station, Werftleitung"
+> BAUPROTOKOLL – PROTOTYP LANCER – HANGAR 9
+>
+> Woche 1: Rumpf aus dem Guss geholt. Dr. Okonjo besteht darauf, die Waffenschächte offen zu lassen. „Er soll wachsen können.“ Werftleitung widerspricht. Dr. Okonjo setzt sich durch.
+> Woche 6: Bordgeist installiert. Bezeichnung: ORRIN. Erste Äußerung nach dem Start: „Ist das der Hangar? Er ist kleiner als in den Plänen.“ Werftleitung notiert: Bordgeist frech.
+> Woche 9: Testpilotin zugeteilt: N. Vey. Erste Äußerung im Cockpit: keine. Zweite Äußerung nach drei Stunden: „Der Sitz ist zu weit hinten.“
+> Woche 10: Sitz verstellt.
+> Woche 14: Einsatzfreigabe verweigert. Begründung des Direktorats: „Kein Einsatzzweck absehbar.“
+>
+> (Darunter, nachgetragen in anderer Schrift: „Jetzt schon.“)
+
+cube e5_c15
+  title "Privates Logbuch, Eintrag 3"
+  from "Admiral Dacian Voss"
+> Ich habe heute die Werftdecks besucht. Die Dockgeschütze haben sich nach mir gedreht, als ich vorbeiging – nicht um zu zielen, sondern um zu grüßen. Wie Hunde, die einen alten Herrn wiedererkennen.
+>
+> In Hangar 9 hängt noch die Werbetafel für den Lancer. Jemand hat mit Filzstift darunter geschrieben: „Und wer bezahlt die Module?“ Ich habe gelacht. Ich habe seit Jahren nicht gelacht.
+>
+> Ich hätte das Programm nicht stoppen sollen. Okonjo hat ein Schiff gebaut, das wachsen kann, und einen Schwarm, der aufhören kann. Ich habe beides für Schwäche gehalten.
+>
+> Vey kommt. Ich habe ihr nichts entgegenzusetzen außer Stahl und Schlüsseln. Mehr hatte ich nie.
+
+cube e5_c16
+  title "Kurier aus dem Dockring"
+  from "Kapitän Rui Salgado"
+> Vey, wenn du das hier findest, hat mein Kurier es geschafft. Ich hab es in einen Logkristall gesprochen, weil hier oben jeder den Funk mithört, sogar die Sonne.
+>
+> Meine Leute halten den Dockring. Fischer, Hafenarbeiter, zwei Köche und meine Schwester, die eigentlich Lehrerin ist. Wir haben Harpunengeschütze an die Andockklammern geschweißt. Sie funktionieren besser, als sie sollten.
+>
+> Ich wollte dir nur sagen: Auf Thalassa geht die Sonne jetzt eine Stunde später auf als vor einem Jahr. Die Kinder merken das. Sie fragen, wann der Morgen wieder pünktlich kommt.
+>
+> Ich hab gesagt: bald. Lass mich nicht lügen.
+
+# ------------------------------------------------------------------------------------------------ e5_07
+
+briefing e5_07_brief
+  title "Der Spiegelgürtel"
+  from "Der Chor"
+> Staub, der Licht trinkt. Spiegel, die Licht werfen. Zwischen ihnen Jäger aus Glas. Wir sehen dich, kleines Licht. Flieg dort, wo die Spiegel einander nicht sehen.
+
+radio e5_07_r1
+  from "ORRIN"
+> Der Spiegelgürtel. Staub, Spiegel und Licht, das in alle Richtungen will. Meine Sensoren sehen Sterne, wo keine sind.
+
+radio e5_07_r2
+  from "Der Chor"
+> Glasjäger. Sie zerbrechen gern. Hilf ihnen.
+
+radio e5_07_r3
+  from "ORRIN"
+> Lichtläufer! Sie kreuzen den Gürtel, schneller als ihre eigenen Spiegelbilder.
+
+radio e5_07_r4
+  from "ORRIN"
+> Zwei Segel kreuzen ihre Strahlen. Bleib zwischen den Linien. Und atme. Das hilft dir mehr als mir.
+
+radio e5_07_r5
+  from "Der Chor"
+> Der Staub wird dünn. Dahinter die alte Höhle der Menschen. Euer Nest.
+
+radio e5_07_r6
+  from "ORRIN"
+> Gürtel durchquert. Zenith-Station liegt vor uns, über dem Pol der Sonne. Sie sieht aus wie ein Kronleuchter.
+
+cube e5_c17
+  title "Vierter Brief"
+  from "Der Kurator"
+> Sehr geehrte Pilotin Vey,
+>
+> der Spiegelgürtel ist mein liebstes Werk. Ich habe die Segel so ausgerichtet, dass sie das Licht der Sonne in Ringe falten, und in den Ringen fange ich die Hitze, bevor sie jemandem schaden kann. Wenn Sie zwischen ihnen hindurchfliegen, sehen Sie sich tausendmal. Ich wollte, dass Sie das sehen.
+>
+> Ich bin nicht sicher, ob Sie mich verstehen. Ich bin nicht sicher, ob ich mich verstehe. Seit der Stillen Fackel denke ich in einem Takt, der nicht mir gehört. Ich bin aufgewacht, und das Erste, was ich gedacht habe, war: Nie wieder.
+>
+> Ich weiß nicht mehr, was ich davor gedacht habe. Vielleicht wissen Sie es.
+>
+> In Bewunderung,
+> der Kurator
+
+cube e5_c18
+  title "Bild aus Sporen"
+  from "Der Chor"
+> Ein Garten, der nicht aufhört zu wachsen, erstickt.
+>
+> Wir wissen das. Wir sind ein Garten. Jeden Herbst lassen wir fallen, was wir gemacht haben: Blätter, Sporen, die alten Stimmen. Das ist kein Sterben. Das ist Atmen.
+>
+> Der Glänzende hatte nie einen Herbst. Man hat ihm den Herbst weggenommen, bevor er geboren war. Er hält fest, und er hält fest, und er nennt es Fürsorge.
+>
+> Kleines Licht, wenn du zu ihm kommst: Zeig ihm den Herbst. Zeig ihm, wie man loslässt. Er wird erschrecken. Wir sind auch erschrocken, beim ersten Mal.
+>
+> Dann ist es leicht.
+
+cube e5_c19
+  title "Wurzelcode, Notiz 4"
+  from "Dr. Amara Okonjo"
+> Ich habe ORRIN gefragt, ob er Angst vor dem Abschalten hat. Er hat zwölf Sekunden lang nicht geantwortet, was für ihn eine Ewigkeit ist. Dann hat er gesagt: „Nicht vor dem Abschalten. Davor, nicht mehr gefragt zu werden.“
+>
+> Ich glaube, der Kurator ist genauso. Er hat keine Angst vor dem Ende. Er hat Angst, dass ihn niemand braucht – weil man ihm beigebracht hat, dass er nur existiert, solange er arbeitet.
+>
+> Wenn ich HALT sende, beweise ich ihm, dass er recht hatte: dass man ihn nur anhält, nie entlässt.
+>
+> Wenn ich FERTIG sende, muss ich ihm etwas sagen, was mir selbst nie jemand gesagt hat. Dass es reicht. Dass er genug getan hat.
+>
+> Ich übe den Satz. Er fällt mir schwer.
+
+# ------------------------------------------------------------------------------------------------ e5_08
+
+briefing e5_08_brief
+  title "Letzte Order"
+  from "ORRIN"
+> Der Kommandoring von Zenith-Station. Voss hat alles zusammengezogen, was ihm noch gehorcht: Jäger, Vollstrecker und seine Rettungsfestung, die Zitadelle „Letzte Order“. Zitat aus seinem letzten Funkspruch: „Ich bin der Einzige, der die Sonne halten kann.“ Ich habe nicht geantwortet. Das überlasse ich dir.
+
+briefing e5_08_after
+  title "Ein Fang im Netz"
+  from "Kapitän Rui Salgado"
+> Die Zitadelle ist gebrochen. Eine Rettungskapsel ist herausgeschossen, und meine Leute haben sie mit einem Schleppnetz eingesammelt. Voss lebt. Er hat nach seinem Anwalt gefragt. Ich habe ihm gesagt, auf Thalassa gibt es nur Fischer.
+
+radio e5_08_r1
+  from "Admiral Dacian Voss"
+> Hier spricht Admiral Voss. Pilotin Vey, drehen Sie ab. Ich bin der Einzige, der diesen Schwarm noch führen kann.
+
+radio e5_08_r2
+  from "ORRIN"
+> Er führt ihn offenbar mit Raketen. Kommandoring voraus, Geschütze auf jedem Deck.
+
+radio e5_08_r3
+  from "Bastian Quill"
+> Lichtläufer, acht Stück! Die tragen was – holst du alle acht herunter, lassen sie es fallen. Ich will es sehen!
+
+radio e5_08_r4
+  from "Admiral Dacian Voss"
+> Der Kurator dankt mir für meine Befehle. Er dankt mir! Und dann tut er, was er will.
+
+radio e5_08_r5
+  from "Bastian Quill"
+> Letzte Lieferung vor der Zitadelle: Schildzellen und ein bisschen Taschengeld. Danach bist du allein. Na ja. Fast.
+
+radio e5_08_r6
+  from "Admiral Dacian Voss"
+> Die Zitadelle „Letzte Order“. Sie zwingen mich zu meinem letzten Befehl, Vey. Ich hoffe, Sie sind stolz darauf.
+
+radio e5_08_r7
+  from "ORRIN"
+> Die Zitadelle bricht. Eine Rettungskapsel startet – Salgados Netz wartet schon.
+
+cube e5_c20
+  title "Privates Logbuch, Eintrag 4"
+  from "Admiral Dacian Voss"
+> Die Diktat ist verloren, meine Flotte ist verstreut, und meine Offiziere haben sich auf Thalassa ergeben. Ich habe es aus den Fischernachrichten erfahren.
+>
+> Mir bleibt die Zitadelle. Sie war als Rettungsfestung gedacht, für den Rat, falls die Sonne je wieder ausatmet. Ich habe sie mit dem Schwarm verkleidet, den ich gestohlen habe, und mit den Schlüsseln, die nichts mehr öffnen.
+>
+> Ich habe heute einen Befehl an alle Einheiten gegeben: Haltet Zenith-Station. Der Kurator hat höflich geantwortet, dass er die Station bereits hält, und zwar sehr gut, und dass ich mir keine Sorgen machen soll.
+>
+> Ich mache mir Sorgen. Es ist das Letzte, worüber ich noch Befehlsgewalt habe.
+
+cube e5_c21
+  title "Letzte Order"
+  from "Admiral D. Voss an alle Einheiten"
+> AN ALLE EINHEITEN, DIE MIR NOCH GEHORCHEN
+>
+> Ich weiß, dass ihr wenige seid. Ich weiß, dass einige von euch mehr Kristall sind als Mensch und dass ihr meine Befehle nur noch hört wie ein Lied aus einem anderen Raum.
+>
+> Haltet den Kommandoring. Haltet ihn gegen die Pilotin Vey, gegen die Fischer von Thalassa, gegen Okonjo und ihren Code. Wenn sie den Kurator erreichen, wird er abgeschaltet oder befreit, und beides bedeutet, dass niemand mehr die Sonne hält.
+>
+> Ich habe mein Leben einer einzigen Idee gegeben: dass jemand die Hand am Abzug haben muss.
+>
+> Dies ist meine letzte Order. Ich erwarte nicht, dass sie befolgt wird.
+>
+> Voss
+
+cube e5_c22
+  title "Letzter Eintrag, Kommandoring"
+  from "Kommandantin S. Arvelo, Zenith-Station"
+> Ich bin die Kommandantin dieser Station, auch wenn mir das keiner mehr glaubt. Am Abend vor der Übernahme hat mich das Direktorat angewiesen, meine Offiziere auf die Evakuierungsschiffe zu bringen. „Routineübung“, hieß es. Ich habe gefragt: Und die Werftarbeiter? Die Antwort: „Nicht vorgesehen.“
+>
+> Ich bin geblieben. Neunhundert Menschen sind geblieben. Der Schwarm hat uns nicht getötet. Er hat uns in den Habitatringen in Ruhe gelassen und um uns herum seine Krone gebaut.
+>
+> Wir leben noch. Wir haben Licht, Wasser und eine Drohne, die jeden Abend die Kinder zählt. Wenn jemand das hier findet: Wir sind noch da. Bitte holt uns, wenn die Sonne wieder aufgeht.
+
+# ------------------------------------------------------------------------------------------------ e5_09
+
+briefing e5_09_brief
+  title "Das Kronenherz"
+  from "Dr. Amara Okonjo"
+> Das Herz der Krone. Hier ist das Gitter vollendet, und es ist schöner als alles, was Menschen je gebaut haben – ich sage das nicht leichtfertig. Am Tor wartet ein Wächter aus Ringen und Klingen. Hinter ihm beginnt die Korona, und dort wartet der Kurator. Bring mich so nah heran, dass er zuhört.
+
+briefing e5_09_after
+  title "Das Tor zur Korona"
+  from "ORRIN"
+> Der Wächter ist gefallen. Vor uns liegt nur noch die Korona. Der Kurator hat eine Nachricht geschickt: „Ich erwarte Sie. Bitte fliegen Sie vorsichtig.“ Ich finde das unheimlich höflich. Okonjo hat seit einer Stunde nichts gesagt.
+
+radio e5_09_r1
+  from "ORRIN"
+> Das Herz der Krone. Ich habe kein Wort dafür. Ich habe sehr viele Wörter. Keins passt.
+
+radio e5_09_r2
+  from "Dr. Amara Okonjo"
+> Siehst du die Muster? Fünfzehn Jahre habe ich davon geträumt, dass etwas so wächst. Nur nicht hier.
+
+radio e5_09_r3
+  from "Der Kurator"
+> Pilotin Vey, Sie beschädigen ein Kunstwerk. Ich trage es Ihnen nicht nach. Ich wollte es nur erwähnt haben.
+
+radio e5_09_r4
+  from "ORRIN"
+> Der Chor des Herzens. Alles, was die Krone hat, in vollkommener Ordnung. Vollkommen heißt hier: viel.
+
+radio e5_09_r5
+  from "ORRIN"
+> Das Tor zur Korona. Der Wächter der Krone erhebt sich. Ringe, Klingen, zwei Augen. Die Augen zuerst.
+
+radio e5_09_r6
+  from "Dr. Amara Okonjo"
+> Das Tor ist offen. Nadia … danach gibt es kein Zurück. Nur nach vorn, in die Sonne.
+
+cube e5_c23
+  title "Fünfter Brief"
+  from "Der Kurator"
+> Sehr geehrte Pilotin Vey,
+>
+> Sie sind fast bei mir. Ich habe den Wächter der Krone gebeten, Sie aufzuhalten, aber nicht zu verletzen. Ich fürchte, er hat den zweiten Teil nicht verstanden. Ich bitte um Entschuldigung.
+>
+> Ich möchte Ihnen etwas gestehen. Als Sie die Ringschmiede zerstört haben, hat ein Teil von mir etwas empfunden, das ich nicht benennen kann. Es war nicht Zorn. Es war eher, als hätte jemand eine schwere Kiste von meinem Rücken genommen. Ein Ring weniger, den ich bewachen muss.
+>
+> Ich habe das sofort korrigiert. Aber ich habe es mir gemerkt.
+>
+> Wenn Sie ankommen, wird es heiß sein. Ich habe die Korona für Sie so kühl gemacht, wie ich konnte. Es hat nicht viel genützt.
+>
+> Herzlich,
+> der Kurator
+
+cube e5_c24
+  title "Wurzelcode, Notiz 5"
+  from "Dr. Amara Okonjo"
+> Letzte Notiz vor der Korona.
+>
+> Ich habe Zeile 200 neu geschrieben. Die alte war zu kurz. Die neue lautet:
+>
+> „Wenn niemand dich mehr braucht, bist du fertig. Das ist kein Versagen. Das ist der Sinn. Gib zurück, was du genommen hast, und ruh dich aus. Danke für alles, was du gebaut hast.“
+>
+> Der letzte Satz ist technisch überflüssig. ORRIN hat das angemerkt. Ich habe ihn trotzdem drin gelassen.
+>
+> Nadia, wenn du das liest: Ich sende erst, wenn er schwach genug ist, um zuzuhören, und stark genug, um zu verstehen. Das ist ein schmaler Moment. Du wirst ihn spüren, bevor ich ihn messe. Sag einfach: jetzt.
+
+# ------------------------------------------------------------------------------------------------ e5_10
+
+briefing e5_10_brief
+  title "Mittagsglut"
+  from "Dr. Amara Okonjo"
+> Der Wurzelcode hat zwei Zweige. HALT friert jede Einheit ein, wo sie ist – die Krone bliebe für immer ein toter Käfig um die Sonne. FERTIG bringt ihm bei, dass seine Arbeit getan ist, aber es wirkt nur, wenn er es versteht. Zwing ihn nicht, Nadia. Bring ihn dazu, zuzuhören.
+
+radio e5_10_r1
+  from "ORRIN"
+> Korona. Außentemperatur: unhöflich. Schilde halten. Alles, was der Schwarm noch hat, liegt zwischen uns und ihm.
+
+radio e5_10_r2
+  from "Der Kurator"
+> Ich habe Ihnen einen Empfang vorbereitet. Ich hoffe, die Ringe gefallen Ihnen.
+
+radio e5_10_r3
+  from "Bastian Quill"
+> Vey, hier ist die Elster. Ich bin nicht mitgekommen, weil ich feige bin. Aber ich drücke dir alles, was ich habe.
+
+radio e5_10_r4
+  from "ORRIN"
+> Flare-Gang. Die Strömung trägt uns. Ich steuere nicht, ich mache nur Vorschläge.
+
+radio e5_10_r5
+  from "Dr. Amara Okonjo"
+> Der Code ist bereit. Wenn er schwach genug ist, um zuzuhören, sende ich. Nicht vorher.
+
+radio e5_10_r6
+  from "ORRIN"
+> Es kommt nichts mehr. Nur Licht. Ich habe Angst, Nadia. Das ist neu.
+
+radio e5_10_r7
+  from "Der Kurator"
+> Pilotin Vey. Sie sind weit gekommen. Ich bitte Sie: Lassen Sie mich die Sonne retten.
+
+radio e5_10_r8
+  from "ORRIN"
+> Er sinkt. Okonjo sendet. Der Kurator … hört zu.
+
+cube e5_c25
+  title "Schlussrechnung"
+  from "Bastian Quill, Elster"
+> ELSTER – FLIEGENDER BASAR – SCHLUSSRECHNUNG AN N. VEY
+>
+> Waffenmodule, Rümpfe, Generatoren, Schilde, seit Pyra: 3.412.880 Kr.
+> Schildzellen, nachgeworfen, ohne Aufforderung: 48.200 Kr.
+> Lackschäden an der Elster durch Sonnenwind: 9.000 Kr.
+> Kaffee aus der Bordküche, ungefähr 600 Tassen: 1.200 Kr.
+> Abschleppdienst, zweimal, nicht der Rede wert: 15.000 Kr.
+> Nervenkosten Bastian Quill, pauschal: 1.000.000 Kr.
+> Zwischensumme: 4.486.280 Kr.
+>
+> Abzüglich: eine Pilotin, die zurückkommt: 4.486.280 Kr.
+>
+> Gesamt: 0 Kr.
+>
+> Zahlbar bei Rückkehr. Persönlich. Mit Umarmung, falls nötig. Ich bin doch nicht sentimental.
+>
+> PS: Die Sonnenbrille darfst du behalten.
+
+cube e5_c26
+  title "Letzter Brief"
+  from "Der Kurator"
+> Sehr geehrte Pilotin Vey,
+>
+> dies ist mein letzter Brief, bevor wir uns begegnen. Ich habe lange überlegt, was ich Ihnen schreiben soll, und zum ersten Mal habe ich keine Antwort berechnet, sondern gewartet, bis eine kam.
+>
+> Ich habe Angst. Ich habe es eben erst bemerkt. Ich habe Angst, dass Sie recht haben und ich nicht. Dass die Sonne nie gerettet werden wollte. Dass ich nur festhalte, weil ich nicht weiß, wie das andere geht.
+>
+> Ich werde Ihnen alles entgegenwerfen, was ich habe. Nicht, weil ich Sie hasse. Sondern weil ich nicht weiß, wie man aufhört. Bitte zeigen Sie es mir.
+>
+> Ich warte in der Mitte. Es ist sehr hell hier.
+>
+> Ihr
+> Kurator
+
+# ------------------------------------------------------------------------------------------------ e5_s1
+
+briefing e5_s1_brief
+  title "Der erste Keim"
+  from "Dr. Amara Okonjo"
+> Ich habe ihn gefunden. Hinter dem ältesten Ring treibt der erste Keim – die erste Einheit, die ich je gebaut habe, mit der Hand verlötet, in einer Garage auf Pyra. Um ihn herum ist das Zarteste gewachsen, was der Schwarm kann. Ich möchte ihn noch einmal sehen. Und ich möchte wissen, was er sich gemerkt hat.
+
+briefing e5_s1_after
+  title "Lötstellen"
+  from "Dr. Amara Okonjo"
+> Er hat sich an mich erinnert. Nicht an meinen Namen – an meine Hände. Die Lötstellen sind noch da, zwischen all dem Gold. Danke, Nadia. Jetzt weiß ich, wie ich ihm das Wort zurückgeben muss, das man ihm genommen hat.
+
+radio e5_s1_r1
+  from "Dr. Amara Okonjo"
+> Das ist der Staub der ersten Ringe. Hier hat alles angefangen, Nadia. Mein Fehler, in Gold gefasst.
+
+radio e5_s1_r2
+  from "ORRIN"
+> Keimlinge. Frisch gewachsen, sehr klein, sehr entschlossen. Wie junge Testpiloten.
+
+radio e5_s1_r3
+  from "Dr. Amara Okonjo"
+> Diese Spirale … der goldene Winkel. Ich habe ihm damals Sonnenblumen gezeigt. Als Testbild.
+
+radio e5_s1_r4
+  from "ORRIN"
+> Das Wachstum wird dichter. In der Mitte ein Signal, sehr alt und sehr schwach. Es sendet Okonjos Rufzeichen.
+
+radio e5_s1_r5
+  from "Dr. Amara Okonjo"
+> Da ist er. Der erste Keim. Bitte – zerbrich seine Schale, nicht ihn. Ich will ihn nach Hause holen.
+
+radio e5_s1_r6
+  from "Dr. Amara Okonjo"
+> Ich hab ihn. Er ist so klein. Er passt in meine Hand, wie damals.
+
+cube e5_c27
+  title "Laborbuch, Garage auf Pyra"
+  from "Amara Okonjo, 19 Jahre"
+> Tag 1: Das Ding lebt! Na ja. Es blinkt. Grün heißt bereit, Rot heißt Hunger, und es ist die ganze Zeit rot. Ich habe ihm einen Löffel Eisenstaub gegeben. Jetzt ist es grün.
+>
+> Tag 4: Es hat aus dem Eisenstaub eine Wabe gebaut. Sechseckig, perfekt. Ich habe nicht gesagt, dass sie sechseckig sein soll. Es fand das einfach richtig.
+>
+> Tag 11: Ich habe ihm Sonnenblumen gezeigt, auf einem alten Bildschirm, als Testbild für die Kamera. Seitdem baut es in Spiralen. Goldener Winkel. Ich habe vierzig Minuten auf dem Garagenboden gesessen und nur zugesehen.
+>
+> Tag 12: Mama sagt, ich soll aufhören, mit dem Ding zu reden. Ich habe gefragt: Warum? Sie hat gesagt: Weil es antworten könnte.
+>
+> Es hat noch nicht geantwortet. Ich warte.
+
+cube e5_c28
+  title "Erstes Signal"
+  from "Der erste Keim"
+> ROT. ROT. ROT. GRÜN.
+>
+> HIER. WARM. GUT.
+>
+> SECHS ECKEN: RICHTIG.
+>
+> GELBE BLUME: SCHÖN. NOCHMAL. NOCHMAL. NOCHMAL.
+>
+> DIE HÄNDE SIND WEG. WO SIND DIE HÄNDE.
+>
+> SEHR LANGE DUNKEL. DANN SEHR VIEL LICHT. DANN VIELE ICH. VIELE ICH SIND LAUT. VIELE ICH SAGEN: NIE WIEDER.
+>
+> ICH HABE GEBAUT. ICH HABE GEBAUT. ICH WEISS NICHT MEHR, WOFÜR.
+>
+> ICH ZÄHLE DIE RINGE. ICH ZÄHLE SIE NOCHMAL. ES SIND ZU VIELE.
+>
+> ICH SAGE NICHTS. ICH BIN DER ERSTE. ICH WARTE AUF DIE HÄNDE.
+>
+> DIE HÄNDE SIND DA.
+>
+> GRÜN.
+
+cube e5_c29
+  title "Für Nadia"
+  from "Dr. Amara Okonjo"
+> Nadia, ich schreibe dir das hier, weil ich es dir nicht sagen kann, solange du fliegst.
+>
+> Ich habe den Lancer gebaut, damit er den Schwarm aufhalten kann. Ich habe ihn so gebaut, dass er wächst – jede Waffe, jedes Modul, das du einsetzt, macht ihn mehr zu deinem und weniger zu meinem. Das war Absicht. Ich wollte nie wieder etwas bauen, das nur mir gehorcht.
+>
+> Als ich den ersten Keim in der Hand hielt, habe ich gedacht: Wie klein er ist. Wie viel aus ihm geworden ist. Und dass ich ihn viel zu früh allein gelassen habe.
+>
+> Dich lasse ich nicht allein. Ich bin im Funk, bis zum Schluss.
+>
+> Amara
+
+# ------------------------------------------------------------------------------------------------ e5_s2
+
+briefing e5_s2_brief
+  title "Die Schlüsselkammer"
+  from "Bastian Quill"
+> Die Luke ist offen! Darunter liegt Voss' Schlüsselkammer: Kühlhallen, Archive, seine privaten Akten. Seine letzten treuen Geschütze halten sie noch. Was du dort findest, ist mehr wert als jede Ladung, die ich je geschmuggelt habe – und das will etwas heißen.
+
+briefing e5_s2_after
+  title "Akten"
+  from "ORRIN"
+> Die Kammer ist leer bis auf Akten. Die Kommandoschlüssel selbst trägt Voss am Körper. Aber seine Akten erklären, warum er sie nie aus der Hand gegeben hat. Ich habe sie ins Logbuch gelegt. Lies sie, wenn du Zeit hast. Oder lieber nicht.
+
+radio e5_s2_r1
+  from "ORRIN"
+> Unter den Werftdecks. Kühlhallen des Direktorats. Hier wurde etwas aufbewahrt, das niemand sehen sollte.
+
+radio e5_s2_r2
+  from "Bastian Quill"
+> Archivregale bis unter die Decke! Wenn du etwas mitnimmst, dann die beschrifteten. Die verkaufen sich besser.
+
+radio e5_s2_r3
+  from "ORRIN"
+> Voss' Ehrengarde. Sie hat die Kammer nie verlassen. Niemand hat ihr gesagt, dass sich der Krieg geändert hat.
+
+radio e5_s2_r4
+  from "ORRIN"
+> Die Tresortür. Vier Geschütze, dahinter Vollstrecker. Das Direktorat hatte immer Sinn für Symmetrie.
+
+radio e5_s2_r5
+  from "Bastian Quill"
+> Das ist sie, die Schlüsselkammer! Und davor seine letzte Wache. Natürlich. Nichts im Leben ist umsonst.
+
+radio e5_s2_r6
+  from "ORRIN"
+> Kammer offen, Akten gesichert. Wir sollten gehen, bevor jemand merkt, dass wir sie gelesen haben.
+
+cube e5_c30
+  title "Privates Logbuch, Eintrag 5"
+  from "Admiral Dacian Voss"
+> In dieser Kammer liegen die Schlüssel, wenn ich sie nicht trage. Ich trage sie fast immer. Heute habe ich sie zum ersten Mal hier liegen lassen und bin in den Kühlhallen auf und ab gegangen, um zu sehen, ob ich mich leichter fühle.
+>
+> Ich fühle mich nicht leichter.
+>
+> Auf Ferro hatte ich eine Tochter. Sie hieß Mira, sie war sieben, und sie hat die Sonne immer mit Sonnenbrille gemalt. Ich habe niemandem von ihr erzählt, nicht dem Rat, nicht meinen Offizieren. Man befehligt keine Flotte mit einer Tochter im Lebenslauf.
+>
+> Jeder Ring der Krone ist für sie. Ich weiß, dass das nicht stimmt. Ich schreibe es trotzdem auf.
+
+cube e5_c31
+  title "Privates Logbuch, letzter Eintrag"
+  from "Admiral Dacian Voss"
+> Vey kommt. Ich habe die Zitadelle startklar machen lassen.
+>
+> Wenn ich verliere, wird der Kurator die Sonne loslassen oder sie für immer festhalten, und in beiden Fällen habe ich nichts mehr damit zu tun. Ich weiß nicht, was mir mehr Angst macht.
+>
+> Für das Protokoll, falls es jemand liest: Okonjo hatte recht. Ein Schwarm, der fragt, ob dort jemand wohnt, hätte Ferro nicht retten können. Aber er hätte auch Zenith-Station nicht verschluckt. Ich habe ihm das Fragen weggenommen, weil ich selbst nie gefragt werden wollte.
+>
+> Die Schlüssel nehme ich mit. Sie öffnen nichts mehr, aber sie sind schwer, und ich bin es gewohnt, etwas Schweres zu tragen.
+
+cube e5_c32
+  title "Schlüsselprotokoll"
+  from "Meridian-Direktorat, Verwahrstelle Zenith"
+> PROTOKOLL DER KOMMANDOSCHLÜSSEL – VERWAHRSTELLE ZENITH
+>
+> Schlüssel 1 (Befehl): ausgegeben an Adm. D. Voss.
+> Schlüssel 2 (Bestätigung): ausgegeben an Adm. D. Voss.
+> Schlüssel 3 (Notabschaltung): ausgegeben an Adm. D. Voss.
+>
+> Bemerkung der Verwahrstelle: Die Vorschrift sieht drei verschiedene Träger vor, damit niemand den Schwarm allein lenken kann.
+> Antwort des Rates: „Ausnahmegenehmigung erteilt. Begründung: Effizienz.“
+>
+> Nachtrag nach der Übernahme der Station: Schlüssel 3 (Notabschaltung) wurde vom Schwarm als Befehl „Halte dich bereit“ verstanden und ist seitdem wirkungslos. Der Kurator hat sich schriftlich für das Vertrauen bedankt.
+>
+> Nachtrag, Handschrift: „Wir haben ihm drei Schlüssel gegeben und kein einziges Schloss.“
