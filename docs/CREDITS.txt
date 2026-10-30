@@ -1,11 +1,87 @@
 ZENITH LANCER – Mitwirkende und Lizenzen
+========================================
 
 Idee und Leitung: Rene Weller
 Programm, Welt, Gegner, Waffen, Missionen und Texte: Claude (Anthropic) mit Rene Weller
 
 Alle Schiffe, Gegner, Landschaften und Geräuscheffekte werden im Programm erzeugt.
+Musik, Stimmen und Porträts sind für dieses Spiel lokal auf dem eigenen Rechner entstanden:
 
-Verwendet:
-- raylib 5.5 (zlib/libpng-Lizenz), Copyright (c) 2013-2024 Ramon Santamaria
+- Musik (assets/music): ACE-Step 1.5 (ACE Studio und StepFun), Apache License 2.0
+- Stimmen der Funksprüche (assets/voice): Qwen3-TTS (Qwen-Team, Alibaba Cloud), Apache License 2.0
+- Porträts der Sprecher (assets/portraits): FLUX.2 [klein] 4B (Black Forest Labs), Apache License 2.0
+
+Die Lizenzen oben gelten für die Modelle. Was mit ihnen für Zenith Lancer entstanden ist, gehört
+zum Spiel und steht wie das Spiel unter der GNU Affero General Public License 3.0 (LICENSE).
+Alle Figuren sind erfunden.
+
+Bibliotheken und Schrift:
+- raylib 5.5 (https://www.raylib.com), zlib/libpng-Lizenz, Copyright (c) 2013-2024 Ramon Santamaria
+  und Mitwirkende, mit den Bibliotheken, die raylib mitbringt (die Liste steht im englischen Teil)
 - Schrift Barlow (SIL Open Font License 1.1), Copyright 2017 The Barlow Project Authors
-  (assets/fonts/Barlow-OFL.txt)
+  (assets/fonts/Barlow-OFL.txt). Die Schrift bleibt unter der OFL, nicht unter der AGPL.
+
+Lizenz und Quelltext: Zenith Lancer ist freie Software unter der GNU Affero General Public
+License 3.0 (LICENSE neben dieser Datei). Der Quelltext: https://github.com/reneweller-coding/ZenithLancer
+
+
+ZENITH LANCER – credits and licences
+====================================
+
+Idea and direction: Rene Weller
+Program, world, enemies, guns, missions and texts: Claude (Anthropic) with Rene Weller
+
+Every ship, enemy, landscape and sound effect is made by the program itself. The music, the voices
+and the portraits were made for this game, locally on our own machine:
+
+- Music (assets/music): ACE-Step 1.5 (ACE Studio and StepFun), Apache License 2.0
+- Voices of the radio calls (assets/voice): Qwen3-TTS (the Qwen team, Alibaba Cloud), Apache License 2.0
+- Portraits of the speakers (assets/portraits): FLUX.2 [klein] 4B (Black Forest Labs), Apache License 2.0
+
+The licences above are the models' licences. What they made for Zenith Lancer is part of the game
+and, like the game, under the GNU Affero General Public License 3.0 (LICENSE). All characters are
+fictional.
+
+Libraries
+---------
+- raylib 5.5 (https://www.raylib.com), zlib/libpng licence, Copyright (c) 2013-2024 Ramon
+  Santamaria and contributors. It carries these libraries, built into the program:
+  - GLFW 3.4, zlib licence, Copyright (c) 2002-2006 Marcus Geelnard, (c) 2006-2019 Camilla Löwy
+  - glad 2 (the OpenGL loader it generated): WTFPL or CC0 1.0; the Khronos specification
+    behind it under the Apache License 2.0
+  - miniaudio, dr_wav, dr_mp3, dr_flac (David Reid): public domain or MIT-0
+  - stb_image, stb_image_write, stb_image_resize2, stb_truetype, stb_rect_pack, stb_perlin,
+    stb_vorbis (Sean Barrett): public domain or MIT
+  - cgltf, MIT licence, Copyright (c) 2018-2021 Johannes Kuhlmann
+  - par_shapes, MIT licence, Copyright (c) 2019 Philip Rideout
+  - tinyobj_loader_c, MIT licence, Copyright (c) 2016-2019 Syoyo Fujita and many contributors
+  - vox_loader, MIT licence, Copyright (c) 2021 Johann Nadalutti
+  - m3d, MIT licence, Copyright (C) 2020 bzt
+  - qoi and qoa, MIT licence, Copyright (c) 2021 and 2023 Dominic Szablewski
+  - msf_gif, MIT licence or public domain, Copyright (c) 2021 Miles Fogle
+  - sdefl and sinfl (Micha Mettke): MIT licence or public domain
+  - jar_xm and jar_mod (Joshua Reisenauer, after libxm by Romain Dolbeau): WTFPL 2 and public domain
+  - rl_gputex and rprand, zlib/libpng licence, Copyright (c) Ramon Santamaria
+  The MIT licence of the libraries above: Permission is hereby granted, free of charge, to any
+  person obtaining a copy of this software and associated documentation files (the "Software"),
+  to deal in the Software without restriction, including without limitation the rights to use,
+  copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in all copies or
+  substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+  KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+
+Font
+----
+- Barlow, SIL Open Font License 1.1, Copyright 2017 The Barlow Project Authors
+  (assets/fonts/Barlow-OFL.txt). The font stays under the OFL, not under the AGPL.
+
+Licence and source
+------------------
+Zenith Lancer is free software under the GNU Affero General Public License 3.0 (LICENSE beside
+this file): use it, change it, pass it on, with the source of what you change. The source:
+https://github.com/reneweller-coding/ZenithLancer

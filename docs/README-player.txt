@@ -50,6 +50,12 @@ Speicherstände und Einstellungen
 Windows: %APPDATA%\ZenithLancer
 Linux:   ~/.local/share/ZenithLancer
 
+Lizenz
+------
+Zenith Lancer ist freie Software unter der GNU Affero General Public License 3.0
+(LICENSE); Mitwirkende und die Lizenzen der Bibliotheken stehen in CREDITS.txt.
+Quelltext: https://github.com/reneweller-coding/ZenithLancer
+
 
 ZENITH LANCER (English)
 =======================
@@ -102,3 +108,9 @@ Saves and settings
 ------------------
 Windows: %APPDATA%\ZenithLancer
 Linux:   ~/.local/share/ZenithLancer
+
+Licence
+-------
+Zenith Lancer is free software under the GNU Affero General Public License 3.0
+(LICENSE); the credits and the libraries' licences are in CREDITS.txt.
+Source: https://github.com/reneweller-coding/ZenithLancer

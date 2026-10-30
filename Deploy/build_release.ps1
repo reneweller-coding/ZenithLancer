@@ -6,11 +6,15 @@
 .DESCRIPTION
     .\Deploy\build_release.ps1 [-NoBuild] [-NoLinux]
 
-    Builds the Release (build.ps1), checks the data (--validate), stages the game with its data and assets, the
-    player's readme and the credits in work\release and zips them into dist. The Linux archive comes from
+    Builds the Release (build.ps1), runs the headless tests (ctest -R "data|missions": every data file, every mission
+    flown by the autopilot), checks the data (--validate), stages the game in work\release and zips it into dist:
+    the program, data\, assets\ (fonts, music, portraits, voices: all of it), the player's readme as README.txt,
+    CREDITS.txt, LICENSE and, once docs\example_mod exists, the example mod as mods\example. The staged program then
+    checks the data beside it, so the archive holds what the player needs. The Linux archive comes from
     Deploy/build_linux.sh in WSL (GCC 12, glibc 2.35 and newer, the Steam Deck included); without WSL it is skipped.
+    .github/workflows/release.yml runs this script with -NoLinux on GitHub's Windows runner.
 
-    -NoBuild   pack what bin\msvc holds
+    -NoBuild   pack what bin\msvc holds (no build, no tests)
     -NoLinux   only the Windows archive
 
 .EXAMPLE
@@ -28,6 +32,14 @@ Write-Host "ZENITH LANCER $version"
 if (-not $NoBuild) {
     & (Join-Path $root "build.ps1")
     if ($LASTEXITCODE -ne 0) { throw "build failed" }
+    # The headless tests only: the app tests play the screens in a window (build.ps1 -Test runs them all).
+    Push-Location $root
+    try {
+        & ctest --preset msvc -R "data|missions"
+        if ($LASTEXITCODE -ne 0) { throw "the tests failed" }
+    } finally {
+        Pop-Location
+    }
 }
 $exe = Join-Path $root "bin\msvc\ZenithLancer.exe"
 & $exe --validate --data (Join-Path $root "data") | Select-Object -Last 1
@@ -38,12 +50,24 @@ $stage = Join-Path $root "work\release\$name"
 if (Test-Path $stage) { Remove-Item -Recurse -Force $stage }
 New-Item -ItemType Directory -Force $stage | Out-Null
 Copy-Item $exe $stage
-foreach ($dir in "data", "assets") {
-    & robocopy (Join-Path $root $dir) (Join-Path $stage $dir) /E /NFL /NDL /NJH /NJS /NP | Out-Null
-    if ($LASTEXITCODE -ge 8) { throw "copying $dir failed" }
+# Whole folders: what assets\ gains (portraits, voices) goes along. The example mod only once it exists.
+$folders = @(@("data", "data"), @("assets", "assets"), @("docs\example_mod", "mods\example"))
+foreach ($f in $folders) {
+    $from = Join-Path $root $f[0]
+    if (-not (Test-Path $from)) {
+        Write-Host "not there, skipped: $($f[0])"
+        continue
+    }
+    & robocopy $from (Join-Path $stage $f[1]) /E /NFL /NDL /NJH /NJS /NP | Out-Null
+    if ($LASTEXITCODE -ge 8) { throw "copying $($f[0]) failed" }
 }
 Copy-Item (Join-Path $root "docs\README-player.txt") (Join-Path $stage "README.txt")
 Copy-Item (Join-Path $root "docs\CREDITS.txt") $stage
+Copy-Item (Join-Path $root "LICENSE") $stage
+# The packed program checks the data beside it (no --data): what the archive holds is what the player gets.
+& (Join-Path $stage "ZenithLancer.exe") --validate | Select-Object -Last 1
+if ($LASTEXITCODE -ne 0) { throw "the staged game does not find its data" }
+
 $dist = Join-Path $root "dist"
 New-Item -ItemType Directory -Force $dist | Out-Null
 $zip = Join-Path $dist "$name.zip"

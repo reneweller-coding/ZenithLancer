@@ -1,7 +1,10 @@
 build/
+out/
 .vs/
+.vscode/
 *.user
-# bin/<preset> what can be started, work/ local pictures and logs.
+CMakeUserPresets.json
+# bin/<preset> what can be started, work/ local pictures, logs and the release staging (work/release, work/publish).
 bin/
 work/
 # dist/ the release packages (Deploy/build_release.ps1).
