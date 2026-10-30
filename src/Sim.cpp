@@ -1431,6 +1431,11 @@ void World::fireEnemy( int idx )
                 m_lasers.push_back( l );
                 emit( EvE::LASER, at, 0, 0, "", fd.m_color );
             }
+            else if ( pt == "radio" )
+            {
+                emit( EvE::TEXT, at, 0, 0, fd.m_spawn );
+                e.m_fireN[f] = 1000000;   // once
+            }
             else if ( pt == "spawn" )
             {
                 if ( const EnemyDef *d = m_cat->enemy( fd.m_spawn ) )
@@ -1445,7 +1450,7 @@ void World::fireEnemy( int idx )
                     m_pending.push_back( pd );
                 }
             }
-            if ( pt != "spawn" && pt != "laser" ) emit( EvE::ENEMYSHOT, at, 0, 0, fd.m_bullet, fd.m_color );
+            if ( pt != "spawn" && pt != "laser" && pt != "radio" ) emit( EvE::ENEMYSHOT, at, 0, 0, fd.m_bullet, fd.m_color );
         }
     }
 }
@@ -1694,7 +1699,8 @@ void World::hitEnemy( int idx, float dmg, int owner, Vector2 at )
         return;
     }
     e.m_hp -= dmg;
-    e.m_flash = 1.0f;
+    bool big = e.m_def->m_kind == EnemyKindE::BOSS || e.m_def->m_kind == EnemyKindE::PART || e.m_hpMax > 400.0f;
+    e.m_flash = big ? std::max( e.m_flash, 0.3f ) : 1.0f;
     if ( m_rng.chance( 0.25f ) ) emit( EvE::HIT, at, dmg );
     if ( e.m_hp <= 0 ) killEnemy( idx, owner );
 }
@@ -2212,6 +2218,9 @@ SimResult simulate( const Catalog &cat, const LevelDef &level, int difficulty, c
     r.m_credits = w->m_stats.m_credits;
     r.m_damage = w->m_stats.m_damage;
     r.m_deaths = w->m_stats.m_deaths;
+    r.m_cubes = (int)w->m_stats.m_cubes.size();
+    r.m_keys = (int)w->m_stats.m_keys.size();
+    r.m_plans = (int)w->m_stats.m_plans.size();
     delete w;
     return r;
 }

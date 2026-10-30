@@ -787,7 +787,11 @@ void Catalog::check()
         wantModel( d.m_model, d.m_where );
         for ( const PartRef &p : d.m_parts ) need( m_enemies.count( p.m_enemy ) > 0, d.m_where, "part " + p.m_enemy + " unknown" );
         for ( const FireDef &f : d.m_fire )
+        {
             if ( f.m_pattern == "spawn" ) need( m_enemies.count( f.m_spawn ) > 0, f.m_where, "spawn " + f.m_spawn + " unknown" );
+            if ( f.m_pattern == "radio" && !m_story.count( f.m_spawn ) )
+                m_warnings.push_back( f.m_where + ": radio \"" + f.m_spawn + "\" is missing" );
+        }
     }
     for ( const auto &[n, s] : m_ships ) wantModel( s.m_model, s.m_where );
     for ( const auto &[n, s] : m_sidekicks ) wantModel( s.m_model, s.m_where );

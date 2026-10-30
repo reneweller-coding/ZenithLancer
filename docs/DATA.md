@@ -125,6 +125,7 @@ volley turns: rings/spirals), `accel`, `x`/`z` (muzzle in the enemy's frame), `m
 | `mine` | drifting mines that burst into a ring |
 | `laser` | a beam: `warn` (s of warning line), `dur`, `width`, `damage` (×4 a second while it touches: 40 costs 160/s); aimed unless `dir`/`rot` given; `rot` sweeps (degrees/s) |
 | `spawn` | launches an enemy: `spawn=e2_drone` |
+| `radio` | says a radio line once: `fire radio e5_10_r7 from=0.5` (a boss's taunt at half strength) |
 
 Bullet damage defaults: orb 6, needle 5, big 12, ring 8, missile 10, mine 10, shard 5, wave 7. The difficulty
 scales fire rate, bullet speed and damage. Keep normal difficulty fair: telegraph big attacks, leave gaps.

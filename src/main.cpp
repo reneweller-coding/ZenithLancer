@@ -122,7 +122,8 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
     // Errors are told, but the missions that can be flown are flown.
     for ( const std::string &e : cat.m_errors ) printf( "error: %s\n", e.c_str() );
     int fails = cat.m_errors.empty() ? 0 : 1;
-    printf( "%-22s %5s %7s %9s %8s %7s %6s %6s\n", "mission", "won", "time", "kills", "credits", "damage", "deaths", "boss" );
+    printf( "%-22s %5s %7s %9s %8s %7s %6s %6s %s\n", "mission", "won", "time", "kills", "credits", "damage", "deaths", "boss",
+            " cubes/keys/plans" );
     for ( const auto &[n, lv] : cat.m_levels )
     {
         if ( !level.empty() && n != level ) continue;
@@ -130,8 +131,8 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
         Loadout load = simLoadout( cat, lv );
         parseLoadout( load, loadout );
         SimResult r = simulate( cat, lv, diff, load, seed, !mortal );
-        printf( "%-22s %5s %6.0fs %4d/%-4d %8d %7.0f %6d %5.0fs\n", n.c_str(), r.m_won ? "yes" : "NO", r.m_time, r.m_kills,
-                r.m_spawned, r.m_credits, r.m_damage, r.m_deaths, r.m_bossTime );
+        printf( "%-22s %5s %6.0fs %4d/%-4d %8d %7.0f %6d %5.0fs  %d/%d/%d\n", n.c_str(), r.m_won ? "yes" : "NO", r.m_time,
+                r.m_kills, r.m_spawned, r.m_credits, r.m_damage, r.m_deaths, r.m_bossTime, r.m_cubes, r.m_keys, r.m_plans );
         fflush( stdout );
         if ( !r.m_won ) ++fails;
     }
@@ -150,6 +151,18 @@ int main( int argc, char **argv )
     for ( int i = 1; i < argc; ++i )
     {
         std::string a = argv[i];
+        if ( a == "--help" || a == "-h" || a == "/?" )
+        {
+            printf( "ZenithLancer [--mute] [--windowed|--fullscreen] [--size WxH] [--data DIR] [--assets DIR]\n"
+                    "             [--level NAME [--difficulty N] [--arcade] [--auto] [--loadout ...] [--theme T]]\n"
+                    "  --validate                 check every data file\n"
+                    "  --sim NAME | --simall [--episode E] [--difficulty N] [--seed S] [--mortal] [--loadout ...]\n"
+                    "  --weapons                  every gun's damage and energy a second\n"
+                    "  --shot FILE --level NAME [--at S] | --screen NAME --shot FILE | --gallery FILE\n"
+                    "  --apptest SCRIPT           (with ZENITH_HOME set)    --dumpsfx DIR\n"
+                    "loadout: \"ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,shield=ward,special=nova_s\"\n" );
+            return 0;
+        }
         auto        next = [&]() { return i + 1 < argc ? std::string( argv[++i] ) : std::string(); };
         if ( a == "--mute" ) o.m_mute = true;
         else if ( a == "--windowed" ) o.m_fullscreen = 0;

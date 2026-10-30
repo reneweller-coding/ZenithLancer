@@ -412,6 +412,7 @@ struct SimResult
     float       m_damage = 0.0f;
     int         m_deaths = 0;
     float       m_bossTime = 0.0f;   ///< seconds the bosses held the timeline
+    int         m_cubes = 0, m_keys = 0, m_plans = 0;   ///< what was picked up
 };
 
 /**
