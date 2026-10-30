@@ -12,6 +12,8 @@
  *   ZenithLancer --shot FILE --level NAME [--at SECONDS] [--theme T] [--loadout ...]   a picture of a mission
  *   ZenithLancer --screen NAME --shot FILE         a picture of a screen (title main options controls scores credits
  *                logbook slots difficulty episode story plan shop pilots results failed continue name pause)
+ *   ZenithLancer --apptest SCRIPT                  plays a script through the screens (tools/apptest_*.txt; set
+ *                ZENITH_HOME to a test folder so the real saves stay untouched)
  *   ZenithLancer --gallery FILE                    a picture of every model
  *   ZenithLancer --dumpsfx DIR                     every sound effect as a WAV
  * @author Rene Weller
@@ -152,6 +154,7 @@ int main( int argc, char **argv )
         else if ( a == "--weapons" ) doWeapons = true;
         else if ( a == "--theme" ) o.m_theme = next();
         else if ( a == "--screen" ) o.m_screen = next();
+        else if ( a == "--apptest" ) o.m_test = next();
     }
     if ( doWeapons ) return weapons( dataDir( o.m_data ) );
     if ( doValidate ) return validate( dataDir( o.m_data ) );
@@ -161,10 +164,16 @@ int main( int argc, char **argv )
         Audio::dump( dumpDir );
         return 0;
     }
-    if ( !o.m_shot.empty() || !o.m_gallery.empty() ) o.m_mute = true;
+    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_test.empty() ) o.m_mute = true;
     if ( !o.m_shot.empty() ) o.m_auto = true;
     App app;
     if ( !app.init( o ) ) return 1;
+    if ( !o.m_test.empty() )
+    {
+        int r = app.appTest();
+        app.shutdown();
+        return r;
+    }
     if ( !o.m_gallery.empty() )
         app.gallery( o.m_gallery );
     else

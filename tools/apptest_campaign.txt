@@ -1,0 +1,44 @@
+# The campaign's flow, played through the screens (ZenithLancer --apptest tools/apptest_campaign.txt with
+# ZENITH_HOME set to an empty test folder).
+expect:title
+accept                  # title -> main menu
+expect:main
+accept                  # Kampagne
+expect:slots
+accept                  # slot 1, empty
+expect:difficulty
+accept                  # Normal
+expect:episode
+accept                  # episode 1: its intro story
+expect:story
+back                    # skip the stories
+expect:plan
+down accept             # the workshop
+expect:shop
+nexttab                 # front guns
+down down accept        # buy the second-cheapest gun
+right right             # (not on the power row: nothing)
+up up up accept right   # the power row: one level up
+nexttab nexttab         # left sidekick
+down accept             # a sidekick
+back
+expect:plan
+accept                  # the first mission: its briefing
+expect:story
+back
+until:play:20
+until:results:3000
+wait wait wait wait wait wait wait wait
+accept                  # the results: new log crystals follow
+until:story:50
+back                    # skip them
+expect:plan
+down down down down accept   # save and main menu
+until:main:50
+accept                  # Kampagne again
+expect:slots
+accept                  # slot 1 is filled now
+accept                  # Fortsetzen
+expect:plan
+back
+until:main:50

@@ -165,7 +165,7 @@ void App::play( float dt )
         m_pauseSel = 0;
         m_audio.play( m_paused ? SfxE::BACK : SfxE::OK );
     }
-    if ( !m_paused && !IsWindowFocused() && m_outroT < 0 && m_screen == ScreenE::PLAY ) m_paused = true;
+    if ( !m_paused && !IsWindowFocused() && !m_in.scripted() && m_outroT < 0 && m_screen == ScreenE::PLAY ) m_paused = true;
     if ( !m_paused )
     {
         m_acc += dt;
@@ -174,13 +174,14 @@ void App::play( float dt )
         Vector2 mp = GetMousePosition();
         float   s = m_view.pixelScale();
         Vector2 mf = { FieldW * 0.5f + ( mp.x - GetScreenWidth() * 0.5f ) / s, FieldH * 0.5f + ( mp.y - GetScreenHeight() * 0.5f ) / s };
-        while ( m_acc >= Dt && steps < 5 )
+        if ( m_in.scripted() ) m_acc = Dt * 120;   // the app test: two seconds of mission a frame
+        while ( m_acc >= Dt && steps < ( m_in.scripted() ? 120 : 5 ) )
         {
             PlayerInput in[2];
             for ( int i = 0; i < 2; ++i )
             {
                 if ( !m_world.m_players[i].m_active ) continue;
-                in[i] = m_opt.m_auto ? autopilot( m_world, i ) : m_in.player( i, m_players, m_set.m_mouse ? &mf : nullptr, m_set.m_autofire );
+                in[i] = m_opt.m_auto || m_in.scripted() ? autopilot( m_world, i ) : m_in.player( i, m_players, m_set.m_mouse ? &mf : nullptr, m_set.m_autofire );
             }
             m_world.step( in );
             m_in.consumed();
@@ -225,7 +226,7 @@ void App::play( float dt )
             m_acc -= Dt;
             ++steps;
         }
-        if ( steps == 5 ) m_acc = 0;
+        if ( steps >= 5 ) m_acc = 0;
         m_introT += dt;
         m_radioT += dt;
         if ( m_warnT > 0 ) m_warnT -= dt;
@@ -238,7 +239,7 @@ void App::play( float dt )
     }
     if ( m_outroT >= 0 && !m_paused )
     {
-        m_outroT += dt;
+        m_outroT += m_in.scripted() ? 0.5f : dt;
         if ( !m_won && m_mode == ModeE::ARCADE && m_outroT > 0.8f )
         {
             m_outroT = -1;

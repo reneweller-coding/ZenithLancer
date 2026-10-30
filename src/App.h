@@ -41,6 +41,7 @@ struct Options
     std::string m_loadout;              ///< --loadout: the gear for --level (Data.h parseLoadout)
     std::string m_theme;                ///< --theme: another ground for --level (to look at themes)
     std::string m_screen;               ///< --screen: --shot takes a picture of this screen instead
+    std::string m_test;                 ///< --apptest: a script of presses and expectations (docs in main.cpp)
 };
 
 /** @brief The screens. */
@@ -66,6 +67,12 @@ public:
 
     /** @brief Closes everything. */
     void shutdown();
+
+    /**
+     * @brief Plays a script through the screens (hidden, silent, missions fast by the autopilot).
+     * @return 0 when every expectation held
+     */
+    int appTest();
 
     /** @brief Renders a picture of one screen (--screen NAME --shot FILE) and quits. */
     void screenShot();

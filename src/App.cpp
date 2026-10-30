@@ -64,7 +64,7 @@ bool App::init( const Options &o )
     int  h = o.m_height > 0 ? o.m_height : m_set.m_height > 0 ? m_set.m_height : deck ? 800 : 900;
     unsigned flags = FLAG_WINDOW_RESIZABLE;
     if ( m_set.m_vsync ) flags |= FLAG_VSYNC_HINT;
-    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_shop.empty() ) flags = FLAG_WINDOW_HIDDEN;
+    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_shop.empty() || !o.m_test.empty() ) flags = FLAG_WINDOW_HIDDEN;
     SetConfigFlags( flags );
     SetTraceLogLevel( LOG_WARNING );
     InitWindow( w, h, "Zenith Lancer" );
@@ -73,7 +73,7 @@ bool App::init( const Options &o )
     SetWindowMinSize( 640, 400 );
     bool full = o.m_fullscreen >= 0 ? o.m_fullscreen == 1 : ( m_set.m_fullscreen || ( deck && m_set.m_width == 0 ) );
     if ( full && o.m_shot.empty() ) ToggleBorderlessWindowed();
-    SetTargetFPS( o.m_shot.empty() ? m_set.m_fps : 0 );
+    SetTargetFPS( o.m_shot.empty() && o.m_test.empty() ? m_set.m_fps : 0 );
     if ( !o.m_mute ) InitAudioDevice();
     m_audio.init( !o.m_mute, m_assets );
     m_audio.m_musicVolume = m_set.m_music;
@@ -123,7 +123,7 @@ void App::applySettings()
     m_audio.m_effectVolume = m_set.m_effects;
     m_view.m_shakeAmount = m_set.m_shake;
     m_view.m_showHitbox = m_set.m_hitbox;
-    SetTargetFPS( m_set.m_fps );
+    if ( m_opt.m_test.empty() && m_opt.m_shot.empty() ) SetTargetFPS( m_set.m_fps );
     ui::setTextSize( m_set.m_textSize * ( steamDeck() ? 1.12f : 1.0f ) );
 }
 
@@ -212,7 +212,8 @@ void App::run()
 void App::go( ScreenE s )
 {
     m_screen = s;
-    m_sel = 0;
+    // The difficulty list starts on Normal.
+    m_sel = s == ScreenE::DIFFICULTY ? std::min( 2, (int)m_cat.m_difficulties.size() - 1 ) : 0;
     m_sel2 = 0;
     m_t = 0;
     m_storyT = 0;
@@ -577,7 +578,6 @@ void App::difficulty( float dt )
         items.push_back( open || !d.m_hidden ? d.m_title : "???" );
         en.push_back( open );
     }
-    if ( m_t < 0.01f ) m_sel = std::min( 2, (int)items.size() - 1 );
     float pw = 1100 * k;
     ui::panel( { W * 0.5f - pw * 0.5f, H * 0.25f - 30 * k, pw, items.size() * ui::height( 38 ) * 1.45f + 200 * k } );
     int c = menu( items, W * 0.5f - pw * 0.5f + 60 * k, H * 0.25f, 400 * k, m_sel, 38, &en );
@@ -1137,7 +1137,7 @@ void App::nameEntry( float dt )
         if ( i < (int)m_name.size() ) ui::text( std::string( 1, m_name[(size_t)i] ), r.x + r.width * 0.5f, r.y + 10 * k, 54, WHITE, ui::AlignE::CENTER );
     }
     hints( "Tippen oder Hoch/Runter: Buchstabe    Links/Rechts: Stelle    Eingabe / Start: fertig" );
-    bool done = IsKeyPressed( KEY_ENTER ) || IsKeyPressed( KEY_KP_ENTER );
+    bool done = IsKeyPressed( KEY_ENTER ) || IsKeyPressed( KEY_KP_ENTER ) || ( m_in.scripted() && m_in.accept() );
     for ( int p = 0; p < 4; ++p )
         if ( IsGamepadAvailable( p ) && ( IsGamepadButtonPressed( p, GAMEPAD_BUTTON_MIDDLE_RIGHT ) || IsGamepadButtonPressed( p, GAMEPAD_BUTTON_RIGHT_FACE_DOWN ) ) )
             done = true;
@@ -1410,6 +1410,90 @@ void App::controls( float dt )
         saveSettings();
         go( ScreenE::OPTIONS );
     }
+}
+
+namespace
+{
+const char *ScreenNames[] = { "title", "main", "options", "controls", "scores", "credits", "logbook", "slots",
+                              "difficulty", "episode", "story", "plan", "shop", "play", "results", "failed", "pilots",
+                              "continue", "name", "quit" };
+}
+
+int App::appTest()
+{
+    // The script: words separated by blanks or lines; "expect:<screen>" checks the screen now, "until:<screen>:<n>"
+    // waits up to n frames for it, "#" starts a comment. Everything else is a press (Input::script).
+    std::vector<std::string> words;
+    FILE *f = fopen( m_opt.m_test.c_str(), "r" );
+    if ( !f )
+    {
+        printf( "cannot read %s\n", m_opt.m_test.c_str() );
+        return 2;
+    }
+    char line[512];
+    while ( fgets( line, sizeof( line ), f ) )
+    {
+        std::string l = line;
+        size_t      hash = l.find( '#' );
+        if ( hash != std::string::npos ) l = l.substr( 0, hash );
+        size_t a = 0;
+        while ( a < l.size() )
+        {
+            while ( a < l.size() && isspace( (unsigned char)l[a] ) ) ++a;
+            size_t b = a;
+            while ( b < l.size() && !isspace( (unsigned char)l[b] ) ) ++b;
+            if ( b > a ) words.push_back( l.substr( a, b - a ) );
+            a = b;
+        }
+    }
+    fclose( f );
+    int     fails = 0;
+    ScreenE last = m_screen;
+    printf( "screen %s\n", ScreenNames[(int)m_screen] );
+    for ( size_t i = 0; i < words.size(); ++i )
+    {
+        const std::string &w = words[i];
+        if ( w.rfind( "expect:", 0 ) == 0 || w.rfind( "until:", 0 ) == 0 )
+        {
+            bool        until = w[0] == 'u';
+            std::string rest = w.substr( until ? 6 : 7 ), want = rest;
+            int         limit = 1;
+            size_t      colon = rest.find( ':' );
+            if ( colon != std::string::npos )
+            {
+                want = rest.substr( 0, colon );
+                limit = atoi( rest.substr( colon + 1 ).c_str() );
+            }
+            int n = 0;
+            while ( ScreenNames[(int)m_screen] != want && n++ < ( until ? limit : 0 ) )
+            {
+                m_in.script( {} );
+                m_in.update();
+                BeginDrawing();
+                frame( 1.0f / 60.0f );
+                EndDrawing();
+                m_t += 1.0f / 60.0f;
+                if ( m_screen != last ) printf( "screen %s\n", ScreenNames[(int)( last = m_screen )] );
+            }
+            bool ok = ScreenNames[(int)m_screen] == want;
+            printf( "%s %s (screen %s)\n", ok ? "ok  " : "FAIL", w.c_str(), ScreenNames[(int)m_screen] );
+            if ( !ok ) ++fails;
+            continue;
+        }
+        m_in.script( { w } );
+        for ( int k = 0; k < 6; ++k )
+        {
+            m_in.update();
+            BeginDrawing();
+            ClearBackground( BLACK );
+            frame( 1.0f / 60.0f );
+            EndDrawing();
+            m_t += 1.0f / 60.0f;
+            if ( m_screen != last ) printf( "screen %s\n", ScreenNames[(int)( last = m_screen )] );
+        }
+    }
+    printf( "%s: %d failed\n", fails ? "FAILED" : "OK", fails );
+    return fails ? 1 : 0;
 }
 
 void App::screenShot()

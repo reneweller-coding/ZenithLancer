@@ -93,6 +93,18 @@ public:
     /** @return whether the mouse moved this frame */
     bool mouseMoved() const { return m_mouseMoved; }
 
+    /**
+     * @brief Plays a script instead of the keys (the app test): one word a frame, each followed by idle frames.
+     * @param[in] words  accept back up down left right pause prevtab nexttab, or anything else to wait a frame
+     */
+    void script( const std::vector<std::string> &words );
+
+    /** @return whether a script plays */
+    bool scripted() const { return m_scripted; }
+
+    /** @return the scripted word of this frame ("" none) */
+    const std::string &word() const { return m_word; }
+
     Bind m_binds[(int)ActE::COUNT];
 
 private:
@@ -112,6 +124,12 @@ private:
     bool  m_trigPrev[4][2] = {};
     bool  m_trigNow[4][2] = {};
     int   m_players = 1;
+    bool  m_scripted = false;
+    std::vector<std::string> m_script;
+    size_t m_scriptAt = 0;
+    int    m_idle = 0;
+    std::string m_word;
+    bool take( const char *w );
 };
 
 }   // namespace zenith

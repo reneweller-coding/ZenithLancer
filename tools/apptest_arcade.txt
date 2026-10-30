@@ -1,0 +1,52 @@
+# The arcade, two pilots, the pause and the options (ZenithLancer --apptest tools/apptest_arcade.txt with
+# ZENITH_HOME set to an empty test folder).
+expect:title
+accept
+expect:main
+down down accept        # Arcade für zwei
+expect:difficulty
+accept                  # Normal
+expect:pilots
+accept                  # pilot 1
+down accept             # pilot 2
+expect:episode
+accept                  # episode 1
+until:play:20
+wait wait wait wait wait wait
+pause                   # the pause menu
+down accept             # Optionen
+expect:options
+right                   # music louder
+down right              # effects louder
+back                    # back to the pause
+expect:play
+back                    # continue
+wait wait wait
+until:results:3000
+wait wait wait wait wait wait wait wait
+accept                  # the next mission or the end of the run
+until:name:400
+accept                  # the name as it stands
+until:scores:50
+back
+until:main:50
+down accept             # Arcade for one
+expect:difficulty
+accept
+expect:pilots
+accept
+expect:episode
+accept
+until:play:20
+wait wait wait wait wait wait
+pause
+down down accept        # end the game
+until:main:50
+down down down down down accept   # Optionen (Bossjagd is still closed and skipped)
+expect:options
+down down down down down down down down down accept   # Tasten und Knöpfe
+expect:controls
+back
+expect:options
+back
+expect:main

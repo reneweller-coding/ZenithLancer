@@ -44,6 +44,15 @@ std::string userDir()
     static std::string dir;
     if ( !dir.empty() ) return dir;
     std::string beside = GetApplicationDirectory();
+    // Tests keep their saves and settings apart.
+    if ( const char *home = getenv( "ZENITH_HOME" ) )
+        if ( *home )
+        {
+            std::error_code e;
+            dir = std::string( home ) + "/";
+            fs::create_directories( fs::path( dir ), e );
+            return dir;
+        }
 #ifdef _WIN32
     const char *app = getenv( "APPDATA" );
     std::string root = app && *app ? app : beside;

@@ -58,8 +58,35 @@ bool Input::padButtonPressed( int pad, int b ) const
     return IsGamepadButtonPressed( pad, b );
 }
 
+void Input::script( const std::vector<std::string> &words )
+{
+    m_script = words;
+    m_scriptAt = 0;
+    m_scripted = true;
+}
+
+bool Input::take( const char *w )
+{
+    if ( m_word != w ) return false;
+    m_word.clear();
+    return true;
+}
+
 void Input::update()
 {
+    if ( m_scripted )
+    {
+        // One word, then a few frames of nothing (the screens react in between).
+        m_word.clear();
+        if ( m_idle > 0 )
+            --m_idle;
+        else if ( m_scriptAt < m_script.size() )
+        {
+            m_word = m_script[m_scriptAt++];
+            m_idle = 4;
+        }
+        return;
+    }
     for ( int p = 0; p < MaxPads; ++p )
     {
         for ( int t = 0; t < 2; ++t ) m_trigPrev[p][t] = m_trigNow[p][t];
@@ -227,15 +254,15 @@ static bool anyPadPressed( int b )
     return false;
 }
 
-bool Input::up() { return repeat( IsKeyDown( KEY_UP ) || IsKeyDown( KEY_W ) || anyPad( GAMEPAD_BUTTON_LEFT_FACE_UP ) || anyAxis( GAMEPAD_AXIS_LEFT_Y ) < -0.55f, 0 ); }
-bool Input::down() { return repeat( IsKeyDown( KEY_DOWN ) || IsKeyDown( KEY_S ) || anyPad( GAMEPAD_BUTTON_LEFT_FACE_DOWN ) || anyAxis( GAMEPAD_AXIS_LEFT_Y ) > 0.55f, 1 ); }
-bool Input::left() { return repeat( IsKeyDown( KEY_LEFT ) || IsKeyDown( KEY_A ) || anyPad( GAMEPAD_BUTTON_LEFT_FACE_LEFT ) || anyAxis( GAMEPAD_AXIS_LEFT_X ) < -0.55f, 2 ); }
-bool Input::right() { return repeat( IsKeyDown( KEY_RIGHT ) || IsKeyDown( KEY_D ) || anyPad( GAMEPAD_BUTTON_LEFT_FACE_RIGHT ) || anyAxis( GAMEPAD_AXIS_LEFT_X ) > 0.55f, 3 ); }
-bool Input::accept() { return IsKeyPressed( KEY_ENTER ) || IsKeyPressed( KEY_KP_ENTER ) || IsKeyPressed( KEY_SPACE ) || anyPadPressed( GAMEPAD_BUTTON_RIGHT_FACE_DOWN ); }
-bool Input::back() { return IsKeyPressed( KEY_ESCAPE ) || IsKeyPressed( KEY_BACKSPACE ) || anyPadPressed( GAMEPAD_BUTTON_RIGHT_FACE_RIGHT ); }
-bool Input::pause() { return IsKeyPressed( KEY_ESCAPE ) || IsKeyPressed( KEY_P ) || anyPadPressed( GAMEPAD_BUTTON_MIDDLE_RIGHT ); }
-bool Input::prevTab() { return IsKeyPressed( KEY_Q ) || IsKeyPressed( KEY_PAGE_UP ) || anyPadPressed( GAMEPAD_BUTTON_LEFT_TRIGGER_1 ); }
-bool Input::nextTab() { return IsKeyPressed( KEY_E ) || IsKeyPressed( KEY_PAGE_DOWN ) || anyPadPressed( GAMEPAD_BUTTON_RIGHT_TRIGGER_1 ); }
+bool Input::up() { if ( m_scripted ) return take( "up" ); return repeat( IsKeyDown( KEY_UP ) || IsKeyDown( KEY_W ) || anyPad( GAMEPAD_BUTTON_LEFT_FACE_UP ) || anyAxis( GAMEPAD_AXIS_LEFT_Y ) < -0.55f, 0 ); }
+bool Input::down() { if ( m_scripted ) return take( "down" ); return repeat( IsKeyDown( KEY_DOWN ) || IsKeyDown( KEY_S ) || anyPad( GAMEPAD_BUTTON_LEFT_FACE_DOWN ) || anyAxis( GAMEPAD_AXIS_LEFT_Y ) > 0.55f, 1 ); }
+bool Input::left() { if ( m_scripted ) return take( "left" ); return repeat( IsKeyDown( KEY_LEFT ) || IsKeyDown( KEY_A ) || anyPad( GAMEPAD_BUTTON_LEFT_FACE_LEFT ) || anyAxis( GAMEPAD_AXIS_LEFT_X ) < -0.55f, 2 ); }
+bool Input::right() { if ( m_scripted ) return take( "right" ); return repeat( IsKeyDown( KEY_RIGHT ) || IsKeyDown( KEY_D ) || anyPad( GAMEPAD_BUTTON_LEFT_FACE_RIGHT ) || anyAxis( GAMEPAD_AXIS_LEFT_X ) > 0.55f, 3 ); }
+bool Input::accept() { if ( m_scripted ) return take( "accept" ); return IsKeyPressed( KEY_ENTER ) || IsKeyPressed( KEY_KP_ENTER ) || IsKeyPressed( KEY_SPACE ) || anyPadPressed( GAMEPAD_BUTTON_RIGHT_FACE_DOWN ); }
+bool Input::back() { if ( m_scripted ) return take( "back" ); return IsKeyPressed( KEY_ESCAPE ) || IsKeyPressed( KEY_BACKSPACE ) || anyPadPressed( GAMEPAD_BUTTON_RIGHT_FACE_RIGHT ); }
+bool Input::pause() { if ( m_scripted ) return take( "pause" ); return IsKeyPressed( KEY_ESCAPE ) || IsKeyPressed( KEY_P ) || anyPadPressed( GAMEPAD_BUTTON_MIDDLE_RIGHT ); }
+bool Input::prevTab() { if ( m_scripted ) return take( "prevtab" ); return IsKeyPressed( KEY_Q ) || IsKeyPressed( KEY_PAGE_UP ) || anyPadPressed( GAMEPAD_BUTTON_LEFT_TRIGGER_1 ); }
+bool Input::nextTab() { if ( m_scripted ) return take( "nexttab" ); return IsKeyPressed( KEY_E ) || IsKeyPressed( KEY_PAGE_DOWN ) || anyPadPressed( GAMEPAD_BUTTON_RIGHT_TRIGGER_1 ); }
 
 int Input::capturedKey()
 {
