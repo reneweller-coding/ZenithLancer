@@ -1,0 +1,444 @@
+# Episode 4 "Grünkrone" (Sylvara): the moon's corrupted native life, the Tessellate's jungle forms, Voss's
+# amber-lit swarm, the Directorate's fleet and the bosses (Brandroder, Dornenmutter, Diktat). Nose towards -z.
+
+# ---------------------------------------------------------------------------------------------- native life
+
+# A floating spore ball: moss shell, bone spines, a glowing heart.
+model e4_sporeling
+  part sphere r=7 seg=10 color=#3e5a2a noise=0.16
+  part sphere rx=4.5 ry=4 rz=4.5 y=3.5 seg=8 color=#50ffb0 emit=0.75
+  part spike r=1.5 len=9 x=8 rot=90 color=#d8ccb0 mirror=1
+  part spike r=1.5 len=9 z=-8 color=#d8ccb0
+  part spike r=1.5 len=9 z=8 rot=180 color=#d8ccb0
+  part spike r=1.2 len=7 x=5.5 z=5.5 rot=135 color=#c8bca0 mirror=1
+  part spike r=1.2 len=7 x=5.5 z=-5.5 rot=45 color=#c8bca0 mirror=1
+  part ring r=10 thick=0.7 color=#40e0c0 emit=0.6 group=spin spin=140
+  part light r=1.1 x=3 y=5 z=-3 color=#ff50d0
+
+# A moth the swarm has touched: broad patterned wings, feather antennae, one magenta eye.
+model e4_mothwing
+  part hull len=22 wid=6 hgt=5 shape=cigar color=#4a3a28
+  part sphere r=3.6 z=-10 y=1 color=#5a4630
+  part wing span=18 root=14 tip=13 sweep=5 z=-4 thick=0.8 color=#6a5a3a stripe=#40ffc0
+  part wing span=13 root=11 tip=9 sweep=7 z=8 thick=0.8 color=#584a30 stripe=#2ab090
+  part spike r=0.6 len=10 x=2.5 z=-16 rot=-24 color=#d8ccb0 mirror=1
+  part light r=1.7 x=12 z=0 y=1.2 color=#50ffd0 mirror=1
+  part light r=1.1 x=8 z=11 y=1 color=#30c0a0 mirror=1
+  part light r=1.2 z=-12 y=2.8 color=#ff50d0
+  part greeble n=5 w=3 d=14 y=2 z=2 size=1.2 seed=13 color=#3a2c1e
+
+# A dragonfly hunter: needle abdomen, four glassy wings, compound eyes, a lattice sting.
+model e4_lancefly
+  part hull len=40 wid=5 hgt=4 shape=needle z=8 color=#2a5a50
+  part sphere rx=5 ry=4 rz=7 z=-8 color=#3a6a5a
+  part sphere r=3.3 x=3 z=-15 y=1 color=#40ffb0 emit=0.6 mirror=1
+  part wing span=21 root=6 tip=4 sweep=2 z=-9 thick=0.5 color=#a8e8d8 stripe=#40ffc0 emit=0.1
+  part wing span=18 root=5 tip=3.5 sweep=4 z=-2 thick=0.5 color=#98d8c8 stripe=#30c0a8 emit=0.1
+  part crystal r=2.2 len=11 z=29 color=#ff50d0 emit=0.85
+  part greeble n=6 w=4 d=22 y=1.5 z=10 size=1.2 seed=5 color=#1e4a40
+  part light r=1 z=-4 y=4 color=#a0ff60
+
+# A gliding jellyfish of the canopy: a bell with a glowing heart, bone spines all round, a crown of lattice.
+model e4_umbrella
+  part dome rx=20 ry=10 rz=20 seg=14 color=#1e5a5a emit=0.04
+  part ring r=20 thick=1.6 seg=24 color=#40e0c0 emit=0.5
+  part dome rx=8 ry=13 rz=8 y=1 color=#80ffd0 emit=0.6
+  part ring r=15 thick=0.9 y=5 color=#2a8a7a emit=0.2
+  part spike r=1.6 len=11 x=23 rot=90 color=#d8ccb0 mirror=1
+  part spike r=1.6 len=11 z=-23 color=#d8ccb0
+  part spike r=1.6 len=11 z=23 rot=180 color=#d8ccb0
+  part spike r=1.4 len=10 x=16.5 z=-16.5 rot=45 color=#c8bca0 mirror=1
+  part spike r=1.4 len=10 x=16.5 z=16.5 rot=135 color=#c8bca0 mirror=1
+  part ring r=12 thick=0.8 y=7 color=#ff50d0 emit=0.65 group=spin spin=-70
+  part light r=1.6 x=12 y=6 z=4 color=#ff50d0 mirror=1
+  part light r=1.4 x=6 y=8 z=-10 color=#a0ff60 mirror=1
+
+# An armoured beetle: chitin wing cases, a bone horn, mandibles and lattice crystals growing from its back.
+model e4_beetle
+  part hull len=50 wid=34 hgt=16 shape=blob color=#3a2a1e noise=0.12
+  part wing span=18 root=36 tip=20 sweep=9 z=4 y=5 thick=3 dihedral=-3 color=#5a3e24 stripe=#2a6a40
+  part sphere rx=10 ry=7 rz=8 z=-27 color=#4a3424
+  part cone r=3 len=20 z=-38 y=5 pitch=12 color=#d8ccb0
+  part spike r=2 len=12 x=6 z=-35 rot=-22 color=#c8bca0 mirror=1
+  part spike r=1.3 len=15 x=17 z=-8 rot=105 color=#2a1e14 mirror=1
+  part spike r=1.3 len=15 x=17 z=6 rot=80 color=#2a1e14 mirror=1
+  part crystal r=4 len=13 x=8 y=9 z=4 pitch=40 color=#ff50d0 emit=0.8 mirror=1
+  part crystal r=3 len=10 y=11 z=14 pitch=55 color=#50e0ff emit=0.85
+  part light r=2 x=5 z=-31 y=3 color=#a0ff60 mirror=1
+  part greeble n=14 w=22 d=28 y=7 size=2.4 seed=41 color=#4a3420
+  part light r=1.4 x=10 y=6 z=18 color=#40ffb0 mirror=1
+
+# A seed pod that drifts on the wind and bursts: a husk, long spines, a hot core.
+model e4_seedmine
+  part sphere rx=8 ry=7 rz=10 seg=10 color=#5a4a2a noise=0.14
+  part spike r=1.4 len=10 x=9 rot=90 color=#d8ccb0 mirror=1
+  part spike r=1.4 len=10 z=-10 color=#d8ccb0
+  part spike r=1.4 len=10 z=10 rot=180 color=#d8ccb0
+  part spike r=1.1 len=8 x=7 z=7 rot=135 color=#b8ac90 mirror=1
+  part spike r=1.1 len=8 x=7 z=-7 rot=45 color=#b8ac90 mirror=1
+  part ring r=6 thick=1 y=5 color=#ffc040 emit=0.85 group=spin spin=200
+  part light r=2.3 y=7 color=#ff8040
+
+# A bloated brood carrier: an egg sac full of light, two pairs of membrane wings, lattice in its spine.
+model e4_broodmother
+  part hull len=70 wid=40 hgt=24 shape=tear color=#33262a noise=0.14
+  part sphere rx=17 ry=12 rz=21 z=12 y=4 color=#4a3038 noise=0.1
+  part wing span=36 root=26 tip=14 sweep=14 z=-6 thick=1 color=#5a6a4a stripe=#40ffb0
+  part wing span=27 root=18 tip=10 sweep=12 z=15 thick=1 color=#4a5a3a stripe=#2ab090
+  part light r=3.2 x=8 y=14 z=8 color=#80ffb0 mirror=1
+  part light r=3.4 y=15 z=18 color=#80ffb0
+  part light r=2.6 x=12 y=10 z=22 color=#80ffb0 mirror=1
+  part crystal r=5 len=18 y=12 z=-10 pitch=60 color=#ff50d0 emit=0.85
+  part crystal r=3.5 len=12 x=9 y=10 z=-16 pitch=50 color=#50e0ff emit=0.85 mirror=1
+  part spike r=2.2 len=12 x=6 z=-37 rot=-15 color=#d8ccb0 mirror=1
+  part sphere r=3 x=7 z=-30 y=4 color=#ff60b0 emit=0.6 mirror=1
+  part greeble n=12 w=24 d=40 y=8 z=-4 size=2.6 seed=17 color=#5a4444
+
+# A spore pod rooted in the forest floor: a bulb, two rings of leaves, a glowing mouth that bursts.
+model e4_sporepod
+  part disc r=17 h=4 seg=10 color=#2e3e1c
+  part plate pts="0,-24;6,-6;24,0;6,6;0,24;-6,6;-24,0;-6,-6" thick=1.6 y=3 color=#4a7a2a
+  part plate pts="17,-17;6,0;17,17;0,6;-17,17;-6,0;-17,-17;0,-6" thick=1.4 y=4 color=#5a8a30
+  part sphere rx=11 ry=13 rz=11 y=9 color=#5a6a2a noise=0.12
+  part ring r=7 thick=1.5 y=19 color=#a0ff40 emit=0.7
+  part dome r=6 y=19 color=#d0ff70 emit=0.95
+  part light r=1.6 x=9 y=12 z=-4 color=#40ffb0 mirror=1
+  part light r=1.6 y=12 z=10 color=#40ffb0
+
+# A thorn vine coiled round its root: the bud turns towards the pilot and spits bone thorns.
+model e4_thornvine
+  part ring r=13 thick=3.2 seg=12 color=#2a4a1e
+  part ring r=8 thick=2.6 y=4 color=#3a5a24
+  part spike r=1.4 len=8 x=15 rot=90 color=#c8bca0 mirror=1
+  part spike r=1.4 len=8 z=-15 color=#c8bca0
+  part spike r=1.4 len=8 z=15 rot=180 color=#c8bca0
+  part sphere rx=7 ry=8 rz=9 y=9 color=#5a2a44 group=head pivot=0,0
+  part cone r=3.2 len=17 y=10 z=-11 color=#d8ccb0 group=head pivot=0,0
+  part plate pts="0,-6;8,2;0,6;-8,2" thick=1.2 y=13 z=2 color=#7a3a5a group=head pivot=0,0
+  part light r=1.9 y=15 z=-1 color=#ff50a0 group=head pivot=0,0
+
+# A jungle crawler: four armoured segments, many legs, a spore cannon bulb on its back.
+model e4_crawler
+  part sphere rx=12 ry=7 rz=10 z=-22 color=#4a3a26 noise=0.12
+  part sphere rx=14 ry=8 rz=11 z=-5 color=#3e301e noise=0.12
+  part sphere rx=13 ry=7.5 rz=10 z=12 color=#4a3a26 noise=0.12
+  part sphere rx=10 ry=6 rz=8 z=27 color=#3e301e noise=0.12
+  part spike r=1.5 len=14 x=15 z=-18 rot=100 color=#2a1e14 mirror=1
+  part spike r=1.5 len=14 x=17 z=-3 rot=95 color=#2a1e14 mirror=1
+  part spike r=1.5 len=14 x=16 z=13 rot=85 color=#2a1e14 mirror=1
+  part spike r=1.3 len=12 x=12 z=27 rot=80 color=#2a1e14 mirror=1
+  part spike r=2 len=11 x=5 z=-33 rot=-20 color=#d8ccb0 mirror=1
+  part light r=1.8 x=5 z=-28 y=4 color=#a0ff60 mirror=1
+  part crystal r=3 len=10 x=7 y=7 z=12 pitch=50 color=#50e0ff emit=0.85 mirror=1
+  part sphere rx=7 ry=7 rz=8 y=8 z=-5 color=#5a6a2a group=head pivot=0,-5
+  part gun r=2.4 len=14 y=10 z=-14 color=#3a4a20 group=head pivot=0,-5
+  part light r=2 y=14 z=-4 color=#c0ff60 group=head pivot=0,-5
+
+# A river ray: a wide flat body, a whip tail, rows of blue lights along its wings.
+model e4_riverray
+  part plate pts="0,-20;14,-8;30,6;14,9;0,15;-14,9;-30,6;-14,-8" thick=3 color=#2a4a5a
+  part hull len=32 wid=12 hgt=7 shape=tear color=#3a5a6a
+  part spike r=1.2 len=26 z=27 rot=180 color=#1a2a30
+  part spike r=1 len=6 x=4 z=-17 color=#5a7a8a mirror=1
+  part light r=1.4 x=10 z=-3 y=2 color=#40e0ff mirror=1
+  part light r=1.3 x=17 z=1 y=2 color=#40e0ff mirror=1
+  part light r=1.2 x=23 z=4 y=1.8 color=#40e0ff mirror=1
+  part light r=1.5 z=-8 y=4 color=#ff50d0
+  part greeble n=8 w=8 d=16 y=3 size=1.5 seed=9 color=#2a4a5a
+
+# A hive mite: a chitin tick crusted with lattice, darting through the combs.
+model e4_hivemite
+  part sphere rx=7 ry=5 rz=9 seg=10 color=#4a2a3a noise=0.14
+  part sphere r=4 z=-9 y=1 color=#5a3446
+  part spike r=1.1 len=10 x=8 z=-4 rot=70 color=#2a1420 mirror=1
+  part spike r=1.1 len=10 x=8 z=3 rot=110 color=#2a1420 mirror=1
+  part crystal r=2.5 len=8 y=5 z=2 pitch=60 color=#ff50d0 emit=0.85
+  part crystal r=1.8 len=6 x=4 y=4 z=6 pitch=45 color=#50e0ff emit=0.85 mirror=1
+  part light r=1.4 x=2 z=-12 y=2 color=#80ff60 mirror=1
+
+# ---------------------------------------------------------------------------------------------- the Tessellate
+
+# A splinter drone: three crystals bound by a spinning ring, cyan heart.
+model e4_shard
+  part crystal r=4 len=26 color=#3a3448
+  part crystal r=3.4 len=20 x=7 z=4 rot=60 color=#4a4458 mirror=1
+  part crystal r=1.6 len=10 z=-11 color=#50e0ff emit=0.9
+  part crystal r=1.4 len=8 x=12 z=8 rot=60 color=#50e0ff emit=0.9 mirror=1
+  part ring r=6 thick=0.8 y=2 color=#ff60e0 emit=0.8 group=spin spin=-220
+  part light r=1.8 y=4 color=#50e0ff
+
+# A prism hunter: faceted wing plates, a long crystal spine, two violet thrusters.
+model e4_prism
+  part plate pts="0,-18;20,6;8,10;0,4;-8,10;-20,6" thick=2.2 color=#3a3448
+  part crystal r=5 len=30 y=2 color=#5a4a70
+  part crystal r=3 len=12 x=14 y=2 z=4 color=#ff50d0 emit=0.85 mirror=1
+  part engine r=2.4 len=8 x=6 z=12 glow=#c050ff color=#2a2436
+  part light r=1.5 y=5 z=-6 color=#50e0ff
+  part greeble n=8 w=14 d=10 y=2 z=4 size=1.6 seed=23 color=#4a4458
+
+# A lattice cruiser: a hexagonal hull caged in glowing lattice, crystal masts, three thrusters.
+model e4_latticeship
+  part hull len=62 wid=30 hgt=14 shape=hex round=3 color=#3e3a4c
+  part box w=46 h=2.4 d=4 y=6 z=-10 color=#50e0ff emit=0.45
+  part box w=46 h=2.4 d=4 y=6 z=12 color=#ff50d0 emit=0.45
+  part box w=4 h=3 d=48 x=14 y=7 color=#4a4458 mirror=1
+  part crystal r=6 len=18 y=12 z=-4 pitch=70 color=#e060ff emit=0.85
+  part crystal r=4 len=12 x=18 y=8 z=2 pitch=45 color=#50e0ff emit=0.85 mirror=1
+  part wing span=20 root=26 tip=10 sweep=10 x=12 z=6 thick=2.4 color=#2e2a3a stripe=#c040ff
+  part engine r=3.6 len=10 x=10 z=32 glow=#ff50d0 color=#2a2436
+  part engine r=4.2 len=10 z=33 glow=#ff70e0 color=#2a2436
+  part gun r=1.6 len=14 x=8 z=-32 color=#2a2436
+  part greeble n=22 w=24 d=44 y=7 size=2.4 seed=31 color=#5a5468
+  part ring r=10 thick=1.2 y=10 z=-4 color=#50e0ff emit=0.7 group=spin spin=90
+
+# ---------------------------------------------------------------------------------------------- Voss's swarm
+
+# An amber dart: the swarm's own arrow form, repainted in the Directorate's white and navy, lit amber.
+model e4_amberdart
+  part hull len=32 wid=10 hgt=5 shape=arrow color=#e4e8ee
+  part wing span=14 root=13 tip=3 sweep=10 z=4 thick=1.2 color=#1e2a4a stripe=#ffb030
+  part crystal r=2.4 len=10 y=3 z=-2 color=#ffb030 emit=0.9
+  part engine r=2.2 len=7 z=15 glow=#ffb030 color=#1e2a4a
+  part fin h=5 root=8 tip=3 sweep=4 x=4 z=10 roll=-25 color=#1e2a4a mirror=1
+  part light r=1.2 z=-10 y=2 color=#ffd060
+  part light r=1 x=13 z=9 color=#ffb030 mirror=1
+
+# An amber warden: a heavy swarm gunship in Voss's colours, an amber lattice ring turning on its back.
+model e4_amberwarden
+  part hull len=56 wid=26 hgt=12 shape=hex round=4 color=#dfe4ea
+  part hull len=30 wid=8 hgt=7 shape=cigar x=18 z=6 color=#1e2a4a mirror=1
+  part wing span=20 root=22 tip=10 sweep=8 x=14 z=2 thick=2.4 color=#1e2a4a stripe=#ffb030
+  part ring r=12 thick=1.8 y=9 z=-2 color=#ffb030 emit=0.85 group=spin spin=80
+  part crystal r=5 len=14 y=9 z=-2 pitch=90 color=#ffc860 emit=0.9
+  part engine r=3.4 len=9 x=18 z=22 glow=#ffb030 color=#1e2a4a
+  part gun r=1.6 len=16 x=7 z=-30 color=#1e2a4a
+  part box w=14 h=4 d=16 y=6 z=14 taper=0.3 color=#c8ced8
+  part light r=1.6 x=22 z=-6 color=#ffb030 mirror=1
+  part greeble n=16 w=20 d=40 y=6 size=2.2 seed=57 color=#b8c0cc
+
+# ---------------------------------------------------------------------------------------------- the Directorate
+
+# A Directorate interceptor: forward-swept wings, navy stripes, red and white running lights.
+model e4_dirjet
+  part hull len=36 wid=9 hgt=6 shape=dart color=#9aa4b4
+  part wing span=15 root=10 tip=5 sweep=-5 z=6 thick=1.2 color=#7a8494 stripe=#24304a
+  part wing span=7 root=6 tip=3 sweep=2 z=-9 thick=1 color=#7a8494
+  part dome rx=2.6 ry=2.2 rz=6 z=-5 y=2.6 color=#a0d0ff emit=0.5
+  part engine r=2.4 len=8 x=4 z=16 glow=#80b0ff color=#4a5260
+  part fin h=6 root=8 tip=3 sweep=4 z=12 y=2 color=#24304a
+  part light r=1 x=15 z=10 color=#ff4040 mirror=1
+  part light r=0.9 z=-17 y=1 color=#e0f0ff
+
+# A Directorate gunboat: a boxy armoured hull, two turrets, navy plating, a sensor mast.
+model e4_dirgunboat
+  part hull len=58 wid=26 hgt=13 shape=box round=4 color=#8a94a4
+  part box w=30 h=5 d=26 y=7 z=4 taper=0.2 color=#24304a
+  part disc r=6 h=4 x=9 y=10 z=-14 color=#6a7484 mirror=1
+  part gun r=1.5 len=16 x=9 y=12 z=-22 color=#3a4250 mirror=1
+  part engine r=3.8 len=10 x=9 z=30 glow=#80b0ff color=#4a5260
+  part wing span=12 root=20 tip=10 sweep=6 x=12 z=8 thick=2.4 color=#7a8494 stripe=#24304a
+  part box w=3 h=10 d=3 y=13 z=10 color=#c8ced8
+  part light r=1.4 y=19 z=10 color=#ff4040
+  part light r=1.2 x=13 z=-22 color=#e0f0ff mirror=1
+  part greeble n=18 w=22 d=36 y=8 z=2 size=2 seed=61 color=#9aa4b4
+
+# A Directorate hover tank: a wedge hull on skids, a long gun in a turret that tracks.
+model e4_dirtank
+  part box w=26 h=8 d=36 taper=0.25 color=#7a8494
+  part box w=6 h=6 d=38 x=14 color=#24304a mirror=1
+  part disc r=10 h=5 y=5 color=#8a94a4 group=head pivot=0,0
+  part box w=12 h=6 d=14 y=9 color=#9aa4b4 group=head pivot=0,0
+  part gun r=2 len=24 y=9 z=-16 color=#3a4250 group=head pivot=0,0
+  part light r=1.4 x=4 y=13 z=4 color=#ff4040 group=head pivot=0,0
+  part light r=1.2 x=10 y=4 z=-18 color=#e0f0ff mirror=1
+  part greeble n=8 w=18 d=20 y=4 z=8 size=2 seed=71 color=#6a7484
+
+# A Directorate flak tower: a fortified base, a quad-gun head, warning lights at the corners.
+model e4_dirflak
+  part box w=40 h=10 d=40 taper=0.3 color=#5a6270
+  part box w=24 h=8 d=24 y=8 color=#24304a
+  part disc r=11 h=5 y=13 color=#8a94a4 group=head pivot=0,0
+  part gun r=1.8 len=20 x=4 y=17 z=-12 color=#3a4250 group=head pivot=0,0 mirror=1
+  part gun r=1.8 len=20 x=9 y=15 z=-11 color=#3a4250 group=head pivot=0,0 mirror=1
+  part box w=10 h=5 d=10 y=18 z=4 color=#9aa4b4 group=head pivot=0,0
+  part light r=1.8 x=18 y=6 z=-18 color=#ff4040 mirror=1
+  part light r=1.8 x=18 y=6 z=18 color=#ff4040 mirror=1
+  part greeble n=12 w=34 d=34 y=5 size=2.6 seed=83 color=#6a7280
+
+# A Directorate frigate: a long navy-and-steel hull, a bridge tower, broadside guns, four engines.
+model e4_dirfrigate scale=1
+  part hull len=110 wid=28 hgt=16 shape=hammer color=#8a94a4
+  part hull len=70 wid=16 hgt=10 shape=box round=4 z=14 y=8 color=#24304a
+  part box w=14 h=14 d=16 y=14 z=26 taper=0.3 color=#c8ced8
+  part dome rx=5 ry=3 rz=6 y=21 z=24 color=#a0d0ff emit=0.6
+  part wing span=18 root=30 tip=14 sweep=8 x=12 z=30 thick=3 color=#7a8494 stripe=#24304a
+  part gun r=1.8 len=18 x=15 y=6 z=-6 rot=90 color=#3a4250 mirror=1
+  part gun r=1.8 len=18 x=15 y=6 z=10 rot=90 color=#3a4250 mirror=1
+  part gun r=2.2 len=22 y=8 z=-50 color=#3a4250
+  part engine r=4 len=12 x=8 z=56 glow=#80b0ff color=#4a5260
+  part engine r=3 len=10 x=20 z=50 glow=#80b0ff color=#4a5260
+  part greeble n=36 w=22 d=90 y=8 size=2.6 seed=91 color=#9aa4b4
+  part light r=2 x=15 z=-44 color=#ff4040 mirror=1
+  part light r=1.6 y=12 z=-40 color=#e0f0ff
+
+# ---------------------------------------------------------------------------------------------- bosses
+
+# The Brandroder: the Directorate's defoliation carrier, two burning tanks on its flanks.
+model e4_brandroder scale=1
+  part hull len=150 wid=90 hgt=26 shape=hex round=3 color=#6a7280
+  part hull len=100 wid=40 hgt=20 shape=box round=4 y=10 z=14 color=#24304a
+  part hull len=90 wid=26 hgt=22 shape=cigar x=62 z=8 color=#8a5a2a mirror=1
+  part box w=6 h=2 d=64 x=62 y=12 z=10 color=#ff9a20 emit=0.7 mirror=1
+  part wing span=32 root=60 tip=30 sweep=14 x=40 z=30 thick=5 color=#5a6270 stripe=#ff9a20
+  part box w=30 h=14 d=26 y=20 z=38 taper=0.3 color=#c8ced8
+  part dome rx=8 ry=4 rz=8 y=28 z=36 color=#a0d0ff emit=0.6
+  part box w=3 h=12 d=3 x=8 y=30 z=44 color=#c8ced8 mirror=1
+  part light r=1.8 x=8 y=37 z=44 color=#ff4040 mirror=1
+  part engine r=8 len=16 x=22 z=80 glow=#ffb060 color=#3a4250
+  part engine r=6 len=14 x=62 z=56 glow=#ff8040 color=#3a4250
+  part disc r=16 h=4 x=62 y=12 z=-40 color=#3a4250 mirror=1
+  part box w=60 h=6 d=16 y=8 z=-66 color=#3a4250
+  part crystal r=6 len=18 y=24 z=-14 pitch=70 color=#a0ff40 emit=0.7
+  part greeble n=50 w=70 d=110 y=12 z=10 size=4 seed=101 color=#7a8494
+  part light r=3 x=40 z=-62 color=#ff4040 mirror=1
+  part light r=2.4 x=30 y=10 z=-50 color=#ffb060 mirror=1
+
+# The Brandroder's flame turret: an armoured dome with a short, wide nozzle.
+model e4_brand_turret
+  part disc r=14 h=6 seg=10 color=#5a6270
+  part sphere rx=10 ry=8 rz=11 y=5 color=#8a5a2a group=head pivot=0,0
+  part cone r=5 len=16 r2=3 y=7 z=-14 color=#3a4250 group=head pivot=0,0
+  part light r=2.4 y=7 z=-22 color=#ff7020 group=head pivot=0,0
+  part box w=4 h=3 d=10 x=7 y=10 color=#ff9a20 emit=0.6 group=head pivot=0,0 mirror=1
+
+# The Brandroder's sprayer: a wide boom of nozzles under the nose.
+model e4_brand_sprayer
+  part box w=56 h=8 d=14 color=#5a6270
+  part gun r=2.4 len=14 x=8 z=-10 color=#3a4250 mirror=1
+  part gun r=2.4 len=14 x=22 z=-10 color=#3a4250 mirror=1
+  part gun r=2.4 len=14 z=-10 color=#3a4250
+  part light r=2 x=15 y=4 z=-4 color=#a0ff40 mirror=1
+  part box w=40 h=3 d=4 y=5 z=4 color=#ff9a20 emit=0.6
+  part sphere rx=10 ry=7 rz=8 y=5 z=6 color=#6a7a30
+
+# The Thornmother: a guardian of the Choir, grown huge; bone plates, a moss mantle, the swarm's lattice in her flesh.
+model e4_thornmother scale=1
+  part hull len=150 wid=110 hgt=40 shape=blob color=#3a2622 noise=0.16
+  part sphere rx=46 ry=26 rz=50 y=8 z=8 color=#3a3a1c noise=0.18
+  part plate pts="0,-62;22,-34;62,-42;40,-8;74,20;30,26;0,60;-30,26;-74,20;-40,-8;-62,-42;-22,-34" thick=4 y=10 color=#c8bca0
+  part sphere rx=22 ry=16 rz=20 y=22 z=-30 color=#4a2230 noise=0.12
+  part cone r=6 len=34 x=34 y=20 z=-52 rot=-25 color=#e8dcc0 mirror=1
+  part sphere rx=20 ry=16 rz=22 x=78 y=6 z=-20 color=#3a2e22 noise=0.14 mirror=1
+  part spike r=5 len=42 x=71 y=10 z=12 rot=100 pitch=8 color=#d8ccb0 mirror=1
+  part spike r=4.6 len=40 x=57 y=10 z=40 rot=125 pitch=8 color=#d8ccb0 mirror=1
+  part spike r=4.4 len=38 x=34 y=10 z=59 rot=150 pitch=8 color=#c8bca0 mirror=1
+  part spike r=4.2 len=34 x=10 y=10 z=69 rot=172 pitch=8 color=#c8bca0 mirror=1
+  part spike r=3.6 len=26 x=37 y=12 z=-44 rot=40 pitch=8 color=#e8dcc0 mirror=1
+  part spike r=2.6 len=18 x=20 y=28 z=4 rot=90 pitch=40 color=#d8ccb0 mirror=1
+  part spike r=2.6 len=18 x=14 y=28 z=30 rot=150 pitch=40 color=#d8ccb0 mirror=1
+  part light r=4 x=10 y=34 z=-36 color=#ffb030 mirror=1
+  part light r=3 x=22 y=28 z=-24 color=#ffc860 mirror=1
+  part crystal r=8 len=26 x=26 y=26 z=10 pitch=55 color=#ffb030 emit=0.85 mirror=1
+  part crystal r=6 len=20 y=34 z=22 pitch=70 color=#ffd070 emit=0.85
+  part crystal r=5 len=16 x=36 y=18 z=30 pitch=40 color=#ffb030 emit=0.85 mirror=1
+  part ring r=56 thick=1.6 seg=32 y=12 color=#ffb030 emit=0.4
+  part greeble n=40 w=90 d=100 y=18 z=10 size=4 seed=113 color=#4a3a26
+
+# The Thornmother's arm: a jointed bone limb ending in a thorn claw.
+model e4_thorn_arm
+  part sphere rx=14 ry=11 rz=16 color=#4a2a24 noise=0.14
+  part hull len=40 wid=12 hgt=10 shape=cigar z=-22 color=#d8ccb0
+  part cone r=6 len=26 z=-48 color=#e8dcc0
+  part spike r=2.4 len=16 x=7 z=-40 rot=-30 color=#c8bca0 mirror=1
+  part spike r=2 len=12 x=9 z=-6 rot=70 color=#c8bca0 mirror=1
+  part crystal r=4 len=12 y=11 z=-4 pitch=60 color=#ffb030 emit=0.85
+  part light r=2.4 y=9 z=-22 color=#ffc860
+
+# The Thornmother's spore crown: a ring of petals round a glowing throat, spinning slowly.
+model e4_thorn_crown
+  part sphere rx=20 ry=12 rz=20 color=#5a3a4a noise=0.12
+  part plate pts="0,-30;9,-9;30,0;9,9;0,30;-9,9;-30,0;-9,-9" thick=2 y=6 color=#7a4a6a group=spin spin=40
+  part plate pts="21,-21;8,0;21,21;0,8;-21,21;-8,0;-21,-21;0,-8" thick=2 y=7 color=#9a5a80 group=spin spin=40
+  part dome r=9 y=9 color=#c0ff70 emit=0.95
+  part ring r=13 thick=1.4 y=10 color=#ffb030 emit=0.75
+  part light r=2 x=14 y=8 color=#80ffb0 mirror=1
+
+# The lattice growth on the Choir's heart: crystal over living flesh, rings of cyan, a magenta eye.
+model e4_tumor scale=1
+  part sphere rx=58 ry=28 rz=50 seg=14 color=#3a2a3a noise=0.18
+  part sphere rx=30 ry=22 rz=28 x=18 y=12 z=10 color=#4a3048 noise=0.16
+  part sphere rx=26 ry=18 rz=24 x=-22 y=10 z=-8 color=#46304a noise=0.16
+  part crystal r=12 len=46 y=30 pitch=85 color=#ff50d0 emit=0.85
+  part crystal r=9 len=34 x=24 y=24 z=-14 pitch=60 rot=30 color=#e060ff emit=0.8
+  part crystal r=8 len=30 x=-28 y=22 z=12 pitch=55 rot=-40 color=#50e0ff emit=0.85
+  part crystal r=6 len=24 x=8 y=20 z=30 pitch=45 rot=170 color=#50e0ff emit=0.85
+  part crystal r=6 len=22 x=-12 y=18 z=-30 pitch=50 color=#ff50d0 emit=0.85
+  part ring r=40 thick=2 y=16 color=#50e0ff emit=0.6 group=spin spin=30
+  part ring r=30 thick=1.6 y=22 color=#ff50d0 emit=0.6
+  part plate pts="0,-60;12,-30;40,-40;30,-10;56,6;24,16;10,50;-10,30;-40,40;-30,6;-56,-6;-24,-24" thick=3 y=2 color=#2a6a40
+  part light r=4 x=30 y=14 z=-26 color=#80ffb0 mirror=1
+  part light r=3 y=20 z=34 color=#80ffb0
+  part greeble n=30 w=70 d=70 y=16 size=4 seed=151 color=#5a3a5a
+
+# A lattice node: a crystal cluster grown into the flesh, pulsing.
+model e4_tumor_node
+  part sphere rx=13 ry=9 rz=13 color=#3a2a3a noise=0.16
+  part crystal r=6 len=24 y=8 pitch=80 color=#ff50d0 emit=0.85
+  part crystal r=4 len=16 x=7 y=6 rot=70 pitch=30 color=#50e0ff emit=0.85 mirror=1
+  part crystal r=3 len=12 y=5 z=-9 pitch=20 color=#50e0ff emit=0.85
+  part ring r=15 thick=1 y=3 color=#ff50d0 emit=0.6 group=spin spin=-80
+
+# The Diktat: Voss's flagship. A long white hammer of a hull, navy armour, amber lattice grown along its spine.
+model e4_diktat scale=1
+  part hull len=280 wid=96 hgt=34 shape=hammer color=#dfe4ea
+  part hull len=200 wid=56 hgt=26 shape=box round=4 y=14 z=30 color=#1e2a4a
+  part hull len=120 wid=30 hgt=22 shape=cigar x=70 z=60 color=#c8ced8 mirror=1
+  part wing span=60 root=110 tip=50 sweep=30 x=40 z=70 thick=8 color=#1e2a4a stripe=#ffb030
+  part box w=50 h=30 d=40 y=30 z=96 taper=0.35 color=#e8ecf2
+  part box w=34 h=8 d=12 y=40 z=84 color=#1e2a4a
+  part dome rx=12 ry=5 rz=6 y=44 z=82 color=#ffd070 emit=0.75 glass=1
+  part box w=3 h=20 d=3 x=14 y=50 z=100 color=#c8ced8 mirror=1
+  part light r=2.4 x=14 y=60 z=100 color=#ff4040 mirror=1
+  part box w=8 h=4 d=170 x=22 y=27 z=40 color=#ffb030 emit=0.75 mirror=1
+  part crystal r=10 len=40 y=36 z=0 pitch=80 color=#ffb030 emit=0.9
+  part crystal r=7 len=28 x=20 y=30 z=30 pitch=60 color=#ffc860 emit=0.9 mirror=1
+  part engine r=12 len=24 x=30 z=150 glow=#ffb030 color=#1e2a4a
+  part engine r=14 len=24 z=152 glow=#ffd070 color=#1e2a4a
+  part engine r=9 len=20 x=70 z=124 glow=#ffb030 color=#1e2a4a
+  part gun r=4 len=40 x=36 y=12 z=-120 color=#1e2a4a
+  part disc r=24 h=5 x=80 y=14 z=-62 color=#2a3656 mirror=1
+  part disc r=20 h=5 y=20 z=-80 color=#2a3656
+  part disc r=18 h=5 y=16 z=-132 color=#2a3656
+  part greeble n=90 w=150 d=240 y=16 size=5 seed=131 color=#c8ced8
+  part greeble n=40 w=50 d=180 y=27 z=40 size=4 seed=137 color=#2a3656
+  part light r=4 x=46 z=-134 color=#ffb030 mirror=1
+  part light r=3 x=94 z=-20 color=#ff4040 mirror=1
+  part light r=3 x=94 z=40 color=#ff4040 mirror=1
+
+# The Diktat's broadside battery: a navy turret block with three barrels.
+model e4_diktat_battery
+  part disc r=20 h=6 seg=12 color=#2a3656
+  part box w=26 h=10 d=24 y=6 taper=0.25 color=#dfe4ea group=head pivot=0,0
+  part gun r=2.4 len=30 x=7 y=9 z=-22 color=#1e2a4a group=head pivot=0,0 mirror=1
+  part gun r=2.4 len=30 y=9 z=-22 color=#1e2a4a group=head pivot=0,0
+  part light r=2.2 y=13 z=6 color=#ffb030 group=head pivot=0,0
+  part light r=1.8 x=12 y=4 z=10 color=#ff4040 mirror=1
+
+# The Diktat's bow tower: a gun tower at the nose, glass and amber, a lattice ring turning round it.
+model e4_diktat_bow
+  part box w=40 h=24 d=36 taper=0.4 color=#e8ecf2
+  part box w=30 h=8 d=12 y=14 z=-12 color=#1e2a4a
+  part dome rx=12 ry=6 rz=6 y=18 z=-14 color=#ffd070 emit=0.75 glass=1
+  part crystal r=8 len=26 y=22 z=10 pitch=85 color=#ffb030 emit=0.95
+  part ring r=16 thick=1.6 y=18 z=6 color=#ffb030 emit=0.8 group=spin spin=60
+  part box w=3 h=18 d=3 x=12 y=20 z=12 color=#c8ced8 mirror=1
+  part light r=2.2 x=12 y=30 z=12 color=#ff4040 mirror=1
+
+# The lattice heart Voss grew into his ship: amber crystals in a turning cage.
+model e4_diktat_core
+  part sphere r=16 seg=12 color=#2a3656
+  part crystal r=10 len=34 pitch=90 color=#ffb030 emit=0.95
+  part crystal r=7 len=24 x=12 rot=90 color=#ffc860 emit=0.9 mirror=1
+  part ring r=22 thick=2 color=#ffb030 emit=0.85 group=spin spin=-90
+  part ring r=16 thick=1.4 y=4 color=#ff50d0 emit=0.6
+  part light r=3 y=14 color=#fff0c0

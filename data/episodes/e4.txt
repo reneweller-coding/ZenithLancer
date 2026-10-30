@@ -1,0 +1,16 @@
+episode 4
+  title "Grünkrone"
+  subtitle "Auf Sylvara, dem Dschungelmond des Gasriesen Vael, wehrt sich der Wald selbst gegen das Tessellat. Der Chor bittet um Hilfe – und Admiral Voss greift nach dem Schwarm."
+  first e4_01
+  intro e4_intro
+  ending e4_ending
+  credits 60000
+  # intended: ship warhawk, front helix 4, rear halo 3, side hydra phoenix, gen starforge, shield prismshield, special supernova
+  ship kestrel
+  front pulse 8
+  rear tailgun 6
+  side pip pip
+  gen dynamo
+  shield ward
+  special nova_s
+  arcade e4_01 e4_03 e4_05 e4_06 e4_09 e4_10

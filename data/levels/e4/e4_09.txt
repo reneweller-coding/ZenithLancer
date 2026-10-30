@@ -1,0 +1,72 @@
+# Episode 4, mission 9: the Choir leads Nadia into the old forest where the Thornmother, its guardian, has turned.
+# Voss's amber swarm holds her now. Boss: the Thornmother.
+
+level e4_09
+  title "Dornenmutter"
+  episode 4
+  theme jungle
+  music e4_a
+  scroll 60
+  length 185
+  next e4_10
+  arcade 1
+  map 0.84 0.44
+  briefing e4_09_brief
+  debrief e4_09_after
+
+  at 1   text e4_09_r1
+  at 3   wave e4_mothwing n=6 form=column x=110 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=3.6 mirror=1
+  at 8   wave e4_sporeling n=8 form=v x=360 spacing=55 path=sine amp=40 freq=0.4 speed=140
+  at 12  ground e4_thornvine x=150
+  at 12  ground e4_thornvine x=570
+  at 15  wave e4_amberdart n=5 form=column x=600 gap=0.3 path=swoop side=-1 cx=340 cy=300 dur=3.4
+  at 19  wave e4_lancefly n=4 form=line x=360 spacing=130 path=dive turn=90
+  at 22  pickup credits x=360 value=450
+  at 24  wave e4_umbrella n=2 form=line x=360 spacing=300 path=hover stop=200 wait=6
+  at 27  wave e4_sporeling n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=190 diff=3
+  at 30  text e4_09_r2
+  at 32  ground e4_crawler x=110 path=ground dir=-90 speed=22
+  at 34  wave e4_beetle x=360 path=hover stop=170 wait=7
+  at 38  wave e4_mothwing n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 43  pickup cube x=520 item=e4_c24
+  at 45  wave e4_seedmine n=8 form=random range=640 gap=0.45 path=drift speed=80
+  at 49  ground e4_sporepod x=200
+  at 49  ground e4_sporepod x=520
+  at 53  wave e4_amberdart n=6 form=v x=360 spacing=55 path=straight speed=310
+  at 57  wave e4_broodmother x=360 path=hover stop=140 wait=10
+  at 60  wave e4_lancefly n=3 form=column x=140 gap=0.4 path=dive turn=110 mirror=1
+  at 66  text e4_09_r3
+  at 67  pickup credits x=180 value=500
+  at 70  wave e4_amberwarden x=240 path=hover stop=170 wait=7
+  at 72  wave e4_umbrella x=500 path=hover stop=210 wait=7
+  at 76  ground e4_thornvine x=360 n=3 form=line spacing=200
+  at 80  wave e4_mothwing n=10 form=grid cols=5 x=360 spacing=75 dy=55 path=straight speed=130 drop=shield
+  at 86  wave e4_amberdart n=6 form=random range=600 gap=0.3 path=dive turn=80
+  at 90  ground e4_crawler x=620 path=ground dir=90 speed=22
+  at 93  pickup cube x=240 item=e4_c25
+  at 96  text e4_09_r4
+  at 97  scroll 95
+  at 98  wave e4_lancefly n=6 form=v x=360 spacing=50 path=straight speed=330 repeat=2 every=4
+  at 100 wave e4_sporeling n=10 form=random range=640 gap=0.2 path=straight speed=240
+  at 108 scroll 60
+  at 109 wave e4_beetle n=2 form=line x=360 spacing=300 path=hover stop=170 wait=8
+  at 112 wave e4_amberdart n=4 form=line x=360 spacing=140 path=dive turn=90 diff=3
+  at 116 pickup credits x=540 value=600
+  at 118 wave e4_mothwing n=6 form=column x=110 gap=0.3 path=loop stop=230 r=90 mirror=1
+  at 124 ground e4_sporepod x=360
+  at 124 ground e4_thornvine x=150
+  at 124 ground e4_thornvine x=570
+  at 128 wave e4_amberwarden x=360 path=hover stop=170 wait=8
+  at 132 wave e4_seedmine n=8 form=random range=640 gap=0.4 path=drift speed=85
+  at 138 text e4_09_r5
+  at 140 wave e4_umbrella n=3 form=line x=360 spacing=230 path=hover stop=190 wait=6
+  at 145 wave e4_sporeling n=8 form=column x=360 gap=0.25 path=sine amp=170 freq=0.3
+  at 150 pickup credits x=360 value=500
+  at 154 warn
+  at 155 music e4_boss
+  at 158 text e4_09_r6
+  at 158 boss e4_thornmother
+  at 160 music e4_a
+  at 160 text e4_09_r7
+  at 162 pickup credits x=360 value=1200
+  at 171 end

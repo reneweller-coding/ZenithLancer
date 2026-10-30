@@ -1,0 +1,533 @@
+# Episode 4 "Grünkrone" (Sylvara): the moon's corrupted native life, the Tessellate's jungle forms, Voss's
+# amber-lit swarm, the Directorate's fleet, and the bosses: the Brandroder (e4_05), the Thornmother (e4_09), the
+# lattice growth on the Choir's heart (e4_s1) and Voss's flagship Diktat (e4_10).
+
+# ---------------------------------------------------------------------------------------------- native life
+
+enemy e4_sporeling
+  title "Sporling"
+  model e4_sporeling
+  hp 22
+  radius 12
+  score 80
+  speed 150
+  path sine amp=60 freq=0.5
+  face down
+  fire aimed every=2.8 delay=1.2 speed=190 bullet=orb color=#ffe060 cap=2
+  drop credits 0.15 value=60
+  explode small
+  contact 14
+
+enemy e4_mothwing
+  title "Glimmfalter"
+  model e4_mothwing
+  hp 26
+  radius 14
+  score 90
+  speed 210
+  path swoop cx=360 cy=300 dur=3.6
+  face move
+  fire aimed every=2.2 delay=0.8 speed=210 bullet=needle color=#ff80e0 cap=1
+  drop credits 0.15 value=60
+  explode small
+  contact 14
+
+enemy e4_lancefly
+  title "Lanzenlibelle"
+  model e4_lancefly
+  hp 75
+  radius 15
+  score 240
+  speed 260
+  path dive turn=80
+  face move
+  fire aimed n=2 spread=8 every=1.8 delay=0.6 speed=250 bullet=needle color=#60f0ff cap=2
+  drop credits 0.25 value=120
+  explode small
+  contact 20
+
+enemy e4_umbrella
+  title "Schirmqualle"
+  model e4_umbrella
+  hp 110
+  radius 22
+  score 320
+  speed 70
+  path hover stop=200 wait=5 amp=60 freq=0.2 exit=0
+  face down
+  fire ring n=10 rot=12 every=3.0 delay=1.5 speed=150 bullet=orb color=#ff70d0
+  fire aimed every=2.5 delay=2.0 speed=220 bullet=needle color=#60f0ff diff=3
+  drop credits 0.5 value=150
+  explode medium
+  contact 20
+
+enemy e4_beetle
+  title "Panzerkäfer"
+  model e4_beetle
+  hp 340
+  radius 28
+  score 850
+  speed 80
+  path hover stop=180 wait=6 amp=80 freq=0.25 exit=0
+  face down
+  fire fan n=5 spread=15 every=2.4 delay=1.2 speed=190 bullet=big color=#ffb040
+  fire aimed n=3 spread=7 every=3.2 delay=2.0 speed=250 bullet=needle color=#ff60d0 x=10 z=20 mirror=1
+  drop credits 1 value=300
+  drop power 0.35 mode=arcade
+  explode large
+  contact 30
+
+enemy e4_seedmine
+  title "Sprengsame"
+  model e4_seedmine
+  hp 30
+  radius 13
+  score 70
+  speed 60
+  path drift
+  face spin
+  fire ring n=8 every=99 delay=3.5 speed=140 bullet=orb color=#ffc040 cap=1
+  drop credits 0.2 value=50
+  explode small
+  contact 30
+
+enemy e4_broodmother
+  title "Brutträgerin"
+  model e4_broodmother
+  hp 450
+  radius 34
+  score 1100
+  speed 50
+  path hover stop=150 wait=9 amp=100 freq=0.15 exit=0
+  face down
+  fire spawn spawn=e4_sporeling every=3.6 delay=2.0 z=-20
+  fire rain n=4 spread=25 every=2.2 delay=1.5 speed=170 bullet=orb color=#ffe060
+  fire aimed n=3 spread=12 every=3.0 delay=2.5 speed=220 bullet=big color=#ff60d0 from=0.6
+  drop credits 1 value=500
+  drop power 0.5 mode=arcade
+  explode large
+  contact 30
+
+enemy e4_sporepod
+  title "Sporenkapsel"
+  model e4_sporepod
+  kind ground
+  hp 130
+  radius 20
+  score 380
+  face fixed
+  fire ring n=12 rot=15 every=3.4 delay=1.5 speed=140 bullet=orb color=#ffe060
+  drop credits 0.5 value=100
+  explode medium
+
+enemy e4_thornvine
+  title "Dornranke"
+  model e4_thornvine
+  kind ground
+  hp 150
+  radius 18
+  score 420
+  face down
+  aimhead 1
+  fire aimed n=3 spread=10 every=2.3 delay=1.0 speed=230 bullet=needle color=#ffd8a0
+  drop credits 0.5 value=100
+  explode medium
+
+enemy e4_crawler
+  title "Dschungelkriecher"
+  model e4_crawler
+  kind ground
+  hp 260
+  radius 26
+  score 700
+  speed 30
+  face fixed
+  aimhead 1
+  fire aimed n=2 spread=10 every=2.6 delay=1.2 speed=220 bullet=big color=#ffb040
+  fire ring n=10 every=4.5 delay=3.0 speed=130 bullet=orb color=#ff80e0
+  drop credits 0.7 value=250
+  explode large
+
+enemy e4_riverray
+  title "Flussrochen"
+  model e4_riverray
+  hp 95
+  radius 22
+  score 260
+  speed 140
+  path sine amp=120 freq=0.25
+  face move
+  fire aimed every=2.4 delay=1.0 speed=210 bullet=orb color=#ffe070
+  fire down n=3 spread=20 every=3.0 delay=2.0 speed=180 bullet=orb color=#ff90e0 diff=3
+  drop credits 0.25 value=120
+  explode medium
+  contact 20
+
+enemy e4_hivemite
+  title "Wabenmilbe"
+  model e4_hivemite
+  hp 20
+  radius 11
+  score 70
+  speed 240
+  path zigzag amp=60 freq=0.8
+  face move
+  fire aimed every=2.6 delay=1.0 speed=200 bullet=orb color=#ffe060 cap=1
+  drop credits 0.12 value=50
+  explode small
+  contact 12
+
+# ---------------------------------------------------------------------------------------------- the Tessellate
+
+enemy e4_shard
+  title "Splitterdrohne"
+  model e4_shard
+  hp 24
+  radius 12
+  score 80
+  speed 180
+  path sine amp=50 freq=0.6
+  face spin
+  fire aimed every=2.4 delay=0.9 speed=210 bullet=shard color=#50e0ff cap=2
+  drop credits 0.15 value=60
+  explode small
+  contact 12
+
+enemy e4_prism
+  title "Prismenjäger"
+  model e4_prism
+  hp 85
+  radius 16
+  score 260
+  speed 240
+  path arc turn=70
+  face move
+  fire aimed n=3 spread=10 every=2.0 delay=0.7 speed=240 bullet=needle color=#ff60e0 cap=2
+  drop credits 0.25 value=120
+  explode small
+  contact 18
+
+enemy e4_latticeship
+  title "Gitterkreuzer"
+  model e4_latticeship
+  hp 400
+  radius 30
+  score 950
+  speed 80
+  path hover stop=170 wait=7 amp=90 freq=0.2 exit=0
+  face down
+  fire fan n=7 spread=12 every=2.6 delay=1.2 speed=180 bullet=orb color=#ff50d0
+  fire laser warn=1.2 dur=1.0 width=12 damage=30 every=6 delay=3.5 color=#50e0ff
+  drop credits 1 value=350
+  drop power 0.35 mode=arcade
+  explode large
+  contact 30
+
+# ---------------------------------------------------------------------------------------------- Voss's swarm
+
+enemy e4_amberdart
+  title "Bernsteinpfeil"
+  model e4_amberdart
+  hp 70
+  radius 14
+  score 210
+  speed 260
+  path dive turn=80
+  face move
+  fire aimed every=1.8 delay=0.6 speed=250 bullet=needle color=#ffb030 cap=2
+  drop credits 0.2 value=120
+  explode small
+  contact 18
+
+enemy e4_amberwarden
+  title "Bernsteinwächter"
+  model e4_amberwarden
+  hp 440
+  radius 30
+  score 900
+  speed 85
+  path hover stop=180 wait=7 amp=100 freq=0.2 exit=0
+  face down
+  fire ring n=12 rot=7 burst=3 gap=0.25 every=2.6 delay=1.5 speed=150 bullet=orb color=#ffb030
+  fire missile every=4.2 delay=3.0 speed=170 turn=70 color=#ffd060 x=18 z=0 mirror=1
+  drop credits 1 value=400
+  drop power 0.35 mode=arcade
+  explode large
+  contact 30
+
+# ---------------------------------------------------------------------------------------------- the Directorate
+
+enemy e4_dirjet
+  title "Direktoratsjäger"
+  model e4_dirjet
+  hp 65
+  radius 14
+  score 220
+  speed 270
+  path swoop cx=360 cy=320 dur=3.4
+  face move
+  fire aimed n=2 spread=6 every=1.9 delay=0.7 speed=260 bullet=needle color=#ff8050 cap=2
+  drop credits 0.2 value=120
+  explode small
+  contact 18
+
+enemy e4_dirgunboat
+  title "Kanonenboot"
+  model e4_dirgunboat
+  hp 320
+  radius 28
+  score 800
+  speed 90
+  path hover stop=160 wait=6 amp=60 freq=0.25 exit=0
+  face down
+  fire aimed burst=3 gap=0.15 every=2.8 delay=1.0 speed=270 bullet=needle color=#ff8050 x=9 z=22 mirror=1
+  fire fan n=4 spread=20 every=3.4 delay=2.2 speed=170 bullet=big color=#ff6040
+  fire wall n=14 every=7 delay=4.0 speed=130 bullet=orb color=#ff6040 diff=5
+  drop credits 1 value=300
+  drop power 0.35 mode=arcade
+  explode large
+  contact 30
+
+enemy e4_dirtank
+  title "Schwebepanzer"
+  model e4_dirtank
+  kind ground
+  hp 210
+  radius 22
+  score 550
+  speed 40
+  face fixed
+  aimhead 1
+  fire aimed every=2.2 delay=1.0 speed=250 bullet=big color=#ff8050
+  fire aimed n=3 spread=14 every=4.0 delay=2.5 speed=200 bullet=orb color=#ff6040 diff=4
+  drop credits 0.5 value=150
+  explode medium
+
+enemy e4_dirflak
+  title "Flakturm"
+  model e4_dirflak
+  kind ground
+  hp 280
+  radius 26
+  score 700
+  face down
+  aimhead 1
+  fire aimed n=3 spread=7 burst=2 gap=0.2 every=2.8 delay=1.2 speed=240 bullet=orb color=#ff6040
+  drop credits 0.7 value=200
+  explode large
+
+enemy e4_dirfrigate
+  title "Fregatte"
+  model e4_dirfrigate
+  hp 650
+  radius 40
+  score 1600
+  speed 40
+  path hover stop=140 wait=12 amp=40 freq=0.1 exit=0
+  face down
+  fire aimed n=5 spread=8 every=2.8 delay=1.2 speed=230 bullet=orb color=#ff7040
+  fire down n=4 spread=30 every=1.9 delay=2.0 speed=200 bullet=needle color=#ff9060
+  fire missile every=5 delay=4.0 speed=160 turn=60 color=#ffd0a0 x=15 z=6 mirror=1
+  drop credits 1 value=800
+  drop power 0.6 mode=arcade
+  explode huge
+  contact 40
+
+# ---------------------------------------------------------------------------------------------- the Brandroder (e4_05)
+
+enemy e4_brandroder
+  title "Brandroder"
+  model e4_brandroder
+  kind boss
+  hp 2700
+  radius 45
+  score 4500
+  speed 60
+  path boss stop=165 amp=110 freq=0.25
+  face down
+  shielded 1
+  part e4_brand_turret x=-62 z=40
+  part e4_brand_turret x=62 z=40
+  part e4_brand_sprayer x=0 z=74
+  fire aimed n=3 spread=14 every=3.4 delay=2.0 speed=200 bullet=big color=#ff8040 until=0.99
+  fire laser warn=1.3 dur=1.5 width=20 damage=40 every=6.5 delay=1.5 color=#ff6020 from=0.99 z=70
+  fire fan n=9 spread=11 every=2.6 delay=1.0 speed=170 bullet=orb color=#ffa040 from=0.99
+  fire spiral n=4 rot=13 every=0.36 delay=0.5 speed=150 bullet=orb color=#ffc060 from=0.55
+  fire spawn spawn=e4_dirjet every=6 delay=3.0 from=0.8 until=0.2
+  drop credits 1 value=1000
+  explode huge
+
+enemy e4_brand_turret
+  title "Flammengeschütz"
+  model e4_brand_turret
+  kind part
+  hp 700
+  radius 18
+  score 1200
+  face down
+  aimhead 1
+  fire aimed n=5 spread=9 every=2.4 delay=1.5 speed=210 bullet=orb color=#ff8040
+  fire fan n=6 spread=10 every=3.8 delay=2.8 speed=165 bullet=big color=#ffa030
+  explode medium
+
+enemy e4_brand_sprayer
+  title "Entlaubungsrohr"
+  model e4_brand_sprayer
+  kind part
+  hp 900
+  radius 22
+  score 1400
+  face down
+  fire rain n=5 spread=35 every=1.5 delay=2.0 speed=160 bullet=orb color=#e0ff40
+  explode medium
+
+# ---------------------------------------------------------------------------------------------- the Thornmother (e4_09)
+
+enemy e4_thornmother
+  title "Dornenmutter"
+  model e4_thornmother
+  kind boss
+  hp 3300
+  radius 50
+  score 6000
+  speed 50
+  path boss stop=175 amp=120 freq=0.2
+  face down
+  shielded 1
+  part e4_thorn_arm x=-86 z=36
+  part e4_thorn_arm x=86 z=36
+  part e4_thorn_crown x=0 z=66
+  fire aimed n=2 spread=20 every=3.0 delay=2.0 speed=200 bullet=big color=#ffd040 until=0.99
+  fire spiral n=4 rot=11 every=0.32 delay=0.5 speed=140 bullet=orb color=#ffe060 from=0.99 until=0.5
+  fire laser warn=1.4 dur=2.0 width=18 damage=40 dir=-50 rot=25 every=9 delay=3.0 color=#ffb030 from=0.99 x=-30 z=60
+  fire laser warn=1.4 dur=2.0 width=18 damage=40 dir=50 rot=-25 every=9 delay=7.5 color=#ffb030 from=0.99 x=30 z=60
+  fire aimed n=5 spread=10 every=2.2 delay=1.0 speed=230 bullet=big color=#ff50d0 from=0.5
+  fire rain n=5 spread=40 every=1.3 delay=0.5 speed=170 bullet=orb color=#ffd040 from=0.5
+  fire laser warn=1.2 dur=1.2 width=16 damage=40 every=6 delay=2.0 color=#ff50d0 from=0.5 x=30 z=50 mirror=1
+  fire spawn spawn=e4_mothwing every=4.5 delay=2.0 from=0.5 until=0.12
+  drop credits 1 value=2000
+  explode huge
+
+enemy e4_thorn_arm
+  title "Dornenarm"
+  model e4_thorn_arm
+  kind part
+  hp 750
+  radius 20
+  score 1000
+  face down
+  fire aimed n=3 spread=12 every=2.2 delay=1.5 speed=230 bullet=needle color=#fff0d0 z=40
+  fire laser warn=1.4 dur=1.0 width=14 damage=35 every=7 delay=4.0 color=#ffc860 z=40
+  explode medium
+
+enemy e4_thorn_crown
+  title "Sporenkrone"
+  model e4_thorn_crown
+  kind part
+  hp 1000
+  radius 24
+  score 1200
+  face down
+  fire ring n=12 rot=9 every=2.8 delay=2.0 speed=140 bullet=orb color=#ffe060
+  fire spawn spawn=e4_sporeling every=7 delay=5.0
+  explode medium
+
+# ---------------------------------------------------------------------------------------------- the lattice growth (e4_s1)
+
+enemy e4_tumor
+  title "Gitterwucherung"
+  model e4_tumor
+  kind boss
+  hp 3000
+  radius 40
+  score 4000
+  speed 40
+  path boss stop=180 amp=70 freq=0.2
+  face down
+  shielded 1
+  part e4_tumor_node x=-62 z=10
+  part e4_tumor_node x=62 z=10
+  fire ring n=16 rot=8 every=2.8 delay=2.0 speed=130 bullet=shard color=#ffe060 until=0.99
+  fire spiral n=3 rot=17 every=0.26 delay=0.5 speed=150 bullet=shard color=#50e0ff from=0.99
+  fire laser warn=1.3 dur=1.4 width=16 damage=40 every=6 delay=2.5 color=#ff50d0 from=0.99
+  fire spawn spawn=e4_shard every=5 delay=3.0 from=0.6 until=0.15
+  drop credits 1 value=1500
+  explode huge
+
+enemy e4_tumor_node
+  title "Gitterknoten"
+  model e4_tumor_node
+  kind part
+  hp 600
+  radius 18
+  score 1000
+  face down
+  fire aimed n=3 spread=10 every=2.0 delay=1.2 speed=220 bullet=shard color=#ffe060
+  fire fan n=5 spread=14 every=3.2 delay=2.4 speed=160 bullet=orb color=#50e0ff
+  explode medium
+
+# ---------------------------------------------------------------------------------------------- the Diktat (e4_10)
+
+enemy e4_diktat
+  title "Diktat"
+  model e4_diktat
+  kind boss
+  hp 3400
+  radius 60
+  score 6500
+  speed 40
+  path boss stop=210 amp=70 freq=0.15
+  face down
+  shielded 1
+  part e4_diktat_battery x=-80 z=62
+  part e4_diktat_battery x=80 z=62
+  part e4_diktat_core x=0 z=80
+  part e4_diktat_bow x=0 z=132
+  fire wall n=16 every=8 delay=4.0 speed=120 bullet=orb color=#ffb030 until=0.99
+  fire laser warn=1.4 dur=2.0 width=22 damage=45 dir=55 rot=-27 every=9 delay=2.0 color=#ffb030 from=0.99 until=0.5 x=40 z=120
+  fire laser warn=1.4 dur=2.0 width=22 damage=45 dir=-55 rot=27 every=9 delay=6.5 color=#ffb030 from=0.99 until=0.5 x=-40 z=120
+  fire fan n=11 spread=9 every=2.4 delay=1.0 speed=175 bullet=orb color=#ffc860 from=0.99 until=0.5
+  fire spawn spawn=e4_amberdart every=4.0 delay=2.5 from=0.99 until=0.5
+  fire spiral n=5 rot=12 every=0.34 delay=0.5 speed=150 bullet=orb color=#ffb030 from=0.5
+  fire missile every=3.2 delay=1.5 speed=170 turn=70 color=#ffd060 x=70 z=60 mirror=1 from=0.5
+  fire laser warn=1.2 dur=1.2 width=18 damage=45 every=5 delay=2.0 color=#ff50d0 from=0.5 z=140
+  fire wall n=18 every=5 delay=3.5 speed=135 bullet=needle color=#ffd060 from=0.25
+  drop credits 1 value=2000
+  explode huge
+
+enemy e4_diktat_battery
+  title "Breitseitenbatterie"
+  model e4_diktat_battery
+  kind part
+  hp 700
+  radius 22
+  score 1000
+  face down
+  aimhead 1
+  fire aimed n=3 spread=8 burst=2 gap=0.18 every=3.0 delay=1.5 speed=250 bullet=needle color=#ffb030 z=24
+  fire fan n=5 spread=16 every=3.6 delay=2.5 speed=170 bullet=big color=#ffc860
+  explode large
+
+enemy e4_diktat_bow
+  title "Bugturm"
+  model e4_diktat_bow
+  kind part
+  hp 900
+  radius 24
+  score 1400
+  face down
+  fire missile every=3.4 delay=2.5 speed=160 turn=65 color=#ffd060 x=12 mirror=1
+  fire ring n=12 rot=10 every=3.0 delay=3.0 speed=135 bullet=orb color=#ffb030
+  explode large
+
+enemy e4_diktat_core
+  title "Bernsteinherz"
+  model e4_diktat_core
+  kind part
+  hp 900
+  radius 22
+  score 1400
+  face down
+  fire laser warn=1.4 dur=1.2 width=16 damage=40 every=6 delay=3.0 color=#ffb030
+  fire spiral n=3 rot=19 every=0.5 delay=1.0 speed=140 bullet=orb color=#ffd060
+  explode large

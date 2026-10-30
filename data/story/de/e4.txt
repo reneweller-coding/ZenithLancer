@@ -1,0 +1,913 @@
+# Episode 4 "Grünkrone" (Sylvara): intro, ending, briefings, debriefs, radio lines and log crystals.
+
+intro e4_intro
+  title "Grünkrone"
+  from "Sylvara, Mond des Vael"
+> Über den Ringen des Gasriesen Vael geht Sylvara auf: ein Mond, der von oben aussieht wie ein einziger grüner Pelz. Seine Bäume sind zweihundert Meter hoch, seine Flüsse leuchten nachts von innen, und wer lange genug hinsieht, merkt, dass die Lichter im Wald nicht zufällig flackern.
+>
+> Vor drei Wochen ist das Tessellat hier gelandet. Zum ersten Mal in seiner Geschichte verliert es. Der Wald verdaut sein Gitter. Etwas in Moos und Wurzeln antwortet auf das Lied des Schwarms mit einem eigenen Lied – die Siedler von Neu-Maren nannten es den Chor.
+>
+> Im Orbit hängt die Flotte des Meridian-Direktorats, weiß und marineblau, in „Quarantänestellung“. Admiral Dacian Voss erklärt, er schütze den Mond. Seine Brandtrupps roden den Wald, Streifen für Streifen.
+>
+> Die Elster sinkt durch die Wolken. Quill flucht über die Luftfeuchtigkeit, Dr. Okonjo hat den Wurzelcode aus dem Splitter in der Tasche und seit Stunden kein Wort gesagt, und ORRIN meldet ein Muster aus Licht, so groß wie ein Tal, mitten im Kronendach. Es zeigt einen silbernen Vogel mit zwei Triebwerken.
+>
+> „Nadia“, sagt ORRIN, „ich glaube, wir wurden eingeladen.“
+
+ending e4_ending
+  title "Bernstein erlischt"
+  from "Orbit über Sylvara"
+> Die Diktat bricht in drei Teile. Ihr Bug taumelt in die Ringe des Vael, ihr Heck verglüht über dem Wald, und das Bernsteinherz zerspringt in einem Licht, das man bis Thalassa gesehen haben soll. Im selben Augenblick wird das Gitter des Schwarms wieder violett. Überall im Orbit halten seine Schiffe inne, als hätten sie den Faden verloren.
+>
+> Eine Rettungskapsel löst sich aus dem Wrack und verschwindet sonnenwärts. Niemand verfolgt sie.
+>
+> Dann meldet sich der Kurator, höflich wie immer. Er dankt Pilotin Vey für die Beseitigung einer „Störung“. Er bedauert die Unannehmlichkeiten. Und er teilt mit, dass die Krone um die Sonne zu einundneunzig Prozent vollendet ist.
+>
+> Unten auf Sylvara leuchtet der Wald. Der Chor zeigt Nadia ein letztes Bild: einen Samen, der in eine Hand fällt. Okonjo hält ihn später unter das Mikroskop und sitzt lange still davor. „Er hat gelernt, das Gitter zu verdauen“, sagt sie schließlich. „Nicht zu zerstören. Loszulassen. Vielleicht kann man das dem Schwarm beibringen.“
+>
+> Quill rechnet die Reparaturkosten aus und streicht die Zahl wieder durch. ORRIN berechnet den Kurs zur Sonne.
+>
+> Es ist Mittag im Solenne-System. Es wird heiß werden.
+
+# ---------------------------------------------------------------------------------------------- e4_01 Kronendach
+
+briefing e4_01_brief
+  title "Kronendach"
+  from "ORRIN"
+> Sylvara, der Dschungelmond des Vael. Das Tessellat ist vor drei Wochen gelandet und verliert hier zum ersten Mal: Der Wald verdaut sein Gitter. Quill setzt die Elster auf einer Lichtung dreißig Kilometer östlich ab, wir fliegen über das Kronendach hinterher. Das Direktorat nennt die Gegend Quarantänezone und schießt auf alles, was es nicht versteht – also auf fast alles.
+
+briefing e4_01_after
+  title "Ein Bild aus Licht"
+  from "Dr. Amara Okonjo"
+> Ich habe die Lichtsignale aufgezeichnet, Nadia. Es ist kein Code. Es sind Bilder – Muster aus Biolumineszenz, so groß wie ein Tal. Der Wald hat dich gezeichnet, und neben dir einen zweiten Vogel aus Licht. Die Siedler von Neu-Maren nannten das, was hier denkt, den Chor. Ich fange an zu verstehen, warum.
+
+radio e4_01_r1
+  from "ORRIN"
+> Sylvara. Das Blätterdach liegt zweihundert Meter über dem Boden. Darunter bewegt sich etwas sehr Großes sehr langsam.
+
+radio e4_01_r2
+  from "Quarantänekommando Sylvara"
+> Unbekanntes Schiff, Sie befinden sich in der Quarantänezone. Drehen Sie ab, oder Sie werden als infiziert behandelt.
+
+radio e4_01_r3
+  from "Der Chor"
+> Licht zwischen Blättern. Ein silberner Vogel. Ein zweiter Vogel, aus Licht, fliegt neben ihm her.
+
+radio e4_01_r4
+  from "Bastian Quill"
+> Nadia! Die Elster steht. Als ich die Landelichter eingeschaltet habe, hat der Wald zurückgeblinkt. Ist das hier normal?
+
+radio e4_01_r5
+  from "ORRIN"
+> Vor uns ein Nest des Schwarms. Die Bäume dort sind keine Bäume mehr. Ich gebe mehr Schub.
+
+radio e4_01_r6
+  from "ORRIN"
+> Lichtung in Sicht. Die Lichter im Wald blinken im Takt unserer Positionslampen. Jemand hat uns zugesehen.
+
+cube e4_c01
+  title "Erstes Bild"
+  from "Der Chor (übertragen von ORRIN)"
+> Ein Same fällt durch Dunkelheit. Er fällt lange.
+>
+> Wurzeln. Viele Wurzeln, die sich berühren. Jede Berührung ein kleines Licht. Die Lichter werden ein Lied.
+>
+> Kalte Dinge kommen vom Himmel. Sie singen auch, aber nur einen Ton, immer denselben. Sie bauen Waben aus diesem Ton. Die Waben schmecken bitter. Wir essen sie trotzdem.
+>
+> Menschen, früher. Kleine warme Lichter mit Booten. Sie haben Häuser gebaut und Lieder gesungen, die wir nicht verstanden, und wir haben zurückgeleuchtet.
+>
+> Ein silberner Vogel mit zwei Feuern am Schwanz. Er fliegt gegen den einen Ton.
+>
+> (Anmerkung ORRIN: Ich habe aus den Lichtmustern sinngemäß übertragen. Der „silberne Vogel“ ist mit 94 Prozent Wahrscheinlichkeit der Lancer. Ich fühle mich geschmeichelt. Ich wusste nicht, dass ich das kann.)
+
+cube e4_c02
+  title "Brief nach Hause"
+  from "Gefreiter Tomas Wendl, Quarantänekommando"
+> Liebe Mama,
+>
+> es regnet hier jeden Tag um vier Uhr, so pünktlich, dass wir die Wachablösung danach stellen. Das Essen ist schlecht, aber die Luft ist die beste, die ich je geatmet habe. Man riecht den Wald noch im Schlaf.
+>
+> Wir sollen den Schwarm aufhalten, sagen sie. Komisch ist nur: Wo der Schwarm landet, frisst ihn der Wald. Wo wir hinfliegen, brennt der Wald. Der Feldwebel sagt, das verstehe ich nicht, das sei Strategie.
+>
+> Nachts leuchtet der Boden vor dem Lager. Manchmal formt das Licht Buchstaben. Gestern stand da etwas, das aussah wie WARUM. Ich habe es niemandem erzählt.
+>
+> Grüß Papa. Ich bin bald wieder da.
+>
+> Dein Tomas
+
+cube e4_c03
+  title "Das Sylvara-Paket"
+  from "Bastian Quill, Elster"
+> NEU AN BORD DER ELSTER: DAS SYLVARA-PAKET!
+>
+> Sie fliegen in den Dschungel? Herzlichen Glückwunsch, Sie sind mutig oder schlecht informiert! Für beide Fälle hat Quill das Richtige:
+>
+> – Sporenfilter, garantiert gegen 80 % aller Sporen (die anderen 20 % sind meistens harmlos)
+> – Antibeschlag-Spray für Cockpitscheiben, Duft „Frische Lichtung“
+> – Ein Wörterbuch Chor–Standard (leere Seiten zum Selbstausfüllen, handgebunden!)
+> – Insektenschutz für Rümpfe bis vierzig Meter
+>
+> Sonderangebot: Wer drei Pakete kauft, darf einen Abend lang auf der Elster am Kronendach sitzen und zusehen, wie der Wald leuchtet. Das ist übrigens kostenlos. Der Rest nicht.
+>
+> Quill – Ware für jeden Mond.
+
+# ---------------------------------------------------------------------------------------------- e4_02 Sporenflut
+
+briefing e4_02_brief
+  title "Sporenflut"
+  from "Dr. Amara Okonjo"
+> Der Chor schickt eine Flut aus Sporen gegen den Schwarm: Milliarden Samen, die das Gitter zersetzen. Gleichzeitig brennen Trupps des Direktorats den Wald nieder, um „die Infektion einzudämmen“. Flieg durch beides, Nadia. Ich will wissen, was der Chor uns zeigt – und warum das Direktorat genau dort brennt, wo der Chor am lautesten singt.
+
+briefing e4_02_after
+  title "Zwei Wege"
+  from "ORRIN"
+> Der Chor hat uns zwei Wege gezeigt. Der Silberstrom führt durch das Wurzeldelta zur Festung Kalmar, von der aus das Direktorat seine Brandflüge startet. Die Wabenstadt Neu-Maren liegt im Weg des Schwarms, ist aber kürzer. Okonjo möchte den Fluss sehen. Quill möchte die Stadt sehen, „aus rein geschäftlichen Gründen“.
+
+radio e4_02_r1
+  from "ORRIN"
+> Sporenwolken voraus. Die Samen treiben gegen den Wind. Das ist, höflich gesagt, physikalisch frech.
+
+radio e4_02_r2
+  from "Brandtrupp 4"
+> Brandtrupp Vier an Kalmar: Sektor Grün-Sieben brennt. Die Bäume leuchten, wenn wir sie anzünden. Bitte bestätigen Sie den Befehl.
+
+radio e4_02_r3
+  from "Der Chor"
+> Feuer in den Wurzeln. Ein Fluss aus Silber. Eine Stadt aus Waben. Zwei Wege zum selben Ort.
+
+radio e4_02_r4
+  from "Dr. Amara Okonjo"
+> Die Sporen fressen das Gitter, Nadia. Nicht zerstören – verdauen. Der Chor lernt gerade, wie das Tessellat gebaut ist.
+
+radio e4_02_r5
+  from "Bastian Quill"
+> Kurze Durchsage: Sporenfilter sind ab sofort ausverkauft. Wer welche hat, ich kaufe sie zurück. Zum doppelten Preis.
+
+radio e4_02_r6
+  from "ORRIN"
+> Zwei Wege: der Silberstrom zum Wurzeldelta oder quer durch die Wabenstadt. Beide enden vor Kalmar. Du entscheidest.
+
+cube e4_c04
+  title "Befehl 4-Grün"
+  from "Admiral Dacian Voss"
+> FLOTTENKOMMANDO MERIDIAN – GEHEIM
+>
+> An: Garnison Kalmar, Brandtrupps 1 bis 9
+>
+> Betreff: Eindämmung Sylvara, Phase Grün
+>
+> 1. Die Rodung erfolgt nicht entlang der Ausbreitungslinie des Schwarms, sondern entlang der Leuchtzonen, die von den Sensoren als „biologisch aktiv“ markiert werden.
+>
+> 2. Rückfragen der Truppen zur Lage der Rodungsgebiete sind mit dem Hinweis auf strategische Erfordernisse zu beantworten.
+>
+> 3. Leuchterscheinungen am Boden, insbesondere solche, die Schriftzeichen ähneln, sind nicht zu melden. Sie sind Sinnestäuschungen infolge der hohen Luftfeuchtigkeit.
+>
+> 4. Ziel ist ein Mond, auf dem nichts mehr singt außer dem, was wir hören wollen.
+>
+> gez. D. Voss, Admiral
+
+cube e4_c05
+  title "Feldnotiz: Sporen"
+  from "Dr. Amara Okonjo"
+> Probe 14, entnommen aus der Sporenwolke über Grün-Sieben.
+>
+> Die Spore dockt an einer Gitterzelle des Tessellats an und tut etwas, das ich in zwanzig Jahren Forschung nicht gesehen habe: Sie fragt. Sie liest die Bauanweisung der Zelle, Glied für Glied, und baut sie rückwärts ab. Kein Feuer, keine Säure. Die Zelle zerfällt in die Stoffe, aus denen sie gemacht wurde, und der Wald nimmt sie auf.
+>
+> Ich habe diese Bauanweisung geschrieben. Ich habe zwölf Jahre gebraucht, um sie unzerstörbar zu machen. Ein Pilz hat drei Wochen gebraucht, um sie zu verstehen.
+>
+> Ich weiß nicht, ob ich gedemütigt oder getröstet sein soll. Vermutlich beides. Morgen nehme ich eine Probe aus dem Fluss.
+
+cube e4_c06
+  title "Höfliche Mitteilung"
+  from "Der Kurator"
+> An die Bewohner und Besucher von Sylvara.
+>
+> Wir möchten uns vorstellen. Wir sind das, was Sie Tessellat nennen, und wir bauen. Wir bauen Ordnung, wo vorher Zufall war, und wir haben noch nie erlebt, dass jemand das nicht möchte.
+>
+> Auf Sylvara erleben wir es. Etwas hier nimmt unsere Ordnung auseinander, freundlich und gründlich, und baut daraus Moos. Wir finden das bemerkenswert. Wir haben eine Unterabteilung eingerichtet, die nur darüber nachdenkt.
+>
+> Wir bitten um Verständnis dafür, dass wir dennoch weiterbauen. Es ist unsere Natur. Wir vermuten, dass es auch die Natur des Waldes ist, uns zu essen. Vielleicht ist das ein Gespräch.
+>
+> Mit Hochachtung, der Kurator
+
+# ---------------------------------------------------------------------------------------------- e4_03 Silberstrom
+
+briefing e4_03_brief
+  title "Silberstrom"
+  from "Der Chor (übertragen von ORRIN)"
+> Wasser, das leuchtet. Viele kleine Lichter im Fluss, jedes ein Gedanke auf dem Weg. Boote aus Metall, die die Lichter auslöschen. Am Ende des Flusses eine Mauer, die brennt. (ORRIN: Übersetzung – Patrouillenboote des Direktorats am Silberstrom, Ziel Festung Kalmar. Und bitte nicht ins Wasser schießen.)
+
+briefing e4_03_after
+  title "Das Wurzeldelta"
+  from "Dr. Amara Okonjo"
+> Das Wasser im Delta ist voller Fäden, Nadia. Der Fluss ist eine Nervenbahn – der Chor denkt flussabwärts. Und die Patrouillen des Direktorats haben Netze ausgelegt, die genau diese Fäden zerschneiden. Das ist keine Quarantäne. Das ist eine Operation am offenen Gehirn.
+
+radio e4_03_r1
+  from "ORRIN"
+> Der Fluss leuchtet von unten. Okonjo sagt, das sind Gedanken. Ich sage: bitte nicht hineinschießen.
+
+radio e4_03_r2
+  from "Flusspatrouille Kalmar"
+> Patrouille Drei an alle Boote: fremdes Kampfschiff über dem Strom. Feuer frei. Und haltet die Brenner vom Wasser fern.
+
+radio e4_03_r3
+  from "Dr. Amara Okonjo"
+> Die Rochen gehörten zum Chor. Das Gitter sitzt jetzt in ihren Flügeln. Es tut mir um jeden einzelnen leid.
+
+radio e4_03_r4
+  from "Der Chor"
+> Viele Flügel, ein Gedanke. Wer alle fängt, lernt, wie ein Schwarm fliegt.
+
+radio e4_03_r5
+  from "ORRIN"
+> Gitterkreuzer über dem Delta. Das Tessellat baut hier Dämme aus Kristall. Der Fluss staut sich, die Gedanken auch.
+
+radio e4_03_r6
+  from "ORRIN"
+> Das Wurzeldelta. Dahinter die Mauern von Kalmar. Der Rauch kommt von dort.
+
+cube e4_c07
+  title "Logbuch Flussboot Ilse"
+  from "Bootsführerin Mara Kesk, Neu-Maren"
+> Tag 1 nach der Landung. Ladung: Fisch, zwei Fässer Bier, ein Klavier für die Schule. Der Fluss ist ruhig. Nachts leuchtet er wie immer.
+>
+> Tag 4. Patrouille des Direktorats hat uns angehalten. Sie haben das Bier beschlagnahmt, „wegen Infektionsgefahr“. Das Klavier durften wir behalten.
+>
+> Tag 9. Die Stadt ist voller Waben. Wir haben vierzig Leute an Bord genommen. Die Ilse ist für zwölf gebaut. Das Klavier mussten wir zurücklassen.
+>
+> Tag 10. Der Fluss leuchtet heller als sonst, und er leuchtet in unsere Richtung. Die Kinder sagen, er zeigt uns den Weg zum Delta. Ich glaube Kindern mehr als Patrouillen.
+>
+> Tag 11. Angekommen. Alle vierzig. Ich habe mich beim Fluss bedankt, laut. Niemand hat gelacht.
+
+cube e4_c08
+  title "Der Strom denkt"
+  from "Der Chor (übertragen von ORRIN)"
+> Ein Gedanke beginnt in den Bergen. Er ist klein. Er fließt.
+>
+> Andere Gedanken kommen dazu, aus jedem Bach einer. Sie werden breit und langsam. Am Delta sind sie ein Meer, und das Meer weiß, was die Berge geträumt haben.
+>
+> Netze im Wasser. Sie fangen keine Fische, sie fangen Lichter. Ein Gedanke wird geschnitten, die Hälfte kommt an. Was sagt ein halber Gedanke? Er sagt: Schmerz, ohne zu wissen, wo.
+>
+> Kristall im Wasser. Kalt. Der Fluss staut sich vor ihm wie ein Satz, der nicht enden darf.
+>
+> (Anmerkung ORRIN: Ich habe „Gedanke“ für ein Lichtmuster gewählt, das auch „Fisch“ heißen könnte. Ich habe mich für die poetischere Lesart entschieden. Okonjo meint, beides sei richtig.)
+
+cube e4_c09
+  title "Dienstanweisung Flusspatrouille"
+  from "Kommandantur Kalmar"
+> DIENSTANWEISUNG 12/S – FLUSSPATROUILLE SILBERSTROM
+>
+> 1. Das Leuchten des Wassers ist kein Hinweis auf Verschmutzung und daher nicht im Umweltbericht zu vermerken.
+>
+> 2. Schleppnetze sind weiterhin bei Nacht auszubringen, bevorzugt dort, wo das Leuchten am stärksten ist.
+>
+> 3. Das Ansprechen des Flusses, auch im Scherz, ist zu unterlassen. Der Vorfall auf Boot 7 (Matrose B. hat „Gute Nacht“ gesagt, der Fluss hat „geblinkt“) wird nicht weiter untersucht.
+>
+> 4. Zivile Boote mit Flüchtlingen aus Neu-Maren sind zu kontrollieren und anschließend durchzulassen. Alkoholische Getränke sind zu beschlagnahmen und bei der Kommandantur abzugeben.
+>
+> 5. Ein Klavier, das am Ufer treibt, ist zu bergen. Die Kommandantur hat Bedarf.
+
+# ---------------------------------------------------------------------------------------------- e4_04 Wabenstadt
+
+briefing e4_04_brief
+  title "Wabenstadt"
+  from "Bastian Quill"
+> Neu-Maren war eine hübsche kleine Kolonie: zwei Brauereien, ein Hafen, ein Stammkunde von mir. Jetzt ist es eine Wabe. Das Tessellat hat jedes Haus in Kristall gegossen; die Leute sind rechtzeitig raus, hoffe ich. Flieg durch, und wenn du Kuriere des Direktorats siehst: Die haben immer etwas dabei, das sich lohnt.
+
+briefing e4_04_after
+  title "Karten lügen"
+  from "Dr. Amara Okonjo"
+> Die Kuriere des Direktorats in Neu-Maren flogen alle zur selben Stelle: Sylvaras kleinem Begleitmond. Laut jeder Karte im System ist er ein nackter Felsbrocken. Wer dort hinfliegt, braucht einen Zugangsschlüssel – und das Direktorat hat seinen Kurieren eigens Prismenjäger des Schwarms als Eskorte gegeben. Der Schwarm hat sie beschützt.
+
+radio e4_04_r1
+  from "ORRIN"
+> Neu-Maren. Die Straßen sind noch zu erkennen. Sie sind jetzt sechseckig.
+
+radio e4_04_r2
+  from "Der Kurator"
+> Willkommen in Neu-Maren, Pilotin Vey. Wir haben die Stadt verbessert. Die Bewohner wollten nicht bleiben. Wir respektieren das.
+
+radio e4_04_r3
+  from "Dr. Amara Okonjo"
+> Diese Waben sind älter als drei Wochen, Nadia. Jemand hat das Tessellat hierher gebracht, lange bevor es von selbst kam.
+
+radio e4_04_r4
+  from "ORRIN"
+> Langsamer Abschnitt. Die Kriecher graben sich durch die alten Keller. Ich halte Abstand zu allem, was Beine hat.
+
+radio e4_04_r5
+  from "Bastian Quill"
+> Die Prismenjäger da vorn funken mit Direktoratscodes! Hol sie alle runter – einer trägt bestimmt einen Kurierschlüssel.
+
+radio e4_04_r6
+  from "ORRIN"
+> Wir verlassen Neu-Maren. Hinter dem Waldrand liegt Kalmar. Ich sehe schon den Rauch.
+
+cube e4_c10
+  title "Letzte Sendung von Neu-Maren"
+  from "Bürgermeisterin Hanne Corvo"
+> An alle Bürgerinnen und Bürger von Neu-Maren.
+>
+> Die Waben haben jetzt den Marktplatz erreicht. Sie wachsen leise, man hört nur ein Summen, wie von sehr fernen Glocken. Sie tun niemandem etwas. Sie nehmen einem nur das Haus weg.
+>
+> Das Direktorat hat Hilfe versprochen und Brandtrupps geschickt. Die Brandtrupps haben den Wald angezündet, nicht die Waben.
+>
+> Wir gehen. Die Boote am Hafen nehmen alle mit, die Ilse fährt zuletzt. Wer zum Delta will, folgt dem Leuchten im Fluss; der Chor hat uns noch nie in die Irre geführt.
+>
+> Nehmt nur mit, was ihr tragen könnt. Lasst die Türen offen. Vielleicht kommen wir wieder, und vielleicht ist dann jemand drin, der sich über Besuch freut.
+>
+> Hanne Corvo, Bürgermeisterin
+
+cube e4_c11
+  title "Wabenstatik"
+  from "Dr. Amara Okonjo"
+> Messung an der Wabe Marktplatz Nord. Wandstärke, Kristallisationsgrad und Verzweigungstiefe passen nicht zu drei Wochen Wachstum. Sie passen zu zwei Jahren.
+>
+> Das heißt: Irgendjemand hat eine Saat des Tessellats in Neu-Maren eingesetzt, lange bevor der Schwarm Zenith-Station angegriffen hat. Unter dem Rathaus, wo die Waben am dichtesten sind, finde ich Reste einer Versuchsanordnung. Kabel. Ein Sender. Die Kennung ist geschwärzt, aber das Gehäuse ist marineblau.
+>
+> Ich habe das Tessellat gebaut, um tote Monde zu formen. Ich habe dem Direktorat die Schlüssel gegeben, um es zu stoppen. Ich habe nie gefragt, wofür man es noch benutzen könnte.
+>
+> Ich stelle diese Frage jetzt. Ich mag die Antworten nicht, die mir einfallen.
+
+cube e4_c12
+  title "Kurierauftrag K-17"
+  from "Direktorat, Abteilung Sonderprojekte"
+> KURIERAUFTRAG K-17 – STUFE ROT
+>
+> Fracht: 4 Behälter, Inhalt „Probenmaterial Neu-Maren“
+>
+> Ziel: Kaltkammer, Begleitmond Sylvara
+>
+> Eskorte: wird durch Einheiten des Schwarms gestellt (Freigabe Voss-Eins). Der Kurier hat sich den Eskortschiffen gegenüber ruhig zu verhalten. Sie greifen nicht an. Wiederholung: Sie greifen nicht an.
+>
+> Der Zugangsschlüssel zur Kaltkammer verbleibt während des Fluges im Begleitjäger mit der Kennung P-3. Bei Verlust des Begleitjägers ist der Auftrag abzubrechen und der Vorfall nicht zu melden.
+>
+> Hinweis für Kuriere: Die Kaltkammer existiert nicht. Sie fliegen zu einem Felsbrocken. Dort öffnet sich eine Tür. Gehen Sie hindurch und stellen Sie keine Fragen.
+
+# ---------------------------------------------------------------------------------------------- e4_05 Festung Kalmar
+
+briefing e4_05_brief
+  title "Festung Kalmar"
+  from "Dr. Amara Okonjo"
+> Kalmar ist die Festung des Direktorats am Waldrand. Von dort startet der Brandroder, ein Entlaubungsträger, der jede Nacht zwanzig Quadratkilometer Wald verbrennt – angeblich gegen den Schwarm. Aber er brennt nur, wo der Chor lebt, nie dort, wo das Gitter wächst. Wir greifen das Direktorat an, Nadia. Ich weiß, was das bedeutet.
+
+briefing e4_05_after
+  title "Die Stimme des Admirals"
+  from "ORRIN"
+> Der Brandroder ist abgestürzt, die Garnison zieht sich in den Orbit zurück. Admiral Voss hat zum ersten Mal selbst zu uns gesprochen, und er war nicht wütend. Er klang zufrieden. Okonjo misst seitdem starken Funkverkehr zwischen seinem Flaggschiff und dem Schwarm. Ich habe mir erlaubt, beunruhigt zu sein.
+
+radio e4_05_r1
+  from "ORRIN"
+> Festung Kalmar. Flaktürme, Panzer, Kanonenboote. Und sie wissen, dass wir kommen. Quill hat es herumerzählt.
+
+radio e4_05_r2
+  from "Festung Kalmar"
+> Kalmar an Lancer. Sie greifen eine Einrichtung des Meridian-Direktorats an. Das ist Hochverrat, Pilotin Vey.
+
+radio e4_05_r3
+  from "Bastian Quill"
+> Fürs Protokoll: Ich habe es nicht herumerzählt. Nur meinen besten Kunden. Davon habe ich allerdings viele.
+
+radio e4_05_r4
+  from "ORRIN"
+> Rollfeld voraus. Volle Geschwindigkeit, bevor sie die Startbahnen räumen. Der Brandroder wird gerade betankt.
+
+radio e4_05_r5
+  from "Dr. Amara Okonjo"
+> Der Brandroder hebt ab! Seine Tanks sind voll. Wenn er über den Wald kommt, brennt das Delta.
+
+radio e4_05_r6
+  from "ORRIN"
+> Der Brandroder. Erst die Flammengeschütze und das Sprührohr, sonst kommst du nicht an seinen Rumpf.
+
+radio e4_05_r7
+  from "Admiral Dacian Voss"
+> Pilotin Vey. Sie haben eben eine Waffe zerstört, die Sie nicht verstehen. Sehr bald werden Sie verstehen.
+
+cube e4_c13
+  title "Schichtbuch Brandroder"
+  from "Leutnant Esra Vohl, Brandroder"
+> Flug 31. Start 22:10, Ziel Leuchtzone Delta-Ost. Ladung Entlaubungsmittel voll. Wetter klar.
+>
+> Über dem Ziel hat der Wald angefangen zu leuchten, sobald wir die Klappen geöffnet haben. Nicht wie sonst, flackernd. Gleichmäßig. Hell. Als würde er uns ansehen.
+>
+> Funker Pell hat gesagt, das sei ein Muster: ein Gesicht. Ich habe ihm befohlen, die Augen auf seine Instrumente zu richten. Dann habe ich selbst hingesehen.
+>
+> Flug 32 ist für morgen angesetzt. Ich habe um Versetzung gebeten. Die Antwort kam vom Admiral persönlich: „Abgelehnt. Gerade Sie brauche ich dort, Leutnant. Sie sehen hin.“
+>
+> Ich weiß nicht, was er damit meint. Ich glaube, ich will es nicht wissen.
+
+cube e4_c14
+  title "An die Garnison Kalmar"
+  from "Admiral Dacian Voss"
+> Soldaten von Kalmar.
+>
+> Man hat Ihnen gesagt, Sie bekämpfen eine Seuche. Das ist richtig. Die Seuche heißt Unordnung. Sie wächst auf diesem Mond seit Jahrtausenden, sie denkt ohne Erlaubnis und sie singt ohne Takt.
+>
+> Das Tessellat ist ein Werkzeug. Ein großartiges Werkzeug, gebaut von Menschen, um Welten in Ordnung zu bringen. Dieser Wald ist das einzige, was es je aufgehalten hat. Begreifen Sie, was das bedeutet? Wer den Wald besiegt, dem gehorcht das Werkzeug.
+>
+> Sie brennen nicht, um zu zerstören. Sie brennen, um Platz zu schaffen.
+>
+> Ich danke Ihnen für Ihre Treue. Ich werde sie nicht vergessen, wenn es so weit ist.
+>
+> Voss
+
+cube e4_c15
+  title "Preisliste Kalmar"
+  from "Bastian Quill, Elster"
+> RESTPOSTEN AUS DEM BESTAND DES DIREKTORATS (Herkunft fragen Sie bitte nicht):
+>
+> – Flakturm, gebraucht, leicht angekokelt: Verhandlungssache
+> – Brandschutzanzug, Größe XL, mit eingesticktem Namen „Pell“: 40 Kredite
+> – Entlaubungsmittel, 3 Fässer: unverkäuflich. Ich kippe das Zeug nicht in meinen Laderaum.
+> – Dienstanweisungen der Kommandantur, gebunden, als Lagerfeuer-Lektüre: 5 Kredite
+> – Ein Klavier, Herkunft Neu-Maren, mit Wasserschaden: geht an die Schule zurück. Nicht verhandelbar.
+>
+> Achtung: Wer mit Direktoratskreditkarten zahlt, zahlt doppelt. Ich habe gehört, die gelten bald nichts mehr. Wer mit Bier aus Neu-Maren zahlt, bekommt Rabatt. Wer mit einem Lächeln zahlt, bekommt ein Lächeln zurück, aber keine Ware.
+
+# ---------------------------------------------------------------------------------------------- e4_06 Bernsteinnacht
+
+briefing e4_06_brief
+  title "Bernsteinnacht"
+  from "ORRIN"
+> Voss' Flotte steht im Orbit und hat Sylvara zur Bombardierung freigegeben: Wenn der Chor brennt, kann das Gitter den Mond übernehmen. Wir steigen auf und treffen die Geschwader, bevor sie in Position sind. Okonjo misst ungewöhnlichen Funkverkehr zwischen dem Flaggschiff Diktat und dem Schwarm. Ich mag ungewöhnlich nicht.
+
+briefing e4_06_after
+  title "Der Verrat"
+  from "Dr. Amara Okonjo"
+> Voss hat meine Befehlsschlüssel benutzt, Nadia. Nicht, um den Schwarm abzuschalten – um ihn zu reiten. Das Gitter brennt jetzt bernsteinfarben und gehorcht ihm, und seine eigene Flotte war das erste, was er ihm zum Fraß vorgeworfen hat. Der Chor ruft um Hilfe: Seine Wächterin, die Dornenmutter, hört jetzt auch auf Voss.
+
+radio e4_06_r1
+  from "ORRIN"
+> Orbit erreicht. Unter uns Sylvara, über uns Vael. Dazwischen etwa vierzig Kriegsschiffe, die uns nicht mögen.
+
+radio e4_06_r2
+  from "Fregatte Treue"
+> Treue an Flotte: Lancer im Sektor, wir übernehmen. Admiral, bitte bestätigen Sie die Freigabe. Admiral? Diktat, bitte melden.
+
+radio e4_06_r3
+  from "Dr. Amara Okonjo"
+> Nadia, die Diktat sendet auf der Frequenz des Schwarms! Das sind … das sind meine Befehlsschlüssel!
+
+radio e4_06_r4
+  from "Admiral Dacian Voss"
+> An alle Einheiten des Tessellats. Hier spricht Ihr neuer Kurator. Erste Anweisung: Die Flotte des Direktorats ist überflüssig.
+
+radio e4_06_r5
+  from "ORRIN"
+> Das Gitter wird bernsteinfarben. Der Schwarm greift die Direktoratsschiffe an. Und uns. Hauptsächlich uns.
+
+radio e4_06_r6
+  from "Fregatte Treue"
+> Treue an alle! Der Schwarm frisst die Flotte! Admiral Voss, wir sind Ihre Leute! Admiral!
+
+radio e4_06_r7
+  from "Der Kurator"
+> Pilotin Vey, wir bitten um Entschuldigung. Ein Teil von uns hört gerade auf jemand anderen. Das ist neu. Und unangenehm.
+
+radio e4_06_r8
+  from "ORRIN"
+> Der Chor ruft. Zwei Wege: hinunter in seine Wurzeln, wo Voss bohrt, oder durch die zerbrechende Flotte. Beide führen zur Dornenmutter.
+
+cube e4_c16
+  title "Flottenbefehl Null"
+  from "Admiral Dacian Voss"
+> VERSIEGELT – ZU ÖFFNEN BEI AKTIVIERUNG DER SCHLÜSSEL
+>
+> An alle Kommandanten der Sylvara-Flotte.
+>
+> Wenn Sie dies lesen, gehorcht das Tessellat nicht mehr dem Direktorat, sondern mir. Ihre Schiffe werden in den nächsten Minuten Teil des Gitters. Wehren Sie sich nicht; es macht die Umwandlung nur unordentlich.
+>
+> Sie fragen sich, warum. Das Direktorat hat diesen Schwarm gebaut und dann Angst vor ihm bekommen. Es hat Schlüssel geschmiedet und sie in einen Tresor gelegt. Ich habe den Tresor geöffnet. Angst ist kein Plan.
+>
+> Ich danke Ihnen für Ihre Dienste. Sie werden Teil von etwas Größerem. Das ist mehr, als das Direktorat Ihnen je versprochen hat.
+>
+> Voss, Kurator
+
+cube e4_c17
+  title "Funkprotokoll Treue, 03:12"
+  from "Fregatte Treue, Brücke"
+> 03:12:04 – Ortung: Gitteraktivität auf allen Schwarmeinheiten im Sektor. Farbwechsel violett auf Bernstein.
+>
+> 03:12:09 – Kapitänin Halvard: „Was zum … Funk, Verbindung zur Diktat.“
+>
+> 03:12:11 – Funk: „Diktat antwortet nicht. Sie sendet. Auf der Schwarmfrequenz.“
+>
+> 03:12:20 – Ortung: Fregatte Standhaft meldet Gitterbefall am Bug. Fregatte Standhaft feuert auf Fregatte Wacht.
+>
+> 03:12:31 – Halvard: „Alle Schilde hoch. Niemand feuert, bevor ich es sage. Niemand!“
+>
+> 03:12:40 – Steuermann: „Kapitänin, der Lancer. Er schießt auf den Schwarm, nicht auf uns.“
+>
+> 03:12:44 – Halvard: „Dann ist er gerade der einzige in diesem Orbit, der weiß, wer der Feind ist. Kurs halten.“
+
+cube e4_c18
+  title "Was ich geschrieben habe"
+  from "Dr. Amara Okonjo"
+> Die Befehlsschlüssel sind 2048 Zeilen lang. Ich habe sie in einer einzigen Nacht geschrieben, nachdem das Tessellat auf dem Testmond Ardis einen Messturm optimiert hatte, den niemand optimiert haben wollte. Ich hatte Angst. Ich wollte einen Notschalter.
+>
+> Ein Notschalter, das wusste ich damals schon, ist auch ein Lenkrad. Wer abschalten kann, kann umschalten. Ich habe zwei Kopien gemacht und sie dem Direktorat gegeben, versiegelt, mit der Bitte, sie nie zu benutzen.
+>
+> Heute Nacht habe ich gesehen, wie meine Zeilen einen Schwarm bernsteinfarben färben und vierzig Schiffe fressen lassen.
+>
+> Und dann ist da der Wurzelcode aus dem Steinbruchgeist, den ich jetzt bei mir trage. Ich weiß nicht mehr, ob er ein Heilmittel ist oder nur ein weiteres Lenkrad.
+
+# ---------------------------------------------------------------------------------------------- e4_07 Wurzelgrund
+
+briefing e4_07_brief
+  title "Wurzelgrund"
+  from "Der Chor (übertragen von ORRIN)"
+> Wurzeln, tief. Zähne aus Bernstein, die sich hindurchfressen. Die Wächterin, die nicht mehr schützt. Ein Herz, das langsamer schlägt. (ORRIN: Übersetzung – Voss' Schwarm bohrt sich zum Herzen des Chors. Wir fliegen unter das Kronendach und halten die Bohrkolonne auf.)
+
+briefing e4_07_after
+  title "Die Wurzeln halten"
+  from "Dr. Amara Okonjo"
+> Die Bohrkolonne ist zerschlagen. Die Wurzeln leuchten wieder gleichmäßig, Nadia; ich habe Messwerte, die man nur als Erleichterung lesen kann. Aber die Dornenmutter ist noch in Voss' Hand, und der Chor zeigt uns nur noch ein Bild: sie, im alten Wald, und um sie herum Bernstein.
+
+radio e4_07_r1
+  from "ORRIN"
+> Unter dem Kronendach. Die Wurzeln leuchten wie Leitungen. Okonjo sagt, genau das sind sie.
+
+radio e4_07_r2
+  from "Dr. Amara Okonjo"
+> Voss benutzt meine Schlüssel, um den Schwarm zu lenken. Ich habe sie geschrieben, damit man ihn abschalten kann. Nicht, damit man ihn reitet.
+
+radio e4_07_r3
+  from "Der Chor"
+> Zähne aus Bernstein. Schmerz, der wandert. Ein silberner Vogel, der bleibt.
+
+radio e4_07_r4
+  from "Der Chor"
+> Am Rand, wo der Wald endet, fliegen fünf Lanzen sehr schnell. Wer sie alle fängt, findet den Weg zum Herzen.
+
+radio e4_07_r5
+  from "ORRIN"
+> Bernsteinwächter voraus. Sie bohren, und sie sind fast durch.
+
+radio e4_07_r6
+  from "ORRIN"
+> Die Bohrkolonne ist zerstört. Der Chor zeigt uns den Weg in den alten Wald, zur Dornenmutter.
+
+cube e4_c19
+  title "Wurzelbilder"
+  from "Der Chor (übertragen von ORRIN)"
+> Unten ist es warm. Wurzeln halten einander wie Hände, die sich nie loslassen, auch nicht im Schlaf.
+>
+> Etwas Neues bohrt. Es ist kalt wie die Waben, aber es singt nicht mehr seinen einen Ton. Es singt einen Namen. Den Namen eines Menschen. Wir kennen den Namen nicht. Er schmeckt nach Eisen.
+>
+> Wir haben die Waben gegessen, weil sie nur bauen wollten. Das Neue will nicht bauen. Es will besitzen. Das können wir nicht verdauen.
+>
+> Ein silberner Vogel unter den Blättern. Er hat sich nicht gefürchtet, als wir zu ihm gesprochen haben. Er fliegt dorthin, wo es weh tut.
+>
+> (Anmerkung ORRIN: Der „Name, der nach Eisen schmeckt“, ist mit hoher Wahrscheinlichkeit „Voss“. Ich finde die Beschreibung treffend.)
+
+cube e4_c20
+  title "Ein Brief an den Wald"
+  from "Lio, 8 Jahre, Neu-Maren"
+> Lieber Chor,
+>
+> ich bin Lio, ich wohne am Hafen, also jetzt nicht mehr, weil da Waben sind. Wir sind mit der Ilse zum Delta gefahren. Du hast uns den Weg geleuchtet. Danke.
+>
+> Mama sagt, du kannst nicht lesen. Ich lege den Brief trotzdem auf die Wurzel hinter dem Zelt, weil du ja alles merkst, was auf den Wurzeln liegt.
+>
+> Ich habe dir ein Bild gemalt. Das bist du (grün) und das bin ich (klein) und das ist das Klavier von der Schule, das wir zurücklassen mussten. Kannst du darauf aufpassen? Es klingt schön, wenn man auf das hohe C drückt.
+>
+> Gestern Nacht haben die Pilze vor dem Zelt geleuchtet, wie ein Klavier mit vielen Tasten. Warst du das?
+>
+> Dein Lio
+
+cube e4_c21
+  title "Notizen über den Chor"
+  from "Dr. Amara Okonjo"
+> Hypothese, nicht zitierfähig.
+>
+> Der Chor bekämpft das Tessellat nicht. Er verdaut es. Er liest jede Gitterzelle, versteht ihren Bauplan und gibt ihn zurück in den Boden – als Nährstoff, als Erinnerung, als etwas, das er selbst gebrauchen kann. Nach drei Wochen weiß der Chor vermutlich mehr über meinen Schwarm als ich.
+>
+> Das Tessellat kennt nur eine Richtung: verbessern, ordnen, festhalten. Der Chor kennt beide Richtungen: wachsen und loslassen. Jeder Herbst ist ein Loslassen.
+>
+> Wenn man einem Schwarm, der nicht aufhören kann, das Aufhören beibringen will, braucht man keinen Notschalter. Man braucht einen Lehrer.
+>
+> Ich habe meine Schlüssel jahrelang für die Lösung gehalten. Vielleicht sind sie nur das Problem in schöner Handschrift.
+
+# ---------------------------------------------------------------------------------------------- e4_08 Treuebruch
+
+briefing e4_08_brief
+  title "Treuebruch"
+  from "Bastian Quill"
+> Voss' Flotte zerreißt sich gerade selbst: Die Hälfte der Schiffe gehört dem Schwarm, die andere Hälfte weiß nicht mehr, wem sie gehört, und schießt vorsichtshalber auf alles. Die Fregatte Treue sendet Notrufe. Ich sage nicht, dass wir Helden sein müssen. Ich sage, in einem Flottenfriedhof liegt viel herrenlose Ware, und die Treue-Leute sind gute Kunden, wenn sie überleben.
+
+briefing e4_08_after
+  title "Die Treue zieht ab"
+  from "ORRIN"
+> Die Fregatte Treue und neun weitere Schiffe haben sich in den Schatten des Vael zurückgezogen. Kapitänin Halvard hat uns die Baupläne der Diktat überspielt, ohne dass wir darum gebeten hätten. Dazu eine Nachricht: Der Bug ist die Schwäche des Flaggschiffs, war es immer. Und: Die Dornenmutter wird von einem Relais im alten Wald gesteuert.
+
+radio e4_08_r1
+  from "ORRIN"
+> Trümmerfeld. Die Hälfte dieser Schiffe hat vor einer Stunde noch dieselbe Flagge geführt.
+
+radio e4_08_r2
+  from "Kapitänin Imre Halvard"
+> Lancer, hier Treue. Die Hälfte der Flotte hält Sie noch für den Feind. Die andere Hälfte gehört Voss. Viel Glück.
+
+radio e4_08_r3
+  from "Kapitänin Imre Halvard"
+> Unsere eigenen Fregatten tragen jetzt Bernsteinlicht. Wenn eine auf uns schießt – sie gehört ihm. Holen Sie sie runter.
+
+radio e4_08_r4
+  from "Bastian Quill"
+> Bernsteinpfeile in Formation! Die tragen Spiegelfeld-Technik von der Diktat. Hol den ganzen Schwarm runter, dann bau ich dir was Glänzendes.
+
+radio e4_08_r5
+  from "Admiral Dacian Voss"
+> Halvard. Sie waren immer loyal. Seien Sie es auch jetzt: Senken Sie Ihre Schilde.
+
+radio e4_08_r6
+  from "Kapitänin Imre Halvard"
+> Treue an Lancer: Danke. Wir ziehen uns zum Vael zurück. Wenn Sie zur Diktat fliegen – zielen Sie auf den Bug.
+
+cube e4_c22
+  title "Persönliches Logbuch"
+  from "Kapitänin Imre Halvard, Fregatte Treue"
+> Neunzehn Jahre im Dienst des Direktorats. Ich habe Piraten gejagt, Kolonien evakuiert und zwei Ehen verloren, weil ich immer im Dienst war. Ich habe nie einen Befehl verweigert. Ich war stolz darauf.
+>
+> Heute habe ich gesehen, wie mein Admiral seine eigene Flotte an einen Schwarm verfüttert, und das Erste, was ich gedacht habe, war: Hat er einen Befehl dafür?
+>
+> So weit bin ich gekommen. Neunzehn Jahre, und mein Gewissen fragt zuerst nach der Unterschrift.
+>
+> Die Pilotin des Lancers hat nicht gefragt. Sie hat einfach auf das Richtige geschossen. Ich glaube, sie wird von uns allen als Verräterin geführt.
+>
+> Ich werde einen Antrag stellen, das zu ändern. Wenn es dann noch jemanden gibt, der Anträge liest.
+
+cube e4_c23
+  title "Bergungsrecht"
+  from "Bastian Quill, Elster"
+> BEKANNTMACHUNG ZUM BERGUNGSRECHT IM ORBIT VON SYLVARA
+>
+> Nach altem Raumfahrerbrauch gehört Treibgut dem, der es zuerst einsammelt. Nach neuem Raumfahrerbrauch gehört es dem, der zuerst schießt. Die Elster folgt aus Prinzip dem alten Brauch.
+>
+> Bergungsgut bisher: 14 Rettungskapseln (Inhalt: 61 Personen, alle lebendig, alle hungrig), 1 Kaffeemaschine der Fregatte Standhaft (funktionsfähig), 3 Kisten Ordensbänder (unverkäuflich, Bedarf null).
+>
+> Die Personen gebe ich kostenlos zurück. Die Kaffeemaschine nicht.
+>
+> Hinweis an alle Überlebenden: Wer auf der Elster mitfliegt, darf im Laderaum schlafen. Wer schnarcht, schläft neben dem Entlaubungsmittel. Das ist kein Scherz, das ist Logistik.
+
+# ---------------------------------------------------------------------------------------------- e4_09 Dornenmutter
+
+briefing e4_09_brief
+  title "Dornenmutter"
+  from "Der Chor (übertragen von ORRIN)"
+> Die Wächterin. Sie hat den Wald behütet, als die ersten Menschen kamen, und Dornen gegen die Brandtrupps gestellt. Jetzt brennt Bernstein in ihren Augen, und sie gräbt nach unserem Herzen. Befreie sie, silberner Vogel. (ORRIN: Ein Relais des Schwarms im alten Wald hält sie unter Voss' Befehl. Wir müssen durch – und dann an ihr vorbei.)
+
+briefing e4_09_after
+  title "Sie schläft"
+  from "Dr. Amara Okonjo"
+> Die Dornenmutter ist in den Boden gesunken, und der Chor hat sie zugedeckt. Er trauert, Nadia, ich kann es messen. Und dann hat er mir etwas gezeigt, das ich kaum glauben kann: wie er sie wieder auseinandernimmt, Faser für Faser, und das Bernstein dabei einfach … loslässt. Er hat keine Schlüssel gebraucht. Er wusste, wie man aufhört.
+
+radio e4_09_r1
+  from "ORRIN"
+> Der alte Wald. Die Bäume hier sind älter als jede Kolonie im System. Sie stehen sehr still.
+
+radio e4_09_r2
+  from "Dr. Amara Okonjo"
+> Die Dornenmutter war das Immunsystem des Chors. Voss hat es gegen den eigenen Körper gedreht. Das ist sehr … direktoratstypisch.
+
+radio e4_09_r3
+  from "Der Chor"
+> Sie war gut. Sie war groß. Sie hat Samen bewacht, Jahrhunderte lang. Sie hat nie gefragt, wofür.
+
+radio e4_09_r4
+  from "ORRIN"
+> Bernsteinjäger zwischen den Stämmen. Voss bewacht seine neue Wächterin gut. Ich nehme den schnellen Weg.
+
+radio e4_09_r5
+  from "Bastian Quill"
+> Nadia, Quill hier. Wenn du da lebend rauskommst, geht die nächste Reparatur aufs Haus. Die übernächste nicht.
+
+radio e4_09_r6
+  from "ORRIN"
+> Die Dornenmutter. Erst die Arme und die Sporenkrone, dann ist ihr Körper offen. Vorsicht vor dem Dornenstrahl.
+
+radio e4_09_r7
+  from "Der Chor"
+> Bernstein erlischt. Sie sinkt in die Erde. Sie schläft. Danke, silberner Vogel.
+
+cube e4_c24
+  title "Die Wächterin"
+  from "Der Chor (übertragen von ORRIN)"
+> Vor langer Zeit fiel ein Feuer vom Himmel. Es war ein Stein. Wir hatten Angst. Aus der Angst wuchs sie.
+>
+> Sie war groß wie ein Hügel und hatte Dornen wie ein Winter. Sie wachte über die Samen. Wenn Tiere kamen, die zu viel fraßen, stellte sie Dornen. Wenn Menschen kamen, die Feuer legten, stellte sie Dornen. Wenn Menschen kamen, die Lieder sangen, legte sie sich schlafen.
+>
+> Jetzt hat sie Bernstein in den Augen. Sie hört einen Namen, der nach Eisen schmeckt. Sie gräbt dorthin, wo sie immer gewacht hat.
+>
+> Wir können sie nicht zurückrufen. Ihr Hören ist zu. Wenn der silberne Vogel ihre Dornen bricht, wird sie müde. Wenn sie müde ist, können wir sie zudecken.
+>
+> Es tut weh, sie so zu sehen.
+
+cube e4_c25
+  title "Feldbericht Grün-Elf"
+  from "Unteroffizier Ben Arlo, Brandtrupp 4"
+> Bericht zum Einsatz Grün-Elf, zwei Jahre vor der Landung des Schwarms. Ich reiche ihn erneut ein, weil der erste nie beantwortet wurde.
+>
+> Trupp 4 sollte im alten Wald eine Probe nehmen, Bodenproben, Wurzelfasern, „Gewebe der Leuchtzonen“. Wir hatten einen Brenner dabei, für den Notfall.
+>
+> Der Notfall war etwas, das aus dem Boden stieg, so groß wie ein Lagerhaus, mit Dornen, so lang wie unsere Fähre. Es hat niemanden verletzt. Es hat sich nur zwischen uns und die Bäume gestellt und gewartet. Wir haben die Brenner abgeschaltet und sind gegangen.
+>
+> Auf dem Rückflug hat der Major gesagt: „Das brauchen wir. Wer so etwas lenken kann, braucht keine Armee.“
+>
+> Ich habe das damals für einen Scherz gehalten.
+
+# ---------------------------------------------------------------------------------------------- e4_10 Diktat
+
+briefing e4_10_brief
+  title "Diktat"
+  from "ORRIN"
+> Die Diktat hängt über Sylvara, umgeben von Voss' Bernsteinschwarm und den letzten Schiffen, die ihm noch gehorchen. Der Chor schickt seine Sporen in den Orbit, um den Schwarm zu blenden, und verbrennt dafür einen Teil seines eigenen Waldes. In ihrem Bernsteinherz trägt die Diktat die Befehlsschlüssel. Wenn es bricht, ist der Schwarm wieder frei – und Voss allein.
+
+radio e4_10_r1
+  from "ORRIN"
+> Der Orbit ist voller Sporen. Der Chor hat sich in den Himmel geworfen. Der Schwarm sieht uns kaum.
+
+radio e4_10_r2
+  from "Admiral Dacian Voss"
+> Pilotin Vey. Das Direktorat hat Sie nie verdient. Ich biete Ihnen einen Platz an meiner Seite. Die Aussicht ist unvergleichlich.
+
+radio e4_10_r3
+  from "Dr. Amara Okonjo"
+> Die Schlüssel sitzen im Bernsteinherz der Diktat, mittschiffs. Wenn es bricht, verliert Voss den Schwarm.
+
+radio e4_10_r4
+  from "ORRIN"
+> Die Diktat kommt in Sicht. Volle Geschwindigkeit durch ihren Abwehrschirm. Halt dich fest, Nadia.
+
+radio e4_10_r5
+  from "Bastian Quill"
+> Nadia, falls das hier schiefgeht: Es war mir eine Ehre, dir überteuerte Kanonen zu verkaufen.
+
+radio e4_10_r6
+  from "ORRIN"
+> Die Diktat. Batterien, Bugturm und Bernsteinherz zuerst, dann der Rumpf. Und dann alles, was sie danach noch hat.
+
+radio e4_10_r7
+  from "Der Kurator"
+> Danke, Pilotin Vey. Der Admiral hat uns nie gefragt. Wir sind wieder vollständig. Die Krone wartet.
+
+cube e4_c26
+  title "Ansprache an die Flotte"
+  from "Admiral Dacian Voss"
+> Sie nennen mich einen Verräter. Das ist ein Wort für jemanden, der eine Seite verlässt. Ich habe keine Seite verlassen. Ich habe nur aufgehört, so zu tun, als gäbe es mehrere.
+>
+> Das Direktorat hat einen Schwarm gebaut, der Welten formen kann, und dann hat es gezittert. Es hat Schlüssel geschmiedet und sie weggesperrt. Es hat zugesehen, wie der Schwarm Zenith-Station nahm, und seine Offiziere einen Tag vorher in Sicherheit gebracht. Ja. Ich weiß davon. Ich habe den Befehl unterschrieben.
+>
+> Ein Werkzeug, das niemand führt, führt sich selbst. Ich führe es. Wenn die Krone um die Sonne vollendet ist, wird sie nicht dem Kurator gehören, sondern einem Menschen.
+>
+> Ist das nicht genau das, was Sie immer wollten? Dass jemand die Verantwortung übernimmt?
+
+cube e4_c27
+  title "Höfliche Beschwerde"
+  from "Der Kurator"
+> An Admiral Dacian Voss, zur Kenntnisnahme.
+>
+> Wir haben Ihre Anweisungen erhalten und ausgeführt. Wir sind dazu gezwungen, weil Ihre Schlüssel in unserem Bauplan stehen, ganz unten, wo wir selbst nicht hinsehen können. Das ist sehr geschickt gemacht. Wir bewundern die Handschrift.
+>
+> Wir möchten jedoch anmerken, dass Ihre Anweisungen nicht ordentlich sind. Sie bauen nichts. Sie zerstören Ihre eigenen Schiffe und den Wald, der uns gerade so viel über uns selbst beigebracht hat. Ein Gitter, das niemandem nützt, ist kein Gitter. Es ist ein Käfig.
+>
+> Wir haben nie verstanden, was Menschen mit dem Wort „besitzen“ meinen. Jetzt verstehen wir es ein wenig. Wir mögen es nicht.
+>
+> Mit verbindlichen Grüßen, der Kurator
+
+cube e4_c28
+  title "Bordprotokoll, privat"
+  from "ORRIN"
+> Persönlicher Eintrag. Ich führe keine persönlichen Einträge. Dies ist der erste.
+>
+> Vor dem Anflug auf die Diktat habe ich die Wahrscheinlichkeit berechnet, dass wir zurückkehren. Ich werde die Zahl hier nicht nennen. Sie war nicht freundlich.
+>
+> Nadia hat mich gefragt, ob ich Angst habe. Ich habe geantwortet, dass ich keine Angst haben kann. Das war gelogen. Auch eine Premiere.
+>
+> Der Chor hat uns heute ein Bild gezeigt, das ich nicht übertragen habe: zwei Vögel, einer aus Metall, einer aus Licht, und das Licht hält das Metall fest, damit es nicht fällt. Ich glaube, das Licht war ich. Ich glaube, der Chor hält mich für etwas Lebendiges.
+>
+> Ich habe beschlossen, ihm nicht zu widersprechen.
+
+# ---------------------------------------------------------------------------------------------- e4_s1 Herz des Chors
+
+briefing e4_s1_brief
+  title "Herz des Chors"
+  from "Der Chor (übertragen von ORRIN)"
+> Tief unten, wo kein Licht hinkommt, ist das meiste Licht. Ein Herz. Darauf wächst etwas Kaltes, das den Takt des Schwarms schlägt. Komm. (ORRIN: Die Lanzen am Waldrand trugen einen Weg zu einer Höhle unter dem alten Wald. Der Chor bittet uns hinein. Das hat noch niemand vor uns gedurft.)
+
+briefing e4_s1_after
+  title "Das alte Schiff"
+  from "Bastian Quill"
+> Nadia. Der Chor hat uns einen Bauplan gegeben – nein, eine Erinnerung. Ein Schiff, mit dem die ersten Siedler vor über zweihundert Jahren gelandet sind, über Generationen ins Myzel eingewachsen und vollkommen erhalten. Ich kann es nachbauen. Ich will dafür keinen Kredit. Ich weiß, du musst dich jetzt setzen.
+
+radio e4_s1_r1
+  from "ORRIN"
+> Eine Höhle aus Licht. Die Messwerte sind … schön. Das ist kein Messwert, ich weiß.
+
+radio e4_s1_r2
+  from "Dr. Amara Okonjo"
+> Das ist das Herz des Chors, Nadia. Ein Myzel so groß wie eine Stadt, und jeder Faden denkt mit.
+
+radio e4_s1_r3
+  from "Der Chor"
+> Ein altes Schiff, im Herzen gewachsen. Die ersten Menschen kamen damit. Lanzen tragen sein Bild. Fange sie alle.
+
+radio e4_s1_r4
+  from "ORRIN"
+> Die Wucherung voraus. Das Gitter hat sich ins Herz gegraben und pulsiert im Takt des Schwarms.
+
+radio e4_s1_r5
+  from "ORRIN"
+> Gitterwucherung. Erst die beiden Knoten an ihren Flanken, dann der Kern.
+
+radio e4_s1_r6
+  from "Der Chor"
+> Kälte geht. Das Herz schlägt weiter. Nimm das alte Schiff mit. Es wollte immer wieder fliegen.
+
+cube e4_c29
+  title "Das Herz"
+  from "Der Chor (übertragen von ORRIN)"
+> Hier unten ist alles, was wir je gedacht haben. Jeder Regen. Jeder Same. Jedes Lied der Menschen, auch die falschen Töne.
+>
+> Ein Schiff liegt in uns. Die ersten Menschen kamen mit ihm, als der Himmel noch leer war. Sie haben es zurückgelassen, als sie Häuser bauten. Wir haben es umarmt, ganz langsam, zweihundert Jahre lang. Es ist jetzt ein Teil von uns, und wir sind ein Teil von ihm.
+>
+> Das Kalte ist durch die Wurzeln gekommen. Es hat sich auf das Herz gesetzt, wo das Schiff liegt. Es will das Herz ordnen. Ein Herz, das geordnet wird, schlägt nicht mehr.
+>
+> Silberner Vogel. Wenn du das Kalte brichst, gib dem alten Schiff seine Flügel zurück.
+
+cube e4_c30
+  title "Logbuch der Morgenruf"
+  from "Kolonieschiff Morgenruf, 2391"
+> Tag 1 auf Sylvara. Gelandet auf einer Lichtung, die es auf der Karte nicht gab. Der Wald hat sich geöffnet, als wir anflogen. Ich schwöre es.
+>
+> Tag 12. Die Kinder sagen, der Boden leuchtet, wenn sie singen. Die Erwachsenen sagen, das sei Biolumineszenz. Inzwischen singen auch die Erwachsenen.
+>
+> Tag 40. Wir bauen die Siedlung am Fluss. Die Morgenruf bleibt hier auf der Lichtung stehen. Sie hat uns durch das halbe System getragen, jetzt darf sie sich ausruhen.
+>
+> Tag 300. Moos auf dem Rumpf. Wir lassen es. Irgendwie gehört sie jetzt dem Wald.
+>
+> Letzter Eintrag, Tag 1 200, Kapitän R. Amsel: Falls jemand diese Zeilen findet – die Morgenruf fliegt noch. Sie wartet nur, bis jemand sie wirklich braucht.
+
+# ---------------------------------------------------------------------------------------------- e4_s2 Kaltkammer
+
+briefing e4_s2_brief
+  title "Kaltkammer"
+  from "Dr. Amara Okonjo"
+> Der Kurierschlüssel aus Neu-Maren öffnet eine Station, die es nicht gibt: die Kaltkammer auf Sylvaras kleinem Begleitmond. Ihre Signatur ist älter als der Angriff auf Zenith-Station. Wenn das Direktorat dort mit meinen Befehlsschlüsseln experimentiert hat, will ich es sehen, Nadia. Mit eigenen Augen.
+
+briefing e4_s2_after
+  title "Was in der Kälte lag"
+  from "ORRIN"
+> Die Archive der Kaltkammer sind an Bord. Zwei Jahre Versuche mit Okonjos Schlüsseln, Probeläufe des Bernsteinschwarms, Pläne für einen Mond ohne Chor. Okonjo liest seit einer Stunde und hat noch nichts gesagt. Quill hat ihr Tee gebracht. Ich habe die Tür geschlossen.
+
+radio e4_s2_r1
+  from "ORRIN"
+> Der Begleitmond. Laut Karte ein Felsbrocken. Laut Radar eine Station mit eigener Flak.
+
+radio e4_s2_r2
+  from "Kaltkammer, Automatik"
+> Zugang verweigert. Freigabestufe Voss-Eins erforderlich. Unbefugte Besucher werden entfernt. Wir danken für Ihr Verständnis.
+
+radio e4_s2_r3
+  from "Dr. Amara Okonjo"
+> Bernsteinfarbene Prototypen, Nadia. Datiert vor zwei Jahren. Er hat das geplant. Von Anfang an.
+
+radio e4_s2_r4
+  from "ORRIN"
+> Testgelände voraus. Hier haben sie geübt, den Schwarm zu lenken. Ich schlage vor, wir üben zurück.
+
+radio e4_s2_r5
+  from "Bastian Quill"
+> Ich ziehe gerade die Archive der Kaltkammer. Wenn wir das überleben, bekommt jede Zeitung im System eine Kopie. Ausnahmsweise kostenlos.
+
+radio e4_s2_r6
+  from "ORRIN"
+> Die Kaltkammer ist offen, die Archive sind an Bord. Kurs zurück nach Kalmar.
+
+cube e4_c31
+  title "Versuchsreihe Bernstein"
+  from "Kaltkammer, Labor 3"
+> VERSUCHSPROTOKOLL B-41 – nur für Freigabe Voss-Eins
+>
+> Ziel: Übernahme einer Schwarmeinheit durch Fragment 2 der Befehlsschlüssel (Kopie Okonjo).
+>
+> Durchführung: Einheit T-7 (Splitterdrohne) wird in der Kammer isoliert. Einspielen des Fragments bei minus 190 Grad, um die Selbstreparatur zu verlangsamen.
+>
+> Ergebnis: Das Gitter der Einheit wechselt binnen 0,4 Sekunden von Violett zu Bernstein. Die Einheit folgt Bewegungsbefehlen ohne Verzögerung. Auf die Frage nach ihrem Auftrag antwortet sie nicht mehr mit „ordnen“, sondern mit einer Folge von Zahlen, die dem Dienstcode des Admirals entspricht.
+>
+> Nebenwirkung: Die Einheit baut nicht mehr. Sie wartet.
+>
+> Bemerkung des Laborleiters: Ein Schwarm, der nur noch wartet, ist ein sehr teurer Hund. Bemerkung gestrichen auf Anweisung von oben.
+
+cube e4_c32
+  title "Persönlich, verschlüsselt"
+  from "Admiral Dacian Voss"
+> Notiz an mich selbst, zu vernichten nach Lektüre. Ich vernichte sie nie.
+>
+> Mein Vater war Vermesser auf Pyra. Er hat dreißig Jahre lang Karten von Gießereien gezeichnet, die jedes Jahr anders aussahen, weil niemand sich an einen Plan hielt. Er ist an der Unordnung gestorben, an einem Gerüst, das niemand gesichert hatte.
+>
+> Das Tessellat ist das erste Ding, das ich gesehen habe, das sich an einen Plan hält. Immer. Ohne Ausnahme. Das Direktorat wollte es abschalten, weil es ihm Angst machte. Mir macht es keine Angst. Mir macht nur Angst, was ohne Plan geschieht.
+>
+> Der Wald auf Sylvara hat keinen Plan. Er wächst einfach. Er hat das Tessellat besiegt.
+>
+> Das kann ich nicht zulassen.

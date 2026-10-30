@@ -1,0 +1,74 @@
+# Episode 4, mission 1: arrival on Sylvara. A flight over the canopy, where the swarm is losing for the first time,
+# the Directorate guards a "quarantine zone" and the forest blinks back at the Lancer's lamps.
+
+level e4_01
+  title "Kronendach"
+  episode 4
+  theme jungle
+  music e4_a
+  scroll 65
+  length 200
+  next e4_02
+  arcade 1
+  map 0.08 0.20
+  briefing e4_01_brief
+  debrief e4_01_after
+
+  at 1   text e4_01_r1
+  at 3   wave e4_sporeling n=6 form=line x=360 spacing=95 path=sine amp=40 freq=0.4 speed=130
+  at 8   wave e4_mothwing n=5 form=column x=120 gap=0.35 path=swoop side=1 cx=360 cy=300 dur=3.6
+  at 12  wave e4_mothwing n=5 form=column x=600 gap=0.35 path=swoop side=-1 cx=360 cy=300 dur=3.6
+  at 16  ground e4_thornvine x=160
+  at 16  ground e4_thornvine x=560
+  at 19  wave e4_sporeling n=8 form=v x=360 spacing=55 path=sine amp=30 freq=0.3 speed=140
+  at 22  pickup credits x=200 value=400
+  at 24  wave e4_lancefly n=3 form=line x=360 spacing=150 path=dive turn=80
+  at 27  wave e4_shard n=6 form=random range=560 gap=0.5 path=zigzag amp=50 freq=0.6 diff=3
+  at 30  text e4_01_r2
+  at 31  wave e4_dirjet n=4 form=column x=100 gap=0.4 path=swoop side=1 cx=380 cy=280 dur=3.4
+  at 34  wave e4_umbrella x=230 path=hover stop=190 wait=6
+  at 36  wave e4_umbrella x=490 path=hover stop=230 wait=6
+  at 40  ground e4_sporepod x=360
+  at 45  pickup cube x=420 item=e4_c01
+  at 48  wave e4_mothwing n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 52  ground e4_crawler x=110 path=ground dir=-90 speed=22
+  at 55  wave e4_lancefly n=3 form=column x=200 gap=0.35 path=dive turn=110 mirror=1
+  at 60  wave e4_beetle x=360 path=hover stop=170 wait=7
+  at 62  wave e4_sporeling n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=110 drop=shield
+  at 67  wave e4_shard n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=260 r=140 dur=5 side=1
+  at 70  text e4_01_r3
+  at 72  pickup credits x=520 value=500
+  at 74  wave e4_seedmine n=6 form=random range=600 gap=0.6 path=drift speed=70
+  at 78  wave e4_dirjet n=5 form=v x=360 spacing=60 path=straight speed=300
+  at 82  ground e4_thornvine x=200 n=3 form=line spacing=160
+  at 86  wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60
+  at 88  wave e4_prism n=4 form=column x=600 gap=0.4 path=arc side=-1 turn=60
+  at 92  wave e4_umbrella n=2 form=line x=360 spacing=300 path=hover stop=180 wait=7 diff=3
+  at 95  wave e4_mothwing n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=230
+  at 101 pickup cube x=180 item=e4_c02
+  at 104 text e4_01_r4
+  at 106 wave e4_beetle n=2 form=line x=360 spacing=320 path=hover stop=160 wait=8
+  at 110 wave e4_sporeling n=8 form=column x=360 gap=0.25 path=sine amp=150 freq=0.3
+  at 114 ground e4_crawler x=610 path=ground dir=90 speed=22
+  at 116 ground e4_sporepod x=180
+  at 120 wave e4_lancefly n=6 form=sides x=80 gap=0.5 path=dive turn=90
+  at 124 wave e4_shard n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=200
+  at 130 pickup credits x=360 value=600
+  at 132 scroll 100
+  at 133 text e4_01_r5
+  at 134 wave e4_prism n=5 form=v x=360 spacing=55 path=straight speed=320 repeat=3 every=4
+  at 136 ground e4_thornvine x=120 n=4 form=line spacing=160
+  at 146 scroll 65
+  at 146 wave e4_broodmother x=360 path=hover stop=150 wait=10
+  at 148 wave e4_mothwing n=5 form=column x=100 gap=0.3 path=swoop side=1 cx=360 cy=360 dur=4 mirror=1
+  at 156 wave e4_sporeling n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=200
+  at 160 pickup cube x=540 item=e4_c03
+  at 163 wave e4_latticeship x=360 path=hover stop=160 wait=8
+  at 165 wave e4_shard n=8 form=arc x=360 spacing=40 path=straight speed=150
+  at 172 wave e4_lancefly n=4 form=line x=360 spacing=130 path=dive turn=80 diff=3
+  at 176 ground e4_sporepod x=230
+  at 176 ground e4_sporepod x=490
+  at 180 wave e4_mothwing n=8 form=v x=360 spacing=50 path=sine amp=60 freq=0.4 speed=180
+  at 186 text e4_01_r6
+  at 188 pickup credits x=360 value=800
+  at 194 end

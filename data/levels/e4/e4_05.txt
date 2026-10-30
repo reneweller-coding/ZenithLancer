@@ -1,0 +1,74 @@
+# Episode 4, mission 5: Fortress Kalmar, the Directorate's base at the forest's edge. From here the Brandroder,
+# a defoliation carrier, burns the Choir's forest. Nadia chooses the Choir's side. Mid-boss: the Brandroder.
+
+level e4_05
+  title "Festung Kalmar"
+  episode 4
+  theme city
+  music e4_b
+  scroll 60
+  length 190
+  next e4_06
+  arcade 1
+  map 0.48 0.46
+  briefing e4_05_brief
+  debrief e4_05_after
+
+  at 1   text e4_05_r1
+  at 3   wave e4_sporeling n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.4 speed=130
+  at 7   wave e4_dirjet n=3 form=column x=110 gap=0.45 path=swoop side=1 cx=380 cy=300 dur=3.4 mirror=1
+  at 12  wave e4_shard n=8 form=random range=600 gap=0.3 path=sine amp=50 freq=0.6
+  at 15  ground e4_dirflak x=170
+  at 19  ground e4_dirtank x=110 n=3 form=line spacing=110 path=ground dir=-90 speed=22
+  at 22  pickup credits x=360 value=450
+  at 24  wave e4_dirgunboat x=360 path=hover stop=170 wait=6
+  at 27  wave e4_dirjet n=4 form=line x=360 spacing=140 path=dive turn=80 diff=3
+  at 30  text e4_05_r2
+  at 31  ground e4_dirflak x=550
+  at 32  wave e4_beetle x=200 path=hover stop=180 wait=6
+  at 34  wave e4_umbrella x=520 path=hover stop=200 wait=6
+  at 37  ground e4_dirflak x=360
+  at 40  wave e4_dirjet n=6 form=sides x=70 gap=0.35 path=arc side=1 turn=80
+  at 45  pickup cube x=600 item=e4_c13
+  at 47  wave e4_dirgunboat x=200 path=hover stop=160 wait=7
+  at 47  wave e4_dirgunboat x=520 path=hover stop=200 wait=7 diff=3
+  at 50  ground e4_dirtank x=610 n=2 form=line spacing=120 path=ground dir=90 speed=22
+  at 54  wave e4_shard n=10 form=column x=360 gap=0.25 path=sine amp=180 freq=0.3
+  at 58  wave e4_lancefly n=4 form=column x=160 gap=0.35 path=dive turn=100 mirror=1
+  at 63  text e4_05_r3
+  at 64  pickup credits x=180 value=500
+  at 66  wave e4_dirfrigate x=360 path=hover stop=140 wait=12
+  at 68  wave e4_dirjet n=5 form=column x=100 gap=0.3 path=loop stop=230 r=90
+  at 74  wave e4_dirjet n=5 form=column x=620 gap=0.3 path=loop stop=230 r=90
+  at 80  ground e4_dirflak x=150
+  at 80  ground e4_dirflak x=570
+  at 84  wave e4_sporeling n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=190
+  at 88  pickup cube x=240 item=e4_c14
+  at 90  scroll 90
+  at 91  text e4_05_r4
+  at 92  wave e4_dirjet n=6 form=v x=360 spacing=50 path=straight speed=330 repeat=3 every=4
+  at 94  ground e4_dirtank x=360 n=3 form=line spacing=180
+  at 104 scroll 60
+  at 105 wave e4_dirgunboat x=200 path=hover stop=170 wait=7
+  at 107 wave e4_dirgunboat x=520 path=hover stop=210 wait=7
+  at 110 wave e4_mothwing n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 116 pickup credits x=540 value=600
+  at 118 wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
+  at 124 ground e4_dirflak x=260
+  at 124 ground e4_dirflak x=460
+  at 128 wave e4_dirfrigate x=360 path=hover stop=130 wait=11 diff=3
+  at 130 wave e4_shard n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=210
+  at 136 pickup cube x=420 item=e4_c15
+  at 138 wave e4_dirjet n=8 form=random range=640 gap=0.3 path=dive turn=60 speed=260
+  at 144 ground e4_dirtank x=120 n=2 form=line spacing=130 path=ground dir=-90 speed=22
+  at 148 wave e4_beetle x=360 path=hover stop=170 wait=6
+  at 154 text e4_05_r5
+  at 155 pickup credits x=360 value=500
+  at 160 warn
+  at 161 music boss
+  at 164 text e4_05_r6
+  at 164 boss e4_brandroder
+  at 166 music e4_b
+  at 166 text e4_05_r7
+  at 168 pickup credits x=360 value=1000
+  at 177 end
