@@ -68,7 +68,7 @@ Free and open source under the AGPL-3.0, in English and German, for Windows, Lin
 | Processor | x86-64, two cores at 2 GHz **(check)** | four cores **(check)** |
 | Memory | 4 GB RAM **(check)** | 8 GB RAM |
 | Graphics | OpenGL 3.3: Intel HD Graphics 5000, GeForce GTX 600, Radeon HD 7000 or newer **(check)** | GeForce GTX 1050, Radeon RX 560, Intel Iris Xe or newer **(check)** |
-| Storage | 300 MB **(check)** | 300 MB **(check)** |
+| Storage | 200 MB (the game 100 MB, its saves and replays) | 200 MB |
 | Input | keyboard, mouse or gamepad | a gamepad |
 
 The program is not code-signed: Windows' SmartScreen may warn once ("More info", "Run anyway"). On Linux it links its
@@ -179,7 +179,7 @@ Frei und quelloffen unter der AGPL-3.0, auf Deutsch und Englisch, für Windows, 
 | Prozessor | x86-64, zwei Kerne mit 2 GHz **(prüfen)** | vier Kerne **(prüfen)** |
 | Arbeitsspeicher | 4 GB **(prüfen)** | 8 GB |
 | Grafik | OpenGL 3.3: Intel HD Graphics 5000, GeForce GTX 600, Radeon HD 7000 oder neuer **(prüfen)** | GeForce GTX 1050, Radeon RX 560, Intel Iris Xe oder neuer **(prüfen)** |
-| Speicherplatz | 300 MB **(prüfen)** | 300 MB **(prüfen)** |
+| Speicherplatz | 200 MB (das Spiel 100 MB, Spielstände und Wiederholungen) | 200 MB |
 | Eingabe | Tastatur, Maus oder Gamepad | ein Gamepad |
 
 Das Programm ist nicht signiert: SmartScreen warnt unter Umständen einmal ("Weitere Informationen", "Trotzdem
