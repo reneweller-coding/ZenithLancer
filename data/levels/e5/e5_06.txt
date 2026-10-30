@@ -1,0 +1,77 @@
+# Episode 5, mission 6 (fork A): home. Zenith Station's shipyard decks, where the Lancer was built, held by
+# Voss's last fighters and by dock turrets the swarm grew into. Below one deck lies Voss's sealed vault.
+
+level e5_06
+  title "Werftdecks"
+  episode 5
+  theme station
+  music e5_a
+  scroll 70
+  length 220
+  next e5_08
+  secret e5_s2 key=e5_key_vault
+  map 0.56 0.30
+  briefing e5_06_brief
+  debrief e5_06_after
+
+  at 1   text e5_06_r1
+  at 3   wave e5_raider n=4 form=column x=150 gap=0.5 path=arc side=1 turn=60 mirror=1
+  at 8   ground e5_dockgun x=140
+  at 8   ground e5_dockgun x=580
+  at 10  wave e5_mote n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.4 speed=140
+  at 15  wave e5_shard n=6 form=v x=360 spacing=60 path=dive turn=60
+  at 20  wave e5_enforcer x=360 path=hover stop=150 wait=7
+  at 24  wave e5_raider n=6 form=random range=560 gap=0.4 path=dive turn=50 diff=3
+  at 27  pickup credits x=500 value=1100
+  at 30  text e5_06_r2
+  at 32  ground e5_dockgun n=3 form=line x=360 spacing=220
+  at 35  wave e5_petal n=6 form=column x=100 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 41  wave e5_spear n=4 form=line x=360 spacing=140 path=dive turn=60
+  at 45  pickup cube x=180 item=e5_c14
+
+  # a breath in the empty dry dock
+  at 48  wave e5_mote n=6 form=line x=360 spacing=100 path=sine amp=30 freq=0.3 speed=120
+  at 53  wave e5_raider n=6 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=280 dur=4.5 mirror=1
+  at 58  wave e5_lantern x=360 path=hover stop=160 wait=7
+  at 60  ground e5_dockgun x=120 n=2 form=column gap=2
+  at 60  ground e5_dockgun x=600 n=2 form=column gap=2
+  at 66  wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=280
+  at 70  text e5_06_r3
+  at 72  wave e5_enforcer n=2 form=line x=360 spacing=340 path=hover stop=150 wait=7
+  at 78  pickup credits x=360 value=1300
+  at 82  wave e5_moth n=4 form=column x=150 gap=0.6 path=swoop side=1 cx=380 cy=260 dur=5 mirror=1
+  at 88  wave e5_raider n=8 form=sides x=70 gap=0.35 path=arc side=1 turn=70 drop=shield
+
+  # a breath: Hangar 9, where it all began
+  at 94  wave e5_mote n=6 form=v x=360 spacing=60 path=sine amp=30 freq=0.3 speed=130
+  at 97  text e5_06_r4
+  at 99  pickup cube x=360 item=e5_c15
+  at 102 scroll 50
+  # the vault deck: four turrets guard the hatch to Voss's vault - all four must fall before they pass
+  at 103 ground e5_dockgun n=4 form=line x=360 spacing=150 drop=key item=e5_key_vault
+  at 106 wave e5_raider n=4 form=column x=360 gap=0.5 path=dive turn=60
+  at 112 wave e5_prism x=200 path=hover stop=200 wait=5
+  at 113 wave e5_prism x=520 path=hover stop=200 wait=5 diff=3
+  at 118 scroll 80
+  at 120 wave e5_cantor x=360 path=hover stop=150 wait=8
+  at 125 pickup credits x=200 value=1300
+  at 128 wave e5_spear n=6 form=v x=360 spacing=55 path=dive turn=40
+  at 134 wave e5_raider n=6 form=column x=600 gap=0.4 path=orbit cx=360 cy=260 r=150 dur=4 side=-1
+
+  # a breath, then the dock ring
+  at 140 wave e5_mote n=8 form=grid cols=4 x=360 spacing=90 dy=60 path=straight speed=120
+  at 144 text e5_06_r5
+  at 146 ground e5_dockgun x=140 n=2 form=column gap=2
+  at 146 ground e5_dockgun x=580 n=2 form=column gap=2
+  at 148 wave e5_enforcer x=360 path=hover stop=140 wait=8
+  at 154 wave e5_petal n=8 form=column x=620 gap=0.3 path=orbit cx=360 cy=280 r=150 dur=5 side=-1
+  at 160 pickup cube x=520 item=e5_c16
+  at 162 wave e5_shard n=10 form=column x=100 gap=0.18 path=swoop side=1 cx=360 cy=340 dur=3.4 mirror=1
+  at 170 wave e5_lantern n=2 form=line x=360 spacing=340 path=hover stop=150 wait=7
+  at 176 pickup credits x=360 value=1500
+  at 178 wave e5_raider n=8 form=random range=600 gap=0.35 path=dive turn=50 drop=credits value=2000
+  at 186 wave e5_enforcer x=360 path=hover stop=140 wait=7 diff=3
+  at 188 wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
+  at 196 wave e5_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=220
+  at 204 text e5_06_r6
+  at 208 end

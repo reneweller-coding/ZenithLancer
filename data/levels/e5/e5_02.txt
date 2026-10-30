@@ -1,0 +1,93 @@
+# Episode 5, mission 2 (fork A): a canyon in the lattice floor of the Crown. Crystal towers line its walls,
+# knots of the lattice sit in its bed, weavers string walls of light across it.
+
+level e5_02
+  title "Gitterschlucht"
+  episode 5
+  theme lattice
+  music e5_b
+  scroll 70
+  length 215
+  next e5_04
+  map 0.18 0.28
+  briefing e5_02_brief
+
+  at 1   text e5_02_r1
+  at 2   ground e5_spire x=90
+  at 2   ground e5_spire x=630
+  at 4   wave e5_shard n=6 form=column x=360 gap=0.3 path=dive turn=70
+  at 8   wave e5_mote n=8 form=v x=360 spacing=50 path=sine amp=40 freq=0.4 speed=140
+  at 12  ground e5_spire x=90
+  at 12  ground e5_spire x=630
+  at 13  wave e5_petal n=6 form=column x=360 gap=0.3 path=swoop side=1 cx=360 cy=320 dur=4.5
+  at 17  ground e5_node x=360
+  at 19  wave e5_shard n=8 form=random range=500 gap=0.3 path=dive turn=60 diff=3
+  at 22  ground e5_spire x=90
+  at 22  ground e5_spire x=630
+  at 23  wave e5_weaver x=360 path=hover stop=140 wait=6
+  at 27  pickup credits x=360 value=1000
+  at 29  text e5_02_r2
+  at 30  wave e5_moth n=4 form=column x=150 gap=0.6 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
+  at 36  wave e5_mote n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=130 drop=credits value=1500
+  at 40  pickup cube x=600 item=e5_c04
+
+  # the canyon opens: a breath over the lattice bed
+  at 44  ground e5_node n=2 form=line x=360 spacing=300
+  at 48  wave e5_petal n=5 form=arc x=360 spacing=40 path=sine amp=50 freq=0.3 speed=140
+  at 54  ground e5_spire x=90
+  at 54  ground e5_spire x=630
+  at 55  wave e5_spear n=4 form=line x=360 spacing=150 path=dive turn=60
+  at 60  wave e5_weaver x=360 path=hover stop=150 wait=7
+  at 61  wave e5_weaver x=200 path=hover stop=180 wait=7 diff=3
+  at 62  wave e5_prism x=360 path=hover stop=230 wait=5 diff=3
+  at 66  obstacle e5_crystal x=200 path=drift speed=50
+  at 66  obstacle e5_crystal x=520 path=drift speed=55
+  at 70  wave e5_shard n=12 form=sides x=70 gap=0.3 path=arc side=1 turn=60
+  at 74  pickup credits x=160 value=1100
+  at 76  text e5_02_r3
+  at 78  ground e5_spire x=90 n=2 form=column gap=2
+  at 79  ground e5_spire x=630 n=2 form=column gap=2
+  at 80  wave e5_lantern x=360 path=hover stop=150 wait=8
+  at 86  wave e5_moth n=6 form=column x=120 gap=0.5 path=swoop side=1 cx=380 cy=230 dur=5
+  at 92  wave e5_mote n=12 form=random range=600 gap=0.25 path=zigzag amp=60 freq=0.5
+  at 96  pickup cube x=120 item=e5_c05
+
+  # the narrows: towers on both walls and a knot in the middle, the weavers' walls in between
+  at 99  pickup shield x=360
+  at 100 scroll 55
+  at 101 text e5_02_r4
+  at 102 ground e5_node x=360
+  at 103 ground e5_spire x=90 n=2 form=column gap=2.4
+  at 105 ground e5_spire x=630 n=2 form=column gap=2.4
+  at 106 wave e5_weaver x=200 path=hover stop=130 wait=8
+  at 110 wave e5_weaver x=520 path=hover stop=170 wait=8 diff=3
+  at 111 wave e5_prism x=520 path=hover stop=200 wait=5
+  at 112 wave e5_shard n=6 form=column x=360 gap=0.4 path=dive turn=90 diff=3
+  at 121 wave e5_petal n=8 form=column x=100 gap=0.3 path=swoop side=1 cx=380 cy=260 dur=4.5
+  at 124 pickup credits x=360 value=1200
+  at 125 pickup shield x=200
+  at 128 scroll 70
+  at 130 wave e5_cantor x=360 path=hover stop=160 wait=8
+  at 134 wave e5_spear n=6 form=v x=360 spacing=60 path=dive turn=50
+
+  # a breath: the canyon floor glows
+  at 142 obstacle e5_crystal n=3 form=random range=520 gap=1.2 path=drift speed=55
+  at 146 wave e5_mote n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.3 speed=120
+  at 150 ground e5_node n=3 form=line x=360 spacing=230
+  at 153 wave e5_prism n=2 form=line x=360 spacing=300 path=hover stop=200 wait=6
+  at 158 pickup cube x=360 item=e5_c06
+  at 160 wave e5_shard n=10 form=random range=640 gap=0.22 path=dive turn=40 speed=290
+  at 166 text e5_02_r5
+
+  # the canyon's end: a choir of the lattice
+  at 168 ground e5_spire x=90 n=2 form=column gap=2
+  at 168 ground e5_spire x=630 n=2 form=column gap=2 diff=3
+  at 170 wave e5_cantor n=2 form=line x=360 spacing=320 path=hover stop=150 wait=9
+  at 174 wave e5_weaver x=360 path=hover stop=120 wait=9
+  at 178 wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=360 cy=280 dur=5 mirror=1 diff=3
+  at 182 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=30 freq=0.3 speed=130 drop=credits value=2000
+  at 186 pickup credits x=540 value=1400
+  at 190 wave e5_spear n=6 form=column x=200 gap=0.4 path=dive turn=60 mirror=1
+  at 198 wave e5_mote n=12 form=random range=600 gap=0.3 path=dive turn=40 speed=220
+  at 206 text e5_02_r6
+  at 210 end

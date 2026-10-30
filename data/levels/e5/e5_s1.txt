@@ -1,0 +1,59 @@
+# Episode 5, secret mission 1: in the dust behind the Crown's oldest ring floats the first seed - the first
+# Tessellate unit ever built, soldered by hand, now wrapped in the most delicate growth in the system.
+
+level e5_s1
+  title "Der erste Keim"
+  episode 5
+  theme nebula
+  music secret
+  scroll 60
+  length 165
+  next e5_05
+  issecret 1
+  map 0.37 0.16
+  briefing e5_s1_brief
+  debrief e5_s1_after
+
+  at 1   text e5_s1_r1
+  at 3   wave e5_seedling n=8 form=line x=360 spacing=80 path=sine amp=40 freq=0.4 speed=130
+  at 8   obstacle e5_crystal n=3 form=random range=560 gap=1.0 path=drift speed=45
+  at 12  wave e5_petal n=8 form=column x=100 gap=0.3 path=orbit cx=360 cy=260 r=160 dur=5 side=1 mirror=1
+  at 18  wave e5_prism x=360 path=hover stop=200 wait=6
+  at 22  wave e5_mote n=10 form=grid cols=5 x=360 spacing=80 dy=60 path=straight speed=110 drop=credits value=1800
+  at 26  pickup cube x=200 item=e5_c27
+  at 28  text e5_s1_r2
+  at 30  wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
+  at 36  wave e5_seedling n=12 form=random range=600 gap=0.3 path=chase turn=60 dur=2
+  at 42  wave e5_cantor x=360 path=hover stop=150 wait=9
+  at 46  pickup credits x=520 value=1600
+
+  # a breath in the oldest dust
+  at 50  obstacle e5_crystal n=4 form=random range=600 gap=0.8 path=drift speed=45
+  at 55  wave e5_petal n=6 form=arc x=360 spacing=40 path=sine amp=50 freq=0.3 speed=130
+  at 59  text e5_s1_r3
+  at 61  wave e5_streak n=6 form=random range=600 gap=0.45 path=straight speed=420
+  at 65  wave e5_lantern n=2 form=line x=360 spacing=340 path=hover stop=150 wait=8
+  at 71  wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=280
+  at 76  pickup cube x=360 item=e5_c28
+  at 78  wave e5_moth n=6 form=column x=100 gap=0.4 path=orbit cx=360 cy=260 r=160 dur=4 side=1
+  at 84  wave e5_prism n=3 form=line x=360 spacing=220 path=hover stop=190 wait=6
+  at 90  pickup credits x=200 value=1800
+
+  # the growth thickens round the seed
+  at 94  text e5_s1_r4
+  at 96  wave e5_seedling n=10 form=column x=360 gap=0.3 path=sine amp=120 freq=0.3 speed=120
+  at 100 wave e5_cantor n=2 form=line x=360 spacing=330 path=hover stop=160 wait=8
+  at 106 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=30 freq=0.3 speed=130 drop=credits value=2200
+  at 112 obstacle e5_crystal n=3 form=random range=560 gap=1.0 path=drift speed=50
+  at 116 pickup cube x=520 item=e5_c29
+  at 120 wave e5_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=210
+
+  # the first seed
+  at 128 text e5_s1_r5
+  at 130 pickup shield x=360
+  at 131 pickup credits x=360 value=2000
+  at 132 music boss
+  at 133 warn
+  at 134 boss e5_firstseed
+  at 136 text e5_s1_r6
+  at 140 end

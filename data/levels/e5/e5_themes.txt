@@ -1,0 +1,19 @@
+# Episode 5's own sky: low over the sun. The shared "corona" theme is so bright that the additive bullets and
+# the glowing swarm vanish on it; this one keeps the sun's surface dark red with glowing plasma veins, so
+# gold and magenta stay readable. (It may move into data/themes.txt; the missions only need the name.)
+
+theme e5_corona
+  sky #1c0602
+  fog #3a0c04 0.0012
+  sun -0.2 -0.95 -0.2
+  suncolor #ffc890 1.0
+  ambient #6a3020 #2a0802
+  relief 70
+  scale 0.0026
+  ridge 0.7
+  ground #200602 #421004 #6c2008 #a04a14
+  water -0.2 #e83a06 0.5
+  glow #ff6a20 0.08
+  clouds #ff5a20 0.1
+  exposure 0.95
+  bloom 1.0

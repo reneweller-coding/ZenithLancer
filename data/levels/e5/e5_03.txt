@@ -1,0 +1,76 @@
+# Episode 5, mission 3 (fork B): low over the sun's surface through a plasma storm. Corona ghosts hunt in the
+# flares, mirror sails sweep beams across the storm, and its eye holds three lanterns.
+
+level e5_03
+  title "Plasmasturm"
+  episode 5
+  theme e5_corona
+  music e5_b
+  scroll 90
+  length 210
+  next e5_04
+  arcade 1
+  map 0.18 0.72
+  briefing e5_03_brief
+
+  at 1   text e5_03_r1
+  at 3   wave e5_wisp n=4 form=line x=360 spacing=150 path=chase turn=50 dur=2.4 speed=190
+  at 8   wave e5_petal n=6 form=column x=100 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
+  at 14  wave e5_mote n=8 form=random range=600 gap=0.3 path=zigzag amp=60 freq=0.5
+  at 18  wave e5_lantern x=360 path=hover stop=160 wait=7
+  at 22  wave e5_wisp n=4 form=sides x=80 gap=0.6 path=chase turn=60 dur=2.2
+  at 26  wave e5_shard n=8 form=v x=360 spacing=50 path=dive turn=60 diff=3
+  at 28  pickup credits x=200 value=1000
+  at 30  text e5_03_r2
+  at 32  wave e5_sail x=0 path=strafe side=1 y=110 speed=80
+  at 35  wave e5_mote n=10 form=grid cols=5 x=360 spacing=80 dy=60 path=straight speed=130 drop=shield
+  at 41  wave e5_petal n=6 form=column x=620 gap=0.3 path=orbit cx=360 cy=260 r=150 dur=5 side=-1
+  at 44  pickup cube x=480 item=e5_c07
+
+  # a breath in a calm pocket of the storm
+  at 47  wave e5_mote n=6 form=line x=360 spacing=100 path=sine amp=30 freq=0.3 speed=120
+  at 52  text e5_03_r3
+  at 53  scroll 130
+  at 54  wave e5_wisp n=6 form=random range=600 gap=0.5 path=chase turn=55 dur=2.4
+  at 58  wave e5_spear n=4 form=column x=180 gap=0.5 path=dive turn=60 mirror=1
+  at 63  wave e5_sail x=0 path=strafe side=-1 y=150 speed=85
+  at 66  wave e5_lantern x=200 path=hover stop=150 wait=7
+  at 67  wave e5_lantern x=520 path=hover stop=190 wait=7 diff=3
+  at 72  wave e5_wisp n=5 form=column x=360 gap=0.5 path=chase turn=50 dur=2.6
+  at 76  pickup credits x=360 value=1200
+  at 79  wave e5_moth n=4 form=line x=360 spacing=150 path=sine amp=40 freq=0.25 speed=120
+  at 84  scroll 90
+  at 86  wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=290
+  at 92  pickup cube x=160 item=e5_c08
+
+  # flare curtains: two sails cross the storm at different heights
+  at 95  text e5_03_r4
+  at 97  wave e5_sail x=0 path=strafe side=1 y=100 speed=75
+  at 99  wave e5_sail x=0 path=strafe side=-1 y=200 speed=75
+  at 102 wave e5_petal n=8 form=column x=360 gap=0.35 path=sine amp=90 freq=0.35 speed=150
+  at 108 wave e5_wisp n=4 form=line x=360 spacing=160 path=chase turn=45 dur=2.4 diff=3
+  at 112 wave e5_mote n=10 form=random range=600 gap=0.3 path=dive turn=40 speed=200 drop=credits value=1600
+  at 118 pickup credits x=540 value=1300
+
+  # a breath: the flares settle
+  at 122 wave e5_mote n=6 form=v x=360 spacing=60 path=sine amp=30 freq=0.3 speed=130
+  at 126 text e5_03_r5
+  at 128 wave e5_cantor x=360 path=hover stop=150 wait=8
+  at 132 wave e5_spear n=6 form=v x=360 spacing=60 path=dive turn=50
+  at 138 wave e5_moth n=6 form=column x=120 gap=0.5 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
+  at 144 wave e5_wisp n=6 form=sides x=60 gap=0.5 path=chase turn=55 dur=2.4
+  at 150 wave e5_prism n=2 form=line x=360 spacing=300 path=hover stop=200 wait=6
+  at 154 pickup cube x=360 item=e5_c09
+  at 158 wave e5_shard n=10 form=column x=100 gap=0.18 path=swoop side=1 cx=360 cy=340 dur=3.4 mirror=1
+
+  # the eye of the storm: three lanterns hold it open
+  at 166 text e5_03_r6
+  at 168 scroll 60
+  at 169 wave e5_lantern n=3 form=arc x=360 spacing=110 path=hover stop=150 wait=10 drop=credits value=2500
+  at 175 wave e5_wisp n=4 form=line x=360 spacing=160 path=chase turn=45 dur=2.2
+  at 180 wave e5_petal n=8 form=column x=100 gap=0.3 path=orbit cx=360 cy=300 r=160 dur=5 side=1 mirror=1
+  at 186 wave e5_cantor x=360 path=hover stop=130 wait=8 diff=3
+  at 188 pickup credits x=360 value=1500
+  at 192 wave e5_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=220
+  at 200 text e5_03_r7
+  at 205 end
