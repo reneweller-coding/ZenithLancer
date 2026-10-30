@@ -1,11 +1,15 @@
-"""Makes the quiet layer of every stage piece: a cover of assets/music/<piece>.ogg (and <piece>_2.ogg) by ACE-Step
-1.5 (local, the AudioGenerator's model) with the same length and structure but a sparse arrangement, written as
-assets/music/<piece>_low.ogg. The game plays both in step and fades between them by how much happens on the field
-(Audio::intensity): the quiet layer while the field is calm, the full piece when it fills.
+"""Makes the quiet layer of every stage piece, assets/music/<piece>_low.ogg beside <piece>.ogg (and <piece>_2.ogg).
+The game plays both in step and fades between them by how much happens on the field (Audio::intensity): the quiet
+layer while the field is calm, the full piece when it fills.
+
+The quiet layer is the piece itself through a zero-phase low pass (the loop wrapped round, so the seam stays clean):
+the two are the same music, sample for sample in phase, and the fade opens a filter instead of laying two different
+arrangements over each other. --cover makes ACE-Step covers instead (the first try, 30.10.2026: they kept the energy,
+CLAP heard nothing calmer, and two arrangements at once blur).
 
     G:\\Tools\\PythonSkripts\\AudioGenerator\\venv\\Scripts\\python.exe tools\\make_layers.py [--force] [--only e1_a ...]
+        [--cover]   (on the GPU, tools/gpu_queue.py)
 
-Runs the model once for all files (GPU, ~23 GB): no other GPU job and no game instance beside it (tools/gpu_queue.py).
 Needs ffmpeg with libvorbis on the PATH.
 """
 import argparse
@@ -29,14 +33,25 @@ STAGE = re.compile(r"^(e[1-5]_[ab]|secret)(_2)?$")
 LOW_STYLE = ("stripped back sparse arrangement of the same piece, the melody kept on soft synths, warm pads and a "
              "pulsing bass, light hi-hats instead of the full drum kit, no heavy drums, calmer and quieter, "
              "instrumental video game background music")
-STRENGTH = 0.55      # how close to the source (structure and melody kept, the arrangement thinned)
-LOW_DB = -3.0        # the quiet layer under the full piece's loudness
+STRENGTH = 0.55      # covers: how close to the source (structure and melody kept, the arrangement thinned)
+LOW_DB = -3.0        # covers: the quiet layer under the full piece's loudness
+CUTOFF = 700.0       # the low pass: the bass and the body stay, the leads and the cymbals go
+
+
+def filtered(x, fs):
+    """The piece through a zero-phase low pass, the loop wrapped round so its start and end meet as before."""
+    from scipy.signal import butter, sosfiltfilt
+    pad = min(len(x) // 2, int(2.0 * fs))
+    wrapped = np.concatenate([x[-pad:], x, x[:pad]])
+    y = sosfiltfilt(butter(3, CUTOFF, btype="low", fs=fs, output="sos"), wrapped, axis=0)
+    return y[pad:pad + len(x)].astype(np.float32)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true", help="make the layers again")
     ap.add_argument("--only", nargs="*", help="only these pieces (e1_a, secret_2 ...)")
+    ap.add_argument("--cover", action="store_true", help="ACE-Step covers instead of the low pass (GPU)")
     args = ap.parse_args()
     spec = json.load(open(os.path.join(ROOT, "tools", "music.json"), encoding="utf-8"))
     cues = {c["id"]: c for c in spec["cues"]}
@@ -53,6 +68,14 @@ def main():
         todo.append((name, m.group(1), path, out))
     if not todo:
         print("every layer is there")
+        return
+    if not args.cover:
+        for name, cue, path, out in todo:
+            x, fs = sf.read(path, dtype="float32", always_2d=True)
+            # No gain: the same level in the low band, so the fade between the two keeps the bass steady.
+            make_music.encode(filtered(x, fs), fs, out, 4)
+            print("%-10s low pass" % name, flush=True)
+        print("layers: %d made" % len(todo))
         return
 
     sys.path.insert(0, AUDIOGEN)

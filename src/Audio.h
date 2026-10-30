@@ -3,7 +3,8 @@
  * @brief The sound: effects synthesised at the start (no sample files: the guns, hits, explosions, pickups, the
  *        boss siren, the menus), panned by where they happen on the field; the music, streamed from
  *        assets/music/<name>.ogg (or .mp3, .wav) with a crossfade between pieces and, where a piece has a quiet
- *        layer (<name>_low.ogg), a fade between the two by how much happens; and the voices of the story
+ *        layer (<name>_low.ogg, the piece through a low pass), a fade between the two by how much happens (a filter
+ *        opening as the field fills); and the voices of the story
  *        (assets/voice/<language>/<key>.ogg), with the music ducking under them. Without an audio device (--mute)
  *        every call does nothing.
  * @author Rene Weller

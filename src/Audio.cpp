@@ -543,7 +543,9 @@ void Audio::update( float dt )
         if ( !m_has[i] ) continue;
         float goal = i == m_cur ? 1.0f : 0.0f;
         m_gain[i] += clampf( goal - m_gain[i], -dt / 1.2f, dt / 1.2f );
-        float full = m_hasLow[i] ? std::sqrt( m_mix ) : 1.0f, low = std::sqrt( 1.0f - m_mix );
+        // The quiet layer is the same music through a low pass, in phase: linear gains keep the bass steady and
+        // the fade opens the filter.
+        float full = m_hasLow[i] ? m_mix : 1.0f, low = 1.0f - m_mix;
         SetMusicVolume( m_music[i], m_gain[i] * m_musicVolume * m_duck * full );
         UpdateMusicStream( m_music[i] );
         if ( m_hasLow[i] )

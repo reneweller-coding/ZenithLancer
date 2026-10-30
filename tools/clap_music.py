@@ -84,7 +84,8 @@ def main():
     lines = []
     for path in sorted(glob.glob(os.path.join(ROOT, "assets", "music", "*.ogg"))):
         name = os.path.basename(path)[:-4]
-        cue = name[:-2] if name.endswith("_2") else name
+        cue = name[:-4] if name.endswith("_low") else name
+        cue = cue[:-2] if cue.endswith("_2") else cue
         if cue not in cues or (only and cue not in only):
             continue
         wins, mono, sr = windows(path)

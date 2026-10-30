@@ -58,8 +58,9 @@ mission and writes the frame rates to `<user>/bench.txt`.
 The story's radio calls, briefings, debriefings, intros and endings are spoken (`tools/make_voices.py`, Qwen3-TTS
 locally, a designed voice per figure, `assets/voice/<language>/<key>.ogg`); `data/lang/speakers.txt` says who has
 which voice and portrait (`assets/portraits`, FLUX.2 [klein] locally). The music ducks under a voice. Stage pieces
-have a quiet layer (`<piece>_low.ogg`, an ACE-Step cover of the same length) that plays in step with the full
-piece; the game fades between them by how much is on the field. The calm pieces (story, plan) have a spec of their
+have a quiet layer (`<piece>_low.ogg`, the piece through a zero-phase low pass, `tools/make_layers.py`) that plays in
+step with the full piece; the game fades between them by how much is on the field, like a filter opening. (ACE-Step
+covers were tried first: they kept the energy and blurred when laid over the piece.) The calm pieces (story, plan) have a spec of their
 own (`tools/music_calm.json`): a spec's style goes in front of every one of its cues.
 
 ## Difficulties (`data/difficulty.txt`)
