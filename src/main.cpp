@@ -395,6 +395,7 @@ int main( int argc, char **argv )
         else if ( a == "--difficulty" ) o.m_difficulty = atoi( next().c_str() );
         else if ( a == "--arcade" ) o.m_mode = "arcade";
         else if ( a == "--auto" ) o.m_auto = true;
+        else if ( a == "--pilots" ) o.m_pilots = std::max( 1, std::min( 2, atoi( next().c_str() ) ) );
         else if ( a == "--shot" ) o.m_shot = next();
         else if ( a == "--at" ) o.m_at = (float)atof( next().c_str() );
         else if ( a == "--gallery" ) o.m_gallery = next();
@@ -446,6 +447,7 @@ int main( int argc, char **argv )
         std::error_code e;
         for ( const char *f : { "slot1.txt", "slot2.txt", "slot3.txt", "profile.txt", "settings.txt", "feats.txt" } )
             std::filesystem::remove( std::filesystem::path( home ) / f, e );
+        std::filesystem::remove_all( std::filesystem::path( home ) / "replays", e );
     }
     App app;
     if ( !app.init( o ) ) return 1;

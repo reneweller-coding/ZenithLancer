@@ -26,9 +26,9 @@ PORTRAITS = {
     "vey": "Nadia Vey, a woman test pilot in her early thirties, short dark brown hair pushed back, a thin scar on "
            "her chin, a dark grey flight suit with an orange collar, a helmet held under her arm, calm stubborn eyes, "
            "cool blue rim light. " + STYLE,
-    "orrin": "The on-board mind of a fighter craft: a ring of soft blue light inside a dark cockpit instrument panel, "
-             "fine glowing circuitry around it, a single calm point of light in the centre like an eye, no person, "
-             "no face, flat front view. " + STYLE,
+    "orrin": "A fighter craft's on-board computer seen inside the cockpit: a round glowing blue lens set flush into a "
+             "dark curved instrument panel, rows of small switches and tiny displays around it, a calm point of light "
+             "in the lens like an eye, no person, no robot, no helmet, no body, no head, flat front view. " + STYLE,
     "quill": "Bastian Quill, a smuggler and trader in his fifties, a broad grin, a trimmed grey-flecked beard, a "
              "battered long coat of patched burgundy leather with brass buttons, several rings, a feather tucked "
              "behind his ear, warm amber rim light. " + STYLE,
@@ -94,7 +94,7 @@ def main():
             del pipe
             torch.cuda.empty_cache()
     pick_path = os.path.join(ROOT, "tools", "portraits_pick.json")
-    pick = json.load(open(pick_path, encoding="utf-8")) if os.path.exists(pick_path) else {}
+    pick = {k: v for k, v in json.load(open(pick_path, encoding="utf-8")).items() if k != "_"} if os.path.exists(pick_path) else {}
     for n in names:
         src = os.path.join(WORK, "%s_%d.png" % (n, int(pick.get(n, 0))))
         if os.path.exists(src):

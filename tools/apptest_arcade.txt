@@ -3,7 +3,7 @@
 expect:title
 accept
 expect:main
-down down accept        # Arcade für zwei
+down down down accept   # Arcade für zwei
 expect:difficulty
 accept                  # Normal
 expect:pilots
@@ -34,7 +34,7 @@ accept                  # the name as it stands
 until:scores:50
 back
 until:main:50
-down accept             # Arcade for one
+down down accept        # Arcade for one
 expect:difficulty
 accept
 expect:pilots
@@ -50,9 +50,9 @@ accept
 until:scores:50
 back
 until:main:50
-down down down down down accept   # Optionen (Bossjagd is still closed and skipped)
+down down down down down down down down down down accept   # Optionen (Bossjagd is still closed and skipped)
 expect:options
-down down down down down down down down down down accept   # Tasten und Knöpfe
+down down down down down down down down down down down down down down down down down accept   # Tasten und Knöpfe
 expect:controls
 back
 expect:options

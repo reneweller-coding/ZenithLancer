@@ -15,6 +15,8 @@
 #include <raylib.h>
 
 #include <algorithm>
+#include <ctime>
+#include <filesystem>
 #include <cmath>
 
 namespace zenith
@@ -68,6 +70,9 @@ void App::startMission( const std::string &name )
         time_t now = time( nullptr );
         strftime( stamp, sizeof( stamp ), "%Y%m%d-%H%M%S", localtime( &now ) );
         m_recPath = userDir() + "replays/" + stamp + "_" + name + ReplayExt;
+        // Two missions begun in the same second (a quick restart) keep two files.
+        for ( int n = 2; std::filesystem::exists( m_recPath ); ++n )
+            m_recPath = userDir() + "replays/" + stamp + "_" + name + "_" + std::to_string( n ) + ReplayExt;
     }
     m_replaying = false;
     m_bossHit = false;
@@ -402,7 +407,7 @@ void App::play( float dt )
     // A replay runs to its last step (the outro is in it), then back to the list.
     if ( m_replaying )
     {
-        if ( m_replayEnd )
+        if ( m_replayEnd && !m_paused )
         {
             m_outroT = std::max( m_outroT, 0.0f ) + dt;
             if ( m_outroT > 1.5f )

@@ -329,7 +329,7 @@ void App::mods( float dt )
     heading( "Mods", tf( "Eigene Daten in %s", ( userDir() + "mods" ).c_str() ) );
     static std::vector<ModInfo> list;
     static std::vector<std::string> before;
-    if ( m_t < 0.01f )
+    if ( m_enter )
     {
         list = findMods();
         before = m_set.m_mods;
@@ -454,7 +454,7 @@ void App::survivalMenu( float dt )
 
 void App::saveReplay( bool won )
 {
-    if ( m_replaying || !m_rec.active() || m_recPath.empty() || !m_opt.m_test.empty() || m_opt.m_bench ) return;
+    if ( m_replaying || !m_rec.active() || m_recPath.empty() || m_opt.m_bench ) return;
     long long score = 0;
     for ( const Player &p : m_world.m_players )
         if ( p.m_active ) score += p.m_score;
@@ -501,6 +501,7 @@ void App::startReplay( const ReplayHeader &h )
 void App::stopReplay()
 {
     m_replaying = false;
+    m_paused = false;
     m_survival = false;
     m_audio.voice( "", "" );
     newDemo();
@@ -511,7 +512,7 @@ void App::replays( float dt )
 {
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
-    if ( m_t < 0.01f ) m_replayList = listReplays( userDir() + "replays" );
+    if ( m_enter ) m_replayList = listReplays( userDir() + "replays" );
     heading( "Wiederholungen", tf( "%d Aufnahmen", (int)m_replayList.size() ) );
     float pw = std::min( W - 80 * k, 1500 * k );
     Rectangle r = { W * 0.5f - pw * 0.5f, H * 0.2f, pw, H * 0.68f };

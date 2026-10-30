@@ -46,6 +46,7 @@ struct Options
     std::string m_screen;               ///< --screen: --shot takes a picture of this screen instead
     std::string m_test;                 ///< --apptest: a script of presses and expectations (docs in main.cpp)
     bool        m_bench = false;        ///< --bench: fly the heavy missions and measure the frame times
+    int         m_pilots = 1;           ///< --pilots 2: --level flies with two pilots
     bool        m_benchAll = false;     ///< --bench all: at each graphics setting
 };
 
@@ -190,6 +191,7 @@ private:
     int              m_sel = 0;
     int              m_sel2 = 0;
     float            m_t = 0.0f;              ///< seconds on this screen
+    bool             m_enter = false;         ///< the screen's first frame (go() sets it, its first frame clears it)
     std::deque<std::string> m_stories;        ///< story entries to show
     float            m_storyT = 0.0f;
     bool             m_running = true;

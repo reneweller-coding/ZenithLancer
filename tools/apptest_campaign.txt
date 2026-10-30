@@ -33,7 +33,7 @@ accept                  # the results: new log crystals follow
 until:story:50
 back                    # skip them
 expect:plan
-down down down down accept   # save and main menu
+down down down down down accept   # save and main menu (after the workshop and the second pilot's line)
 until:main:50
 accept                  # Kampagne again
 expect:slots

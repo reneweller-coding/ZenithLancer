@@ -130,7 +130,15 @@ bool App::init( const Options &o )
         if ( m_mode == ModeE::ARCADE && !m_cat.m_arcadeShips.empty() ) m_carry[0] = m_cat.m_arcadeShips[0].m_loadout;
         parseLoadout( m_camp.m_load, o.m_loadout );
         parseLoadout( m_carry[0], o.m_loadout );
-        m_lives[0] = 3;
+        m_lives[0] = m_lives[1] = 3;
+        if ( o.m_pilots > 1 )
+        {
+            // Two pilots with the same gear (pictures of the campaign for two).
+            m_camp.m_coop = m_camp.m_has2 = true;
+            m_camp.m_load2 = m_camp.m_load;
+            m_carry[1] = m_cat.m_arcadeShips.size() > 1 ? m_cat.m_arcadeShips[1].m_loadout : m_carry[0];
+            m_players = 2;
+        }
         startMission( o.m_level );
     }
     return true;
@@ -246,7 +254,19 @@ void App::run()
             m_world.step( in );
             m_view.events( m_world );
             if ( i % 2 == 0 ) m_view.update( m_world, Dt * 2 );
+            // Radio calls show as in play, typed out by the time of the picture.
+            for ( const SimEvent &e : m_world.m_events )
+                if ( e.m_type == EvE::TEXT )
+                    if ( const StoryDef *st = m_cat.story( e.m_name ) )
+                    {
+                        m_radio.clear();
+                        for ( const std::string &l : st->m_text ) m_radio += ( m_radio.empty() ? "" : " " ) + l;
+                        m_radioFrom = st->m_from;
+                        m_radioT = 0;
+                    }
+            m_radioT += Dt;
         }
+        if ( m_radioT < 6.0f ) m_radioT = std::max( m_radioT, 3.0f );
         m_introT = 10;
         m_screen = ScreenE::PLAY;
         // Drawn into a picture of its own (a hidden window's screen cannot be read back reliably).
@@ -298,6 +318,7 @@ void App::run()
 void App::go( ScreenE s )
 {
     m_screen = s;
+    m_enter = true;
     // The difficulty list starts on Normal.
     m_sel = s == ScreenE::DIFFICULTY ? std::min( 2, (int)m_cat.m_difficulties.size() - 1 ) : 0;
     m_sel2 = 0;
@@ -340,6 +361,8 @@ void App::frame( float dt )
     default: break;
     }
     if ( piece ) m_audio.music( piece );
+    // A screen sees its first frame once: one that goes on to another leaves that one its own.
+    ScreenE before = m_screen;
     switch ( m_screen )
     {
     case ScreenE::TITLE: title( dt ); break;
@@ -368,6 +391,7 @@ void App::frame( float dt )
     case ScreenE::MODS: mods( dt ); break;
     case ScreenE::QUIT: m_running = false; break;
     }
+    if ( m_screen == before ) m_enter = false;
     drawToasts( dt );
 }
 
@@ -511,7 +535,7 @@ std::string App::fmt( long long v ) const
     std::string s = std::to_string( v < 0 ? -v : v ), out;
     for ( size_t i = 0; i < s.size(); ++i )
     {
-        if ( i > 0 && ( s.size() - i ) % 3 == 0 ) out += '.';
+        if ( i > 0 && ( s.size() - i ) % 3 == 0 ) out += english() ? ',' : '.';
         out += s[i];
     }
     return ( v < 0 ? "-" : "" ) + out;
@@ -1472,7 +1496,7 @@ void App::scores( float dt )
     const char *names[] = { "Arcade", "Arcade für zwei", "Kampagne", "Kampagne für zwei", "Bossjagd", "Überleben", "Tagesflug" };
     int nd = (int)m_cat.m_difficulties.size();
     int total = 7 * nd;
-    if ( m_t < 0.01f && !m_scoreKey.empty() )
+    if ( m_enter && !m_scoreKey.empty() )
         for ( int i = 0; i < total; ++i )
             if ( std::string( modes[i / nd] ) + "_" + m_cat.m_difficulties[(size_t)( i % nd )].m_name == m_scoreKey ) m_scoreTab = i;
     if ( m_in.left() ) m_scoreTab = ( m_scoreTab + total - 1 ) % total;

@@ -28,6 +28,7 @@ kill
 until:failed:200
 down accept             # this time the whole mission
 until:play:20
+wait wait wait
 pause
 down down accept        # abort: back to the plan
 until:plan:50

@@ -47,7 +47,7 @@ expect:practice
 accept                  # the mission flown before
 accept                  # the whole mission
 until:play:20
-wait
+wait wait wait wait
 pause
 down down accept        # abort: back to practice
 until:practice:50
@@ -57,7 +57,7 @@ down down down down down down accept   # Wiederholungen
 expect:replays
 accept                  # the newest one
 until:play:20
-wait wait
+wait wait wait wait
 pause
 down down accept        # end the replay
 until:replays:50
