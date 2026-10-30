@@ -4,6 +4,7 @@
 
 level e3_06
   title "Aschenschleier"
+  title_en "The Ash Veil"
   episode 3
   theme nebula
   music e3_b

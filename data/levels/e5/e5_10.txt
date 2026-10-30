@@ -3,6 +3,7 @@
 
 level e5_10
   title "Mittagsglut"
+  title_en "Noonfire"
   episode 5
   theme e5_corona
   music e5_a

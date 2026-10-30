@@ -3,6 +3,7 @@
 
 level e5_09
   title "Das Kronenherz"
+  title_en "Heart of the Crown"
   episode 5
   theme lattice
   music e5_b

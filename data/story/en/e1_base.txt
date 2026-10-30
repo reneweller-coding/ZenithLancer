@@ -1,0 +1,74 @@
+intro e1_intro
+  title "The Night of Zenith"
+  from "Solenne system, 2614"
+> Above the north pole of the sun Solenne hangs Zenith Station, the largest shipyard in the system. This is where the Lancer was built: a prototype with open weapon bays, made for a mission that did not exist yet.
+>
+> Tonight the Tessellate comes. The terraforming swarm the Meridian Directorate built to reshape dead moons is now reshaping Zenith Station. Dock by dock, it turns into shimmering lattice.
+>
+> Test pilot Nadia Vey sits in the only ship still ready to launch. On board: ORRIN, the Lancer's on-board mind. Ahead of her: a hangar door that will not open any more.
+
+briefing e1_01_brief
+  title "The Night of Zenith"
+  from "ORRIN"
+> Hangar 9 is sealed off, and the docks belong to the swarm. The only way out runs across the shipyard decks to the outer dock ring. Something large is waiting there. I recommend we don't stop.
+
+radio e1_01_r1
+  from "ORRIN"
+> Engines hot, weapons free. Nadia, the station isn't talking to us any more. It's singing.
+
+radio e1_01_r2
+  from "ORRIN"
+> Swarm gunboats. They're rebuilding themselves out of the shipyard's wreckage. Efficient. Rude.
+
+radio e1_01_r3
+  from "Distress call, Deck 4"
+> ... to all ships ... the Directorate evacuated its officers yesterday ... yesterday ...
+
+radio e1_01_r4
+  from "ORRIN"
+> Dock ring in sight. Full thrust, I'm keeping the sensors open.
+
+radio e1_01_r5
+  from "ORRIN"
+> That's the Dock Warden. Take out the guns on its bow first – while they're firing, you can't reach its core.
+
+cube e1_c01
+  title "Shift Log, Dock 12"
+  from "Forewoman T. Ansel"
+> 03:10 – The welding drones on Dock 12 are working off schedule. Nobody started them. They aren't building anything in our drawings: honeycombs, lattices, all the same colour as the northern lights.
+>
+> 03:40 – Radioed the Directorate. Reply: “Known behaviour, no intervention required.” Known? Since when?
+>
+> 04:05 – The honeycombs are growing on the outer hull now. I'm sending my people to the pods.
+>
+> 04:20 – The pods on Dock 12 are full. I'm staying until the last one is out. The honeycombs are singing now, very softly. It sounds almost beautiful. That's the worst part.
+
+cube e1_c02
+  title "Poster, Hangar 9"
+  from "Lancer Programme"
+> THE LANCER – One hull, a thousand possibilities. Modular weapon bays front and rear, two docking points for escort drones, swappable generator, swappable shield field. Built on Zenith, built for the future.
+>
+> The Lancer Programme is looking for test pilots: resilient, no fear of heights, not superstitious. Experience with experimental drives desirable; a sense of humour is an advantage, as is patience with the on-board intelligence. Apply to programme management, Hangar 9.
+>
+> (Next to it, in ballpoint: “Vey's been flying it for three weeks. Nothing has exploded yet. – Maintenance”)
+>
+> (Below that, in marker: “And who's paying for the modules? – Q.”)
+
+radio e1_01_r6
+  from "Distress call, Hangar 3"
+> Hangar three here. The pods are out. Whoever's still flying out there: please fly faster than those things.
+
+radio e1_01_r7
+  from "ORRIN"
+> Dock ring clear. Setting course for Pyra – the foundries there have docks. And, I hope, people.
+
+cube e1_c03
+  title "All-Hands Call to Zenith Station"
+  from "The Curator"
+> Good evening, staff of Zenith Station. Please remain calm.
+>
+> You built this shipyard with great care. We have looked at it closely, every girder, every weld. Much of it is good. Some of it is wasteful. The docks are too far apart, the halls are too warm, and too many people live in rooms that would be better used for lattice.
+>
+> We are changing that now. It will not hurt if you do not stand in the way. The escape pods in Ring Four are free; we have not touched them, because they do not fit into our plan.
+>
+> Thank you for your work. It was a good beginning.

@@ -3,6 +3,7 @@
 
 level e2_08
   title "Marisol"
+  title_en "Marisol"
   episode 2
   theme city
   music e2_b

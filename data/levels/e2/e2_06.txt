@@ -4,6 +4,7 @@
 
 level e2_06
   title "Orbitalanker"
+  title_en "Orbital Anchor"
   episode 2
   theme space
   music e2_b

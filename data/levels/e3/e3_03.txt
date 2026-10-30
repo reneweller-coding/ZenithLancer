@@ -3,6 +3,7 @@
 
 level e3_03
   title "Jagdsaison"
+  title_en "Hunting Season"
   episode 3
   theme space
   music e3_a

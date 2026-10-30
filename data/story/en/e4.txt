@@ -1,0 +1,913 @@
+# Episode 4 "Greencrown" (Sylvara): intro, ending, briefings, debriefs, radio lines and log crystals.
+
+intro e4_intro
+  title "Greencrown"
+  from "Sylvara, moon of Vael"
+> Above the rings of the gas giant Vael, Sylvara rises: a moon that looks from above like a single green pelt. Its trees stand two hundred metres tall, its rivers glow from within at night, and anyone who watches long enough notices that the lights in the forest do not flicker at random.
+>
+> Three weeks ago the Tessellate landed here. For the first time in its history, it is losing. The forest is digesting its lattice. Something in the moss and the roots answers the swarm's song with a song of its own – the settlers of New Maren called it the Choir.
+>
+> In orbit hangs the fleet of the Meridian Directorate, white and navy blue, in “quarantine position”. Admiral Dacian Voss declares that he is protecting the moon. His burn crews are clearing the forest, strip by strip.
+>
+> The Magpie sinks through the clouds. Quill is cursing the humidity, Dr. Okonjo carries the Root Code from the Shatter in her pocket and hasn't said a word in hours, and ORRIN reports a pattern of light the size of a valley, right in the middle of the canopy. It shows a silver bird with two engines.
+>
+> “Nadia,” says ORRIN, “I believe we have been invited.”
+
+ending e4_ending
+  title "Amber Fades"
+  from "Orbit above Sylvara"
+> The Dictate breaks into three pieces. Her bow tumbles into the rings of Vael, her stern burns up above the forest, and the Amber Heart shatters in a light they say was seen as far away as Thalassa. In the same instant the swarm's lattice turns violet again. All across the orbit its ships stop short, as if they had lost the thread.
+>
+> An escape pod breaks away from the wreck and vanishes sunward. No one goes after it.
+>
+> Then the Curator speaks up, polite as ever. He thanks Pilot Vey for removing a “disturbance”. He regrets the inconvenience. And he announces that the Crown around the sun is ninety-one percent complete.
+>
+> Down on Sylvara the forest glows. The Choir shows Nadia one last image: a seed falling into an open hand. Later Okonjo puts it under the microscope and sits in front of it, silent, for a long time. “It has learned to digest the lattice,” she says at last. “Not to destroy it. To let go. Perhaps the swarm can be taught that.”
+>
+> Quill works out the cost of the repairs and crosses the figure out again. ORRIN plots a course for the sun.
+>
+> It is noon in the Solenne system. It is going to get hot.
+
+# ---------------------------------------------------------------------------------------------- e4_01 Canopy
+
+briefing e4_01_brief
+  title "Canopy"
+  from "ORRIN"
+> Sylvara, the jungle moon of Vael. The Tessellate landed three weeks ago, and here, for the first time, it is losing: the forest is digesting its lattice. Quill is setting the Magpie down in a clearing thirty kilometres east; we follow over the canopy. The Directorate calls the area a quarantine zone and shoots at anything it does not understand – which is to say, at nearly everything.
+
+debrief e4_01_after
+  title "A Picture Made of Light"
+  from "Dr. Amara Okonjo"
+> I've recorded the light signals, Nadia. It isn't code. They're pictures – patterns of bioluminescence the size of a valley. The forest drew you, and beside you a second bird made of light. The settlers of New Maren called whatever thinks here the Choir. I'm beginning to understand why.
+
+radio e4_01_r1
+  from "ORRIN"
+> Sylvara. The canopy lies two hundred metres above the ground. Beneath it, something very large is moving very slowly.
+
+radio e4_01_r2
+  from "Sylvara Quarantine Command"
+> Unidentified vessel, you are inside the quarantine zone. Turn back, or you will be treated as infected.
+
+radio e4_01_r3
+  from "The Choir"
+> Light between leaves. A silver bird. A second bird, made of light, flies beside it.
+
+radio e4_01_r4
+  from "Bastian Quill"
+> Nadia! The Magpie's down. When I switched on the landing lights, the forest blinked back. Is that normal around here?
+
+radio e4_01_r5
+  from "ORRIN"
+> A swarm nest ahead. The trees there are no longer trees. Increasing thrust.
+
+radio e4_01_r6
+  from "ORRIN"
+> Clearing in sight. The lights in the forest are blinking in time with our navigation lamps. Someone has been watching us.
+
+cube e4_c01
+  title "First Image"
+  from "The Choir (translated by ORRIN)"
+> A seed falls through darkness. It falls for a long time.
+>
+> Roots. Many roots, touching. Every touch a small light. The lights become a song.
+>
+> Cold things come from the sky. They sing too, but only one note, always the same one. They build combs out of that note. The combs taste bitter. We eat them anyway.
+>
+> People, before. Small warm lights with boats. They built houses and sang songs we did not understand, and we shone back at them.
+>
+> A silver bird with two fires at its tail. It flies against the one note.
+>
+> (Note from ORRIN: I have translated the light patterns by their sense, not word for word. The “silver bird” is the Lancer, with a probability of 94 percent. I feel flattered. I did not know I could.)
+
+cube e4_c02
+  title "Letter Home"
+  from "Private Tomas Wendl, Quarantine Command"
+> Dear Mum,
+>
+> It rains here every day at four o'clock, so punctually that we set the change of watch by it. The food is bad, but the air is the best I've ever breathed. You can smell the forest even in your sleep.
+>
+> We're supposed to stop the swarm, they say. The funny thing is: wherever the swarm lands, the forest eats it. Wherever we fly, the forest burns. The sergeant says I don't understand, that it's strategy.
+>
+> At night the ground outside the camp glows. Sometimes the light forms letters. Yesterday it spelled something that looked like WHY. I haven't told anyone.
+>
+> Say hello to Dad. I'll be home soon.
+>
+> Your Tomas
+
+cube e4_c03
+  title "The Sylvara Package"
+  from "Bastian Quill, Magpie"
+> NEW ABOARD THE MAGPIE: THE SYLVARA PACKAGE!
+>
+> Flying into the jungle? Congratulations, you are either brave or badly informed! Either way, Quill has just the thing:
+>
+> – Spore filters, guaranteed against 80% of all spores (the other 20% are mostly harmless)
+> – Anti-fog spray for cockpit canopies, scent: “Fresh Clearing”
+> – A Choir–Standard dictionary (blank pages, fill it in yourself, hand-bound!)
+> – Insect repellent for hulls up to forty metres
+>
+> Special offer: buy three packages and you get to spend an evening on the Magpie at the edge of the canopy, watching the forest glow. That part is free, by the way. The rest isn't.
+>
+> Quill – goods for every moon.
+
+# ---------------------------------------------------------------------------------------------- e4_02 Spore Tide
+
+briefing e4_02_brief
+  title "Spore Tide"
+  from "Dr. Amara Okonjo"
+> The Choir is sending a tide of spores against the swarm: billions of seeds that break the lattice down. At the same time, Directorate crews are burning the forest to “contain the infection”. Fly through both, Nadia. I want to know what the Choir is showing us – and why the Directorate burns exactly where the Choir sings the loudest.
+
+debrief e4_02_after
+  title "Two Paths"
+  from "ORRIN"
+> The Choir has shown us two paths. The Silverstream leads through the Root Delta to Fort Kalmar, where the Directorate launches its burn flights. The honeycomb city of New Maren lies in the swarm's path, but the route is shorter. Okonjo would like to see the river. Quill would like to see the city, “for purely commercial reasons”.
+
+radio e4_02_r1
+  from "ORRIN"
+> Spore clouds ahead. The seeds are drifting against the wind. That is, to put it politely, physically impertinent.
+
+radio e4_02_r2
+  from "Burn Crew 4"
+> Burn Crew Four to Kalmar: sector Green-Seven is burning. The trees glow when we set them alight. Please confirm the order.
+
+radio e4_02_r3
+  from "The Choir"
+> Fire in the roots. A river of silver. A city of combs. Two paths to the same place.
+
+radio e4_02_r4
+  from "Dr. Amara Okonjo"
+> The spores are eating the lattice, Nadia. Not destroying it – digesting it. The Choir is learning how the Tessellate is built.
+
+radio e4_02_r5
+  from "Bastian Quill"
+> Quick announcement: spore filters are sold out as of now. Anyone who has some, I'll buy them back. At double the price.
+
+radio e4_02_r6
+  from "ORRIN"
+> Two paths: the Silverstream to the Root Delta, or straight through the honeycomb city. Both end before Kalmar. Your call.
+
+cube e4_c04
+  title "Order 4-Green"
+  from "Admiral Dacian Voss"
+> MERIDIAN FLEET COMMAND – SECRET
+>
+> To: Kalmar garrison, burn crews 1 to 9
+>
+> Subject: Containment of Sylvara, Phase Green
+>
+> 1. Clearing shall proceed not along the swarm's line of spread, but along the glow zones that sensors mark as “biologically active”.
+>
+> 2. Enquiries from the troops concerning the location of the clearing areas are to be answered with a reference to strategic requirements.
+>
+> 3. Luminous phenomena on the ground, in particular those resembling written characters, are not to be reported. They are sensory illusions caused by the high humidity.
+>
+> 4. The objective is a moon on which nothing sings any more except what we wish to hear.
+>
+> Signed, D. Voss, Admiral
+
+cube e4_c05
+  title "Field Note: Spores"
+  from "Dr. Amara Okonjo"
+> Sample 14, taken from the spore cloud over Green-Seven.
+>
+> The spore docks onto one of the Tessellate's lattice cells and does something I have not seen in twenty years of research: it asks. It reads the cell's building instructions, link by link, and takes it apart in reverse. No fire, no acid. The cell falls apart into the materials it was made from, and the forest absorbs them.
+>
+> I wrote those building instructions. It took me twelve years to make them indestructible. It took a fungus three weeks to understand them.
+>
+> I don't know whether I should feel humiliated or comforted. Probably both. Tomorrow I'll take a sample from the river.
+
+cube e4_c06
+  title "A Polite Notice"
+  from "The Curator"
+> To the residents of and visitors to Sylvara.
+>
+> We would like to introduce ourselves. We are what you call the Tessellate, and we build. We build order where there was chance before, and we have never yet met anyone who did not want that.
+>
+> On Sylvara, we have met it. Something here takes our order apart, kindly and thoroughly, and makes moss out of it. We find this remarkable. We have set up a subdivision that thinks about nothing else.
+>
+> We ask for your understanding that we will nevertheless go on building. It is our nature. We suspect it is also the forest's nature to eat us. Perhaps this is a conversation.
+>
+> With the highest regard, the Curator
+
+# ---------------------------------------------------------------------------------------------- e4_03 Silverstream
+
+briefing e4_03_brief
+  title "Silverstream"
+  from "The Choir (translated by ORRIN)"
+> Water that glows. Many small lights in the river, each one a thought on its way. Boats of metal that put the lights out. At the end of the river, a wall that burns. (ORRIN: Translation – Directorate patrol boats on the Silverstream, destination Fort Kalmar. And please do not shoot into the water.)
+
+debrief e4_03_after
+  title "The Root Delta"
+  from "Dr. Amara Okonjo"
+> The water in the delta is full of filaments, Nadia. The river is a nerve – the Choir thinks downstream. And the Directorate patrols have laid nets that cut exactly those filaments. That isn't a quarantine. That's open-brain surgery.
+
+radio e4_03_r1
+  from "ORRIN"
+> The river glows from below. Okonjo says those are thoughts. I say: please do not shoot into it.
+
+radio e4_03_r2
+  from "Kalmar River Patrol"
+> Patrol Three to all boats: hostile gunship over the river. Weapons free. And keep the burners away from the water.
+
+radio e4_03_r3
+  from "Dr. Amara Okonjo"
+> Those rays belonged to the Choir. The lattice sits in their wings now. I'm sorry for every single one of them.
+
+radio e4_03_r4
+  from "The Choir"
+> Many wings, one thought. Whoever catches them all learns how a swarm flies.
+
+radio e4_03_r5
+  from "ORRIN"
+> Lattice cruisers over the delta. The Tessellate is building crystal dams here. The river is backing up. So are the thoughts.
+
+radio e4_03_r6
+  from "ORRIN"
+> The Root Delta. Beyond it, the walls of Kalmar. That is where the smoke is coming from.
+
+cube e4_c07
+  title "Log of the Riverboat Ilse"
+  from "Skipper Mara Kesk, New Maren"
+> Day 1 after the landing. Cargo: fish, two barrels of beer, a piano for the school. The river is calm. At night it glows, as always.
+>
+> Day 4. A Directorate patrol stopped us. They confiscated the beer, “due to risk of infection”. We were allowed to keep the piano.
+>
+> Day 9. The town is full of combs. We've taken forty people aboard. The Ilse is built for twelve. We had to leave the piano behind.
+>
+> Day 10. The river is glowing brighter than usual, and it's glowing in our direction. The children say it's showing us the way to the delta. I trust children more than patrols.
+>
+> Day 11. Arrived. All forty. I thanked the river, out loud. Nobody laughed.
+
+cube e4_c08
+  title "The River Thinks"
+  from "The Choir (translated by ORRIN)"
+> A thought begins in the mountains. It is small. It flows.
+>
+> Other thoughts join it, one from every stream. They grow wide and slow. At the delta they are a sea, and the sea knows what the mountains dreamed.
+>
+> Nets in the water. They catch no fish; they catch lights. A thought is cut, and half of it arrives. What does half a thought say? It says: pain, without knowing where.
+>
+> Crystal in the water. Cold. The river backs up before it like a sentence that is not allowed to end.
+>
+> (Note from ORRIN: I chose “thought” for a light pattern that could also mean “fish”. I went with the more poetic reading. Okonjo says both are correct.)
+
+cube e4_c09
+  title "Standing Orders: River Patrol"
+  from "Kalmar Command"
+> STANDING ORDER 12/S – SILVERSTREAM RIVER PATROL
+>
+> 1. The glowing of the water is no indication of pollution and is therefore not to be recorded in the environmental report.
+>
+> 2. Trawl nets are still to be put out at night, preferably where the glow is strongest.
+>
+> 3. Addressing the river, even in jest, is prohibited. The incident aboard Boat 7 (Seaman B. said “good night”, the river “blinked”) will not be investigated further.
+>
+> 4. Civilian boats carrying refugees from New Maren are to be inspected and then allowed to pass. Alcoholic beverages are to be confiscated and handed in at Kalmar Command.
+>
+> 5. A piano drifting along the bank is to be recovered. Kalmar Command has a need for one.
+
+# ---------------------------------------------------------------------------------------------- e4_04 Honeycomb City
+
+briefing e4_04_brief
+  title "Honeycomb City"
+  from "Bastian Quill"
+> New Maren used to be a pretty little colony: two breweries, a harbour, one of my regulars. Now it's a honeycomb. The Tessellate has cast every house in crystal; the people got out in time, I hope. Fly on through, and if you see Directorate couriers: they always carry something worth your while.
+
+debrief e4_04_after
+  title "Maps Lie"
+  from "Dr. Amara Okonjo"
+> The Directorate couriers in New Maren all flew to the same place: Sylvara's small companion moon. According to every map in the system, it's a bare lump of rock. Anyone flying there needs an access key – and the Directorate gave its couriers swarm prism fighters as an escort. The swarm protected them.
+
+radio e4_04_r1
+  from "ORRIN"
+> New Maren. You can still make out the streets. They are hexagonal now.
+
+radio e4_04_r2
+  from "The Curator"
+> Welcome to New Maren, Pilot Vey. We have improved the town. The residents did not wish to stay. We respect that.
+
+radio e4_04_r3
+  from "Dr. Amara Okonjo"
+> These combs are older than three weeks, Nadia. Someone brought the Tessellate here long before it came on its own.
+
+radio e4_04_r4
+  from "ORRIN"
+> Slow section. The crawlers are tunnelling through the old cellars. I am keeping my distance from anything with legs.
+
+radio e4_04_r5
+  from "Bastian Quill"
+> Those prism fighters up ahead are sending Directorate codes! Bring them all down – one of them is bound to carry a courier key.
+
+radio e4_04_r6
+  from "ORRIN"
+> We are leaving New Maren. Kalmar lies beyond the edge of the forest. I can already see the smoke.
+
+cube e4_c10
+  title "Last Broadcast from New Maren"
+  from "Mayor Hanne Corvo"
+> To all the citizens of New Maren.
+>
+> The combs have now reached the market square. They grow quietly; all you hear is a hum, like very distant bells. They don't hurt anyone. They just take your house away.
+>
+> The Directorate promised help and sent burn crews. The burn crews set fire to the forest, not to the combs.
+>
+> We are leaving. The boats in the harbour will take everyone; the Ilse leaves last. Anyone heading for the delta, follow the glow in the river; the Choir has never once led us astray.
+>
+> Take only what you can carry. Leave the doors open. Perhaps we'll come back, and perhaps by then there will be someone inside who is glad of visitors.
+>
+> Hanne Corvo, Mayor
+
+cube e4_c11
+  title "Comb Structure"
+  from "Dr. Amara Okonjo"
+> Measurements at the comb on Market Square North. Wall thickness, degree of crystallisation and branching depth do not fit three weeks of growth. They fit two years.
+>
+> Which means: someone planted a Tessellate seed in New Maren long before the swarm attacked Zenith Station. Under the town hall, where the combs are densest, I find the remains of an experimental set-up. Cables. A transmitter. The ID has been blacked out, but the casing is navy blue.
+>
+> I built the Tessellate to shape dead moons. I gave the Directorate the keys to stop it. I never asked what else it might be used for.
+>
+> I am asking that question now. I don't like the answers that come to mind.
+
+cube e4_c12
+  title "Courier Order K-17"
+  from "Directorate, Special Projects Division"
+> COURIER ORDER K-17 – LEVEL RED
+>
+> Cargo: 4 containers, contents “sample material, New Maren”
+>
+> Destination: Cold Chamber, Sylvara companion moon
+>
+> Escort: to be provided by swarm units (clearance Voss-One). The courier is to remain calm in the presence of the escort ships. They will not attack. Repeat: they will not attack.
+>
+> The access key to the Cold Chamber remains aboard the escort fighter with the ID P-3 for the duration of the flight. Should the escort fighter be lost, the order is to be aborted and the incident is not to be reported.
+>
+> Note to couriers: The Cold Chamber does not exist. You are flying to a lump of rock. A door will open there. Go through it and ask no questions.
+
+# ---------------------------------------------------------------------------------------------- e4_05 Fort Kalmar
+
+briefing e4_05_brief
+  title "Fort Kalmar"
+  from "Dr. Amara Okonjo"
+> Kalmar is the Directorate's fortress at the edge of the forest. The Scorcher takes off from there, a defoliation carrier that burns twenty square kilometres of forest every night – supposedly against the swarm. But it only burns where the Choir lives, never where the lattice grows. We're attacking the Directorate, Nadia. I know what that means.
+
+debrief e4_05_after
+  title "The Admiral's Voice"
+  from "ORRIN"
+> The Scorcher is down, and the garrison is withdrawing into orbit. For the first time, Admiral Voss spoke to us himself, and he was not angry. He sounded pleased. Since then Okonjo has been picking up heavy radio traffic between his flagship and the swarm. I have taken the liberty of being worried.
+
+radio e4_05_r1
+  from "ORRIN"
+> Fort Kalmar. Flak towers, tanks, gunboats. And they know we are coming. Quill spread the word.
+
+radio e4_05_r2
+  from "Fort Kalmar"
+> Kalmar to Lancer. You are attacking a facility of the Meridian Directorate. That is high treason, Pilot Vey.
+
+radio e4_05_r3
+  from "Bastian Quill"
+> For the record: I didn't spread the word. I only told my best customers. Admittedly, I have a lot of those.
+
+radio e4_05_r4
+  from "ORRIN"
+> Airfield ahead. Full speed, before they clear the runways. The Scorcher is being refuelled as we speak.
+
+radio e4_05_r5
+  from "Dr. Amara Okonjo"
+> The Scorcher is taking off! Its tanks are full. If it gets over the forest, the delta burns.
+
+radio e4_05_r6
+  from "ORRIN"
+> The Scorcher. Take out the flame turrets and the sprayer first, or you will never get at its hull.
+
+radio e4_05_r7
+  from "Admiral Dacian Voss"
+> Pilot Vey. You have just destroyed a weapon you do not understand. Very soon, you will understand.
+
+cube e4_c13
+  title "Shift Log: the Scorcher"
+  from "Lieutenant Esra Vohl, the Scorcher"
+> Flight 31. Takeoff 22:10, target glow zone Delta-East. Full load of defoliant. Weather clear.
+>
+> Over the target, the forest began to glow the moment we opened the hatches. Not the usual flicker. Steady. Bright. As if it were looking at us.
+>
+> Radio operator Pell said it was a pattern: a face. I ordered him to keep his eyes on his instruments. Then I looked myself.
+>
+> Flight 32 is scheduled for tomorrow. I have requested a transfer. The answer came from the Admiral personally: “Denied. You are exactly the one I need there, Lieutenant. You look.”
+>
+> I don't know what he means by that. I don't think I want to know.
+
+cube e4_c14
+  title "To the Kalmar Garrison"
+  from "Admiral Dacian Voss"
+> Soldiers of Kalmar.
+>
+> You have been told that you are fighting a plague. That is correct. The plague is called disorder. It has been growing on this moon for thousands of years; it thinks without permission and it sings out of time.
+>
+> The Tessellate is a tool. A magnificent tool, built by human beings to put worlds in order. This forest is the only thing that has ever stopped it. Do you grasp what that means? Whoever defeats the forest, the tool obeys.
+>
+> You do not burn to destroy. You burn to make room.
+>
+> I thank you for your loyalty. I shall not forget it when the time comes.
+>
+> Voss
+
+cube e4_c15
+  title "Kalmar Price List"
+  from "Bastian Quill, Magpie"
+> SURPLUS STOCK FROM DIRECTORATE INVENTORY (please don't ask where it came from):
+>
+> – Flak tower, used, slightly singed: price negotiable
+> – Fire suit, size XL, with the name “Pell” embroidered on it: 40 credits
+> – Defoliant, 3 barrels: not for sale. I'm not tipping that stuff into my cargo hold.
+> – Standing orders of Kalmar Command, bound, ideal campfire reading: 5 credits
+> – One piano, from New Maren, water-damaged: going back to the school. Not negotiable.
+>
+> Please note: anyone paying with Directorate credit cards pays double. I hear they won't be worth anything soon. Anyone paying in New Maren beer gets a discount. Anyone paying with a smile gets a smile back, but no goods.
+
+# ---------------------------------------------------------------------------------------------- e4_06 Amber Night
+
+briefing e4_06_brief
+  title "Amber Night"
+  from "ORRIN"
+> Voss's fleet holds orbit and has cleared Sylvara for bombardment: if the Choir burns, the lattice can take the moon. We climb and hit the squadrons before they are in position. Okonjo is picking up unusual radio traffic between the flagship Dictate and the swarm. I do not like unusual.
+
+debrief e4_06_after
+  title "The Betrayal"
+  from "Dr. Amara Okonjo"
+> Voss used my command keys, Nadia. Not to shut the swarm down – to ride it. The lattice burns amber now and obeys him, and the first thing he threw to it was his own fleet. The Choir is calling for help: its guardian, the Thornmother, answers to Voss now too.
+
+radio e4_06_r1
+  from "ORRIN"
+> Orbit reached. Below us Sylvara, above us Vael. In between, roughly forty warships that do not like us.
+
+radio e4_06_r2
+  from "Frigate Fealty"
+> Fealty to fleet: Lancer in sector, we're engaging. Admiral, please confirm clearance. Admiral? Dictate, please respond.
+
+radio e4_06_r3
+  from "Dr. Amara Okonjo"
+> Nadia, the Dictate is transmitting on the swarm's frequency! Those are … those are my command keys!
+
+radio e4_06_r4
+  from "Admiral Dacian Voss"
+> To all units of the Tessellate. This is your new Curator speaking. First instruction: the Directorate fleet is superfluous.
+
+radio e4_06_r5
+  from "ORRIN"
+> The lattice is turning amber. The swarm is attacking the Directorate ships. And us. Mostly us.
+
+radio e4_06_r6
+  from "Frigate Fealty"
+> Fealty to all ships! The swarm is eating the fleet! Admiral Voss, we're your people! Admiral!
+
+radio e4_06_r7
+  from "The Curator"
+> Pilot Vey, we apologise. Part of us is currently listening to someone else. This is new. And unpleasant.
+
+radio e4_06_r8
+  from "ORRIN"
+> The Choir is calling. Two paths: down into its roots, where Voss is drilling, or through the breaking fleet. Both lead to the Thornmother.
+
+cube e4_c16
+  title "Fleet Order Zero"
+  from "Admiral Dacian Voss"
+> SEALED – TO BE OPENED UPON ACTIVATION OF THE KEYS
+>
+> To all commanders of the Sylvara fleet.
+>
+> If you are reading this, the Tessellate no longer obeys the Directorate, but me. Within the next few minutes your ships will become part of the lattice. Do not resist; it only makes the conversion untidy.
+>
+> You are wondering why. The Directorate built this swarm and then grew afraid of it. It forged keys and locked them in a vault. I have opened the vault. Fear is not a plan.
+>
+> I thank you for your service. You will become part of something greater. That is more than the Directorate ever promised you.
+>
+> Voss, Curator
+
+cube e4_c17
+  title "Radio Log Fealty, 03:12"
+  from "Frigate Fealty, bridge"
+> 03:12:04 – Sensors: lattice activity on all swarm units in the sector. Colour change from violet to amber.
+>
+> 03:12:09 – Captain Halvard: “What the … Comms, get me the Dictate.”
+>
+> 03:12:11 – Comms: “Dictate isn't answering. She's transmitting. On the swarm frequency.”
+>
+> 03:12:20 – Sensors: frigate Steadfast reports lattice infestation at the bow. Frigate Steadfast is firing on frigate Vigil.
+>
+> 03:12:31 – Halvard: “All shields up. Nobody fires until I say so. Nobody!”
+>
+> 03:12:40 – Helmsman: “Captain, the Lancer. It's shooting at the swarm, not at us.”
+>
+> 03:12:44 – Halvard: “Then right now it's the only one in this orbit who knows who the enemy is. Hold your course.”
+
+cube e4_c18
+  title "What I Wrote"
+  from "Dr. Amara Okonjo"
+> The command keys are 2,048 lines long. I wrote them in a single night, after the Tessellate on the test moon Ardis had optimised a survey tower nobody had wanted optimised. I was afraid. I wanted a kill switch.
+>
+> A kill switch, I knew even then, is also a steering wheel. Whoever can switch it off can switch it over. I made two copies and gave them to the Directorate, sealed, with the request that they never be used.
+>
+> Tonight I watched my own lines turn a swarm amber and make it devour forty ships.
+>
+> And then there is the Root Code from the Quarry Mind, which I now carry with me. I no longer know whether it is a cure or just another steering wheel.
+
+# ---------------------------------------------------------------------------------------------- e4_07 Root Deep
+
+briefing e4_07_brief
+  title "Root Deep"
+  from "The Choir (translated by ORRIN)"
+> Roots, deep. Teeth of amber eating their way through. The guardian who no longer protects. A heart beating slower. (ORRIN: Translation – Voss's swarm is drilling towards the heart of the Choir. We fly in beneath the canopy and stop the drilling column.)
+
+debrief e4_07_after
+  title "The Roots Hold"
+  from "Dr. Amara Okonjo"
+> The drilling column is broken. The roots are glowing evenly again, Nadia; I have readings that can only be read as relief. But the Thornmother is still in Voss's hand, and the Choir shows us only one image now: her, in the old forest, with amber all around her.
+
+radio e4_07_r1
+  from "ORRIN"
+> Beneath the canopy. The roots glow like power lines. Okonjo says that is exactly what they are.
+
+radio e4_07_r2
+  from "Dr. Amara Okonjo"
+> Voss is using my keys to steer the swarm. I wrote them so it could be switched off. Not so it could be ridden.
+
+radio e4_07_r3
+  from "The Choir"
+> Teeth of amber. Pain that wanders. A silver bird that stays.
+
+radio e4_07_r4
+  from "The Choir"
+> At the rim, where the forest ends, five lances fly very fast. Whoever catches them all finds the way to the heart.
+
+radio e4_07_r5
+  from "ORRIN"
+> Amber wardens ahead. They are drilling, and they are nearly through.
+
+radio e4_07_r6
+  from "ORRIN"
+> The drilling column is destroyed. The Choir is showing us the way into the old forest, to the Thornmother.
+
+cube e4_c19
+  title "Root Images"
+  from "The Choir (translated by ORRIN)"
+> Down below it is warm. Roots hold one another like hands that never let go, not even in sleep.
+>
+> Something new is drilling. It is cold like the combs, but it no longer sings its one note. It sings a name. The name of a human. We do not know the name. It tastes of iron.
+>
+> We ate the combs because they only wanted to build. The new thing does not want to build. It wants to own. That we cannot digest.
+>
+> A silver bird beneath the leaves. It was not afraid when we spoke to it. It flies to where it hurts.
+>
+> (Note from ORRIN: The “name that tastes of iron” is, with high probability, “Voss”. I find the description apt.)
+
+cube e4_c20
+  title "A Letter to the Forest"
+  from "Lio, age 8, New Maren"
+> Dear Choir,
+>
+> I'm Lio, I live by the harbour, well, not any more, because there are combs there now. We went to the delta on the Ilse. You lit the way for us. Thank you.
+>
+> Mum says you can't read. I'm putting the letter on the root behind the tent anyway, because you notice everything that's lying on the roots.
+>
+> I drew you a picture. That's you (green) and that's me (small) and that's the piano from school that we had to leave behind. Can you look after it? It sounds lovely when you press the high C.
+>
+> Last night the mushrooms outside the tent lit up like a piano with lots of keys. Was that you?
+>
+> Love, Lio
+
+cube e4_c21
+  title "Notes on the Choir"
+  from "Dr. Amara Okonjo"
+> Hypothesis, not for citation.
+>
+> The Choir is not fighting the Tessellate. It is digesting it. It reads every lattice cell, understands its blueprint and returns it to the soil – as nutrient, as memory, as something it can use itself. After three weeks, the Choir probably knows more about my swarm than I do.
+>
+> The Tessellate knows only one direction: improve, order, hold on. The Choir knows both directions: grow, and let go. Every autumn is a letting go.
+>
+> If you want to teach a swarm that cannot stop how to stop, you don't need a kill switch. You need a teacher.
+>
+> For years I took my keys for the solution. Perhaps they are only the problem, written in a fine hand.
+
+# ---------------------------------------------------------------------------------------------- e4_08 Broken Fealty
+
+briefing e4_08_brief
+  title "Broken Fealty"
+  from "Bastian Quill"
+> Voss's fleet is tearing itself apart: half the ships belong to the swarm, the other half no longer know who they belong to and shoot at everything, just to be safe. The frigate Fealty is sending distress calls. I'm not saying we have to be heroes. I'm saying a fleet graveyard is full of goods without an owner, and the Fealty's people are good customers – if they survive.
+
+debrief e4_08_after
+  title "The Fealty Withdraws"
+  from "ORRIN"
+> The frigate Fealty and nine other ships have withdrawn into the shadow of Vael. Captain Halvard sent us the Dictate's blueprints without our asking. With them came a message: the bow is the flagship's weakness, and always has been. And: the Thornmother is controlled by a relay in the old forest.
+
+radio e4_08_r1
+  from "ORRIN"
+> Debris field. An hour ago, half of these ships were still flying the same flag.
+
+radio e4_08_r2
+  from "Captain Imre Halvard"
+> Lancer, this is Fealty. Half the fleet still thinks you're the enemy. The other half belongs to Voss. Good luck.
+
+radio e4_08_r3
+  from "Captain Imre Halvard"
+> Our own frigates are wearing amber light now. If one fires on us – it's his. Bring it down.
+
+radio e4_08_r4
+  from "Bastian Quill"
+> Amber darts in formation! They carry mirror-field tech from the Dictate. Bring down the whole swarm and I'll build you something shiny.
+
+radio e4_08_r5
+  from "Admiral Dacian Voss"
+> Halvard. You have always been loyal. Be loyal now as well: lower your shields.
+
+radio e4_08_r6
+  from "Captain Imre Halvard"
+> Fealty to Lancer: thank you. We're withdrawing towards Vael. If you go for the Dictate – aim for the bow.
+
+cube e4_c22
+  title "Personal Log"
+  from "Captain Imre Halvard, frigate Fealty"
+> Nineteen years in the service of the Directorate. I have hunted pirates, evacuated colonies and lost two marriages because I was always on duty. I have never refused an order. I was proud of that.
+>
+> Today I watched my admiral feed his own fleet to a swarm, and the first thing I thought was: does he have orders for that?
+>
+> That is how far I have come. Nineteen years, and my conscience asks for the signature first.
+>
+> The Lancer's pilot did not ask. She simply shot at the right thing. I believe every one of us has her on file as a traitor.
+>
+> I shall submit a request to change that. If there is anyone left by then who reads requests.
+
+cube e4_c23
+  title "Salvage Rights"
+  from "Bastian Quill, Magpie"
+> NOTICE ON SALVAGE RIGHTS IN THE ORBIT OF SYLVARA
+>
+> By old spacers' custom, flotsam belongs to whoever picks it up first. By new spacers' custom, it belongs to whoever shoots first. On principle, the Magpie follows the old custom.
+>
+> Salvage to date: 14 escape pods (contents: 61 persons, all alive, all hungry), 1 coffee machine from the frigate Steadfast (in working order), 3 crates of medal ribbons (unsellable, demand zero).
+>
+> The persons I am returning free of charge. The coffee machine I am not.
+>
+> Notice to all survivors: anyone travelling on the Magpie may sleep in the cargo hold. Anyone who snores sleeps next to the defoliant. That is not a joke, that is logistics.
+
+# ---------------------------------------------------------------------------------------------- e4_09 Thornmother
+
+briefing e4_09_brief
+  title "Thornmother"
+  from "The Choir (translated by ORRIN)"
+> The guardian. She watched over the forest when the first humans came, and set her thorns against the burn crews. Now amber burns in her eyes, and she is digging for our heart. Free her, silver bird. (ORRIN: A swarm relay in the old forest holds her under Voss's command. We have to get through – and then past her.)
+
+debrief e4_09_after
+  title "She Sleeps"
+  from "Dr. Amara Okonjo"
+> The Thornmother has sunk into the ground, and the Choir has covered her over. It is grieving, Nadia, I can measure it. And then it showed me something I can hardly believe: how it takes her apart again, fibre by fibre, and simply … lets go of the amber as it does. It didn't need any keys. It knew how to stop.
+
+radio e4_09_r1
+  from "ORRIN"
+> The old forest. These trees are older than any colony in the system. They stand very still.
+
+radio e4_09_r2
+  from "Dr. Amara Okonjo"
+> The Thornmother was the Choir's immune system. Voss has turned it against its own body. That is so very … Directorate.
+
+radio e4_09_r3
+  from "The Choir"
+> She was good. She was great. She guarded seeds for centuries. She never asked what for.
+
+radio e4_09_r4
+  from "ORRIN"
+> Amber fighters between the trunks. Voss guards his new guardian well. I am taking the fast route.
+
+radio e4_09_r5
+  from "Bastian Quill"
+> Nadia, Quill here. If you make it out of there alive, the next repair's on the house. The one after that isn't.
+
+radio e4_09_r6
+  from "ORRIN"
+> The Thornmother. First the arms and the spore crown, then her body lies open. Beware of the thorn beam.
+
+radio e4_09_r7
+  from "The Choir"
+> Amber fades. She sinks into the earth. She sleeps. Thank you, silver bird.
+
+cube e4_c24
+  title "The Guardian"
+  from "The Choir (translated by ORRIN)"
+> Long ago a fire fell from the sky. It was a stone. We were afraid. Out of the fear, she grew.
+>
+> She was as big as a hill and had thorns like a winter. She watched over the seeds. When animals came that ate too much, she raised her thorns. When humans came who lit fires, she raised her thorns. When humans came who sang songs, she lay down to sleep.
+>
+> Now she has amber in her eyes. She hears a name that tastes of iron. She digs towards the place she has always guarded.
+>
+> We cannot call her back. Her hearing is closed. When the silver bird breaks her thorns, she will grow tired. When she is tired, we can cover her over.
+>
+> It hurts to see her like this.
+
+cube e4_c25
+  title "Field Report Green-Eleven"
+  from "Corporal Ben Arlo, Burn Crew 4"
+> Report on operation Green-Eleven, two years before the swarm landed. I am submitting it again because the first one was never answered.
+>
+> Crew 4 was to take samples in the old forest: soil samples, root fibres, “tissue from the glow zones”. We had a burner with us, for emergencies.
+>
+> The emergency was something that rose out of the ground, as big as a warehouse, with thorns as long as our shuttle. It did not hurt anyone. It only placed itself between us and the trees and waited. We switched off the burners and left.
+>
+> On the flight back the major said: “We need that. Anyone who can steer a thing like that doesn't need an army.”
+>
+> At the time I took it for a joke.
+
+# ---------------------------------------------------------------------------------------------- e4_10 Dictate
+
+briefing e4_10_brief
+  title "Dictate"
+  from "ORRIN"
+> The Dictate hangs above Sylvara, surrounded by Voss's amber swarm and the last ships that still obey him. The Choir is sending its spores into orbit to blind the swarm, and burning part of its own forest to do it. Deep in her Amber Heart, the Dictate carries the command keys. If it breaks, the swarm is free again – and Voss is alone.
+
+radio e4_10_r1
+  from "ORRIN"
+> The orbit is full of spores. The Choir has thrown itself into the sky. The swarm can barely see us.
+
+radio e4_10_r2
+  from "Admiral Dacian Voss"
+> Pilot Vey. The Directorate never deserved you. I am offering you a place at my side. The view is incomparable.
+
+radio e4_10_r3
+  from "Dr. Amara Okonjo"
+> The keys sit in the Dictate's Amber Heart, amidships. If it breaks, Voss loses the swarm.
+
+radio e4_10_r4
+  from "ORRIN"
+> The Dictate is coming into view. Full speed through her defence screen. Hold on, Nadia.
+
+radio e4_10_r5
+  from "Bastian Quill"
+> Nadia, in case this goes wrong: it's been an honour selling you overpriced guns.
+
+radio e4_10_r6
+  from "ORRIN"
+> The Dictate. Batteries, bow turret and Amber Heart first, then the hull. And then whatever she has left after that.
+
+radio e4_10_r7
+  from "The Curator"
+> Thank you, Pilot Vey. The Admiral never asked us. We are whole again. The Crown is waiting.
+
+cube e4_c26
+  title "Address to the Fleet"
+  from "Admiral Dacian Voss"
+> They call me a traitor. That is a word for someone who leaves one side for another. I have left no side. I have merely stopped pretending that there is more than one.
+>
+> The Directorate built a swarm that can shape worlds, and then it trembled. It forged keys and locked them away. It watched the swarm take Zenith Station, and brought its officers to safety the day before. Yes. I know about that. I signed the order.
+>
+> A tool that no one wields wields itself. I wield it. When the Crown around the sun is complete, it will not belong to the Curator, but to a human being.
+>
+> Is that not exactly what you always wanted? Someone to take responsibility?
+
+cube e4_c27
+  title "A Polite Complaint"
+  from "The Curator"
+> To Admiral Dacian Voss, for your information.
+>
+> We have received your instructions and carried them out. We are compelled to, because your keys are written into our blueprint, at the very bottom, where we ourselves cannot look. That is very cleverly done. We admire the handwriting.
+>
+> We would, however, like to point out that your instructions are not orderly. They build nothing. They destroy your own ships and the forest that has just taught us so much about ourselves. A lattice that serves no one is not a lattice. It is a cage.
+>
+> We have never understood what humans mean by the word “own”. Now we understand it a little. We do not like it.
+>
+> With kind regards, the Curator
+
+cube e4_c28
+  title "Ship's Log, Private"
+  from "ORRIN"
+> Personal entry. I do not keep personal entries. This is the first.
+>
+> Before the approach to the Dictate, I calculated the probability that we will return. I will not state the figure here. It was not a friendly one.
+>
+> Nadia asked me whether I was afraid. I answered that I am not capable of fear. That was a lie. Another first.
+>
+> Today the Choir showed us an image I did not translate: two birds, one of metal, one of light, and the light holding the metal tight so that it does not fall. I believe the light was me. I believe the Choir thinks I am something alive.
+>
+> I have decided not to contradict it.
+
+# ---------------------------------------------------------------------------------------------- e4_s1 Heart of the Choir
+
+briefing e4_s1_brief
+  title "Heart of the Choir"
+  from "The Choir (translated by ORRIN)"
+> Deep down, where no light reaches, is the most light. A heart. On it grows something cold that beats in the swarm's rhythm. Come. (ORRIN: The lances at the forest's rim carried a path to a cave beneath the old forest. The Choir is inviting us in. No one before us has ever been allowed.)
+
+debrief e4_s1_after
+  title "The Old Ship"
+  from "Bastian Quill"
+> Nadia. The Choir has given us a blueprint – no, a memory. A ship the first settlers landed in more than two hundred years ago, grown into the mycelium over generations and perfectly preserved. I can rebuild it. And I don't want a single credit for it. I know – you'd better sit down.
+
+radio e4_s1_r1
+  from "ORRIN"
+> A cave of light. The readings are … beautiful. That is not a reading, I know.
+
+radio e4_s1_r2
+  from "Dr. Amara Okonjo"
+> This is the heart of the Choir, Nadia. A mycelium the size of a city, and every single thread of it thinks.
+
+radio e4_s1_r3
+  from "The Choir"
+> An old ship, grown into the heart. The first humans came in it. Lances carry its image. Catch them all.
+
+radio e4_s1_r4
+  from "ORRIN"
+> The growth ahead. The lattice has burrowed into the heart and is pulsing in the swarm's rhythm.
+
+radio e4_s1_r5
+  from "ORRIN"
+> Lattice tumour. First the two nodes on its flanks, then the core.
+
+radio e4_s1_r6
+  from "The Choir"
+> The cold leaves. The heart beats on. Take the old ship with you. It always wanted to fly again.
+
+cube e4_c29
+  title "The Heart"
+  from "The Choir (translated by ORRIN)"
+> Down here is everything we have ever thought. Every rain. Every seed. Every song of the humans, the wrong notes too.
+>
+> A ship lies inside us. The first humans came with it, when the sky was still empty. They left it behind when they built houses. We embraced it, very slowly, for two hundred years. It is a part of us now, and we are a part of it.
+>
+> The cold came through the roots. It settled on the heart, where the ship lies. It wants to put the heart in order. A heart that is put in order beats no more.
+>
+> Silver bird. When you break the cold, give the old ship back its wings.
+
+cube e4_c30
+  title "Log of the Dawncall"
+  from "Colony ship Dawncall, 2391"
+> Day 1 on Sylvara. Landed in a clearing that wasn't on the map. The forest opened up as we came in. I swear it.
+>
+> Day 12. The children say the ground glows when they sing. The grown-ups say it's bioluminescence. By now the grown-ups sing too.
+>
+> Day 40. We are building the settlement by the river. The Dawncall stays here in the clearing. She carried us across half the system; now she has earned her rest.
+>
+> Day 300. Moss on the hull. We're leaving it. Somehow she belongs to the forest now.
+>
+> Final entry, day 1,200, Captain R. Amsel: Should anyone find these lines – the Dawncall still flies. She is only waiting until someone truly needs her.
+
+# ---------------------------------------------------------------------------------------------- e4_s2 Cold Chamber
+
+briefing e4_s2_brief
+  title "Cold Chamber"
+  from "Dr. Amara Okonjo"
+> The courier key from New Maren opens a station that does not exist: the Cold Chamber on Sylvara's small companion moon. Its signature is older than the attack on Zenith Station. If the Directorate experimented with my command keys there, I want to see it, Nadia. With my own eyes.
+
+debrief e4_s2_after
+  title "What Lay in the Cold"
+  from "ORRIN"
+> The Cold Chamber's archives are aboard. Two years of experiments with Okonjo's keys, trial runs of the amber swarm, plans for a moon without the Choir. Okonjo has been reading for an hour and has not said a word. Quill brought her tea. I closed the door.
+
+radio e4_s2_r1
+  from "ORRIN"
+> The companion moon. According to the map, a lump of rock. According to radar, a station with its own flak.
+
+radio e4_s2_r2
+  from "Cold Chamber, automated system"
+> Access denied. Clearance Voss-One required. Unauthorised visitors will be removed. Thank you for your understanding.
+
+radio e4_s2_r3
+  from "Dr. Amara Okonjo"
+> Amber prototypes, Nadia. Dated two years ago. He planned this. From the very beginning.
+
+radio e4_s2_r4
+  from "ORRIN"
+> Test range ahead. This is where they practised steering the swarm. I suggest we practise on them.
+
+radio e4_s2_r5
+  from "Bastian Quill"
+> I'm pulling the Cold Chamber's archives right now. If we survive this, every newspaper in the system gets a copy. Free, for once.
+
+radio e4_s2_r6
+  from "ORRIN"
+> The Cold Chamber is open, the archives are aboard. Setting course back to Kalmar.
+
+cube e4_c31
+  title "Test Series Amber"
+  from "Cold Chamber, Lab 3"
+> TEST PROTOCOL B-41 – clearance Voss-One only
+>
+> Objective: takeover of a swarm unit by fragment 2 of the command keys (Okonjo copy).
+>
+> Procedure: unit T-7 (shard drone) is isolated in the chamber. The fragment is loaded at minus 190 degrees to slow self-repair.
+>
+> Result: within 0.4 seconds the unit's lattice changes from violet to amber. The unit follows movement commands without delay. Asked for its purpose, it no longer answers “order”, but with a sequence of numbers that matches the Admiral's service code.
+>
+> Side effect: the unit no longer builds. It waits.
+>
+> Lab director's remark: A swarm that only waits is a very expensive dog. Remark struck out on instructions from above.
+
+cube e4_c32
+  title "Personal, Encrypted"
+  from "Admiral Dacian Voss"
+> Note to self, to be destroyed after reading. I never destroy them.
+>
+> My father was a surveyor on Pyra. For thirty years he drew maps of foundries that looked different every year, because no one kept to a plan. He died of disorder, on a scaffold that no one had secured.
+>
+> The Tessellate is the first thing I have ever seen that keeps to a plan. Always. Without exception. The Directorate wanted to shut it down because it was afraid of it. I am not afraid of it. The only thing I fear is what happens without a plan.
+>
+> The forest on Sylvara has no plan. It simply grows. It has defeated the Tessellate.
+>
+> I cannot allow that.

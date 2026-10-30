@@ -387,7 +387,7 @@ radio e1_06_r7
 cube e1_c17
   title "Fahrauftrag Zug 9"
   from "Stellwerk Kessa"
-> FAHRAUFTRAG Nr. 9-Ω
+> FAHRAUFTRAG Nr. 9-Omega
 >
 > Strecke: Ascalon – Schleuder Kessa. Fracht: 4000 Gitterplatten, Krümmung 0,000031 (Ringsegment). Empfänger: KRONE, Orbit, Abschnitt Sonne-Nord.
 >
@@ -460,7 +460,7 @@ briefing e1_07_after
 > Ich bin Händler, Nadia. Ich lebe davon, Dinge zu wissen, bevor andere sie wissen. Aber selbst ich verkaufe niemandem einen Platz im Rettungsboot und verschweige ihm, dass das Schiff sinkt.
 
 cube e1_c20
-  title "Befehl 7/Δ"
+  title "Befehl 7/Delta"
   from "Meridian-Direktorat, Flottenkommando"
 > VERTRAULICH – NUR FÜR OFFIZIERE AB RANG KOMMANDANT
 >
@@ -468,7 +468,7 @@ cube e1_c20
 >
 > Die zivile Belegschaft ist nicht zu informieren. Der Betrieb der Werft und der Gießereien läuft unverändert weiter. Die Terraforming-Einheiten sind nicht zu behindern.
 >
-> Mitzunehmen sind: Dienstakten, Zugangsschlüssel der Stufe Δ, persönliches Gepäck bis vierzig Kilogramm. Die Plattformen bleiben unbemannt zurück.
+> Mitzunehmen sind: Dienstakten, Zugangsschlüssel der Stufe Delta, persönliches Gepäck bis vierzig Kilogramm. Die Plattformen bleiben unbemannt zurück.
 >
 > Begründung: entfällt.
 >

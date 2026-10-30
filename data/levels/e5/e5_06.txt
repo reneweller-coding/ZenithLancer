@@ -3,6 +3,7 @@
 
 level e5_06
   title "Werftdecks"
+  title_en "Shipyard Decks"
   episode 5
   theme station
   music e5_a

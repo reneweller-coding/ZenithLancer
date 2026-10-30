@@ -3,6 +3,7 @@
 
 level e3_08
   title "Gitterader"
+  title_en "Lattice Vein"
   episode 3
   theme lattice
   music e3_b

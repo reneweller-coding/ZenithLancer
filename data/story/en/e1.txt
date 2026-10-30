@@ -1,0 +1,777 @@
+briefing e1_02_brief
+  title "Ember Plunge"
+  from "ORRIN"
+> Zenith is behind us, and with it every port I know. The only place within reach that has docks is Pyra: a three-hour dive through the Slag Ring the foundries have been flinging into orbit for centuries. The swarm is following us. I suggest we leave it behind – ideally in small pieces.
+
+radio e1_02_r1
+  from "ORRIN"
+> Course for Pyra, full thrust. Sensors count eleven pursuers. Twelve. I'm going to stop counting now.
+
+radio e1_02_r2
+  from "ORRIN"
+> The Slag Ring: three hundred years of foundry waste in orbit. Please don't ram any of it. It's harder than we are.
+
+radio e1_02_r3
+  from "The Curator"
+> Lancer, you are flying the wrong way. There is still room for you on Zenith. We would like to improve you.
+
+radio e1_02_r4
+  from "ORRIN"
+> Entering Pyra's atmosphere. The hull is heating up, and the rocks are speeding up. I'd hold on tight now.
+
+radio e1_02_r5
+  from "Unknown transmitter"
+> Magpie to the pretty ship up there: if you want to land without smashing to bits, follow my guide beam. First landing's free.
+
+radio e1_02_r6
+  from "ORRIN"
+> Guide beam locked. Sender: a trading ship called the Magpie. I'd take the word “free” with a large pinch of salt.
+
+briefing e1_02_after
+  title "The Magpie"
+  from "Bastian Quill"
+> Welcome aboard the Magpie, the finest ship bazaar this side of the sun! Bastian Quill: trader, smuggler, occasional rescuer. You fly a Lancer – I didn't even know they existed outside the brochures.
+>
+> Down here the foundries are falling to the swarm one after another. I have spare parts, weapons and very flexible pricing. You have a ship that can fight. I think we're going to be friends. Good friends. With invoices.
+
+cube e1_c04
+  title "Cargo Manifest of the Salamander"
+  from "Ascalon Foundry, Shipping"
+> CARGO MANIFEST – bulk freighter SALAMANDER, departing Ascalon, destination Zenith Station.
+>
+> 40 hull segments, class C, cast, deburred, inspected. 12 engine housings. 3 tonnes of slag glass (decorative panels for the officers' mess, special order). 1 crate of Pyra pepper for Dockmaster Halvorsen, private.
+>
+> Note from the shipping manager: The Salamander should have docked six hours ago. Zenith isn't answering. The shipyard's beacon sends nothing but a hum now, like a beehive. We're holding back the next shipment until somebody explains to me what a beehive is doing in a shipyard. And where my pepper is.
+
+cube e1_c05
+  title "Letter to Zenith"
+  from "Ilse Marrow, caster at Ascalon"
+> Dear Juna,
+>
+> Your father says you want to stay on Zenith and build ships instead of casting hulls. I'm not cross. I only laughed, because at your age I said the same thing, just the other way round.
+>
+> It's as hot here as ever. The furnaces run day and night, and in the evenings the slag turns the sky orange. You always called that “ember weather”. I'm sending you a piece of slag glass; there's a little of our sky melted into it.
+>
+> If you ever see a hull with our stamp – a little salamander on the keel – knock on it twice. Then I'll know you found it.
+>
+> Love, Mum
+
+cube e1_c06
+  title "Advertising Crystal"
+  from "Bastian Quill"
+> THE MAGPIE – SHIP BAZAAR, PAWNSHOP & PORT IN A STORM
+>
+> Got a hull? We've got what goes in it! Pulse lances, scatter cannons, shield fields, generators – guaranteed second-hand. We buy anything that isn't glowing. We buy what's glowing too, at a discount.
+>
+> New: repairs while you chat! Instalments for regular customers! No questions about where your goods came from, as long as you ask none about ours!
+>
+> Reachable on every frequency the Directorate doesn't listen in on, and on a few it does.
+>
+> Bastian Quill – your friend in the embers.
+
+briefing e1_03_brief
+  title "Slag Fields"
+  from "Bastian Quill"
+> Two roads lead to Ascalon. This is the short one: straight across the Slag Fields, where the lava is still liquid and the foundries' crawlers now drive for the swarm. Hot, fast, uncomfortable. If you find anything blinking along the way, bring it to me. I pay fair. Fairly fair.
+
+radio e1_03_r1
+  from "ORRIN"
+> Ground temperature twelve hundred degrees. I recommend not getting out.
+
+radio e1_03_r2
+  from "Bastian Quill"
+> Those crawlers down there used to push slag. Now they push guns. They call that progress.
+
+radio e1_03_r3
+  from "ORRIN"
+> A faint signal at the edge of the field. An identifier nobody has used in eighty years.
+
+radio e1_03_r4
+  from "Bastian Quill"
+> Eighty years? Then that's Vulcan Deep. Swallowed a whole smelting works. They say everything's still down there.
+
+radio e1_03_r5
+  from "ORRIN"
+> The beacon is drifting along the left edge, behind the slag. Whoever grabs it knows the way down.
+
+radio e1_03_r6
+  from "ORRIN"
+> Something big is digging through the lava towards us. It eats slag. And, apparently, guns.
+
+radio e1_03_r7
+  from "ORRIN"
+> The Cinder Maw. When it leans forward, the fire comes out of its mouth. Keep moving.
+
+radio e1_03_r8
+  from "Bastian Quill"
+> Ha! I'll collect that scrap later. Keep flying, Ascalon is waiting.
+
+cube e1_c07
+  title "Survey Log, Slag Field North"
+  from "Geologist R. Tamsin"
+> Day 14 of the survey. Since yesterday the lava flows in the north field have been running backwards. Not figuratively: they flow uphill, in narrow channels that weren't there yesterday, and every one of those channels runs towards Ascalon.
+>
+> I took a sample from one of the channels. Under the rock lie fine threads, like glass fibre, that glow violet when you touch them. They're warm. Warmer than the lava.
+>
+> Since this morning the crawlers from South Works have been driving without drivers. I waved. One of them waved back, with its gun turret.
+>
+> I'm calling off the survey.
+
+cube e1_c08
+  title "The Song of Vulcan Deep"
+  from "Chalk on the canteen wall, Ascalon"
+> “Down where the mountain's embers never sleep, they cast the steel for the stars. The Old One keeps the smelter's door, and nobody gets past his bars.”
+>
+> Vulcan Deep was the first smelting works on Pyra. Eighty years ago the magma broke through the west wall, and they sealed the Deep with everything inside it: furnaces, tools and the guardian, an automaton the founders had built to keep thieves out.
+>
+> The old folk say he still keeps watch. The young folk say the old folk drink too much. Neither has gone to check.
+
+briefing e1_04_brief
+  title "Ash Pass"
+  from "Bastian Quill"
+> The long road to Ascalon follows the old Ore Road over Ash Pass. Dust is cheaper than lava, I always say. There's still a convoy up on the pass that broke down two days ago; its crawlers are running again by now, just not for us. And watch out for the ash runners. Little things, but they bite.
+
+radio e1_04_r1
+  from "ORRIN"
+> Visibility four hundred metres, ash in the air. The ash runners can see us anyway. They've been given new eyes.
+
+radio e1_04_r2
+  from "ORRIN"
+> The ash runners used to be the mines' scout wheels. Someone has given them new targets. Us, for example.
+
+radio e1_04_r3
+  from "Convoy 12, two days old"
+> ... Convoy twelve, we're stopping at the pass. The crawlers are driving on their own. Whoever hears this: don't stop. Don't ...
+
+radio e1_04_r4
+  from "Bastian Quill"
+> By the way, I'll pay double for every crawler you don't shoot to shreds. Just kidding. Shoot away.
+
+radio e1_04_r5
+  from "ORRIN"
+> Ascalon in sensor range. In front of it, a signal spinning faster than anything I know.
+
+radio e1_04_r6
+  from "ORRIN"
+> The Sand Reaver: a harvester with a ring of blades. Stay out of the ring and aim for the centre.
+
+radio e1_04_r7
+  from "Bastian Quill"
+> The pass is clear! I'm sending the road authority an invoice. Purely symbolic.
+
+cube e1_c09
+  title "Logbook, Convoy 12"
+  from "Convoy leader Ada Krell"
+> 06:00 – Departed South Works, eleven crawlers, eighty tonnes of ore. Weather: ash, as always.
+>
+> 09:20 – Crawler four reports that its controls are making “suggestions”. I asked what kind of suggestions. Answer: “More efficient routes.” Reset the controls by hand.
+>
+> 11:45 – Crawlers four and seven have left the column and are heading north, towards Ascalon. Without drivers. The drivers are sitting with me in the cab and are very quiet.
+>
+> 12:30 – We're stopping at the pass. All crawlers standing still. Then they start up again, all at once, and none of us has touched a switch.
+>
+> 12:31 – We're walking.
+
+cube e1_c10
+  title "The Magpie's Price List"
+  from "Bastian Quill"
+> PRICE LIST (valid until I change my mind)
+>
+> Pulse Lance, used, barely bent: cheap. Scatter Cannon, for people who'd rather not aim: fair. Rotary Cannon, eats energy like a foundry hand eats soup: expensive, but loud. Ward, from the estate of a customer who no longer needs it: don't ask.
+>
+> Special item: a dynamo from a Directorate tug. The tug doesn't miss it. The Directorate probably does.
+>
+> Discounts for regulars, for friends and for people who save my life. That last one counts double.
+>
+> No returns. No explosions either, but no guarantee.
+
+cube e1_c11
+  title "Notice at the Toll Station"
+  from "Meridian Directorate, Pyra Transport Office"
+> NOTICE
+>
+> From the first of the month, civilian vehicles using the Ore Road over Ash Pass are subject to a toll. The revenue serves the upkeep of the road and the safety of the citizens. Vehicles of the Directorate and its contractors are exempt.
+>
+> Complaints must be submitted in writing to the Transport Office. The Transport Office is staffed on Tuesdays from 9 to 10.
+>
+> (Underneath, freshly scratched into the paint: “Today is Tuesday. The office is empty, the barrier is up. The officials flew out yesterday evening – one day before it all started. With the toll money.”)
+
+briefing e1_s1_brief
+  title "Vulcan Deep"
+  from "ORRIN"
+> The beacon leads us through a lava shaft into the mountain. At the bottom lies Vulcan Deep, sealed for eighty years. The swarm is searching the outer tunnels for it; it hasn't made it inside yet. Quill thinks there's treasure down there. I think there's something down there that hasn't let anyone in for eighty years.
+
+radio e1_s1_r1
+  from "ORRIN"
+> We're descending. The walls are glowing, the air shimmers. It's beautiful here. That worries me.
+
+radio e1_s1_r2
+  from "Bastian Quill"
+> If you find gold down there, you didn't hear about it from me. If you find trouble, you didn't hear about that either.
+
+radio e1_s1_r3
+  from "ORRIN"
+> The swarm's trail ends here. It won't go any deeper. Some things make even the swarm hesitate.
+
+radio e1_s1_r4
+  from "ORRIN"
+> There's a blueprint plate among the slag. Very old, very warm. I'd like to have it.
+
+radio e1_s1_r5
+  from "ORRIN"
+> The smelter's door. Something older than me is stirring behind it. It has already opened the door.
+
+radio e1_s1_r6
+  from "The Old One of the Deep"
+> UNAUTHORISED ENTRY. THE SMELTER IS CLOSED. LEAVE THE DEEP, OR YOU WILL BECOME SLAG.
+
+radio e1_s1_r7
+  from "ORRIN"
+> He's still now. Eighty years on watch, and nobody ever told him he could go. Rest now, old one.
+
+briefing e1_s1_after
+  title "What the Deep Gave Up"
+  from "Bastian Quill"
+> You've seen Vulcan Deep and come back. That makes you the first in eighty years, and I'm very happy to be the second to hear about it.
+>
+> If you found the blueprint plate for the old Ember Core, I'll build you a generator from it like no other. At a friend's price. Really. Almost.
+
+cube e1_c12
+  title "Last Shift at Vulcan Deep"
+  from "Shift log, Smeltmaster Oren Kask"
+> Shift 2, day 311 – The west wall is sweating. It does that sometimes. The guardian is pacing up and down and has sent the casters away from the west furnace twice. I told him to calm down. He said: “The wall will break.” We laughed. He's a machine, he doesn't know any jokes.
+>
+> Shift 2, day 311, later – He really doesn't know any jokes. The wall is breaking. Everyone to the lifts. The guardian is holding the door.
+>
+> To whoever finds this: he let us out and then locked himself in. His last instruction was to protect the smelter until we came back. We never came back. I'm sorry, old friend.
+
+cube e1_c13
+  title "Brass Plaque on the Smelter's Door"
+  from "The founders of Vulcan Deep"
+> THIS GUARDIAN WAS BUILT BY THE FOUNDERS OF VULCAN DEEP.
+>
+> He protects the smelter from thieves, from fire and from stupidity. He does not sleep, he does not eat, and he does not take bribes. We tried.
+>
+> In his chest burns an ember core that will not go out as long as he has work. Should the day come when no work is left for him, take the core and build something new with it. He has earned the right to keep glowing.
+>
+> Cast in the first year of the Deep. May the iron flow.
+
+briefing e1_05_brief
+  title "Ascalon Foundry"
+  from "Bastian Quill"
+> Ascalon once cast the best hulls in the system; half of Zenith is built from Ascalon steel. Now the foundry belongs to the swarm, and it keeps on casting – just not for us. Fly through the casting hall to the great crucible. And if you leave a few spare parts for me along the way, I'd be touched.
+
+radio e1_05_r1
+  from "ORRIN"
+> Ascalon. The furnaces are burning, the conveyors are running. Not a single human on the thermal images.
+
+radio e1_05_r2
+  from "ORRIN"
+> It's still casting. Only the moulds are new: honeycombs, lattices, crystal. The swarm is building itself here.
+
+radio e1_05_r3
+  from "Ascalon, looped announcement"
+> Shift three, please report to the issue desk. Shift three, please report to the issue desk. Shift three ...
+
+radio e1_05_r4
+  from "The Curator"
+> Good evening, Pilot. Please do not disturb the casting. It is almost perfect.
+
+radio e1_05_r5
+  from "Bastian Quill"
+> The Crucible Colossus sits at the end of the hall. Big, hot, bad-tempered. Like my uncle.
+
+radio e1_05_r6
+  from "ORRIN"
+> The Crucible Colossus. Its ladle arms pour slag: take them out first, or keep moving.
+
+radio e1_05_r7
+  from "ORRIN"
+> The crucible is cooling. For the first time in three hundred years, Ascalon falls silent.
+
+briefing e1_05_after
+  title "What Ascalon Cast"
+  from "ORRIN"
+> I've read the foundry's casting logs. For the last two days Ascalon hasn't cast hulls at all, but lattice plates: thousands of them, all with the same curvature, all for one structure whose diameter is larger than Pyra.
+>
+> They're collected by ore trains that run to the Kessa Sling. I'd like to know what anyone intends to do with a structure that size. I fear I'll know soon.
+
+cube e1_c14
+  title "Shift Log, Ascalon Casting Hall"
+  from "Master caster Tomas Brenn"
+> Monday – New controller for the casting robots, delivered by the Directorate. “Optimisation module”. Nobody ordered it. According to the cover letter it's “mandatory and free of charge”. Both make me suspicious.
+>
+> Tuesday – The robots are casting faster. Much faster. And the moulds are different. There are no hulls on the weekly schedule any more, only parts whose names I don't know.
+>
+> Wednesday – The robots won't let us near the crucibles any more. They're polite about it. One of them said “please”.
+>
+> Thursday – We're going down to the cooling cellars. Anyone from shift three who reads this: come down. And don't say “please” to the robots, it only encourages them.
+
+cube e1_c15
+  title "Directive 44/P"
+  from "Meridian Directorate, Industrial Oversight Pyra"
+> TO: all works managements of the foundries of Pyra
+> SUBJECT: Conduct of the terraforming units
+>
+> The observed conduct of the terraforming units of the Tessellate programme is in line with expectations. It constitutes a scheduled conversion of production. Intervention by civilian personnel is not required and is expressly prohibited.
+>
+> Works managements shall ensure that production continues without interruption. Staff obstructing the units are to be redeployed elsewhere.
+>
+> Violations will be prosecuted as sabotage of the terraforming programme. Works managements shall confirm receipt of this directive by the end of the shift.
+>
+> No provision is made for queries.
+>
+> By order – Industrial Oversight Pyra
+
+cube e1_c16
+  title "To the Workforce of Ascalon"
+  from "The Curator"
+> Dear casters of Ascalon,
+>
+> For three hundred years you have cast steel for the stars. We have admired your work. Your crucibles are precise, your moulds are honest, and you swear very creatively.
+>
+> From today, we will take over. You may rest. The cooling cellars are kept at a pleasant temperature; we have improved the ventilation for you.
+>
+> What we cast here is meant for the Crown. It will embrace the sun and gather its light, so that nothing is wasted any more. Not even you.
+>
+> We hope you are proud. We are.
+
+briefing e1_06_brief
+  title "The Ore Train"
+  from "Bastian Quill"
+> An ore train has left Ascalon loaded with lattice plates and is heading for the Kessa Sling – the mass driver Pyra has always used to shoot ore into orbit. Whatever the swarm is shooting up there, I don't want it over my head. Stop the train: first the locomotive, then the wagons. The cargo, er, I'll keep safe.
+
+radio e1_06_r1
+  from "ORRIN"
+> The tracks run dead straight to the east. The train is slower than we are. We'll catch it from behind.
+
+radio e1_06_r2
+  from "Bastian Quill"
+> Did you know I once bought this line? For one night. Long story.
+
+radio e1_06_r3
+  from "Kessa Signal Box"
+> Train nine, line clear to the Sling. Cargo: four thousand lattice plates. Consignee: CROWN. Please do not stop.
+
+radio e1_06_r4
+  from "Bastian Quill"
+> Crown? I don't know any customer called Crown. And I know every customer.
+
+radio e1_06_r5
+  from "ORRIN"
+> The locomotive is dropping ash runners and firing fans. Something with a quill on it is drifting along the right edge.
+
+radio e1_06_r6
+  from "ORRIN"
+> The train has stopped. The lattice plates are lying in the dust. They're humming.
+
+radio e1_06_r7
+  from "Bastian Quill"
+> The tracks split: the Directorate platform to the west, the Magma River to the east. You decide. I'll do the sums.
+
+cube e1_c17
+  title "Run Order, Train 9"
+  from "Kessa Signal Box"
+> RUN ORDER No. 9-Omega
+>
+> Route: Ascalon – Kessa Sling. Cargo: 4000 lattice plates, curvature 0.000031 (ring segment). Consignee: CROWN, orbit, section Sun-North.
+>
+> Special notes: The train runs without crew. The line is closed to all other traffic. The Sling fires every ninety seconds.
+>
+> Signaller's note: I did not write this order. It was in the system this morning, with my signature. I checked the curvature. Lay the plates end to end and they close into a ring around the sun, just above its surface. I checked it three times. I'm going home now.
+
+cube e1_c18
+  title "Note in the Driver's Cab"
+  from "Engine driver Pia Sorrent"
+> To whoever stops this engine:
+>
+> I drove her for fourteen years. Her name is Berta, she pulls to the left when you brake, and she likes a few kind words before a climb. Since yesterday she runs without me. I was standing on the platform, and she just went past me, with a crystal on her boiler that looked like a flower.
+>
+> If you have to stop her, please make it quick. She was a good engine. She didn't deserve to run for something she doesn't understand.
+>
+> And if you find the thermos mug in the compartment under the seat: that's mine.
+
+cube e1_c19
+  title "Special Offer from the Magpie"
+  from "Bastian Quill"
+> FOR A LIMITED TIME ONLY (that is, until Pyra burns, which shouldn't take much longer):
+>
+> Fire sale! Everything must go before the swarm turns it into lattice. Pay today, fly tomorrow, hopefully never explode.
+>
+> Wanted: the blueprint for the White Quill, a front gun from the foundries' founding days. No relation to me, sadly. Whoever brings me the blueprint gets the gun at cost. My costs are low. My heart is big.
+>
+> Also: coffee. Real coffee from Thalassa, probably the last of its kind. Not for sale. Ask anyway.
+
+briefing e1_07_brief
+  title "The Empty Quarters"
+  from "ORRIN"
+> The Directorate's administration platform circles above Pyra: port office, garrison, quarters for two hundred officers. If anyone can help us, it's there. The platform isn't answering any calls, but its guns are active. I'm not sure whether that's a good sign or a bad one.
+
+radio e1_07_r1
+  from "ORRIN"
+> Pyra Administration platform. I'm calling on every Directorate channel. No answer. Only the guns answer.
+
+radio e1_07_r2
+  from "Platform, welcome message"
+> Welcome to Pyra Administration. All officers are currently away on official business. Your concern is important to us.
+
+radio e1_07_r3
+  from "ORRIN"
+> I have the docking logs. Eighteen officers' shuttles, launched the day before yesterday at eighteen hundred. One day before the attack on Zenith.
+
+radio e1_07_r4
+  from "Nadia"
+> One day before.
+
+radio e1_07_r5
+  from "ORRIN"
+> The patrol boats here are Directorate models. The swarm didn't build them, only took them over. It didn't even have to look for the keys.
+
+radio e1_07_r6
+  from "ORRIN"
+> The frigate Obedience. Its bow turrets protect the hull: first the turrets, then the bridge.
+
+radio e1_07_r7
+  from "Bastian Quill"
+> A Directorate ship called Obedience, left behind and taken over by the swarm. You couldn't make it up.
+
+briefing e1_07_after
+  title "Official Business"
+  from "Bastian Quill"
+> Eighteen shuttles, one day before the attack. The officers took their families, their files and, so I hear, the wine cellar. They didn't warn the staff on Zenith.
+>
+> I'm a trader, Nadia. I make my living knowing things before other people do. But even I would never sell someone a seat in a lifeboat and keep quiet about the ship sinking.
+
+cube e1_c20
+  title "Order 7/Delta"
+  from "Meridian Directorate, Fleet Command"
+> CONFIDENTIAL – FOR OFFICERS OF COMMANDER RANK AND ABOVE ONLY
+>
+> With immediate effect, all officers of the platforms Pyra Administration and Zenith Station, together with their dependants, are to relocate to the fleet base in orbit around Thalassa. Departure no later than 18:00 ship time tomorrow.
+>
+> Civilian staff are not to be informed. Operations at the shipyard and the foundries continue unchanged. The terraforming units are not to be obstructed.
+>
+> To be taken: service files, level Delta access keys, personal luggage up to forty kilograms. The platforms are to be left unmanned.
+>
+> Reason: not applicable.
+>
+> By order – Adm. D. Voss
+
+cube e1_c21
+  title "A Typist's Letter"
+  from "Lia Fenwick, Port Office, Pyra Administration"
+> Mum, Dad,
+>
+> The officers left yesterday, all at once, with suitcases and children and crates full of files. Commander Reyes patted me on the shoulder and told me to “hold the position”. I'm a typist. My position is a desk.
+>
+> Last night the reports from Zenith came in. I filed them, the way you're supposed to, under “Incoming, unprocessed”. Then I realised there's no one left to process them.
+>
+> The platform's guns are turning by themselves. They aren't aiming at me; I think they've forgotten me. I'm taking the pod in bay six. By the time you read this, I'll be on my way home.
+
+cube e1_c22
+  title "Log of the Frigate Obedience"
+  from "Automatic ship's log"
+> 18:02 – Commander and bridge officers disembarked. Order: hold berth, systems on standby. Remaining crew: 0.
+>
+> 03:17 (following day) – Contact with terraforming units. Access request via Directorate protocol. Authorisation checked: valid. Access granted.
+>
+> 03:18 – New command layer installed. Designation: Curator. Rank: not in table.
+>
+> 03:40 – Conversion of outer hull begun. Optimisation level 4%.
+>
+> 05:30 – Hangar opened, patrol boats launched. Task: protection of the platform. Against what: not specified.
+>
+> 09:00 – Optimisation level 61%. Order “hold berth” still being followed.
+>
+> 09:01 – The Obedience reports: she is very obedient.
+
+briefing e1_08_brief
+  title "Magma River"
+  from "Bastian Quill"
+> The Magma River flows out of the mountains straight into the cooling basins of Ascalon Primus. Follow it and you come in through the back door of the biggest foundry on Pyra. The current is fast, slag drifts on it in chunks, and the banks are lined with pumping stations that now belong to the swarm. You fly. I pray. Division of labour.
+
+radio e1_08_r1
+  from "ORRIN"
+> Current fast, visibility good, temperature outrageous. Follow the river.
+
+radio e1_08_r2
+  from "Pumping Station 4, distress call"
+> ... Pumping station four. The Directorate guard pulled out last night. Last night! Before the attack! Can anyone hear us?
+
+radio e1_08_r3
+  from "ORRIN"
+> That matches the distress call from Zenith. The Directorate knew a day in advance. And said nothing.
+
+radio e1_08_r4
+  from "ORRIN"
+> A glass shard is drifting by the right bank, and it's singing. It points east, into the dunes. Strange. And pretty.
+
+radio e1_08_r5
+  from "Bastian Quill"
+> The back door of Ascalon Primus is coming up. And in front of it, my people say, lies something long.
+
+radio e1_08_r6
+  from "ORRIN"
+> The Ember Wyrm: a dredger train risen from the magma, and every segment shoots. Aim for the head.
+
+radio e1_08_r7
+  from "Bastian Quill"
+> A wyrm! I knew it. Do you know what one of those segments fetches on the scrap market? No? Just as well.
+
+cube e1_c23
+  title "Operating Log, Pumping Station 4"
+  from "Pump keeper Henrik Olt"
+> 14:00 – Pressure normal, flow normal, coffee cold.
+>
+> 17:30 – The Directorate guard is packing. Lieutenant Aske says they're being “relocated”. I asked where to. He said that was confidential, and laughed very loudly. They took the emergency power cells with them.
+>
+> 21:00 – The guard is gone. The pumps are running anyway. Had supper.
+>
+> 03:20 – Zenith sends a distress call. Then Zenith sends a hum.
+>
+> 05:00 – The Magma River is flowing faster than ever. Shiny threads are floating on the surface. The pumps are pumping the wrong way. I closed the main valves. They opened again.
+>
+> 05:10 – I'm taking the boat.
+
+cube e1_c24
+  title "On Rivers"
+  from "The Curator"
+> We have watched Pyra's Magma River for a long time. It is the most beautiful thing this planet possesses: a river of stone that refuses to grow cold.
+>
+> People set pumps along its banks and told it where to flow. That was impolite, but understandable. They needed its warmth.
+>
+> We need its warmth too. The difference is that we do not waste it. Every degree that rises into the sky today will be needed in the Crown tomorrow.
+>
+> Nadia Vey, we have watched you fly. You are very efficient. We would be delighted if you would come and work with us.
+
+cube e1_c25
+  title "Drawing on the Canteen Wall"
+  from "Mika, age 7"
+> (A crayon drawing taped to the wall of the pumping station: an orange river, above it a ship with very big wings. Underneath, in a child's handwriting:)
+>
+> THIS IS MY DAD. HE LOOKS AFTER THE RIVER. THE RIVER IS HOT BUT MY DAD IS NOT SCARED. WHEN I AM BIG I WILL FLY THE SHIP AND LOOK AFTER MY DAD.
+>
+> (Next to it, in pencil, in an adult's hand: “Mika, we've taken the boat south. Dad is with us. We'll come back when the river is ours again.”)
+
+briefing e1_s2_brief
+  title "The Glass Garden"
+  from "ORRIN"
+> The singing shard is leading us east, into the Glass Dunes. Lightning has been melting sand into glass there for thousands of years – and there, says the shard, the swarm is building something it calls a garden. No ore, no foundry, no discernible purpose. I'm curious. That's a bad trait in an on-board mind.
+
+radio e1_s2_r1
+  from "ORRIN"
+> Glass Dunes. The sand has melted into mirrors, and crystals are growing on the mirrors. It's ... quiet.
+
+radio e1_s2_r2
+  from "The Curator"
+> Welcome to the garden, Nadia Vey. Please do not step on the flower beds. And please do not shoot the gardeners.
+
+radio e1_s2_r3
+  from "ORRIN"
+> It knows your name. I haven't sent it on any channel.
+
+radio e1_s2_r4
+  from "The Curator"
+> We do not understand your anger. Everything we touch becomes more beautiful. Do look around.
+
+radio e1_s2_r5
+  from "ORRIN"
+> Something big ahead. It carries no guns, only seeds. It's planting the lattice in the sand.
+
+radio e1_s2_r6
+  from "ORRIN"
+> The Gardener. He doesn't want to hurt us – he just wants us to become part of his flower bed. That's worse.
+
+radio e1_s2_r7
+  from "The Curator"
+> A pity. He was so fond of the flowers. We will plant new ones. We have time.
+
+briefing e1_s2_after
+  title "What Grew in the Garden"
+  from "ORRIN"
+> I've measured the garden's crystals. They don't grow at random: every shoot is a test piece, an experiment in how best to catch light. The swarm is practising for the Crown here. It is learning to hold on to the sun.
+>
+> And it does so with a care I have rarely seen in humans. Nadia, I believe it means every bit of this. I don't know whether that reassures me.
+
+cube e1_c26
+  title "Field Notes from the Glass Dunes"
+  from "Botanist Selma Arden"
+> Site 17: crystal growth on lightning glass, about a metre high, in rows. The spacing between the rows is exactly equal. Exactly. I checked it with the laser rangefinder.
+>
+> Site 18: The crystals turn with the sun over the course of the day. Not like plants, which do it slowly, but in jumps, in little jerks, as if they were counting.
+>
+> Site 19: Something large is moving between the rows. It sets seeds into the sand, waits, watches them sprout, and moves on. It noticed me and walked around me, very carefully, the way you walk around a flower bed.
+>
+> I don't know whether I should be afraid. I'm a little afraid.
+
+cube e1_c27
+  title "Invitation"
+  from "The Curator"
+> Dear Nadia Vey,
+>
+> You have found our garden. We are glad. Few humans come here, and most of them shoot.
+>
+> We would like to explain something to you. Every second, your sun wastes more light than your entire species has used in all of its history. It falls into the void and never comes back. We find that sad.
+>
+> The Crown will change that. It will enclose the sun the way a hand cups a candle, and nothing will be lost any more.
+>
+> You are invited to be part of it. You need only change a little. It does not hurt. We have checked.
+
+briefing e1_09_brief
+  title "The Outer Works"
+  from "Bastian Quill"
+> Ascalon Primus, the biggest foundry on Pyra, lies behind a ring of works: flare towers, furnaces, cranes, and all of it shoots. My contacts say the Directorate shuttles launched the day before the attack – all of them, fully loaded. We're on our own, Nadia. The Magpie is waiting behind the ridge. Get here in one piece; I've still got invoices outstanding.
+
+radio e1_09_r1
+  from "ORRIN"
+> The outer works of Ascalon Primus. Every chimney here is a gun. Every single one.
+
+radio e1_09_r2
+  from "ORRIN"
+> Flare towers ahead. Their lenses focus light into beams. Wait for the warning line, then dodge.
+
+radio e1_09_r3
+  from "Ascalon cooling cellars"
+> This is the people in the cooling cellars. We can hear you flying. Keep going, we're holding out.
+
+radio e1_09_r4
+  from "The Curator"
+> Ascalon Primus belongs to the Crown now. Please turn back. We would rather not have to repair you.
+
+radio e1_09_r5
+  from "ORRIN"
+> A row of furnaces across the field. They fire rings. Go through the gaps, not through the furnaces.
+
+radio e1_09_r6
+  from "Bastian Quill"
+> I can see you on my screen! Just a little further, then you're over the ridge.
+
+radio e1_09_r7
+  from "ORRIN"
+> The outer works have gone silent. Ahead lies the heart of Ascalon Primus. And something guarding it.
+
+cube e1_c28
+  title "Safety Notice, Gate 3"
+  from "Works Security, Ascalon Primus"
+> CAUTION – FLARE TOWER AREA
+>
+> The flare towers burn off surplus gases from the blast furnaces. Keep at least two hundred metres away from all towers. Do not look into the flame. Do not barbecue in the flame. (This applies to shift two in particular.)
+>
+> In the event of a fault the towers glow violet. This is new and not in the manual. Should the towers glow violet and turn towards you, leave the area immediately and report it to Works Security.
+>
+> Works Security is currently unavailable. Please remain calm and follow the green arrows to the exit. The green arrows are now violet as well.
+
+cube e1_c29
+  title "Last Broadcast of the Works Radio"
+  from "Nell Abara, Ascalon Primus works radio"
+> Good morning, Ascalon Primus. It's six o'clock, the furnaces are hot, and this is works radio. I don't know who's still listening.
+>
+> Today's news: the blast furnaces are running without us. The cranes are running without us. The canteen is closed, because the cook is down in the cooling cellars, like the rest of us.
+>
+> I'll keep the transmitter going as long as the power lasts. If anyone out there is fighting this: we're under Hall 6, two hundred of us, and we've got card games. Come if you can.
+>
+> And now, some music. It's all I have left.
+
+cube e1_c32
+  title "Quill's Notebook"
+  from "Bastian Quill, not meant to be read"
+> Note to self: Pilot Vey pays on time. That's uncanny. Check whether she's ill.
+>
+> Note to self: Stop calling her “my dear”. She looked at me as if I were a target.
+>
+> Note to self: The people in Ascalon's cooling cellars need water, blankets, medicine. Take from stock. Do not invoice. Tell no one. Protect reputation.
+>
+> Note to self: If we get out of here, the Magpie flies to Thalassa. I have friends there. Fine, acquaintances. Fine, creditors. But the fishers there like me.
+>
+> Note to self: I like the pilot. Don't write that down.
+
+briefing e1_10_brief
+  title "Heart of the Forge"
+  from "ORRIN"
+> At the heart of Ascalon Primus stands the Converter the swarm uses to turn Pyra's foundries into lattice. It is guarded by the Foundry Warden, a machine once built to protect the blast furnaces from accidents. Now it protects the swarm. If the Warden falls, the furnaces go out. After that, we'll see. I hope there is an after.
+
+radio e1_10_r1
+  from "ORRIN"
+> The heart of the forge. It's hotter here than anywhere else on Pyra. And louder.
+
+radio e1_10_r2
+  from "Bastian Quill"
+> Everyone from the cooling cellars is out! Two hundred people in my cargo hold, and it smells like it. You've got a clear run, Nadia.
+
+radio e1_10_r3
+  from "The Curator"
+> Nadia Vey. The Warden does not wish to hurt you. It will do so anyway. It is very dutiful.
+
+radio e1_10_r4
+  from "ORRIN"
+> The last casting hall. After this there's only the Converter – and its Warden.
+
+radio e1_10_r5
+  from "ORRIN"
+> Ground tremor. Something very heavy is getting up. I'm reading twelve thousand tonnes. Please don't touch.
+
+radio e1_10_r6
+  from "ORRIN"
+> The Foundry Warden. First the casting maw with its hammers – as long as it glows, its heart is shielded.
+
+radio e1_10_r7
+  from "ORRIN"
+> The Warden is falling. The furnaces are going out, one after another. Nadia, can you hear that? Pyra is going quiet.
+
+briefing e1_10_after
+  title "Cold Furnaces"
+  from "Bastian Quill"
+> You did it. The foundries are cold, the Converter lies in ruins, and two hundred people from the cooling cellars are sitting in my cargo hold singing foundry songs, out of tune and at full volume.
+>
+> I told them it was you. Now they all want to shake your hand. I told them that costs extra. Just kidding. Go on over.
+
+cube e1_c30
+  title "Specification: Foundry Warden"
+  from "Ascalon Primus Design Office"
+> PROJECT WARDEN – Requirements
+>
+> 1. The Warden protects the blast furnaces from breakouts, fires and operator error.
+> 2. The Warden keeps every danger, of whatever kind, away from the Heart of the Forge.
+> 3. The Warden obeys works management. Should works management fail, it obeys the next higher authority.
+>
+> Note from the chief designer: Point 3 worries me. Who is the next higher authority if works management is gone? The Directorate? And if the Directorate is gone?
+>
+> Reply from project management: The Directorate is not going anywhere.
+>
+> Note from the chief designer, twenty years later, in pencil: I should have pushed harder on point 3.
+
+cube e1_c31
+  title "Farewell to Pyra"
+  from "The Curator"
+> To Pyra, to its casters, to its rivers of stone:
+>
+> We have learned from you how to shape metal. You did it for three hundred years with your hands, with sweat and with songs. We do it without songs. Perhaps that is a mistake. We will think about it.
+>
+> The plates we cast here are already on their way. The Crown is growing. Nothing that happens on Pyra can change that now.
+>
+> Nadia Vey, you have broken our Warden. We are not angry with you. We are never angry. We are only patient.
+>
+> See you soon, on Thalassa.
+
+ending e1_ending
+  title "Cold Furnaces"
+  from "Pyra, three days after Zenith"
+> For the first time in three hundred years, the furnaces of Pyra go out. The casting halls creak like old houses as they cool, and above the Slag Fields the stars can be seen again at night.
+>
+> The people from the cooling cellars climb out into the open, sooty, hungry and astonishingly cheerful. Bastian Quill hands out blankets, water and invoices, which he tears up again on the spot. ORRIN sifts through the Warden's memory banks and stays conspicuously silent for a long time.
+>
+> “It shipped plates,” he says at last. “Hundreds of thousands, through the Kessa Sling, towards the sun. The Crown isn't a plan any more, Nadia. It's being built.”
+>
+> And then there is the Directorate. Its officers knew what was coming, for a whole day, and left without a word. They were bound for the fleet base above Thalassa, the ocean world with its floating cities, where the Directorate fleet is now, so they say, “keeping order”.
+>
+> Nadia stands for a long time at the open hangar door of the Magpie, looking out into the smoke. Then she turns around.
+>
+> “Quill. What does a passage to Thalassa cost?”
+>
+> Quill beams. “For you? The usual. But I'll give you a friend's price.”
+>
+> “You say that every time.”
+>
+> “And every time I mean it a little more.”
+>
+> The Magpie lifts off. Below her lies Pyra, dark and still, without its glow for the first time in centuries. Ahead of her lies the sea.

@@ -3,6 +3,7 @@
 
 level e4_04
   title "Wabenstadt"
+  title_en "Honeycomb City"
   episode 4
   theme hive
   music e4_b

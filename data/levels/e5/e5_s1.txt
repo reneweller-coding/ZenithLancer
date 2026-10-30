@@ -3,6 +3,7 @@
 
 level e5_s1
   title "Der erste Keim"
+  title_en "The First Seed"
   episode 5
   theme nebula
   music secret

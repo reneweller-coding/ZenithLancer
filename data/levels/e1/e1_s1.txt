@@ -3,6 +3,7 @@
 
 level e1_s1
   title "Vulkantiefe"
+  title_en "Vulcan Deep"
   episode 1
   theme lava
   music secret

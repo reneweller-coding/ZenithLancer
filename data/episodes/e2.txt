@@ -1,6 +1,8 @@
 episode 2
   title "Gezeitenfall"
   subtitle "Thalassa, die Wasserwelt der schwimmenden Städte. Die Flotte des Direktorats schützt sie – angeblich. Wer hält die Leine des Schwarms?"
+  title_en "Tidefall"
+  subtitle_en "Thalassa, the water world of floating cities. The Directorate fleet protects it – supposedly. Who holds the swarm's leash?"
   first e2_01
   intro e2_intro
   ending e2_ending

@@ -3,6 +3,7 @@
 
 level e1_07
   title "Die leeren Quartiere"
+  title_en "The Empty Quarters"
   episode 1
   theme station
   music e1_a

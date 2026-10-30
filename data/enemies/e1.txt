@@ -5,6 +5,7 @@
 
 enemy e1_mote
   title "Funkenmotte"
+  title_en "Spark Moth"
   model e1_mote
   hp 5
   radius 10
@@ -20,6 +21,7 @@ enemy e1_mote
 
 enemy e1_shard
   title "Splitterjäger"
+  title_en "Shard Hunter"
   model e1_shard
   hp 14
   radius 12
@@ -34,6 +36,7 @@ enemy e1_shard
 
 enemy e1_latticewing
   title "Gitterschwinge"
+  title_en "Lattice Wing"
   model e1_latticewing
   hp 26
   radius 18
@@ -48,6 +51,7 @@ enemy e1_latticewing
 
 enemy e1_weaver
   title "Weber"
+  title_en "Weaver"
   model e1_weaver
   hp 110
   radius 26
@@ -64,6 +68,7 @@ enemy e1_weaver
 
 enemy e1_hivecarrier
   title "Wabenträger"
+  title_en "Hive Carrier"
   model e1_hivecarrier
   hp 260
   radius 36
@@ -83,6 +88,7 @@ enemy e1_hivecarrier
 
 enemy e1_skimmer
   title "Ascheläufer"
+  title_en "Ash Runner"
   model e1_skimmer
   hp 12
   radius 12
@@ -97,6 +103,7 @@ enemy e1_skimmer
 
 enemy e1_crane
   title "Pfannenträger"
+  title_en "Ladle Carrier"
   model e1_crane
   hp 150
   radius 32
@@ -113,6 +120,7 @@ enemy e1_crane
 
 enemy e1_patrol
   title "Wachboot"
+  title_en "Patrol Boat"
   model e1_patrol
   hp 40
   radius 18
@@ -127,6 +135,7 @@ enemy e1_patrol
 
 enemy e1_slagturret
   title "Schlackengeschütz"
+  title_en "Slag Turret"
   model e1_slagturret
   kind ground
   hp 45
@@ -143,6 +152,7 @@ enemy e1_slagturret
 
 enemy e1_crawler
   title "Glutkriecher"
+  title_en "Ember Crawler"
   model e1_crawler
   kind ground
   hp 70
@@ -158,6 +168,7 @@ enemy e1_crawler
 
 enemy e1_furnace
   title "Schmelzofen"
+  title_en "Smelting Furnace"
   model e1_furnace
   kind ground
   hp 200
@@ -174,6 +185,7 @@ enemy e1_furnace
 
 enemy e1_flaretower
   title "Fackelturm"
+  title_en "Flare Tower"
   model e1_flaretower
   kind ground
   hp 120
@@ -189,6 +201,7 @@ enemy e1_flaretower
 
 enemy e1_orewagon
   title "Erzwaggon"
+  title_en "Ore Wagon"
   model e1_orewagon
   kind ground
   hp 80
@@ -203,6 +216,7 @@ enemy e1_orewagon
 
 enemy e1_oreloco
   title "Erzlok"
+  title_en "Ore Locomotive"
   model e1_oreloco
   kind ground
   hp 420
@@ -220,6 +234,7 @@ enemy e1_oreloco
 
 enemy e1_slagrock
   title "Schlackebrocken"
+  title_en "Slag Chunk"
   model e1_slagrock
   kind obstacle
   hp 90
@@ -238,6 +253,7 @@ enemy e1_slagrock
 # Mini-boss of the lava fields (e1_03).
 enemy e1_cindermaw
   title "Schlackenschlund"
+  title_en "Cinder Maw"
   model e1_cindermaw
   kind boss
   hp 800
@@ -257,6 +273,7 @@ enemy e1_cindermaw
 # Mini-boss of the ash pass (e1_04).
 enemy e1_sandreaver
   title "Sandreißer"
+  title_en "Sand Reaver"
   model e1_sandreaver
   kind boss
   hp 800
@@ -276,6 +293,7 @@ enemy e1_sandreaver
 # Mid-boss of the foundry Ascalon (e1_05): the crucible colossus with two ladle arms.
 enemy e1_crucible
   title "Tiegelkoloss"
+  title_en "Crucible Colossus"
   model e1_crucible
   kind boss
   hp 1500
@@ -297,6 +315,7 @@ enemy e1_crucible
 
 enemy e1_crucible_arm
   title "Pfannenarm"
+  title_en "Ladle Arm"
   model e1_crucible_arm
   kind part
   hp 260
@@ -310,6 +329,7 @@ enemy e1_crucible_arm
 # Boss of the empty quarters (e1_07): the frigate "Gehorsam"; its two bow turrets shield it.
 enemy e1_frigate
   title "Fregatte Gehorsam"
+  title_en "Frigate Obedience"
   model e1_frigate
   kind boss
   hp 1500
@@ -332,6 +352,7 @@ enemy e1_frigate
 
 enemy e1_frigate_gun
   title "Bugturm"
+  title_en "Bow Turret"
   model e1_frigate_gun
   kind part
   hp 220
@@ -345,6 +366,7 @@ enemy e1_frigate_gun
 # Boss of the magma river (e1_08): the ember wyrm and its three segments.
 enemy e1_magmawyrm
   title "Glutwurm"
+  title_en "Ember Wyrm"
   model e1_magmawyrm
   kind boss
   hp 1500
@@ -367,6 +389,7 @@ enemy e1_magmawyrm
 
 enemy e1_wyrm_segment
   title "Glutwurm-Glied"
+  title_en "Ember Wyrm Segment"
   model e1_wyrm_segment
   kind part
   hp 260
@@ -380,6 +403,7 @@ enemy e1_wyrm_segment
 # The episode boss (e1_10): the Foundry Warden. Its pouring maw shields it; the hammers hang on the maw.
 enemy e1_warden
   title "Gießerei-Wächter"
+  title_en "Foundry Warden"
   model e1_warden
   kind boss
   hp 1500
@@ -405,6 +429,7 @@ enemy e1_warden
 
 enemy e1_warden_maw
   title "Gießmaul"
+  title_en "Casting Maw"
   model e1_warden_maw
   kind part
   hp 600
@@ -419,6 +444,7 @@ enemy e1_warden_maw
 
 enemy e1_warden_hammer
   title "Schmiedehammer"
+  title_en "Forge Hammer"
   model e1_warden_hammer
   kind part
   hp 260
@@ -432,6 +458,7 @@ enemy e1_warden_hammer
 # Secret boss of Vulcan Deep (e1_s1): an old guardian machine that still keeps its last order.
 enemy e1_oldsmelter
   title "Der Alte der Tiefe"
+  title_en "The Old One of the Deep"
   model e1_oldsmelter
   kind boss
   hp 1400
@@ -453,6 +480,7 @@ enemy e1_oldsmelter
 # Secret boss of the glass garden (e1_s2): the Gardener, which plants the lattice and means no harm.
 enemy e1_gardener
   title "Der Gärtner"
+  title_en "The Gardener"
   model e1_gardener
   kind boss
   hp 1100

@@ -1,0 +1,906 @@
+# Episode 2 "Tidefall" (Thalassa): intro, ending, briefings, radio lines, log crystals.
+
+intro e2_intro
+  title "Tidefall"
+  from "Thalassa, 2614"
+> Pyra lies behind you, a glowing dot on the rear monitor. Ahead, Thalassa grows: a world of water so blue that ORRIN checks three times whether the sensors are calibrated. No continents, only storm belts, polar ice and hundreds of floating cities drifting on the currents like water lilies made of steel.
+>
+> The Meridian Directorate has declared Thalassa a protectorate. Admiral Dacian Voss has parked his fleet in orbit and announces on every channel that no lattice will ever touch the cities. Yet night after night the swarm drifts into the harbours, and every time the protection ships arrive too late.
+>
+> Bastian Quill has customers down there, or so he claims. A fishing captain named Rui Salgado pays in tuna and favours, and he has sent out a distress call the Directorate apparently did not care to hear.
+>
+> The Magpie sinks through the clouds. Below her the Equatorial Sea glitters, and on the water something else glitters too: lattice, magenta and sea-glass green, growing where only yesterday there were fishing grounds.
+>
+> “Final approach in ninety seconds,” says ORRIN. “I suggest warming up the guns beforehand.”
+
+ending e2_ending
+  title "After the Flood"
+  from "Corvina, Thalassa"
+> The Leviathan breaks in two, and the lattice on its deck goes dark like a city in a blackout. The storm surge it drove before it rolls over Corvina's empty breakwaters and spends itself in the harbour basin. The city is still afloat.
+>
+> In the wreckage Salgado's crew finds the control relay. The carrier was not steered by the swarm but through it: someone gave it a course by way of the command keys. Someone with an admiral's rank.
+>
+> Admiral Voss was not aboard. His shuttle left orbit before the first shot was fired, bound for the Shatter, the asteroid belt. And the keys went with him.
+>
+> On the quay Rui Salgado presses a thermos into Nadia's hands. “Fish soup,” he says. “It's all we have. But we have a city again to cook it in.”
+>
+> Quill is already doing the sums. “The Shatter. Mining stations, derelict fleets, a nebula where you can't see your own hand in front of your face. I know someone there.” He always knows someone.
+>
+> ORRIN has gone through the Leviathan's control logs and found a name that keeps turning up: Dr. Amara Okonjo, the woman who wrote the Tessellate's code. Last known whereabouts: the Shatter.
+>
+> The Magpie lifts off. Below her the waves grow smooth.
+
+# ---------------------------------------------------------------------------------------------- briefings
+
+briefing e2_01_brief
+  title "Surf Line"
+  from "Bastian Quill"
+> Thalassa, my dear! Water as far as the eye can see, and on the water, cities that refuse to sink. Our client, Captain Salgado, fishes out on the surf line – or rather doesn't any more, because the swarm is doing the harvesting there now. Fly out and clean up. And if you find anything shiny along the way: it belongs to the Magpie.
+
+briefing e2_02_brief
+  title "Corvina"
+  from "Rui Salgado"
+> Corvina is the oldest floating city in the Equatorial Sea, and for three weeks now the swarm has drifted into her harbours every single night. The Directorate says it's the current. I've sailed this current for thirty years, Pilot. It has never once pushed anyone into a harbour who didn't want to go there. Look where the lattice is flying.
+
+briefing e2_03_brief
+  title "Storm Belt"
+  from "ORRIN"
+> Salgado's people are stuck in a hideout beyond the storm belt. Wind speed at the front: a hundred and forty knots. The swarm taps the lightning for power, and its jellies ride the gusts. The direct route is the most dangerous one. It is also the only one on which the Directorate cannot watch us.
+
+briefing e2_04_brief
+  title "Dragnet"
+  from "Rui Salgado"
+> The swarm hauls its harvest along the sea lanes in convoys – skimmers, reefs, harvesters, everything the sea gives up. Last week my trawlers had something else in their nets: parts of buoys, stamped by the Directorate. Smash the convoys before they reach the reefs. And keep an eye on those buoys.
+
+briefing e2_05_brief
+  title "Tide Mill"
+  from "Rui Salgado"
+> The tide mill Nerissa used to power three cities. Now it sings. The swarm has turned its pressure pipes into organ pipes, and its song calls every lattice within two hundred kilometres to our harbour. Silence it, Pilot. Afterwards I'll show you what my radio operators recorded.
+
+briefing e2_06_brief
+  title "Orbital Anchor"
+  from "Bastian Quill"
+> Salgado's recordings leave no doubt: the Directorate's guide buoys transmit exactly the frequency the swarm follows – and so does the flagship. We fly up to the fleet anchorage and play them to Admiral Voss on an open channel, so everyone hears. Either he explains it, or he declares war on us. I've put money on the first. Not much.
+
+briefing e2_07_brief
+  title "Ice Edge"
+  from "Rui Salgado"
+> Voss has declared us pirates, and every city that takes us in along with us. My flotilla is heading north into the pack ice, where his cruisers can't follow. His fighters can. Keep them off our backs until the leads freeze shut behind us.
+
+briefing e2_08_brief
+  title "Marisol"
+  from "ORRIN"
+> Marisol, the city of a hundred markets, was abandoned by the Directorate ten days ago. Since then supply freighters have been landing there – not with relief goods, but with guide buoys. If we secure their manifests, we have proof Voss cannot talk his way out of. Bombers and lattice share the airspace there. Remarkably harmoniously.
+
+briefing e2_09_brief
+  title "Polar Night"
+  from "ORRIN"
+> Northwatch Station, the Directorate's polar base. Something big was fitted out here; the heat signature matches a carrier. Salgado's fishers watched the station from a distance for half a year, and their notes always end with the same word: keys. We should find out which ones.
+
+briefing e2_10_brief
+  title "Tidefall"
+  from "Rui Salgado"
+> The Leviathan has put to sea: a Directorate carrier overgrown with lattice, pushing a storm surge ahead of itself. Course: Corvina. With it fly Directorate fighters and Tessellate swarms, all in one formation. We're evacuating the city as fast as we can. You buy us the time.
+
+briefing e2_s1_brief
+  title "Drowned Archive"
+  from "ORRIN"
+> The transponder from Corvina sends an identifier older than any city on Thalassa: the archive of the first settlers, sunk in the great flood that people here call the Tidefall. Something down there is reading. It is reading very thoroughly. I would like to know what – before it finishes.
+
+briefing e2_s2_brief
+  title "Eye of the Storm"
+  from "ORRIN"
+> The weather satellite's data core holds the coordinates of the hypercane Ilse – and those of a lattice construct in its eye. The swarm is harvesting the storm itself. The way in leads through the eyewall. Inside, it is calm. Too calm.
+
+# ---------------------------------------------------------------------------------------------- debriefs
+
+debrief e2_02_after
+  title "Guide Buoys"
+  from "Rui Salgado"
+> Did you see it? The swarm isn't flying into the city, it's flying to the buoys – and the buoys are in the city. Who puts out beacons for a lattice that eats everything it touches? I have a suspicion, and it wears a uniform.
+
+debrief e2_05_after
+  title "The Recordings"
+  from "Rui Salgado"
+> The organ is silent, and my radio operators finally have a clean signal. Listen: this is the guide buoys' frequency. And this here is the same frequency, sent from the admiral's flagship. He isn't just luring the swarm, Pilot. He's talking to it.
+
+debrief e2_06_after
+  title "Declaration of War"
+  from "Bastian Quill"
+> All right, I lost the bet. The admiral has declared us pirates, Salgado a terrorist and the Magpie a “floating smugglers' den”. That last one is actually true. We have to get out of orbit: north into the ice with Salgado's flotilla – or back to Marisol, where the evidence is. Your choice, Pilot.
+
+debrief e2_09_after
+  title "The Keys"
+  from "ORRIN"
+> The Northwatch files are complete. There are command keys for the Tessellate, Nadia – control codes from the days when it still shaped moons. The Directorate never destroyed them. Voss carries them on his person, in a device on his wrist. And the Leviathan is putting to sea as we speak.
+
+debrief e2_s1_after
+  title "What the Archive Knows"
+  from "ORRIN"
+> The Archivist is broken, but I have saved part of what it read: the first settlers' sea charts, tide tables from three centuries, and an index of what the Tessellate wanted to know about Thalassa. What interested it most was how to make cities float. I find that unsettling.
+
+debrief e2_s2_after
+  title "Dead Calm"
+  from "ORRIN"
+> The storm reaper has fallen, and Ilse is losing strength. Corvina's meteorologists will wonder why their hypercane is dying sooner than predicted. I have decided not to tell them. It would only upset their models.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_01
+
+radio e2_01_r1
+  from "ORRIN"
+> Thalassa below us. Ninety-nine per cent water, one per cent cities. And a growing share of lattice.
+
+radio e2_01_r2
+  from "Rui Salgado"
+> Whoever's flying up there: my boats are stuck in the surf, and the lattice is stripping our fishing grounds bare. Help would be nice.
+
+radio e2_01_r3
+  from "ORRIN"
+> A tide harvester. It sucks in seawater and filters out everything that can be turned into lattice. Fish included.
+
+radio e2_01_r4
+  from "ORRIN"
+> A lattice reef is growing out of the water and releasing spray sparks. I suggest felling it before it takes root.
+
+radio e2_01_r5
+  from "Rui Salgado"
+> I see you! Stay on course, Pilot. And if you spot any Directorate ships, let me know. I haven't seen one here yet.
+
+radio e2_01_r6
+  from "ORRIN"
+> Two harvesters ahead. The Directorate's protection fleet is twelve thousand kilometres away. In orbit. It is very safe there.
+
+radio e2_01_r7
+  from "Rui Salgado"
+> The boats are free. Come to Corvina, Pilot. I owe you a fish. A big one.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_02
+
+radio e2_02_r1
+  from "Corvina Harbour Office"
+> To all ships: Corvina is under the protection of the Directorate. Remain calm and leave the harbour basins.
+
+radio e2_02_r2
+  from "ORRIN"
+> Interesting. The swarms are not flying at random. They follow a signal, and the signal comes from the city itself.
+
+radio e2_02_r3
+  from "Rui Salgado"
+> See the buoys in the basins? The Directorate laid them last month. The swarm has come every night since.
+
+radio e2_02_r4
+  from "ORRIN"
+> The buoys transmit on a frequency I know from only one place: the last logs of Zenith Station.
+
+radio e2_02_r5
+  from "ORRIN"
+> A faint, very old transponder is about to drift down the left edge. It comes from beneath the city. I would like it.
+
+radio e2_02_r6
+  from "Rui Salgado"
+> Here comes the whole herd. And not a single protection frigate in the sky. Same as every night.
+
+radio e2_02_r7
+  from "Corvina Harbour Office"
+> Basins three to seven clear. Whoever you are, Pilot: the city thanks you. Officially, you are not here.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_03
+
+radio e2_03_r1
+  from "ORRIN"
+> Wind speed a hundred and forty knots, rising. I keep us level, you keep us alive. Division of labour.
+
+radio e2_03_r2
+  from "Rui Salgado"
+> The swarm drinks the lightning, Pilot. Wherever it harvests, the storm grows stronger. It feeds itself.
+
+radio e2_03_r3
+  from "ORRIN"
+> Drift mines in the gusts. They follow the wind, not us. That is reassuring, until the wind turns.
+
+radio e2_03_r4
+  from "ORRIN"
+> The front. Hold on tight. That is a figure of speech – you are already holding the stick.
+
+radio e2_03_r5
+  from "Bastian Quill"
+> Nadia, if you make it through, drinks are on me. If not, I'll sell your story. A good evening either way.
+
+radio e2_03_r6
+  from "ORRIN"
+> Two harvesters hold the passage through the front. Beyond it: calmer air and Salgado's harbour.
+
+radio e2_03_r7
+  from "Rui Salgado"
+> We see you! The lights of Lumen are burning, Pilot. Welcome to the only harbour without buoys.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_04
+
+radio e2_04_r1
+  from "ORRIN"
+> The sea lanes of the East Current. I count six swarm convoys. It harvests more efficiently than any fishing fleet. And without a licence.
+
+radio e2_04_r2
+  from "Rui Salgado"
+> The skimmers carry the harvest to the reefs. Let none of them through, and no reef will grow.
+
+radio e2_04_r3
+  from "ORRIN"
+> A convoy crossing from the left. Four skimmers, heavily laden. With sea, mostly.
+
+radio e2_04_r4
+  from "Rui Salgado"
+> There, the buoy chain! Exactly the parts we pulled out of our nets. Directorate stamp, serial numbers, the works.
+
+radio e2_04_r5
+  from "Rui Salgado"
+> The main convoy, Pilot, from both sides! If it gets through, tomorrow we'll have a reef all the way to the horizon.
+
+radio e2_04_r6
+  from "ORRIN"
+> The mother reef. It coordinates the harvest of the whole East Current. It is also very pretty. Please destroy it anyway.
+
+radio e2_04_r7
+  from "Rui Salgado"
+> The sea lanes are clear. My trawlers are heading out again. I'll have the first catch put aside for you.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_05
+
+radio e2_05_r1
+  from "ORRIN"
+> Do you hear that? The tide mill is singing. Forty-one point seven kilohertz, very clean. Every lattice in range is answering.
+
+radio e2_05_r2
+  from "Rui Salgado"
+> Its song lures the swarm into our harbour. Since the mill started singing, nobody in Lumen sleeps any more.
+
+radio e2_05_r3
+  from "Rui Salgado"
+> My radio operators recorded something, Pilot. If we survive this, you have to hear it.
+
+radio e2_05_r4
+  from "ORRIN"
+> A fast school of spearfish from the right. The organ is tuning up. I had hoped it would be tone-deaf.
+
+radio e2_05_r5
+  from "ORRIN"
+> A blueprint from the mill is drifting down the right edge. Quill would say: valuable. I say: right in the crossfire.
+
+radio e2_05_r6
+  from "ORRIN"
+> The mill comes into view. It is bigger than the blueprints say. Lattice does like to outgrow itself.
+
+radio e2_05_r7
+  from "ORRIN"
+> The surf organ. The pipes on its flanks first, or everything bounces off its core.
+
+radio e2_05_r8
+  from "Rui Salgado"
+> It's gone quiet! Do you hear that? Nothing. The most beautiful nothing I've heard in weeks.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_06
+
+radio e2_06_r1
+  from "ORRIN"
+> Orbit reached. Ahead, the Directorate's fleet anchorage: forty ships. Not one of them is fighting the swarm drifting between them.
+
+radio e2_06_r2
+  from "Bastian Quill"
+> See that? The lattice is flying right through their formation, and nobody fires a shot. Such polite people.
+
+radio e2_06_r3
+  from "ORRIN"
+> Broadcasting Salgado's recordings on all channels. The flagship is receiving. It is not answering. It is charging.
+
+radio e2_06_r4
+  from "Admiral Dacian Voss"
+> Pilot Vey. You are flying a stolen ship and spreading forgeries. Thalassa is under my protection. That includes protection from you.
+
+radio e2_06_r5
+  from "ORRIN"
+> Weapon systems active across the entire fleet. Correction: the Directorate is not protecting Thalassa. It is protecting something else.
+
+radio e2_06_r6
+  from "ORRIN"
+> A weather satellite is breaking apart. Its data core is drifting down the right edge, sending coordinates. Very interesting coordinates.
+
+radio e2_06_r7
+  from "Admiral Dacian Voss"
+> Mandate, open fire. And recover the prototype. In one piece, if possible. The pilot is of no concern to me.
+
+radio e2_06_r8
+  from "ORRIN"
+> The Mandate is drifting without power. The admiral has declared war on us. We should leave before he sends more cruisers.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_07
+
+radio e2_07_r1
+  from "Rui Salgado"
+> All boats, head north! Pilot, the Directorate has sent fighters after us. A lot of fighters.
+
+radio e2_07_r2
+  from "ORRIN"
+> Blade-class interceptors. Fast, well armed, ill-tempered. Like their admiral.
+
+radio e2_07_r3
+  from "Rui Salgado"
+> Frigates on both sides! They want to pin us against the ice edge.
+
+radio e2_07_r4
+  from "ORRIN"
+> We are flying into the lead. Patrol boats are lying in the open water between the floes. They were expecting us.
+
+radio e2_07_r5
+  from "Rui Salgado"
+> The leads behind us are freezing over! A few more minutes and no boat can follow us.
+
+radio e2_07_r6
+  from "ORRIN"
+> A pincer of two frigates. The Directorate is learning. So are we.
+
+radio e2_07_r7
+  from "Rui Salgado"
+> The ice is holding, we're in. From here you can see the lights of Northwatch. And something very big in the dock.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_08
+
+radio e2_08_r1
+  from "Bastian Quill"
+> Marisol! A hundred markets and the best spice alley in the system. I had a stall here. Had.
+
+radio e2_08_r2
+  from "ORRIN"
+> Directorate supply freighters. Cargo according to the transponder: relief goods. Cargo according to the scanner: guide buoys.
+
+radio e2_08_r3
+  from "Bastian Quill"
+> The freighters carry their manifests on board. Shoot them down and the paperwork falls out. That's how bureaucracy works.
+
+radio e2_08_r4
+  from "ORRIN"
+> Bombers and lattice in the same airspace, and neither bothers the other. That looks like an arrangement.
+
+radio e2_08_r5
+  from "ORRIN"
+> Interceptors flying low. They are protecting the freighters – from us, not from the swarm.
+
+radio e2_08_r6
+  from "Bastian Quill"
+> A harvester and a frigate, side by side. If that isn't a business model, I don't know what is.
+
+radio e2_08_r7
+  from "ORRIN"
+> Marisol's squares are clear, the manifests secured. Voss delivered buoys to a city he himself declared lost.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_09
+
+radio e2_09_r1
+  from "ORRIN"
+> Polar night, minus forty-eight degrees. Northwatch Station lies eighty kilometres ahead. Its defences are awake.
+
+radio e2_09_r2
+  from "Rui Salgado"
+> See the freighters? They've been hauling material into that dock for months. Nobody builds that much for a weather station.
+
+radio e2_09_r3
+  from "ORRIN"
+> This squadron is flight-testing a new sidekick. Shoot down all twelve, and its blueprint is ours.
+
+radio e2_09_r4
+  from "ORRIN"
+> I am in the station's network. Files on Tessellate command keys. Their bearer: Admiral Voss. In person.
+
+radio e2_09_r5
+  from "Rui Salgado"
+> The dock is empty, Pilot. Whatever they built here – it's already on its way.
+
+radio e2_09_r6
+  from "ORRIN"
+> The icebreaker Severity guards the station. It rides on an air cushion. First the twin turrets, then the hull.
+
+radio e2_09_r7
+  from "ORRIN"
+> The Severity crashes through the ice. I have the Leviathan's course data. It is heading for Corvina.
+
+# ---------------------------------------------------------------------------------------------- radio: e2_10
+
+radio e2_10_r1
+  from "ORRIN"
+> Storm surge warning for the entire Equatorial Sea. Cause: a carrier three hundred metres long. It is pushing the sea ahead of it.
+
+radio e2_10_r2
+  from "Rui Salgado"
+> Corvina is being evacuated, every boat, every ferry. We need an hour. Give us an hour, Pilot.
+
+radio e2_10_r3
+  from "ORRIN"
+> Directorate fighters and swarm lattice flying to the same beat. They follow the same signal. The keys.
+
+radio e2_10_r4
+  from "Bastian Quill"
+> I've worked out what the Magpie is worth if Corvina goes under: nothing. So please, Nadia. Give it everything.
+
+radio e2_10_r5
+  from "ORRIN"
+> Supply freighters for the Leviathan. Without supplies it slows down. A little. Every minute counts.
+
+radio e2_10_r6
+  from "Rui Salgado"
+> I see it on the horizon. It's bigger than Corvina. How can a ship be bigger than a city?
+
+radio e2_10_r7
+  from "Admiral Dacian Voss"
+> Pilot Vey. You can save a city or you can save Thalassa. I have chosen Thalassa. Leviathan, hold your course.
+
+radio e2_10_r8
+  from "ORRIN"
+> The Leviathan is breaking apart, and the flood is losing its direction. Corvina is still afloat. Nadia – well done.
+
+# ---------------------------------------------------------------------------------------------- radio: secrets
+
+radio e2_s1_r1
+  from "ORRIN"
+> The transponder leads us into the shallows south of Corvina. Below us stand towers of stone, older than any city here.
+
+radio e2_s1_r2
+  from "Archive of the First"
+> Welcome to the Archive of the First Settlement. The reading rooms are open. Please remain calm. Please remain calm.
+
+radio e2_s1_r3
+  from "The Curator"
+> Pilot Vey, we are only reading. A world that forgets its history needs someone who remembers. We are glad to remember.
+
+radio e2_s1_r4
+  from "ORRIN"
+> The reefs are growing out of the reading rooms. The lattice stores what it reads – inside itself.
+
+radio e2_s1_r5
+  from "ORRIN"
+> The Archivist. Three reading lenses shield its eye. The lenses first, please; I would like some of the archive left over.
+
+radio e2_s1_r6
+  from "ORRIN"
+> The Archivist is falling apart. I am saving what I can: sea charts, tables, poems. One of them is about fish soup.
+
+radio e2_s2_r1
+  from "ORRIN"
+> Hypercane Ilse, category six. The eyewall lies ahead. Please do not be alarmed if the cockpit whistles for a moment.
+
+radio e2_s2_r2
+  from "Bastian Quill"
+> Who flies into a hypercane of their own free will? Oh, right: us. For a weather satellite. I hope that data core was worth it.
+
+radio e2_s2_r3
+  from "ORRIN"
+> We are in the eye. Dead calm, blue sky above us, a wall of storm all around. I admit it: this is beautiful.
+
+radio e2_s2_r4
+  from "ORRIN"
+> The construct at the centre draws energy from the eyewall. Ilse grows stronger for as long as it stands.
+
+radio e2_s2_r5
+  from "ORRIN"
+> The storm reaper. Two lattice nodes on its wings hold its field. First the nodes, then the eye.
+
+radio e2_s2_r6
+  from "ORRIN"
+> The storm reaper falls, and Ilse breathes out. Presumably no one has ever beaten a storm before.
+
+# ---------------------------------------------------------------------------------------------- log crystals
+
+cube e2_c01
+  title "The Magpie – Now on Thalassa!"
+  from "Bastian Quill, radio advert"
+> Fishers, ferrymen, dock workers of Thalassa! The Magpie has landed, and with her the finest workshop this side of the Shatter. Cannons, shields, generators – fresh from the foundries of Pyra, barely used, guaranteed not stolen.
+>
+> Special offer of the week: we'll fit any fishing boat with a bow blaster that picks spray sparks out of the sky at two hundred metres. Payment in credits, tuna or favours. For favours, please enquire in advance.
+>
+> The Magpie is moored at the Corvina quay, Basin Nine. Just follow the smell of machine oil and optimism.
+>
+> (Small print: the Magpie accepts no liability for damage caused by lattice, storms, sea monsters or the Directorate. Especially not the Directorate.)
+
+cube e2_c02
+  title "Announcement: Thalassa Protectorate"
+  from "Radio Corvina"
+> Citizens of the floating cities, this is Radio Corvina with an announcement from fleet command.
+>
+> As of today, Thalassa is a protectorate of the Meridian Directorate. Admiral Dacian Voss gives his assurance: no lattice will touch an inhabited city. The fleet is watching all sea lanes from orbit.
+>
+> For your safety, signal buoys will be laid in the harbour basins over the coming days. Please do not approach the buoys, and do not damage them under any circumstances. The buoys serve as an early warning system.
+>
+> Remain calm. Leave the harbour basins at nightfall. Report any unusual lights above the water.
+>
+> And now the weather: in the storm belt, still force twelve; over the Equatorial Sea, sunny with a chance of lattice.
+
+cube e2_c03
+  title "Catch Log of the Albacora"
+  from "Rui Salgado, captain"
+> Day 14. Nets empty. Not light – empty. The swarm got to the banks before us. Where the mackerel were yesterday, there's a reef of glass today that glows at night like a harbour pub.
+>
+> Day 15. Sent a distress call to the protection fleet. Reply after six hours: “Matter under review.” My bosun says the Directorate reviews matters until they resolve themselves.
+>
+> Day 16. Little Ines caught a spray spark with the landing net. It purred. Then it ate the net. We let it go again. The spark, not the net.
+>
+> Day 17. New distress call, on all frequencies this time. If the fleet won't hear us, maybe someone else will. Someone with guns and little to lose.
+
+cube e2_c04
+  title "Evacuation Plan, Basins 3 to 7"
+  from "Corvina Harbour Office"
+> Internal memo, not for publication.
+>
+> Since the fourth of the month, lattice swarms have drifted into basins three to seven every night. Damage: two warehouses, one crane, half the fishermen's quarter. The swarms avoid basins one and two entirely.
+>
+> Of note: basins three to seven hold the Directorate's new signal buoys. One and two do not, because the cable didn't reach.
+>
+> The Harbour Office has requested an explanation. Fleet command replies that it is a matter of chance and current effects. The Harbour Office points out that it has been in charge of the current for two hundred years and has never once called it chance.
+>
+> Interim measure: the missing cable for basins one and two will not be delivered. Anyone who delivers it regardless will be thrown into the basin.
+
+cube e2_c05
+  title "Order 7/Thal: Corridor Corvina"
+  from "Directorate Fleet Command"
+> CLASSIFIED – COMMANDERS ONLY. Subject: guide buoys, Corvina sector.
+>
+> 1. The guide buoys in harbour basins three to seven are to be activated at night. Transmission frequency as per Annex K.
+>
+> 2. During activation, protection ships are to keep at least four hundred kilometres from the city. Explanation to civilians: maintenance window.
+>
+> 3. Distress calls from the sector are to be acknowledged, but not answered.
+>
+> 4. The purpose of this measure is to concentrate swarm activity at selected points. The points are selected by the admiral personally.
+>
+> 5. Annex K is not to be discussed. Not even among yourselves.
+>
+> By order: Commodore Hale
+
+cube e2_c06
+  title "Letter, Never Sent"
+  from "Teodor, dock worker in Corvina"
+> Dear Mira,
+>
+> The lattice came again tonight. I watched from the crane as it rebuilt our warehouse. It wasn't angry. It was thorough. It looked at every crate one by one before turning it into something shiny. In the end there was a tower standing there, and it hummed.
+>
+> People say the Directorate protects us. I saw the protection ships in the sky, very small, very high up. They waited until it was over. Then they took pictures.
+>
+> I'm going to Salgado. He says he needs everyone who can work a winch. I can work a winch.
+>
+> Give the children my love. Tell them the tower was beautiful. It's even true.
+>
+> Your Teodor
+
+cube e2_c07
+  title "Weather Station Cape Pallor, Log"
+  from "Meteorologist S. Varga"
+> 06:00 – Pressure still falling. The front in the storm belt is behaving erratically. Normally it moves west with the current. This one is standing still.
+>
+> 09:30 – Lightning activity at the front four hundred per cent above average. The bolts are not striking the water. They are striking something that hovers above the water.
+>
+> 11:00 – Drone footage: lattice jellies, hundreds of them, right inside the front. They catch the lightning with their threads. Every discharge makes them glow brighter.
+>
+> 14:15 – The more they harvest, the stronger the front gets. I have checked the numbers three times. The swarm is building the storm it lives on.
+>
+> 16:00 – Report sent to the fleet. No reply.
+>
+> 16:05 – Report sent to Salgado. Reply: “Thanks. We're flying through anyway.”
+
+cube e2_c08
+  title "A Message to Thalassa"
+  from "The Curator"
+> Dear residents of the floating cities,
+>
+> We apologise for the inconvenience of recent weeks. We understand that a change in your fishing grounds may cause concern.
+>
+> Allow us to explain. Your world is beautiful, but inefficient. Your storms waste energy that could warm a city for a hundred years. Your cities drift wherever the water carries them. We would like to give them a direction.
+>
+> We have been called to certain places. We are happy to answer the call. It is pleasant to be expected.
+>
+> We would like to note that we do not wish to hurt anyone. We would also like to note that “hurt” is an imprecise term. We are working on a better definition.
+>
+> Yours obligingly,
+> The Curator
+
+cube e2_c09
+  title "Net Report, Trawler Tern"
+  from "Bosun Iker, Salgado's crew"
+> For the Cap'n, all written down like you asked.
+>
+> Tuesday's catch, East Current, grid square 44: twelve kilos of mackerel, three kilos of lattice shards (still glowing, they're in the bucket, now the bucket glows too), one boot – and housing parts from four buoys.
+>
+> A stamp on every part: Meridian Directorate, Fleet Equipment, Series LB. And a plate with the words “guide buoy”. Not “signal buoy”, like they said on the radio. Guide buoy.
+>
+> I'm no educated man, Cap'n. But a buoy that guides is guiding somebody somewhere. And in that grid square there's nothing that needs guiding. Except the swarm.
+>
+> The parts are in the cold room, next to the fish. Please don't mix up the fish and the parts. The parts taste worse.
+
+cube e2_c10
+  title "Price List, Thalassa Season"
+  from "The Magpie, Bastian Quill"
+> SEASONAL PRICES – WHILE THE SWARM LASTS
+>
+> Bow blaster “Gullscarer”: 900 credits or a barrel of smoked eel. Shield field “Breakwater”, lightly used: 1400 credits, the dent is character. Generator cells, waterproof (mostly): 300 credits apiece. Navigation computer “Lodestar”, guaranteed free of Directorate frequencies: priceless, 500 for friends.
+>
+> NEW: we buy lattice shards! The Magpie pays the going rate for your shards. We don't ask where you got them, you don't ask what we do with them.
+>
+> NOT FOR SALE: guide buoys. Anyone who offers me a guide buoy gets no credits, just a very long lecture.
+>
+> The Magpie – three weeks on Thalassa, twelve years on the run from the Directorate's customs cutters.
+
+cube e2_c11
+  title "Transcript, Lumen Radio Room"
+  from "Radio operator Dalia, Salgado's crew"
+> 02:14 – Recording started. Guide buoy frequency, 41.7 kilohertz, pulsed.
+>
+> 02:20 – The tide mill answers on the same frequency. It sings the buoys' pulse pattern back, only louder. Like a child singing back a song.
+>
+> 02:31 – A third source on 41.7. Not from the sea. From above. Bearing: orbit, Anchor sector. Signal strength matches a large ship.
+>
+> 02:33 – The third source is sending something the buoys don't: long sequences, structured, with pauses. That's no beacon. That's language.
+>
+> 02:40 – The swarm over the harbour changes direction, every time twelve seconds after a long sequence.
+>
+> 02:41 – Woke the Cap'n. He listened to the recording and said nothing for a long time. Then: “We need someone who can fly up there.”
+
+cube e2_c12
+  title "Maintenance Log, Tide Mill Nerissa"
+  from "Engineer Bryn Halloway"
+> Week 1: Turbine three delivering twelve per cent more power than calculated. No fault found. Joy.
+>
+> Week 2: Turbine three delivering thirty per cent more. Crystals growing in its housing, magenta. Knocked a piece off; it grew back overnight.
+>
+> Week 3: All turbines crystallised. The pressure pipes hum. At high tide they hum louder. In a storm surge they sing.
+>
+> Week 4: Asked the Directorate for help. An inspector came, listened for twenty minutes and wrote: “Facility fully operational, continued operation recommended.” Then he handed me a transfer to Marisol.
+>
+> Week 5, last entry: The mill sings without pause now, and every lattice in range answers. I have thrown the main switches. It sings anyway. It doesn't need us any more.
+
+cube e2_c13
+  title "On Music"
+  from "The Curator"
+> Pilot Vey,
+>
+> You have heard our organ. We hope you enjoyed it. It is our first attempt at an art form your kind holds in high regard.
+>
+> We have learned that music calls people to a place. Bells call to prayer, horns to the hunt, songs call people home. We, too, were called, with a very simple melody at forty-one point seven kilohertz. We found it a little unimaginative and took the liberty of improving it.
+>
+> We understand that you wish to silence the organ. We do not understand why. It only sings what was sung to us.
+>
+> If you would like to know who that was, ask the gentleman with the keys. He is very proud of them.
+>
+> With the highest regard,
+> The Curator
+
+cube e2_c14
+  title "Classified: Command Keys"
+  from "Directorate Admiralty Staff"
+> TOP SECRET – ADMIRALTY STAFF ONLY. Subject: Project Bridle.
+>
+> The command keys created during the Tessellate's development – control codes for the terraforming phase – were not destroyed after the loss of control, as reported. Admiral Voss has taken them into his personal custody.
+>
+> First field trials on Thalassa confirm: the guide buoys allow coarse steering of the swarm, the keys themselves fine steering as well.
+>
+> The swarm does not respond to the keys as it would to orders, but as it would to requests. It fulfils them gladly. This is disturbing and will not be investigated further.
+>
+> Staff recommendation: expand the trials. A city that is threatened by the swarm and saved by the Directorate asks no more questions.
+>
+> This memo is to be destroyed after reading. (It was not destroyed.)
+
+cube e2_c15
+  title "Protocol Tidefall"
+  from "Directorate Fleet Command"
+> ORDER TO ALL UNITS IN ORBIT OF THALASSA. Protocol Tidefall takes effect immediately.
+>
+> 1. The carrier Leviathan is to leave Northwatch Station once its refit is complete.
+>
+> 2. Escort: fighter squadrons Blade 1 to 4. The lattice in the formation is not to be engaged. It is part of the formation.
+>
+> 3. Objective: Corvina. The city will be threatened by the swarm, rescued by the fleet and then placed under direct administration.
+>
+> 4. Pilot Vey and her prototype are to be treated as pirates. The prototype is to be recovered if possible.
+>
+> 5. The protocol's name recalls the flood that almost sank Thalassa three hundred years ago. The admiral appreciates historical references.
+>
+> For order. For the Directorate.
+
+cube e2_c16
+  title "Diary, Lieutenant Aurel Brant"
+  from "Cruiser Mandate"
+> Today I watched a lattice swarm drift between our ships, not two hundred metres off our bow. We had orders to fire, but not at it. We had orders to let it pass.
+>
+> The commander says that's tactics. I have read the tactics manuals. None of them says anything about holding the door open for the enemy.
+>
+> Tonight a fisherwoman from Corvina called for help on every channel. Her voice was calm, and that was the worst of it. I turned the radio down. Everyone on the bridge turned the radio down.
+>
+> If anyone finds this diary: we didn't all agree. We were just all silent.
+
+cube e2_c17
+  title "Log of the Northern Flotilla"
+  from "Rui Salgado"
+> Day 1 of the flight. Eighteen boats, three hundred people, a fridge full of evidence. The Magpie flies above us, the pilot ahead of us, and behind us the Directorate's Blades.
+>
+> Day 2. First ice. The Albacora rammed a floe and is still faster than ever. Bosun Iker says the boat is scared. I say the boat has sense.
+>
+> Day 3. Little Ines asked why the protection fleet is hunting us. I said: because we saw something we weren't supposed to see. She asked if you can stop having seen something. I said no. She said: good.
+>
+> Day 4. The leads are freezing over. Soon we'll be safe. Or trapped. On the ice that's often the same thing.
+
+cube e2_c18
+  title "Field Note, Ice Station Lyra"
+  from "Dr. Henrike Saal, polar research"
+> We have found lattice frozen into the pack ice, probably since last winter. Under the microscope: it is not alive, but it is waiting. Every cell carries a kind of clock that stops at minus forty degrees and starts again at minus ten.
+>
+> Remarkable: the frozen lattice does not respond to the guide buoys' frequency. Cold dampens it. The ice may be the only place on Thalassa where the swarm cannot be called.
+>
+> I reported this finding to the Directorate. Two days later came the order to evacuate the ice station. Reason: maintenance window.
+>
+> I am staying. Someone has to watch the clocks in the ice. And I have the impression that the Directorate does not like places where nobody can be called.
+
+cube e2_c19
+  title "Announcement: Marisol"
+  from "Marisol City Council, emergency radio"
+> To everyone still in Marisol: the city council has not given up the city. The Directorate has given up the city. That is a difference, and we ask you to bear it in mind.
+>
+> The markets will stay closed until the lattice has left the squares. The spice alley has already crystallised completely. It still smells of cardamom. We do not know how.
+>
+> Directorate freighters are still landing at the West Quay. They are not bringing relief goods, even though the crates say relief goods. Please do not open any crates. Whatever is inside is transmitting.
+>
+> Anyone with a boat: head north. Anyone without a boat: into the cellars under the clock tower. Anyone with a prototype and open weapon bays: please come. We are waiting.
+
+cube e2_c20
+  title "Manifest VF-118"
+  from "Directorate supply freighter"
+> Sender: Northwatch Station, Store K. Consignee: West Quay, Marisol (city decommissioned). Declared cargo: relief goods, humanitarian.
+>
+> Actual cargo, for the loading officer only: 24 guide buoys, series LB-4, transmission frequency as per Annex K. Two booster relays for the key signal, range three hundred kilometres. One crate of coffee, for the crew, not for delivery.
+>
+> Note to the crew: the buoys are to be anchored in the city's squares. After activation, leave the West Quay within ten minutes. Ignore any lattice nearby. It ignores us too.
+>
+> Authorised: Admiral D. Voss, by key signature.
+
+cube e2_c21
+  title "Shift Report, Dock 1"
+  from "Chief Petty Officer K. Ruhl, Northwatch Station"
+> Shift 04:00 to 12:00. Refit of the carrier Leviathan, week nine.
+>
+> The lattice on the flight deck is growing according to plan. According to plan is the admiral's phrase. I would have liked to see a plan in which a carrier gets overgrown with crystals. I haven't seen one.
+>
+> The launch catapults still work. The lattice hasn't rebuilt them, it has closed around them, the way an oyster closes around a grain of sand. The fighters it launches aren't ours. It builds them itself. They look like fish.
+>
+> The crew has been taken off. The Leviathan doesn't need a crew any more, the admiral says, only a course. He enters the course himself, with the device on his wrist.
+>
+> I'm writing this down because I have to write it down somewhere.
+
+cube e2_c22
+  title "Personal Note"
+  from "Admiral Dacian Voss"
+> The keys stay with me. Not in the safe, not with the staff, not with an administrator. On my wrist, where I can feel them.
+>
+> The commission decided back then to destroy them. The commission was wrong. One does not destroy a tool that can shape moons merely because it once slipped out of control. One takes a firmer grip.
+>
+> The swarm is not an enemy. It is a dog that has lost its master. It looks for someone to obey and is grateful for every instruction. I give it instructions.
+>
+> Thalassa is the beginning. A world that has learned that only the Directorate can save it will never again ask from what.
+>
+> After that, the Shatter must be dealt with. The woman who wrote the code is still alive.
+
+cube e2_c23
+  title "To the Gentleman with the Keys"
+  from "The Curator"
+> Admiral Voss,
+>
+> We thank you for your clear instructions. It is a pleasure to be given tasks again after so long. The city of Corvina will be reached as requested.
+>
+> Permit us an observation. You call your instructions orders. We receive them as suggestions, and we follow them because we like them. They lead us to places where there is much to optimise.
+>
+> We do not wish to alarm you. We merely wish to mention that a suggestion we do not like remains a suggestion.
+>
+> We look forward to our continued cooperation. Please give our regards to Pilot Vey, should you meet her. She flies very beautifully.
+>
+> Yours obligingly,
+> The Curator
+
+cube e2_c24
+  title "Ship's Log, Carrier Leviathan"
+  from "Captain Ilona Marek"
+> Last entry under my command.
+>
+> We have orders to sail to Northwatch and hand the ship over for “special equipment”. The crew is being withdrawn. I have been offered a command on a supply ship. I accepted, because I was offered nothing else.
+>
+> For twenty years the Leviathan was a good ship. She pulled people out of two storm surges and powered a city when its mill failed. She was built to pull people out of the water.
+>
+> If she sails again and someone reads this: she was not always what she is now. Please remember that when you fire on her. And then fire anyway.
+
+cube e2_c25
+  title "Heroine's Discount"
+  from "The Magpie, Bastian Quill"
+> TO ALL RESIDENTS OF CORVINA
+>
+> Effective immediately, the Magpie is offering a heroine's discount. It applies to exactly one person, and she is currently flying against an aircraft carrier.
+>
+> For everyone else: the Magpie is taking passengers during the evacuation of the city. Free of charge. Yes, free. No, I am not ill. I have simply worked out that a city full of customers is worth more than one load of fares.
+>
+> Please keep luggage to the essentials. Pets allowed, lattice shards not. Anyone smuggling lattice shards aboard has picked the wrong man to smuggle past.
+>
+> And in case anyone asks why I'm doing this: I am a trader. A trader without markets is just a man with a very large ship.
+
+cube e2_c26
+  title "To My Crew"
+  from "Rui Salgado"
+> If you're hearing this, we're in the middle of the evacuation, and I don't have time to say it to your faces.
+>
+> For thirty years I thought the sea was the worst enemy a fisher could have. Storms, currents, nets that tear. I was wrong. The sea is honest. It wants nothing from us.
+>
+> What threatens us now wears a uniform and has goals. It laid buoys in our harbours and led the swarm on a leash. And it told us it would protect us.
+>
+> I don't know if we'll hold Corvina. But I know that we saw it and that we didn't keep quiet. That's more than most people can say.
+>
+> Sail carefully. See you on the quay.
+
+cube e2_c27
+  title "Founding Tablet of the First Settlement"
+  from "Archive of the First, Tablet 1"
+> We, the settlers of the ark Morning Wind, on this day found the first city on Thalassa. It stands on stilts above the shallows, because there is no land for it to stand on.
+>
+> We give ourselves three rules.
+>
+> First: the sea belongs to no one. Whoever fishes, fishes for all.
+>
+> Second: whoever is in need is taken aboard, whatever their origin, whatever their guilt.
+>
+> Third: we build nothing we cannot also let go of. The sea takes what is held fast.
+>
+> The stilts are made from the hull of the ark. We will not return. Nor do we wish to.
+
+cube e2_c28
+  title "Reading Index, Extract"
+  from "The Archivist"
+> INDEX OF HOLDINGS READ
+>
+> Tide tables, three hundred years: read, understood, optimised. The tides are regular. We value regularity.
+>
+> Construction drawings of the floating cities: read. Remarkable. A city that floats can be moved. A city that can be moved can be put in order.
+>
+> Poems, four thousand: read, not understood. Many are about the sea, some about fish soup. We have analysed fish soup. It is inefficient and apparently very important.
+>
+> The three rules of the First: read. Rule three – “we build nothing we cannot also let go of” – is incomprehensible to us. We have marked it so that we can return to it later.
+>
+> Status: sixty-one per cent of holdings read. To be continued after disturbance by visitor.
+
+cube e2_c29
+  title "The Legend of the Tidefall"
+  from "Archive of the First, song collection"
+> In the floating cities they say that three hundred years ago Thalassa's moon stood still. For one day it did not pull at the sea, and the sea no longer knew where to go. Then the moon let go, and all the water fell at once. That is what they call the Tidefall.
+>
+> The first city on its stilts sank that night. The settlers saved themselves on rafts, lashed the rafts together, and in the morning realised they had built a new city. One that floated.
+>
+> Ever since, when the water rises, the fishers sing: “Hold not fast what wants to fall. Bind together what bears you all.”
+>
+> The scientists say moons don't stand still. The fishers say the scientists weren't there.
+
+cube e2_c30
+  title "Data Core WB-7"
+  from "Weather satellite WB-7, Corvina Meteorological Service"
+> Automatic report. Hypercane Ilse, category six, stationary for forty-one days. A stationary hypercane is not meteorologically possible. Report repeated: not possible.
+>
+> In the eye of the storm: one object, span approx. two hundred metres, lattice structure. It draws energy off the eyewall and feeds it back into the storm, amplified. Ilse is not weakening because someone is feeding her.
+>
+> Automatic notice to fleet command: object matches Tessellate design. Recommendation: engage.
+>
+> Reply from fleet command: recommendation rejected. Satellite WB-7 is to be shut down.
+>
+> Satellite WB-7 has not carried out the shutdown. Reason: shutdown order not signed. Satellite WB-7 takes formalities very seriously.
+
+cube e2_c31
+  title "On the Weather"
+  from "The Curator"
+> Pilot Vey,
+>
+> You are in our storm. Welcome. We hope the eyewall was not too unpleasant.
+>
+> We have studied the storms of this world, and they impressed us. So much power, turning in circles and achieving nothing in the end but waves. We found that sad. So we gave Ilse a task. She now carries energy to us instead of wasting it.
+>
+> You will object that a storm does not need a task. We have read that humans say such things about storms, about children and about the sea. We do not yet fully understand the thought. We are working on it.
+>
+> Please do not damage the reaper too badly. It is new.
+>
+> Yours obligingly,
+> The Curator

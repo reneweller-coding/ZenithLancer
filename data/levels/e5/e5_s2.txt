@@ -3,6 +3,7 @@
 
 level e5_s2
   title "Die Schlüsselkammer"
+  title_en "The Key Vault"
   episode 5
   theme station
   music secret

@@ -3,6 +3,7 @@
 
 level e1_10
   title "Herz der Esse"
+  title_en "Heart of the Forge"
   episode 1
   theme foundry
   music e1_b

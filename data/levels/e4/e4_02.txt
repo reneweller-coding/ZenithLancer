@@ -4,6 +4,7 @@
 
 level e4_02
   title "Sporenflut"
+  title_en "Spore Tide"
   episode 4
   theme jungle
   music e4_b

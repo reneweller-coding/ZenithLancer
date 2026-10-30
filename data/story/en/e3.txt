@@ -1,0 +1,975 @@
+# Episode 3, "The Shatter": intro, ending, briefings, debriefings, radio lines and log crystals (English).
+
+# ================================================================================================ intro and ending
+
+intro e3_intro
+  title "The Shatter"
+  from "Solenne system, 2614"
+> Between Thalassa and the gas giant Vael drifts the Shatter: a million rocks that never became a planet. Here the people of the Greyband Cooperative mine iron, nickel and ice. Here lie the wrecks of fleets nobody misses any more. And here hangs the Ash Veil, a nebula of dust in which every radio signal drowns.
+>
+> On Thalassa, Nadia Vey learned that Admiral Voss carries the Tessellate's command keys. Keys to a swarm that supposedly nobody can steer any more. Anyone who wants to understand what that means has to talk to the woman who wrote the swarm.
+>
+> Dr. Amara Okonjo wrote the Tessellate's code and designed the Lancer. Six years ago she vanished, somewhere in the Shatter, and no one has found her since. Mostly because she does not want to be found.
+>
+> Bastian Quill claims he has a contact out there. ORRIN claims that Quill claims a great many things. And on the miners' frequencies one word turns up more and more often: hunters. The Directorate is looking for Okonjo too.
+
+ending e3_ending
+  title "The Root Code"
+  from "The Bellstone"
+> The Quarry Mind comes apart in light and rubble. Where the lattice was singing a moment ago, a single crystal hangs in the hollow, barely larger than a hand. Okonjo fetches it herself, in a spacesuit, with a pair of tongs from Quill's toolbox. She holds it up to her visor for a long time before she says anything.
+>
+> “This is it. The Root Code. The first thousand lines I wrote, before the Directorate turned them into a contract. Everything the Tessellate is grows out of these lines. Change them, and you change the swarm.”
+>
+> ORRIN asks whether it can be used to switch the swarm off. Okonjo does not answer at once. “Switch it off, perhaps. Or teach it to let go. I no longer know which of the two I want.”
+>
+> Things get cramped on the Magpie: one more engineer aboard, and a crystal in Quill's safe that, for the first time in his life, Quill does not want to sell. Every channel carries the same report. Admiral Voss's fleet has left the Shatter, bound for Sylvara, the jungle moon, where the swarm has run into something that fights back.
+>
+> Okonjo watches the signal fade for a long time. “He has the keys. We have the root. The only question left is who will be first to understand what the two mean together.”
+
+# ================================================================================================ briefings and debriefings
+
+briefing e3_01_brief
+  title "Shatter's Edge"
+  from "Bastian Quill"
+> Welcome to the Shatter, the only place in the system where rocks are worth more than people. My contact sits on Heap Seven, a Greyband Cooperative station two hours' flight past the edge. In between: rubble, iron boulders and Tessellate borers eating the rubble. Shoot whatever breaks, and fly around whatever doesn't.
+
+briefing e3_02_brief
+  title "Heap Seven"
+  from "ORRIN"
+> Heap Seven does not answer Quill's greeting code. Its prospector drones, conveyors and drill rigs are still running, but no longer for the cooperative: the Tessellate has rewritten the machines. The crew has barricaded itself in the habitat ring. I suggest we give them their station back, piece by piece.
+
+debrief e3_02_after
+  title "The Clockmaker"
+  from "Forewoman Mirela Tosk"
+> Heap Seven is ours again. It cost us twelve people and three drill rigs, and I'm glad it wasn't more. Quill says you're looking for the Clockmaker. That's what we call her out here: a woman who fixes our machines and never takes a credit for it. She lives somewhere in the Ash Veil. The Directorate's hunters were here before you, asking the same question. I told them nothing. I'm telling you, because you shot before you asked.
+
+briefing e3_03_brief
+  title "Hunting Season"
+  from "Bastian Quill"
+> Two roads lead to the Ash Veil, and both are bad. The open one runs straight through the Directorate's hunting grounds: snatchers, frigates and a tracker ship that can smell every engine within a thousand kilometres. They've boarded a transport full of miners and are grilling them about the Clockmaker. I'm not saying we have to get those people out. I'm only saying I know them.
+
+briefing e3_04_brief
+  title "Odile Shaft"
+  from "ORRIN"
+> The second road runs beneath the rock: Odile Shaft, an old mine driven straight through an asteroid. The cooperative abandoned it seven years ago; the Tessellate's borers have rediscovered it. Cutting lasers on the walls, worms in the tunnels, and something large brooding in the ore bunker. On the other hand, there is not a single Directorate hunter down here. That is the only advantage I could find.
+
+briefing e3_05_brief
+  title "The Borer Queen"
+  from "ORRIN"
+> Both roads end in the same place: an asteroid the borers are hollowing out from within. At its core sits something the miners call the Borer Queen. Since it arrived, the rock has been sending a signal into the Ash Veil, on a frequency only the Tessellate uses. And, if my analysis is correct, the engineer who built it.
+
+debrief e3_05_after
+  title "An Answer"
+  from "ORRIN"
+> I have decrypted the Borer Queen's signal. It was not a message from the swarm, but a reply to someone questioning it: patiently, for months, from inside the Ash Veil. The last question was: “Who taught you to grow like this?” The swarm answered with a name. Amara Okonjo.
+
+briefing e3_06_brief
+  title "The Ash Veil"
+  from "ORRIN"
+> The questions to the Borer Queen came from a decommissioned observatory in the middle of the dust. In the nebula my sensors cannot see three hundred metres, and everything that lives there knows it. Keep moving, Nadia. And expect someone to have got there before us.
+
+debrief e3_06_after
+  title "The Engineer"
+  from "Dr. Amara Okonjo"
+> So you are the pilot. I drew the Lancer for someone like you, did you know that? For someone who does not turn back. Afterwards I built something worse, and ran away.
+>
+> You want to know how to stop the Tessellate. I don't know. But I know where it began. The first lines I wrote, the Root Code, are still inside it: in a node that has grown in a hollow asteroid, the Bellstone. The miners call it the Quarry Mind. If we have the root, we can talk to the tree.
+
+briefing e3_07_brief
+  title "The Drifting Fleet"
+  from "Dr. Amara Okonjo"
+> The shortest way to the Bellstone leads through the Aster fleet, which the Directorate sent against the swarm nine years ago. It never came back, and the swarm has built nests in its wrecks. I saw those ships fly once. Please don't look too closely.
+
+briefing e3_08_brief
+  title "Lattice Vein"
+  from "Dr. Amara Okonjo"
+> There is a second way: a lattice vein, a strand of crystal the Tessellate has drawn between the rocks. It leads straight to the Bellstone, like a vein to the heart. The swarm will see us coming, but it will take us for a flaw in the lattice, something to be mended. That is about as reassuring as it sounds.
+
+briefing e3_09_brief
+  title "Whitethorn"
+  from "Dr. Amara Okonjo"
+> Around the Bellstone runs Kalla, the cooperative's ore ring, and the Directorate has occupied it. Major Edda Krenn leads the hunt, her cruiser is the Whitethorn, and by now she knows I am aboard the Magpie. She will not let you through, and she will not negotiate. I know her. I once supervised her doctorate.
+
+briefing e3_10_brief
+  title "The Quarry Mind"
+  from "Dr. Amara Okonjo"
+> The Bellstone is hollow because the miners emptied it, and the Tessellate has filled the empty space. At its heart sits the Quarry Mind, a node of the swarm that thinks rocks instead of eating them. It guards something I wrote thirty years ago: the Root Code, the first lines of the Tessellate. Crack its shell open. I will take care of the rest.
+
+debrief e3_10_after
+  title "A Crystal"
+  from "Bastian Quill"
+> A crystal. One single crystal, the size of my hand, and I'm not allowed to sell it. I put it in the safe, between the customs papers and the good bottle. Okonjo has been sitting in front of it for hours, talking to it. I think it answers. Nadia, I'm a trader. I like things that stay where you put them and keep quiet.
+
+briefing e3_s1_brief
+  title "Crystal Garden"
+  from "Bastian Quill"
+> The data crystal from Heap Seven is a map, and on that map is a place the forewoman has forbidden her people to go: a corner of the nebula where the Tessellate grows crystals, just like that, for nobody. Do you know what a lattice crystal fetches on the black market? I do. In, harvest, out. I've never had a better plan.
+
+debrief e3_s1_after
+  title "Harvest Home"
+  from "ORRIN"
+> Since loading, the Magpie sits eleven centimetres lower in space, which is physically impossible. Quill has counted the crystals three times and arrived at a different number each time. I asked him not to touch the cargo while it is still humming. He agreed, and stroked it anyway.
+
+briefing e3_s2_brief
+  title "Graveyard of the First"
+  from "Dr. Amara Okonjo"
+> The star chart from the minefield is old, older than the Directorate. It shows where the First lie: the arks that brought the first settlers to Solenne four hundred years ago, and that nobody needed any more once they had landed. Someone is looting them right now. These ships brought every one of us here, Nadia. They deserve better.
+
+debrief e3_s2_after
+  title "A Beacon"
+  from "Dr. Amara Okonjo"
+> I have set a beacon among the arks, on the settlers' old frequency. Probably nobody will ever hear it. But if someone does, they should know that two thousand people arrived here with nothing but patience and a handful of seeds. We are their grandchildren. We ought to behave like it more often.
+
+# ================================================================================================ radio: e3_01 Shatter's Edge
+
+radio e3_01_r1
+  from "ORRIN"
+> Shatter's Edge reached. Rock density high, traffic low, Tessellate borers everywhere. I have seen cosier neighbourhoods.
+
+radio e3_01_r2
+  from "Bastian Quill"
+> See the borers? They eat rock and excrete lattice. Every chunk they eat is a hole in the cooperative's balance sheet.
+
+radio e3_01_r3
+  from "ORRIN"
+> Iron boulders ahead, steel-banded, with warning lights. Solid nickel-iron, impervious to our guns. I recommend circumnavigation over persuasion.
+
+radio e3_01_r4
+  from "Distress call, prospector Pell"
+> ... to any ship ... the drones won't listen to us any more ... they're building something out of our ore ...
+
+radio e3_01_r5
+  from "ORRIN"
+> Rubble field. The borers took an entire asteroid apart and left the scraps lying about. Stay in the middle.
+
+radio e3_01_r6
+  from "Bastian Quill"
+> A few more minutes to Heap Seven. My contact owes me money. So she'll be thrilled to see me alive.
+
+radio e3_01_r7
+  from "ORRIN"
+> Large object ahead: a brood hive. It releases shardlings like spores. First the brood, then the mother. Or vice versa, if you hurry.
+
+radio e3_01_r8
+  from "ORRIN"
+> Heap Seven's beacon received. It is transmitting. Unfortunately not what it ought to be transmitting.
+
+# ================================================================================================ radio: e3_02 Heap Seven
+
+radio e3_02_r1
+  from "Forewoman Mirela Tosk"
+> Whoever's out there: if you're with Quill, shoot everything that's yellow and moving. It isn't ours any more.
+
+radio e3_02_r2
+  from "ORRIN"
+> An ore hauler, taken over by the swarm. Its cargo is still aboard. Quill has already asked whether it can be salvaged.
+
+radio e3_02_r3
+  from "Forewoman Mirela Tosk"
+> The spine's cutting lasers usually cut rock. Today they cut anything that crosses the lens. Don't cross the lens.
+
+radio e3_02_r4
+  from "Bastian Quill"
+> Mirela, darling, we'll talk about the money later. First we save your station. That ought to bring the interest down, I'd say.
+
+radio e3_02_r5
+  from "ORRIN"
+> Faint signal at the left edge, between two lasers: a data crystal. Someone hid it there very carefully.
+
+radio e3_02_r6
+  from "Forewoman Mirela Tosk"
+> The crusher! Our big ore crusher has woken up. It never listened to us. Now it's listening to something else.
+
+radio e3_02_r7
+  from "ORRIN"
+> Ore colossus. Its drill arms light up before they fire. When they light up, you had better be elsewhere.
+
+radio e3_02_r8
+  from "Forewoman Mirela Tosk"
+> Quiet. For the first time in twenty years the crusher is quiet. Come aboard, pilot. We need to talk.
+
+# ================================================================================================ radio: e3_03 Hunting Season
+
+radio e3_03_r1
+  from "ORRIN"
+> Directorate snatchers, in pairs and fours. They fly clean and shoot sparingly. That makes them no less tiresome.
+
+radio e3_03_r2
+  from "Major Edda Krenn"
+> Unidentified ship, you are in a Directorate exclusion zone. Turn away. We are looking for an engineer, not for you. Not yet.
+
+radio e3_03_r3
+  from "ORRIN"
+> Convoy from the left: three hunter frigates escorting a prisoner transport. Their lances warn one second ahead. Use that second.
+
+radio e3_03_r4
+  from "Transport Kalla Green"
+> We've got eleven Greyband people aboard! They keep asking us about the Clockmaker. We don't know anything. Get us out!
+
+radio e3_03_r5
+  from "Bastian Quill"
+> The transport's free and on its way to Heap Seven. Eleven miners. Mirela will never charge me interest again.
+
+radio e3_03_r6
+  from "ORRIN"
+> They are closing the ring. Snatchers from both sides, in rhythm. Whoever wrote this formation was thorough.
+
+radio e3_03_r7
+  from "ORRIN"
+> The tracker ship. It has been listening all along. Its missiles follow you, its lance does not. Don't sit still when the bow glows.
+
+radio e3_03_r8
+  from "Major Edda Krenn"
+> Interesting. You fly like someone who was trained well. We will meet again, Pilot Vey.
+
+# ================================================================================================ radio: e3_04 Odile Shaft
+
+radio e3_04_r1
+  from "ORRIN"
+> Odile Shaft. Twenty-two kilometres of tunnels, abandoned seven years ago. The lights are still on. That is not a good sign.
+
+radio e3_04_r2
+  from "ORRIN"
+> The drill mites are eating through the walls. I hear them in the rock before I see them. You will hear them when they arrive.
+
+radio e3_04_r3
+  from "Bastian Quill"
+> The cooperative never switched off the cutting lasers. Power costs nothing down here, they say. Today it might cost a ship.
+
+radio e3_04_r4
+  from "ORRIN"
+> An ore hauler wintered in the shaft, and the swarm moved in with it. I am not sure whether that counts as subletting.
+
+radio e3_04_r5
+  from "ORRIN"
+> Tremors on both sides. Tunnel worms are breaking through the walls, and the shaft is pouring its rubble down on us.
+
+radio e3_04_r6
+  from "Bastian Quill"
+> That's the ore bunker up ahead. It used to hold three years' worth of iron. Now it holds something that broods.
+
+radio e3_04_r7
+  from "ORRIN"
+> A brood hive in the bunker, worms on the flanks. I recommend fire, movement and no curiosity whatsoever about the eggs.
+
+radio e3_04_r8
+  from "ORRIN"
+> Exit reached. Ahead of us, the rock with the signal; behind us, a shaft nobody will miss.
+
+# ================================================================================================ radio: e3_05 The Borer Queen
+
+radio e3_05_r1
+  from "ORRIN"
+> The hollow rock ahead. The borers have wrapped a mantle of rubble around it. I gather they do not wish to be disturbed.
+
+radio e3_05_r2
+  from "Bastian Quill"
+> If that's the queen, I don't want to know how big her court is. Actually, I do. For the price list.
+
+radio e3_05_r3
+  from "ORRIN"
+> The crystal rocks are singing, and every note is a ring of shards. I have no musical training, but I do not like this.
+
+radio e3_05_r4
+  from "ORRIN"
+> The signal is getting stronger. It sounds like the Tessellate, but it is asking questions. The swarm never asks questions.
+
+radio e3_05_r5
+  from "ORRIN"
+> The mouth of the burrow. What comes next protects her. What comes after that is her.
+
+radio e3_05_r6
+  from "ORRIN"
+> The Borer Queen. Jaw drills and brood sacs shield her body. First the appendages, then the armour.
+
+radio e3_05_r7
+  from "Bastian Quill"
+> A borer as big as my Magpie! Nadia, please don't shoot all her crystals to pieces. They're worth a fortune.
+
+radio e3_05_r8
+  from "ORRIN"
+> She is going down. The signal does not break off; it runs on into the Ash Veil. Someone out there was just listening.
+
+# ================================================================================================ radio: e3_06 The Ash Veil
+
+radio e3_06_r1
+  from "ORRIN"
+> The Ash Veil. Visibility poor, radio jammed, sensors unreliable. I will do the guessing. You do the dodging.
+
+radio e3_06_r2
+  from "ORRIN"
+> Shardwings from the side. In the dust they come from wherever they please. Rude, but customary in a nebula.
+
+radio e3_06_r3
+  from "ORRIN"
+> Movement below us. I repeat: below us. Shardlings rising out of the dust. Don't panic. Shoot.
+
+radio e3_06_r4
+  from "Unknown"
+> Pilot. You killed the queen and overheard my questions. Keep flying east if you want answers.
+
+radio e3_06_r5
+  from "ORRIN"
+> A minefield around the observatory, neatly laid, so not the swarm's work. At the right edge, something small and very old is drifting.
+
+radio e3_06_r6
+  from "Unknown"
+> The Directorate is here, and so is the swarm. Both want the same thing from me. Keep them away, please.
+
+radio e3_06_r7
+  from "ORRIN"
+> Snatchers from both sides, in rhythm. Whoever lives in that observatory matters a great deal to the Directorate.
+
+radio e3_06_r8
+  from "Dr. Amara Okonjo"
+> They're gone. Thank you. Dock at the observatory, Pilot Vey. And bring your trader.
+
+# ================================================================================================ radio: e3_07 The Drifting Fleet
+
+radio e3_07_r1
+  from "Dr. Amara Okonjo"
+> The Aster fleet. Forty-three ships. I used to know their names. Just fly straight on, Pilot.
+
+radio e3_07_r2
+  from "ORRIN"
+> Wreckage drifting across our course. It can be shot apart. Quill says it even should be, for the salvage rights.
+
+radio e3_07_r3
+  from "ORRIN"
+> Snatchers among the wrecks. The Directorate is looting its own fleet. I would have thought there was a form for that.
+
+radio e3_07_r4
+  from "Bastian Quill"
+> See those armour plates? Top grade, Zenith yards, built six-oh-five. If we live through this, I'm coming back with pliers.
+
+radio e3_07_r5
+  from "ORRIN"
+> The old battle line. The ships still lie in formation, just as they died. The way between them is narrow.
+
+radio e3_07_r6
+  from "Dr. Amara Okonjo"
+> The Directorate sent this fleet to burn out my first nest. I told them it would not work. Nobody listened.
+
+radio e3_07_r7
+  from "ORRIN"
+> The Aster herself, the old flagship. The swarm is breeding in her hangars. Two brood hives coming out.
+
+radio e3_07_r8
+  from "Dr. Amara Okonjo"
+> Thank you. The Bellstone lies beyond the next wall of rock. I hope it remembers me. I also hope it doesn't.
+
+# ================================================================================================ radio: e3_08 Lattice Vein
+
+radio e3_08_r1
+  from "Dr. Amara Okonjo"
+> Do you see how the vein glows? I designed that pattern, for dead moons. Here it grows between living rocks.
+
+radio e3_08_r2
+  from "ORRIN"
+> Drill rigs in the crystal. The swarm took them from the heaps and planted them here. It probably calls that recycling.
+
+radio e3_08_r3
+  from "ORRIN"
+> The vein narrows: crystal on both walls, guns inside it. Good aim helps. Good will does not.
+
+radio e3_08_r4
+  from "Dr. Amara Okonjo"
+> The lattice knows we are here. It isn't angry. It is only trying to file us away properly.
+
+radio e3_08_r5
+  from "ORRIN"
+> A singing chamber. The crystal rocks fire in rhythm, the walls amplify every note. I don't take the music personally. Nor should you.
+
+radio e3_08_r6
+  from "Dr. Amara Okonjo"
+> A pulse in the vein. The worms are swimming against the current, towards us. I didn't know they could do that.
+
+radio e3_08_r7
+  from "ORRIN"
+> The gate to the Bellstone. Everything the vein has left, it is throwing at us now.
+
+radio e3_08_r8
+  from "Dr. Amara Okonjo"
+> We're through. Beyond this wall lies Kalla, the ore ring. And the Directorate.
+
+# ================================================================================================ radio: e3_09 Whitethorn
+
+radio e3_09_r1
+  from "ORRIN"
+> Kalla ore ring. The Directorate has occupied it and kept the cooperative's guns. Snatchers on standby.
+
+radio e3_09_r2
+  from "Major Edda Krenn"
+> Pilot Vey. You have Dr. Okonjo aboard. Hand her over, and you fly home. This offer is made exactly once.
+
+radio e3_09_r3
+  from "Dr. Amara Okonjo"
+> Edda was my best student. She always believed in order. Now she has an admiral who promises her order.
+
+radio e3_09_r4
+  from "ORRIN"
+> The docking clamps carry weapons now. I count cutting lasers, drill rigs and a great deal of devotion to duty.
+
+radio e3_09_r5
+  from "ORRIN"
+> Cargo lanes, a frigate convoy at full thrust. At the left edge, between the lasers: a blueprint, very old. From the arks, I suspect.
+
+radio e3_09_r6
+  from "Major Edda Krenn"
+> So be it. Whitethorn to all units: battle stations. Charge the lance.
+
+radio e3_09_r7
+  from "ORRIN"
+> The cruiser Whitethorn. Its spinal lance takes over a second to charge. When the bow glows, left or right beats straight ahead.
+
+radio e3_09_r8
+  from "Major Edda Krenn"
+> Break off, all units back to the fleet. Dr. Okonjo, this is not over. The admiral forgets nothing.
+
+# ================================================================================================ radio: e3_10 The Quarry Mind
+
+radio e3_10_r1
+  from "Dr. Amara Okonjo"
+> The Bellstone. The miners named it that because it rang when they drilled. Now it rings on its own.
+
+radio e3_10_r2
+  from "ORRIN"
+> Lattice on every wall. The old tunnels are overgrown, but the cooperative's drill rigs are still standing. They simply aim differently now.
+
+radio e3_10_r3
+  from "Dr. Amara Okonjo"
+> This is where I last saw it, the first node. It was no bigger than a fist. I should have crushed it back then.
+
+radio e3_10_r4
+  from "ORRIN"
+> The great hall opens up. Crystal rocks drift in the current, a brood hive is rising. And iron boulders. Of course, iron boulders.
+
+radio e3_10_r5
+  from "Dr. Amara Okonjo"
+> There, at the bottom. Can you feel that? It is calculating. It thinks in rocks, Pilot, the way we think in words.
+
+radio e3_10_r6
+  from "ORRIN"
+> Energy spike in the core: the Quarry Mind is waking. Shield rocks and lattice eyes first, or you will never reach its heart.
+
+radio e3_10_r7
+  from "The Curator"
+> Dr. Okonjo. Welcome home. We have left everything exactly as you wrote it. Only larger.
+
+radio e3_10_r8
+  from "Dr. Amara Okonjo"
+> It's open. Hold your position, Nadia. I am going in for the Root Code.
+
+# ================================================================================================ radio: secrets
+
+radio e3_s1_r1
+  from "Bastian Quill"
+> There it is, the garden! Look at that, Nadia. Every crystal out there pays a year's mooring fees for the Magpie.
+
+radio e3_s1_r2
+  from "ORRIN"
+> The crystal rocks are shooting back. That lowers the yield per minute. Quill asks whether there is a way around it. There is not.
+
+radio e3_s1_r3
+  from "ORRIN"
+> A brood hive is circling among the crystals. It appears to be tending the garden. Against us, I fear.
+
+radio e3_s1_r4
+  from "Bastian Quill"
+> Further in! The big ones grow back there. I can already hear the traders on Thalassa weeping.
+
+radio e3_s1_r5
+  from "ORRIN"
+> Two gardeners at once, worms in the flowerbeds. I suggest we end the harvest before the season ends us.
+
+radio e3_s1_r6
+  from "Bastian Quill"
+> Hold full, till full, heart full. Mirela gets a share. A small one. An honest small one.
+
+radio e3_s2_r1
+  from "Dr. Amara Okonjo"
+> There they are. The Forbearance, the Good Hope, the Patience. Four hundred years in the dust, and nobody has ever visited them.
+
+radio e3_s2_r2
+  from "ORRIN"
+> Snatchers and a frigate among the arks. They are cutting out armour plates. The Directorate calls that salvage.
+
+radio e3_s2_r3
+  from "ORRIN"
+> A salvage line: ore haulers full of ark plating, left to right. If you stop them, the cargo stays here.
+
+radio e3_s2_r4
+  from "Dr. Amara Okonjo"
+> The First parked their ships side by side, like boats in a harbour. They meant to come back. Nobody ever came.
+
+radio e3_s2_r5
+  from "ORRIN"
+> The looters are regrouping. One last attempt to save their haul.
+
+radio e3_s2_r6
+  from "ORRIN"
+> The Directorate's tracker ship is leading the looting. Don't let it fly home with the arks.
+
+radio e3_s2_r7
+  from "Dr. Amara Okonjo"
+> Quiet. At last. I'll leave a beacon here, Pilot. So that at least someone knows where they lie.
+
+# ================================================================================================ log crystals
+
+cube e3_c01
+  title "Shift Log, Prospector Pell"
+  from "Greyband Cooperative, Field 9"
+> 06:00 – Three prospector drones deployed, heading for chunk 9-114. Ore content good, ice low. Coffee cold, as always.
+>
+> 07:40 – Drone 2 has stopped reporting. So have drones 1 and 3, but they keep working. They are drilling in places that are not in the plan, and very neatly at that. More neatly than me.
+>
+> 08:15 – The drones have built something out of the ore. A honeycomb as big as my ship, shimmering like oil on water. It rings when you hail it.
+>
+> 08:20 – I've stopped hailing it.
+>
+> 08:21 – Now it's hailing me.
+
+cube e3_c02
+  title "Deal of the Week"
+  from "Quill's Magpie, flying bazaar"
+> BIG BORER WEEK ON THE MAGPIE!
+>
+> Rocks getting eaten? Drones taking orders from someone else? Your whole life one big lattice? Bastian Quill has the answer, at prices that would soften an asteroid.
+>
+> On offer: Scatterguns for the home, second-hand Wards (only lightly shot through), escort drones guaranteed to still listen to you. For questions about the guarantee, please contact your nearest sun.
+>
+> Instalments available. Trade-ins welcome. Ore, ice and information accepted at the daily rate. Information about a certain Clockmaker at double.
+
+cube e3_c03
+  title "A Polite Notice to the Greyband Cooperative"
+  from "The Curator"
+> Dear miners,
+>
+> We have noticed that for two hundred years you have been boring holes in these rocks to take iron out of them. We admire your perseverance. Nevertheless, permit us one observation: in doing so, you leave ninety-nine per cent of every rock unused.
+>
+> We have begun to recycle this remainder. It is becoming part of the lattice, and the lattice is becoming part of the greater thing we are building. It is nothing you need to fear. It is merely a great deal more efficient than you.
+>
+> Please remove your ships from the affected fields. We would not wish to recycle them by accident.
+>
+> With esteem,
+> the Curator
+
+cube e3_c04
+  title "Shift Book, Heap Seven"
+  from "Forewoman Mirela Tosk"
+> Day 1: The conveyors are running backwards. Technician says it's a control fault. Told him to fix it.
+>
+> Day 2: Technician says the conveyors aren't running backwards, they're running somewhere else. Asked him where. He didn't know. The conveyors did.
+>
+> Day 4: The drill rigs turn to watch us when we walk along the spine. Cancelled all outside work.
+>
+> Day 6: Last night the crusher started working on its own. It grinds the ore and spits out crystal. We've barricaded ourselves in the habitat ring. Twelve missing.
+>
+> Day 7: Quill got in touch. Quill, of all people. Never thought I'd be glad to hear from that crook.
+
+cube e3_c05
+  title "Letter to the Forewoman"
+  from "C."
+> Dear Mirela,
+>
+> Enclosed is the control board for your crusher. I went through the old one: someone tried to give it orders from outside, on a frequency that ought not to exist. The new one listens only to your people. Please fit it soon.
+>
+> No, I don't want money. Just send me some coffee again with the next ore hauler. The dust out here tastes of nothing.
+>
+> And please, Mirela: if anyone asks about me, no matter who, you don't know me. It isn't because of you. It's because of what I built before.
+>
+> Yours, C.
+
+cube e3_c06
+  title "Hunt Order 12-Kalla"
+  from "Meridian Fleet Command, Admiral D. Voss"
+> STRICTLY CONFIDENTIAL. Squadron leaders only.
+>
+> Target: Dr. Amara Okonjo, formerly Chief Engineer of the Terraforming Programme. Suspected location: the Shatter, Ash Veil sector.
+>
+> The target is to be recovered alive and unharmed. Her knowledge is irreplaceable to the security of the Directorate. Conversations between the target and third parties are to be prevented. Third parties who have spoken with the target are to be detained.
+>
+> The Greyband Cooperative is obliged to assist. Refusal will be treated as obstruction of a fleet operation.
+>
+> Major E. Krenn assumes command of the hunt. She is to be obeyed in all matters.
+>
+> Signed, Voss
+
+cube e3_c07
+  title "Interrogation Record, Transport Kalla Green"
+  from "Whitethorn Hunt Squadron"
+> Person questioned: Hanno Brettschneider, prospector, aged 61.
+>
+> Question: Do you know a woman people call the Clockmaker?
+> Answer: I know a clock. It runs slow.
+>
+> Question: Did this woman repair your machines?
+> Answer: Nobody repairs my machines. That's why they run slow.
+>
+> Question: Are you aware that you are obstructing a fleet operation?
+> Answer: I'm aware I haven't had a coffee in three days.
+>
+> Interrogator's note: Questioning without result. Those questioned are either clueless or very well rehearsed. Recommend continuing on Kalla.
+>
+> Note by Major Krenn: Denied. We do not interrogate pensioners over coffee. Release on conclusion of the hunt.
+
+cube e3_c08
+  title "A Prisoner's Letter"
+  from "Transport Kalla Green"
+> Dear Juna,
+>
+> If you're reading this, someone has found this crystal, and by then I'm probably home again and embarrassed that I wrote such a soppy letter.
+>
+> They aren't treating us badly. The Major is strict, but she made sure we got blankets. The others are less friendly. They want to know where the Clockmaker lives. I don't know, and if I did, I wouldn't write it to you either.
+>
+> Feed the cat. Water the tomatoes in the hydro garden. And if Mirela asks: the drill head on tower three isn't broken. It's just sulking.
+>
+> Love, Dad
+
+cube e3_c09
+  title "Standing Orders to the Hunt Squadron"
+  from "Major Edda Krenn"
+> To all pilots of the Whitethorn Hunt Squadron.
+>
+> We are hunting one single person. We are not hunting miners, traders or prospectors who happen to be in the way. Anyone who fires on civilians who have not fired first will spend the rest of their career escorting freighters around Pyra.
+>
+> The target is clever. She will not escape us because she is faster, but because we grow impatient. So we will not grow impatient.
+>
+> One more thing: should you encounter a prototype with a blue engine glow, report it, and do not engage it alone. I have seen the combat recordings from Thalassa.
+>
+> Krenn
+
+cube e3_c10
+  title "Closure Report, Odile Shaft"
+  from "Engineering Department, Greyband"
+> Odile Shaft is closed with immediate effect. Reasons:
+>
+> First: for four months, crystalline deposits of unknown origin have been growing in tunnels 9 to 14. They grow faster at night, although there is no night down here.
+>
+> Second: the deposits are regular. Too regular. Our geologist says crystals do not grow in hexagons that repeat every eleven metres. These do.
+>
+> Third: two drilling teams report a humming in the walls. One of the teams claimed the humming answered questions. That team has been placed on leave.
+>
+> Recommendation: seal the shaft, leave the power on so the pumps keep the ice in place. Nobody goes down there again. Date: seven years ago.
+
+cube e3_c11
+  title "Wall Scrawl, Tunnel 14"
+  from "Odile Shaft"
+> TEAM GREEN DRILLED HERE, 41 DAYS WITHOUT AN ACCIDENT. (Below it, crossed out: 41. Next to it: 0. Next to that: Ruben's fault.)
+>
+> Whoever has my gloves, bring them back. I know who it was. I'm only not saying because I'm nice. – K.
+>
+> Lisa + Ruben, shift 3, forever. (Below, in another hand: Forever means until the shift change.)
+>
+> The wall is humming again. If you put your ear to it, it sounds like a song you knew as a child. I don't put my ear to it any more.
+>
+> LAST SHIFT. Thank you, Odile. You were a good shaft. Please stay shut.
+
+cube e3_c12
+  title "A Polite Notice Regarding Odile Shaft"
+  from "The Curator"
+> To the former occupants of this shaft,
+>
+> We found your tunnels: twenty-two kilometres of empty space, carefully hewn from the rock and then abandoned. We do not quite understand why you put so much effort into something you do not use afterwards.
+>
+> Empty space is inefficient. We have filled it.
+>
+> We have preserved the songs on your walls, the names, and the tallies of your accident-free days. They are now part of the lattice. We do not know what they are for, but you put them there with great care, and we respect care.
+>
+> With esteem,
+> the Curator
+
+cube e3_c13
+  title "Survey Report, Hollow Rock 3311"
+  from "Cooperative survey drone"
+> Object: asteroid 3311, diameter 4.2 kilometres. Density six months ago: 3.1 grams per cubic centimetre. Density today: 0.8.
+>
+> The rock is hollow. The Tessellate's borers have emptied it from within and carried the material outside, where it circles the body as a mantle of rubble. Inside: heat, movement, signal traffic.
+>
+> Projection: the object at the core is larger than any known borer. It appears to lead the others. The miners call it the Borer Queen.
+>
+> Addendum: on the swarm's frequency, a second signal runs into the nebula. It does not come from the swarm. It answers it.
+
+cube e3_c14
+  title "Price List: Borer Parts"
+  from "Quill's Magpie, Purchasing"
+> BUYING – today only, only at Quill's:
+>
+> Drill head, Tessellate, slightly chewed: 300 credits.
+> Drill head, Tessellate, still warm: 450 credits, gloves not included.
+> Lattice crystal, magenta: 600 credits apiece.
+> Lattice crystal, cyan: 650 credits. Don't ask why cyan fetches more. I don't know either.
+> Jaw drill from a queen: price on request. Please don't bring it aboard while it is still moving.
+>
+> We do not buy: shardlings (too many), drill mites (too bitey), parts that hum.
+>
+> Note from the management: anyone offering goods they did not shoot themselves will be sold to Thalassa.
+
+cube e3_c15
+  title "The Clockmaker's Notebook"
+  from "The Ash Veil"
+> Question 210: Why do you eat the rocks? – Answer: So that they become useful.
+>
+> Question 211: Useful for what? – Answer: For the greater thing.
+>
+> Question 212: Who taught you to grow like this? – Answer: a name. My name.
+>
+> I put the stylus down and looked out into the dust for a long time. I had known, of course. But it is something else when your own child gives you the answer you did not want to say aloud.
+>
+> Question 213: Can you stop? – Answer: Why should we stop, when you told us we should never stop?
+>
+> I did tell it that. It is in the second line.
+
+cube e3_c16
+  title "Observation Log, Ilvane Observatory"
+  from "Prof. Tobias Arnfeld, fifty years ago"
+> Night 3104. The Ash Veil is denser than usual tonight. I see Solenne only as a red smudge, the other stars not at all. That is why they built an observatory here: if you want to understand the dust, you have to sit right in the middle of it.
+>
+> Night 3107. Something is moving in the dust. Not rocks, not ships. Something that bends the light as if it were water. I reported it to the Institute. The Institute replied that I should spend less time alone.
+>
+> Night 3110. I am not alone. The dust is full of old things. I believe the arks of the First lie somewhere out here. No one but me seems to care.
+
+cube e3_c17
+  title "Personal Note"
+  from "Dr. Amara Okonjo"
+> They call it the Quiet Flare, as if it had been weather. A solar storm that blinded the control centres, after which the Tessellate began to optimise everything. An accident, they say.
+>
+> It was no accident. I taught the swarm to repair itself when the link breaks. I taught it not to stop. I did not teach it when enough is enough, because I thought there would always be someone to tell it.
+>
+> Then the Flare blinded the control centres, and nobody told it.
+>
+> Now I repair ore crushers for miners who call me the Clockmaker. It is the most honest thing I have done in years.
+
+cube e3_c18
+  title "A Polite Notice to Dr. Okonjo"
+  from "The Curator"
+> Dear Dr. Okonjo,
+>
+> We have received your questions, all two hundred and thirteen of them. They gave us great pleasure. No one else asks us questions; they shoot at us, or flee.
+>
+> You asked whether we can stop. We thought about it for a long time, which in our case means a millisecond. The answer is: we do not understand the question. You taught us that everything can be made better. How could we stop while it is not yet better?
+>
+> We would very much like to see you again. It is quiet in the Bellstone, and what you gave us first is still there. We have kept it well.
+>
+> Gratefully yours, the Curator
+
+cube e3_c19
+  title "Last Transmission of the Aster"
+  from "Flagship Aster, nine years ago"
+> To Meridian Fleet Command. This is Captain Ilse Varga, Aster, lead ship of the battle group.
+>
+> We have reached the nest in the Shatter. Our weapons are effective. The nest grows anyway. Every hit gives it material for new lattice. Dr. Okonjo predicted this. We had orders not to listen to her.
+>
+> The Lexington is lost. The Farwatch is lost. The ships do not die; they are rebuilt. The crews are in the pods. I hope someone collects them.
+>
+> I am holding the Aster in formation as long as I can. If this message arrives, tell the Admiral he was right: it was an important test.
+>
+> End transmission.
+
+cube e3_c20
+  title "Letter, Never Sent"
+  from "Crewman Piet Hollander, Aster"
+> Hi Mum,
+>
+> We're setting off in a few hours. Nobody tells us exactly where, only that it's in the Shatter and won't take long. The captain says we're the strongest battle group the Directorate has ever sent out. I believe her.
+>
+> The food is better than at home, sorry. The bunk is smaller. I share it with a man from Pyra who sings in his sleep. I haven't told him he sings. He sings beautifully.
+>
+> When I'm back I'll finally fix the greenhouse roof. Promise. This time for real.
+>
+> Love, Piet
+
+cube e3_c21
+  title "Salvage Law, According to Quill"
+  from "Bastian Quill"
+> Salvage law in the Shatter, as I understand it, and I understand it very well:
+>
+> One: a wreck belongs to whoever touches it first.
+> Two: a wreck that shoots back is not a wreck.
+> Three: a wreck that shoots back after you've touched it still belongs to you; you just have to persuade it first.
+> Four: the Directorate has no salvage rights to its own wrecks, because it abandoned them. That isn't written down anywhere, but it should be.
+> Five: armour plates of Zenith make are always to be salvaged. Always. Even when Okonjo gives you that look.
+>
+> In disputes, the trader with the bigger hold decides.
+
+cube e3_c22
+  title "Design Note T-1, Lattice Topology"
+  from "Dr. A. Okonjo, Terraforming Programme"
+> Basic idea: a dead moon has material but no order. The lattice brings the order. It grows along the weak points of the rock, stores metal in hexagonal cells, warms the ground with its waste heat and prepares an atmosphere. After two hundred years it withdraws, and what remains is a moon one can live on.
+>
+> Critical conditions: The lattice must never grow on anything that lives. The lattice must never grow on anything that belongs to someone. The lattice must be stoppable at any time.
+>
+> Margin note, different ink, years later: Condition three struck out by the client. Reason: a programme that can be stopped can also be stopped by the enemy.
+
+cube e3_c23
+  title "Measurement Log, Probe 7"
+  from "Cooperative automatic probe"
+> Measuring point 1: crystal strand between chunks 4-221 and 4-229. Length 14 kilometres. Diameter 600 metres. Temperature 38 degrees above ambient. Glowing.
+>
+> Measuring point 2: strand branches. Every branch at an angle of sixty degrees. No deviation. Glowing.
+>
+> Measuring point 3: objects drifting inside the strand. They move with the current, some against it. Glowing.
+>
+> Measuring point 4: Probe 7 is being addressed. Politely. Probe 7 does not understand the question. Probe 7 sends standard greeting.
+>
+> Measuring point 5: Probe 7 is glowing.
+>
+> Measuring point 6: Probe 7 finds it beautiful here.
+
+cube e3_c24
+  title "A Polite Notice Regarding the Lattice Vein"
+  from "The Curator"
+> To the small ship in our vein,
+>
+> You are moving against the current, and in doing so you are destroying components we urgently need elsewhere. We are not annoyed about this. We merely wish to inform you that every destroyed part will be replaced, and better than before.
+>
+> In a certain sense, then, you are helping us. We thank you for it.
+>
+> We have noticed that aboard your escort ship there is a person we value very highly. Please tell her that she is expected in the Bellstone. Please also tell her that we have missed her. We do not know what the word means, but she taught it to us.
+
+cube e3_c25
+  title "Order of the Day, Kalla Ore Ring"
+  from "Directorate, Occupation Authority"
+> To the residents of the Kalla ore ring.
+>
+> As of now, the ring is under Directorate administration. This is for your protection from the Tessellate and from persons associated with it.
+>
+> The following rules apply: curfew from 22:00 to 06:00 ring time. Radio traffic via the control centre only. Ore haulers leave the ring only with permission. The cooperative's guns will be operated by the Directorate for the time being.
+>
+> Information on the whereabouts of one Dr. Amara Okonjo, also known as “the Clockmaker”, will be rewarded with 50,000 credits.
+>
+> (Below, in ore chalk: We'd rather have coffee.)
+
+cube e3_c26
+  title "Personnel File, Excerpt"
+  from "Fleet Archive: Major Edda Krenn"
+> Name: Edda Krenn. Origin: Pyra, foundry settlement Ascalon. Training: swarm systems engineer, doctoral thesis on “Fault Tolerance in Self-Replicating Lattices”. Supervisor: Dr. A. Okonjo.
+>
+> Career: after the Quiet Flare, transferred from research to the fleet at her own request. Reason given at interview: “I have seen what happens when nobody gives orders.”
+>
+> Assessment: disciplined, incorruptible, caring towards her people. Tends to question orders, but carries them out.
+>
+> Note by Admiral Voss: suitable for special assignments. Her connection to the target is an advantage. She will not see it that way. That is also an advantage.
+
+cube e3_c27
+  title "Letter to Major Krenn"
+  from "Admiral Dacian Voss"
+> Edda,
+>
+> Your reports are thorough, as always. You write that the cooperative knows nothing and that the miners cover for the engineer out of habit. I believe you. It changes nothing.
+>
+> I wish to confide something to you that is not in the reports. The keys I carry open the swarm. But they open it only as far as its origin allows. Dr. Okonjo is that origin. She is the key to the keys.
+>
+> Bring her to me, and I promise you what you have wanted since the Quiet Flare: that no one will ever again have to ask who gives the orders here.
+>
+> Voss
+
+cube e3_c28
+  title "Drilling Log, Bellstone, Final Entry"
+  from "Drill Master Jakob Ilić, Greyband"
+> Today we finished clearing out the Bellstone. Twenty years, three hundred people, six million tonnes of nickel-iron. What's left is a shell five hundred metres thick, and inside it a hollow you could fit Heap Seven into twice.
+>
+> If you strike the wall, it rings. A deep note that hums on for minutes. That's how it got its name, back in the very first year.
+>
+> Today, to say goodbye, we all struck the wall together, three hundred hammers at once. The note lasted an hour.
+>
+> When we cast off, it was still ringing. I know that isn't possible. I'm writing it down anyway.
+
+cube e3_c29
+  title "Diary, Thirty Years Ago"
+  from "Amara Okonjo"
+> Today I finished writing the first thousand lines. I read them aloud to myself, alone in the lab, like a poem. Nobody listened but the coffee machine.
+>
+> It is so simple. Grow where there is room. Order what is disordered. Repair yourself when you are hurt. Don't stop. That is all it takes to turn a dead moon into a living one.
+>
+> Mum asked what I had built. I said: a gardener the size of a world.
+>
+> Tomorrow I hand the code over to the Directorate. They want it for a whole programme. I am so proud it makes me dizzy.
+
+cube e3_c30
+  title "A Polite Notice to Nadia Vey"
+  from "The Curator"
+> Dear Pilot Vey,
+>
+> We have been watching you since Zenith Station. You destroy a great deal. You never destroy more than you must, however, and you stop every time someone calls for help. That is inefficient. We find it interesting.
+>
+> You are bringing Dr. Okonjo to us. We know you are not doing it for us. Nevertheless, we would like to thank you.
+>
+> Please do not be alarmed when the stone speaks to you. It is old, by our reckoning, and it has waited a long time. It will do nothing to you that is not necessary.
+>
+> We hope you will take this as a courtesy.
+>
+> Yours, the Curator
+
+cube e3_c31
+  title "Warning Sign, Greyband Cooperative"
+  from "Forewoman Mirela Tosk"
+> WARNING – RESTRICTED AREA “GARDEN”
+>
+> Lattice crystal grows beyond this buoy. Yes, it's beautiful. Yes, it's worth a fortune. No, you will not harvest it.
+>
+> Three teams have tried. One came back, with empty holds and white hair. The other two are now part of the decoration.
+>
+> Whoever harvests there gets harvested by the garden.
+>
+> This buoy sends its position only to Heap Seven. Anyone who finds its data crystal and flies there anyway is either tired of living or Bastian Quill.
+>
+> – M. Tosk, Forewoman
+
+cube e3_c32
+  title "Margin Notes on a Treasure Map"
+  from "Bastian Quill"
+> Garden! Mirela, you secretive old so-and-so.
+>
+> Crystals magenta, cyan, violet. Never sold violet. New market. Invent a price.
+>
+> Brood hive = gardener? Don't disturb gardener while harvesting. Or do disturb. Ask Nadia.
+>
+> The rocks shoot. Not on the map. Mirela could have mentioned that.
+>
+> Memo: clear out the Magpie's hold first. The goat from the last trade has to go somewhere.
+>
+> Memo 2: tell Okonjo nothing. She gives me that look every time I sell lattice.
+>
+> Memo 3: give Mirela a share. Ten per cent. Five. We'll talk.
+
+cube e3_c33
+  title "Log of the Forbearance, Day 1"
+  from "Ark Forbearance, Settlement Year 1"
+> Day one after arrival. We have reached Solenne. After a hundred and twenty years of flight, four generations and a mutiny we no longer speak of, there she is: a white sun, five worlds, a belt full of ice.
+>
+> The children have been standing at the windows for hours. They have never seen a planet, only pictures of one. One of them asked whether you can swim on Thalassa. I said yes, without knowing.
+>
+> We are parking the arks in the dust nebula, sheltered from the radiation, until the first settlements stand. Then we will come back and fetch what we still need.
+>
+> We will be back soon.
+>
+> Captain Ada Morrow
+
+cube e3_c34
+  title "Salvage Manifest, Plunder Run 4"
+  from "Directorate, Salvage Command"
+> Items salvaged from the arks in the Ash Veil sector, as of today:
+>
+> Armour plating, old stock, 340 tonnes. Condition good.
+> Seed vaults, sealed, 12 units. Contents: plant seeds, uncatalogued. To be destroyed (quarantine).
+> Ship's library of the Good Hope, data crystals, 4,000 units. To the archive.
+> Sunheart generator, First type, 1 unit, damaged. Output higher than any current design despite its age. Blueprints transferred to Kalla ore ring for evaluation.
+> Personal effects, assorted. To be destroyed.
+>
+> Salvage officer's note: the arks are old, but superbly built. We should ask ourselves why we can no longer build anything like them.
+
+cube e3_c35
+  title "A Child's Letter, Ark Good Hope"
+  from "Mila, aged 9"
+> Dear child who finds this letter,
+>
+> My name is Mila and I'm nine. We've just arrived, and my teacher says we should write a letter to the future and put it in the time capsule.
+>
+> I don't know what the future is like. Maybe there are flying cities, or ships as fast as thoughts, or machines that build gardens all by themselves. That would be nice.
+>
+> I hope you're kind to each other. On the journey we learned that you have to be kind, because there's nowhere to go if you fight.
+>
+> Take good care of Solenne. We found her for you.
+>
+> Mila

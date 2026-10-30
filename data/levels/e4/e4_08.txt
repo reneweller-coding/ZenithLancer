@@ -4,6 +4,7 @@
 
 level e4_08
   title "Treuebruch"
+  title_en "Broken Fealty"
   episode 4
   theme space
   music e4_a

@@ -3,6 +3,7 @@
 
 level e4_s2
   title "Kaltkammer"
+  title_en "Cold Chamber"
   episode 4
   theme station
   music secret

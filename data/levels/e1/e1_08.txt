@@ -3,6 +3,7 @@
 
 level e1_08
   title "Magmastrom"
+  title_en "Magma River"
   episode 1
   theme lava
   music e1_b

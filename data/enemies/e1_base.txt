@@ -4,6 +4,7 @@
 # Its two dock guns sit on the bow and shield it: they fall first, then the core opens.
 enemy e1_dockwarden
   title "Dockwächter"
+  title_en "Dock Warden"
   model e1_dockwarden
   kind boss
   hp 750
@@ -24,6 +25,7 @@ enemy e1_dockwarden
 
 enemy e1_dock_gun
   title "Dockgeschütz"
+  title_en "Dock Gun"
   model e1_dock_gun
   kind part
   hp 180

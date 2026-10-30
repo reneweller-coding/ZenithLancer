@@ -4,6 +4,7 @@
 
 level e2_09
   title "Polarnacht"
+  title_en "Polar Night"
   episode 2
   theme storm
   music e2_a

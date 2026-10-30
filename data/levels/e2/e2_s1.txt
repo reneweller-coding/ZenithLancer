@@ -3,6 +3,7 @@
 
 level e2_s1
   title "Versunkenes Archiv"
+  title_en "Drowned Archive"
   episode 2
   theme ocean
   music secret

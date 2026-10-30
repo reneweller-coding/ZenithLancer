@@ -3,6 +3,7 @@
 
 level e1_02
   title "Glutsturz"
+  title_en "Ember Plunge"
   episode 1
   theme asteroid
   music e1_b

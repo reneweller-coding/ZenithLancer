@@ -6,6 +6,7 @@
 
 enemy e3_chip
   title "Splitterling"
+  title_en "Shardling"
   model e3_chip
   hp 12
   radius 11
@@ -21,6 +22,7 @@ enemy e3_chip
 
 enemy e3_mite
   title "Bohrmilbe"
+  title_en "Drill Mite"
   model e3_mite
   hp 17
   radius 12
@@ -36,6 +38,7 @@ enemy e3_mite
 
 enemy e3_prospector
   title "Schürfdrohne"
+  title_en "Prospector Drone"
   model e3_prospector
   hp 19
   radius 13
@@ -51,6 +54,7 @@ enemy e3_prospector
 
 enemy e3_mine
   title "Splittermine"
+  title_en "Shard Mine"
   model e3_mine
   hp 16
   radius 12
@@ -67,6 +71,7 @@ enemy e3_mine
 
 enemy e3_shardwing
   title "Scherbenflügler"
+  title_en "Shardwing"
   model e3_shardwing
   hp 44
   radius 15
@@ -83,6 +88,7 @@ enemy e3_shardwing
 
 enemy e3_hunter
   title "Häscher"
+  title_en "Snatcher"
   model e3_hunter
   hp 42
   radius 15
@@ -100,6 +106,7 @@ enemy e3_hunter
 
 enemy e3_borer
   title "Bohrer"
+  title_en "Borer"
   model e3_borer
   hp 78
   radius 18
@@ -116,6 +123,7 @@ enemy e3_borer
 
 enemy e3_tunneler
   title "Stollenwurm"
+  title_en "Tunnel Worm"
   model e3_tunneler
   hp 230
   radius 32
@@ -134,6 +142,7 @@ enemy e3_tunneler
 
 enemy e3_hauler
   title "Erzschlepper"
+  title_en "Ore Hauler"
   model e3_hauler
   hp 200
   radius 30
@@ -150,6 +159,7 @@ enemy e3_hauler
 
 enemy e3_frigate
   title "Jagdfregatte"
+  title_en "Hunter Frigate"
   model e3_frigate
   hp 210
   radius 32
@@ -166,6 +176,7 @@ enemy e3_frigate
 
 enemy e3_carrier
   title "Brutstock"
+  title_en "Brood Hive"
   model e3_carrier
   hp 560
   radius 50
@@ -185,6 +196,7 @@ enemy e3_carrier
 
 enemy e3_pebble
   title "Geröll"
+  title_en "Rubble"
   model e3_pebble
   kind obstacle
   hp 28
@@ -199,6 +211,7 @@ enemy e3_pebble
 
 enemy e3_rock
   title "Felsbrocken"
+  title_en "Boulder"
   model e3_rock
   kind obstacle
   hp 120
@@ -213,6 +226,7 @@ enemy e3_rock
 
 enemy e3_hulk
   title "Wrackteil"
+  title_en "Wreckage"
   model e3_hulk
   kind obstacle
   hp 320
@@ -227,6 +241,7 @@ enemy e3_hulk
 
 enemy e3_ironrock
   title "Eisenbrocken"
+  title_en "Iron Boulder"
   model e3_ironrock
   kind obstacle
   hp 9999
@@ -242,6 +257,7 @@ enemy e3_ironrock
 
 enemy e3_crystalrock
   title "Kristallfels"
+  title_en "Crystal Rock"
   model e3_crystalrock
   kind obstacle
   hp 150
@@ -259,6 +275,7 @@ enemy e3_crystalrock
 
 enemy e3_drillturret
   title "Bohrturm-Geschütz"
+  title_en "Drill Rig Turret"
   model e3_drillturret
   kind ground
   hp 75
@@ -272,6 +289,7 @@ enemy e3_drillturret
 
 enemy e3_cutter
   title "Schneidlaser"
+  title_en "Cutting Laser"
   model e3_cutter
   kind ground
   hp 115
@@ -288,6 +306,7 @@ enemy e3_cutter
 
 enemy e3_ore_titan
   title "Erzkoloss"
+  title_en "Ore Colossus"
   model e3_ore_titan
   kind boss
   hp 1400
@@ -308,6 +327,7 @@ enemy e3_ore_titan
 
 enemy e3_tracker
   title "Spürhund"
+  title_en "Bloodhound"
   model e3_tracker
   kind boss
   hp 1500
@@ -330,6 +350,7 @@ enemy e3_tracker
 
 enemy e3_queen
   title "Bohrkönigin"
+  title_en "Borer Queen"
   model e3_queen
   kind boss
   hp 3500
@@ -363,6 +384,7 @@ enemy e3_queen
 
 enemy e3_queen_jaw
   title "Kieferbohrer"
+  title_en "Jaw Drill"
   model e3_queen_jaw
   kind part
   hp 170
@@ -375,6 +397,7 @@ enemy e3_queen_jaw
 
 enemy e3_queen_sac
   title "Brutsack"
+  title_en "Brood Sac"
   model e3_queen_sac
   kind part
   hp 120
@@ -389,6 +412,7 @@ enemy e3_queen_sac
 
 enemy e3_whitethorn
   title "Weißdorn"
+  title_en "Whitethorn"
   model e3_whitethorn
   kind boss
   hp 4200
@@ -419,6 +443,7 @@ enemy e3_whitethorn
 
 enemy e3_wt_gun
   title "Breitseitengeschütz"
+  title_en "Broadside Gun"
   model e3_wt_gun
   kind part
   hp 260
@@ -434,6 +459,7 @@ enemy e3_wt_gun
 
 enemy e3_mind
   title "Der Steinbruchgeist"
+  title_en "The Quarry Mind"
   model e3_mind
   kind boss
   hp 3500
@@ -467,6 +493,7 @@ enemy e3_mind
 
 enemy e3_mind_eye
   title "Gitterauge"
+  title_en "Lattice Eye"
   model e3_mind_eye
   kind part
   hp 200
@@ -480,6 +507,7 @@ enemy e3_mind_eye
 
 enemy e3_mind_shard
   title "Schildfels"
+  title_en "Shield Rock"
   model e3_mind_shard
   kind part
   hp 200

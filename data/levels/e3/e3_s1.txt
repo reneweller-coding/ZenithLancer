@@ -3,6 +3,7 @@
 
 level e3_s1
   title "Kristallgarten"
+  title_en "Crystal Garden"
   episode 3
   theme nebula
   music secret

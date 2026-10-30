@@ -3,6 +3,7 @@
 
 level e2_s2
   title "Auge des Sturms"
+  title_en "Eye of the Storm"
   episode 2
   theme storm
   music secret

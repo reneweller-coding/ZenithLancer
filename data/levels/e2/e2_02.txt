@@ -3,6 +3,7 @@
 
 level e2_02
   title "Corvina"
+  title_en "Corvina"
   episode 2
   theme city
   music e2_b

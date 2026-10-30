@@ -6,6 +6,7 @@
 
 enemy e5_mote
   title "Glutfunke"
+  title_en "Ember Mote"
   model e5_mote
   hp 30
   radius 12
@@ -20,6 +21,7 @@ enemy e5_mote
 
 enemy e5_shard
   title "Gitterscherbe"
+  title_en "Lattice Shard"
   model e5_shard
   hp 36
   radius 13
@@ -34,6 +36,7 @@ enemy e5_shard
 
 enemy e5_petal
   title "Lichtblatt"
+  title_en "Light Petal"
   model e5_petal
   hp 44
   radius 14
@@ -48,6 +51,7 @@ enemy e5_petal
 
 enemy e5_seedling
   title "Keimling"
+  title_en "Seedling"
   model e5_seedling
   hp 26
   radius 10
@@ -63,6 +67,7 @@ enemy e5_seedling
 
 enemy e5_spear
   title "Strahlspeer"
+  title_en "Ray Spear"
   model e5_spear
   hp 100
   radius 15
@@ -77,6 +82,7 @@ enemy e5_spear
 
 enemy e5_moth
   title "Halofalter"
+  title_en "Halo Moth"
   model e5_moth
   hp 120
   radius 18
@@ -92,6 +98,7 @@ enemy e5_moth
 
 enemy e5_prism
   title "Prismenjäger"
+  title_en "Prism Hunter"
   model e5_prism
   hp 150
   radius 18
@@ -107,6 +114,7 @@ enemy e5_prism
 
 enemy e5_wisp
   title "Koronageist"
+  title_en "Corona Wisp"
   model e5_wisp
   hp 90
   radius 15
@@ -121,6 +129,7 @@ enemy e5_wisp
 
 enemy e5_weaver
   title "Gitterweber"
+  title_en "Lattice Weaver"
   model e5_weaver
   hp 180
   radius 22
@@ -136,6 +145,7 @@ enemy e5_weaver
 
 enemy e5_raider
   title "Diktat-Jäger"
+  title_en "Dictate Raider"
   model e5_raider
   hp 130
   radius 16
@@ -150,6 +160,7 @@ enemy e5_raider
 
 enemy e5_streak
   title "Lichtläufer"
+  title_en "Light Runner"
   model e5_streak
   hp 95
   radius 14
@@ -166,6 +177,7 @@ enemy e5_streak
 
 enemy e5_lantern
   title "Sonnenlaterne"
+  title_en "Sun Lantern"
   model e5_lantern
   hp 520
   radius 30
@@ -182,6 +194,7 @@ enemy e5_lantern
 
 enemy e5_cantor
   title "Kantor"
+  title_en "Cantor"
   model e5_cantor
   hp 620
   radius 34
@@ -198,6 +211,7 @@ enemy e5_cantor
 
 enemy e5_enforcer
   title "Vollstrecker"
+  title_en "Enforcer"
   model e5_enforcer
   hp 680
   radius 34
@@ -214,6 +228,7 @@ enemy e5_enforcer
 
 enemy e5_sail
   title "Spiegelsegel"
+  title_en "Mirror Sail"
   model e5_sail
   hp 560
   radius 36
@@ -231,6 +246,7 @@ enemy e5_sail
 
 enemy e5_spire
   title "Kristallturm"
+  title_en "Crystal Spire"
   model e5_spire
   kind ground
   hp 190
@@ -245,6 +261,7 @@ enemy e5_spire
 
 enemy e5_node
   title "Gitterknoten"
+  title_en "Lattice Node"
   model e5_node
   kind ground
   hp 320
@@ -258,6 +275,7 @@ enemy e5_node
 
 enemy e5_dockgun
   title "Werftgeschütz"
+  title_en "Dock Gun"
   model e5_dockgun
   kind ground
   hp 280
@@ -273,6 +291,7 @@ enemy e5_dockgun
 
 enemy e5_crystal
   title "Kronenkristall"
+  title_en "Crown Crystal"
   model e5_crystal
   kind obstacle
   hp 420
@@ -289,6 +308,7 @@ enemy e5_crystal
 
 enemy e5_ringsmith
   title "Der Ringschmied"
+  title_en "The Ringsmith"
   model e5_ringsmith
   kind boss
   hp 8000
@@ -311,6 +331,7 @@ enemy e5_ringsmith
 
 enemy e5_ringsmith_hand
   title "Schweißhand"
+  title_en "Welding Hand"
   model e5_ringsmith_hand
   kind part
   hp 700
@@ -327,6 +348,7 @@ enemy e5_ringsmith_hand
 
 enemy e5_citadel
   title "Zitadelle Letzte Order"
+  title_en "Citadel Last Order"
   model e5_citadel
   kind boss
   hp 10000
@@ -352,6 +374,7 @@ enemy e5_citadel
 
 enemy e5_citadel_gun
   title "Zitadellengeschütz"
+  title_en "Citadel Gun"
   model e5_citadel_gun
   kind part
   hp 500
@@ -367,6 +390,7 @@ enemy e5_citadel_gun
 
 enemy e5_warden
   title "Wächter der Krone"
+  title_en "Warden of the Crown"
   model e5_warden
   kind boss
   hp 11500
@@ -390,6 +414,7 @@ enemy e5_warden
 
 enemy e5_warden_eye
   title "Auge des Wächters"
+  title_en "Warden's Eye"
   model e5_warden_eye
   kind part
   hp 600
@@ -406,6 +431,7 @@ enemy e5_warden_eye
 
 enemy e5_curator
   title "Der Kurator"
+  title_en "The Curator"
   model e5_curator
   kind boss
   hp 14500
@@ -441,6 +467,7 @@ enemy e5_curator
 
 enemy e5_curator_petal
   title "Blatt des Kurators"
+  title_en "Curator's Petal"
   model e5_curator_petal
   kind part
   hp 450
@@ -457,6 +484,7 @@ enemy e5_curator_petal
 
 enemy e5_firstseed
   title "Der erste Keim"
+  title_en "The First Seed"
   model e5_firstseed
   kind boss
   hp 9000

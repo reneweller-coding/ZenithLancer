@@ -3,6 +3,7 @@
 
 level e2_10
   title "Gezeitenfall"
+  title_en "Tidefall"
   episode 2
   theme storm
   music e2_b

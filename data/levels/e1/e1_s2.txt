@@ -3,6 +3,7 @@
 
 level e1_s2
   title "Der Glasgarten"
+  title_en "The Glass Garden"
   episode 1
   theme desert
   music secret

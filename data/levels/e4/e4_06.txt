@@ -4,6 +4,7 @@
 
 level e4_06
   title "Bernsteinnacht"
+  title_en "Amber Night"
   episode 4
   theme space
   music e4_a

@@ -3,6 +3,7 @@
 
 level e1_05
   title "Gießerei Ascalon"
+  title_en "Ascalon Foundry"
   episode 1
   theme foundry
   music e1_a

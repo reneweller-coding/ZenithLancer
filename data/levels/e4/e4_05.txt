@@ -3,6 +3,7 @@
 
 level e4_05
   title "Festung Kalmar"
+  title_en "Fort Kalmar"
   episode 4
   theme city
   music e4_b

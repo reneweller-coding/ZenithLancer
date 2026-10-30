@@ -3,6 +3,7 @@
 
 level e4_09
   title "Dornenmutter"
+  title_en "Thornmother"
   episode 4
   theme jungle
   music e4_a

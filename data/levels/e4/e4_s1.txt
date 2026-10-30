@@ -4,6 +4,7 @@
 
 level e4_s1
   title "Herz des Chors"
+  title_en "Heart of the Choir"
   episode 4
   theme hive
   music secret

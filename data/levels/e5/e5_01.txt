@@ -3,6 +3,7 @@
 
 level e5_01
   title "Sonnenwind"
+  title_en "Solar Wind"
   episode 5
   theme space
   music e5_a

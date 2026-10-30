@@ -3,6 +3,7 @@
 
 level e4_01
   title "Kronendach"
+  title_en "Canopy"
   episode 4
   theme jungle
   music e4_a

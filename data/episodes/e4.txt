@@ -1,6 +1,8 @@
 episode 4
   title "Grünkrone"
   subtitle "Auf Sylvara, dem Dschungelmond des Gasriesen Vael, wehrt sich der Wald selbst gegen das Tessellat. Der Chor bittet um Hilfe – und Admiral Voss greift nach dem Schwarm."
+  title_en "Greencrown"
+  subtitle_en "On Sylvara, the jungle moon of the gas giant Vael, the forest itself is fighting back against the Tessellate. The Choir asks for help – and Admiral Voss reaches for the swarm."
   first e4_01
   intro e4_intro
   ending e4_ending

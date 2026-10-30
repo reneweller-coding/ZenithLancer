@@ -3,6 +3,7 @@
 
 level e1_04
   title "Aschenpass"
+  title_en "Ash Pass"
   episode 1
   theme desert
   music e1_b

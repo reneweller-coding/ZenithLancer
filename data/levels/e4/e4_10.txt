@@ -3,6 +3,7 @@
 
 level e4_10
   title "Diktat"
+  title_en "Dictate"
   episode 4
   theme space
   music e4_b

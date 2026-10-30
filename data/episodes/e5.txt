@@ -1,6 +1,8 @@
 episode 5
   title "Mittagsglut"
   subtitle "Die Krone schließt sich um die Sonne. Mit Okonjos Wurzelcode fliegst du hinein – über Zenith-Station, an Voss vorbei, bis in die Korona, wo der Kurator wartet."
+  title_en "Noonfire"
+  subtitle_en "The Crown is closing around the sun. With Okonjo's Root Code you fly in – over Zenith Station, past Voss, all the way into the corona, where the Curator waits."
   first e5_01
   intro e5_intro
   ending e5_ending

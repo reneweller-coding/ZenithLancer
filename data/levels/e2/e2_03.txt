@@ -3,6 +3,7 @@
 
 level e2_03
   title "Sturmgürtel"
+  title_en "Storm Belt"
   episode 2
   theme storm
   music e2_b

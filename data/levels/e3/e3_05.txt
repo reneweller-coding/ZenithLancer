@@ -3,6 +3,7 @@
 
 level e3_05
   title "Die Bohrkönigin"
+  title_en "The Borer Queen"
   episode 3
   theme asteroid
   music e3_a

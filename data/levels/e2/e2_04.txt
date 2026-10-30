@@ -3,6 +3,7 @@
 
 level e2_04
   title "Schleppnetz"
+  title_en "Dragnet"
   episode 2
   theme ocean
   music e2_a

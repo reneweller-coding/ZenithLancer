@@ -4,6 +4,7 @@
 
 level e3_09
   title "Weißdorn"
+  title_en "Whitethorn"
   episode 3
   theme station
   music e3_b

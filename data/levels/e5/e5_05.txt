@@ -3,6 +3,7 @@
 
 level e5_05
   title "Die Ringschmiede"
+  title_en "The Ring Forge"
   episode 5
   theme e5_corona
   music e5_b

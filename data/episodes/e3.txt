@@ -4,6 +4,8 @@
 episode 3
   title "Der Splitter"
   subtitle "Im Asteroidengürtel versteckt sich die Frau, die das Tessellat geschrieben hat. Das Direktorat jagt sie. Das Tessellat frisst die Felsen. Und irgendwo im Staub wartet ein Stein, der denkt."
+  title_en "The Shatter"
+  subtitle_en "The woman who wrote the Tessellate is hiding in the asteroid belt. The Directorate is hunting her. The Tessellate is eating the rocks. And somewhere in the dust, a stone that thinks is waiting."
   first e3_01
   intro e3_intro
   ending e3_ending

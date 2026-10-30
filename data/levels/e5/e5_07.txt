@@ -3,6 +3,7 @@
 
 level e5_07
   title "Der Spiegelgürtel"
+  title_en "The Mirror Belt"
   episode 5
   theme nebula
   music e5_b

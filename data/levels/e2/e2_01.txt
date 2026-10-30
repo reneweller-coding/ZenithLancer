@@ -3,6 +3,7 @@
 
 level e2_01
   title "Brandungslinie"
+  title_en "Surf Line"
   episode 2
   theme ocean
   music e2_a

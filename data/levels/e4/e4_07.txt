@@ -3,6 +3,7 @@
 
 level e4_07
   title "Wurzelgrund"
+  title_en "Root Deep"
   episode 4
   theme hive
   music e4_b

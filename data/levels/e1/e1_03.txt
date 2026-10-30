@@ -3,6 +3,7 @@
 
 level e1_03
   title "Schlackefelder"
+  title_en "Slag Fields"
   episode 1
   theme lava
   music e1_a

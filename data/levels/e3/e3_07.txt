@@ -3,6 +3,7 @@
 
 level e3_07
   title "Die Treibende Flotte"
+  title_en "The Drifting Fleet"
   episode 3
   theme space
   music e3_b

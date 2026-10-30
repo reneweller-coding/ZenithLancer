@@ -3,6 +3,7 @@
 
 level e5_03
   title "Plasmasturm"
+  title_en "Plasma Storm"
   episode 5
   theme e5_corona
   music e5_b

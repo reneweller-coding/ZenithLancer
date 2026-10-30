@@ -2,6 +2,7 @@
 
 level e3_01
   title "Splitterkante"
+  title_en "Shatter's Edge"
   episode 3
   theme asteroid
   music e3_a

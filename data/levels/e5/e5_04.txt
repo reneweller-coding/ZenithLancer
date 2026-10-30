@@ -3,6 +3,7 @@
 
 level e5_04
   title "Die äußeren Ringe"
+  title_en "The Outer Rings"
   episode 5
   theme lattice
   music e5_a

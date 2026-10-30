@@ -4,6 +4,7 @@
 
 level e3_s2
   title "Friedhof der Ersten"
+  title_en "Graveyard of the First"
   episode 3
   theme space
   music secret

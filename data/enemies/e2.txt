@@ -5,6 +5,7 @@
 
 enemy e2_mote
   title "Gischtfunke"
+  title_en "Spray Spark"
   model e2_mote
   hp 9
   radius 11
@@ -19,6 +20,7 @@ enemy e2_mote
 
 enemy e2_swallow
   title "Gitterschwalbe"
+  title_en "Lattice Swallow"
   model e2_swallow
   hp 12
   radius 12
@@ -33,6 +35,7 @@ enemy e2_swallow
 
 enemy e2_ray
   title "Gitterrochen"
+  title_en "Lattice Ray"
   model e2_ray
   hp 36
   radius 20
@@ -47,6 +50,7 @@ enemy e2_ray
 
 enemy e2_lancefish
   title "Speerfisch"
+  title_en "Spearfish"
   model e2_lancefish
   hp 28
   radius 13
@@ -61,6 +65,7 @@ enemy e2_lancefish
 
 enemy e2_jelly
   title "Gitterqualle"
+  title_en "Lattice Jelly"
   model e2_jelly
   hp 70
   radius 18
@@ -77,6 +82,7 @@ enemy e2_jelly
 
 enemy e2_harvester
   title "Gezeitensammler"
+  title_en "Tide Harvester"
   model e2_harvester
   hp 170
   radius 30
@@ -94,6 +100,7 @@ enemy e2_harvester
 
 enemy e2_hydrofoil
   title "Gittergleiter"
+  title_en "Lattice Skimmer"
   model e2_hydrofoil
   kind ground
   hp 75
@@ -108,6 +115,7 @@ enemy e2_hydrofoil
 
 enemy e2_buoy
   title "Bojengeschütz"
+  title_en "Buoy Turret"
   model e2_buoy
   kind ground
   hp 50
@@ -121,6 +129,7 @@ enemy e2_buoy
 
 enemy e2_reef
   title "Gitterriff"
+  title_en "Lattice Reef"
   model e2_reef
   kind ground
   hp 260
@@ -136,6 +145,7 @@ enemy e2_reef
 
 enemy e2_seamine
   title "Treibmine"
+  title_en "Drift Mine"
   model e2_seamine
   hp 18
   radius 13
@@ -149,6 +159,7 @@ enemy e2_seamine
 
 enemy e2_floe
   title "Eisscholle"
+  title_en "Ice Floe"
   model e2_floe
   kind obstacle
   hp 160
@@ -165,6 +176,7 @@ enemy e2_floe
 
 enemy e2_sentry
   title "Wachdrohne"
+  title_en "Sentry Drone"
   model e2_sentry
   hp 12
   radius 11
@@ -179,6 +191,7 @@ enemy e2_sentry
 
 enemy e2_interceptor
   title "Abfangjäger Klinge"
+  title_en "Blade Interceptor"
   model e2_interceptor
   hp 34
   radius 14
@@ -193,6 +206,7 @@ enemy e2_interceptor
 
 enemy e2_gunboat
   title "Patrouillenboot"
+  title_en "Patrol Boat"
   model e2_gunboat
   kind ground
   hp 110
@@ -208,6 +222,7 @@ enemy e2_gunboat
 
 enemy e2_frigate
   title "Fregatte"
+  title_en "Frigate"
   model e2_frigate
   hp 190
   radius 30
@@ -225,6 +240,7 @@ enemy e2_frigate
 
 enemy e2_bomber
   title "Torpedobomber"
+  title_en "Torpedo Bomber"
   model e2_bomber
   hp 70
   radius 24
@@ -240,6 +256,7 @@ enemy e2_bomber
 
 enemy e2_freighter
   title "Versorgungsfrachter"
+  title_en "Supply Freighter"
   model e2_freighter
   hp 150
   radius 28
@@ -258,6 +275,7 @@ enemy e2_freighter
 # Mission 5: the swarm's singing wave-power station. Its two pipe clusters guard the core.
 enemy e2_organ
   title "Brandungsorgel"
+  title_en "Surf Organ"
   model e2_organ
   kind boss
   hp 2000
@@ -281,6 +299,7 @@ enemy e2_organ
 
 enemy e2_organ_pipe
   title "Orgelpfeifen"
+  title_en "Organ Pipes"
   model e2_organ_pipe
   kind part
   hp 360
@@ -295,6 +314,7 @@ enemy e2_organ_pipe
 # Mission 6: the Directorate cruiser that opens fire when Voss gives the word.
 enemy e2_mandat
   title "Kreuzer Mandat"
+  title_en "Cruiser Mandate"
   model e2_mandat
   kind boss
   hp 4300
@@ -318,6 +338,7 @@ enemy e2_mandat
 
 enemy e2_mandat_turret
   title "Zwillingsturm"
+  title_en "Twin Turret"
   model e2_mandat_turret
   kind part
   hp 420
@@ -331,6 +352,7 @@ enemy e2_mandat_turret
 # Mission 10: the converted carrier. Its launch bays and lattice nodes shield the core.
 enemy e2_leviathan
   title "Leviathan"
+  title_en "Leviathan"
   model e2_leviathan
   kind boss
   hp 2600
@@ -357,6 +379,7 @@ enemy e2_leviathan
 
 enemy e2_lev_deck
   title "Startdeck"
+  title_en "Launch Deck"
   model e2_lev_deck
   kind part
   hp 380
@@ -369,6 +392,7 @@ enemy e2_lev_deck
 
 enemy e2_lev_node
   title "Gitterknoten"
+  title_en "Lattice Node"
   model e2_lev_node
   kind part
   hp 340
@@ -382,6 +406,7 @@ enemy e2_lev_node
 # Secret 1: the Archivist, the swarm's reader in the drowned archive. Three lenses guard its eye.
 enemy e2_archivist
   title "Der Archivar"
+  title_en "The Archivist"
   model e2_archivist
   kind boss
   hp 2200
@@ -405,6 +430,7 @@ enemy e2_archivist
 
 enemy e2_archive_lens
   title "Leselinse"
+  title_en "Reading Lens"
   model e2_archive_lens
   kind part
   hp 380
@@ -419,6 +445,7 @@ enemy e2_archive_lens
 # Mission 9: the Directorate's hover icebreaker at the polar station.
 enemy e2_icebreaker
   title "Eisbrecher Strenge"
+  title_en "Icebreaker Severity"
   model e2_icebreaker
   kind boss
   hp 2800
@@ -442,6 +469,7 @@ enemy e2_icebreaker
 # Secret 2: the storm reaper in the eye of the hypercane.
 enemy e2_stormreaper
   title "Sturmernter"
+  title_en "Storm Reaper"
   model e2_stormreaper
   kind boss
   hp 2400

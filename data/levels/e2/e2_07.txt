@@ -3,6 +3,7 @@
 
 level e2_07
   title "Eisrand"
+  title_en "Ice Edge"
   episode 2
   theme ice
   music e2_a

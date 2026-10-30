@@ -2,6 +2,7 @@
 
 level e1_01
   title "Die Nacht von Zenith"
+  title_en "The Night of Zenith"
   episode 1
   theme station
   music e1_a

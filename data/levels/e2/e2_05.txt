@@ -4,6 +4,7 @@
 
 level e2_05
   title "Gezeitenmühle"
+  title_en "Tide Mill"
   episode 2
   theme ocean
   music e2_a

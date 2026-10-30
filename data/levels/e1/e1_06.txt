@@ -3,6 +3,7 @@
 
 level e1_06
   title "Der Erzzug"
+  title_en "The Ore Train"
   episode 1
   theme desert
   music e1_b

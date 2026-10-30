@@ -3,6 +3,7 @@
 
 level e5_02
   title "Gitterschlucht"
+  title_en "Lattice Gorge"
   episode 5
   theme lattice
   music e5_b

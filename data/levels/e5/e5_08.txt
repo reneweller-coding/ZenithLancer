@@ -3,6 +3,7 @@
 
 level e5_08
   title "Letzte Order"
+  title_en "Last Order"
   episode 5
   theme station
   music e5_a

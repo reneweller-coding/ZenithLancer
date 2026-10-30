@@ -6,6 +6,7 @@
 
 enemy e4_sporeling
   title "Sporling"
+  title_en "Sporeling"
   model e4_sporeling
   hp 22
   radius 12
@@ -20,6 +21,7 @@ enemy e4_sporeling
 
 enemy e4_mothwing
   title "Glimmfalter"
+  title_en "Glimmermoth"
   model e4_mothwing
   hp 26
   radius 14
@@ -34,6 +36,7 @@ enemy e4_mothwing
 
 enemy e4_lancefly
   title "Lanzenlibelle"
+  title_en "Lancefly"
   model e4_lancefly
   hp 75
   radius 15
@@ -48,6 +51,7 @@ enemy e4_lancefly
 
 enemy e4_umbrella
   title "Schirmqualle"
+  title_en "Parasol Jelly"
   model e4_umbrella
   hp 110
   radius 22
@@ -63,6 +67,7 @@ enemy e4_umbrella
 
 enemy e4_beetle
   title "Panzerkäfer"
+  title_en "Armoured Beetle"
   model e4_beetle
   hp 340
   radius 28
@@ -79,6 +84,7 @@ enemy e4_beetle
 
 enemy e4_seedmine
   title "Sprengsame"
+  title_en "Blastseed"
   model e4_seedmine
   hp 30
   radius 13
@@ -93,6 +99,7 @@ enemy e4_seedmine
 
 enemy e4_broodmother
   title "Brutträgerin"
+  title_en "Broodbearer"
   model e4_broodmother
   hp 450
   radius 34
@@ -110,6 +117,7 @@ enemy e4_broodmother
 
 enemy e4_sporepod
   title "Sporenkapsel"
+  title_en "Spore Pod"
   model e4_sporepod
   kind ground
   hp 130
@@ -122,6 +130,7 @@ enemy e4_sporepod
 
 enemy e4_thornvine
   title "Dornranke"
+  title_en "Thornvine"
   model e4_thornvine
   kind ground
   hp 150
@@ -135,6 +144,7 @@ enemy e4_thornvine
 
 enemy e4_crawler
   title "Dschungelkriecher"
+  title_en "Jungle Crawler"
   model e4_crawler
   kind ground
   hp 260
@@ -150,6 +160,7 @@ enemy e4_crawler
 
 enemy e4_riverray
   title "Flussrochen"
+  title_en "River Ray"
   model e4_riverray
   hp 95
   radius 22
@@ -165,6 +176,7 @@ enemy e4_riverray
 
 enemy e4_hivemite
   title "Wabenmilbe"
+  title_en "Comb Mite"
   model e4_hivemite
   hp 20
   radius 11
@@ -181,6 +193,7 @@ enemy e4_hivemite
 
 enemy e4_shard
   title "Splitterdrohne"
+  title_en "Shard Drone"
   model e4_shard
   hp 24
   radius 12
@@ -195,6 +208,7 @@ enemy e4_shard
 
 enemy e4_prism
   title "Prismenjäger"
+  title_en "Prism Fighter"
   model e4_prism
   hp 85
   radius 16
@@ -209,6 +223,7 @@ enemy e4_prism
 
 enemy e4_latticeship
   title "Gitterkreuzer"
+  title_en "Lattice Cruiser"
   model e4_latticeship
   hp 400
   radius 30
@@ -227,6 +242,7 @@ enemy e4_latticeship
 
 enemy e4_amberdart
   title "Bernsteinpfeil"
+  title_en "Amber Dart"
   model e4_amberdart
   hp 70
   radius 14
@@ -241,6 +257,7 @@ enemy e4_amberdart
 
 enemy e4_amberwarden
   title "Bernsteinwächter"
+  title_en "Amber Warden"
   model e4_amberwarden
   hp 440
   radius 30
@@ -259,6 +276,7 @@ enemy e4_amberwarden
 
 enemy e4_dirjet
   title "Direktoratsjäger"
+  title_en "Directorate Fighter"
   model e4_dirjet
   hp 65
   radius 14
@@ -273,6 +291,7 @@ enemy e4_dirjet
 
 enemy e4_dirgunboat
   title "Kanonenboot"
+  title_en "Gunboat"
   model e4_dirgunboat
   hp 320
   radius 28
@@ -290,6 +309,7 @@ enemy e4_dirgunboat
 
 enemy e4_dirtank
   title "Schwebepanzer"
+  title_en "Hover Tank"
   model e4_dirtank
   kind ground
   hp 210
@@ -305,6 +325,7 @@ enemy e4_dirtank
 
 enemy e4_dirflak
   title "Flakturm"
+  title_en "Flak Tower"
   model e4_dirflak
   kind ground
   hp 280
@@ -318,6 +339,7 @@ enemy e4_dirflak
 
 enemy e4_dirfrigate
   title "Fregatte"
+  title_en "Frigate"
   model e4_dirfrigate
   hp 650
   radius 40
@@ -337,6 +359,7 @@ enemy e4_dirfrigate
 
 enemy e4_brandroder
   title "Brandroder"
+  title_en "Scorcher"
   model e4_brandroder
   kind boss
   hp 2700
@@ -359,6 +382,7 @@ enemy e4_brandroder
 
 enemy e4_brand_turret
   title "Flammengeschütz"
+  title_en "Flame Turret"
   model e4_brand_turret
   kind part
   hp 700
@@ -372,6 +396,7 @@ enemy e4_brand_turret
 
 enemy e4_brand_sprayer
   title "Entlaubungsrohr"
+  title_en "Defoliant Sprayer"
   model e4_brand_sprayer
   kind part
   hp 900
@@ -385,6 +410,7 @@ enemy e4_brand_sprayer
 
 enemy e4_thornmother
   title "Dornenmutter"
+  title_en "Thornmother"
   model e4_thornmother
   kind boss
   hp 3300
@@ -410,6 +436,7 @@ enemy e4_thornmother
 
 enemy e4_thorn_arm
   title "Dornenarm"
+  title_en "Thorn Arm"
   model e4_thorn_arm
   kind part
   hp 750
@@ -422,6 +449,7 @@ enemy e4_thorn_arm
 
 enemy e4_thorn_crown
   title "Sporenkrone"
+  title_en "Spore Crown"
   model e4_thorn_crown
   kind part
   hp 1000
@@ -436,6 +464,7 @@ enemy e4_thorn_crown
 
 enemy e4_tumor
   title "Gitterwucherung"
+  title_en "Lattice Tumour"
   model e4_tumor
   kind boss
   hp 3000
@@ -456,6 +485,7 @@ enemy e4_tumor
 
 enemy e4_tumor_node
   title "Gitterknoten"
+  title_en "Lattice Node"
   model e4_tumor_node
   kind part
   hp 600
@@ -470,6 +500,7 @@ enemy e4_tumor_node
 
 enemy e4_diktat
   title "Diktat"
+  title_en "Dictate"
   model e4_diktat
   kind boss
   hp 3400
@@ -497,6 +528,7 @@ enemy e4_diktat
 
 enemy e4_diktat_battery
   title "Breitseitenbatterie"
+  title_en "Broadside Battery"
   model e4_diktat_battery
   kind part
   hp 700
@@ -510,6 +542,7 @@ enemy e4_diktat_battery
 
 enemy e4_diktat_bow
   title "Bugturm"
+  title_en "Bow Turret"
   model e4_diktat_bow
   kind part
   hp 900
@@ -522,6 +555,7 @@ enemy e4_diktat_bow
 
 enemy e4_diktat_core
   title "Bernsteinherz"
+  title_en "Amber Heart"
   model e4_diktat_core
   kind part
   hp 900
