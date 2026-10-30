@@ -61,6 +61,8 @@ enable_testing()
 # Every data file parses without an error and every mission can be flown to its end by the autopilot.
 add_test( NAME data COMMAND ZenithLancer --validate )
 add_test( NAME missions COMMAND ZenithLancer --simall --difficulty 2 )
+# A mission recorded and played back from its file ends the same to the bit (episode 1 and the boss rush).
+add_test( NAME replays COMMAND ZenithLancer --replaytest )
 # The screens played through by scripts (a hidden window; the saves go to a test folder in the build).
 foreach( flow campaign arcade boss )
     add_test( NAME app_${flow} COMMAND ZenithLancer --apptest ${CMAKE_SOURCE_DIR}/tools/apptest_${flow}.txt )
