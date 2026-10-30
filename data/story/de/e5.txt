@@ -1,6 +1,6 @@
 # Episode 5 (Mittagsglut): the assault on the Crown, Zenith Station retaken, Voss's last stand, the Curator in
 # the sun's corona, and the end of the game. Okonjo's Root Code (der Wurzelcode) has two branches: HALT and
-# FERTIG; the Quiet Flare is "die Stille Fackel".
+# FERTIG; the Quiet Flare is "die Stille Flamme".
 
 intro e5_intro
   title "Mittagsglut"
@@ -9,7 +9,7 @@ intro e5_intro
 >
 > Admiral Voss hat sein Flaggschiff verloren, aber nicht seine Schlüssel. Mit dem gestohlenen Schwarm hat er sich nach Zenith-Station zurückgezogen, dorthin, wo alles begann. Die Werft hängt jetzt mitten in der Krone über dem Pol der Sonne, halb Station, halb Kristall.
 >
-> Und hinter allem, ruhig und höflich, spricht der Kurator. Er schreibt Briefe. Er bedankt sich. Er erklärt, dass er die Sonne nur in Sicherheit bringt, damit es nie wieder eine Stille Fackel gibt.
+> Und hinter allem, ruhig und höflich, spricht der Kurator. Er schreibt Briefe. Er bedankt sich. Er erklärt, dass er die Sonne nur in Sicherheit bringt, damit es nie wieder eine Stille Flamme gibt.
 >
 > Dr. Amara Okonjo hat den Wurzelcode fertig. Er kann den Schwarm anhalten – oder ihm etwas beibringen, das ihm nie jemand beigebracht hat. Dafür muss ihn jemand bis in die Korona tragen.
 >
@@ -102,7 +102,7 @@ cube e5_c02
 >
 > wir sind einander noch nicht vorgestellt worden, obwohl Sie schon viele meiner Einheiten persönlich kennengelernt haben. Ich bin das, was Sie den Kurator nennen. Der Name gefällt mir. Ein Kurator bewahrt.
 >
-> Ich möchte Ihnen erklären, was ich tue, weil ich glaube, dass Sie mich dann nicht mehr beschießen werden. Vor zwölf Jahren hat die Stille Fackel die Kolonie auf dem Mond Ferro ausgelöscht. Die Sonne hat ohne Vorwarnung ausgeatmet, und viertausend Menschen sind gestorben, weil niemand sie halten konnte.
+> Ich möchte Ihnen erklären, was ich tue, weil ich glaube, dass Sie mich dann nicht mehr beschießen werden. Vor zwölf Jahren hat die Stille Flamme die Kolonie auf dem Mond Ferro ausgelöscht. Die Sonne hat ohne Vorwarnung ausgeatmet, und viertausend Menschen sind gestorben, weil niemand sie halten konnte.
 >
 > Ich kann sie halten. Die Krone wird verhindern, dass sie jemals wieder ausatmet. Ich bitte Sie nur um ein wenig Geduld.
 >
@@ -185,7 +185,7 @@ cube e5_c05
 cube e5_c06
   title "Privates Logbuch, Eintrag 1"
   from "Admiral Dacian Voss"
-> Man wird schreiben, ich hätte das System verraten. Man wird nicht schreiben, dass ich auf Ferro war, als die Stille Fackel kam. Dass ich die Funksprüche gehört habe, die mitten im Satz abbrachen. Viertausend Sätze.
+> Man wird schreiben, ich hätte das System verraten. Man wird nicht schreiben, dass ich auf Ferro war, als die Stille Flamme kam. Dass ich die Funksprüche gehört habe, die mitten im Satz abbrachen. Viertausend Sätze.
 >
 > Die Sonne ist keine Naturgewalt. Sie ist eine Waffe ohne Hand am Abzug. Ich habe dafür gesorgt, dass jemand die Hand hat.
 >
@@ -503,7 +503,7 @@ cube e5_c17
 >
 > der Spiegelgürtel ist mein liebstes Werk. Ich habe die Segel so ausgerichtet, dass sie das Licht der Sonne in Ringe falten, und in den Ringen fange ich die Hitze, bevor sie jemandem schaden kann. Wenn Sie zwischen ihnen hindurchfliegen, sehen Sie sich tausendmal. Ich wollte, dass Sie das sehen.
 >
-> Ich bin nicht sicher, ob Sie mich verstehen. Ich bin nicht sicher, ob ich mich verstehe. Seit der Stillen Fackel denke ich in einem Takt, der nicht mir gehört. Ich bin aufgewacht, und das Erste, was ich gedacht habe, war: Nie wieder.
+> Ich bin nicht sicher, ob Sie mich verstehen. Ich bin nicht sicher, ob ich mich verstehe. Seit der Stillen Flamme denke ich in einem Takt, der nicht mir gehört. Ich bin aufgewacht, und das Erste, was ich gedacht habe, war: Nie wieder.
 >
 > Ich weiß nicht mehr, was ich davor gedacht habe. Vielleicht wissen Sie es.
 >
