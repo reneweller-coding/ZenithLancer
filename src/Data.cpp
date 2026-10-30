@@ -5,6 +5,8 @@
  */
 #include "Data.h"
 
+#include "Lang.h"
+
 #include <algorithm>
 #include <cstdio>
 #include <filesystem>
@@ -342,6 +344,8 @@ template <typename T> bool goodsLine( T &d, const Line &l )
 {
     if ( l.m_key == "title" ) d.m_title = l.arg( 0 );
     else if ( l.m_key == "desc" ) d.m_desc = l.arg( 0 );
+    else if ( l.m_key == "title_en" ) d.m_titleEn = l.arg( 0 );
+    else if ( l.m_key == "desc_en" ) d.m_descEn = l.arg( 0 );
     else if ( l.m_key == "price" ) d.m_price = (int)l.argNum( 0, (float)d.m_price );
     else if ( l.m_key == "tier" ) d.m_tier = (int)l.argNum( 0, 1 );
     else if ( l.m_key == "hidden" ) d.m_hidden = l.argNum( 0, 1 ) != 0;
@@ -386,7 +390,7 @@ bool Catalog::load( const std::string &dir )
                                              "generator", "shield", "special", "level", "episode",  "cube",
                                              "briefing", "radio",   "intro",   "ending", "bio",     "difficulty", "debrief",
                                              "pilot",   "theme" };
-    std::vector<std::string> files;
+    std::vector<std::string> files, enFiles;
     std::error_code          e;
     if ( !fs::is_directory( dir, e ) )
     {
@@ -397,7 +401,8 @@ bool Catalog::load( const std::string &dir )
     {
         if ( !entry.is_regular_file() || entry.path().extension() != ".txt" ) continue;
         std::string rel = fs::relative( entry.path(), dir, e ).generic_string();
-        // Stories: German always, other languages lie beside it (story/en ...) and are not read here.
+        // Stories: German always; English (story/en) is read into its own map below.
+        if ( rel.rfind( "story/en/", 0 ) == 0 ) enFiles.push_back( entry.path().string() );
         if ( rel.rfind( "story/", 0 ) == 0 && rel.rfind( "story/de/", 0 ) != 0 ) continue;
         if ( rel.rfind( "lang/", 0 ) == 0 ) continue;
         files.push_back( entry.path().string() );
@@ -453,6 +458,7 @@ bool Catalog::load( const std::string &dir )
             {
                 const std::string &k = l.m_key;
                 if ( k == "title" ) d.m_title = l.arg( 0 );
+                else if ( k == "title_en" ) d.m_titleEn = l.arg( 0 );
                 else if ( k == "model" ) d.m_model = l.arg( 0 );
                 else if ( k == "kind" )
                 {
@@ -639,6 +645,7 @@ bool Catalog::load( const std::string &dir )
             {
                 const std::string &k = l.m_key;
                 if ( k == "title" ) lv.m_title = l.arg( 0 );
+                else if ( k == "title_en" ) lv.m_titleEn = l.arg( 0 );
                 else if ( k == "episode" ) lv.m_episode = (int)l.argNum( 0, 1 );
                 else if ( k == "theme" ) lv.m_theme = l.arg( 0 );
                 else if ( k == "music" ) lv.m_music = l.arg( 0 );
@@ -714,6 +721,8 @@ bool Catalog::load( const std::string &dir )
                 const std::string &k = l.m_key;
                 if ( k == "title" ) ep.m_title = l.arg( 0 );
                 else if ( k == "subtitle" ) ep.m_subtitle = l.arg( 0 );
+                else if ( k == "title_en" ) ep.m_titleEn = l.arg( 0 );
+                else if ( k == "subtitle_en" ) ep.m_subtitleEn = l.arg( 0 );
                 else if ( k == "first" ) ep.m_first = l.arg( 0 );
                 else if ( k == "intro" ) ep.m_intro = l.arg( 0 );
                 else if ( k == "ending" ) ep.m_ending = l.arg( 0 );
@@ -751,6 +760,8 @@ bool Catalog::load( const std::string &dir )
                 const std::string &k = l.m_key;
                 if ( k == "title" ) d.m_title = l.arg( 0 );
                 else if ( k == "desc" ) d.m_desc = l.arg( 0 );
+                else if ( k == "title_en" ) d.m_titleEn = l.arg( 0 );
+                else if ( k == "desc_en" ) d.m_descEn = l.arg( 0 );
                 else if ( k == "hp" ) d.m_hp = l.argNum( 0, 1 );
                 else if ( k == "fire" ) d.m_fire = l.argNum( 0, 1 );
                 else if ( k == "speed" ) d.m_speed = l.argNum( 0, 1 );
@@ -770,6 +781,8 @@ bool Catalog::load( const std::string &dir )
             {
                 if ( l.m_key == "title" ) a.m_title = l.arg( 0 );
                 else if ( l.m_key == "desc" ) a.m_desc = l.arg( 0 );
+                else if ( l.m_key == "title_en" ) a.m_titleEn = l.arg( 0 );
+                else if ( l.m_key == "desc_en" ) a.m_descEn = l.arg( 0 );
                 else loadoutLine( a.m_loadout, l );
             }
             m_arcadeShips.push_back( a );
@@ -778,6 +791,34 @@ bool Catalog::load( const std::string &dir )
             m_themes.push_back( b );
     }
     if ( m_difficulties.empty() ) m_difficulties.push_back( { "normal", "Normal" } );
+    // The English stories: the same names as the German ones.
+    std::sort( enFiles.begin(), enFiles.end() );
+    std::vector<Block> enBlocks;
+    for ( const std::string &f : enFiles ) readBlocks( f, types, enBlocks, m_errors );
+    for ( const Block &b : enBlocks )
+    {
+        if ( b.m_type != "cube" && b.m_type != "briefing" && b.m_type != "radio" && b.m_type != "intro" &&
+             b.m_type != "ending" && b.m_type != "bio" && b.m_type != "debrief" )
+        {
+            m_errors.push_back( b.m_head.where() + ": only stories belong in story/en" );
+            continue;
+        }
+        if ( m_storyEn.count( b.m_name ) ) m_errors.push_back( b.m_head.where() + ": story \"" + b.m_name + "\" is defined twice" );
+        StoryDef &s = m_storyEn[b.m_name];
+        s = {};
+        s.m_type = b.m_type;
+        s.m_name = b.m_name;
+        s.m_text = b.m_prose;
+        for ( const Line &l : b.m_lines )
+        {
+            if ( l.m_key == "title" ) s.m_title = l.arg( 0 );
+            else if ( l.m_key == "from" ) s.m_from = l.arg( 0 );
+            else if ( l.m_key == "portrait" ) s.m_portrait = l.arg( 0 );
+            else unknown( b, l, m_errors );
+        }
+        if ( !m_story.count( b.m_name ) )
+            m_warnings.push_back( b.m_head.where() + ": English story \"" + b.m_name + "\" has no German one" );
+    }
     check();
     return m_errors.empty();
 }
@@ -861,7 +902,12 @@ const GeneratorDef *Catalog::generator( const std::string &n ) const { return fi
 const ShieldDef *Catalog::shield( const std::string &n ) const { return find( m_shields, n ); }
 const SpecialDef *Catalog::special( const std::string &n ) const { return find( m_specials, n ); }
 const LevelDef *Catalog::level( const std::string &n ) const { return find( m_levels, n ); }
-const StoryDef *Catalog::story( const std::string &n ) const { return find( m_story, n ); }
+const StoryDef *Catalog::story( const std::string &n ) const
+{
+    if ( english() )
+        if ( const StoryDef *s = find( m_storyEn, n ) ) return s;
+    return find( m_story, n );
+}
 const ModelDef *Catalog::model( const std::string &n ) const { return find( m_models, n ); }
 
 const DifficultyDef &Catalog::difficulty( int i ) const

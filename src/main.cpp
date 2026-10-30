@@ -9,6 +9,7 @@
  *   ZenithLancer --simall [--difficulty N] [--episode E]            every mission by the autopilot (no window)
  *                (both take --loadout "ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,...")
  *   ZenithLancer --weapons                         every gun's damage and energy a second at levels 1, 6, 11
+ *   ZenithLancer --langcheck PREFIX|all            the texts that lack their English (stories, titles, descriptions)
  *   ZenithLancer --shot FILE --level NAME [--at SECONDS] [--theme T] [--loadout ...]   a picture of a mission
  *   ZenithLancer --screen NAME --shot FILE         a picture of a screen (title main options controls scores credits
  *                logbook slots difficulty episode story plan shop pilots results failed continue name pause)
@@ -21,6 +22,7 @@
 #include "App.h"
 #include "Audio.h"
 #include "Data.h"
+#include "Lang.h"
 #include "Sim.h"
 
 #include <raylib.h>
@@ -95,6 +97,41 @@ int validate( const std::string &dir )
     return cat.m_errors.empty() ? 0 : 1;
 }
 
+int langCheck( const std::string &dir, const std::string &only )
+{
+    // What lacks its English: stories, titles and descriptions. "only" limits it to names with that prefix.
+    Catalog cat;
+    cat.load( dir );
+    int  missing = 0;
+    auto want = [&]( const std::string &name ) { return only.empty() || name.rfind( only, 0 ) == 0; };
+    auto miss = [&]( const std::string &what ) {
+        printf( "missing: %s\n", what.c_str() );
+        ++missing;
+    };
+    for ( const auto &[n, s] : cat.m_story )
+        if ( want( n ) && !cat.m_storyEn.count( n ) ) miss( "story " + n );
+    for ( const auto &[n, e] : cat.m_enemies )
+        if ( want( n ) && !e.m_title.empty() && e.m_titleEn.empty() ) miss( "enemy title_en " + n );
+    for ( const auto &[n, l] : cat.m_levels )
+        if ( want( n ) && l.m_titleEn.empty() ) miss( "level title_en " + n );
+    for ( const auto &[id, ep] : cat.m_episodes )
+        if ( want( "e" + std::to_string( id ) ) && ( ep.m_titleEn.empty() || ep.m_subtitleEn.empty() ) )
+            miss( "episode " + std::to_string( id ) + " title_en/subtitle_en" );
+    auto goods = [&]( const std::string &kind, const std::string &n, const std::string &t, const std::string &d ) {
+        if ( want( n ) && ( t.empty() || d.empty() ) ) miss( kind + " " + n + " title_en/desc_en" );
+    };
+    for ( const auto &[n, w] : cat.m_weapons ) goods( w.m_slot, n, w.m_titleEn, w.m_descEn );
+    for ( const auto &[n, s] : cat.m_sidekicks ) goods( "sidekick", n, s.m_titleEn, s.m_descEn );
+    for ( const auto &[n, s] : cat.m_ships ) goods( "ship", n, s.m_titleEn, s.m_descEn );
+    for ( const auto &[n, g] : cat.m_generators ) goods( "generator", n, g.m_titleEn, g.m_descEn );
+    for ( const auto &[n, s] : cat.m_shields ) goods( "shield", n, s.m_titleEn, s.m_descEn );
+    for ( const auto &[n, s] : cat.m_specials ) goods( "special", n, s.m_titleEn, s.m_descEn );
+    for ( const DifficultyDef &d : cat.m_difficulties ) goods( "difficulty", d.m_name, d.m_titleEn, d.m_descEn );
+    for ( const ArcadeShip &a : cat.m_arcadeShips ) goods( "pilot", a.m_name, a.m_titleEn, a.m_descEn );
+    printf( "%d texts lack their English\n", missing );
+    return missing == 0 ? 0 : 1;
+}
+
 int weapons( const std::string &dir )
 {
     Catalog cat;
@@ -154,7 +191,8 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
 int main( int argc, char **argv )
 {
     Options     o;
-    std::string simLevel, dumpDir, loadout;
+    std::string simLevel, dumpDir, loadout, langOnly;
+    bool        doLang = false;
     bool        doValidate = false, doSimAll = false, mortal = false, doWeapons = false;
     uint32_t    seed = 1;
     int         episode = 0;
@@ -196,11 +234,13 @@ int main( int argc, char **argv )
         else if ( a == "--dumpsfx" ) dumpDir = next();
         else if ( a == "--loadout" ) loadout = o.m_loadout = next();
         else if ( a == "--weapons" ) doWeapons = true;
+        else if ( a == "--langcheck" ) langOnly = next(), doLang = true;
         else if ( a == "--theme" ) o.m_theme = next();
         else if ( a == "--screen" ) o.m_screen = next();
         else if ( a == "--apptest" ) o.m_test = next();
     }
     if ( doWeapons ) return weapons( dataDir( o.m_data ) );
+    if ( doLang ) return langCheck( dataDir( o.m_data ), langOnly == "all" ? "" : langOnly );
     if ( doValidate ) return validate( dataDir( o.m_data ) );
     if ( !simLevel.empty() || doSimAll ) return sim( dataDir( o.m_data ), simLevel, o.m_difficulty, seed, mortal, episode, loadout );
     if ( !dumpDir.empty() )

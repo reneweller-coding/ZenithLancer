@@ -164,6 +164,7 @@ struct EnemyDef
 {
     std::string          m_name;
     std::string          m_title;                    ///< a boss's name on its bar
+    std::string          m_titleEn;                  ///< ... in English
     std::string          m_model;
     EnemyKindE           m_kind = EnemyKindE::AIR;
     float                m_hp = 10.0f;
@@ -202,6 +203,7 @@ struct WeaponDef
     std::string          m_name;
     std::string          m_title;
     std::string          m_desc;
+    std::string          m_titleEn, m_descEn;        ///< in English
     std::string          m_slot = "front";   ///< front or rear
     int                  m_price = 500;
     Range                m_rate = { 6, 6 };   ///< volleys a second over the levels
@@ -221,6 +223,7 @@ struct SidekickDef
     std::string          m_name;
     std::string          m_title;
     std::string          m_desc;
+    std::string          m_titleEn, m_descEn;        ///< in English
     int                  m_price = 500;
     std::string          m_model;
     std::string          m_place = "fixed";    ///< fixed, orbit, trail, front
@@ -241,6 +244,7 @@ struct ShipDef
     std::string m_name;
     std::string m_title;
     std::string m_desc;
+    std::string m_titleEn, m_descEn;   ///< in English
     int         m_price = 1000;
     std::string m_model;
     float       m_armor = 20.0f;
@@ -257,6 +261,7 @@ struct ShipDef
 struct GeneratorDef
 {
     std::string m_name, m_title, m_desc, m_where;
+    std::string m_titleEn, m_descEn;   ///< in English
     int         m_price = 1000;
     float       m_power = 30.0f;      ///< energy a second
     float       m_capacity = 60.0f;   ///< what it can hold
@@ -268,6 +273,7 @@ struct GeneratorDef
 struct ShieldDef
 {
     std::string m_name, m_title, m_desc, m_where;
+    std::string m_titleEn, m_descEn;   ///< in English
     int         m_price = 1000;
     float       m_max = 10.0f;      ///< points it holds
     float       m_regen = 2.0f;     ///< points a second it grows back
@@ -281,6 +287,7 @@ struct ShieldDef
 struct SpecialDef
 {
     std::string m_name, m_title, m_desc, m_where;
+    std::string m_titleEn, m_descEn;   ///< in English
     int         m_price = 1000;
     std::string m_kind = "nova";   ///< nova, barrier, drones, timeslow, lance, repair, magnet
     int         m_charges = 2;     ///< charges a mission
@@ -304,6 +311,7 @@ struct LevelDef
 {
     std::string              m_name;
     std::string              m_title;
+    std::string              m_titleEn;        ///< in English
     std::string              m_file;
     int                      m_episode = 1;
     std::string              m_theme = "space";
@@ -344,6 +352,7 @@ struct EpisodeDef
     int                      m_id = 1;
     std::string              m_title;
     std::string              m_subtitle;
+    std::string              m_titleEn, m_subtitleEn;   ///< in English
     std::string              m_first;          ///< its first mission
     std::string              m_intro;          ///< story entries
     std::string              m_ending;
@@ -370,6 +379,7 @@ struct DifficultyDef
     std::string m_name;
     std::string m_title;
     std::string m_desc;
+    std::string m_titleEn, m_descEn;   ///< in English
     float       m_hp = 1.0f;        ///< enemy strength
     float       m_fire = 1.0f;      ///< how often they shoot
     float       m_speed = 1.0f;     ///< how fast their bullets are
@@ -385,6 +395,7 @@ struct ArcadeShip
     std::string m_name;
     std::string m_title;
     std::string m_desc;
+    std::string m_titleEn, m_descEn;   ///< in English
     Loadout     m_loadout;
 };
 
@@ -403,6 +414,7 @@ struct Catalog
     std::map<std::string, LevelDef>     m_levels;
     std::map<int, EpisodeDef>           m_episodes;
     std::map<std::string, StoryDef>     m_story;
+    std::map<std::string, StoryDef>     m_storyEn;       ///< data/story/en: the same entries in English
     std::vector<DifficultyDef>          m_difficulties;
     std::vector<ArcadeShip>             m_arcadeShips;
     std::vector<Block>                  m_themes;        ///< the grounds' looks (Terrain reads them)
@@ -436,7 +448,7 @@ struct Catalog
     const SpecialDef *special( const std::string &n ) const;
     /** @return a mission */
     const LevelDef *level( const std::string &n ) const;
-    /** @return a story entry */
+    /** @return a story entry (in English where there is one and the game speaks English) */
     const StoryDef *story( const std::string &n ) const;
     /** @return a model */
     const ModelDef *model( const std::string &n ) const;
