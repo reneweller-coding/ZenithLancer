@@ -10,6 +10,8 @@
  *                (both take --loadout "ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,...")
  *   ZenithLancer --weapons                         every gun's damage and energy a second at levels 1, 6, 11
  *   ZenithLancer --langcheck PREFIX|all            the texts that lack their English (stories, titles, descriptions)
+ *   ZenithLancer --replaytest [MISSION]            each mission of episode 1 and the boss rush recorded and played
+ *                back from the file; the ends must be the same to the bit (no window; --difficulty, --seed, --mortal)
  *   ZenithLancer --shot FILE --level NAME [--at SECONDS] [--theme T] [--loadout ...]   a picture of a mission
  *   ZenithLancer --screen NAME --shot FILE         a picture of a screen (title main options controls scores credits
  *                logbook slots difficulty episode story plan shop pilots results failed continue name pause)
@@ -23,6 +25,7 @@
 #include "Audio.h"
 #include "Data.h"
 #include "Lang.h"
+#include "Replay.h"
 #include "Sim.h"
 
 #include <raylib.h>
@@ -31,6 +34,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <filesystem>
+#include <memory>
 #include <string>
 
 using namespace zenith;
@@ -186,6 +190,156 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
     return fails == 0 ? 0 : 1;
 }
 
+/** @return the first thing two Worlds' ends differ in, to the bit ("" if none) */
+std::string endDiff( const World &a, const World &b )
+{
+    if ( a.m_clock != b.m_clock ) return "clock";
+    if ( a.m_rng.m_state != b.m_rng.m_state ) return "random state";
+    if ( a.m_stats.m_kills != b.m_stats.m_kills || a.m_stats.m_credits != b.m_stats.m_credits ) return "kills/credits";
+    if ( a.m_enemies.size() != b.m_enemies.size() || a.m_bullets.size() != b.m_bullets.size() )
+        return "enemies/bullets";
+    if ( a.finished() != b.finished() || a.failed() != b.failed() ) return "result";
+    for ( int i = 0; i < 2; ++i )
+    {
+        const Player &p = a.m_players[i], &q = b.m_players[i];
+        if ( p.m_score != q.m_score || p.m_credits != q.m_credits ) return "pilot score";
+        if ( p.m_pos.x != q.m_pos.x || p.m_pos.y != q.m_pos.y ) return "pilot position";
+        if ( p.m_armor != q.m_armor || p.m_alive != q.m_alive || p.m_lives != q.m_lives ) return "pilot armour";
+    }
+    return "";
+}
+
+/**
+ * @brief --replaytest: the replay file checked, then each mission flown by the autopilot and recorded (its input
+ *        quantized, a third of the time steering by the mouse), saved, read back and flown again from the file; the
+ *        ends must be the same to the bit. Each mission twice: as it comes, and once fought again from the boss's
+ *        checkpoint (a "retry" mark six seconds after the boss came, or when the fight is lost).
+ */
+int replayTest( const std::string &dir, const std::string &level, int diff, uint32_t seed, bool mortal,
+                const std::string &loadout )
+{
+    namespace fs = std::filesystem;
+    Catalog cat;
+    cat.load( dir );
+    for ( const std::string &e : cat.m_errors ) printf( "error: %s\n", e.c_str() );
+    std::error_code e;
+    std::string     tmp = ( fs::temp_directory_path( e ) / "zenith_replaytest" ).string();
+    std::string     problem = replaySelfTest( tmp );
+    int             fails = problem.empty() ? 0 : 1;
+    if ( !problem.empty() ) printf( "replay file: FAILED: %s\n", problem.c_str() );
+    cat.m_levels["bossrush"] = bossRush( cat );
+    std::vector<std::string> names;
+    for ( const auto &[n, lv] : cat.m_levels )
+        if ( level.empty() ? lv.m_episode == 1 && n != "bossrush" : n == level ) names.push_back( n );
+    if ( level.empty() ) names.push_back( "bossrush" );
+    std::string file = ( fs::temp_directory_path( e ) / "zenith_replaytest.zlr" ).string();
+    auto        live = std::make_unique<World>(), back = std::make_unique<World>();
+    auto        liveSave = std::make_unique<World>(), backSave = std::make_unique<World>();
+    printf( "%-12s %-5s %6s %7s %-11s %4s %6s %9s  %s\n", "mission", "run", "steps", "bytes", "marks", "won", "time",
+            "score", "playback" );
+    for ( const std::string &name : names )
+        for ( int retry = 0; retry < 2; ++retry )
+        {
+            const LevelDef *lv = cat.level( name );
+            if ( !lv ) continue;
+            ReplayHeader h;
+            h.m_version = ZENITH_VERSION;
+            h.m_mode = name == "bossrush" ? ModeE::BOSSRUSH : ModeE::CAMPAIGN;
+            h.m_mission = name;
+            h.m_difficulty = diff;
+            h.m_seed = seed;
+            h.m_load[0] = simLoadout( cat, *lv );
+            if ( name == "bossrush" && !cat.m_arcadeShips.empty() )
+            {
+                // As App::startBossRush: the first pilot's guns at full power, three lives.
+                Loadout &o = h.m_load[0];
+                o = cat.m_arcadeShips[0].m_loadout;
+                o.m_frontLv = 11;
+                o.m_rear = o.m_rear.empty() ? "tailgun" : o.m_rear;
+                o.m_rearLv = 9;
+                o.m_gen = "singularity";
+                o.m_shield = "halo_s";
+                h.m_lives[0] = 2;
+            }
+            parseLoadout( h.m_load[0], loadout );
+            h.m_lang = "de";
+            // Flown and recorded, as the app does it: the input quantized before the step, the checkpoint kept after
+            // the step that brought the boss.
+            startWorld( *live, cat, h );
+            live->m_immortal = !mortal;
+            ReplayRecorder rec;
+            rec.begin( h );
+            bool  saved = false, retried = false;
+            float savedAt = 0.0f, limit = lv->m_length + 400.0f;
+            for ( ;; )
+            {
+                if ( retry && saved && !retried && ( live->failed() || live->m_clock >= savedAt + 6.0f ) )
+                {
+                    rec.mark( ReplayMarkE::RETRY );
+                    restoreBoss( *live, *liveSave );
+                    retried = true;
+                }
+                if ( live->finished() || live->failed() || live->m_clock >= limit ) break;
+                PlayerInput in[2] = { autopilot( *live, 0 ), {} };
+                if ( ( rec.steps() / 600 ) % 3 == 2 )
+                {
+                    in[0].m_mouse = true;
+                    in[0].m_target = add( live->m_players[0].m_pos, { in[0].m_x * 50.0f, in[0].m_y * 50.0f } );
+                }
+                in[0] = quantize( in[0] );
+                in[1] = quantize( in[1] );
+                rec.push( in );
+                live->step( in );
+                for ( const SimEvent &ev : live->m_events )
+                    if ( ev.m_type == EvE::BOSSSTART )
+                    {
+                        *liveSave = *live;
+                        saved = true;
+                        savedAt = live->m_clock;
+                    }
+            }
+            long long score = live->m_players[0].m_score + live->m_players[1].m_score;
+            rec.finish( live->finished(), score, live->m_clock );
+            std::string why;
+            ReplayPlayer pl;
+            if ( !rec.save( file ) ) why = "cannot save " + file;
+            else if ( !pl.load( file ) ) why = "cannot load: " + pl.error();
+            else if ( !startWorld( *back, cat, pl.header() ) ) why = "no mission " + pl.header().m_mission;
+            else
+            {
+                // Flown again from the file alone: the marks before their step, the checkpoint as above.
+                back->m_immortal = !mortal;
+                for ( ;; )
+                {
+                    for ( ReplayMarkE m : pl.marks() )
+                        if ( m == ReplayMarkE::RETRY ) restoreBoss( *back, *backSave );
+                        else continueArcade( *back );
+                    PlayerInput in[2];
+                    if ( !pl.next( in ) ) break;
+                    back->step( in );
+                    for ( const SimEvent &ev : back->m_events )
+                        if ( ev.m_type == EvE::BOSSSTART ) *backSave = *back;
+                }
+                why = endDiff( *live, *back );
+                const ReplayHeader &g = pl.header();
+                if ( why.empty() && ( g.m_endScore != score || g.m_time != live->m_clock ||
+                                      ( g.m_end == ReplayEndE::WON ) != live->finished() ) )
+                    why = "result in the header";
+            }
+            std::string marks = retried ? "retry@" + std::to_string( rec.header().m_marks[0].m_step )
+                              : retry   ? "(no boss)"
+                                        : "-";
+            printf( "%-12s %-5s %6d %7zu %-11s %4s %5.0fs %9lld  %s\n", name.c_str(), retry ? "retry" : "plain",
+                    rec.steps(), rec.bytes(), marks.c_str(), live->finished() ? "yes" : "NO", live->m_clock, score,
+                    why.empty() ? "same" : ( "DIFFERS: " + why ).c_str() );
+            fflush( stdout );
+            if ( !why.empty() ) ++fails;
+        }
+    fs::remove( fs::path( file ), e );
+    printf( "%s\n", fails == 0 ? "replays: all the same" : "replays: FAILED" );
+    return fails == 0 ? 0 : 1;
+}
+
 }   // namespace
 
 int main( int argc, char **argv )
@@ -196,6 +350,7 @@ int main( int argc, char **argv )
     bool        doValidate = false, doSimAll = false, mortal = false, doWeapons = false;
     uint32_t    seed = 1;
     int         episode = 0;
+    std::string replayLevel = "-";   // "-": no --replaytest
     for ( int i = 1; i < argc; ++i )
     {
         std::string a = argv[i];
@@ -206,6 +361,7 @@ int main( int argc, char **argv )
                     "  --validate                 check every data file\n"
                     "  --sim NAME | --simall [--episode E] [--difficulty N] [--seed S] [--mortal] [--loadout ...]\n"
                     "  --weapons                  every gun's damage and energy a second\n"
+                    "  --replaytest [MISSION]     record and play back episode 1 and the boss rush (or one mission)\n"
                     "  --shot FILE --level NAME [--at S] | --screen NAME --shot FILE | --gallery FILE\n"
                     "  --apptest SCRIPT           (with ZENITH_HOME set)    --dumpsfx DIR\n"
                     "loadout: \"ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,shield=ward,special=nova_s\"\n" );
@@ -238,7 +394,10 @@ int main( int argc, char **argv )
         else if ( a == "--theme" ) o.m_theme = next();
         else if ( a == "--screen" ) o.m_screen = next();
         else if ( a == "--apptest" ) o.m_test = next();
+        else if ( a == "--replaytest" ) replayLevel = i + 1 < argc && argv[i + 1][0] != '-' ? next() : "";
     }
+    if ( replayLevel != "-" )
+        return replayTest( dataDir( o.m_data ), replayLevel, o.m_difficulty, seed, mortal, loadout );
     if ( doWeapons ) return weapons( dataDir( o.m_data ) );
     if ( doLang ) return langCheck( dataDir( o.m_data ), langOnly == "all" ? "" : langOnly );
     if ( doValidate ) return validate( dataDir( o.m_data ) );
