@@ -10,6 +10,7 @@
  *                (both take --loadout "ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,...")
  *   ZenithLancer --weapons                         every gun's damage and energy a second at levels 1, 6, 11
  *   ZenithLancer --langcheck PREFIX|all            the texts that lack their English (stories, titles, descriptions)
+ *   ZenithLancer --achievements                    checks data/lang/achievements.txt and lists what it holds
  *   ZenithLancer --shot FILE --level NAME [--at SECONDS] [--theme T] [--loadout ...]   a picture of a mission
  *   ZenithLancer --screen NAME --shot FILE         a picture of a screen (title main options controls scores credits
  *                logbook slots difficulty episode story plan shop pilots results failed continue name pause)
@@ -19,6 +20,7 @@
  *   ZenithLancer --dumpsfx DIR                     every sound effect as a WAV
  * @author Rene Weller
  */
+#include "Achieve.h"
 #include "App.h"
 #include "Audio.h"
 #include "Data.h"
@@ -132,6 +134,35 @@ int langCheck( const std::string &dir, const std::string &only )
     return missing == 0 ? 0 : 1;
 }
 
+int achievements( const std::string &dir )
+{
+    // The achievements and the statistics page: what the file holds, then what is wrong with it.
+    AchievementList list;
+    list.load( achievementsPath( dir ) );
+    Catalog cat;
+    cat.load( dir );
+    list.check( cat );
+    static const char *shows[] = { "count", "time", "clock", "credits" };
+    int                hidden = 0;
+    for ( const AchievementDef &a : list.m_achievements )
+    {
+        char need[64];
+        snprintf( need, sizeof( need ), "%s %s %.10g", a.m_key.c_str(), a.m_lower ? "<=" : ">=", a.m_need );
+        printf( "%-18s %-28s %-6s %s / %s\n", a.m_name.c_str(), need, a.m_hidden ? "hidden" : "", a.m_title.c_str(),
+                a.m_titleEn.c_str() );
+        hidden += a.m_hidden ? 1 : 0;
+    }
+    for ( const StatDef &s : list.m_stats )
+        printf( "stat %-18s %-8s %s / %s\n", s.m_key.c_str(), shows[(int)s.m_show], s.m_title.c_str(),
+                s.m_titleEn.c_str() );
+    for ( const std::string &w : list.m_warnings ) printf( "warning: %s\n", w.c_str() );
+    for ( const std::string &e : list.m_errors ) printf( "error: %s\n", e.c_str() );
+    printf( "%s: %zu achievements (%d hidden), %zu statistics, %zu errors, %zu warnings\n",
+            list.m_errors.empty() ? "OK" : "FAILED", list.m_achievements.size(), hidden, list.m_stats.size(),
+            list.m_errors.size(), list.m_warnings.size() );
+    return list.m_errors.empty() ? 0 : 1;
+}
+
 int weapons( const std::string &dir )
 {
     Catalog cat;
@@ -193,6 +224,7 @@ int main( int argc, char **argv )
     Options     o;
     std::string simLevel, dumpDir, loadout, langOnly;
     bool        doLang = false;
+    bool        doAchieve = false;
     bool        doValidate = false, doSimAll = false, mortal = false, doWeapons = false;
     uint32_t    seed = 1;
     int         episode = 0;
@@ -235,12 +267,14 @@ int main( int argc, char **argv )
         else if ( a == "--loadout" ) loadout = o.m_loadout = next();
         else if ( a == "--weapons" ) doWeapons = true;
         else if ( a == "--langcheck" ) langOnly = next(), doLang = true;
+        else if ( a == "--achievements" ) doAchieve = true;
         else if ( a == "--theme" ) o.m_theme = next();
         else if ( a == "--screen" ) o.m_screen = next();
         else if ( a == "--apptest" ) o.m_test = next();
     }
     if ( doWeapons ) return weapons( dataDir( o.m_data ) );
     if ( doLang ) return langCheck( dataDir( o.m_data ), langOnly == "all" ? "" : langOnly );
+    if ( doAchieve ) return achievements( dataDir( o.m_data ) );
     if ( doValidate ) return validate( dataDir( o.m_data ) );
     if ( !simLevel.empty() || doSimAll ) return sim( dataDir( o.m_data ), simLevel, o.m_difficulty, seed, mortal, episode, loadout );
     if ( !dumpDir.empty() )

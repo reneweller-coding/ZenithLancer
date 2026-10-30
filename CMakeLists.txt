@@ -60,6 +60,8 @@ endif()
 enable_testing()
 # Every data file parses without an error and every mission can be flown to its end by the autopilot.
 add_test( NAME data COMMAND ZenithLancer --validate )
+# The achievements and the statistics page (data/lang/achievements.txt).
+add_test( NAME achievements COMMAND ZenithLancer --achievements )
 add_test( NAME missions COMMAND ZenithLancer --simall --difficulty 2 )
 # The screens played through by scripts (a hidden window; the saves go to a test folder in the build).
 foreach( flow campaign arcade boss )
