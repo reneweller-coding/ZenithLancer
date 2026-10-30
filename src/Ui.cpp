@@ -39,7 +39,7 @@ void init( const std::string &assets )
     // Latin-1 and the few marks the texts use.
     std::vector<int> cps;
     for ( int c = 32; c < 127; ++c ) cps.push_back( c );
-    for ( int c = 160; c < 256; ++c ) cps.push_back( c );
+    for ( int c = 160; c < 384; ++c ) cps.push_back( c );   // Latin-1 and Latin Extended-A (names like Ilić)
     for ( int c : { 0x2013, 0x2014, 0x2018, 0x2019, 0x201A, 0x201C, 0x201D, 0x201E, 0x2026, 0x2022, 0x2192, 0x2190,
                     0x2191, 0x2193, 0x00B7, 0x2122, 0x221E, 0x00D7, 0x25B2, 0x25BC, 0x25C6, 0x2605, 0x2212 } )
         cps.push_back( c );
