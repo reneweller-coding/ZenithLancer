@@ -98,7 +98,7 @@ def nice_run(cmd, cwd, log):
 def target(cue):
     if cue in LUFS:
         return LUFS[cue]
-    return LUFS_BOSS if cue.endswith("boss") or cue in ("boss", "final") else LUFS_DEFAULT
+    return LUFS_BOSS if cue.endswith("boss") or cue.endswith("final") or cue in ("boss", "final") else LUFS_DEFAULT
 
 
 def level_and_encode(source, cue, path):

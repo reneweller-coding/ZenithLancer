@@ -405,7 +405,7 @@ achievement seen_all
   title_en "Bestiary"
   desc "Begegne jedem Gegner, den das Archiv kennt. Okonjo möchte eine Kopie."
   desc_en "Meet every enemy the archive knows. Okonjo would like a copy."
-  need seen 127
+  need seen 139
   hidden 1
 
 achievement heard_all
@@ -413,7 +413,7 @@ achievement heard_all
   title_en "Record Collection"
   desc "Hör jedes Stück der Musik. Quill behauptet, er habe sie alle auf Kassette."
   desc_en "Hear every piece of the music. Quill claims he has them all on tape."
-  need heard 23
+  need heard 27
 
 achievement gold_10
   title "Goldene Zehn"

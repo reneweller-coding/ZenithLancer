@@ -55,6 +55,8 @@ struct Options
     int         m_videoFps = 60;        ///< --fps: the video's frames a second
     float       m_videoSeconds = 0.0f;  ///< --seconds: the video at most this long (0: the whole mission)
     bool        m_deckCheck = false;    ///< --deckcheck: every screen at 1280x800, the smallest text measured
+    float       m_videoFrom = 0.0f;     ///< --from: the video of a mission begins this many seconds in
+    bool        m_videoBoss = false;    ///< --boss: ... or at its boss
 };
 
 /** @brief The screens. */

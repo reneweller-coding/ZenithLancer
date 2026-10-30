@@ -53,6 +53,21 @@ int App::video()
         printf( "--video needs --replay FILE or --level NAME\n" );
         return 1;
     }
+    else
+    {
+        // A mission flown by the autopilot: from its boss (--boss) or after some seconds (--from), unseen.
+        if ( m_opt.m_videoBoss ) toBoss();
+        for ( int i = 0; i < (int)( m_opt.m_videoFrom * 60.0f ) && !m_world.finished() && !m_world.failed(); ++i )
+        {
+            PlayerInput in[2] = { autopilot( m_world, 0 ), m_players > 1 ? autopilot( m_world, 1 ) : PlayerInput() };
+            m_world.step( in );
+            for ( const SimEvent &e : m_world.m_events )
+                if ( e.m_type == EvE::THEME && m_world.m_level ) m_view.setTheme( m_cat, e.m_name, m_world.m_level->m_seed + 17u );
+                else if ( e.m_type == EvE::MUSIC ) m_audio.music( e.m_name );
+        }
+        m_introT = m_opt.m_videoFrom > 0.0f || m_opt.m_videoBoss ? 10.0f : 0.0f;
+        m_view.reset();
+    }
     std::string out = fs::absolute( m_opt.m_video ).string(), tmp = out + ".video.mp4";
     char        cmd[2048];
     snprintf( cmd, sizeof( cmd ),

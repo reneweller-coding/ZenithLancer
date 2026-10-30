@@ -29,7 +29,7 @@ import make_music  # noqa: E402  (lufs, peak_db, encode)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import paths   # noqa: E402  (tools/paths.py: where the AudioGenerator lives)
-STAGE = re.compile(r"^(e[1-5]_[ab]|secret)(_2)?$")
+STAGE = re.compile(r"^(e[1-6]_[ab]|secret)(_2)?$")
 LOW_STYLE = ("stripped back sparse arrangement of the same piece, the melody kept on soft synths, warm pads and a "
              "pulsing bass, light hi-hats instead of the full drum kit, no heavy drums, calmer and quieter, "
              "instrumental video game background music")

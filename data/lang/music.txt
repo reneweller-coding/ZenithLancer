@@ -20,6 +20,10 @@ e4_boss Dornenmutter | The Thornmother
 e5_a Mittagsglut | Noonfire
 e5_b Ringschmied | Ringsmith
 e5_boss Wächter der Krone | Warden of the Crown
+e6_a Wolkenbänder | Cloud Bands
+e6_b Im Auge des Sturms | In the Eye of the Storm
+e6_boss Arche und Sturm | Ark and Storm
+e6_final Das Echo | The Echo
 boss Alarm | Alarm
 secret Verborgene Kammer | Hidden Chamber
 final Letzte Order | Last Order

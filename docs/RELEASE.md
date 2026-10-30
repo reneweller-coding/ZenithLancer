@@ -48,8 +48,10 @@ The app tests, the playing and the pictures use the graphics card: check that no
   1280 x 800, the Deck's controls, each graphics quality, the benchmark's numbers (for `docs/STORE.md`), suspend and
   resume. `ZenithLancer --deckcheck` draws every screen at 1280 x 800 with the Deck's text size and names the smallest
   text (30.10.2026: 14.9 px, the HUD's labels; Valve asks for at least 9 px).
-- **Trailer:** `ZenithLancer --video trailer.mp4 --replay <a replay> [--seconds 60]` (or `--level e3_05` flown by the
-  autopilot) renders the frames through ffmpeg at 1080p with the mission's music under it.
+- **Trailer:** `python tools/gpu_queue.py python tools/make_trailer.py` cuts about a minute from missions flown by the
+  autopilot (cards in the game's font, the workshop, the title music) into `dist/trailer/zenith_lancer_trailer.mp4`
+  (attach it to the release) and writes the README's GIFs `docs/shots/motion_*.gif`. Single clips:
+  `ZenithLancer --video clip.mp4 --replay <a replay> | --level e3_05 [--from S | --boss] [--seconds S]`.
 - **Linux desktop** (or WSLg): started once from the unpacked archive.
 
 ## 5. Pictures
