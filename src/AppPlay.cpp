@@ -844,7 +844,7 @@ void App::pauseMenu( float dt )
         else if ( m_practice )
         {
             m_practiceStep = 1;
-            go( ScreenE::PRACTICE );
+            go( m_editing ? ScreenE::EDITOR : ScreenE::PRACTICE );
         }
         else if ( m_mode == ModeE::CAMPAIGN )
             go( ScreenE::PLAN );

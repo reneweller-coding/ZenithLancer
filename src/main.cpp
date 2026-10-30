@@ -637,6 +637,7 @@ int main( int argc, char **argv )
             std::filesystem::remove( std::filesystem::path( home ) / f, e );
         std::filesystem::remove_all( std::filesystem::path( home ) / "replays", e );
         std::filesystem::remove_all( std::filesystem::path( home ) / "ghosts", e );
+        std::filesystem::remove_all( std::filesystem::path( home ) / "mods", e );
     }
     App app;
     if ( !app.init( o ) ) return 1;

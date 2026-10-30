@@ -1,6 +1,7 @@
 # The new ways to play, screen by screen: the campaign for two (workshop for the second pilot, a mission given up),
 # the day's survival flight to its end, a practice flight, a replay of a mission, the achievements, the mods,
-# the archive's three pages, the flight school given up, the week's flight to its end, a challenge with the photo mode.
+# the archive's three pages, the flight school given up, the week's flight to its end, a challenge with the photo mode,
+# the wave editor with a test flight.
 # (ZenithLancer --apptest tools/apptest_modes.txt with ZENITH_HOME set)
 expect:title
 accept
@@ -122,5 +123,23 @@ kill
 until:name:300
 accept
 expect:scores
+back
+expect:main
+down down down down down down down down down down down down down accept   # Mods
+expect:mods
+accept                  # the wave editor (no mods in the test folder)
+expect:editor
+accept                  # a new mission
+down down down down down down accept   # + Ereignis
+other right             # its kind: a ground target
+down down accept        # the test flight
+until:play:20
+until:results:300       # a short mission: flown to its end
+wait wait wait wait wait wait
+accept                  # back to the editor
+until:editor:50
+back                    # the list of missions
+back                    # the Mods screen
+expect:mods
 back
 expect:main

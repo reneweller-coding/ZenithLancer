@@ -61,7 +61,7 @@ struct Options
 enum class ScreenE : int
 {
     TITLE, MAIN, OPTIONS, CONTROLS, SCORES, CREDITS, LOGBOOK, SLOTS, DIFFICULTY, EPISODE, STORY, PLAN, SHOP, PLAY,
-    RESULTS, FAILED, PILOTS, CONTINUE, NAME, PRACTICE, SURVIVAL, REPLAYS, STATS, MODS, ARCHIVE, CHALLENGE, QUIT
+    RESULTS, FAILED, PILOTS, CONTINUE, NAME, PRACTICE, SURVIVAL, REPLAYS, STATS, MODS, ARCHIVE, CHALLENGE, EDITOR, QUIT
 };
 
 /** @brief A paint for the pilots' ships (the archive's third page). */
@@ -90,6 +90,30 @@ Loadout schoolLoadout( const Catalog &cat );
  * @return their names, joined ("" for none)
  */
 std::string ruleNames( int rules );
+
+/** @brief An event of a mission in the wave editor. */
+struct EditEvent
+{
+    float       m_t = 3.0f;    ///< seconds after the start
+    int         m_kind = 0;    ///< 0 wave, 1 ground, 2 obstacle, 3 boss, 4 pickup
+    std::string m_what;        ///< the enemy
+    int         m_n = 5;       ///< how many (a pickup: which, 1..6)
+    int         m_form = 2;    ///< the formation (AppEditor.cpp's list)
+    int         m_x = 360;     ///< where across the field
+    int         m_path = 1;    ///< the path (AppEditor.cpp's list)
+};
+
+/** @brief A mission in the wave editor. */
+struct EditMission
+{
+    std::string            m_name;           ///< its file's name ("user_1")
+    std::string            m_title;
+    std::string            m_theme;
+    std::string            m_music;
+    float                  m_scroll = 60.0f;
+    int                    m_gear = 1;       ///< the test flight's gear: an episode's middle gear
+    std::vector<EditEvent> m_events;
+};
 
 /** @brief A point of the ghost's flight: where the best flight of the same seed was, and its score then. */
 struct GhostPoint
@@ -190,6 +214,12 @@ private:
     void mods( float dt );
     void archive( float dt );
     void challenge( float dt );
+    void editor( float dt );
+    void editorList();
+    void editorOpen( const std::string &name );
+    LevelDef editorLevel() const;
+    bool editorSave();
+    std::vector<std::string> editorEnemies( int kind ) const;
 
     // Helpers.
     int  menu( const std::vector<std::string> &items, float x, float y, float w, int &sel, float size = 40.0f,
@@ -393,6 +423,15 @@ private:
     // The weekly flight and the ghost of the best flight of the same seed (daily and weekly).
     bool             m_weekly = false;
     std::string      m_challenge;              ///< the challenge's code flown ("" none)
+    // The wave editor.
+    int              m_editStep = 0;           ///< 0 the list of missions, 1 one being edited
+    std::vector<std::string> m_editFiles;      ///< the missions saved
+    EditMission      m_edit;
+    int              m_editField = 0;          ///< the value of the event being changed
+    bool             m_editDirty = true;       ///< the preview's field must be made again
+    bool             m_editTyping = false;     ///< the title is being typed
+    bool             m_editing = false;        ///< a test flight from the editor (it comes back there)
+    std::string      m_editMsg;
     int              m_challengeStep = 0;      ///< 0 the choice, 1 a new code, 2 a code typed in
     std::string      m_codeInput;              ///< the code being typed
     int              m_codeRules = 0;          ///< a new challenge: with house rules (1) or without (0)

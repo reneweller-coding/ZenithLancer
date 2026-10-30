@@ -347,6 +347,7 @@ void App::mods( float dt )
         bool on = std::find( m_set.m_mods.begin(), m_set.m_mods.end(), m.m_name ) != m_set.m_mods.end();
         items.push_back( std::string( on ? "[x]  " : "[  ]  " ) + L( m.m_title, m.m_titleEn.empty() ? m.m_title : m.m_titleEn ) );
     }
+    items.push_back( T( "Wellen-Editor ..." ) );
     items.push_back( T( "Zurück" ) );
     int c = menu( items, r.x + 50 * k, r.y + 30 * k, pw * 0.5f, m_sel, 30 );
     if ( m_sel < (int)list.size() )
@@ -372,7 +373,13 @@ void App::mods( float dt )
         if ( it != m_set.m_mods.end() ) m_set.m_mods.erase( it );
         else m_set.m_mods.push_back( list[(size_t)c].m_name );
     }
-    if ( c == (int)list.size() || m_in.back() )
+    if ( c == (int)list.size() )
+    {
+        m_editStep = 0;
+        go( ScreenE::EDITOR );
+        return;
+    }
+    if ( c == (int)list.size() + 1 || m_in.back() )
     {
         // Changed: the data is read again, with the mods now switched on.
         if ( m_set.m_mods != before )

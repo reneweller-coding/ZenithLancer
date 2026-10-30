@@ -371,7 +371,8 @@ void App::frame( float dt )
     case ScreenE::STATS:
     case ScreenE::MODS: piece = "title"; break;
     case ScreenE::ARCHIVE: piece = m_archivePiece.empty() ? "title" : m_archivePiece.c_str(); break;
-    case ScreenE::CHALLENGE: piece = "title"; break;
+    case ScreenE::CHALLENGE:
+    case ScreenE::EDITOR: piece = "title"; break;
     case ScreenE::PLAN:
     case ScreenE::RESULTS:
     case ScreenE::FAILED: piece = m_mode == ModeE::CAMPAIGN ? "plan" : "title"; break;
@@ -422,6 +423,7 @@ void App::frame( float dt )
     case ScreenE::MODS: mods( dt ); break;
     case ScreenE::ARCHIVE: archive( dt ); break;
     case ScreenE::CHALLENGE: challenge( dt ); break;
+    case ScreenE::EDITOR: editor( dt ); break;
     case ScreenE::QUIT: m_running = false; break;
     }
     if ( m_screen == before ) m_enter = false;
@@ -1201,7 +1203,7 @@ void App::results( float dt )
         if ( m_practice )
         {
             m_practiceStep = 1;
-            go( ScreenE::PRACTICE );
+            go( m_editing ? ScreenE::EDITOR : ScreenE::PRACTICE );
         }
         else if ( m_mode == ModeE::CAMPAIGN )
         {
@@ -1315,7 +1317,7 @@ void App::failed( float dt )
     if ( m_practice )
     {
         what.insert( what.end(), { MISSION, PRACTICE } );
-        items.insert( items.end(), { T( m_practiceBoss ? "Boss neu beginnen" : "Einsatz neu beginnen" ), T( "Zur Übungsauswahl" ) } );
+        items.insert( items.end(), { T( m_practiceBoss ? "Boss neu beginnen" : "Einsatz neu beginnen" ), T( m_editing ? "Zum Editor" : "Zur Übungsauswahl" ) } );
     }
     else if ( m_mode == ModeE::CAMPAIGN )
     {
@@ -1348,7 +1350,7 @@ void App::failed( float dt )
         break;
     case PRACTICE:
         m_practiceStep = 1;
-        go( ScreenE::PRACTICE );
+        go( m_editing ? ScreenE::EDITOR : ScreenE::PRACTICE );
         break;
     case PLAN: go( ScreenE::PLAN ); break;
     case SCORE:
@@ -1876,7 +1878,8 @@ namespace
 {
 const char *ScreenNames[] = { "title", "main", "options", "controls", "scores", "credits", "logbook", "slots",
                               "difficulty", "episode", "story", "plan", "shop", "play", "results", "failed", "pilots",
-                              "continue", "name", "practice", "survival", "replays", "stats", "mods", "archive", "challenge", "quit" };
+                              "continue", "name", "practice", "survival", "replays", "stats", "mods", "archive", "challenge", "editor",
+                              "quit" };
 }
 
 int App::appTest()
@@ -1992,7 +1995,7 @@ void App::screenShot()
     ScreenE target = ScreenE::TITLE;
     const char *names[] = { "title", "main", "options", "controls", "scores", "credits", "logbook", "slots", "difficulty",
                             "episode", "story", "plan", "shop", "play", "results", "failed", "pilots", "continue", "name",
-                            "practice", "survival", "replays", "stats", "mods", "archive", "challenge" };
+                            "practice", "survival", "replays", "stats", "mods", "archive", "challenge", "editor" };
     for ( int i = 0; i < (int)( sizeof( names ) / sizeof( names[0] ) ); ++i )
         if ( s == names[i] ) target = (ScreenE)i;
     if ( s == "story" )
@@ -2046,6 +2049,31 @@ void App::screenShot()
                 }
         if ( s == "music" ) m_archivePiece = "e2_b";
         if ( s == "paints" ) m_sel = 2;
+    }
+    // The wave editor with a small mission: a wave, a ground target, a boss.
+    if ( s == "editor" )
+    {
+        target = ScreenE::EDITOR;
+        editorOpen( "user_demo" );
+        m_edit.m_title = "Probe am Glutgürtel";
+        m_edit.m_theme = "lava";
+        std::vector<std::string> ground = editorEnemies( 1 ), boss = editorEnemies( 3 );
+        EditEvent g;
+        g.m_t = 8.0f;
+        g.m_kind = 1;
+        g.m_what = ground.empty() ? "" : ground.front();
+        g.m_n = 1;
+        g.m_x = 200;
+        EditEvent b;
+        b.m_t = 20.0f;
+        b.m_kind = 3;
+        b.m_what = boss.empty() ? "" : boss.front();
+        b.m_n = 1;
+        m_edit.m_events.push_back( g );
+        m_edit.m_events.push_back( b );
+        m_editStep = 1;
+        m_sel = 5;
+        m_editField = 2;
     }
     // The flight school at its graze lesson, a few seconds in.
     if ( s == "school" )
