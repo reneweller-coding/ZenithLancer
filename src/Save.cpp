@@ -105,6 +105,7 @@ void Settings::load( const std::string &path )
         else if ( k == "autofire" ) m_autofire = f != 0;
         else if ( k == "mouse" ) m_mouse = f != 0;
         else if ( k == "hitbox" ) m_hitbox = f != 0;
+        else if ( k == "rumble" ) m_rumble = f != 0;
         else if ( k == "textsize" ) m_textSize = f;
         else if ( k == "bind" ) m_binds.push_back( "bind " + v );
     }
@@ -116,8 +117,8 @@ bool Settings::save( const std::string &path ) const
     if ( !f ) return false;
     fprintf( f, "music %.2f\neffects %.2f\nfullscreen %d\nwidth %d\nheight %d\nfps %d\nvsync %d\nshake %.2f\n", m_music,
              m_effects, m_fullscreen ? 1 : 0, m_width, m_height, m_fps, m_vsync ? 1 : 0, m_shake );
-    fprintf( f, "autofire %d\nmouse %d\nhitbox %d\ntextsize %.2f\n", m_autofire ? 1 : 0, m_mouse ? 1 : 0, m_hitbox ? 1 : 0,
-             m_textSize );
+    fprintf( f, "autofire %d\nmouse %d\nhitbox %d\ntextsize %.2f\nrumble %d\n", m_autofire ? 1 : 0, m_mouse ? 1 : 0,
+             m_hitbox ? 1 : 0, m_textSize, m_rumble ? 1 : 0 );
     for ( const std::string &b : m_binds ) fprintf( f, "%s\n", b.c_str() );
     return endWrite( f, path );
 }

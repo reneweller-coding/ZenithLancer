@@ -8,6 +8,7 @@
 
 #include "Crash.h"
 #include "Files.h"
+#include "Rumble.h"
 #include "Ui.h"
 
 #include <raylib.h>
@@ -204,6 +205,18 @@ void App::play( float dt )
                 }
                 else if ( e.m_type == EvE::WARN )
                     m_warnT = 3.0f;
+                // The pad shakes with what the pilot feels: hits, big blasts nearby, a boss going down.
+                auto shake = [&]( float low, float high, float t ) {
+                    if ( !m_set.m_rumble ) return;
+                    m_rumbleLow = std::max( m_rumbleLow, low );
+                    m_rumbleHigh = std::max( m_rumbleHigh, high );
+                    m_rumbleT = std::max( m_rumbleT, t );
+                };
+                if ( e.m_type == EvE::PLAYERHIT ) shake( e.m_b > 0.5f ? 0.1f : 0.45f, e.m_b > 0.5f ? 0.35f : 0.7f, 0.14f );
+                else if ( e.m_type == EvE::PLAYERDIE ) shake( 1.0f, 0.8f, 0.6f );
+                else if ( e.m_type == EvE::BOSSDIE ) shake( 0.9f, 0.5f, 0.9f );
+                else if ( e.m_type == EvE::NOVA ) shake( 0.6f, 0.3f, 0.35f );
+                else if ( e.m_type == EvE::EXPLODE && e.m_a >= 2 ) shake( 0.35f, 0.15f, 0.2f );
                 else if ( e.m_type == EvE::PICKUP && e.m_name == "cube" )
                 {
                     m_radio = "Logkristall geborgen.";
@@ -229,6 +242,17 @@ void App::play( float dt )
         if ( steps >= 5 ) m_acc = 0;
         m_introT += dt;
         m_radioT += dt;
+        if ( m_rumbleT > 0 )
+        {
+            m_rumbleT -= dt;
+            if ( m_rumbleT > 0 )
+                rumble::set( m_rumbleLow, m_rumbleHigh );
+            else
+            {
+                rumble::stop();
+                m_rumbleLow = m_rumbleHigh = 0.0f;
+            }
+        }
         if ( m_warnT > 0 ) m_warnT -= dt;
     }
     // The end of the mission: a fade, then what follows.
@@ -428,6 +452,11 @@ void App::hud()
 void App::pauseMenu( float dt )
 {
     (void)dt;
+    if ( m_rumbleT > 0 )
+    {
+        rumble::stop();
+        m_rumbleT = 0.0f;
+    }
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     DrawRectangle( 0, 0, (int)W, (int)H, { 0, 0, 0, 140 } );
     ui::text( "PAUSE", W * 0.5f, H * 0.25f, 72, WHITE, ui::AlignE::CENTER );

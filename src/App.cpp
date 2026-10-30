@@ -1294,13 +1294,14 @@ void App::options( float dt )
         std::string( "Maussteuerung:  " ) + ( m_set.m_mouse ? "an" : "aus" ),
         std::string( "Trefferpunkt zeigen:  " ) + ( m_set.m_hitbox ? "an" : "aus" ),
         "Textgröße:  " + pct( m_set.m_textSize ),
+        std::string( "Vibration:  " ) + ( m_set.m_rumble ? "an" : "aus" ),
         "Tasten und Knöpfe ...",
         "Zurück" };
     float pw = 1000 * k;
     ui::panel( { W * 0.5f - pw * 0.5f, H * 0.2f - 30 * k, pw, items.size() * ui::height( 34 ) * 1.45f + 60 * k } );
     int  c = menu( items, W * 0.5f - pw * 0.5f + 60 * k, H * 0.2f, pw - 100 * k, m_sel, 34 );
     int  d = m_in.right() ? 1 : m_in.left() ? -1 : 0;
-    if ( c >= 0 && c <= 8 ) d = 1;
+    if ( c >= 0 && c <= 9 ) d = 1;
     if ( d != 0 )
     {
         m_audio.play( SfxE::MOVE );
@@ -1326,15 +1327,16 @@ void App::options( float dt )
         case 6: m_set.m_mouse = !m_set.m_mouse; break;
         case 7: m_set.m_hitbox = !m_set.m_hitbox; break;
         case 8: m_set.m_textSize = clampf( m_set.m_textSize + d * 0.1f, 0.8f, 1.6f ); break;
+        case 9: m_set.m_rumble = !m_set.m_rumble; break;
         default: break;
         }
         applySettings();
         if ( m_sel == 0 && m_audio.m_on ) m_audio.play( SfxE::CREDITS );
         if ( m_sel == 1 ) m_audio.play( SfxE::HIT );
     }
-    if ( c == 9 ) go( ScreenE::CONTROLS );
+    if ( c == 10 ) go( ScreenE::CONTROLS );
     hints( "Links/Rechts: ändern    Esc / B: zurück" );
-    if ( c == 10 || m_in.back() )
+    if ( c == 11 || m_in.back() )
     {
         saveSettings();
         if ( m_back == ScreenE::PLAY )

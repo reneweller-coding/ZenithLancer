@@ -182,6 +182,8 @@ private:
     std::string      m_radioFrom;
     float            m_radioT = 0.0f;
     float            m_warnT = 0.0f;
+    float            m_rumbleT = 0.0f;         ///< the pad's motors run this much longer
+    float            m_rumbleLow = 0.0f, m_rumbleHigh = 0.0f;
     float            m_introT = 0.0f;
     float            m_outroT = -1.0f;
     bool             m_won = false;
