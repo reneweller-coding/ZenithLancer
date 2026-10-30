@@ -1,0 +1,425 @@
+# Achievements and the statistics page (src/Achieve.h; check with ZenithLancer --achievements). The file lives in
+# lang/ because the Catalog skips that folder: these blocks are not the Catalog's, and --validate stays quiet.
+#
+# achievement <name>                 a name: lower case ASCII, digits and _
+#   title "..."  title_en "..."      its name, German and English (both needed)
+#   desc "..."   desc_en "..."       what to do, German and English (both needed; no "=" in a text)
+#   need <counter> <value>           reached when the counter gets to the value or above ...
+#   need <counter> <value> lower=1   ... or to the value or below (best times); a counter never set reaches nothing
+#   hidden 1                         its title and text stay secret until it is reached
+#
+# stat <counter>                     a line of the statistics page (in this order)
+#   title "..."  title_en "..."
+#   show count|time|clock|credits    a number; seconds as h:mm; seconds as m:ss ("–" when never set); credits
+#
+# The counters the game feeds (when each is counted: counterKeys() in src/Achieve.h): kills bosses boss_nohit
+# bossretries missions nodamage allkills deaths seconds credits spent max_credits max_front cubes plans secrets
+# episode1..episode5 campaign_diff (0 Kadett .. 6 Zenit) campaign_coop coop_missions arcade_runs arcade2_runs
+# arcade_clean bossrush_done bossrush_best survival_seconds survival_daily ngplus practice replays_watched
+
+# ---------------------------------------------------------------------------------------------------- the fight
+
+achievement first_kill
+  title "Erster Abschuss"
+  title_en "First Kill"
+  desc "Schieß deinen ersten Gegner ab. ORRIN hat angefangen mitzuzählen."
+  desc_en "Shoot down your first enemy. ORRIN has started counting."
+  need kills 1
+
+achievement kills_1000
+  title "Ass"
+  title_en "Ace"
+  desc "Schieß 1.000 Gegner ab. ORRIN wollte bei elf aufhören zu zählen. Er hat es sich anders überlegt."
+  desc_en "Shoot down 1,000 enemies. ORRIN meant to stop counting at eleven. He changed his mind."
+  need kills 1000
+
+achievement kills_10000
+  title "Keine Verbesserung nötig"
+  title_en "No Improvement Needed"
+  desc "Schieß 10.000 Gegner ab. Der Kurator hat aufgehört, dir Verbesserungen anzubieten."
+  desc_en "Shoot down 10,000 enemies. The Curator has stopped offering to improve you."
+  need kills 10000
+  hidden 1
+
+achievement boss_1
+  title "Großwild"
+  title_en "Big Game"
+  desc "Besiege deinen ersten Boss. Er war größer als du. Genützt hat es ihm nichts."
+  desc_en "Defeat your first boss. It was bigger than you. Much good it did it."
+  need bosses 1
+
+achievement boss_retry
+  title "Zweiter Anlauf"
+  title_en "Second Wind"
+  desc "Gewinne einen Bosskampf, nachdem du ihn einmal verloren hast. ORRIN nennt den ersten Versuch Datenerhebung."
+  desc_en "Win a boss fight after losing it once. ORRIN calls the first attempt data collection."
+  need bossretries 1
+
+achievement boss_nohit
+  title "Unberührt"
+  title_en "Untouched"
+  desc "Besiege einen Boss, ohne ein einziges Mal getroffen zu werden. Er hatte sich das anders vorgestellt."
+  desc_en "Defeat a boss without being hit once. It had pictured this differently."
+  need boss_nohit 1
+
+achievement missions_100
+  title "Dienstjahre"
+  title_en "Years of Service"
+  desc "Gewinne 100 Einsätze. Der Lancer kennt die Strecken inzwischen auswendig."
+  desc_en "Win 100 missions. By now the Lancer knows the routes by heart."
+  need missions 100
+
+achievement nodamage_1
+  title "Kein Kratzer"
+  title_en "Not a Scratch"
+  desc "Gewinne einen Einsatz, ohne getroffen zu werden. Die Wartung wird misstrauisch."
+  desc_en "Win a mission without taking a hit. Maintenance is getting suspicious."
+  need nodamage 1
+
+achievement allkills_1
+  title "Gründlich"
+  title_en "Thorough"
+  desc "Schieß in einem Einsatz jeden Gegner ab. Keiner ist nach Hause gekommen."
+  desc_en "Shoot down every enemy in a mission. Not one of them made it home."
+  need allkills 1
+
+achievement death_1
+  title "Lehrgeld"
+  title_en "Tuition"
+  desc "Verliere zum ersten Mal dein Schiff. Quill schreibt es an."
+  desc_en "Lose your ship for the first time. Quill puts it on your tab."
+  need deaths 1
+  hidden 1
+
+# ---------------------------------------------------------------------------------------------------- the workshop
+
+achievement credits_1m
+  title "Kriegsgewinnlerin"
+  title_en "War Profiteer"
+  desc "Verdiene in der Kampagne insgesamt 1.000.000 Kredite. Das Direktorat möchte mit dir über Steuern reden."
+  desc_en "Earn 1,000,000 credits in the campaign. The Directorate would like a word about taxes."
+  need credits 1000000
+
+achievement spent_50k
+  title "Stammkundin"
+  title_en "Regular Customer"
+  desc "Gib in der Werkstatt 50.000 Kredite aus. Quill weiß jetzt, wie du deinen Kaffee trinkst."
+  desc_en "Spend 50,000 credits in the workshop. Quill knows how you take your coffee now."
+  need spent 50000
+
+achievement spent_500k
+  title "Gute Freunde. Mit Rechnungen."
+  title_en "Good Friends. With Invoices."
+  desc "Lass 500.000 Kredite in Quills Werkstatt. Er hat die Elster neu lackieren lassen, mit deinem Namen am Heck."
+  desc_en "Leave 500,000 credits in Quill's workshop. He's had the Magpie repainted, with your name on the stern."
+  need spent 500000
+
+achievement hoard
+  title "Notgroschen"
+  title_en "Rainy Day Fund"
+  desc "Halte 250.000 Kredite auf einmal. Quill kann nachts nicht mehr schlafen."
+  desc_en "Hold 250,000 credits at once. Quill can't sleep at night any more."
+  need max_credits 250000
+  hidden 1
+
+achievement front_11
+  title "Bis zum Anschlag"
+  title_en "Up to Eleven"
+  desc "Bau eine Frontkanone auf Stufe 11 aus. Mehr passt nicht hinein, ORRIN hat nachgemessen."
+  desc_en "Upgrade a front gun to level 11. Nothing more will fit; ORRIN measured."
+  need max_front 11
+
+# ---------------------------------------------------------------------------------------------------- finds
+
+achievement cubes_1
+  title "Flaschenpost"
+  title_en "Message in a Bottle"
+  desc "Finde deinen ersten Logkristall. Irgendwer wollte, dass es jemand erfährt."
+  desc_en "Find your first log crystal. Somebody wanted this to be known."
+  need cubes 1
+
+achievement cubes_50
+  title "Archivarin"
+  title_en "Archivist"
+  desc "Finde 50 Logkristalle. Die Geschichte setzt sich zusammen, Splitter für Splitter."
+  desc_en "Find 50 log crystals. The story is coming together, shard by shard."
+  need cubes 50
+
+achievement cubes_all
+  title "Das ganze Protokoll"
+  title_en "The Full Record"
+  desc "Finde alle 162 Logkristalle. Jetzt weißt du mehr als der Kurator. Fast."
+  desc_en "Find all 162 log crystals. Now you know more than the Curator. Almost."
+  need cubes 162
+
+achievement plans_1
+  title "Schmuggelware"
+  title_en "Contraband"
+  desc "Finde deinen ersten Bauplan. Quill fragt nicht, woher er stammt. Nur, was er wert ist."
+  desc_en "Find your first blueprint. Quill doesn't ask where it came from. Only what it's worth."
+  need plans 1
+
+achievement plans_all
+  title "Das volle Sortiment"
+  title_en "The Full Catalogue"
+  desc "Finde alle 10 Baupläne. Die Elster führt jetzt Ware, die es offiziell gar nicht gibt."
+  desc_en "Find all 10 blueprints. The Magpie now stocks goods that officially don't exist."
+  need plans 10
+
+achievement secret_1
+  title "Abseits der Karte"
+  title_en "Off the Map"
+  desc "Fliege eine geheime Mission. ORRIN hat sie nicht ins Logbuch eingetragen."
+  desc_en "Fly a secret mission. ORRIN has kept it out of the logbook."
+  need secrets 1
+
+achievement secret_all
+  title "Unter dem Radar"
+  title_en "Under the Radar"
+  desc "Fliege alle 10 geheimen Missionen. Das Direktorat weiß von keiner einzigen."
+  desc_en "Fly all 10 secret missions. The Directorate doesn't know about a single one."
+  need secrets 10
+  hidden 1
+
+# ---------------------------------------------------------------------------------------------------- the campaign
+
+achievement episode1
+  title "Aus der Glut"
+  title_en "Out of the Embers"
+  desc "Beende Episode 1, Glutgürtel. Pyra kühlt ab. Langsam."
+  desc_en "Finish episode 1, Ember Belt. Pyra is cooling down. Slowly."
+  need episode1 1
+
+achievement episode2
+  title "Ebbe"
+  title_en "Low Tide"
+  desc "Beende Episode 2, Gezeitenfall. Thalassa schwimmt noch, und Voss ist schlecht gelaunt."
+  desc_en "Finish episode 2, Tidefall. Thalassa is still afloat, and Voss is in a foul mood."
+  need episode2 1
+
+achievement episode3
+  title "Ein Stein, der denkt"
+  title_en "A Stone That Thinks"
+  desc "Beende Episode 3, Der Splitter. Der Staub legt sich. Der Stein denkt weiter."
+  desc_en "Finish episode 3, The Shatter. The dust settles. The stone keeps thinking."
+  need episode3 1
+
+achievement episode4
+  title "Der Wald singt"
+  title_en "The Forest Sings"
+  desc "Beende Episode 4, Grünkrone. Der Chor schickt Grüße, in Bildern."
+  desc_en "Finish episode 4, Greencrown. The Choir sends its regards, in pictures."
+  need episode4 1
+
+achievement episode5
+  title "Mittag"
+  title_en "High Noon"
+  desc "Beende die Kampagne. Es ist Mittag, und es wird wieder hell."
+  desc_en "Finish the campaign. It is noon, and the light is coming back."
+  need episode5 1
+
+achievement campaign_hard
+  title "Nichts geschenkt"
+  title_en "Nothing Handed to You"
+  desc "Beende die Kampagne auf Schwer oder schwerer. Quill hatte auf dich gewettet. Diesmal viel."
+  desc_en "Finish the campaign on Hard or above. Quill bet on you. A lot, this time."
+  need campaign_diff 3
+
+achievement campaign_suicide
+  title "Lebensmüde"
+  title_en "Death Wish"
+  desc "Beende die Kampagne auf Selbstmord. ORRIN hat dazu eine Meinung. Er behält sie für sich."
+  desc_en "Finish the campaign on Suicide. ORRIN has an opinion on that. He's keeping it to himself."
+  need campaign_diff 5
+  hidden 1
+
+achievement campaign_zenith
+  title "Zenit"
+  title_en "Zenith"
+  desc "Beende die Kampagne auf Zenit. Höher geht es nicht; die Sonne steht unter dir."
+  desc_en "Finish the campaign on Zenith. There is no higher; the sun lies beneath you."
+  need campaign_diff 6
+  hidden 1
+
+achievement campaign_coop
+  title "Die Rotte"
+  title_en "In Formation"
+  desc "Beende die Kampagne zu zweit. Quill schreibt zwei Rechnungen."
+  desc_en "Finish the campaign in co-op. Quill sends two invoices."
+  need campaign_coop 1
+
+achievement coop_10
+  title "Rückendeckung"
+  title_en "Watching Your Back"
+  desc "Gewinne zehn Einsätze der Kampagne zu zweit. Zwei Schiffe, ein Funkkanal, kein Streit. Fast."
+  desc_en "Win ten co-op campaign missions. Two ships, one channel, no arguments. Nearly."
+  need coop_missions 10
+
+achievement ngplus_1
+  title "Noch einmal von vorn"
+  title_en "From the Top"
+  desc "Beginne ein Neues Spiel+. Zenith fällt wieder. Diesmal bist du vorbereitet."
+  desc_en "Start a New Game+. Zenith falls again. This time you're ready."
+  need ngplus 1
+
+achievement ngplus_3
+  title "Déjà-vu"
+  title_en "Déjà Vu"
+  desc "Beginne Neues Spiel+ 3. ORRIN hat ein Déjà-vu. Er hatte noch nie eins."
+  desc_en "Start New Game+ 3. ORRIN is having déjà vu. He has never had one before."
+  need ngplus 3
+  hidden 1
+
+# ---------------------------------------------------------------------------------------------------- the other modes
+
+achievement arcade_1
+  title "Münzschlucker"
+  title_en "Coin-Op"
+  desc "Fliege einen Arcade-Lauf bis zum Ende. Keine Werkstatt, keine Ausreden."
+  desc_en "Fly an arcade run to the end. No workshop, no excuses."
+  need arcade_runs 1
+
+achievement arcade_clean
+  title "Mit einer Münze"
+  title_en "One Coin Clear"
+  desc "Beende einen Arcade-Lauf, ohne ein einziges Mal weiterzumachen."
+  desc_en "Finish an arcade run without a single continue."
+  need arcade_clean 1
+
+achievement arcade2_1
+  title "Zwei am Automaten"
+  title_en "Player Two Has Joined"
+  desc "Fliegt zu zweit einen Arcade-Lauf bis zum Ende. Wer mehr abgeschossen hat, bleibt unter euch."
+  desc_en "Fly an arcade run to the end with two players. Who shot down more stays between you."
+  need arcade2_runs 1
+
+achievement bossrush_1
+  title "Parade der Riesen"
+  title_en "Parade of Giants"
+  desc "Beende die Bossjagd. Alle großen Dinger, eins nach dem anderen, ohne Pause."
+  desc_en "Finish the Boss Rush. Every big thing, one after another, no breaks."
+  need bossrush_done 1
+
+achievement bossrush_fast
+  title "Termingerecht"
+  title_en "On Schedule"
+  desc "Beende die Bossjagd ab Normal in höchstens 12 Minuten. ORRIN hat die Zeit gestoppt und ist beeindruckt. Er sagt es nur nicht."
+  desc_en "Finish the Boss Rush on Normal or above in 12 minutes or less. ORRIN timed it and is impressed. He just won't say so."
+  need bossrush_best 720 lower=1
+
+achievement survival_300
+  title "Durchhalten"
+  title_en "Hold the Line"
+  desc "Überlebe fünf Minuten im Überlebensmodus. Der Schwarm wird nicht weniger. Du auch nicht."
+  desc_en "Survive five minutes in Survival mode. The swarm isn't thinning out. Neither are you."
+  need survival_seconds 300
+
+achievement daily_7
+  title "Tagesgeschäft"
+  title_en "All in a Day's Work"
+  desc "Fliege sieben Tagesläufe. Quill nennt das ein Abonnement."
+  desc_en "Fly seven daily runs. Quill calls it a subscription."
+  need survival_daily 7
+
+achievement practice_10
+  title "Trockenübung"
+  title_en "Dry Run"
+  desc "Starte zehn Übungsflüge. Fleiß von der Sorte, die ORRIN gutheißt."
+  desc_en "Start ten practice runs. The sort of diligence ORRIN approves of."
+  need practice 10
+
+achievement replay_1
+  title "Noch einmal, langsam"
+  title_en "Action Replay"
+  desc "Sieh dir eine Wiederholung an. Von außen sieht es noch knapper aus."
+  desc_en "Watch a replay. From the outside it looks even closer."
+  need replays_watched 1
+
+achievement hours_10
+  title "Flugstunden"
+  title_en "Flight Hours"
+  desc "Fliege zehn Stunden. Der Sitz hat jetzt deine Form."
+  desc_en "Fly for ten hours. The seat has taken your shape."
+  need seconds 36000
+
+# ---------------------------------------------------------------------------------------------------- statistics
+
+stat seconds
+  title "Flugzeit"
+  title_en "Flight time"
+  show time
+
+stat kills
+  title "Abschüsse"
+  title_en "Kills"
+  show count
+
+stat bosses
+  title "Bosse besiegt"
+  title_en "Bosses defeated"
+  show count
+
+stat missions
+  title "Einsätze gewonnen"
+  title_en "Missions won"
+  show count
+
+stat nodamage
+  title "Einsätze ohne Treffer"
+  title_en "Missions without a hit"
+  show count
+
+stat allkills
+  title "Vollständig geräumte Einsätze"
+  title_en "Missions fully cleared"
+  show count
+
+stat deaths
+  title "Schiffe verloren"
+  title_en "Ships lost"
+  show count
+
+stat credits
+  title "Kredite verdient"
+  title_en "Credits earned"
+  show credits
+
+stat spent
+  title "Kredite ausgegeben"
+  title_en "Credits spent"
+  show credits
+
+stat cubes
+  title "Logkristalle gefunden"
+  title_en "Log crystals found"
+  show count
+
+stat plans
+  title "Baupläne gefunden"
+  title_en "Blueprints found"
+  show count
+
+stat secrets
+  title "Geheime Missionen"
+  title_en "Secret missions"
+  show count
+
+stat coop_missions
+  title "Einsätze zu zweit"
+  title_en "Co-op missions won"
+  show count
+
+stat arcade_runs
+  title "Arcade-Läufe beendet"
+  title_en "Arcade runs finished"
+  show count
+
+stat bossrush_best
+  title "Bestzeit Bossjagd"
+  title_en "Best Boss Rush time"
+  show clock
+
+stat survival_seconds
+  title "Längstes Überleben"
+  title_en "Longest survival"
+  show clock
