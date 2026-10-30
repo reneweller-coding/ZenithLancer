@@ -133,6 +133,7 @@ struct FireDef
     float       m_life = 8.0f;      ///< seconds a bullet lives
     bool        m_onlyDiff = false; ///< present only from m_minDiff
     int         m_minDiff = 0;      ///< the lowest difficulty that fires this
+    int         m_parts = -1;       ///< 0: only when all its parts are destroyed, 1: only while one lives
     std::string m_where;
 };
 

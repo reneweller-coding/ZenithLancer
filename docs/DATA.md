@@ -123,7 +123,7 @@ volley turns: rings/spirals), `accel`, `x`/`z` (muzzle in the enemy's frame), `m
 | `wall` | a row across the whole field with a gap to slip through |
 | `missile` | homing bullets (`turn` degrees/s, homing stops after 2.5 s) |
 | `mine` | drifting mines that burst into a ring |
-| `laser` | a beam: `warn` (s of warning line), `dur`, `width`, `damage` (per s); aimed unless `dir`/`rot` given; `rot` sweeps |
+| `laser` | a beam: `warn` (s of warning line), `dur`, `width`, `damage` (×4 a second while it touches: 40 costs 160/s); aimed unless `dir`/`rot` given; `rot` sweeps (degrees/s) |
 | `spawn` | launches an enemy: `spawn=e2_drone` |
 
 Bullet damage defaults: orb 6, needle 5, big 12, ring 8, missile 10, mine 10, shard 5, wave 7. The difficulty
@@ -189,6 +189,9 @@ Events: `wave <enemy>` / `ground <enemy>` / `obstacle <enemy>` (all take the wav
 [x= y= path values]`, `pickup <credits|power|shield|armor|weapon|rear|side|life|special|cube|key|plan> x= [y=]
 [value=] [item=]`, `text <story>`, `scroll <speed>`, `music <name>`, `warn` (siren + WARNUNG), `clear` (removes
 enemy bullets), `end [seconds]`.
+
+`theme <name>` changes the ground behind a flash of light (out of the clouds into orbit, into a cave).
+Fire lines may wait for the parts: `parts=0` fires only when all parts are destroyed, `parts=1` only while one lives.
 
 Every event line may have `diff=N` (from difficulty N on) or `diff=A-B`, `repeat=N every=S`.
 

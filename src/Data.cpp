@@ -157,7 +157,7 @@ const std::set<std::string> ShotKeys = { "lv",    "mode",   "n",      "dx",     
 const std::set<std::string> FireKeys = { "every", "delay", "speed", "n",     "spread", "dir",  "bullet", "color",
                                          "burst", "gap",   "rot",   "accel", "from",   "until", "x",     "z",
                                          "mirror", "cap",  "spawn", "turn",  "dur",    "warn", "width",  "size",
-                                         "damage", "life", "diff",  "aim",   "arc",    "sweep" };
+                                         "damage", "life", "diff",  "aim",   "arc",    "sweep", "parts" };
 const std::set<std::string> WaveKeys = { "n",     "form",  "x",     "y",     "spacing", "gap",   "path", "side",
                                          "mirror", "speed", "amp",  "freq",  "stop",    "wait",  "dir",  "turn",
                                          "cx",    "cy",    "r",     "pts",   "dur",     "rows",  "cols", "dx",
@@ -313,6 +313,7 @@ FireDef readFire( const Line &l, std::vector<std::string> &warnings )
         f.m_onlyDiff = true;
         f.m_minDiff = l.integer( "diff", 0 );
     }
+    f.m_parts = l.integer( "parts", -1 );
     if ( f.m_pattern == "missile" && f.m_bullet == "orb" ) f.m_bullet = "missile";
     if ( f.m_pattern == "mine" && f.m_bullet == "orb" ) f.m_bullet = "mine";
     return f;
@@ -666,7 +667,7 @@ bool Catalog::load( const std::string &dir )
                     ev.m_p.m_args.erase( ev.m_p.m_args.begin(), ev.m_p.m_args.begin() + 2 );
                     static const std::set<std::string> evTypes = { "wave",  "ground", "boss", "pickup", "text",
                                                                    "scroll", "music", "warn", "end",    "clear",
-                                                                   "obstacle" };
+                                                                   "obstacle", "theme" };
                     if ( !evTypes.count( ev.m_type ) )
                     {
                         m_errors.push_back( l.where() + ": unknown event " + ev.m_type );
@@ -796,6 +797,8 @@ void Catalog::check()
         {
             if ( ev.m_type == "wave" || ev.m_type == "ground" || ev.m_type == "boss" || ev.m_type == "obstacle" )
                 need( m_enemies.count( ev.m_p.arg( 0 ) ) > 0, ev.m_p.where(), "enemy \"" + ev.m_p.arg( 0 ) + "\" unknown" );
+            if ( ev.m_type == "theme" && !theme( ev.m_p.arg( 0 ) ) )
+                m_warnings.push_back( ev.m_p.where() + ": theme \"" + ev.m_p.arg( 0 ) + "\" is missing" );
             if ( ev.m_type == "text" && !m_story.count( ev.m_p.arg( 0 ) ) )
                 m_warnings.push_back( ev.m_p.where() + ": story \"" + ev.m_p.arg( 0 ) + "\" is missing" );
             if ( ev.m_type == "pickup" && ev.m_p.arg( 0 ) == "cube" && !m_story.count( ev.m_p.str( "item" ) ) )

@@ -57,6 +57,7 @@ enum class EvE : int
     NOVA,        ///< a special went off (m_name: its kind)
     SHAKE,       ///< the screen shakes (m_a: strength)
     MODE,        ///< the rear gun changed its mode (m_a: 1 or 2)
+    THEME,       ///< the ground changes (m_name: the theme)
     EMPTY        ///< the special has no charges left
 };
 

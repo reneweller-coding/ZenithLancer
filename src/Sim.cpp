@@ -455,6 +455,7 @@ void World::runEvent( const LevelEvent &ev )
         emit( EvE::MUSIC, { 0, 0 }, 0, 0, m_music );
     }
     else if ( t == "warn" ) emit( EvE::WARN, { FieldW * 0.5f, FieldH * 0.4f }, 0, 0, p.arg( 0 ) );
+    else if ( t == "theme" ) emit( EvE::THEME, { 0, 0 }, 0, 0, p.arg( 0 ) );
     else if ( t == "clear" )
     {
         for ( Bullet &b : m_bullets )
@@ -1355,11 +1356,15 @@ void World::fireEnemy( int idx )
     if ( pl < 0 ) return;
     float hpFrac = e.m_hp / std::max( 1.0f, e.m_hpMax );
     float dt = Dt * m_slow;
+    bool  partsLive = false;
+    for ( const Enemy &o : m_enemies )
+        if ( o.m_parent == idx && !o.m_dead && !o.m_gone ) partsLive = true;
     for ( size_t f = 0; f < e.m_def->m_fire.size(); ++f )
     {
         const FireDef &fd = e.m_def->m_fire[f];
         if ( fd.m_onlyDiff && m_diffIndex < fd.m_minDiff ) continue;
         if ( hpFrac > fd.m_from || hpFrac <= fd.m_until ) continue;
+        if ( ( fd.m_parts == 0 && partsLive ) || ( fd.m_parts == 1 && !partsLive ) ) continue;
         if ( fd.m_cap > 0 && e.m_fireN[f] >= fd.m_cap ) continue;
         e.m_fireT[f] -= dt;
         if ( e.m_fireT[f] > 0 ) continue;
@@ -1955,11 +1960,18 @@ void World::take( int i, Pickup &pk )
 
 void World::collide()
 {
-    // The pilots' bullets against the enemies.
+    // The pilots' bullets against the enemies: parts first, so a bullet over a boss's gun hits the gun and not the
+    // shielded hull beneath it.
+    std::vector<size_t> order;
+    order.reserve( m_enemies.size() );
+    for ( size_t e = 0; e < m_enemies.size(); ++e )
+        if ( m_enemies[e].m_parent >= 0 ) order.push_back( e );
+    for ( size_t e = 0; e < m_enemies.size(); ++e )
+        if ( m_enemies[e].m_parent < 0 ) order.push_back( e );
     for ( Bullet &b : m_bullets )
     {
         if ( b.m_dead || !b.m_player ) continue;
-        for ( size_t e = 0; e < m_enemies.size(); ++e )
+        for ( size_t e : order )
         {
             Enemy &en = m_enemies[e];
             if ( en.m_dead || en.m_gone || (int)e == b.m_lastHit ) continue;
@@ -2081,8 +2093,18 @@ PlayerInput autopilot( const World &w, int i )
     // Where it would like to be: below the nearest enemy, low on the field.
     Vector2 goal = { FieldW * 0.5f, FieldH * 0.8f };
     float   best = 1e9f;
-    for ( const Enemy &e : w.m_enemies )
+    // A shielded body whose parts still live is no target: its parts are.
+    std::vector<char> shut( w.m_enemies.size(), 0 );
+    for ( size_t e = 0; e < w.m_enemies.size(); ++e )
     {
+        const Enemy &pe = w.m_enemies[e];
+        if ( pe.m_parent >= 0 && !pe.m_dead && !pe.m_gone && w.m_enemies[(size_t)pe.m_parent].m_def->m_shielded )
+            shut[(size_t)pe.m_parent] = 1;
+    }
+    for ( size_t ei = 0; ei < w.m_enemies.size(); ++ei )
+    {
+        const Enemy &e = w.m_enemies[ei];
+        if ( shut[ei] ) continue;
         if ( e.m_dead || e.m_gone || e.m_def->m_invulnerable || e.m_pos.y < 0 || e.m_pos.y > p.m_pos.y - 40 ) continue;
         float score = std::fabs( e.m_pos.x - p.m_pos.x ) + ( p.m_pos.y - e.m_pos.y ) * 0.3f -
                       ( e.m_def->m_kind == EnemyKindE::BOSS ? 200.0f : 0.0f );
@@ -2131,7 +2153,10 @@ PlayerInput autopilot( const World &w, int i )
             for ( const Laser &l : w.m_lasers )
             {
                 if ( l.m_dead ) continue;
-                Vector2 ld = dirOf( l.m_dir );
+                // Where a sweeping beam will point by then.
+                float   ahead = std::max( 0.0f, l.m_t + t - l.m_warn );
+                float   swept = l.m_t > l.m_warn ? t : ahead;
+                Vector2 ld = dirOf( l.m_dir + l.m_sweep * swept );
                 Vector2 rel = sub( at, l.m_from );
                 if ( rel.x * ld.x + rel.y * ld.y < 0 ) continue;
                 float across = std::fabs( rel.x * -ld.y + rel.y * ld.x );

@@ -1632,7 +1632,7 @@ void App::gallery( const std::string &file )
         d->m_model = names[i];
         d->m_face = "fixed";
         const ModelMesh &mm = Renderer::s_forge.get( m_cat, names[i] );
-        d->m_scale = clampf( 150.0f / std::max( 10.0f, mm.m_radius * 2.0f ), 0.2f, 4.0f );
+        d->m_scale = clampf( 560.0f / std::max( 10.0f, mm.m_radius * 2.0f ), 0.2f, 14.0f );
         w.spawn( d, { FieldW * 0.5f, FieldH * 0.5f }, nullptr );
         w.m_enemies[0].m_entered = true;
         w.m_enemies[0].m_face = 180.0f;

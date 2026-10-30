@@ -43,6 +43,8 @@ void App::startMission( const std::string &name )
     m_radio.clear();
     m_radioT = 0;
     m_warnT = 0;
+    m_themeT = 0;
+    m_themeNext.clear();
     m_introT = 0;
     m_outroT = -1;
     go( ScreenE::PLAY );
@@ -203,6 +205,12 @@ void App::play( float dt )
                         m_audio.play( SfxE::BLIP );
                     }
                 }
+                else if ( e.m_type == EvE::THEME )
+                {
+                    // A flash of light hides the change of ground (the jump into orbit, out of the clouds).
+                    m_themeNext = e.m_name;
+                    m_themeT = 1.0f;
+                }
                 else if ( e.m_type == EvE::WARN )
                 {
                     m_warnT = 3.0f;
@@ -255,6 +263,16 @@ void App::play( float dt )
         if ( steps >= 5 ) m_acc = 0;
         m_introT += dt;
         m_radioT += dt;
+        if ( m_themeT > 0 )
+        {
+            float before = m_themeT;
+            m_themeT = std::max( 0.0f, m_themeT - dt * 1.6f );
+            if ( before > 0.5f && m_themeT <= 0.5f && !m_themeNext.empty() && m_world.m_level )
+            {
+                m_view.setTheme( m_cat, m_themeNext, m_world.m_level->m_seed + 17u );
+                m_themeNext.clear();
+            }
+        }
         if ( m_rumbleT > 0 )
         {
             m_rumbleT -= dt;
@@ -295,6 +313,11 @@ void App::play( float dt )
     m_view.update( m_world, m_paused ? 0.0f : dt );
     m_view.draw( m_world, m_cat );
     m_view.present( { 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() } );
+    if ( m_themeT > 0 )
+    {
+        float a = 1.0f - std::fabs( m_themeT - 0.5f ) * 2.0f;
+        DrawRectangle( 0, 0, GetScreenWidth(), GetScreenHeight(), { 235, 245, 255, (unsigned char)( 255 * clampf( a, 0, 1 ) ) } );
+    }
     hud();
     if ( m_paused ) pauseMenu( dt );
 }
