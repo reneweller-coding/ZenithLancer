@@ -40,6 +40,7 @@ struct Options
     std::string m_shop;                 ///< a picture of the workshop
     std::string m_loadout;              ///< --loadout: the gear for --level (Data.h parseLoadout)
     std::string m_theme;                ///< --theme: another ground for --level (to look at themes)
+    std::string m_screen;               ///< --screen: --shot takes a picture of this screen instead
 };
 
 /** @brief The screens. */
@@ -65,6 +66,9 @@ public:
 
     /** @brief Closes everything. */
     void shutdown();
+
+    /** @brief Renders a picture of one screen (--screen NAME --shot FILE) and quits. */
+    void screenShot();
 
     /** @brief Renders a picture of every model to a file (and quits). */
     void gallery( const std::string &file );

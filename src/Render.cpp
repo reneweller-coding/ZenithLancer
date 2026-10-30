@@ -14,7 +14,8 @@
 namespace zenith
 {
 
-Forge Renderer::s_forge;
+Forge            Renderer::s_forge;
+RenderTexture2D *Renderer::s_outer = nullptr;
 
 namespace
 {
@@ -1175,6 +1176,8 @@ void Renderer::draw( const World &w, const Catalog &cat )
     drawSprites( w, cat );
     EndTextureMode();
     post();
+    // raylib keeps no stack of targets: go back to the one around us.
+    if ( s_outer ) BeginTextureMode( *s_outer );
 }
 
 void Renderer::post()

@@ -128,6 +128,8 @@ public:
     float m_fade = 0.0f;          ///< 0 clear .. 1 black (mission start and end)
 
     static Forge s_forge;         ///< the models, shared by every renderer
+    /** @brief A picture being drawn around the renderer (pictures of screens): drawn into again after draw(). */
+    static RenderTexture2D *s_outer;
 
 private:
     void drawModel( const ModelMesh &m, Vector3 at, float face, float bank, float scale, float flash, float head,

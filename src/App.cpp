@@ -145,6 +145,11 @@ void App::resize()
 
 void App::run()
 {
+    if ( !m_opt.m_shot.empty() && !m_opt.m_screen.empty() )
+    {
+        screenShot();
+        return;
+    }
     if ( !m_opt.m_shot.empty() )
     {
         // A picture of the mission after some seconds (the autopilot flies), then quit.
@@ -1405,6 +1410,80 @@ void App::controls( float dt )
         saveSettings();
         go( ScreenE::OPTIONS );
     }
+}
+
+void App::screenShot()
+{
+    // The state a screen needs: a fresh campaign in episode 1, a mission flown a little.
+    const std::string &s = m_opt.m_screen;
+    m_mode = s == "pilots" || s == "continue" ? ModeE::ARCADE : ModeE::CAMPAIGN;
+    m_camp = Campaign();
+    m_camp.m_difficulty = 2;
+    auto ep = m_cat.m_episodes.find( 1 );
+    if ( ep != m_cat.m_episodes.end() )
+    {
+        m_camp.m_load = ep->second.m_loadout;
+        m_camp.m_credits = ep->second.m_credits;
+        m_camp.m_choices = { ep->second.m_first };
+        m_camp.m_owned.insert( { ep->second.m_loadout.m_ship, ep->second.m_loadout.m_front } );
+    }
+    for ( const auto &[n, st] : m_cat.m_story )
+        if ( st.m_type == "cube" && m_logList.size() < 12 ) m_logList.push_back( n );
+    ScreenE target = ScreenE::TITLE;
+    const char *names[] = { "title", "main", "options", "controls", "scores", "credits", "logbook", "slots", "difficulty",
+                            "episode", "story", "plan", "shop", "play", "results", "failed", "pilots", "continue", "name" };
+    for ( int i = 0; i < (int)( sizeof( names ) / sizeof( names[0] ) ); ++i )
+        if ( s == names[i] ) target = (ScreenE)i;
+    if ( s == "story" )
+    {
+        auto e1 = m_cat.m_episodes.find( 1 );
+        if ( e1 != m_cat.m_episodes.end() ) queueStory( e1->second.m_intro );
+        m_after = ScreenE::PLAN;
+    }
+    if ( s == "pause" || s == "continue" || s == "results" || s == "failed" )
+    {
+        m_level = m_camp.m_choices.empty() ? "" : m_camp.m_choices[0];
+        if ( !m_level.empty() )
+        {
+            if ( m_mode == ModeE::ARCADE && !m_cat.m_arcadeShips.empty() ) m_carry[0] = m_cat.m_arcadeShips[0].m_loadout;
+            startMission( m_level );
+            for ( int i = 0; i < 60 * 20; ++i )
+            {
+                PlayerInput in[2] = { autopilot( m_world, 0 ), {} };
+                m_world.step( in );
+            }
+            m_last = m_world.m_stats;
+            m_earned = m_world.m_players[0].m_credits;
+        }
+        if ( s == "pause" )
+        {
+            target = ScreenE::PLAY;
+            m_paused = true;
+        }
+    }
+    m_screen = target;
+    m_t = 1.0f;
+    // Drawn into a picture of its own; the renderers come back to it after their passes.
+    RenderTexture2D rt = LoadRenderTexture( GetScreenWidth(), GetScreenHeight() );
+    Renderer::s_outer = &rt;
+    for ( int f = 0; f < 40; ++f )
+    {
+        BeginDrawing();
+        BeginTextureMode( rt );
+        ClearBackground( BLACK );
+        frame( 1.0f / 60.0f );
+        EndTextureMode();
+        EndDrawing();
+        m_t += 1.0f / 60.0f;
+        m_storyT += 1.0f / 60.0f;
+    }
+    Renderer::s_outer = nullptr;
+    Image img = LoadImageFromTexture( rt.texture );
+    ImageFlipVertical( &img );
+    ImageFormat( &img, PIXELFORMAT_UNCOMPRESSED_R8G8B8 );
+    ExportImage( img, m_opt.m_shot.c_str() );
+    UnloadImage( img );
+    UnloadRenderTexture( rt );
 }
 
 void App::gallery( const std::string &file )

@@ -10,6 +10,8 @@
  *                (both take --loadout "ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,...")
  *   ZenithLancer --weapons                         every gun's damage and energy a second at levels 1, 6, 11
  *   ZenithLancer --shot FILE --level NAME [--at SECONDS] [--theme T] [--loadout ...]   a picture of a mission
+ *   ZenithLancer --screen NAME --shot FILE         a picture of a screen (title main options controls scores credits
+ *                logbook slots difficulty episode story plan shop pilots results failed continue name pause)
  *   ZenithLancer --gallery FILE                    a picture of every model
  *   ZenithLancer --dumpsfx DIR                     every sound effect as a WAV
  * @author Rene Weller
@@ -149,6 +151,7 @@ int main( int argc, char **argv )
         else if ( a == "--loadout" ) loadout = o.m_loadout = next();
         else if ( a == "--weapons" ) doWeapons = true;
         else if ( a == "--theme" ) o.m_theme = next();
+        else if ( a == "--screen" ) o.m_screen = next();
     }
     if ( doWeapons ) return weapons( dataDir( o.m_data ) );
     if ( doValidate ) return validate( dataDir( o.m_data ) );
