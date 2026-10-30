@@ -1820,7 +1820,8 @@ void World::hitEnemy( int idx, float dmg, int owner, Vector2 at )
     }
     e.m_hp -= dmg;
     bool big = e.m_def->m_kind == EnemyKindE::BOSS || e.m_def->m_kind == EnemyKindE::PART || e.m_hpMax > 400.0f;
-    e.m_flash = big ? std::max( e.m_flash, 0.3f ) : 1.0f;
+    // A flicker, not a glare: a new flash only once the last has faded (steady fire would keep a ship white).
+    if ( e.m_flash < 0.15f ) e.m_flash = big ? 0.35f : 0.8f;
     if ( m_rng.chance( 0.25f ) ) emit( EvE::HIT, at, dmg );
     if ( e.m_hp <= 0 ) killEnemy( idx, owner );
 }

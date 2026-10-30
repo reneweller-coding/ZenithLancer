@@ -94,6 +94,10 @@ void main()
     // A rim along the hull's edges, brighter on the side away from the sun (it separates ships from the ground).
     float rim = pow( 1.0 - nv, 3.0 );
     col += rim * ( ambUp * 0.3 + sunColor * 0.12 ) * ( 0.6 + 0.6 * max( dot( n.xz, -l.xz ), 0.0 ) );
+    // What is only lit (not glowing) stays below the bloom: a soft shoulder from 0.75, at most about 0.95, so
+    // white hulls keep their shape instead of blooming into a blot. Lamps, engines and crystals still glow.
+    float peak = max( col.r, max( col.g, col.b ) );
+    if ( peak > 0.75 ) col *= ( 0.75 + 0.2 * ( 1.0 - exp( -( peak - 0.75 ) * 3.0 ) ) ) / peak;
     col += fragColor.rgb * em * emitBoost * ( 0.9 + 0.1 * sin( time * 6.0 + fragPos.x * 0.05 ) );
     col = mix( col, vec3( 2.2, 2.2, 2.4 ), flash );
     float depth = max( 0.0, -fragPos.y - 40.0 );
@@ -1012,17 +1016,19 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
         sprite( p.m_tex, p.m_pos, lerpf( p.m_size0, p.m_size1, t ), mixColor( p.m_c0, p.m_c1, t ), p.m_rot, p.m_stretch, dir );
     }
     // The pilots' beams and the enemies' lasers.
+    // Each beam from its own muzzle (front guns, rear guns, sidekicks).
     for ( const Player &p : w.m_players )
-        if ( p.m_active && p.m_alive && p.m_beam )
-        {
-            boost( 3.0f );
-            Vector2 from = { p.m_pos.x, p.m_pos.y - 22 };
-            float   wob = 1.0f + 0.15f * std::sin( m_time * 50.0f );
-            beam( from, { from.x, -40 }, p.m_beamWidth * 2.2f * wob, p.m_beamColor );
-            boost( 5.0f );
-            beam( from, { from.x, -40 }, p.m_beamWidth * 0.7f, WHITE );
-            sprite( T_SOFT, from, p.m_beamWidth * 3.0f, p.m_beamColor );
-        }
+        if ( p.m_active && p.m_alive )
+            for ( const BeamShot &b : p.m_beams )
+            {
+                boost( 3.0f );
+                Vector2 from = { b.m_from.x, b.m_from.y - 4 };
+                float   wob = 1.0f + 0.15f * std::sin( m_time * 50.0f + from.x );
+                beam( from, { from.x, -40 }, b.m_width * 2.2f * wob, b.m_color );
+                boost( 5.0f );
+                beam( from, { from.x, -40 }, b.m_width * 0.7f, WHITE );
+                sprite( T_SOFT, from, b.m_width * 3.0f, b.m_color );
+            }
     for ( const Laser &l : w.m_lasers )
     {
         if ( l.m_dead ) continue;
@@ -1242,7 +1248,7 @@ void Renderer::draw( const World &w, const Catalog &cat )
             float k = 0.5f + 0.5f * std::sin( m_time * 10.0f );
             tint = { 255, (unsigned char)( 200 + 55 * k ), (unsigned char)( 200 + 55 * k ), 255 };
         }
-        drawModel( mm, { e.m_pos.x, bob, e.m_pos.y }, e.m_face, e.m_bank, e.m_def->m_scale, e.m_flash, e.m_head, tint, pitch );
+        drawModel( mm, { e.m_pos.x, bob + e.m_lift, e.m_pos.y }, e.m_face, e.m_bank, e.m_def->m_scale, e.m_flash, e.m_head, tint, pitch );
     }
     for ( const Player &p : w.m_players )
     {
