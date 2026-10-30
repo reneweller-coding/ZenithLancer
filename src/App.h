@@ -39,6 +39,7 @@ struct Options
     std::string m_gallery;              ///< a picture of every model
     std::string m_shop;                 ///< a picture of the workshop
     std::string m_loadout;              ///< --loadout: the gear for --level (Data.h parseLoadout)
+    std::string m_theme;                ///< --theme: another ground for --level (to look at themes)
 };
 
 /** @brief The screens. */

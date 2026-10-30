@@ -34,7 +34,7 @@ void App::startMission( const std::string &name )
             m_world.addPlayer( i, m_carry[i], std::max( 0, m_lives[i] - 1 ) );
             m_world.m_players[i].m_score = m_score[i];
         }
-    m_view.setTheme( m_cat, lv->m_theme, lv->m_seed );
+    m_view.setTheme( m_cat, m_opt.m_theme.empty() ? lv->m_theme : m_opt.m_theme, lv->m_seed );
     m_view.reset();
     m_audio.music( lv->m_music );
     m_acc = 0;
