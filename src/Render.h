@@ -15,6 +15,7 @@
 #include <raylib.h>
 
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace zenith
@@ -132,10 +133,14 @@ public:
     static RenderTexture2D *s_outer;
 
 private:
-    void drawModel( const ModelMesh &m, Vector3 at, float face, float bank, float scale, float flash, float head,
-                    Color tint, float pitch = 0.0f );
-    void drawShadow( Vector3 at, float size );
-    void drawSprites( const World &w, const Catalog &cat );
+    static constexpr int MaxGlowLights = 16;   ///< the lights a frame hands the shaders
+
+    Matrix modelMatrix( Vector3 at, float face, float bank, float scale, float pitch ) const;
+    void   drawMeshes( const ModelMesh &m, const Matrix &rest, float face, float head, Material &mat );
+    void   drawModel( const ModelMesh &m, Vector3 at, float face, float bank, float scale, float flash, float head,
+                      Color tint, float pitch = 0.0f );
+    void   drawShadows( const World &w, const Catalog &cat );
+    void   drawSprites( const World &w, const Catalog &cat );
     void sprite( int tex, Vector2 field, float size, Color c, float rot = 0.0f, float stretch = 0.0f,
                  Vector2 dir = { 0, 1 } );
     void beam( Vector2 a, Vector2 b, float width, Color c );
@@ -149,6 +154,11 @@ private:
     float             m_halfH = FieldH * 0.5f;
     RenderTexture2D   m_hdr = {};
     RenderTexture2D   m_out = {};
+    RenderTexture2D   m_shadow = {};          ///< what flies, cast along the sun onto the ground's plane
+    Vector4           m_shadowRect = { 0, 0, 1, 1 };
+    Vector4           m_lightPos[MaxGlowLights] = {}, m_lightCol[MaxGlowLights] = {};
+    int               m_lightN = 0;
+    std::vector<std::pair<float, int>> m_lightOrder;   ///< scratch for picking the lights (kept: no allocations)
     std::vector<RenderTexture2D> m_bloom;
     Camera3D          m_cam = {};
     Terrain           m_terrain;
