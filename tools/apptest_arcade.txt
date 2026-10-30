@@ -52,7 +52,7 @@ back
 until:main:50
 down down down down down down down down down down down down accept   # Optionen (Bossjagd is still closed and skipped)
 expect:options
-down down down down down down down down down down down down down down down down down accept   # Tasten und Knöpfe
+down down down down down down down down down down down down down down down down down down accept   # Tasten und Knöpfe
 expect:controls
 back
 expect:options

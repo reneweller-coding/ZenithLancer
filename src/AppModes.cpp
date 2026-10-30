@@ -142,6 +142,8 @@ void App::practice( float dt )
     auto label = [&]( const std::string &n ) {
         const LevelDef *lv = m_cat.level( n );
         std::string     s = lv ? tf( "Ep. %d", lv->m_episode ) + "   " + L( lv->m_title, lv->m_titleEn ) : n;
+        auto md = m_prof.m_medals.find( n );
+        if ( md != m_prof.m_medals.end() && md->second > 0 ) s += "   ·  " + medalName( md->second );
         return m_prof.m_bosses.count( n ) ? s + "   ·  " + T( "Boss" ) : s;
     };
     if ( m_practiceStep == 0 )
@@ -447,15 +449,16 @@ void App::survivalMenu( float dt )
     int         rules = weeklyRules( weekSeed( week ) );
     auto        best = m_prof.m_daily.find( day );
     auto        bestWeek = m_prof.m_weekly.find( week );
-    std::vector<std::string> items = { tf( "Tagesflug vom %s", day.c_str() ), tf( "Wochenflug %s", week.c_str() ), T( "Freier Flug" ),
-                                       T( "Zurück" ) };
+    std::vector<std::string> items = { tf( "Tagesflug vom %s", day.c_str() ), tf( "Wochenflug %s", week.c_str() ), T( "Herausforderung" ),
+                                       T( "Freier Flug" ), T( "Zurück" ) };
     float pw = 1000 * k;
-    ui::panel( { W * 0.5f - pw * 0.5f, H * 0.3f - 30 * k, pw, 470 * k } );
+    ui::panel( { W * 0.5f - pw * 0.5f, H * 0.3f - 30 * k, pw, 520 * k } );
     int c = menu( items, W * 0.5f, H * 0.3f, pw - 80 * k, m_sel, 36, nullptr, true );
     std::string about = m_sel == 0 ? T( "Für alle am selben Tag dieselben Wellen, auf Normal. Dein bester Tagesflug zählt, und sein Geist fliegt mit." )
                       : m_sel == 1 ? std::string( T( "Eine Woche lang dieselben Wellen und zwei Sonderregeln:" ) ) + " " + ruleNames( rules ) + "."
-                      : m_sel == 2 ? T( "Neue Wellen bei jedem Flug, die Schwierigkeit nach Wahl." ) : "";
-    float ay = H * 0.3f + 250 * k;
+                      : m_sel == 2 ? T( "Ein Code für Freunde: dieselben Wellen, dieselbe Schwierigkeit, dieselben Regeln. Wer schafft mehr?" )
+                      : m_sel == 3 ? T( "Neue Wellen bei jedem Flug, die Schwierigkeit nach Wahl." ) : "";
+    float ay = H * 0.3f + 300 * k;
     for ( const std::string &l : ui::wrap( about, pw - 100 * k, 24 ) )
     {
         ui::text( l, W * 0.5f, ay, 24, ui::Ink, ui::AlignE::CENTER );
@@ -473,14 +476,21 @@ void App::survivalMenu( float dt )
     if ( m_sel == 1 && bestWeek != m_prof.m_weekly.end() )
         ui::text( tf( "Diese Woche bester Flug: %s Punkte", fmt( bestWeek->second ).c_str() ), W * 0.5f, ay, 24, ui::Gold, ui::AlignE::CENTER );
     hints( "Eingabe / A: wählen    Esc / B: zurück" );
-    if ( c == 3 || m_in.back() )
+    if ( c == 4 || m_in.back() )
     {
         m_survival = m_daily = m_weekly = false;
         m_rules = 0;
         go( ScreenE::MAIN );
         return;
     }
+    if ( c == 2 )
+    {
+        m_challengeStep = 0;
+        go( ScreenE::CHALLENGE );
+        return;
+    }
     if ( c < 0 ) return;
+    m_challenge.clear();
     m_mode = ModeE::ARCADE;
     m_players = 1;
     m_survival = true;
@@ -497,6 +507,121 @@ void App::survivalMenu( float dt )
     }
     else
         go( ScreenE::DIFFICULTY );
+}
+
+// ---------------------------------------------------------------------------------------------------- challenges
+
+void App::challenge( float dt )
+{
+    // A new code (its difficulty and rules chosen here, its seed by chance) or a friend's typed in; either is then
+    // flown as a survival flight with its own ghost and best score.
+    drawBackdrop( dt, true );
+    float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
+    heading( "Herausforderung", "Ein Code, dieselben Wellen für alle, die ihn fliegen." );
+    float pw = 1100 * k;
+    ui::panel( { W * 0.5f - pw * 0.5f, H * 0.24f, pw, H * 0.58f } );
+    int open = std::min( m_prof.m_maxDiff, (int)m_cat.m_difficulties.size() - 1 );
+    auto fly = [&]( uint32_t seed, int diff, int rules, const std::string &code ) {
+        m_mode = ModeE::ARCADE;
+        m_players = 1;
+        m_survival = true;
+        m_daily = m_weekly = false;
+        m_challenge = code;
+        m_survivalSeed = seed;
+        m_rules = rules;
+        m_diff = std::clamp( diff, 0, (int)m_cat.m_difficulties.size() - 1 );
+        m_pilotStep = 0;
+        go( ScreenE::PILOTS );
+    };
+    if ( m_challengeStep == 0 )
+    {
+        std::vector<std::string> items = { T( "Neue Herausforderung" ), T( "Code eingeben" ), T( "Zurück" ) };
+        int c = menu( items, W * 0.5f, H * 0.32f, pw - 80 * k, m_sel, 36, nullptr, true );
+        hints( "Eingabe / A: wählen    Esc / B: zurück" );
+        if ( c == 0 )
+        {
+            m_codeSeed = (uint32_t)( GetTime() * 1000.0 ) * 2654435761u ^ 0xc0de;
+            m_codeRules = 0;
+            m_diff = std::clamp( m_diff, 0, open );
+            m_challengeStep = 1;
+            m_sel = 0;
+        }
+        else if ( c == 1 )
+        {
+            m_codeInput.clear();
+            m_challengeStep = 2;
+        }
+        else if ( c == 2 || m_in.back() )
+            go( ScreenE::SURVIVAL );
+        return;
+    }
+    if ( m_challengeStep == 1 )
+    {
+        // A new code: the difficulty and whether the week's kind of house rules come with it.
+        int         rules = m_codeRules ? weeklyRules( m_codeSeed ) : 0;
+        std::string code = challengeCode( m_codeSeed, m_diff, rules );
+        const DifficultyDef &d = m_cat.difficulty( m_diff );
+        ui::text( code, W * 0.5f, H * 0.29f, 96, ui::Gold, ui::AlignE::CENTER );
+        std::vector<std::string> items = { std::string( T( "Schwierigkeit" ) ) + ":  " + L( d.m_title, d.m_titleEn ),
+                                           std::string( T( "Sonderregeln" ) ) + ":  " + ( rules ? ruleNames( rules ) : std::string( T( "keine" ) ) ),
+                                           T( "Losfliegen" ), T( "Code kopieren" ), T( "Zurück" ) };
+        int c = menu( items, W * 0.5f, H * 0.46f, pw - 80 * k, m_sel, 32, nullptr, true );
+        int dir = m_in.right() ? 1 : m_in.left() ? -1 : 0;
+        if ( c == 0 || ( m_sel == 0 && dir ) ) m_diff = ( m_diff + ( dir < 0 ? open : 1 ) ) % ( open + 1 );
+        if ( c == 1 || ( m_sel == 1 && dir ) ) m_codeRules = 1 - m_codeRules;
+        if ( c == 2 ) fly( m_codeSeed, m_diff, rules, code );
+        if ( c == 3 )
+        {
+            SetClipboardText( code.c_str() );
+            m_shopMsg = T( "Kopiert." );
+            m_shopMsgT = 2.0f;
+        }
+        if ( m_shopMsgT > 0 )
+        {
+            m_shopMsgT -= dt;
+            ui::text( m_shopMsg, W * 0.5f, H * 0.78f, 26, ui::Good, ui::AlignE::CENTER );
+        }
+        hints( "Eingabe / A: wählen    Links/Rechts: ändern    Esc / B: zurück" );
+        if ( c == 4 || m_in.back() ) m_challengeStep = 0;
+        return;
+    }
+    // A code typed in: letters and digits, Backspace, Ctrl+V; the pad turns the letter at the end with up and down.
+    for ( int ch = GetCharPressed(); ch > 0; ch = GetCharPressed() )
+        if ( isalnum( ch ) && m_codeInput.size() < 11 ) m_codeInput += (char)toupper( ch );
+    if ( IsKeyPressed( KEY_BACKSPACE ) && !m_codeInput.empty() ) m_codeInput.pop_back();
+    if ( ( IsKeyDown( KEY_LEFT_CONTROL ) || IsKeyDown( KEY_RIGHT_CONTROL ) ) && IsKeyPressed( KEY_V ) )
+        if ( const char *clip = GetClipboardText() ) m_codeInput = std::string( clip ).substr( 0, 16 );
+    static const std::string letters = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+    auto turn = [&]( int d ) {
+        if ( m_codeInput.empty() ) m_codeInput = "0";
+        size_t i = letters.find( m_codeInput.back() );
+        m_codeInput.back() = letters[i == std::string::npos ? 0 : ( i + letters.size() + d ) % letters.size()];
+    };
+    if ( m_in.up() ) turn( 1 );
+    if ( m_in.down() ) turn( -1 );
+    if ( m_in.right() && m_codeInput.size() < 11 ) m_codeInput += '0';
+    if ( m_in.left() && !m_codeInput.empty() ) m_codeInput.pop_back();
+    uint32_t seed = 0;
+    int      diff = 0, rules = 0;
+    bool     ok = readChallenge( m_codeInput, seed, diff, rules );
+    ui::text( m_codeInput.empty() ? std::string( "_" ) : m_codeInput, W * 0.5f, H * 0.32f, 96, ok ? ui::Gold : WHITE, ui::AlignE::CENTER );
+    if ( ok )
+    {
+        const DifficultyDef &d = m_cat.difficulty( diff );
+        ui::text( L( d.m_title, d.m_titleEn ) + ( rules ? "  ·  " + ruleNames( rules ) : std::string() ), W * 0.5f, H * 0.5f, 30, ui::Ink,
+                  ui::AlignE::CENTER );
+        auto best = m_prof.m_challenges.find( challengeCode( seed, diff, rules ) );
+        if ( best != m_prof.m_challenges.end() )
+            ui::text( tf( "Dein bester Flug: %s Punkte", fmt( best->second ).c_str() ), W * 0.5f, H * 0.56f, 26, ui::Gold, ui::AlignE::CENTER );
+    }
+    else if ( m_codeInput.size() >= 10 )
+        ui::text( "Dieser Code stimmt nicht.", W * 0.5f, H * 0.5f, 30, ui::Warn, ui::AlignE::CENTER );
+    hints( "Tippen, Strg+V oder Hoch/Runter: Zeichen    Eingabe / Start: fliegen    Esc / B: zurück" );
+    bool go2 = IsKeyPressed( KEY_ENTER ) || IsKeyPressed( KEY_KP_ENTER ) || ( m_in.scripted() && m_in.accept() );
+    for ( int p = 0; p < 4; ++p )
+        if ( IsGamepadAvailable( p ) && IsGamepadButtonPressed( p, GAMEPAD_BUTTON_MIDDLE_RIGHT ) ) go2 = true;
+    if ( go2 && ok ) fly( seed, diff, rules, challengeCode( seed, diff, rules ) );
+    if ( m_in.back() ) m_challengeStep = 0;
 }
 
 // ---------------------------------------------------------------------------------------------------- replays
@@ -619,6 +744,30 @@ void App::replays( float dt )
     else if ( m_in.back() ) go( ScreenE::MAIN );
 }
 
+// ---------------------------------------------------------------------------------------------------- medals
+
+int App::medalOf( bool won ) const
+{
+    // Bronze for the mission won; from Normal on silver for 70 % of the enemies without a loss, gold for 85 % with
+    // less damage than one hull's armour and the boss beaten at the first try.
+    if ( !won ) return 0;
+    const Stats &st = m_world.m_stats;
+    float        kills = st.m_spawned > 0 ? st.m_kills / (float)st.m_spawned : 1.0f;
+    float        armour = 0.0f;
+    for ( const Player &p : m_world.m_players )
+        if ( p.m_active ) armour = std::max( armour, p.m_armorMax );
+    if ( m_world.m_diffIndex < 2 ) return 1;
+    if ( kills >= 0.85f && st.m_deaths == 0 && m_bossTries == 0 && st.m_damage <= armour ) return 3;
+    if ( kills >= 0.7f && st.m_deaths == 0 ) return 2;
+    return 1;
+}
+
+std::string App::medalName( int medal ) const
+{
+    const char *names[] = { "", "Bronze", "Silber", "Gold" };
+    return medal > 0 ? std::string( T( names[std::clamp( medal, 0, 3 )] ) ) : "";
+}
+
 // ---------------------------------------------------------------------------------------------------- achievements
 
 void App::countMission( bool won )
@@ -660,6 +809,7 @@ void App::countMission( bool won )
         m_feats.max( "survival_seconds", st.m_time );
         if ( m_daily ) m_feats.add( "survival_daily" );
         if ( m_weekly ) m_feats.add( "weekly" );
+        if ( !m_challenge.empty() ) m_feats.add( "challenges" );
     }
     if ( m_mode == ModeE::BOSSRUSH && won )
     {

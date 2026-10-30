@@ -11,6 +11,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <ctime>
 #include <set>
 #include <string>
@@ -438,6 +439,58 @@ uint32_t weekSeed( const std::string &week )
     h *= 0x7feb352du;
     h ^= h >> 15;
     return h ? h : 1u;
+}
+
+namespace
+{
+
+const char Base32[] = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+
+/** @return the check of a code's 45 bits (5 bits) */
+int codeCheck( uint64_t bits )
+{
+    uint32_t h = 2166136261u;
+    for ( int i = 0; i < 6; ++i ) h = ( h ^ (uint32_t)( ( bits >> ( 8 * i ) ) & 0xff ) ) * 16777619u;
+    return (int)( ( h ^ ( h >> 5 ) ^ ( h >> 10 ) ^ ( h >> 20 ) ) & 31u );
+}
+
+}   // namespace
+
+std::string challengeCode( uint32_t seed, int diff, int rules )
+{
+    // Bits: 32 seed, 3 difficulty, 8 rules, 2 the code's version, 5 the check.
+    uint64_t bits = (uint64_t)seed | ( (uint64_t)( diff & 7 ) << 32 ) | ( (uint64_t)( rules & 255 ) << 35 ) | ( 1ull << 43 );
+    bits |= (uint64_t)codeCheck( bits ) << 45;
+    std::string out;
+    for ( int i = 9; i >= 0; --i )
+    {
+        out += Base32[( bits >> ( 5 * i ) ) & 31u];
+        if ( i == 5 ) out += '-';
+    }
+    return out;
+}
+
+bool readChallenge( const std::string &code, uint32_t &seed, int &diff, int &rules )
+{
+    uint64_t bits = 0;
+    int      n = 0;
+    for ( char c : code )
+    {
+        c = (char)toupper( (unsigned char)c );
+        if ( c == ' ' || c == '-' ) continue;
+        if ( c == 'O' ) c = '0';
+        if ( c == 'I' || c == 'L' ) c = '1';
+        const char *at = strchr( Base32, c );
+        if ( !c || !at ) return false;
+        bits = ( bits << 5 ) | (uint64_t)( at - Base32 );
+        if ( ++n > 10 ) return false;
+    }
+    if ( n != 10 || ( ( bits >> 43 ) & 3u ) != 1u ) return false;
+    if ( (int)( ( bits >> 45 ) & 31u ) != codeCheck( bits & ( ( 1ull << 45 ) - 1 ) ) ) return false;
+    seed = (uint32_t)( bits & 0xffffffffu );
+    diff = (int)( ( bits >> 32 ) & 7u );
+    rules = (int)( ( bits >> 35 ) & 255u );
+    return true;
 }
 
 int weeklyRules( uint32_t seed )

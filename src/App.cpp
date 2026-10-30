@@ -48,6 +48,18 @@ const float QualityScale[] = { 0.67f, 0.8f, 1.0f };
 
 }   // namespace
 
+void saveScreen( const std::string &path )
+{
+    std::error_code e;
+    fs::create_directories( fs::path( path ).parent_path(), e );
+    int            w = GetRenderWidth(), h = GetRenderHeight();
+    unsigned char *pixels = rlReadScreenPixels( w, h );
+    Image          img = { pixels, w, h, 1, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8 };
+    ImageFormat( &img, PIXELFORMAT_UNCOMPRESSED_R8G8B8 );
+    ExportImage( img, path.c_str() );
+    UnloadImage( img );
+}
+
 bool App::init( const Options &o )
 {
     m_opt = o;
@@ -88,8 +100,9 @@ bool App::init( const Options &o )
     int  h = o.m_height > 0 ? o.m_height : m_set.m_height > 0 ? m_set.m_height : deck ? 800 : 900;
     unsigned flags = FLAG_WINDOW_RESIZABLE;
     if ( m_set.m_vsync && !o.m_bench ) flags |= FLAG_VSYNC_HINT;
+    // Runs without a player stay in the background: a hidden window that never takes the focus.
     if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_shop.empty() || !o.m_test.empty() || !o.m_video.empty() || o.m_deckCheck )
-        flags = FLAG_WINDOW_HIDDEN;
+        flags = FLAG_WINDOW_HIDDEN | FLAG_WINDOW_UNFOCUSED;
     SetConfigFlags( flags );
     SetTraceLogLevel( LOG_WARNING );
     InitWindow( w, h, "Zenith Lancer" );
@@ -104,7 +117,7 @@ bool App::init( const Options &o )
     SetWindowMinSize( 640, 400 );
     bool full = o.m_fullscreen >= 0 ? o.m_fullscreen == 1 : ( m_set.m_fullscreen || ( deck && m_set.m_width == 0 ) );
     if ( full && o.m_shot.empty() && o.m_video.empty() && !o.m_deckCheck ) ToggleBorderlessWindowed();
-    SetTargetFPS( o.m_shot.empty() && o.m_test.empty() && o.m_video.empty() && !o.m_deckCheck ? m_set.m_fps : 0 );
+    SetTargetFPS( o.m_shot.empty() && o.m_test.empty() && o.m_video.empty() && !o.m_deckCheck ? fpsLimit() : 0 );
     if ( !o.m_mute ) InitAudioDevice();
     m_audio.init( !o.m_mute, m_assets );
     m_audio.m_musicVolume = m_set.m_music;
@@ -147,8 +160,16 @@ bool App::init( const Options &o )
 
 int App::quality() const
 {
-    // Unset: balanced on the Steam Deck, everything elsewhere.
-    return m_set.m_quality >= 0 ? std::clamp( m_set.m_quality, 0, 2 ) : steamDeck() ? 1 : 2;
+    // Unset: balanced on the Steam Deck, everything elsewhere; saving the battery: balanced at most.
+    int q = m_set.m_quality >= 0 ? std::clamp( m_set.m_quality, 0, 2 ) : steamDeck() ? 1 : 2;
+    return m_set.m_battery ? std::min( q, 1 ) : q;
+}
+
+int App::fpsLimit() const
+{
+    // Saving the battery: 30 frames a second, two steps of the game in each (an even pace; 40 or 45 would stutter
+    // against the 60 steps a second).
+    return m_set.m_battery ? 30 : m_set.m_fps;
 }
 
 const Texture2D *App::portrait( const std::string &from )
@@ -218,7 +239,7 @@ void App::applySettings()
         m_view.m_quality = quality();
         resize();
     }
-    if ( m_opt.m_test.empty() && m_opt.m_shot.empty() && m_opt.m_video.empty() && !m_opt.m_deckCheck ) SetTargetFPS( m_set.m_fps );
+    if ( m_opt.m_test.empty() && m_opt.m_shot.empty() && m_opt.m_video.empty() && !m_opt.m_deckCheck ) SetTargetFPS( fpsLimit() );
     ui::setTextSize( m_set.m_textSize * ( steamDeck() || m_opt.m_deckCheck ? 1.12f : 1.0f ) );
     applyPaints();
 }
@@ -307,12 +328,7 @@ void App::run()
             m_set.m_fullscreen = !m_set.m_fullscreen;
             resize();
         }
-        if ( IsKeyPressed( KEY_F12 ) )
-        {
-            std::string dir = userDir() + "shots/";
-            fs::create_directories( dir );
-            TakeScreenshot( ( dir + "zenith_" + std::to_string( (long long)( GetTime() * 1000 ) ) + ".png" ).c_str() );
-        }
+        if ( IsKeyPressed( KEY_F12 ) ) saveScreen( userDir() + "shots/zenith_" + std::to_string( (long long)( GetTime() * 1000 ) ) + ".png" );
         BeginDrawing();
         ClearBackground( BLACK );
         frame( dt );
@@ -355,6 +371,7 @@ void App::frame( float dt )
     case ScreenE::STATS:
     case ScreenE::MODS: piece = "title"; break;
     case ScreenE::ARCHIVE: piece = m_archivePiece.empty() ? "title" : m_archivePiece.c_str(); break;
+    case ScreenE::CHALLENGE: piece = "title"; break;
     case ScreenE::PLAN:
     case ScreenE::RESULTS:
     case ScreenE::FAILED: piece = m_mode == ModeE::CAMPAIGN ? "plan" : "title"; break;
@@ -404,6 +421,7 @@ void App::frame( float dt )
     case ScreenE::STATS: stats( dt ); break;
     case ScreenE::MODS: mods( dt ); break;
     case ScreenE::ARCHIVE: archive( dt ); break;
+    case ScreenE::CHALLENGE: challenge( dt ); break;
     case ScreenE::QUIT: m_running = false; break;
     }
     if ( m_screen == before ) m_enter = false;
@@ -561,7 +579,7 @@ std::string App::diffKey() const
 {
     const char *m = m_survival ? ( m_weekly ? "weekly" : m_daily ? "daily" : "survival" )
                   : m_mode == ModeE::ARCADE ? ( m_players > 1 ? "arcade2" : "arcade" )
-                  : m_mode == ModeE::BOSSRUSH ? "bossrush" : m_camp.m_coop ? "campaign2" : "campaign";
+                  : m_mode == ModeE::BOSSRUSH ? ( m_players > 1 ? "bossrush2" : "bossrush" ) : m_camp.m_coop ? "campaign2" : "campaign";
     return std::string( m ) + "_" + m_cat.difficulty( m_mode == ModeE::CAMPAIGN ? m_camp.m_difficulty : m_diff ).m_name;
 }
 
@@ -627,11 +645,12 @@ void App::mainMenu( float dt )
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     ui::text( "ZENITH LANCER", W * 0.5f, H * 0.06f, 84, WHITE, ui::AlignE::CENTER );
     std::vector<std::string> items = { "Kampagne", "Kampagne für zwei", "Arcade", "Arcade für zwei", "Überleben",
-                                       "Bossjagd", "Übung", "Flugschule", "Wiederholungen", "Logbuch", "Archiv",
-                                       "Erfolge und Statistik", "Bestenliste", "Optionen", "Mods", "Mitwirkende", "Beenden" };
+                                       "Bossjagd", "Bossjagd für zwei", "Übung", "Flugschule", "Wiederholungen", "Logbuch",
+                                       "Archiv", "Erfolge und Statistik", "Bestenliste", "Optionen", "Mods", "Mitwirkende",
+                                       "Beenden" };
     std::vector<bool>        en( items.size(), true );
-    en[5] = m_prof.m_bossRush;
-    en[6] = !m_prof.m_flown.empty();
+    en[5] = en[6] = m_prof.m_bossRush;
+    en[7] = !m_prof.m_flown.empty();
     float size = menuSize( items.size(), 40 );
     float pw = 560 * k, ph = items.size() * ui::height( size ) * 1.45f + 40 * k;
     float top = H * 0.17f;
@@ -641,6 +660,16 @@ void App::mainMenu( float dt )
     if ( m_in.back() ) go( ScreenE::TITLE );
     m_practice = m_survival = m_daily = m_weekly = m_school = false;
     m_rules = 0;
+    m_challenge.clear();
+    // The boss rush for two is the boss rush's sixth line: the lines after it move one down.
+    if ( c == 6 )
+    {
+        m_mode = ModeE::BOSSRUSH;
+        m_players = 2;
+        go( ScreenE::DIFFICULTY );
+        return;
+    }
+    if ( c > 6 ) --c;
     switch ( c )
     {
     case 0:
@@ -784,7 +813,7 @@ void App::difficulty( float dt )
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     heading( "Schwierigkeit", m_survival ? "Überleben" : m_mode == ModeE::ARCADE ? ( m_players > 1 ? "Arcade für zwei" : "Arcade" )
-                              : m_mode == ModeE::BOSSRUSH ? "Bossjagd" : m_players > 1 ? "Kampagne für zwei" : "Kampagne" );
+                              : m_mode == ModeE::BOSSRUSH ? ( m_players > 1 ? "Bossjagd für zwei" : "Bossjagd" ) : m_players > 1 ? "Kampagne für zwei" : "Kampagne" );
     std::vector<std::string> items;
     std::vector<bool>        en;
     for ( size_t i = 0; i < m_cat.m_difficulties.size(); ++i )
@@ -1026,6 +1055,8 @@ void App::plan( float dt )
     {
         const LevelDef *lv = m_cat.level( c );
         items.push_back( tf( lv && lv->m_isSecret ? "Einsatz: %s  (geheim)" : "Einsatz: %s", lv ? L( lv->m_title, lv->m_titleEn ).c_str() : c.c_str() ) );
+        auto md = m_prof.m_medals.find( c );
+        if ( md != m_prof.m_medals.end() && md->second > 0 ) items.back() += "  ·  " + medalName( md->second );
     }
     size_t nMissions = items.size();
     items.push_back( "Werkstatt" );
@@ -1134,6 +1165,11 @@ void App::results( float dt )
     row( "Flugzeit", std::to_string( secs / 60 ) + ":" + ( secs % 60 < 10 ? "0" : "" ) + std::to_string( secs % 60 ) );
     row( "Treffer eingesteckt", fmt( (long long)m_last.m_damage ) );
     row( "Längste Kette  ·  Streifschüsse", tf( "%d  ·  %d", m_last.m_bestChain, m_last.m_grazes ) );
+    if ( m_medal > 0 )
+    {
+        const Color medals[] = { ui::Ink, { 214, 140, 80, 255 }, { 200, 210, 225, 255 }, ui::Gold };
+        row( "Medaille", medalName( m_medal ) + ( m_medalNew ? "  ·  " + std::string( T( "neu" ) ) : "" ), medals[m_medal] );
+    }
     if ( m_practice )
         row( "Übungsflug", T( m_practiceBoss ? "nur der Boss" : "ganzer Einsatz" ), ui::Accent );
     else if ( m_mode == ModeE::CAMPAIGN )
@@ -1351,7 +1387,7 @@ void App::pilots( float dt )
     if ( m_in.back() )
     {
         if ( m_pilotStep > 0 ) --m_pilotStep;
-        else go( m_survival && m_daily ? ScreenE::SURVIVAL : ScreenE::DIFFICULTY );
+        else go( m_survival && !m_challenge.empty() ? ScreenE::CHALLENGE : m_survival && ( m_daily || m_weekly ) ? ScreenE::SURVIVAL : ScreenE::DIFFICULTY );
     }
     if ( c < 0 ) return;
     m_pilot[m_pilotStep] = c;
@@ -1517,10 +1553,11 @@ void App::scores( float dt )
 {
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
-    const char *modes[] = { "arcade", "arcade2", "campaign", "campaign2", "bossrush", "survival", "daily", "weekly" };
-    const char *names[] = { "Arcade", "Arcade für zwei", "Kampagne", "Kampagne für zwei", "Bossjagd", "Überleben", "Tagesflug", "Wochenflug" };
+    const char *modes[] = { "arcade", "arcade2", "campaign", "campaign2", "bossrush", "bossrush2", "survival", "daily", "weekly" };
+    const char *names[] = { "Arcade", "Arcade für zwei", "Kampagne", "Kampagne für zwei", "Bossjagd", "Bossjagd für zwei", "Überleben", "Tagesflug",
+                            "Wochenflug" };
     int nd = (int)m_cat.m_difficulties.size();
-    int total = 8 * nd;
+    int total = 9 * nd;
     if ( m_enter && !m_scoreKey.empty() )
         for ( int i = 0; i < total; ++i )
             if ( std::string( modes[i / nd] ) + "_" + m_cat.m_difficulties[(size_t)( i % nd )].m_name == m_scoreKey ) m_scoreTab = i;
@@ -1617,9 +1654,17 @@ void App::logbook( float dt )
         {
             std::string all;
             for ( const std::string &l : s->m_text ) all += ( all.empty() ? "" : " " ) + l;
-            std::vector<std::string> lines = ui::wrap( all, pw - 720 * k, 24 );
-            ui::text( s->m_from, r.x + 660 * k, r.y + 30 * k, 24, ui::Gold );
-            for ( size_t i = 0; i < lines.size() && i < 20; ++i ) ui::text( lines[i], r.x + 660 * k, r.y + 76 * k + i * 32 * k, 24, ui::Ink );
+            float tx = r.x + 660 * k;
+            if ( const Texture2D *pt = portrait( s->m_from ) )
+            {
+                float ps = 120 * k;
+                DrawTexturePro( *pt, { 0, 0, (float)pt->width, (float)pt->height }, { tx, r.y + 30 * k, ps, ps }, { 0, 0 }, 0, WHITE );
+                tx += ps + 24 * k;
+            }
+            std::vector<std::string> lines = ui::wrap( all, r.x + pw - 60 * k - tx, 24 );
+            ui::text( s->m_from, tx, r.y + 30 * k, 24, ui::Gold );
+            for ( size_t i = 0; i < lines.size() && i < 20; ++i ) ui::text( lines[i], tx, r.y + 76 * k + i * 32 * k, 24, ui::Ink );
+            if ( m_in.other() ) m_audio.voice( m_logList[(size_t)m_sel], language() );
         }
         if ( c >= 0 )
         {
@@ -1629,8 +1674,12 @@ void App::logbook( float dt )
             return;
         }
     }
-    hints( "Eingabe / A: lesen    Esc / B: zurück" );
-    if ( m_in.back() ) go( m_back == ScreenE::PLAN ? ScreenE::PLAN : ScreenE::MAIN );
+    hints( "Eingabe / A: lesen    Tab / Y: anhören    Esc / B: zurück" );
+    if ( m_in.back() )
+    {
+        m_audio.voice( "", "" );
+        go( m_back == ScreenE::PLAN ? ScreenE::PLAN : ScreenE::MAIN );
+    }
 }
 
 void App::options( float dt )
@@ -1644,8 +1693,8 @@ void App::options( float dt )
     auto        row = [&]( const char *name, const std::string &value ) { return std::string( T( name ) ) + ":  " + value; };
     const char *quality[] = { "Flüssig", "Ausgewogen", "Qualität" };
     const char *bullets[] = { "wie gemacht", "kräftig", "Rot-Grün-Sehschwäche", "Blau-Gelb-Sehschwäche" };
-    enum RowE { LANG, MUSIC, EFFECTS, VOICES, FULL, FPS, QUALITY, SHAKE, FLASH, BULLETS, SPEED, BOMB, AUTOFIRE, MOUSE,
-                HITBOX, TEXT, RUMBLE, KEYS, BACK, ROWS };
+    enum RowE { LANG, MUSIC, EFFECTS, VOICES, FULL, FPS, QUALITY, BATTERY, SHAKE, FLASH, BULLETS, SPEED, BOMB, AUTOFIRE,
+                MOUSE, HITBOX, TEXT, RUMBLE, KEYS, BACK, ROWS };
     std::vector<std::string> items = {
         row( "Sprache", english() ? "English" : "Deutsch" ),
         row( "Musik", pct( m_set.m_music ) ),
@@ -1654,6 +1703,7 @@ void App::options( float dt )
         row( "Vollbild", on( IsWindowState( FLAG_BORDERLESS_WINDOWED_MODE ) ) ),
         row( "Bildrate", fps ),
         row( "Grafik", T( quality[std::clamp( m_view.m_quality, 0, 2 )] ) ),
+        row( "Akku sparen", on( m_set.m_battery ) ),
         row( "Bildschirmwackeln", T( m_set.m_shake <= 0 ? "aus" : m_set.m_shake < 0.75f ? "schwach" : "voll" ) ),
         row( "Blitze dämpfen", on( m_set.m_softFlash ) ),
         row( "Gegnergeschosse", T( bullets[std::clamp( m_set.m_bullets, 0, 3 )] ) ),
@@ -1681,6 +1731,7 @@ void App::options( float dt )
     help[VOICES] = "Die Stimmen der Funksprüche und Besprechungen. Die Texte bleiben immer zu lesen.";
     help[QUALITY] = "Flüssig: kleineres Bild, weniger Leuchten und Partikel. Ausgewogen: für das Steam Deck. Qualität: alles.";
     help[FLASH] = "Explosionen, Treffer und Übergänge blitzen schwächer auf.";
+    help[BATTERY] = "Für das Steam Deck unterwegs: 30 Bilder in der Sekunde und höchstens ausgewogene Grafik.";
     help[BULLETS] = "Gegnergeschosse mit dunklem Rand, auf Wunsch in Farben für Farbsehschwächen.";
     help[SPEED] = "Das ganze Spiel läuft langsamer. Eine Hilfe, keine Schande.";
     help[BOMB] = "Die Spezialwaffe zündet von selbst, wenn die Panzerung fast leer ist.";
@@ -1718,6 +1769,7 @@ void App::options( float dt )
             break;
         case SHAKE: m_set.m_shake = m_set.m_shake <= 0 ? ( d > 0 ? 0.5f : 1.0f ) : m_set.m_shake < 0.75f ? ( d > 0 ? 1.0f : 0.0f ) : ( d > 0 ? 0.0f : 0.5f ); break;
         case FLASH: m_set.m_softFlash = !m_set.m_softFlash; break;
+        case BATTERY: m_set.m_battery = !m_set.m_battery; break;
         case BULLETS: m_set.m_bullets = ( m_set.m_bullets + d + 4 ) % 4; break;
         case SPEED:
         {
@@ -1824,7 +1876,7 @@ namespace
 {
 const char *ScreenNames[] = { "title", "main", "options", "controls", "scores", "credits", "logbook", "slots",
                               "difficulty", "episode", "story", "plan", "shop", "play", "results", "failed", "pilots",
-                              "continue", "name", "practice", "survival", "replays", "stats", "mods", "archive", "quit" };
+                              "continue", "name", "practice", "survival", "replays", "stats", "mods", "archive", "challenge", "quit" };
 }
 
 int App::appTest()
@@ -1940,7 +1992,7 @@ void App::screenShot()
     ScreenE target = ScreenE::TITLE;
     const char *names[] = { "title", "main", "options", "controls", "scores", "credits", "logbook", "slots", "difficulty",
                             "episode", "story", "plan", "shop", "play", "results", "failed", "pilots", "continue", "name",
-                            "practice", "survival", "replays", "stats", "mods", "archive" };
+                            "practice", "survival", "replays", "stats", "mods", "archive", "challenge" };
     for ( int i = 0; i < (int)( sizeof( names ) / sizeof( names[0] ) ); ++i )
         if ( s == names[i] ) target = (ScreenE)i;
     if ( s == "story" )

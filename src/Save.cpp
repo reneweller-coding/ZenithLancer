@@ -115,6 +115,7 @@ void Settings::load( const std::string &path )
         else if ( k == "autobomb" ) m_autoBomb = f != 0;
         else if ( k == "softflash" ) m_softFlash = f != 0;
         else if ( k == "quality" ) m_quality = (int)f;
+        else if ( k == "battery" ) m_battery = f != 0;
         else if ( k == "mod" ) m_mods.push_back( v );
         else if ( k == "paint1" ) m_paint[0] = v;
         else if ( k == "paint2" ) m_paint[1] = v;
@@ -132,6 +133,7 @@ bool Settings::save( const std::string &path ) const
     if ( !m_language.empty() ) fprintf( f, "language %s\n", m_language.c_str() );
     fprintf( f, "voices %.2f\nbullets %d\nspeed %.2f\nautobomb %d\nsoftflash %d\nquality %d\n", m_voices, m_bullets,
              m_speed, m_autoBomb ? 1 : 0, m_softFlash ? 1 : 0, m_quality );
+    fprintf( f, "battery %d\n", m_battery ? 1 : 0 );
     for ( const std::string &m : m_mods ) fprintf( f, "mod %s\n", m.c_str() );
     for ( int i = 0; i < 2; ++i )
         if ( !m_paint[i].empty() ) fprintf( f, "paint%d %s\n", i + 1, m_paint[i].c_str() );
@@ -155,16 +157,21 @@ void Profile::load( const std::string &path )
             for ( const std::string &c : split( v ) ) m_flown.insert( c );
         else if ( k == "bosses" )
             for ( const std::string &c : split( v ) ) m_bosses.insert( c );
-        else if ( k == "daily" || k == "weekly" )
+        else if ( k == "daily" || k == "weekly" || k == "challenge" )
         {
             std::vector<std::string> w = split( v );
-            if ( w.size() >= 2 ) ( k == "daily" ? m_daily : m_weekly )[w[0]] = atoll( w[1].c_str() );
+            if ( w.size() >= 2 ) ( k == "daily" ? m_daily : k == "weekly" ? m_weekly : m_challenges )[w[0]] = atoll( w[1].c_str() );
         }
         else if ( k == "seen" )
             for ( const std::string &c : split( v ) ) m_seen.insert( c );
         else if ( k == "heard" )
             for ( const std::string &c : split( v ) ) m_heard.insert( c );
         else if ( k == "school" ) m_school = atoi( v.c_str() ) != 0;
+        else if ( k == "medal" )
+        {
+            std::vector<std::string> w = split( v );
+            if ( w.size() >= 2 ) m_medals[w[0]] = std::clamp( atoi( w[1].c_str() ), 0, 3 );
+        }
         else if ( k == "scoring" ) m_scoring = atoi( v.c_str() );
         else if ( k == "score" )
         {
@@ -200,6 +207,8 @@ bool Profile::save( const std::string &path ) const
              m_scoring );
     for ( const auto &[day, best] : m_daily ) fprintf( f, "daily %s %lld\n", day.c_str(), best );
     for ( const auto &[week, best] : m_weekly ) fprintf( f, "weekly %s %lld\n", week.c_str(), best );
+    for ( const auto &[mission, medal] : m_medals ) fprintf( f, "medal %s %d\n", mission.c_str(), medal );
+    for ( const auto &[code, best] : m_challenges ) fprintf( f, "challenge %s %lld\n", code.c_str(), best );
     for ( const auto &[k, list] : m_scores )
         for ( const HighScore &h : list )
             fprintf( f, "score %s %lld %d %s %s\n", k.c_str(), h.m_score, h.m_episode, h.m_pilot.empty() ? "-" : h.m_pilot.c_str(),

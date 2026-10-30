@@ -16,7 +16,7 @@
 # bossretries missions nodamage allkills deaths seconds credits spent max_credits max_front cubes plans secrets
 # episode1..episode5 campaign_diff (0 Kadett .. 6 Zenit) campaign_coop coop_missions arcade_runs arcade2_runs
 # arcade_clean bossrush_done bossrush_best survival_seconds survival_daily ngplus practice replays_watched
-# max_chain grazes school weekly seen heard
+# max_chain grazes school weekly seen heard gold challenges
 
 # ---------------------------------------------------------------------------------------------------- the fight
 
@@ -408,6 +408,28 @@ achievement heard_all
   desc_en "Hear every piece of the music. Quill claims he has them all on tape."
   need heard 23
 
+achievement gold_10
+  title "Goldene Zehn"
+  title_en "Golden Ten"
+  desc "Hol in zehn Einsätzen Gold: fast alles abgeschossen, kaum getroffen, der Boss beim ersten Versuch."
+  desc_en "Earn gold in ten missions: nearly everything shot down, barely hit, the boss at the first try."
+  need gold 10
+
+achievement gold_all
+  title "Goldrausch"
+  title_en "Gold Rush"
+  desc "Hol in allen 60 Einsätzen Gold. Quill hat aufgehört, Medaillen nachzubestellen."
+  desc_en "Earn gold in all 60 missions. Quill has stopped reordering medals."
+  need gold 60
+  hidden 1
+
+achievement challenge_1
+  title "Fehdehandschuh"
+  title_en "Gauntlet"
+  desc "Flieg eine Herausforderung nach Code bis zu ihrem Ende."
+  desc_en "Fly a challenge from a code to its end."
+  need challenges 1
+
 # ---------------------------------------------------------------------------------------------------- statistics
 
 stat seconds
@@ -498,4 +520,9 @@ stat max_chain
 stat grazes
   title "Streifschüsse"
   title_en "Grazes"
+  show count
+
+stat gold
+  title "Goldmedaillen"
+  title_en "Gold medals"
   show count

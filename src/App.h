@@ -61,7 +61,7 @@ struct Options
 enum class ScreenE : int
 {
     TITLE, MAIN, OPTIONS, CONTROLS, SCORES, CREDITS, LOGBOOK, SLOTS, DIFFICULTY, EPISODE, STORY, PLAN, SHOP, PLAY,
-    RESULTS, FAILED, PILOTS, CONTINUE, NAME, PRACTICE, SURVIVAL, REPLAYS, STATS, MODS, ARCHIVE, QUIT
+    RESULTS, FAILED, PILOTS, CONTINUE, NAME, PRACTICE, SURVIVAL, REPLAYS, STATS, MODS, ARCHIVE, CHALLENGE, QUIT
 };
 
 /** @brief A paint for the pilots' ships (the archive's third page). */
@@ -104,6 +104,12 @@ struct GhostPoint
  * @return the folders that exist, in order
  */
 std::vector<std::string> modDataDirs( const std::vector<std::string> &names );
+
+/**
+ * @brief Saves what the screen shows now (raylib's TakeScreenshot drops the folder and writes beside the program).
+ * @param[in] path  the PNG, its folder made if missing
+ */
+void saveScreen( const std::string &path );
 
 /** @brief The program. */
 class App
@@ -183,6 +189,7 @@ private:
     void stats( float dt );
     void mods( float dt );
     void archive( float dt );
+    void challenge( float dt );
 
     // Helpers.
     int  menu( const std::vector<std::string> &items, float x, float y, float w, int &sel, float size = 40.0f,
@@ -196,6 +203,7 @@ private:
     void endMission( bool won );
     void hud();
     void pauseMenu( float dt );
+    void photoMode( float dt );
     void campaignNext( const LevelDef &lv );
     void openEpisode( int ep, bool fresh );
     bool available( const std::string &name, int tier, bool hidden ) const;
@@ -217,6 +225,7 @@ private:
     void loadCatalog();
     const Texture2D *portrait( const std::string &from );
     int  quality() const;
+    int  fpsLimit() const;
     void bench();
     void saveReplay( bool won );
     void startReplay( const ReplayHeader &h );
@@ -233,8 +242,10 @@ private:
     void drawSchool();
     std::string ghostPath() const;
     void loadGhost();
-    void saveGhost();
+    void saveGhost( long long best );
     void ghostStep();
+    int  medalOf( bool won ) const;
+    std::string medalName( int medal ) const;
 
     Options          m_opt;
     Catalog          m_cat;
@@ -296,6 +307,14 @@ private:
     std::vector<std::string> m_newCubes;
     bool             m_secretFound = false;
     int              m_earned = 0;
+
+    // The photo mode (from the pause): the field stands, the view pans and zooms, no HUD.
+    bool             m_photo = false;
+    Vector2          m_photoCenter = { 0, 0 };
+    float            m_photoHalfH = 0.0f;
+    Vector2          m_viewCenter = { 0, 0 };   ///< the view before the photo mode
+    float            m_viewHalfH = 0.0f;
+    float            m_photoMsgT = 0.0f;         ///< "saved" shown this much longer
 
     // The boss fight's checkpoint: the field as it was when the boss came (a lost fight starts again from there).
     World            m_bossSave;
@@ -373,11 +392,20 @@ private:
 
     // The weekly flight and the ghost of the best flight of the same seed (daily and weekly).
     bool             m_weekly = false;
+    std::string      m_challenge;              ///< the challenge's code flown ("" none)
+    int              m_challengeStep = 0;      ///< 0 the choice, 1 a new code, 2 a code typed in
+    std::string      m_codeInput;              ///< the code being typed
+    int              m_codeRules = 0;          ///< a new challenge: with house rules (1) or without (0)
+    uint32_t         m_codeSeed = 1;
     int              m_rules = 0;              ///< the weekly flight's RuleE bits (0 otherwise)
     std::vector<GhostPoint> m_ghost;           ///< the best flight, a point every second step
     std::vector<GhostPoint> m_ghostRec;        ///< this flight's, the same way
     long long        m_ghostBest = 0;          ///< the best flight's score at its end
     int              m_ghostStep = 0;          ///< steps flown in this flight
+    long long        m_ghostBase = 0;          ///< the pilot's score when the flight began (an arcade mission's)
+    bool             m_ghostActive = false;    ///< this flight records a ghost (ghostPath() is not empty)
+    int              m_medal = 0;              ///< the mission's medal (results screen)
+    bool             m_medalNew = false;       ///< ... better than any before
 };
 
 }   // namespace zenith

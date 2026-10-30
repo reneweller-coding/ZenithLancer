@@ -40,7 +40,7 @@ def main():
     for n in names:
         out = os.path.join(OUT, n + ".png")
         r = subprocess.run([EXE, "--size", "1600x900", "--mute"] + SHOTS[n] + ["--shot", out], env=env,
-                           capture_output=True, text=True)
+                           capture_output=True, text=True, creationflags=0x08000000 if os.name == "nt" else 0)
         print("%-9s %s" % (n, "ok" if r.returncode == 0 and os.path.exists(out) else "FAILED " + r.stdout[-200:]),
               flush=True)
 

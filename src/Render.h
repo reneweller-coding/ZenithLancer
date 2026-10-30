@@ -119,6 +119,12 @@ public:
     /** @return a field point in the output picture's pixels */
     Vector2 toPixels( Vector2 field ) const;
 
+    /** @return the field point in the picture's middle (setView) */
+    Vector2 viewCenter() const { return m_center; }
+
+    /** @return half the height shown, in field units (setView) */
+    float viewHalfH() const { return m_halfH; }
+
     /** @return pixels per field unit (in the size given to init) */
     float pixelScale() const { return m_scale * m_up; }
 

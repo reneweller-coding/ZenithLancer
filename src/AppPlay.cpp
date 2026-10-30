@@ -110,6 +110,18 @@ void App::startBossRush()
     if ( m_cat.shield( "halo_s" ) ) m_carry[0].m_shield = "halo_s";
     m_lives[0] = 3;
     m_score[0] = 0;
+    // For two: the second pilot's own hull and guns, made the same way.
+    if ( m_players > 1 )
+    {
+        m_carry[1] = m_cat.m_arcadeShips[(size_t)m_pilot[1]].m_loadout;
+        m_carry[1].m_frontLv = 11;
+        if ( m_carry[1].m_rear.empty() ) m_carry[1].m_rear = "tailgun";
+        m_carry[1].m_rearLv = 9;
+        m_carry[1].m_gen = m_carry[0].m_gen;
+        m_carry[1].m_shield = m_carry[0].m_shield;
+        m_lives[1] = 3;
+        m_score[1] = 0;
+    }
     m_episode = 5;
     m_run = { "bossrush" };
     m_runIdx = 0;
@@ -139,6 +151,26 @@ void App::endMission( bool won )
         return;
     }
     for ( const std::string &c : m_last.m_cubes ) m_prof.m_cubes.insert( c );
+    // The mission's medal (campaign and arcade); the best one is kept.
+    m_medal = 0;
+    m_medalNew = false;
+    if ( won && m_world.m_level && !m_survival && m_mode != ModeE::BOSSRUSH )
+    {
+        m_medal = medalOf( won );
+        int &best = m_prof.m_medals[m_world.m_level->m_name];
+        m_medalNew = m_medal > best;
+        best = std::max( best, m_medal );
+        int golds = 0;
+        for ( const auto &[n, md] : m_prof.m_medals ) golds += md >= 3 ? 1 : 0;
+        m_feats.max( "gold", golds );
+        checkFeats();
+    }
+    // An arcade mission flown alone: its best flight becomes the ghost of the next one.
+    if ( won && m_mode == ModeE::ARCADE && !m_survival && m_players == 1 )
+    {
+        long long gain = m_world.m_players[0].m_score - m_ghostBase;
+        if ( gain > m_ghostBest || m_ghost.empty() ) saveGhost( gain );
+    }
     if ( m_mode == ModeE::CAMPAIGN )
     {
         if ( !won )
@@ -196,10 +228,10 @@ void App::endMission( bool won )
     {
         // The survival flight: its time counts; a day's or a week's flight keeps its best score, and its best
         // flight becomes the ghost the next flights of the same seed fly against.
-        if ( m_daily || m_weekly )
+        if ( m_daily || m_weekly || !m_challenge.empty() )
         {
-            long long &best = m_weekly ? m_prof.m_weekly[thisWeek()] : m_prof.m_daily[today()];
-            if ( m_score[0] > m_ghostBest || m_ghost.empty() ) saveGhost();
+            long long &best = !m_challenge.empty() ? m_prof.m_challenges[m_challenge] : m_weekly ? m_prof.m_weekly[thisWeek()] : m_prof.m_daily[today()];
+            if ( m_score[0] > m_ghostBest || m_ghost.empty() ) saveGhost( m_score[0] );
             best = std::max( best, m_score[0] );
         }
         m_scoreKey = diffKey();
@@ -214,7 +246,7 @@ void App::endMission( bool won )
         m_scoreKey = diffKey();
         m_name = "PILOT";
         m_nameCursor = 0;
-        go( m_prof.place( m_scoreKey, m_score[0] ) >= 0 ? ScreenE::NAME : ScreenE::SCORES );
+        go( m_prof.place( m_scoreKey, m_score[0] + ( m_players > 1 ? m_score[1] : 0 ) ) >= 0 ? ScreenE::NAME : ScreenE::SCORES );
         return;
     }
     go( ScreenE::RESULTS );
@@ -222,6 +254,11 @@ void App::endMission( bool won )
 
 void App::play( float dt )
 {
+    if ( m_photo )
+    {
+        photoMode( dt );
+        return;
+    }
     // The pause.
     if ( m_outroT < 0 && m_in.pause() && m_t > 0.2f )
     {
@@ -562,7 +599,7 @@ void App::hud()
         {
             size_t g = std::min( m_ghost.size() - 1, (size_t)( m_ghostStep / 2 ) );
             ui::text( "GEIST", x, y, 18, { 150, 215, 255, 255 } );
-            ui::text( fmt( m_ghost[g].m_score ), x + w, y - 2 * k, 22, { 150, 215, 255, 255 }, ui::AlignE::RIGHT );
+            ui::text( fmt( m_ghostBase + m_ghost[g].m_score ), x + w, y - 2 * k, 22, { 150, 215, 255, 255 }, ui::AlignE::RIGHT );
             y += 34 * k;
         }
         if ( m_mode == ModeE::CAMPAIGN && !m_practice )
@@ -718,6 +755,42 @@ void App::retryBoss()
     m_t = 0;
 }
 
+void App::photoMode( float dt )
+{
+    // The stick or the arrows pan, fire zooms in, focus zooms out, Tab / Y saves a picture without anything over it,
+    // Esc / B goes back to the pause.
+    PlayerInput in = m_in.player( 0, 1, nullptr, false );
+    float       zoom = in.m_fire ? -1.0f : in.m_focus ? 1.0f : 0.0f;
+    m_photoHalfH = clampf( m_photoHalfH * ( 1.0f + zoom * dt * 1.2f ), 70.0f, m_viewHalfH );
+    float speed = m_photoHalfH * 1.2f * dt;
+    m_photoCenter.x = clampf( m_photoCenter.x + in.m_x * speed, 0.0f, FieldW );
+    m_photoCenter.y = clampf( m_photoCenter.y + in.m_y * speed, 0.0f, FieldH );
+    m_view.setView( m_photoCenter, m_photoHalfH );
+    m_view.update( m_world, 0.0f );
+    m_view.draw( m_world, m_cat );
+    m_view.present( { 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() } );
+    bool shot = m_in.other();
+    if ( shot )
+    {
+        // The picture as it is now, before the hint is drawn over it.
+        saveScreen( userDir() + "shots/zenith_photo_" + std::to_string( (long long)( GetTime() * 1000 ) ) + ".png" );
+        m_audio.play( SfxE::CUBE );
+        m_photoMsgT = 2.0f;
+    }
+    m_photoMsgT = std::max( 0.0f, m_photoMsgT - dt );
+    float k = ui::k();
+    if ( m_photoMsgT > 0.0f )
+        ui::text( "Bild gespeichert", GetScreenWidth() * 0.5f, 40 * k, 30, ui::Good, ui::AlignE::CENTER );
+    else
+        hints( "Stick/Pfeile: schwenken    Feuer / Fokus: zoomen    Tab / Y: Bild speichern    Esc / B: zurück" );
+    if ( m_in.back() )
+    {
+        m_view.setView( m_viewCenter, m_viewHalfH );
+        m_photo = false;
+        m_paused = true;
+    }
+}
+
 void App::pauseMenu( float dt )
 {
     (void)dt;
@@ -729,8 +802,9 @@ void App::pauseMenu( float dt )
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     DrawRectangle( 0, 0, (int)W, (int)H, { 0, 0, 0, 140 } );
     ui::text( "PAUSE", W * 0.5f, H * 0.25f, 72, WHITE, ui::AlignE::CENTER );
-    std::vector<std::string> items = { "Weiter", "Optionen", m_replaying ? "Wiederholung beenden" : m_mode == ModeE::CAMPAIGN ? "Einsatz abbrechen" : "Spiel beenden" };
-    ui::panel( { W * 0.5f - 320 * k, H * 0.38f - 30 * k, 640 * k, 240 * k } );
+    std::vector<std::string> items = { "Weiter", "Optionen", m_replaying ? "Wiederholung beenden" : m_mode == ModeE::CAMPAIGN ? "Einsatz abbrechen" : "Spiel beenden",
+                                       "Fotomodus" };
+    ui::panel( { W * 0.5f - 320 * k, H * 0.38f - 30 * k, 640 * k, 300 * k } );
     int c = menu( items, W * 0.5f, H * 0.38f, 560 * k, m_pauseSel, 36, nullptr, true );
     if ( c == 0 || m_in.back() )
     {
@@ -742,6 +816,14 @@ void App::pauseMenu( float dt )
         m_back = ScreenE::PLAY;
         m_screen = ScreenE::OPTIONS;
         m_sel = 0;
+    }
+    else if ( c == 3 )
+    {
+        // The photo mode: the view as it is, to pan and zoom from.
+        m_photo = true;
+        m_viewCenter = m_photoCenter = m_view.viewCenter();
+        m_viewHalfH = m_photoHalfH = m_view.viewHalfH();
+        m_photoMsgT = 0.0f;
     }
     else if ( c == 2 && m_replaying )
     {

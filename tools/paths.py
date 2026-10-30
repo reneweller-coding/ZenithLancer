@@ -12,6 +12,8 @@ import os
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Child processes stay in the background: no console window pops up for them (Windows).
+NO_WINDOW = 0x08000000 if os.name == "nt" else 0
 _LOCAL = os.path.join(ROOT, "tools", "paths.local.json")
 _DEFAULTS = {"ZENITH_GPU_FLAGS": os.path.dirname(ROOT)}
 

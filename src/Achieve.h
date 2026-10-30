@@ -249,6 +249,8 @@ std::string achievementsPath( const std::string &dataDir );
  *        - weekly: add 1 for every weekly flight played to its end
  *        - seen: max with the enemies the archive knows (Profile::m_seen)
  *        - heard: max with the music pieces heard (Profile::m_heard)
+ *        - gold: max with the missions that have a gold medal (Profile::m_medals)
+ *        - challenges: add 1 for every challenge (a code's flight) played to its end
  * @return the counters' names
  */
 const std::vector<std::string> &counterKeys();

@@ -46,6 +46,8 @@ const std::vector<PaintDef> &paints()
         { "weekly", { 170, 110, 255, 255 }, 0.92f, "weekly_1", "Wochenviolett" },
         { "archive", { 120, 255, 200, 255 }, 0.92f, "seen_100", "Archivgrün" },
         { "zenith", { 255, 240, 205, 255 }, 0.92f, "campaign_zenith", "Zenitgold" },
+        { "bronze", { 205, 127, 50, 255 }, 0.92f, "gold_10", "Bronzeglanz" },
+        { "medal", { 255, 196, 40, 255 }, 0.92f, "gold_all", "Medaillengold" },
     };
     return list;
 }
@@ -582,8 +584,15 @@ void App::drawSchool()
 
 std::string App::ghostPath() const
 {
-    if ( !m_survival || !( m_daily || m_weekly ) ) return "";
-    return userDir() + "ghosts/" + ( m_weekly ? "weekly_" + thisWeek() : "daily_" + today() ) + ".bin";
+    // The daily and weekly flights (and the challenges) by their seed; an arcade mission flown alone by the mission
+    // and the difficulty.
+    if ( m_replaying || !m_world.m_level ) return "";
+    if ( m_survival && !m_challenge.empty() ) return userDir() + "ghosts/challenge_" + m_challenge + ".bin";
+    if ( m_survival && ( m_daily || m_weekly ) )
+        return userDir() + "ghosts/" + ( m_weekly ? "weekly_" + thisWeek() : "daily_" + today() ) + ".bin";
+    if ( m_mode == ModeE::ARCADE && !m_survival && m_players == 1 )
+        return userDir() + "ghosts/arcade_" + m_world.m_level->m_name + "_" + m_cat.difficulty( m_world.m_diffIndex ).m_name + ".bin";
+    return "";
 }
 
 void App::loadGhost()
@@ -593,8 +602,10 @@ void App::loadGhost()
     m_ghostRec.clear();
     m_ghostStep = 0;
     m_ghostBest = 0;
+    m_ghostBase = m_world.m_players[0].m_score;
     m_view.m_ghostOn = false;
     std::string path = ghostPath();
+    m_ghostActive = !path.empty();
     if ( path.empty() ) return;
     FILE *f = fopen( path.c_str(), "rb" );
     if ( !f ) return;
@@ -609,19 +620,21 @@ void App::loadGhost()
     fclose( f );
 }
 
-void App::saveGhost()
+void App::saveGhost( long long best )
 {
     std::string path = ghostPath();
     if ( path.empty() || m_ghostRec.empty() ) return;
     std::error_code e;
     fs::create_directories( fs::path( path ).parent_path(), e );
-    // The older ghosts of the same kind go: only today's and this week's are flown against.
-    std::string kind = m_weekly ? "weekly_" : "daily_";
-    for ( const auto &entry : fs::directory_iterator( fs::path( path ).parent_path(), e ) )
-        if ( entry.path().filename().string().rfind( kind, 0 ) == 0 && entry.path() != fs::path( path ) ) fs::remove( entry.path(), e );
+    // The older daily and weekly ghosts go: only today's and this week's are flown against.
+    if ( m_survival && m_challenge.empty() )
+    {
+        std::string kind = m_weekly ? "weekly_" : "daily_";
+        for ( const auto &entry : fs::directory_iterator( fs::path( path ).parent_path(), e ) )
+            if ( entry.path().filename().string().rfind( kind, 0 ) == 0 && entry.path() != fs::path( path ) ) fs::remove( entry.path(), e );
+    }
     FILE *f = fopen( path.c_str(), "wb" );
     if ( !f ) return;
-    long long best = m_score[0];
     uint32_t  n = (uint32_t)m_ghostRec.size();
     fwrite( "ZLG1", 1, 4, f );
     fwrite( &best, 8, 1, f );
@@ -633,14 +646,14 @@ void App::saveGhost()
 void App::ghostStep()
 {
     // Every second step a point of this flight; the best flight's point of the same moment on the field.
-    if ( !m_survival || !( m_daily || m_weekly ) || m_replaying ) return;
+    if ( !m_ghostActive || m_replaying ) return;
     const Player &p = m_world.m_players[0];
     if ( ( m_ghostStep & 1 ) == 0 )
     {
         GhostPoint g;
         g.m_x = p.m_alive ? (int16_t)std::lround( p.m_pos.x ) : (int16_t)-1;
         g.m_y = (int16_t)std::lround( p.m_pos.y );
-        g.m_score = (int32_t)std::min( p.m_score, (long long)INT32_MAX );
+        g.m_score = (int32_t)std::min( p.m_score - m_ghostBase, (long long)INT32_MAX );
         m_ghostRec.push_back( g );
     }
     ++m_ghostStep;

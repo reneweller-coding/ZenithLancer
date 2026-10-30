@@ -80,7 +80,7 @@ def encode(data, fs, path, quality):
     try:
         sf.write(tmp, data.astype(np.float32), fs, subtype="FLOAT")
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", tmp, "-c:a", "libvorbis", "-q:a", str(quality),
-                        path], check=True)
+                        path], check=True, creationflags=paths.NO_WINDOW)
     finally:
         os.remove(tmp)
 
@@ -88,7 +88,7 @@ def encode(data, fs, path, quality):
 def nice_run(cmd, cwd, log):
     """Runs the generator below normal priority, its output into a log file."""
     env = dict(os.environ, PYTHONUTF8="1")
-    flags = 0x00004000 if os.name == "nt" else 0   # BELOW_NORMAL_PRIORITY_CLASS
+    flags = 0x00004000 | paths.NO_WINDOW if os.name == "nt" else 0   # BELOW_NORMAL_PRIORITY_CLASS
     with open(log, "w", encoding="utf-8") as out:
         r = subprocess.run(cmd, cwd=cwd, env=env, stdout=out, stderr=subprocess.STDOUT, creationflags=flags)
     if r.returncode:
