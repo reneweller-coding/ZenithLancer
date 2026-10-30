@@ -60,12 +60,35 @@ void App::startBossRush()
     rush.m_theme = "space";
     rush.m_music = "boss";
     rush.m_scroll = 40;
-    std::vector<const EnemyDef *> bosses;
-    for ( const auto &[n, e] : m_cat.m_enemies )
-        if ( e.m_kind == EnemyKindE::BOSS ) bosses.push_back( &e );
-    float t = 2.0f;
-    for ( const EnemyDef *b : bosses )
+    // The great bosses: those of each episode's middle, its last but one and its last mission, in order, each
+    // episode over its own ground.
+    std::vector<std::pair<const EnemyDef *, std::string>> bosses;
+    const char *grounds[] = { "space", "foundry", "ocean", "asteroid", "jungle", "corona" };
+    for ( const auto &[id, ep] : m_cat.m_episodes )
+        for ( const char *m : { "_05", "_09", "_10" } )
+            if ( const LevelDef *lv = m_cat.level( "e" + std::to_string( id ) + m ) )
+                for ( const LevelEvent &ev : lv->m_events )
+                    if ( ev.m_type == "boss" )
+                        if ( const EnemyDef *b = m_cat.enemy( ev.m_p.arg( 0 ) ) )
+                        {
+                            bool seen = false;
+                            for ( const auto &have : bosses ) seen = seen || have.first == b;
+                            if ( !seen ) bosses.push_back( { b, id >= 1 && id <= 5 ? grounds[id] : "space" } );
+                        }
+    float       t = 2.0f;
+    std::string ground = "space";
+    for ( const auto &[b, place] : bosses )
     {
+        if ( place != ground )
+        {
+            LevelEvent th;
+            th.m_t = t;
+            th.m_type = "theme";
+            th.m_p.m_key = "theme";
+            th.m_p.m_args = { place };
+            rush.m_events.push_back( th );
+            ground = place;
+        }
         LevelEvent w;
         w.m_t = t;
         w.m_type = "warn";
@@ -92,9 +115,13 @@ void App::startBossRush()
     rush.m_events.push_back( end );
     rush.m_length = t + 5;
     m_cat.m_levels["bossrush"] = rush;
+    // The pilot's own guns at full power, with the strongest generator and shield to carry them.
     m_carry[0] = m_cat.m_arcadeShips[(size_t)m_pilot[0]].m_loadout;
-    m_carry[0].m_frontLv = 9;
-    m_carry[0].m_rearLv = 7;
+    m_carry[0].m_frontLv = 11;
+    if ( m_carry[0].m_rear.empty() ) m_carry[0].m_rear = "tailgun";
+    m_carry[0].m_rearLv = 9;
+    if ( m_cat.generator( "singularity" ) ) m_carry[0].m_gen = "singularity";
+    if ( m_cat.shield( "halo_s" ) ) m_carry[0].m_shield = "halo_s";
     m_lives[0] = 3;
     m_score[0] = 0;
     m_episode = 5;
