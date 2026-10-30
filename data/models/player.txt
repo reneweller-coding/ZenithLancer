@@ -1,0 +1,38 @@
+# The pilots' hulls and sidekicks. Nose towards -z.
+
+model lancer
+  part hull len=40 wid=11 hgt=7 shape=dart color=#c8d0dc
+  part hull len=18 wid=6 hgt=4 shape=cigar z=10 y=-1 x=9 color=#7a8494 mirror=1
+  part wing span=19 root=17 tip=5 sweep=11 z=6 thick=1.6 dihedral=-1 color=#aab4c4 stripe=#3a8adc
+  part fin h=7 root=9 tip=4 sweep=4 z=13 y=2 color=#9aa4b4
+  part dome rx=3 ry=2.6 rz=7 z=-5 y=2.6 color=#48c8ff emit=0.5
+  part engine r=2.6 len=7 x=9 z=19 glow=#58b8ff color=#5a6474
+  part engine r=3.2 len=6 z=20 glow=#80d8ff color=#5a6474
+  part gun r=0.9 len=12 x=4 z=-14 color=#4a5260
+  part light r=1 x=19 z=13 color=#ff4040
+  part greeble n=6 w=6 d=12 z=4 y=3 size=1.4 seed=3 color=#8a94a4
+
+model kestrel
+  part hull len=36 wid=8 hgt=6 shape=needle color=#d8dce4
+  part wing span=22 root=12 tip=3 sweep=14 z=4 thick=1.2 color=#b8bec8 stripe=#e8a040
+  part wing span=9 root=8 tip=3 sweep=4 z=-8 thick=1 color=#a8aeb8
+  part dome rx=2.4 ry=2.2 rz=6 z=-4 y=2.2 color=#ffc860 emit=0.5
+  part engine r=2.4 len=8 z=18 glow=#ffb060 color=#6a6e76
+  part fin h=6 root=7 tip=3 sweep=4 x=4 z=13 roll=-20 mirror=1 color=#a8aeb8
+  part light r=0.9 x=21 z=10 color=#ffd060
+
+model pip
+  part sphere r=4 color=#9aa4b4
+  part ring r=5.5 thick=0.8 color=#5adca8 emit=0.6
+  part gun r=0.8 len=7 z=-5 color=#4a5260
+  part light r=1.2 z=-2 y=3 color=#80ffd0
+
+model spark
+  part crystal r=3 len=9 color=#ffd870 emit=0.35
+  part ring r=4.5 thick=0.6 color=#fff0b0 emit=0.8 group=spin spin=360
+
+model target
+  part disc r=14 h=4 color=#5a6270
+  part ring r=12 thick=1.6 y=2 color=#ff6040 emit=0.7
+  part disc r=6 h=6 color=#e0e4ea
+  part light r=2 y=4 color=#ff6040

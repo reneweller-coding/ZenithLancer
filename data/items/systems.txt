@@ -1,0 +1,58 @@
+# Generators, shields and specials.
+
+generator cell
+  title "Zellblock"
+  desc "Ein Stapel Batteriezellen. Reicht für eine Kanone und einen dünnen Schild."
+  price 500
+  tier 1
+  power 34
+  capacity 60
+
+generator dynamo
+  title "Dynamo"
+  desc "Ein kleiner Turbinengenerator. Spürbar mehr Leistung, gerade genug für Front und Heck."
+  price 2400
+  tier 1
+  power 50
+  capacity 80
+
+shield veil
+  title "Schleier"
+  desc "Ein dünnes Feld, das ein paar Treffer schluckt und langsam nachwächst."
+  price 400
+  tier 1
+  max 10
+  regen 1.5
+  cost 3
+  delay 1.4
+
+shield ward
+  title "Schutzwall"
+  desc "Doppelt so stark wie der Schleier und schneller wieder da. Zieht dafür mehr Energie."
+  price 2200
+  tier 1
+  max 18
+  regen 2.5
+  cost 3
+  delay 1.2
+
+special nova_s
+  title "Nova"
+  desc "Eine Druckwelle um das Schiff: löscht feindliche Kugeln in der Nähe und trifft alles in Reichweite."
+  price 800
+  tier 1
+  kind nova
+  charges 2
+  radius 260
+  power 80
+  color #8ad8ff
+
+special barrier
+  title "Barriere"
+  desc "Vier Sekunden lang prallt alles am Schiff ab."
+  price 900
+  tier 1
+  kind barrier
+  charges 2
+  time 4
+  color #a0e8ff

@@ -1,0 +1,23 @@
+# Sidekicks: they fly beside the ship and fire with the trigger (their shot lines use level 1).
+
+sidekick pip
+  title "Pip-Drohne"
+  desc "Eine kleine Drohne mit einem einzigen Lauf. Schießt geradeaus, immer, ohne zu fragen."
+  price 500
+  tier 1
+  model pip
+  place fixed
+  aim forward
+  rate 4
+  shot row speed=900 dmg=4 size=3.5 color=#90ffd0 sprite=pulse
+
+sidekick spark
+  title "Funke"
+  desc "Billig, flink und mit eigenem Zielsucher: schießt auf den nächsten Gegner, wo immer er ist."
+  price 350
+  tier 1
+  model spark
+  place orbit
+  aim nearest
+  rate 3
+  shot row speed=850 dmg=3 size=3 color=#ffe080 sprite=spark

@@ -1,0 +1,21 @@
+# The arcade's pilots: a hull with its starting gear (power-ups and gun pickups change it in flight).
+
+pilot lancer
+  title "Lancer"
+  desc "Ausgewogen: solide Panzerung, die Pulslanze und ein Heckschütze."
+  ship lancer
+  front pulse 1
+  rear tailgun 1
+  gen dynamo
+  shield ward
+  special nova_s
+
+pilot kestrel
+  title "Turmfalke"
+  desc "Schnell und zerbrechlich, mit der gefräßigen Drehkanone und einem Funken als Begleiter."
+  ship kestrel
+  front vulcan 1
+  side spark -
+  gen dynamo
+  shield veil
+  special barrier

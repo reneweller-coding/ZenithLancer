@@ -1,0 +1,14 @@
+episode 1
+  title "Glutgürtel"
+  subtitle "Zenith-Station fällt in einer Nacht. Mit dem Lancer-Prototyp fliehst du zu den Gießereien von Pyra – und das Tessellat ist schon dort."
+  first e1_01
+  intro e1_intro
+  ending e1_ending
+  credits 3000
+  ship lancer
+  front pulse 1
+  side - -
+  gen cell
+  shield veil
+  special nova_s
+  arcade e1_01

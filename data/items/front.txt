@@ -1,0 +1,36 @@
+# Front guns. Each shot line fires at the levels lv=a-b; a..b values grow over that span (docs/DATA.md).
+
+front pulse
+  title "Pulslanze"
+  desc "Der Standard des Lancer-Programms: helle Bolzen, die mit jeder Stufe breiter und schneller werden. Verlässlich, sparsam, nie verkehrt."
+  price 400
+  tier 1
+  rate 6..8.5
+  energy 3..7
+  sound pulse
+  shot row lv=1-3 n=1..2 dx=12 speed=900 dmg=5..6 size=4 color=#78d0ff sprite=pulse
+  shot row lv=4-7 n=2..3 dx=12 speed=950 dmg=6..7 size=4 color=#78d0ff sprite=pulse
+  shot row lv=8-11 n=3..4 dx=11 speed=1000 dmg=7..8 size=4.5 color=#a0e0ff sprite=pulse
+  shot fan lv=6-11 n=2 spread=14..24 speed=900 dmg=4..6 size=3.5 color=#78d0ff sprite=pulse every=2
+
+front scatter
+  title "Streukanone"
+  desc "Ein Fächer aus kurzen Bolzen. Deckt den halben Himmel ab, verliert aber auf Distanz an Biss."
+  price 900
+  tier 1
+  rate 4.5..6.5
+  energy 4..9
+  sound spread
+  shot fan lv=1-11 n=3..9 spread=24..70 speed=780 dmg=4..6 size=4 life=0.85 color=#ffd070 sprite=bolt
+  shot row lv=5-11 n=1..2 dx=14 speed=900 dmg=5..8 size=4 color=#fff0b0 sprite=pulse every=2
+
+front vulcan
+  title "Drehkanone"
+  desc "Ein rotierender Lauf, der kleine Geschosse in einem dichten Strom ausspuckt. Hohe Feuerrate, wenig Streuung, hungrig nach Energie."
+  price 1400
+  tier 1
+  rate 12..20
+  energy 2..4
+  sound pulse
+  shot burst lv=1-11 n=1..2 spread=3..6 speed=1050 dmg=2.6..4.2 size=3 color=#fff4c0 sprite=needle_p
+  shot side lv=7-11 n=1 angle=8 speed=1000 dmg=2..3 size=3 color=#ffe0a0 sprite=needle_p every=2

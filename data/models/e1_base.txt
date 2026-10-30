@@ -1,0 +1,18 @@
+# Episode 1: the dock guardian.
+
+model e1_dockwarden
+  part hull len=110 wid=70 hgt=22 shape=hex round=3 color=#3e3a4c
+  part hull len=60 wid=24 hgt=16 shape=box z=10 y=8 color=#4e4860
+  part wing span=40 root=60 tip=28 sweep=12 x=30 thick=6 color=#34303e stripe=#c040ff
+  part crystal r=12 len=30 y=18 z=-10 color=#e060ff emit=0.8
+  part ring r=24 thick=2.5 y=14 z=-10 color=#ff60e0 emit=0.6 group=spin spin=60
+  part engine r=6 len=14 x=22 z=56 glow=#ff50d0 color=#2a2436
+  part engine r=8 len=14 z=58 glow=#ff70e0 color=#2a2436
+  part greeble n=40 w=60 d=90 y=11 size=4 seed=21 color=#5a5468
+  part light r=3 x=50 z=-30 color=#ff4060 mirror=1
+
+model e1_dock_gun
+  part disc r=12 h=6 seg=8 color=#4a4458
+  part box w=12 h=6 d=14 y=5 color=#5a5468 group=head pivot=0,0
+  part gun r=1.8 len=18 x=3 y=7 z=-10 color=#2a2436 group=head pivot=0,0 mirror=1
+  part light r=1.8 y=9 color=#ff50d0 group=head pivot=0,0

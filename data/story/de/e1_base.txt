@@ -1,0 +1,51 @@
+# Episode 1: the opening and the first mission (the Episode 1 author writes the rest in e1.txt).
+
+intro e1_intro
+  title "Die Nacht von Zenith"
+  from "Solenne-System, 2614"
+> Über dem Nordpol der Sonne Solenne hängt Zenith-Station, die größte Werft des Systems. Hier wurde der Lancer gebaut: ein Prototyp mit offenen Waffenschächten, für den es noch keinen Einsatz gab.
+>
+> Heute Nacht kommt das Tessellat. Der Terraforming-Schwarm, den das Meridian-Direktorat gebaut hat, um tote Monde neu zu formen, formt jetzt Zenith-Station. Dock um Dock wird zu schimmerndem Gitter.
+>
+> Testpilotin Nadia Vey sitzt im einzigen Schiff, das noch startklar ist. An Bord: ORRIN, der Bordgeist des Lancers. Vor ihr: ein Hangartor, das sich nicht mehr öffnen will.
+
+briefing e1_01_brief
+  title "Die Nacht von Zenith"
+  from "ORRIN"
+> Hangar 9 ist abgeriegelt, die Docks gehören dem Schwarm. Der einzige Weg hinaus führt über die Werftdecks bis zum äußeren Dockring. Dort wartet etwas Großes. Ich empfehle, nicht stehen zu bleiben.
+
+radio e1_01_r1
+  from "ORRIN"
+> Triebwerke heiß, Waffen frei. Nadia, die Station spricht nicht mehr mit uns. Sie singt.
+
+radio e1_01_r2
+  from "ORRIN"
+> Kanonenboote des Schwarms. Sie bauen sich aus den Trümmern der Werft selbst neu. Effizient. Unhöflich.
+
+radio e1_01_r3
+  from "Notruf, Deck 4"
+> ... an alle Schiffe ... das Direktorat hat seine Offiziere gestern evakuiert ... gestern ...
+
+radio e1_01_r4
+  from "ORRIN"
+> Der Dockring kommt in Sicht. Volle Schubkraft, ich halte die Sensoren offen.
+
+radio e1_01_r5
+  from "ORRIN"
+> Das ist der Dockwächter. Erst die Geschütze an seinen Flanken – vorher kommst du nicht an seinen Kern.
+
+cube e1_c01
+  title "Schichtprotokoll, Dock 12"
+  from "Vorarbeiterin T. Ansel"
+> 03:10 – Die Schweißdrohnen auf Dock 12 arbeiten außerhalb des Plans. Niemand hat sie gestartet. Sie bauen nichts, was in unseren Zeichnungen steht: Waben, Gitter, alles in derselben Farbe wie Nordlicht.
+>
+> 03:40 – Habe das Direktorat angefunkt. Antwort: „Bekanntes Verhalten, kein Eingriff nötig.“ Bekannt? Seit wann?
+>
+> 04:05 – Die Waben wachsen jetzt an der Außenhülle. Ich schicke meine Leute zu den Kapseln.
+
+cube e1_c02
+  title "Werbetafel, Hangar 9"
+  from "Lancer-Programm"
+> DER LANCER – Ein Rumpf, tausend Möglichkeiten. Modulare Waffenschächte für Front und Heck, zwei Andockpunkte für Begleitdrohnen, austauschbarer Generator, austauschbares Schildfeld. Gebaut auf Zenith, gebaut für die Zukunft.
+>
+> (Darunter, mit Filzstift: „Und wer bezahlt die Module? – Q.“)

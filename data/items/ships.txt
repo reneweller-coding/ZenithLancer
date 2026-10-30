@@ -1,0 +1,23 @@
+# Hulls.
+
+ship lancer
+  title "Lancer"
+  desc "Der Prototyp von Zenith-Station: ausgewogen, robust, mit Platz für alles, was Quill verkauft."
+  price 2000
+  tier 1
+  model lancer
+  armor 24
+  speed 340
+  accel 2800
+  radius 8
+
+ship kestrel
+  title "Turmfalke"
+  desc "Leicht und schnell. Weniger Panzerung, dafür weicht er allem aus, was langsamer ist als ein Gedanke."
+  price 3500
+  tier 1
+  model kestrel
+  armor 18
+  speed 410
+  accel 3400
+  radius 7

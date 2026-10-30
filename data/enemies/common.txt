@@ -1,0 +1,108 @@
+# Enemies every episode may use (episodes add their own, prefixed eN_).
+
+enemy drone
+  title "Drohne"
+  model drone
+  hp 6
+  radius 12
+  score 25
+  speed 170
+  path sine amp=60 freq=0.5
+  face down
+  fire aimed every=2.6 delay=1.0 speed=200 bullet=orb color=#ff60e0 diff=1
+  drop credits 0.15 value=30
+  explode small
+  contact 12
+
+enemy dart
+  title "Pfeil"
+  model dart
+  hp 10
+  radius 13
+  score 35
+  speed 230
+  path dive turn=70
+  face move
+  fire aimed every=2.0 delay=0.7 speed=230 bullet=needle color=#ff70f0 cap=2
+  drop credits 0.15 value=40
+  explode small
+  contact 15
+
+enemy gunship
+  title "Kanonenboot"
+  model gunship
+  hp 70
+  radius 24
+  score 150
+  speed 90
+  path hover stop=180 wait=5 amp=80 freq=0.25 exit=0
+  face down
+  fire fan n=5 spread=16 every=2.2 delay=1.2 speed=190 bullet=orb color=#ff50d0
+  fire aimed n=3 spread=6 every=3.1 delay=2.0 speed=260 bullet=needle color=#ffa0ff x=8 z=20 mirror=1
+  drop credits 1 value=100
+  drop power 0.35 mode=arcade
+  explode medium
+  contact 25
+
+enemy turret
+  title "Geschützturm"
+  model turret
+  kind ground
+  hp 40
+  radius 18
+  score 80
+  face down
+  aimhead 1
+  fire aimed every=2.4 delay=1.0 speed=210 bullet=orb color=#ff60c0
+  drop credits 0.5 value=50
+  explode medium
+
+enemy tank
+  title "Panzer"
+  model tank
+  kind ground
+  hp 60
+  radius 20
+  score 100
+  speed 40
+  face fixed
+  aimhead 1
+  fire aimed n=2 spread=8 every=2.8 delay=1.2 speed=230 bullet=big color=#ff8040
+  drop credits 0.5 value=60
+  explode medium
+
+enemy mine
+  title "Mine"
+  model mine
+  hp 14
+  radius 13
+  score 30
+  speed 60
+  path drift
+  face spin
+  fire ring n=8 every=99 delay=4 speed=140 bullet=orb color=#ff4060 cap=1
+  explode small
+  contact 30
+
+enemy rock
+  title "Felsbrocken"
+  model rock
+  kind obstacle
+  hp 120
+  radius 22
+  score 20
+  speed 70
+  path drift
+  face spin
+  drop credits 0.4 value=60
+  explode medium
+  contact 30
+
+enemy target
+  title "Zielscheibe"
+  model target
+  hp 60
+  radius 16
+  score 0
+  face down
+  path still

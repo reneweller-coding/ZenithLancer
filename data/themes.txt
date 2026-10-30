@@ -1,0 +1,222 @@
+# The grounds and skies of the missions (docs/DATA.md, "Themes").
+
+theme space
+  sky #03040a
+  fog #05060c 0.0
+  sun -0.5 -0.7 -0.5
+  suncolor #fff2e0 1.3
+  ambient #4a5a80 #10101a
+  space 1
+  nebula #3a1e6e #12507a
+  exposure 1.0
+  bloom 1.0
+
+theme asteroid
+  sky #04050a
+  fog #06070c 0.0
+  sun -0.6 -0.6 -0.5
+  suncolor #ffe8c8 1.35
+  ambient #50586a #141018
+  space 1
+  rocks 0.7
+  ground #3a3430 #5a5048 #7a6e62 #a09484
+  nebula #5a3a20 #203a5a
+  bloom 0.9
+
+theme nebula
+  sky #0a0614
+  fog #0a0614 0.0
+  sun -0.4 -0.8 -0.4
+  suncolor #f0d8ff 1.2
+  ambient #6a4a90 #180c20
+  space 1
+  rocks 0.2
+  ground #403048 #605070 #807090 #b0a0c0
+  nebula #8a2a90 #2a4aa0
+  bloom 1.1
+
+theme station
+  sky #05070c
+  fog #0a1018 0.0012
+  sun -0.3 -0.85 -0.45
+  suncolor #e8f0ff 1.25
+  ambient #607090 #181c24
+  relief 50
+  scale 0.003
+  plates 1
+  ground #2c3038 #3a404a #4a525e #6a7484
+  glow #40c8ff 0.35
+  props #5a6270
+
+theme range
+  sky #05070c
+  fog #0a1018 0.0008
+  sun -0.3 -0.85 -0.45
+  suncolor #e8f0ff 1.25
+  ambient #607090 #181c24
+  relief 30
+  scale 0.003
+  plates 1
+  ground #22262e #2e343e #3a424e #50586a
+  glow #40c8ff 0.25
+  props #4a5260
+
+theme gallery
+  sky #141820
+  fog #141820 0.0
+  sun -0.45 -0.75 -0.5
+  suncolor #ffffff 1.3
+  ambient #708098 #202428
+  space 1
+
+theme lava
+  sky #120604
+  fog #3a0c06 0.0016
+  sun -0.4 -0.8 -0.3
+  suncolor #ffd2a0 1.25
+  ambient #6a4a40 #2a1008
+  relief 90
+  scale 0.0035
+  ridge 0.55
+  ground #1e1210 #36221a #56382a #7a6050
+  water -0.32 #ff4a0a 0.95
+  glow #ff6a20 0.6
+  craters 0.12
+
+theme desert
+  sky #1c140c
+  fog #8a6a48 0.0011
+  sun -0.55 -0.7 -0.3
+  suncolor #fff0d0 1.4
+  ambient #8a7a68 #3a2a1a
+  relief 70
+  scale 0.0028
+  ridge 0.35
+  ground #7a5a38 #9a7448 #b88e5a #d8b884
+  craters 0.18
+  city 0.05
+  props #8a7a6a
+
+theme foundry
+  sky #0e0806
+  fog #2a120a 0.0014
+  sun -0.35 -0.85 -0.35
+  suncolor #ffc890 1.2
+  ambient #5a4038 #1a0c08
+  relief 45
+  scale 0.003
+  plates 0.6
+  ground #241a16 #34261e #48362a #64503e
+  water -0.4 #ff5a10 0.9
+  glow #ff7a30 0.45
+  city 0.35
+  props #4a3c34
+
+theme ocean
+  sky #0a1420
+  fog #4a6a88 0.0012
+  sun -0.5 -0.75 -0.35
+  suncolor #fff6e8 1.35
+  ambient #7890b0 #1a2838
+  relief 110
+  scale 0.0022
+  ground #c8b888 #6a8a48 #4a6a3a #9a9a90
+  water 0.15 #144a7a 0.0
+  city 0.08
+  props #b0b8c0
+  clouds #ffffff 0.45
+
+theme storm
+  sky #060a10
+  fog #283440 0.0016
+  sun -0.3 -0.9 -0.3
+  suncolor #b8c8e0 0.9
+  ambient #4a5a70 #10161e
+  relief 100
+  scale 0.0025
+  ground #6a6a5a #3a4a3a #4a5a4a #8a8a88
+  water 0.25 #0a2a44 0.0
+  props #6a7480
+  clouds #a8b4c4 0.85
+
+theme ice
+  sky #0c1420
+  fog #a8c0d8 0.0011
+  sun -0.5 -0.7 -0.4
+  suncolor #f0f8ff 1.35
+  ambient #90a8c8 #2a3448
+  relief 80
+  scale 0.0032
+  ridge 0.6
+  ground #3a5a7a #8aa8c8 #c8dcf0 #ffffff
+  water -0.25 #0e2a44 0.15
+  craters 0.08
+
+theme city
+  sky #080a12
+  fog #3a4458 0.0012
+  sun -0.4 -0.8 -0.4
+  suncolor #fff0dc 1.25
+  ambient #6a7898 #181c28
+  relief 25
+  scale 0.002
+  ground #3a3e46 #4a4e58 #5a5e68 #7a7e88
+  water -0.6 #102a4a 0.0
+  city 0.85
+  props #6a7484
+  glow #ffd890 0.15
+
+theme jungle
+  sky #0a120a
+  fog #2a4a30 0.0015
+  sun -0.45 -0.75 -0.45
+  suncolor #f0ffd8 1.25
+  ambient #6a8a68 #142014
+  relief 75
+  scale 0.003
+  ground #2a3a1a #3a5a24 #4a6a2a #8a8a6a
+  water -0.35 #1a3a2a 0.05
+  trees 0.75 #2a6a2a
+  clouds #d8f0d8 0.25
+
+theme hive
+  sky #0e060e
+  fog #3a1430 0.0016
+  sun -0.4 -0.8 -0.4
+  suncolor #ffd8f0 1.1
+  ambient #7a4a70 #200a1a
+  relief 70
+  scale 0.004
+  ridge 1
+  ground #3a1430 #5a2448 #7a3a5a #a86a7a
+  water -0.3 #60ff90 0.7
+  glow #80ff60 0.5
+  trees 0.35 #6a2a5a
+
+theme corona
+  sky #2a0c02
+  fog #ff6a10 0.0011
+  sun -0.2 -0.95 -0.2
+  suncolor #fff0c0 1.5
+  ambient #ffa860 #ff4a10
+  relief 60
+  scale 0.0026
+  ridge 0.7
+  ground #ff6a10 #ff9a20 #ffc040 #fff0a0
+  water 0.0 #ff7a10 0.85
+  glow #fff4c0 0.7
+  exposure 0.85
+  bloom 1.2
+
+theme lattice
+  sky #06040c
+  fog #1a0c24 0.0013
+  sun -0.4 -0.8 -0.4
+  suncolor #e8d8ff 1.2
+  ambient #5a4a7a #120a1a
+  relief 55
+  scale 0.0035
+  plates 1
+  ground #1a1424 #261e34 #342a48 #4a3e66
+  glow #ff40d0 0.6
+  props #3a3050

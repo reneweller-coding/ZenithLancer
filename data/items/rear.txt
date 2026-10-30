@@ -1,0 +1,14 @@
+# Rear guns: two modes each (the mode button switches); shot lines take mode=1 or mode=2.
+
+rear tailgun
+  title "Heckschütze"
+  desc "Zwei Läufe am Heck. Feuert entweder nach hinten auf Verfolger oder schräg zur Seite."
+  price 600
+  tier 1
+  rate 4..6
+  energy 2..5
+  sound pulse
+  mode1 "Heck"
+  mode2 "Seiten"
+  shot back lv=1-11 mode=1 n=1..3 spread=0..30 speed=800 dmg=4..7 size=4 color=#ffb070 sprite=pulse
+  shot side lv=1-11 mode=2 n=1..2 dx=12 angle=60..45 speed=800 dmg=4..6 size=4 color=#ffb070 sprite=pulse

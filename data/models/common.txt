@@ -1,0 +1,48 @@
+# Models the whole game shares: the Tessellate's common drones and machines. Nose towards -z (the game turns
+# them to fly down the screen).
+
+model drone
+  part crystal r=6 len=14 color=#3a3448
+  part ring r=8 thick=1.2 color=#c040ff emit=0.8 group=spin spin=240
+  part light r=1.8 z=-5 y=2 color=#ff60e0
+
+model dart
+  part hull len=28 wid=9 hgt=5 shape=arrow color=#4a4258
+  part wing span=12 root=12 tip=2 sweep=9 z=4 thick=1.2 color=#3a3448 stripe=#d050ff
+  part engine r=2 len=6 z=13 glow=#ff50d0 color=#2a2436
+  part light r=1.4 z=-8 y=2 color=#ff70f0
+
+model gunship
+  part hull len=46 wid=20 hgt=10 shape=hex round=3 color=#4a4458
+  part hull len=26 wid=7 hgt=6 shape=cigar x=15 z=4 color=#3a3448 mirror=1
+  part wing span=16 root=18 tip=8 sweep=6 x=10 z=2 thick=2 color=#3a3448
+  part engine r=3 len=8 x=15 z=19 glow=#ff50d0 color=#2a2436
+  part gun r=1.4 len=14 x=8 z=-20 color=#2a2436
+  part crystal r=4 len=10 y=5 z=-4 color=#d050ff emit=0.7
+  part greeble n=10 w=14 d=24 y=5 z=6 size=2 seed=11 color=#5a5468
+
+model turret
+  part disc r=14 h=5 seg=8 color=#4a4458
+  part box w=16 h=6 d=16 y=4 taper=0.4 color=#5a5468 group=head pivot=0,0
+  part gun r=1.6 len=18 x=3 y=6 z=-10 color=#2a2436 group=head pivot=0,0 mirror=1
+  part light r=1.6 y=8 z=2 color=#ff50d0 group=head pivot=0,0
+
+model tank
+  part box w=22 h=7 d=30 color=#4a4458
+  part box w=5 h=6 d=32 x=12 color=#2a2430 mirror=1
+  part dome rx=9 ry=5 rz=9 y=3 color=#5a5468 group=head pivot=0,0
+  part gun r=1.8 len=20 y=5 z=-12 color=#2a2436 group=head pivot=0,0
+  part light r=1.4 y=8 z=2 color=#ff50d0 group=head pivot=0,0
+
+model mine
+  part sphere r=7 seg=8 color=#3a3040
+  part spike r=1.5 len=8 z=-7 color=#5a5068
+  part spike r=1.5 len=8 z=-7 rot=90 color=#5a5068
+  part spike r=1.5 len=8 z=-7 rot=180 color=#5a5068
+  part spike r=1.5 len=8 z=-7 rot=270 color=#5a5068
+  part light r=2 y=5 color=#ff4060
+
+model rock
+  part sphere rx=22 ry=14 rz=18 seg=7 color=#5a5048 noise=0.18
+  part sphere rx=12 ry=9 rz=10 seg=6 x=10 z=8 y=3 color=#4a4038 noise=0.18
+  part sphere rx=9 ry=8 rz=9 seg=5 x=-12 z=-6 y=2 color=#6a6054 noise=0.18
