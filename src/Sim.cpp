@@ -551,7 +551,15 @@ void World::runEvent( const LevelEvent &ev )
         {
             Line pl = p;
             pl.m_kv["path"] = p.str( "path", d->m_path.m_key );
-            spawn( d, { p.num( "x", FieldW * 0.5f ), p.num( "y", -120.0f ) }, &pl );
+            int   first = spawn( d, { p.num( "x", FieldW * 0.5f ), p.num( "y", -120.0f ) }, &pl );
+            float hp = p.num( "hp", 1.0f );
+            // hp=: the boss and its parts (all spawned with it) hold that much more or less.
+            if ( first >= 0 && hp != 1.0f )
+                for ( size_t i = (size_t)first; i < m_enemies.size(); ++i )
+                {
+                    m_enemies[i].m_hp *= hp;
+                    m_enemies[i].m_hpMax *= hp;
+                }
             m_hold = true;
             emit( EvE::BOSSSTART, { FieldW * 0.5f, 0 }, 0, 0, d->m_name );
         }
@@ -2397,12 +2405,12 @@ PlayerInput autopilot( const World &w, int i )
 }
 
 SimResult simulate( const Catalog &cat, const LevelDef &level, int difficulty, const Loadout &load, uint32_t seed,
-                    bool immortal )
+                    bool immortal, ModeE mode, int lives )
 {
     World *w = new World();
-    w->begin( &cat, &level, ModeE::CAMPAIGN, difficulty, seed );
+    w->begin( &cat, &level, mode, difficulty, seed );
     w->m_immortal = immortal;
-    w->addPlayer( 0, load, 0 );
+    w->addPlayer( 0, load, lives );
     SimResult r;
     r.m_level = level.m_name;
     float limit = level.m_length + 400.0f;
@@ -2412,6 +2420,7 @@ SimResult simulate( const Catalog &cat, const LevelDef &level, int difficulty, c
         bool held = w->m_hold;
         w->step( in );
         if ( held ) r.m_bossTime += Dt;
+        if ( r.m_firstDeath < 0 && w->m_stats.m_deaths > 0 ) r.m_firstDeath = w->m_clock;
     }
     r.m_won = w->finished();
     r.m_time = w->m_clock;
@@ -2423,6 +2432,8 @@ SimResult simulate( const Catalog &cat, const LevelDef &level, int difficulty, c
     r.m_cubes = (int)w->m_stats.m_cubes.size();
     r.m_keys = (int)w->m_stats.m_keys.size();
     r.m_plans = (int)w->m_stats.m_plans.size();
+    r.m_timeline = w->m_time;
+    r.m_bosses = w->m_stats.m_bossKills;
     delete w;
     return r;
 }

@@ -445,6 +445,9 @@ struct SimResult
     int         m_deaths = 0;
     float       m_bossTime = 0.0f;   ///< seconds the bosses held the timeline
     int         m_cubes = 0, m_keys = 0, m_plans = 0;   ///< what was picked up
+    float       m_firstDeath = -1.0f;   ///< seconds to the first death (-1: none)
+    float       m_timeline = 0.0f;      ///< how far the timeline came (it stands while a boss holds it)
+    int         m_bosses = 0;           ///< bosses destroyed
 };
 
 /**
@@ -455,10 +458,12 @@ struct SimResult
  * @param[in] load        the gear
  * @param[in] seed        the seed
  * @param[in] immortal    the pilot cannot die (to measure a whole mission)
+ * @param[in] mode        the rules (arcade: lives, power-ups from the enemies)
+ * @param[in] lives       arcade lives in reserve (as addPlayer)
  * @return what happened
  */
 SimResult simulate( const Catalog &cat, const LevelDef &level, int difficulty, const Loadout &load, uint32_t seed,
-                    bool immortal );
+                    bool immortal, ModeE mode = ModeE::CAMPAIGN, int lives = 0 );
 
 /**
  * @brief The boss rush's mission: the great bosses (each episode's _05, _09 and _10 missions) one after another,
