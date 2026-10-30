@@ -7,6 +7,7 @@
 
 #include "Crash.h"
 #include "Files.h"
+#include "IconPng.h"
 #include "Ui.h"
 
 #include <raylib.h>
@@ -70,6 +71,12 @@ bool App::init( const Options &o )
     InitWindow( w, h, "Zenith Lancer" );
     if ( !IsWindowReady() ) return false;
     SetExitKey( 0 );
+    Image icon = LoadImageFromMemory( ".png", IconPng, (int)sizeof( IconPng ) );
+    if ( icon.data )
+    {
+        SetWindowIcon( icon );
+        UnloadImage( icon );
+    }
     SetWindowMinSize( 640, 400 );
     bool full = o.m_fullscreen >= 0 ? o.m_fullscreen == 1 : ( m_set.m_fullscreen || ( deck && m_set.m_width == 0 ) );
     if ( full && o.m_shot.empty() ) ToggleBorderlessWindowed();
