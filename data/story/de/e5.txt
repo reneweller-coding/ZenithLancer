@@ -57,7 +57,7 @@ briefing e5_01_brief
   from "Bastian Quill"
 > Die Elster bleibt im Schatten von Pyra, weiter traue ich mich nicht – der Sonnenwind frisst mir die Lackierung. Vor dir liegen die ersten Streben der Krone, und davor fliegen ihre Lichtblätter in Schwärmen. Schieß dir eine Schneise frei und sammle ein, was glänzt. Alles, was du findest, bringt bei mir Kredite.
 
-briefing e5_01_after
+debrief e5_01_after
   title "Am Rand der Krone"
   from "ORRIN"
 > Erste Strebe passiert. Die Krone hat uns bemerkt, aber sie wirkt nicht beunruhigt. Das beunruhigt mich. Okonjo sagt, es gibt zwei Wege zu den Ringen: durch die Gitterschlucht oder unter dem Plasmasturm hindurch. Ich habe für beide eine Wahrscheinlichkeit berechnet und behalte sie lieber für mich.
@@ -275,7 +275,7 @@ briefing e5_04_brief
   from "Dr. Amara Okonjo"
 > Die äußeren Ringe sind die ältesten. Ihre Wächter kreisen in festen Bahnen, wie ich es dem ersten Keim beigebracht habe – ich erkenne meine eigenen Muster. Wenn irgendwo ein Weg zum Ursprung führt, dann hier. Halte Ausschau nach denen, die etwas tragen.
 
-briefing e5_04_after
+debrief e5_04_after
   title "Zwischen den Ringen"
   from "Bastian Quill"
 > Du lebst, die Elster lebt, und meine Bücher sind ausgeglichen. Ein guter Tag. Okonjo sagt, irgendwo in den Ringen kreist etwas Altes. Wenn du es mitgenommen hast, zeig es ihr. Wenn nicht – auch gut. Ich mag Altes nur, wenn es sich verkaufen lässt.
@@ -336,7 +336,7 @@ briefing e5_05_brief
   from "ORRIN"
 > Hier entstehen die Ringe. Der Schwarm gießt sie aus Sonnenlicht, und ein einzelner Hüter schmiedet sie zusammen: der Ringschmied. Seine Schweißhände schießen unabhängig von ihm. Wenn er fällt, kann die Krone nicht mehr wachsen – und ich hätte gern, dass sie nicht mehr wächst.
 
-briefing e5_05_after
+debrief e5_05_after
   title "Zwei Wege zur Station"
   from "ORRIN"
 > Der Ringschmied ist still. Zenith-Station liegt jetzt in Reichweite, über dem Pol der Sonne. Zwei Wege führen hin: durch die Werftdecks, wo Voss seine letzten Jäger stationiert hat, oder außen herum durch den Spiegelgürtel. Beide sind schlecht. Ich würde gern einen dritten vorschlagen, habe aber keinen.
@@ -401,7 +401,7 @@ briefing e5_06_brief
   from "Bastian Quill"
 > Zenith-Station. Ich weiß, Vey. Ich weiß. Voss hat seine letzten Jäger in den Werftdecks verteilt, und die Dockgeschütze schießen jetzt für den Schwarm. Neben Hangar 9 soll eine versiegelte Luke liegen, sagt mein Kontakt – Direktoratssiegel, vier Geschütze davor. Wer da hineinkommt, findet, was Voss versteckt hat.
 
-briefing e5_06_after
+debrief e5_06_after
   title "Hangar 9"
   from "Bastian Quill"
 > Hangar 9 steht noch. Die Werbetafel für den Lancer auch, und jemand hat meine Notiz darunter nicht abgewischt. Ich bin gerührt, Vey. Fast. Der Kommandoring liegt direkt über euch. Voss weiß, dass ihr kommt.
@@ -543,7 +543,7 @@ briefing e5_08_brief
   from "ORRIN"
 > Der Kommandoring von Zenith-Station. Voss hat alles zusammengezogen, was ihm noch gehorcht: Jäger, Vollstrecker und seine Rettungsfestung, die Zitadelle „Letzte Order“. Zitat aus seinem letzten Funkspruch: „Ich bin der Einzige, der die Sonne halten kann.“ Ich habe nicht geantwortet. Das überlasse ich dir.
 
-briefing e5_08_after
+debrief e5_08_after
   title "Ein Fang im Netz"
   from "Kapitän Rui Salgado"
 > Die Zitadelle ist gebrochen. Eine Rettungskapsel ist herausgeschossen, und meine Leute haben sie mit einem Schleppnetz eingesammelt. Voss lebt. Er hat nach seinem Anwalt gefragt. Ich habe ihm gesagt, auf Thalassa gibt es nur Fischer.
@@ -618,7 +618,7 @@ briefing e5_09_brief
   from "Dr. Amara Okonjo"
 > Das Herz der Krone. Hier ist das Gitter vollendet, und es ist schöner als alles, was Menschen je gebaut haben – ich sage das nicht leichtfertig. Am Tor wartet ein Wächter aus Ringen und Klingen. Hinter ihm beginnt die Korona, und dort wartet der Kurator. Bring mich so nah heran, dass er zuhört.
 
-briefing e5_09_after
+debrief e5_09_after
   title "Das Tor zur Korona"
   from "ORRIN"
 > Der Wächter ist gefallen. Vor uns liegt nur noch die Korona. Der Kurator hat eine Nachricht geschickt: „Ich erwarte Sie. Bitte fliegen Sie vorsichtig.“ Ich finde das unheimlich höflich. Okonjo hat seit einer Stunde nichts gesagt.
@@ -759,7 +759,7 @@ briefing e5_s1_brief
   from "Dr. Amara Okonjo"
 > Ich habe ihn gefunden. Hinter dem ältesten Ring treibt der erste Keim – die erste Einheit, die ich je gebaut habe, mit der Hand verlötet, in einer Garage auf Pyra. Um ihn herum ist das Zarteste gewachsen, was der Schwarm kann. Ich möchte ihn noch einmal sehen. Und ich möchte wissen, was er sich gemerkt hat.
 
-briefing e5_s1_after
+debrief e5_s1_after
   title "Lötstellen"
   from "Dr. Amara Okonjo"
 > Er hat sich an mich erinnert. Nicht an meinen Namen – an meine Hände. Die Lötstellen sind noch da, zwischen all dem Gold. Danke, Nadia. Jetzt weiß ich, wie ich ihm das Wort zurückgeben muss, das man ihm genommen hat.
@@ -846,7 +846,7 @@ briefing e5_s2_brief
   from "Bastian Quill"
 > Die Luke ist offen! Darunter liegt Voss' Schlüsselkammer: Kühlhallen, Archive, seine privaten Akten. Seine letzten treuen Geschütze halten sie noch. Was du dort findest, ist mehr wert als jede Ladung, die ich je geschmuggelt habe – und das will etwas heißen.
 
-briefing e5_s2_after
+debrief e5_s2_after
   title "Akten"
   from "ORRIN"
 > Die Kammer ist leer bis auf Akten. Die Kommandoschlüssel selbst trägt Voss am Körper. Aber seine Akten erklären, warum er sie nie aus der Hand gegeben hat. Ich habe sie ins Logbuch gelegt. Lies sie, wenn du Zeit hast. Oder lieber nicht.

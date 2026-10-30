@@ -190,7 +190,7 @@ Vector2 World::worldPos( const Enemy &e, Vector2 off ) const
     // The enemy's frame: +z is its nose (its heading), +x its right side.
     Vector2 fwd = dirOf( e.m_face );
     Vector2 right = { -fwd.y, fwd.x };
-    float   s = e.m_ground ? GroundFactor : 1.0f;
+    float   s = ( e.m_ground ? GroundFactor : 1.0f ) * e.m_def->m_scale;
     return { e.m_pos.x + ( right.x * off.x + fwd.x * off.y ) * s, e.m_pos.y + ( right.y * off.x + fwd.y * off.y ) * s };
 }
 
@@ -269,8 +269,10 @@ int World::spawn( const EnemyDef *def, Vector2 pos, const Line *pathLine, int pa
     case P_ORBIT: e.m_path.m_phase = std::atan2( pos.y - ps.m_cy, pos.x - ps.m_cx ); break;
     default: break;
     }
-    if ( def->m_face == "fixed" ) e.m_face = ps.m_dir;
-    if ( def->m_face == "up" || ps.m_kind == P_RISE ) e.m_face = 180.0f;
+    if ( pathLine && pathLine->has( "face" ) ) e.m_faceAs = pathLine->str( "face" );
+    const std::string &faceMode = e.m_faceAs.empty() ? def->m_face : e.m_faceAs;
+    if ( faceMode == "fixed" ) e.m_face = ps.m_dir;
+    if ( faceMode == "up" || ps.m_kind == P_RISE ) e.m_face = 180.0f;
     if ( parent >= 0 )
     {
         e.m_ground = m_enemies[parent].m_ground;
@@ -286,7 +288,11 @@ int World::spawn( const EnemyDef *def, Vector2 pos, const Line *pathLine, int pa
         const EnemyDef *pd = m_cat->enemy( pr.m_enemy );
         if ( !pd ) continue;
         int pi = spawn( pd, pos, nullptr, idx );
-        if ( pi >= 0 ) m_enemies[(size_t)pi].m_off = { pr.m_x, pr.m_z };
+        if ( pi >= 0 )
+        {
+            m_enemies[(size_t)pi].m_off = { pr.m_x, pr.m_z };
+            m_enemies[(size_t)pi].m_lift = pr.m_y * def->m_scale;
+        }
     }
     if ( def->m_kind == EnemyKindE::BOSS )
     {
@@ -467,9 +473,31 @@ void World::runEvent( const LevelEvent &ev )
 void World::runTimeline()
 {
     if ( m_noTimeline || !m_level ) return;
+    const std::vector<LevelEvent> &evs = m_level->m_events;
+    if ( m_freeDone.size() != evs.size() ) m_freeDone.assign( evs.size(), 0 );
     if ( !m_hold ) m_time += Dt * m_slow;
-    while ( m_next < m_level->m_events.size() && m_level->m_events[m_next].m_t <= m_time && !m_hold )
-        runEvent( m_level->m_events[m_next++] );
+    while ( m_next < evs.size() && evs[m_next].m_t <= m_time && !m_hold )
+    {
+        size_t i = m_next++;
+        if ( m_freeDone[i] ) continue;
+        runEvent( evs[i] );
+        if ( m_hold && evs[i].m_type == "boss" )
+            // What follows with hold=0 runs on the clock while the boss lives (radio lines during the fight).
+            for ( size_t j = i + 1; j < evs.size(); ++j )
+                if ( evs[j].m_p.str( "hold" ) == "0" && !m_freeDone[j] )
+                {
+                    m_free.push_back( { m_clock + ( evs[j].m_t - evs[i].m_t ), j } );
+                    m_freeDone[j] = 1;
+                }
+    }
+    for ( size_t k = 0; k < m_free.size(); )
+        if ( m_free[k].first <= m_clock )
+        {
+            runEvent( evs[m_free[k].second] );
+            m_free.erase( m_free.begin() + (long)k );
+        }
+        else
+            ++k;
     // The pending ships of columns.
     for ( size_t i = 0; i < m_pending.size(); )
     {
@@ -1234,7 +1262,7 @@ void World::moveEnemy( Enemy &e )
         if ( ps.m_kind == P_SPLINE ) e.m_vel = len( v ) > 1.0f ? v : e.m_vel;
     }
     // Facing and leaning.
-    const std::string &face = e.m_def->m_face;
+    const std::string &face = e.m_faceAs.empty() ? e.m_def->m_face : e.m_faceAs;
     float want = e.m_face;
     if ( face == "move" && len( e.m_vel ) > 20.0f && !e.m_ground ) want = angleOf( e.m_vel );
     else if ( face == "down" ) want = 0.0f;
@@ -1362,7 +1390,7 @@ void World::fireEnemy( int idx )
     for ( size_t f = 0; f < e.m_def->m_fire.size(); ++f )
     {
         const FireDef &fd = e.m_def->m_fire[f];
-        if ( fd.m_onlyDiff && m_diffIndex < fd.m_minDiff ) continue;
+        if ( fd.m_onlyDiff && ( m_diffIndex < fd.m_minDiff || m_diffIndex > fd.m_maxDiff ) ) continue;
         if ( hpFrac > fd.m_from || hpFrac <= fd.m_until ) continue;
         if ( ( fd.m_parts == 0 && partsLive ) || ( fd.m_parts == 1 && !partsLive ) ) continue;
         if ( fd.m_cap > 0 && e.m_fireN[f] >= fd.m_cap ) continue;
@@ -1376,6 +1404,8 @@ void World::fireEnemy( int idx )
         {
             Vector2 at = worldPos( e, { side == 0 ? fd.m_x : -fd.m_x, fd.m_z } );
             float   aim = angleOf( sub( m_players[pl].m_pos, at ) );
+            // The mirrored muzzle mirrors its directions too.
+            float   mdir = side == 0 ? fd.m_dir : -fd.m_dir, mrot = side == 0 ? fd.m_rot : -fd.m_rot;
             float   speed = fd.m_speed;
             const std::string &pt = fd.m_pattern;
             if ( pt == "aimed" || pt == "missile" )
@@ -1386,7 +1416,7 @@ void World::fireEnemy( int idx )
                 }
             else if ( pt == "fan" )
             {
-                float base = fd.m_dir + ( e.m_def->m_face == "fixed" || e.m_def->m_face == "spin" ? e.m_face : 0.0f );
+                float base = mdir + ( e.m_def->m_face == "fixed" || e.m_def->m_face == "spin" ? e.m_face : 0.0f );
                 for ( int j = 0; j < fd.m_n; ++j )
                 {
                     float a = fd.m_n > 1 ? base - fd.m_spread * ( fd.m_n - 1 ) * 0.5f + fd.m_spread * j : base;
@@ -1419,9 +1449,9 @@ void World::fireEnemy( int idx )
                 Laser l;
                 l.m_owner = idx;
                 l.m_off = { side == 0 ? fd.m_x : -fd.m_x, fd.m_z };
-                l.m_aim = fd.m_spread == 0 && fd.m_dir == 0 && fd.m_rot == 0 ? true : false;
-                l.m_dir = l.m_aim ? aim : fd.m_dir;
-                l.m_sweep = fd.m_rot;
+                l.m_aim = fd.m_aim >= 0 ? fd.m_aim == 1 : ( fd.m_spread == 0 && fd.m_dir == 0 && fd.m_rot == 0 );
+                l.m_dir = l.m_aim ? aim : mdir;
+                l.m_sweep = mrot;
                 l.m_warn = fd.m_warn;
                 l.m_dur = fd.m_dur;
                 l.m_width = fd.m_width;
@@ -1445,8 +1475,18 @@ void World::fireEnemy( int idx )
                     pd.m_t = m_clock;
                     pd.m_def = d;
                     pd.m_pos = at;
-                    pd.m_path = d->m_path;
-                    pd.m_path.m_kv["path"] = d->m_path.m_key;
+                    // The fire line may give the launched enemy its own path (path= and its values).
+                    if ( fd.m_line.has( "path" ) )
+                    {
+                        pd.m_path = fd.m_line;
+                        if ( side == 1 && fd.m_line.has( "side" ) )
+                            pd.m_path.m_kv["side"] = fd.m_line.num( "side" ) < 0 ? "1" : "-1";
+                    }
+                    else
+                    {
+                        pd.m_path = d->m_path;
+                        pd.m_path.m_kv["path"] = d->m_path.m_key;
+                    }
                     m_pending.push_back( pd );
                 }
             }
@@ -2096,9 +2136,20 @@ PlayerInput autopilot( const World &w, int i )
     const Player &p = w.m_players[i];
     in.m_fire = true;
     if ( !p.m_alive ) return in;
-    // Where it would like to be: below the nearest enemy, low on the field.
+    // Where it would like to be: below the nearest enemy, low on the field; with a short-range gun (lightning,
+    // flames) close enough to reach.
     Vector2 goal = { FieldW * 0.5f, FieldH * 0.8f };
     float   best = 1e9f;
+    float   reach = 2000.0f;
+    if ( p.m_front )
+        for ( const ShotDef &s : p.m_front->m_shots )
+        {
+            float r = s.m_kind == "chain" ? s.m_p.range( "range", 260 ).m_b
+                    : s.m_kind == "beam"  ? 2000.0f
+                                          : s.m_p.range( "speed", 820 ).m_b * s.m_p.range( "life", 1.3f ).m_b;
+            if ( s.m_from <= p.m_load.m_frontLv && s.m_kind != "orbit" ) reach = std::min( reach, std::max( r, 120.0f ) );
+        }
+    float targetY = -1.0f;
     // A shielded body whose parts still live is no target: its parts are.
     std::vector<char> shut( w.m_enemies.size(), 0 );
     for ( size_t e = 0; e < w.m_enemies.size(); ++e )
@@ -2112,14 +2163,17 @@ PlayerInput autopilot( const World &w, int i )
         const Enemy &e = w.m_enemies[ei];
         if ( shut[ei] ) continue;
         if ( e.m_dead || e.m_gone || e.m_def->m_invulnerable || e.m_pos.y < 0 || e.m_pos.y > p.m_pos.y - 40 ) continue;
+        if ( reach < 560.0f && e.m_pos.y > FieldH * 0.75f ) continue;
         float score = std::fabs( e.m_pos.x - p.m_pos.x ) + ( p.m_pos.y - e.m_pos.y ) * 0.3f -
                       ( e.m_def->m_kind == EnemyKindE::BOSS ? 200.0f : 0.0f );
         if ( score < best )
         {
             best = score;
             goal.x = e.m_pos.x;
+            targetY = e.m_pos.y;
         }
     }
+    if ( targetY >= 0 && reach < 560.0f ) goal.y = clampf( targetY + reach * 0.75f, FieldH * 0.4f, FieldH * 0.8f );
     for ( const Pickup &pk : w.m_pickups )
         if ( std::fabs( pk.m_pos.y - p.m_pos.y ) < 220 && pk.m_pos.y > 200 )
         {

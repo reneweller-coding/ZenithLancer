@@ -91,7 +91,7 @@ enemy e1_dart
   drop power 0.08 mode=arcade
   explode small                # small | medium | large | huge
   contact 15                   # damage when it rams the pilot
-  part e1_turret x=-20 z=10    # parts fixed to it (their own enemy entries, kind part)
+  part e1_turret x=-20 z=10    # parts fixed to it (their own enemy entries, kind part); x/z scale with `scale`, y lifts it
   shielded 1                   # cannot be hurt while parts live
   solid 1 / invulnerable 1     # obstacles: bullets stop / it cannot be destroyed
 ```
@@ -110,7 +110,8 @@ HP guide (normal difficulty): popcorn 4–12, fighters 15–40, gunships 60–15
 (orb needle big ring missile mine shard wave), `color`, `burst` (volleys in a row) + `gap`, `rot` (degrees each
 volley turns: rings/spirals), `accel`, `x`/`z` (muzzle in the enemy's frame), `mirror=1` (also from -x),
 `cap` (max volleys), `from`/`until` (only while hp share ≤ from and > until: boss phases), `diff=N`
-(only from difficulty N), `size`, `damage`, `life`.
+(only from difficulty N; `diff=A-B` only in that span), `size`, `damage`, `life`. With `mirror=1` the second muzzle
+mirrors `dir` and `rot` too (symmetric beams and fans).
 
 | pattern | what |
 |---|---|
@@ -123,8 +124,8 @@ volley turns: rings/spirals), `accel`, `x`/`z` (muzzle in the enemy's frame), `m
 | `wall` | a row across the whole field with a gap to slip through |
 | `missile` | homing bullets (`turn` degrees/s, homing stops after 2.5 s) |
 | `mine` | drifting mines that burst into a ring |
-| `laser` | a beam: `warn` (s of warning line), `dur`, `width`, `damage` (×4 a second while it touches: 40 costs 160/s); aimed unless `dir`/`rot` given; `rot` sweeps (degrees/s) |
-| `spawn` | launches an enemy: `spawn=e2_drone` |
+| `laser` | a beam: `warn` (s of warning line), `dur`, `width`, `damage` (×4 a second while it touches: 40 costs 160/s); aimed unless `dir`/`rot` given (or `aim=1`/`aim=0` says so); `rot` sweeps (degrees/s) |
+| `spawn` | launches an enemy: `spawn=e2_drone` (its own path, or `path=` and path values on the fire line) |
 | `radio` | says a radio line once: `fire radio e5_10_r7 from=0.5` (a boss's taunt at half strength) |
 
 Bullet damage defaults: orb 6, needle 5, big 12, ring 8, missile 10, mine 10, shard 5, wave 7. The difficulty
@@ -190,6 +191,9 @@ Events: `wave <enemy>` / `ground <enemy>` / `obstacle <enemy>` (all take the wav
 [x= y= path values]`, `pickup <credits|power|shield|armor|weapon|rear|side|life|special|cube|key|plan> x= [y=]
 [value=] [item=]`, `text <story>`, `scroll <speed>`, `music <name>`, `warn` (siren + WARNUNG), `clear` (removes
 enemy bullets), `end [seconds]`.
+
+Events after a `boss` wait until it is destroyed (the timeline stands); give them `hold=0` to let them run on
+the clock during the fight (radio lines, help pickups): `at 150 text e1_01_r5 hold=0`.
 
 `theme <name>` changes the ground behind a flash of light (out of the clouds into orbit, into a cave).
 Fire lines may wait for the parts: `parts=0` fires only when all parts are destroyed, `parts=1` only while one lives.
@@ -311,4 +315,5 @@ briefing e1_01_brief
 > ...
 ```
 
-Types: `cube` (log crystals: lore, 80–200 words), `briefing`, `radio` (≤ 25 words), `intro`, `ending`, `bio`.
+Types: `cube` (log crystals: lore, 80–200 words), `briefing`, `debrief`, `radio` (≤ 25 words), `intro`, `ending`, `bio`.
+A wave line may give its ships another facing: `face=down` etc.

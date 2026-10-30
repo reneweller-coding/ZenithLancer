@@ -157,7 +157,9 @@ const std::set<std::string> ShotKeys = { "lv",    "mode",   "n",      "dx",     
 const std::set<std::string> FireKeys = { "every", "delay", "speed", "n",     "spread", "dir",  "bullet", "color",
                                          "burst", "gap",   "rot",   "accel", "from",   "until", "x",     "z",
                                          "mirror", "cap",  "spawn", "turn",  "dur",    "warn", "width",  "size",
-                                         "damage", "life", "diff",  "aim",   "arc",    "sweep", "parts" };
+                                         "damage", "life", "diff",  "aim",   "arc",    "sweep", "parts", "path",
+                                         "side",  "amp",   "freq",  "stop",  "wait",   "cx",   "cy",     "r",
+                                         "pts",   "exit",  "phase" };
 const std::set<std::string> WaveKeys = { "n",     "form",  "x",     "y",     "spacing", "gap",   "path", "side",
                                          "mirror", "speed", "amp",  "freq",  "stop",    "wait",  "dir",  "turn",
                                          "cx",    "cy",    "r",     "pts",   "dur",     "rows",  "cols", "dx",
@@ -276,6 +278,8 @@ bool readBlocks( const std::string &path, const std::vector<std::string> &types,
 namespace
 {
 
+void span( const std::string &s, int &from, int &to, int defFrom, int defTo );
+
 FireDef readFire( const Line &l, std::vector<std::string> &warnings )
 {
     checkKeys( l, FireKeys, warnings );
@@ -311,8 +315,11 @@ FireDef readFire( const Line &l, std::vector<std::string> &warnings )
     if ( l.has( "diff" ) )
     {
         f.m_onlyDiff = true;
-        f.m_minDiff = l.integer( "diff", 0 );
+        span( l.str( "diff" ), f.m_minDiff, f.m_maxDiff, 0, 99 );
+        if ( l.str( "diff" ).find( '-' ) == std::string::npos ) f.m_maxDiff = 99;
     }
+    f.m_aim = l.integer( "aim", -1 );
+    f.m_line = l;
     f.m_parts = l.integer( "parts", -1 );
     if ( f.m_pattern == "missile" && f.m_bullet == "orb" ) f.m_bullet = "missile";
     if ( f.m_pattern == "mine" && f.m_bullet == "orb" ) f.m_bullet = "mine";
@@ -377,7 +384,7 @@ bool Catalog::load( const std::string &dir )
     m_dir = dir;
     const std::vector<std::string> types = { "model",  "enemy",     "front",  "rear",   "sidekick", "ship",
                                              "generator", "shield", "special", "level", "episode",  "cube",
-                                             "briefing", "radio",   "intro",   "ending", "bio",     "difficulty",
+                                             "briefing", "radio",   "intro",   "ending", "bio",     "difficulty", "debrief",
                                              "pilot",   "theme" };
     std::vector<std::string> files;
     std::error_code          e;
@@ -482,7 +489,7 @@ bool Catalog::load( const std::string &dir )
                 }
                 else if ( k == "explode" ) d.m_explode = l.arg( 0, "small" );
                 else if ( k == "contact" ) d.m_contact = l.argNum( 0, d.m_contact );
-                else if ( k == "part" ) d.m_parts.push_back( { l.arg( 0 ), l.num( "x" ), l.num( "z" ) } );
+                else if ( k == "part" ) d.m_parts.push_back( { l.arg( 0 ), l.num( "x" ), l.num( "z" ), l.num( "y" ) } );
                 else if ( k == "shielded" ) d.m_shielded = l.argNum( 0, 1 ) != 0;
                 else if ( k == "aimhead" ) d.m_aimHead = l.argNum( 0, 1 ) != 0;
                 else if ( k == "scale" ) d.m_scale = l.argNum( 0, 1.0f );
@@ -718,7 +725,7 @@ bool Catalog::load( const std::string &dir )
             }
         }
         else if ( b.m_type == "cube" || b.m_type == "briefing" || b.m_type == "radio" || b.m_type == "intro" ||
-                  b.m_type == "ending" || b.m_type == "bio" )
+                  b.m_type == "ending" || b.m_type == "bio" || b.m_type == "debrief" )
         {
             dup( m_story.count( b.m_name ) > 0 );
             StoryDef &s = m_story[b.m_name];

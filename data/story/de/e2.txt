@@ -94,32 +94,32 @@ briefing e2_s2_brief
 
 # ---------------------------------------------------------------------------------------------- debriefs
 
-briefing e2_02_after
+debrief e2_02_after
   title "Leitbojen"
   from "Rui Salgado"
 > Hast du es gesehen? Der Schwarm fliegt nicht in die Stadt, er fliegt zu den Bojen – und die Bojen liegen in der Stadt. Wer stellt Leuchtfeuer für ein Gitter auf, das alles frisst, was es berührt? Ich habe einen Verdacht, und er trägt Uniform.
 
-briefing e2_05_after
+debrief e2_05_after
   title "Die Aufnahmen"
   from "Rui Salgado"
 > Die Orgel schweigt, und meine Funker haben endlich ein sauberes Signal. Hör zu: Das ist die Frequenz der Leitbojen. Und das hier ist dieselbe Frequenz, gesendet vom Flaggschiff des Admirals. Er lockt den Schwarm nicht nur, Pilotin. Er spricht mit ihm.
 
-briefing e2_06_after
+debrief e2_06_after
   title "Kriegserklärung"
   from "Bastian Quill"
 > Gut, ich habe die Wette verloren. Der Admiral hat uns zu Piraten erklärt, Salgado zum Terroristen und die Elster zur „schwimmenden Schmugglerhöhle“. Das Letzte stimmt sogar. Wir müssen weg aus dem Orbit: nach Norden ins Eis, mit Salgados Flottille – oder zurück nach Marisol, wo die Beweise liegen. Deine Wahl, Pilotin.
 
-briefing e2_09_after
+debrief e2_09_after
   title "Die Schlüssel"
   from "ORRIN"
 > Die Dateien von Nordwacht sind vollständig. Es gibt Kommandoschlüssel für das Tessellat, Nadia – Steuercodes aus der Zeit, als es noch Monde formte. Das Direktorat hat sie nie vernichtet. Voss trägt sie bei sich, in einem Gerät an seinem Handgelenk. Und der Leviathan läuft gerade aus.
 
-briefing e2_s1_after
+debrief e2_s1_after
   title "Was das Archiv weiß"
   from "ORRIN"
 > Der Archivar ist zerbrochen, aber ich habe einen Teil dessen gerettet, was er gelesen hat: Seekarten der ersten Siedler, Gezeitentabellen aus drei Jahrhunderten und ein Verzeichnis dessen, was das Tessellat über Thalassa wissen wollte. Am meisten hat es interessiert, wie man Städte zum Schwimmen bringt. Ich finde das beunruhigend.
 
-briefing e2_s2_after
+debrief e2_s2_after
   title "Windstille"
   from "ORRIN"
 > Der Sturmernter ist gefallen, und Ilse verliert an Kraft. Die Meteorologen von Corvina werden sich wundern, warum ihr Hyperkan früher stirbt als berechnet. Ich habe beschlossen, es ihnen nicht zu erzählen. Es würde nur ihre Modelle durcheinanderbringen.

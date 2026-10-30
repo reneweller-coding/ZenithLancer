@@ -736,6 +736,7 @@ void App::story( float dt )
     Rectangle r = { W * 0.5f - pw * 0.5f, H * 0.1f, pw, ph };
     ui::panel( r, 0.86f, s->m_type == "cube" ? Color{ 90, 255, 230, 255 } : Color{ 90, 170, 230, 255 } );
     const char *kind = s->m_type == "cube" ? "LOGKRISTALL" : s->m_type == "briefing" ? "EINSATZBESPRECHUNG"
+                     : s->m_type == "debrief" ? "NACHBESPRECHUNG"
                      : s->m_type == "ending" ? "" : s->m_type == "intro" ? "" : s->m_type == "radio" ? "FUNK" : "";
     ui::text( kind, r.x + 40 * k, r.y + 26 * k, 22, s->m_type == "cube" ? Color{ 90, 255, 230, 255 } : ui::Accent );
     ui::text( s->m_title, r.x + 40 * k, r.y + 56 * k, 44, WHITE );

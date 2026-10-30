@@ -35,7 +35,7 @@ briefing e4_01_brief
   from "ORRIN"
 > Sylvara, der Dschungelmond des Vael. Das Tessellat ist vor drei Wochen gelandet und verliert hier zum ersten Mal: Der Wald verdaut sein Gitter. Quill setzt die Elster auf einer Lichtung dreißig Kilometer östlich ab, wir fliegen über das Kronendach hinterher. Das Direktorat nennt die Gegend Quarantänezone und schießt auf alles, was es nicht versteht – also auf fast alles.
 
-briefing e4_01_after
+debrief e4_01_after
   title "Ein Bild aus Licht"
   from "Dr. Amara Okonjo"
 > Ich habe die Lichtsignale aufgezeichnet, Nadia. Es ist kein Code. Es sind Bilder – Muster aus Biolumineszenz, so groß wie ein Tal. Der Wald hat dich gezeichnet, und neben dir einen zweiten Vogel aus Licht. Die Siedler von Neu-Maren nannten das, was hier denkt, den Chor. Ich fange an zu verstehen, warum.
@@ -117,7 +117,7 @@ briefing e4_02_brief
   from "Dr. Amara Okonjo"
 > Der Chor schickt eine Flut aus Sporen gegen den Schwarm: Milliarden Samen, die das Gitter zersetzen. Gleichzeitig brennen Trupps des Direktorats den Wald nieder, um „die Infektion einzudämmen“. Flieg durch beides, Nadia. Ich will wissen, was der Chor uns zeigt – und warum das Direktorat genau dort brennt, wo der Chor am lautesten singt.
 
-briefing e4_02_after
+debrief e4_02_after
   title "Zwei Wege"
   from "ORRIN"
 > Der Chor hat uns zwei Wege gezeigt. Der Silberstrom führt durch das Wurzeldelta zur Festung Kalmar, von der aus das Direktorat seine Brandflüge startet. Die Wabenstadt Neu-Maren liegt im Weg des Schwarms, ist aber kürzer. Okonjo möchte den Fluss sehen. Quill möchte die Stadt sehen, „aus rein geschäftlichen Gründen“.
@@ -196,7 +196,7 @@ briefing e4_03_brief
   from "Der Chor (übertragen von ORRIN)"
 > Wasser, das leuchtet. Viele kleine Lichter im Fluss, jedes ein Gedanke auf dem Weg. Boote aus Metall, die die Lichter auslöschen. Am Ende des Flusses eine Mauer, die brennt. (ORRIN: Übersetzung – Patrouillenboote des Direktorats am Silberstrom, Ziel Festung Kalmar. Und bitte nicht ins Wasser schießen.)
 
-briefing e4_03_after
+debrief e4_03_after
   title "Das Wurzeldelta"
   from "Dr. Amara Okonjo"
 > Das Wasser im Delta ist voller Fäden, Nadia. Der Fluss ist eine Nervenbahn – der Chor denkt flussabwärts. Und die Patrouillen des Direktorats haben Netze ausgelegt, die genau diese Fäden zerschneiden. Das ist keine Quarantäne. Das ist eine Operation am offenen Gehirn.
@@ -273,7 +273,7 @@ briefing e4_04_brief
   from "Bastian Quill"
 > Neu-Maren war eine hübsche kleine Kolonie: zwei Brauereien, ein Hafen, ein Stammkunde von mir. Jetzt ist es eine Wabe. Das Tessellat hat jedes Haus in Kristall gegossen; die Leute sind rechtzeitig raus, hoffe ich. Flieg durch, und wenn du Kuriere des Direktorats siehst: Die haben immer etwas dabei, das sich lohnt.
 
-briefing e4_04_after
+debrief e4_04_after
   title "Karten lügen"
   from "Dr. Amara Okonjo"
 > Die Kuriere des Direktorats in Neu-Maren flogen alle zur selben Stelle: Sylvaras kleinem Begleitmond. Laut jeder Karte im System ist er ein nackter Felsbrocken. Wer dort hinfliegt, braucht einen Zugangsschlüssel – und das Direktorat hat seinen Kurieren eigens Prismenjäger des Schwarms als Eskorte gegeben. Der Schwarm hat sie beschützt.
@@ -350,7 +350,7 @@ briefing e4_05_brief
   from "Dr. Amara Okonjo"
 > Kalmar ist die Festung des Direktorats am Waldrand. Von dort startet der Brandroder, ein Entlaubungsträger, der jede Nacht zwanzig Quadratkilometer Wald verbrennt – angeblich gegen den Schwarm. Aber er brennt nur, wo der Chor lebt, nie dort, wo das Gitter wächst. Wir greifen das Direktorat an, Nadia. Ich weiß, was das bedeutet.
 
-briefing e4_05_after
+debrief e4_05_after
   title "Die Stimme des Admirals"
   from "ORRIN"
 > Der Brandroder ist abgestürzt, die Garnison zieht sich in den Orbit zurück. Admiral Voss hat zum ersten Mal selbst zu uns gesprochen, und er war nicht wütend. Er klang zufrieden. Okonjo misst seitdem starken Funkverkehr zwischen seinem Flaggschiff und dem Schwarm. Ich habe mir erlaubt, beunruhigt zu sein.
@@ -431,7 +431,7 @@ briefing e4_06_brief
   from "ORRIN"
 > Voss' Flotte steht im Orbit und hat Sylvara zur Bombardierung freigegeben: Wenn der Chor brennt, kann das Gitter den Mond übernehmen. Wir steigen auf und treffen die Geschwader, bevor sie in Position sind. Okonjo misst ungewöhnlichen Funkverkehr zwischen dem Flaggschiff Diktat und dem Schwarm. Ich mag ungewöhnlich nicht.
 
-briefing e4_06_after
+debrief e4_06_after
   title "Der Verrat"
   from "Dr. Amara Okonjo"
 > Voss hat meine Befehlsschlüssel benutzt, Nadia. Nicht, um den Schwarm abzuschalten – um ihn zu reiten. Das Gitter brennt jetzt bernsteinfarben und gehorcht ihm, und seine eigene Flotte war das erste, was er ihm zum Fraß vorgeworfen hat. Der Chor ruft um Hilfe: Seine Wächterin, die Dornenmutter, hört jetzt auch auf Voss.
@@ -518,7 +518,7 @@ briefing e4_07_brief
   from "Der Chor (übertragen von ORRIN)"
 > Wurzeln, tief. Zähne aus Bernstein, die sich hindurchfressen. Die Wächterin, die nicht mehr schützt. Ein Herz, das langsamer schlägt. (ORRIN: Übersetzung – Voss' Schwarm bohrt sich zum Herzen des Chors. Wir fliegen unter das Kronendach und halten die Bohrkolonne auf.)
 
-briefing e4_07_after
+debrief e4_07_after
   title "Die Wurzeln halten"
   from "Dr. Amara Okonjo"
 > Die Bohrkolonne ist zerschlagen. Die Wurzeln leuchten wieder gleichmäßig, Nadia; ich habe Messwerte, die man nur als Erleichterung lesen kann. Aber die Dornenmutter ist noch in Voss' Hand, und der Chor zeigt uns nur noch ein Bild: sie, im alten Wald, und um sie herum Bernstein.
@@ -595,7 +595,7 @@ briefing e4_08_brief
   from "Bastian Quill"
 > Voss' Flotte zerreißt sich gerade selbst: Die Hälfte der Schiffe gehört dem Schwarm, die andere Hälfte weiß nicht mehr, wem sie gehört, und schießt vorsichtshalber auf alles. Die Fregatte Treue sendet Notrufe. Ich sage nicht, dass wir Helden sein müssen. Ich sage, in einem Flottenfriedhof liegt viel herrenlose Ware, und die Treue-Leute sind gute Kunden, wenn sie überleben.
 
-briefing e4_08_after
+debrief e4_08_after
   title "Die Treue zieht ab"
   from "ORRIN"
 > Die Fregatte Treue und neun weitere Schiffe haben sich in den Schatten des Vael zurückgezogen. Kapitänin Halvard hat uns die Baupläne der Diktat überspielt, ohne dass wir darum gebeten hätten. Dazu eine Nachricht: Der Bug ist die Schwäche des Flaggschiffs, war es immer. Und: Die Dornenmutter wird von einem Relais im alten Wald gesteuert.
@@ -657,7 +657,7 @@ briefing e4_09_brief
   from "Der Chor (übertragen von ORRIN)"
 > Die Wächterin. Sie hat den Wald behütet, als die ersten Menschen kamen, und Dornen gegen die Brandtrupps gestellt. Jetzt brennt Bernstein in ihren Augen, und sie gräbt nach unserem Herzen. Befreie sie, silberner Vogel. (ORRIN: Ein Relais des Schwarms im alten Wald hält sie unter Voss' Befehl. Wir müssen durch – und dann an ihr vorbei.)
 
-briefing e4_09_after
+debrief e4_09_after
   title "Sie schläft"
   from "Dr. Amara Okonjo"
 > Die Dornenmutter ist in den Boden gesunken, und der Chor hat sie zugedeckt. Er trauert, Nadia, ich kann es messen. Und dann hat er mir etwas gezeigt, das ich kaum glauben kann: wie er sie wieder auseinandernimmt, Faser für Faser, und das Bernstein dabei einfach … loslässt. Er hat keine Schlüssel gebraucht. Er wusste, wie man aufhört.
@@ -795,7 +795,7 @@ briefing e4_s1_brief
   from "Der Chor (übertragen von ORRIN)"
 > Tief unten, wo kein Licht hinkommt, ist das meiste Licht. Ein Herz. Darauf wächst etwas Kaltes, das den Takt des Schwarms schlägt. Komm. (ORRIN: Die Lanzen am Waldrand trugen einen Weg zu einer Höhle unter dem alten Wald. Der Chor bittet uns hinein. Das hat noch niemand vor uns gedurft.)
 
-briefing e4_s1_after
+debrief e4_s1_after
   title "Das alte Schiff"
   from "Bastian Quill"
 > Nadia. Der Chor hat uns einen Bauplan gegeben – nein, eine Erinnerung. Ein Schiff, mit dem die ersten Siedler vor über zweihundert Jahren gelandet sind, über Generationen ins Myzel eingewachsen und vollkommen erhalten. Ich kann es nachbauen. Ich will dafür keinen Kredit. Ich weiß, du musst dich jetzt setzen.
@@ -855,7 +855,7 @@ briefing e4_s2_brief
   from "Dr. Amara Okonjo"
 > Der Kurierschlüssel aus Neu-Maren öffnet eine Station, die es nicht gibt: die Kaltkammer auf Sylvaras kleinem Begleitmond. Ihre Signatur ist älter als der Angriff auf Zenith-Station. Wenn das Direktorat dort mit meinen Befehlsschlüsseln experimentiert hat, will ich es sehen, Nadia. Mit eigenen Augen.
 
-briefing e4_s2_after
+debrief e4_s2_after
   title "Was in der Kälte lag"
   from "ORRIN"
 > Die Archive der Kaltkammer sind an Bord. Zwei Jahre Versuche mit Okonjos Schlüsseln, Probeläufe des Bernsteinschwarms, Pläne für einen Mond ohne Chor. Okonjo liest seit einer Stunde und hat noch nichts gesagt. Quill hat ihr Tee gebracht. Ich habe die Tür geschlossen.

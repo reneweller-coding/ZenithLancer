@@ -134,6 +134,9 @@ struct FireDef
     bool        m_onlyDiff = false; ///< present only from m_minDiff
     int         m_minDiff = 0;      ///< the lowest difficulty that fires this
     int         m_parts = -1;       ///< 0: only when all its parts are destroyed, 1: only while one lives
+    int         m_maxDiff = 99;     ///< the highest difficulty that fires this (diff=A-B)
+    int         m_aim = -1;         ///< lasers: 1 aimed, 0 along dir, -1 as dir/rot say (aimed when both are 0)
+    Line        m_line;             ///< the line itself (spawn: its path values)
     std::string m_where;
 };
 
@@ -151,8 +154,9 @@ struct DropDef
 struct PartRef
 {
     std::string m_enemy;          ///< the part's own enemy entry (kind part)
-    float       m_x = 0.0f;       ///< where on the parent (its frame)
+    float       m_x = 0.0f;       ///< where on the parent (its frame, in the parent's model units: scaled with it)
     float       m_z = 0.0f;
+    float       m_y = 0.0f;       ///< how far above the parent's plane it is drawn (tall hulls)
 };
 
 /** @brief An enemy. */

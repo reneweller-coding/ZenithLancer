@@ -340,10 +340,10 @@ enemy e3_queen
   face down
   scale 1.3
   shielded 1
-  part e3_queen_jaw x=-44 z=124
-  part e3_queen_jaw x=44 z=124
-  part e3_queen_sac x=-92 z=-40
-  part e3_queen_sac x=92 z=-40
+  part e3_queen_jaw x=-33.8 z=95.4
+  part e3_queen_jaw x=33.8 z=95.4
+  part e3_queen_sac x=-70.8 z=-30.8
+  part e3_queen_sac x=70.8 z=-30.8
   # Phase 1: the shell (and while her parts live)
   fire fan n=9 spread=13 every=2.6 delay=2.0 speed=170 bullet=orb color=#ff50d0 until=0.6
   fire ring n=14 every=3.8 delay=3.0 rot=9 speed=140 bullet=shard color=#40e0ff until=0.6

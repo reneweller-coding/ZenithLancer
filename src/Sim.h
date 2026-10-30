@@ -118,6 +118,8 @@ struct Enemy
     float              m_hpScale = 1.0f;
     std::vector<DropDef> m_extraDrops;      ///< drops the wave added
     int                m_wave = -1;         ///< which wave (all of a wave killed: a bonus)
+    float              m_lift = 0.0f;       ///< parts: drawn this far above the parent's plane
+    std::string        m_faceAs;            ///< the wave's own facing (instead of the enemy's)
 };
 
 /** @brief A bullet (the pilot's or an enemy's). */
@@ -359,6 +361,8 @@ public:
         std::vector<DropDef> m_drops;
     };
     std::vector<Pending>  m_pending;
+    std::vector<std::pair<float, size_t>> m_free;   ///< events a boss does not hold: (clock, index)
+    std::vector<char>     m_freeDone;              ///< ... marked so the timeline skips them
     std::vector<Bullet>   m_born;              ///< bullets made while others are moved (joined after the step)
     std::vector<DropDef>  m_waveDrop;          ///< what a wave leaves when all of it is killed
     std::vector<Vector2>  m_waveLast;          ///< where its last one died

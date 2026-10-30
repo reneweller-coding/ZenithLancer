@@ -38,7 +38,7 @@ briefing e3_02_brief
   from "ORRIN"
 > Halde Sieben antwortet nicht auf Quills Grußcode. Ihre Schürfdrohnen, Förderbänder und Bohrtürme arbeiten noch, aber nicht mehr für die Kooperative: Das Tessellat hat die Maschinen umgeschrieben. Die Besatzung hat sich im Wohnring verschanzt. Ich schlage vor, wir geben ihr die Station zurück, Stück für Stück.
 
-briefing e3_02_after
+debrief e3_02_after
   title "Die Uhrmacherin"
   from "Obfrau Mirela Tosk"
 > Halde Sieben gehört wieder uns. Zwölf Leute und drei Bohrtürme hat es gekostet, und ich bin froh, dass es nicht mehr sind. Ihr sucht die Uhrmacherin, sagt Quill. So nennen wir sie hier: eine Frau, die unsere Maschinen repariert und nie Geld dafür nimmt. Sie lebt irgendwo im Aschenschleier. Die Jäger des Direktorats waren vor euch hier und haben dieselbe Frage gestellt. Ihnen habe ich nichts gesagt. Euch sage ich es, weil ihr geschossen habt, bevor ihr gefragt habt.
@@ -58,7 +58,7 @@ briefing e3_05_brief
   from "ORRIN"
 > Beide Wege enden am selben Ort: an einem Asteroiden, den die Bohrer von innen aushöhlen. In seinem Kern sitzt etwas, das die Bergleute die Bohrkönigin nennen. Seit sie dort ist, sendet der Felsen ein Signal in den Aschenschleier, auf einer Frequenz, die nur das Tessellat benutzt. Und, wenn meine Analyse stimmt, die Ingenieurin, die es gebaut hat.
 
-briefing e3_05_after
+debrief e3_05_after
   title "Eine Antwort"
   from "ORRIN"
 > Ich habe das Signal der Bohrkönigin entschlüsselt. Es war keine Nachricht des Schwarms, sondern eine Antwort an jemanden, der ihn befragt: geduldig, seit Monaten, aus dem Aschenschleier. Die letzte Frage lautete: „Wer hat dir beigebracht, so zu wachsen?“ Der Schwarm hat mit einem Namen geantwortet. Amara Okonjo.
@@ -68,7 +68,7 @@ briefing e3_06_brief
   from "ORRIN"
 > Die Fragen an die Bohrkönigin kamen von einer stillgelegten Sternwarte mitten im Staub. Im Nebel sehen meine Sensoren keine dreihundert Meter weit, und alles, was dort lebt, weiß das. Bleib in Bewegung, Nadia. Und rechne damit, dass jemand vor uns da ist.
 
-briefing e3_06_after
+debrief e3_06_after
   title "Die Ingenieurin"
   from "Dr. Amara Okonjo"
 > Sie sind also die Pilotin. Ich habe den Lancer für jemanden wie Sie gezeichnet, wissen Sie das? Für jemanden, der nicht umkehrt. Danach habe ich etwas Schlimmeres gebaut und bin davongelaufen.
@@ -95,7 +95,7 @@ briefing e3_10_brief
   from "Dr. Amara Okonjo"
 > Der Glockenstein ist hohl, weil die Bergleute ihn ausgeräumt haben, und das Tessellat hat den leeren Raum gefüllt. In seinem Herzen sitzt der Steinbruchgeist, ein Knoten des Schwarms, der Felsen denkt, statt sie zu fressen. Er bewahrt etwas, das ich vor dreißig Jahren geschrieben habe: den Wurzelcode, die ersten Zeilen des Tessellats. Brechen Sie ihm die Schale auf. Den Rest übernehme ich.
 
-briefing e3_10_after
+debrief e3_10_after
   title "Ein Kristall"
   from "Bastian Quill"
 > Ein Kristall. Ein einziger Kristall, so groß wie meine Hand, und ich darf ihn nicht verkaufen. Ich habe ihn in den Panzerschrank gelegt, zwischen die Zollpapiere und die gute Flasche. Okonjo sitzt seit Stunden davor und redet mit ihm. Ich glaube, er antwortet. Nadia, ich bin Händler. Ich mag Dinge, die still liegen bleiben.
@@ -105,7 +105,7 @@ briefing e3_s1_brief
   from "Bastian Quill"
 > Der Datenkristall aus Halde Sieben ist eine Karte, und auf der Karte liegt ein Ort, den die Obfrau ihren Leuten verboten hat: ein Winkel im Nebel, in dem das Tessellat Kristalle züchtet, einfach so, für niemanden. Weißt du, was ein Gitterkristall auf dem Schwarzmarkt bringt? Ich schon. Rein, ernten, raus. Ich hatte nie einen besseren Plan.
 
-briefing e3_s1_after
+debrief e3_s1_after
   title "Erntedank"
   from "ORRIN"
 > Die Elster liegt nach dem Beladen elf Zentimeter tiefer im Raum, was physikalisch nicht möglich ist. Quill hat die Kristalle dreimal gezählt und kommt jedes Mal auf eine andere Zahl. Ich habe ihn gebeten, die Ladung nicht anzufassen, solange sie noch summt. Er hat zugestimmt und sie trotzdem gestreichelt.
@@ -115,7 +115,7 @@ briefing e3_s2_brief
   from "Dr. Amara Okonjo"
 > Die Sternenkarte aus dem Minenfeld ist alt, älter als das Direktorat. Sie zeigt, wo die Ersten liegen: die Archen, mit denen vor vierhundert Jahren die ersten Siedler nach Solenne kamen und die nach der Landung niemand mehr gebraucht hat. Jemand plündert sie gerade. Diese Schiffe haben uns alle hergebracht, Nadia. Sie haben Besseres verdient.
 
-briefing e3_s2_after
+debrief e3_s2_after
   title "Ein Leuchtfeuer"
   from "Dr. Amara Okonjo"
 > Ich habe ein Leuchtfeuer zwischen die Archen gesetzt, auf der alten Frequenz der Siedler. Wahrscheinlich hört es nie jemand. Aber falls doch, soll er wissen, dass hier zweitausend Menschen angekommen sind, die nichts hatten als Geduld und ein paar Samen. Wir sind ihre Enkel. Wir sollten uns öfter so benehmen.
