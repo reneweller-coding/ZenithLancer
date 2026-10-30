@@ -1,4 +1,6 @@
 # The grounds and skies of the missions (docs/DATA.md, "Themes").
+# The ground stays darker and calmer than ships and bullets: enemy bullets are pink, orange and white glows, so
+# nothing large and bright in those colours lies under the field (groundlight dims the lit ground).
 
 theme space
   sky #03040a
@@ -7,7 +9,9 @@ theme space
   suncolor #fff2e0 1.3
   ambient #4a5a80 #10101a
   space 1
-  nebula #3a1e6e #12507a
+  nebula #34206a #12507a 0.6
+  stars 1
+  planet #7a5e46 190 0.97 0.16 1
   exposure 1.0
   bloom 1.0
 
@@ -18,9 +22,12 @@ theme asteroid
   suncolor #ffe8c8 1.35
   ambient #50586a #141018
   space 1
-  rocks 0.7
+  rocks 0.8
   ground #3a3430 #5a5048 #7a6e62 #a09484
-  nebula #5a3a20 #203a5a
+  nebula #5a3a20 #203a5a 0.55
+  stars 1.1
+  planet #6a625c 110 0.04 0.3 0
+  groundlight 0.6
   bloom 0.9
 
 theme nebula
@@ -30,9 +37,11 @@ theme nebula
   suncolor #f0d8ff 1.2
   ambient #6a4a90 #180c20
   space 1
-  rocks 0.2
+  rocks 0.25
   ground #403048 #605070 #807090 #b0a0c0
-  nebula #8a2a90 #2a4aa0
+  nebula #4a2a7a #1e5a92 0.7
+  stars 0.9
+  groundlight 0.6
   bloom 1.1
 
 theme station
@@ -41,12 +50,14 @@ theme station
   sun -0.3 -0.85 -0.45
   suncolor #e8f0ff 1.25
   ambient #607090 #181c24
+  style plating
   relief 50
   scale 0.003
   plates 1
-  ground #2c3038 #3a404a #4a525e #6a7484
+  ground #22262e #2c3038 #383e48 #4e5664
   glow #40c8ff 0.35
   props #5a6270
+  groundlight 0.5
 
 theme range
   sky #05070c
@@ -54,12 +65,15 @@ theme range
   sun -0.3 -0.85 -0.45
   suncolor #e8f0ff 1.25
   ambient #607090 #181c24
+  style plating
   relief 30
   scale 0.003
   plates 1
-  ground #22262e #2e343e #3a424e #50586a
-  glow #40c8ff 0.25
+  ground #1c2026 #242a32 #2e3540 #3e4654
+  glow #40c8ff 0.22
+  paint 0.35
   props #4a5260
+  groundlight 0.5
 
 theme gallery
   sky #141820
@@ -68,34 +82,45 @@ theme gallery
   suncolor #ffffff 1.3
   ambient #708098 #202428
   space 1
+  nebula #2a2a40 #1a3040 0.35
+  stars 0.6
 
 theme lava
   sky #120604
-  fog #3a0c06 0.0016
+  fog #2a0a06 0.0014
   sun -0.4 -0.8 -0.3
   suncolor #ffd2a0 1.25
   ambient #6a4a40 #2a1008
+  style rock
+  fluid lava
   relief 90
   scale 0.0035
   ridge 0.55
-  ground #1e1210 #36221a #56382a #7a6050
-  water -0.32 #ff4a0a 0.95
-  glow #ff6a20 0.6
+  ground #140e0c #201814 #2e241e #463a32
+  water 0.12 #ff4a0a 0.9
+  glow #ff5a18 0.3
   craters 0.12
+  clouds #2a1612 0.3
+  groundlight 0.5
 
 theme desert
   sky #1c140c
-  fog #8a6a48 0.0011
+  fog #6a5034 0.0007
   sun -0.55 -0.7 -0.3
   suncolor #fff0d0 1.4
   ambient #8a7a68 #3a2a1a
+  style sand
   relief 70
   scale 0.0028
   ridge 0.35
-  ground #7a5a38 #9a7448 #b88e5a #d8b884
-  craters 0.18
+  ground #64462a #7c5836 #946c42 #b08e5e
+  dunes 1.8
+  mesas 0.7
+  rivers 0.8
+  craters 0.06
   city 0.05
   props #8a7a6a
+  groundlight 0.37
 
 theme foundry
   sky #0e0806
@@ -103,120 +128,194 @@ theme foundry
   sun -0.35 -0.85 -0.35
   suncolor #ffc890 1.2
   ambient #5a4038 #1a0c08
+  style foundry
+  fluid lava
   relief 45
   scale 0.003
   plates 0.6
-  ground #241a16 #34261e #48362a #64503e
-  water -0.4 #ff5a10 0.9
-  glow #ff7a30 0.45
+  ground #1e1612 #2a201a #382a20 #4a3a2c
+  water -0.62 #ff5a10 0.9
+  channels 0.4
+  glow #ff8a40 0.45
   city 0.35
   props #4a3c34
+  clouds #22160f 0.3
+  groundlight 0.5
 
 theme ocean
   sky #0a1420
-  fog #4a6a88 0.0012
+  fog #3a5a78 0.0009
   sun -0.5 -0.75 -0.35
   suncolor #fff6e8 1.35
   ambient #7890b0 #1a2838
+  style island
+  fluid water
   relief 110
   scale 0.0022
-  ground #c8b888 #6a8a48 #4a6a3a #9a9a90
-  water 0.15 #144a7a 0.0
+  ground #b0a078 #5a7a40 #3e5a32 #8a8a80
+  water 0.15 #0c3458 0.0
+  waves 0.6
+  trees 0.45 #2a5228
   city 0.08
-  props #b0b8c0
-  clouds #ffffff 0.45
+  props #a0a8b0
+  clouds #ffffff 0.35
+  groundlight 0.48
 
 theme storm
   sky #060a10
-  fog #283440 0.0016
+  fog #222c38 0.0016
   sun -0.3 -0.9 -0.3
   suncolor #b8c8e0 0.9
   ambient #4a5a70 #10161e
+  style island
+  fluid water
   relief 100
   scale 0.0025
-  ground #6a6a5a #3a4a3a #4a5a4a #8a8a88
-  water 0.25 #0a2a44 0.0
+  ground #5a5a4c #34443a #3e4e40 #7a7a78
+  water 0.28 #071c30 0.0
+  waves 1.5
+  trees 0.3 #22382a
   props #6a7480
-  clouds #a8b4c4 0.85
+  clouds #8a96a6 0.95
+  lightning 0.7
+  groundlight 0.45
 
 theme ice
   sky #0c1420
-  fog #a8c0d8 0.0011
+  fog #2a3a4c 0.0009
   sun -0.5 -0.7 -0.4
   suncolor #f0f8ff 1.35
   ambient #90a8c8 #2a3448
-  relief 80
+  style ice
+  fluid water
+  relief 70
   scale 0.0032
   ridge 0.6
-  ground #3a5a7a #8aa8c8 #c8dcf0 #ffffff
-  water -0.25 #0e2a44 0.15
-  craters 0.08
+  ground #20384e #3e5a76 #7890aa #a6bace
+  water -0.35 #081a2c 0.0
+  waves 0.3
+  leads 1
+  craters 0.04
+  groundlight 0.3
 
 theme city
   sky #080a12
-  fog #3a4458 0.0012
+  fog #2a3244 0.0012
   sun -0.4 -0.8 -0.4
-  suncolor #fff0dc 1.25
-  ambient #6a7898 #181c28
+  suncolor #ffe8d0 0.75
+  ambient #4a5878 #10141c
+  style city
+  fluid water
   relief 25
   scale 0.002
-  ground #3a3e46 #4a4e58 #5a5e68 #7a7e88
-  water -0.6 #102a4a 0.0
+  ground #2e3238 #383c44 #44484e #5a5e66
+  water -0.5 #0c2440 0.0
+  rivers 0.7
+  waves 0.3
   city 0.85
-  props #6a7484
+  windows 0.9
+  trees 0 #2a4a2a
+  props #5a6474
   glow #ffd890 0.15
+  groundlight 0.45
 
 theme jungle
   sky #0a120a
-  fog #2a4a30 0.0015
+  fog #1e3a24 0.0013
   sun -0.45 -0.75 -0.45
   suncolor #f0ffd8 1.25
   ambient #6a8a68 #142014
+  style jungle
+  fluid water
   relief 75
   scale 0.003
-  ground #2a3a1a #3a5a24 #4a6a2a #8a8a6a
-  water -0.35 #1a3a2a 0.05
-  trees 0.75 #2a6a2a
-  clouds #d8f0d8 0.25
+  ground #2a2e18 #3a4a22 #4a5a2a #6a6a4a
+  water -0.3 #0a1e14 0.0
+  waves 0.25
+  rivers 1.3
+  trees 0.75 #2a5e24
+  mist #5a7a5c 0.45 -0.15
+  clouds #d8f0d8 0.2
+  groundlight 0.5
 
 theme hive
   sky #0e060e
-  fog #3a1430 0.0016
+  fog #2a0e26 0.0016
   sun -0.4 -0.8 -0.4
-  suncolor #ffd8f0 1.1
-  ambient #7a4a70 #200a1a
+  suncolor #ffe0f0 1.1
+  ambient #6a4a6a #1a0a18
+  style hive
+  fluid bio
   relief 70
   scale 0.004
   ridge 1
-  ground #3a1430 #5a2448 #7a3a5a #a86a7a
-  water -0.3 #60ff90 0.7
-  glow #80ff60 0.5
-  trees 0.35 #6a2a5a
+  ground #1a0a1c #2a1230 #3a1e40 #563254
+  water -0.12 #3ad068 0.6
+  glow #70f060 0.45
+  trees 0.35 #3e1a40
+  groundlight 0.5
 
 theme corona
-  sky #2a0c02
-  fog #ff6a10 0.0011
+  sky #1a0602
+  fog #3a0c02 0.0011
   sun -0.2 -0.95 -0.2
   suncolor #fff0c0 1.5
   ambient #ffa860 #ff4a10
+  style corona
   relief 60
   scale 0.0026
   ridge 0.7
-  ground #ff6a10 #ff9a20 #ffc040 #fff0a0
-  water 0.0 #ff7a10 0.85
-  glow #fff4c0 0.7
+  ground #1e0502 #6a1804 #b03e08 #ffb050
+  glow #fff4c0 0.55
   exposure 0.85
-  bloom 1.2
+  bloom 1.0
 
 theme lattice
   sky #06040c
-  fog #1a0c24 0.0013
+  fog #140a1e 0.0013
   sun -0.4 -0.8 -0.4
   suncolor #e8d8ff 1.2
   ambient #5a4a7a #120a1a
-  relief 55
+  style lattice
+  relief 40
   scale 0.0035
-  plates 1
-  ground #1a1424 #261e34 #342a48 #4a3e66
-  glow #ff40d0 0.6
-  props #3a3050
+  ground #120e1a #1a1526 #261f36 #3e3456
+  glow #ff40d0 0.6 #40e0ff
+  props #2a2238
+  groundlight 0.5
+
+theme river
+  sky #0a120a
+  fog #1e3a24 0.0013
+  sun -0.45 -0.75 -0.45
+  suncolor #f0ffd8 1.2
+  ambient #6a8a68 #142014
+  style jungle
+  fluid water
+  relief 70
+  scale 0.003
+  ground #262a16 #34421e #3e5024 #5e5e42
+  water -0.2 #0a2018 0.0
+  waves 0.35
+  rivers 1 2.8 1
+  trees 0.8 #285a22
+  mist #5a7a5c 0.5 -0.12
+  groundlight 0.5
+
+theme cave
+  sky #020304
+  fog #03070a 0.0018
+  sun -0.3 -0.9 -0.3
+  suncolor #8a98a8 0.6
+  ambient #2a3a48 #06080a
+  style rock
+  relief 45
+  scale 0.006
+  ridge 0.8
+  ground #0c0d10 #15171a #1e2124 #3a4048
+  glow #30c0b0 0.25
+  walls 190 820
+  crystals 0.7 #40c8e0 #70ff90
+  mist #12262c 0.5 -0.1
+  groundlight 0.6
+  bloom 1.0

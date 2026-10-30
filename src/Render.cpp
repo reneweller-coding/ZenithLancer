@@ -19,7 +19,7 @@ Forge Renderer::s_forge;
 namespace
 {
 
-constexpr int MaxLights = 16;
+constexpr int MaxLights = 16;   // the lit shaders' light arrays (Renderer::MaxGlowLights fills them)
 
 const char *LitVs = R"(#version 330
 in vec3 vertexPosition;
@@ -66,11 +66,20 @@ void main()
     float em = fragColor.a;
     vec3 v = normalize( camPos - fragPos );
     vec3 l = -sunDir;
-    float ndl = max( dot( n, l ), 0.0 );
+    float ndl = dot( n, l );
+    // The light wraps a little round the hull: a softer terminator on the faceted shapes.
+    float wrap = max( ( ndl + 0.25 ) / 1.25, 0.0 );
     vec3 h = normalize( l + v );
-    float spec = pow( max( dot( n, h ), 0.0 ), 28.0 ) * specular;
+    float nh = max( dot( n, h ), 0.0 );
+    float nv = max( dot( n, v ), 0.0 );
+    // Metal: a tight highlight on a broad sheen; the sky mirrored in the hull, strongest at grazing angles.
+    float spec = ( pow( nh, 64.0 ) * 1.5 + pow( nh, 12.0 ) * 0.2 ) * specular;
+    float fres = 0.05 + 0.95 * pow( 1.0 - nv, 5.0 );
+    vec3 r = reflect( -v, n );
+    vec3 env = mix( ambDown * 0.6, ambUp * 1.4 + sunColor * 0.12, smoothstep( -0.4, 0.7, r.y ) );
     vec3 amb = mix( ambDown, ambUp, n.y * 0.5 + 0.5 );
-    vec3 col = albedo * ( amb + sunColor * ndl ) + sunColor * spec * ( 0.25 + 0.75 * ndl );
+    vec3 col = albedo * ( amb + sunColor * wrap * 0.92 ) + sunColor * spec * smoothstep( 0.0, 0.3, ndl );
+    col += env * fres * specular * 0.8;
     for ( int i = 0; i < lightCount; ++i )
     {
         vec3 L = lightPos[i].xyz - fragPos;
@@ -81,13 +90,37 @@ void main()
         float nl = max( dot( n, Ld ), 0.0 ) * 0.85 + 0.15;
         col += albedo * lightCol[i].rgb * lightCol[i].a * nl * att;
     }
-    float rim = pow( 1.0 - max( dot( n, v ), 0.0 ), 3.0 ) * 0.3;
-    col += rim * ambUp;
+    // A rim along the hull's edges, brighter on the side away from the sun (it separates ships from the ground).
+    float rim = pow( 1.0 - nv, 3.0 );
+    col += rim * ( ambUp * 0.3 + sunColor * 0.12 ) * ( 0.6 + 0.6 * max( dot( n.xz, -l.xz ), 0.0 ) );
     col += fragColor.rgb * em * emitBoost * ( 0.9 + 0.1 * sin( time * 6.0 + fragPos.x * 0.05 ) );
     col = mix( col, vec3( 2.2, 2.2, 2.4 ), flash );
     float depth = max( 0.0, -fragPos.y - 40.0 );
     col = mix( col, fogColor.rgb, 1.0 - exp( -depth * fogColor.a ) );
     finalColor = vec4( col, 1.0 );
+}
+)";
+
+// What flies, cast along the sun onto the ground's plane: white where a ship's shadow falls (the ground reads it).
+const char *ShadowVs = R"(#version 330
+in vec3 vertexPosition;
+uniform mat4 matModel;
+uniform vec3 sunDir;
+uniform float planeY;
+uniform vec4 rect;
+void main()
+{
+    vec3 p = ( matModel * vec4( vertexPosition, 1.0 ) ).xyz;
+    vec2 q = p.xz + sunDir.xz * ( ( planeY - p.y ) / sunDir.y );
+    gl_Position = vec4( ( q - rect.xy ) / rect.zw * 2.0 - 1.0, 0.0, 1.0 );
+}
+)";
+
+const char *ShadowFs = R"(#version 330
+out vec4 finalColor;
+void main()
+{
+    finalColor = vec4( 1.0 );
 }
 )";
 
@@ -201,8 +234,9 @@ void main()
 struct Shared
 {
     int       m_users = 0;
-    Shader    m_lit = {}, m_glow = {}, m_prefilter = {}, m_down = {}, m_up = {}, m_final = {};
-    Material  m_mat = {};
+    Shader    m_lit = {}, m_glow = {}, m_prefilter = {}, m_down = {}, m_up = {}, m_final = {}, m_shadow = {};
+    Material  m_mat = {}, m_shadowMat = {};
+    int       m_locShSun = 0, m_locShPlane = 0, m_locShRect = 0;
     Texture2D m_tex[9] = {};
     int       m_locSun = 0, m_locSunCol = 0, m_locAmbUp = 0, m_locAmbDown = 0, m_locCam = 0, m_locCount = 0,
               m_locLightPos = 0, m_locLightCol = 0, m_locFlash = 0, m_locTint = 0, m_locFog = 0, m_locEmit = 0,
@@ -259,6 +293,12 @@ void makeShared()
     g.m_final = LoadShaderFromMemory( nullptr, FinalFs );
     g.m_mat = LoadMaterialDefault();
     g.m_mat.shader = g.m_lit;
+    g.m_shadow = LoadShaderFromMemory( ShadowVs, ShadowFs );
+    g.m_shadowMat = LoadMaterialDefault();
+    g.m_shadowMat.shader = g.m_shadow;
+    g.m_locShSun = GetShaderLocation( g.m_shadow, "sunDir" );
+    g.m_locShPlane = GetShaderLocation( g.m_shadow, "planeY" );
+    g.m_locShRect = GetShaderLocation( g.m_shadow, "rect" );
     Shader &s = g.m_lit;
     g.m_locSun = GetShaderLocation( s, "sunDir" );
     g.m_locSunCol = GetShaderLocation( s, "sunColor" );
@@ -352,6 +392,7 @@ Vector3 v3( Color c, float s = 1.0f ) { return { c.r / 255.0f * s, c.g / 255.0f 
 
 }   // namespace
 
+
 void Renderer::init( int w, int h )
 {
     if ( g.m_users++ == 0 ) makeShared();
@@ -360,6 +401,11 @@ void Renderer::init( int w, int h )
     m_hdr = hdrTarget( w, h, true );
     m_out = LoadRenderTexture( w, h );
     SetTextureFilter( m_out.texture, TEXTURE_FILTER_BILINEAR );
+    // The shadows need little detail: the ground softens them anyway.
+    m_shadow = LoadRenderTexture( 512, 512 );
+    SetTextureFilter( m_shadow.texture, TEXTURE_FILTER_BILINEAR );
+    SetTextureWrap( m_shadow.texture, TEXTURE_WRAP_CLAMP );
+    m_lightOrder.reserve( 64 );
     int bw = w / 2, bh = h / 2;
     for ( int i = 0; i < 6 && bw >= 4 && bh >= 4; ++i )
     {
@@ -383,6 +429,7 @@ void Renderer::shutdown()
     if ( m_w == 0 ) return;
     m_terrain.unload();
     UnloadRenderTexture( m_out );
+    UnloadRenderTexture( m_shadow );
     rlUnloadFramebuffer( m_hdr.id );
     rlUnloadTexture( m_hdr.texture.id );
     if ( m_hdr.depth.id ) rlUnloadTexture( m_hdr.depth.id );
@@ -402,6 +449,10 @@ void Renderer::shutdown()
         UnloadShader( g.m_down );
         UnloadShader( g.m_up );
         UnloadShader( g.m_final );
+        UnloadShader( g.m_shadow );
+        MemFree( g.m_mat.maps );
+        MemFree( g.m_shadowMat.maps );
+        g.m_mat = g.m_shadowMat = {};
         for ( Texture2D &t : g.m_tex ) UnloadTexture( t );
     }
 }
@@ -505,12 +556,29 @@ void Renderer::explode( Vector2 at, int size, bool ground, Color tint )
         p.m_life = m_rng.range( 0.9f, 1.8f ) + 0.2f * s;
         p.m_size0 = 18 * std::sqrt( s );
         p.m_size1 = m_rng.range( 50, 80 ) * std::sqrt( s );
-        p.m_c0 = { 60, 56, 54, 170 };
-        p.m_c1 = { 40, 40, 44, 0 };
+        // Smoke lit from inside at first (warm), then grey and thinning.
+        p.m_c0 = { 92, 72, 58, 175 };
+        p.m_c1 = { 44, 44, 48, 0 };
         p.m_drag = 1.2f;
         p.m_rot = m_rng.range( 0, 360 );
         p.m_spin = m_rng.range( -30, 30 );
         p.m_boost = 1.0f;
+        m_parts.push_back( p );
+    }
+    // Embers: a few small glowing bits that drift out slowly and die down (smaller than any bullet).
+    int nEmber = 3 + 4 * size;
+    for ( int i = 0; i < nEmber; ++i )
+    {
+        Particle p = P();
+        p.m_tex = T_SOFT;
+        p.m_vel = mul( dirOf( m_rng.range( 0, 360 ) ), m_rng.range( 40, 140 ) * std::sqrt( s ) );
+        p.m_life = m_rng.range( 0.5f, 1.1f );
+        p.m_size0 = m_rng.range( 2.5f, 4.0f );
+        p.m_size1 = 1.0f;
+        p.m_c0 = { 255, 190, 110, 255 };
+        p.m_c1 = { 200, 50, 10, 0 };
+        p.m_drag = 2.2f;
+        p.m_boost = 2.4f;
         m_parts.push_back( p );
     }
     if ( size >= 1 )
@@ -745,35 +813,62 @@ void Renderer::setLights( const World &w )
     float emit = 3.2f;
     SetShaderValue( s, g.m_locEmit, &emit, SHADER_UNIFORM_FLOAT );
     SetShaderValue( s, g.m_locTime, &m_time, SHADER_UNIFORM_FLOAT );
-    // The brightest lights of the moment: explosions, muzzles, the pilots' engines.
-    std::vector<std::pair<float, std::pair<Vector4, Vector4>>> all;
-    for ( const GlowLight &l : m_lights )
-    {
-        float k = 1.0f - l.m_age / l.m_life;
-        all.push_back( { l.m_power * k * l.m_radius, { { l.m_pos.x, l.m_pos.y, l.m_pos.z, l.m_radius },
-                                                     { l.m_color.r / 255.0f, l.m_color.g / 255.0f, l.m_color.b / 255.0f, l.m_power * k } } } );
-    }
+    // The brightest lights of the moment: the pilots' engines first, then explosions and muzzles by strength.
+    int n = 0;
     for ( const Player &p : w.m_players )
-        if ( p.m_active && p.m_alive )
-            all.push_back( { 1e9f, { { p.m_pos.x, 20.0f, p.m_pos.y + 20.0f, 110.0f }, { 0.6f, 0.8f, 1.0f, 0.9f } } } );
-    std::sort( all.begin(), all.end(), []( const auto &a, const auto &b ) { return a.first > b.first; } );
-    int     n = std::min( (int)all.size(), MaxLights );
-    Vector4 pos[MaxLights], col[MaxLights];
-    for ( int i = 0; i < n; ++i )
+        if ( p.m_active && p.m_alive && n < MaxGlowLights )
+        {
+            m_lightPos[n] = { p.m_pos.x, 20.0f, p.m_pos.y + 20.0f, 110.0f };
+            m_lightCol[n] = { 0.6f, 0.8f, 1.0f, 0.9f };
+            ++n;
+        }
+    m_lightOrder.clear();
+    for ( size_t i = 0; i < m_lights.size(); ++i )
     {
-        pos[i] = all[(size_t)i].second.first;
-        col[i] = all[(size_t)i].second.second;
+        const GlowLight &l = m_lights[i];
+        m_lightOrder.push_back( { l.m_power * ( 1.0f - l.m_age / l.m_life ) * l.m_radius, (int)i } );
     }
+    std::sort( m_lightOrder.begin(), m_lightOrder.end(),
+               []( const auto &a, const auto &b ) { return a.first > b.first; } );
+    for ( size_t i = 0; i < m_lightOrder.size() && n < MaxGlowLights; ++i, ++n )
+    {
+        const GlowLight &l = m_lights[(size_t)m_lightOrder[i].second];
+        float            k = 1.0f - l.m_age / l.m_life;
+        m_lightPos[n] = { l.m_pos.x, l.m_pos.y, l.m_pos.z, l.m_radius };
+        m_lightCol[n] = { l.m_color.r / 255.0f, l.m_color.g / 255.0f, l.m_color.b / 255.0f, l.m_power * k };
+    }
+    m_lightN = n;
     SetShaderValue( s, g.m_locCount, &n, SHADER_UNIFORM_INT );
     if ( n > 0 )
     {
-        SetShaderValueV( s, g.m_locLightPos, pos, SHADER_UNIFORM_VEC4, n );
-        SetShaderValueV( s, g.m_locLightCol, col, SHADER_UNIFORM_VEC4, n );
+        SetShaderValueV( s, g.m_locLightPos, m_lightPos, SHADER_UNIFORM_VEC4, n );
+        SetShaderValueV( s, g.m_locLightCol, m_lightCol, SHADER_UNIFORM_VEC4, n );
     }
     Vector4 tint = { 1, 1, 1, 1 };
     SetShaderValue( s, g.m_locTint, &tint, SHADER_UNIFORM_VEC4 );
     float flash = 0;
     SetShaderValue( s, g.m_locFlash, &flash, SHADER_UNIFORM_FLOAT );
+}
+
+Matrix Renderer::modelMatrix( Vector3 at, float face, float bank, float scale, float pitch ) const
+{
+    float yaw = ( 180.0f - face ) * Deg;
+    return MatrixMultiply( MatrixMultiply( MatrixMultiply( MatrixScale( scale, scale, scale ), MatrixRotateZ( -bank * 0.6f ) ),
+                                           MatrixRotateX( pitch ) ),
+                           MatrixMultiply( MatrixRotateY( yaw ), MatrixTranslate( at.x, at.y, at.z ) ) );
+}
+
+void Renderer::drawMeshes( const ModelMesh &m, const Matrix &rest, float face, float head, Material &mat )
+{
+    if ( m.m_hasBase ) DrawMesh( m.m_base, mat, rest );
+    if ( m.m_hasHead )
+    {
+        float  dy = ( face - head ) * Deg;
+        Matrix hm = MatrixMultiply( MatrixMultiply( MatrixTranslate( -m.m_pivot.x, 0, -m.m_pivot.z ), MatrixRotateY( dy ) ),
+                                    MatrixTranslate( m.m_pivot.x, 0, m.m_pivot.z ) );
+        DrawMesh( m.m_head, mat, MatrixMultiply( hm, rest ) );
+    }
+    if ( m.m_hasSpin ) DrawMesh( m.m_spin, mat, MatrixMultiply( MatrixRotateY( m_time * m.m_spinSpeed * Deg ), rest ) );
 }
 
 void Renderer::drawModel( const ModelMesh &m, Vector3 at, float face, float bank, float scale, float flash, float head,
@@ -784,46 +879,53 @@ void Renderer::drawModel( const ModelMesh &m, Vector3 at, float face, float bank
     SetShaderValue( s, g.m_locFlash, &f, SHADER_UNIFORM_FLOAT );
     Vector4 t = { tint.r / 255.0f, tint.g / 255.0f, tint.b / 255.0f, 1 };
     SetShaderValue( s, g.m_locTint, &t, SHADER_UNIFORM_VEC4 );
-    float  yaw = ( 180.0f - face ) * Deg;
-    Matrix rest = MatrixMultiply( MatrixMultiply( MatrixMultiply( MatrixScale( scale, scale, scale ), MatrixRotateZ( -bank * 0.6f ) ),
-                                                  MatrixRotateX( pitch ) ),
-                                  MatrixMultiply( MatrixRotateY( yaw ), MatrixTranslate( at.x, at.y, at.z ) ) );
-    if ( m.m_hasBase ) DrawMesh( m.m_base, g.m_mat, rest );
-    if ( m.m_hasHead )
-    {
-        float  dy = ( face - head ) * Deg;
-        Matrix hm = MatrixMultiply( MatrixMultiply( MatrixTranslate( -m.m_pivot.x, 0, -m.m_pivot.z ), MatrixRotateY( dy ) ),
-                                    MatrixTranslate( m.m_pivot.x, 0, m.m_pivot.z ) );
-        DrawMesh( m.m_head, g.m_mat, MatrixMultiply( hm, rest ) );
-    }
-    if ( m.m_hasSpin ) DrawMesh( m.m_spin, g.m_mat, MatrixMultiply( MatrixRotateY( m_time * m.m_spinSpeed * Deg ), rest ) );
+    drawMeshes( m, modelMatrix( at, face, bank, scale, pitch ), face, head, g.m_mat );
     f = 0;
     SetShaderValue( s, g.m_locFlash, &f, SHADER_UNIFORM_FLOAT );
 }
 
-void Renderer::drawShadow( Vector3 at, float size )
+void Renderer::drawShadows( const World &w, const Catalog &cat )
 {
     const Look &L = m_terrain.look();
     if ( L.m_space ) return;
+    // The rectangle on the ground's plane that the field's shadows can fall into (the sun pushes them aside).
     Vector3 sd = L.m_sunDir;
-    float   k = ( at.y + GroundDepth ) / std::max( 0.2f, -sd.y );
-    float   x = at.x + sd.x * k, z = at.z + sd.z * k;
-    float   y = m_terrain.heightAt( x, z, m_scroll ) + 2.0f;
-    float   s = size * 1.1f;
-    rlSetTexture( g.m_tex[T_SOFT].id );
-    rlBegin( RL_QUADS );
-    rlColor4ub( 0, 0, 0, 120 );
-    rlNormal3f( 0, 1, 0 );
-    rlTexCoord2f( 0, 0 );
-    rlVertex3f( x - s, y, z - s );
-    rlTexCoord2f( 0, 1 );
-    rlVertex3f( x - s, y, z + s );
-    rlTexCoord2f( 1, 1 );
-    rlVertex3f( x + s, y, z + s );
-    rlTexCoord2f( 1, 0 );
-    rlVertex3f( x + s, y, z - s );
-    rlEnd();
-    rlSetTexture( 0 );
+    float   planeY = -GroundDepth;
+    float   t = planeY / std::min( -0.2f, sd.y );
+    Vector2 off = { sd.x * t, sd.z * t };
+    float   x0 = std::min( -100.0f, -100.0f + off.x ), x1 = std::max( FieldW + 100.0f, FieldW + 100.0f + off.x );
+    float   z0 = std::min( -100.0f, -100.0f + off.y ), z1 = std::max( FieldH + 100.0f, FieldH + 100.0f + off.y );
+    m_shadowRect = { x0, z0, x1 - x0, z1 - z0 };
+    BeginTextureMode( m_shadow );
+    ClearBackground( BLACK );
+    rlDisableDepthTest();
+    rlDisableBackfaceCulling();
+    Shader &s = g.m_shadow;
+    SetShaderValue( s, g.m_locShSun, &sd, SHADER_UNIFORM_VEC3 );
+    SetShaderValue( s, g.m_locShPlane, &planeY, SHADER_UNIFORM_FLOAT );
+    SetShaderValue( s, g.m_locShRect, &m_shadowRect, SHADER_UNIFORM_VEC4 );
+    for ( const Enemy &e : w.m_enemies )
+    {
+        if ( e.m_dead || e.m_gone || e.m_ground ) continue;
+        const ModelMesh &mm = s_forge.get( cat, e.m_def->m_model );
+        Matrix           at = modelMatrix( { e.m_pos.x, 0, e.m_pos.y }, e.m_face, e.m_bank, e.m_def->m_scale, 0 );
+        drawMeshes( mm, at, e.m_face, e.m_head, g.m_shadowMat );
+    }
+    for ( const Player &p : w.m_players )
+    {
+        if ( !p.m_active || !p.m_alive || !p.m_ship ) continue;
+        const ModelMesh &mm = s_forge.get( cat, p.m_ship->m_model );
+        drawMeshes( mm, modelMatrix( { p.m_pos.x, 10, p.m_pos.y }, 180.0f, p.m_bank, 1.0f, 0 ), 180.0f, 180.0f,
+                    g.m_shadowMat );
+        for ( const Sidekick &k : p.m_side )
+        {
+            if ( !k.m_def ) continue;
+            Matrix at = modelMatrix( { k.m_pos.x, 8, k.m_pos.y }, 180.0f, p.m_bank * 0.5f, 1.0f, 0 );
+            drawMeshes( s_forge.get( cat, k.m_def->m_model ), at, 180.0f, 180.0f, g.m_shadowMat );
+        }
+    }
+    EndTextureMode();
+    rlEnableDepthTest();
 }
 
 void Renderer::sprite( int tex, Vector2 field, float size, Color c, float rot, float stretch, Vector2 dir )
@@ -863,6 +965,21 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
         float t = p.m_age / p.m_life;
         sprite( p.m_tex, p.m_pos, lerpf( p.m_size0, p.m_size1, t ), mixColor( p.m_c0, p.m_c1, t ), p.m_rot );
     }
+    // A dark halo under every enemy bullet and laser: added light alone vanishes on a bright ground (the corona,
+    // snow, sand); with the ground darkened round it the glow reads on every theme.
+    for ( const Bullet &b : w.m_bullets )
+    {
+        if ( b.m_player ) continue;
+        Vector2 dir = len( b.m_vel ) > 1 ? norm( b.m_vel ) : Vector2{ 0, -1 };
+        bool    longShot = b.m_sprite == 1 || b.m_sprite == 10 || b.m_sprite == 18 || b.m_sprite == 9;
+        sprite( T_SOFT, b.m_pos, b.m_radius * 5.2f, { 0, 0, 0, 165 }, 0, longShot ? 1.6f : 0.0f, dir );
+    }
+    for ( const Laser &l : w.m_lasers )
+        if ( !l.m_dead && l.m_t >= l.m_warn )
+        {
+            Vector2 d = dirOf( l.m_dir );
+            beam( l.m_from, add( l.m_from, mul( d, 1600.0f ) ), l.m_width * 3.4f, { 0, 0, 0, 120 } );
+        }
     rlDrawRenderBatchActive();
     EndBlendMode();
     BeginBlendMode( BLEND_ADD_COLORS );
@@ -1081,23 +1198,27 @@ void Renderer::draw( const World &w, const Catalog &cat )
     const Look &L = m_terrain.look();
     m_cam.position = { FieldW * 0.5f + m_shakeOff.x, CamHeight, FieldH * 0.5f + m_shakeOff.y };
     m_cam.target = { FieldW * 0.5f + m_shakeOff.x, 0, FieldH * 0.5f + m_shakeOff.y };
+    // What flies casts its shadow first, into a picture of its own that the ground reads.
+    drawShadows( w, cat );
     BeginTextureMode( m_hdr );
     ClearBackground( L.m_sky );
     rlSetClipPlanes( 10.0, 12000.0 );   // before BeginMode3D: it builds the projection
     BeginMode3D( m_cam );
     rlDisableBackfaceCulling();
     setLights( w );
-    // The ground is seen from straight above: its highlights would wash it white.
-    // Darker too, so ships and bullets stand out against it.
-    float   spec = 0.05f;
-    Vector4 dim = { L.m_groundLight, L.m_groundLight, L.m_groundLight, 1.0f };
-    SetShaderValue( g.m_lit, g.m_locSpec, &spec, SHADER_UNIFORM_FLOAT );
-    SetShaderValue( g.m_lit, g.m_locTint, &dim, SHADER_UNIFORM_VEC4 );
+    // The ground has its own shader; it is lit by the same lights and darkened under what flies.
+    GroundFrame gf;
+    gf.m_camPos = m_cam.position;
+    gf.m_lightCount = m_lightN;
+    gf.m_lightPos = m_lightPos;
+    gf.m_lightCol = m_lightCol;
+    gf.m_shadowTex = L.m_space ? 0 : m_shadow.texture.id;
+    gf.m_shadowRect = m_shadowRect;
+    gf.m_shadowY = -GroundDepth;
+    m_terrain.setFrame( gf );
     m_terrain.draw( g.m_mat, m_scroll, m_time );
-    spec = 0.4f;
-    dim = { 1, 1, 1, 1 };
+    float spec = 0.4f;
     SetShaderValue( g.m_lit, g.m_locSpec, &spec, SHADER_UNIFORM_FLOAT );
-    SetShaderValue( g.m_lit, g.m_locTint, &dim, SHADER_UNIFORM_VEC4 );
     // On the ground.
     for ( const Enemy &e : w.m_enemies )
     {
@@ -1106,18 +1227,6 @@ void Renderer::draw( const World &w, const Catalog &cat )
         Vector3          at = groundPoint( e.m_pos, m_scroll );
         drawModel( mm, at, e.m_face, 0, e.m_def->m_scale, e.m_flash, e.m_head, WHITE );
     }
-    // Shadows of what flies.
-    rlDrawRenderBatchActive();
-    rlDisableDepthMask();
-    BeginBlendMode( BLEND_ALPHA );
-    for ( const Enemy &e : w.m_enemies )
-        if ( !e.m_dead && !e.m_gone && !e.m_ground && e.m_parent < 0 )
-            drawShadow( { e.m_pos.x, 0, e.m_pos.y }, e.m_def->m_radius * e.m_def->m_scale );
-    for ( const Player &p : w.m_players )
-        if ( p.m_active && p.m_alive ) drawShadow( { p.m_pos.x, 0, p.m_pos.y }, 22 );
-    rlDrawRenderBatchActive();
-    EndBlendMode();
-    rlEnableDepthMask();
     m_terrain.drawOver( m_scroll, m_time );
     // What flies.
     for ( const Enemy &e : w.m_enemies )
