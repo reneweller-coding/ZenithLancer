@@ -1,0 +1,56 @@
+# Episode 1, secret mission 2 (the singing shard from the magma river): the glass dunes east of Ascalon, where the
+# swarm grows a garden of crystal. The Curator speaks to Nadia by name. Its gardener means no harm, and does it.
+
+level e1_s2
+  title "Der Glasgarten"
+  episode 1
+  theme desert
+  music secret
+  scroll 50
+  length 144
+  next e1_09
+  issecret 1
+  map 0.72 0.96
+  briefing e1_s2_brief
+  debrief e1_s2_after
+
+  at 1   text e1_s2_r1
+  at 3   wave e1_mote n=16 form=column x=360 gap=0.12 path=orbit cx=360 cy=260 r=160 dur=6 side=1
+  at 9   wave e1_mote n=16 form=column x=360 gap=0.12 path=orbit cx=360 cy=260 r=100 dur=6 side=-1
+  at 14  wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=80 freq=0.25 speed=110
+  at 18  ground e1_crawler n=3 form=line x=360 spacing=220
+  at 22  pickup credits x=360 value=200
+  at 24  wave e1_shard n=6 form=v x=360 spacing=55 path=dive turn=60
+  at 26  wave e1_shard n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=80 diff=3
+  at 28  wave e1_weaver x=360 path=hover stop=170 wait=7
+  at 32  text e1_s2_r2
+  at 34  wave e1_mote n=12 form=v x=360 spacing=35 path=straight speed=140
+  at 38  wave e1_latticewing n=3 form=column x=80 gap=0.6 path=swoop side=1 cx=360 cy=300 dur=5 mirror=1
+  at 44  pickup cube x=120 item=e1_c26
+  at 46  wave e1_hivecarrier x=200 path=hover stop=150 wait=9
+  at 48  wave e1_hivecarrier x=520 path=hover stop=170 wait=9 diff=3
+  at 56  text e1_s2_r3
+  at 58  wave e1_mote n=12 form=random range=640 gap=0.25 path=dive turn=40 speed=180
+  at 62  wave e1_shard n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 66  pickup credits x=600 value=200
+  at 68  ground e1_flaretower n=3 form=line x=360 spacing=260
+  at 72  wave e1_weaver n=2 form=line x=360 spacing=300 path=hover stop=160 wait=6
+  at 78  text e1_s2_r4
+  at 80  wave e1_mote n=16 form=column x=360 gap=0.12 path=orbit cx=360 cy=300 r=200 dur=6 side=-1
+  at 86  wave e1_latticewing n=5 form=arc x=360 spacing=60 path=straight speed=130
+  at 90  pickup cube x=600 item=e1_c27
+  at 92  wave e1_skimmer n=8 form=column x=360 gap=0.25 path=zigzag amp=150 freq=0.5 speed=220
+  at 98  wave e1_hivecarrier x=360 path=hover stop=140 wait=9
+  at 104 wave e1_shard n=6 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
+  at 112 pickup credits x=360 value=300
+  at 114 wave e1_mote n=16 form=grid cols=8 x=360 spacing=50 dy=40 path=straight speed=130
+  at 120 wave e1_latticewing n=6 form=column gap=0.5 path=strafe side=1 y=150 amp=60 freq=0.4 speed=150
+  at 124 wave e1_weaver x=200 path=hover stop=170 wait=6 diff=3
+  at 126 wave e1_weaver x=360 path=hover stop=160 wait=6
+  at 130 text e1_s2_r5
+  at 132 music boss
+  at 134 warn
+  at 136 text e1_s2_r6
+  at 137 boss e1_gardener
+  at 139 text e1_s2_r7
+  at 143 end

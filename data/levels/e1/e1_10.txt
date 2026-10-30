@@ -1,0 +1,69 @@
+# Episode 1, mission 10: the heart of Ascalon Primus, where the swarm turns Pyra's foundries into lattice. The last
+# casting hall, then the Foundry Warden. The episode ends here.
+
+level e1_10
+  title "Herz der Esse"
+  episode 1
+  theme foundry
+  music e1_b
+  scroll 60
+  length 156
+  next
+  arcade 1
+  map 0.93 0.44
+  briefing e1_10_brief
+  debrief e1_10_after
+
+  at 1   text e1_10_r1
+  at 3   wave e1_mote n=10 form=column x=180 gap=0.2 path=swoop side=1 cx=420 cy=280 dur=4 mirror=1
+  at 8   ground e1_slagturret n=3 form=line x=360 spacing=240
+  at 10  wave e1_shard n=6 form=v x=360 spacing=55 path=dive turn=70
+  at 14  wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=60 freq=0.3 speed=130
+  at 18  ground e1_furnace x=360
+  at 20  wave e1_skimmer n=8 form=sides x=40 gap=0.3 path=strafe y=240 amp=40 freq=0.5 speed=270
+  at 24  pickup credits x=200 value=150
+  at 26  wave e1_weaver x=520 path=hover stop=160 wait=6
+  at 28  wave e1_weaver x=200 path=hover stop=190 wait=6 diff=3
+  at 30  text e1_10_r2
+  at 32  ground e1_flaretower n=2 form=line x=360 spacing=420
+  at 34  wave e1_mote n=12 form=grid cols=6 x=360 spacing=60 dy=50 path=straight speed=140
+  at 38  wave e1_crane x=360 path=hover stop=190 wait=7
+  at 42  wave e1_shard n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 46  pickup cube x=600 item=e1_c30
+  at 48  ground e1_crawler n=4 form=column x=680 gap=1.3 path=ground dir=90 speed=55
+  at 52  wave e1_latticewing n=5 form=arc x=360 spacing=60 path=straight speed=140
+  at 56  wave e1_hivecarrier x=360 path=hover stop=150 wait=9
+  at 60  text e1_10_r3
+  at 62  pickup credits x=360 value=200
+  # The last casting hall: flare stacks on both walls (and in the middle from Schwer on), furnaces, a crane pouring slag.
+  at 64  scroll 45
+  at 65  ground e1_flaretower x=120
+  at 65  ground e1_flaretower x=600
+  at 68  wave e1_crane x=240 path=hover stop=170 wait=8
+  at 70  ground e1_furnace x=230
+  at 70  ground e1_furnace x=490 diff=3
+  at 74  wave e1_mote n=10 form=random range=600 gap=0.3 path=dive turn=40 speed=200
+  at 78  ground e1_flaretower x=360 diff=3
+  at 80  wave e1_weaver x=480 path=hover stop=200 wait=6
+  at 84  wave e1_shard n=6 form=column x=120 gap=0.3 path=dive turn=90 mirror=1
+  at 88  wave e1_weaver x=360 path=hover stop=160 wait=6 diff=3
+  at 92  pickup cube x=120 item=e1_c31
+  at 94  scroll 60
+  at 96  text e1_10_r4
+  at 98  wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=70 freq=0.35 speed=130
+  at 102 ground e1_slagturret n=4 form=line x=360 spacing=170
+  at 106 wave e1_skimmer n=10 form=random range=600 gap=0.25 path=dive turn=40 speed=260
+  at 110 wave e1_weaver n=2 form=line x=360 spacing=300 path=hover stop=170 wait=6
+  at 116 wave e1_mote n=14 form=column x=360 gap=0.15 path=sine amp=220 freq=0.25 speed=170
+  at 120 pickup credits x=500 value=200
+  at 122 wave e1_shard n=5 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
+  at 126 ground e1_crawler n=3 form=line x=360 spacing=200
+  at 130 wave e1_latticewing n=6 form=column gap=0.5 path=strafe side=1 y=150 amp=60 freq=0.4 speed=160
+  at 134 wave e1_hivecarrier x=200 path=hover stop=150 wait=8 diff=3
+  at 140 text e1_10_r5
+  at 142 music e1_boss
+  at 144 warn
+  at 146 text e1_10_r6
+  at 147 boss e1_warden
+  at 149 text e1_10_r7
+  at 154 end

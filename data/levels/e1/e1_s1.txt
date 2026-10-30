@@ -1,0 +1,64 @@
+# Episode 1, secret mission 1 (the beacon from the lava fields): down into the volcano to Vulcan Deep, the smelter
+# lost eighty years ago. The swarm searches its outer shafts; inside, the old guardian still keeps its last order.
+
+level e1_s1
+  title "Vulkantiefe"
+  episode 1
+  theme lava
+  music secret
+  scroll 50
+  length 152
+  next e1_05
+  issecret 1
+  map 0.33 0.06
+  briefing e1_s1_brief
+  debrief e1_s1_after
+
+  at 1   text e1_s1_r1
+  at 3   obstacle e1_slagrock n=3 form=line x=360 spacing=220 speed=50
+  at 5   wave e1_mote n=12 form=column x=360 gap=0.15 path=sine amp=200 freq=0.3 speed=150
+  at 10  wave e1_shard n=6 form=column x=120 gap=0.3 path=dive turn=90 mirror=1
+  at 15  ground e1_slagturret n=2 form=line x=360 spacing=380
+  at 18  wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=60 freq=0.3 speed=120
+  at 22  pickup credits x=360 value=200
+  at 24  obstacle e1_slagrock n=4 form=random range=600 gap=0.8
+  at 26  wave e1_weaver x=200 path=hover stop=170 wait=6
+  at 28  wave e1_weaver x=520 path=hover stop=150 wait=6 diff=3
+  at 32  text e1_s1_r2
+  at 34  wave e1_mote n=10 form=v x=360 spacing=40 path=straight speed=150
+  at 38  ground e1_crawler n=3 form=line x=360 spacing=200 path=ground dir=180 speed=20
+  at 42  wave e1_shard n=8 form=sides x=60 gap=0.3 path=dive turn=70
+  at 46  pickup cube x=600 item=e1_c12
+  at 48  wave e1_hivecarrier x=360 path=hover stop=150 wait=9
+  at 54  obstacle e1_slagrock n=5 form=random range=640 gap=0.7 speed=70
+  at 58  wave e1_latticewing n=5 form=arc x=360 spacing=60 path=straight speed=130
+  at 62  text e1_s1_r3
+  at 64  scroll 40
+  at 66  ground e1_furnace n=2 form=line x=360 spacing=320
+  at 70  wave e1_skimmer n=8 form=column x=360 gap=0.25 path=zigzag amp=150 freq=0.5 speed=220
+  at 74  ground e1_slagturret n=4 form=line x=360 spacing=170
+  at 78  pickup credits x=200 value=200
+  at 80  wave e1_crane x=360 path=hover stop=190 wait=8
+  at 84  wave e1_shard n=6 form=v x=360 spacing=55 path=dive turn=60
+  at 88  text e1_s1_r4
+  # The old heart plate: in the middle of a line of slag, between two flare stacks.
+  at 90  ground e1_flaretower n=2 form=line x=360 spacing=440
+  at 92  obstacle e1_slagrock n=3 form=line x=360 spacing=90 speed=45
+  at 95  pickup plan x=360 item=ember_core
+  at 98  wave e1_mote n=12 form=random range=600 gap=0.25 path=dive turn=40 speed=200
+  at 104 pickup cube x=140 item=e1_c13
+  at 106 scroll 50
+  at 108 wave e1_weaver n=2 form=line x=360 spacing=300 path=hover stop=170 wait=6
+  at 114 wave e1_latticewing n=6 form=column gap=0.5 path=strafe side=1 y=140 amp=60 freq=0.4 speed=150
+  at 120 ground e1_furnace x=360
+  at 124 wave e1_shard n=8 form=sides x=60 gap=0.3 path=dive turn=70
+  at 126 wave e1_crane x=520 path=hover stop=200 wait=7 diff=3
+  at 128 pickup credits x=500 value=200
+  at 132 wave e1_mote n=14 form=column x=360 gap=0.15 path=sine amp=220 freq=0.25 speed=170
+  at 138 text e1_s1_r5
+  at 140 music boss
+  at 142 warn
+  at 144 text e1_s1_r6
+  at 145 boss e1_oldsmelter
+  at 147 text e1_s1_r7
+  at 151 end

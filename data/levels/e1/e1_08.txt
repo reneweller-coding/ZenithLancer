@@ -1,0 +1,74 @@
+# Episode 1, mission 8 (second fork, the river): along the magma river into the cooling basins of Ascalon Primus.
+# A pump station tells what the Directorate did the evening before; a singing glass shard points east.
+
+level e1_08
+  title "Magmastrom"
+  episode 1
+  theme lava
+  music e1_b
+  scroll 90
+  length 170
+  next e1_09
+  secret e1_s2 key=e1_key_glass
+  arcade 1
+  map 0.6 0.8
+  briefing e1_08_brief
+
+  at 1   text e1_08_r1
+  at 3   wave e1_skimmer n=8 form=column x=80 gap=0.25 path=swoop side=1 cx=400 cy=280 dur=3.2
+  at 7   obstacle e1_slagrock n=3 form=random range=500 gap=1.0 speed=100
+  at 9   wave e1_skimmer n=8 form=column x=640 gap=0.25 path=swoop side=-1 cx=320 cy=280 dur=3.2
+  at 13  ground e1_crawler n=2 form=line x=360 spacing=440 path=ground dir=180 speed=40
+  at 16  wave e1_shard n=6 form=v x=360 spacing=55 path=dive turn=70
+  at 20  wave e1_mote n=10 form=column x=360 gap=0.2 path=sine amp=180 freq=0.3 speed=180
+  at 23  pickup credits x=300 value=150
+  at 25  wave e1_crane x=200 path=hover stop=180 wait=7
+  at 28  obstacle e1_slagrock n=4 form=random range=600 gap=0.8 speed=110
+  at 30  text e1_08_r2
+  at 32  ground e1_furnace x=540
+  at 35  wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=60 freq=0.3 speed=140
+  at 39  wave e1_shard n=6 form=sides x=60 gap=0.35 path=arc side=1 turn=80
+  at 43  wave e1_crane x=520 path=hover stop=200 wait=7 diff=3
+  at 45  pickup cube x=180 item=e1_c23
+  at 47  ground e1_slagturret n=3 form=line x=360 spacing=220
+  at 50  wave e1_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=220
+  at 55  wave e1_weaver x=300 path=hover stop=160 wait=6
+  at 58  text e1_08_r3
+  # The slag rapids: the river runs fast, slag tumbles down it, skimmers weave between the lumps.
+  at 60  scroll 130
+  at 61  obstacle e1_slagrock n=6 form=random range=660 gap=0.6 speed=140
+  at 63  wave e1_skimmer n=10 form=column x=360 gap=0.25 path=zigzag amp=160 freq=0.5 speed=240
+  at 68  obstacle e1_slagrock n=5 form=random range=660 gap=0.7 speed=150
+  at 70  wave e1_shard n=5 form=v x=360 spacing=50 path=straight speed=320 repeat=2 every=4
+  at 76  obstacle e1_slagrock n=4 form=random range=600 gap=0.8 speed=130 diff=3
+  at 80  wave e1_latticewing n=4 form=column gap=0.6 path=strafe side=1 y=140 amp=50 freq=0.4 speed=160
+  # The singing shard: hard right, where the skimmers come down.
+  at 84  pickup key x=680 item=e1_key_glass
+  at 86  wave e1_skimmer n=8 form=column x=650 gap=0.3 path=sine amp=30 freq=0.6 speed=230
+  at 88  text e1_08_r4
+  at 90  scroll 90
+  at 92  pickup credits x=360 value=200
+  at 96  ground e1_furnace x=200
+  at 98  wave e1_mote n=10 form=v x=360 spacing=40 path=straight speed=170
+  at 102 wave e1_weaver n=2 form=line x=360 spacing=320 path=hover stop=170 wait=6
+  at 106 ground e1_crawler n=4 form=column x=680 gap=1.2 path=ground dir=90 speed=70
+  at 110 wave e1_shard n=8 form=sides x=60 gap=0.3 path=dive turn=70
+  at 114 pickup cube x=560 item=e1_c24
+  at 116 wave e1_hivecarrier x=360 path=hover stop=150 wait=9
+  at 120 obstacle e1_slagrock n=4 form=random range=600 gap=0.9 speed=100
+  at 124 wave e1_latticewing n=5 form=arc x=360 spacing=60 path=straight speed=140
+  at 128 ground e1_slagturret n=4 form=line x=360 spacing=170
+  at 132 text e1_08_r5
+  at 134 pickup credits x=200 value=200
+  at 136 wave e1_crane x=360 path=hover stop=190 wait=7
+  at 140 wave e1_skimmer n=10 form=random range=600 gap=0.25 path=dive turn=40 speed=260
+  at 144 wave e1_mote n=14 form=column x=360 gap=0.15 path=sine amp=220 freq=0.25 speed=170
+  at 148 pickup cube x=360 item=e1_c25
+  at 150 wave e1_weaver x=200 path=hover stop=160 wait=6 diff=3
+  at 152 wave e1_shard n=6 form=v x=360 spacing=50 path=dive turn=60
+  at 157 music e1_boss
+  at 159 warn
+  at 161 text e1_08_r6
+  at 162 boss e1_magmawyrm
+  at 164 text e1_08_r7
+  at 168 end

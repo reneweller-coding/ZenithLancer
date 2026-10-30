@@ -1,0 +1,78 @@
+# Episode 1, mission 6: an ore train runs across the ash flats towards the mass driver of Kessa, loaded with hull
+# plates the swarm has recast. Its consignee is somebody called "Krone". The track forks behind it.
+
+level e1_06
+  title "Der Erzzug"
+  episode 1
+  theme desert
+  music e1_b
+  scroll 80
+  length 192
+  next e1_07 e1_08
+  map 0.48 0.56
+  briefing e1_06_brief
+
+  at 1   text e1_06_r1
+  at 3   wave e1_skimmer n=6 form=column x=100 gap=0.3 path=swoop side=1 cx=380 cy=260 dur=3.5
+  at 6   wave e1_skimmer n=6 form=column x=620 gap=0.3 path=swoop side=-1 cx=340 cy=260 dur=3.5
+  at 9   wave e1_mote n=10 form=v x=360 spacing=40 path=straight speed=160
+  at 12  ground e1_slagturret n=2 form=line x=360 spacing=420
+  at 15  wave e1_shard n=5 form=line x=360 spacing=120 path=dive turn=80
+  at 19  wave e1_latticewing n=3 form=column x=640 gap=0.7 path=swoop side=-1 cx=300 cy=280 dur=5
+  at 22  pickup credits x=200 value=150
+  at 24  ground e1_crawler n=3 form=line x=360 spacing=200 path=ground dir=180 speed=30
+  at 27  wave e1_skimmer n=8 form=sides x=40 gap=0.3 path=strafe y=200 amp=40 freq=0.5 speed=280 diff=3
+  at 30  text e1_06_r2
+  at 32  wave e1_crane x=200 path=hover stop=180 wait=7
+  at 35  wave e1_mote n=12 form=grid cols=6 x=360 spacing=60 dy=50 path=straight speed=140
+  at 40  wave e1_weaver x=520 path=hover stop=160 wait=6
+  at 44  pickup cube x=560 item=e1_c17
+  at 46  wave e1_shard n=6 form=sides x=60 gap=0.35 path=arc side=1 turn=80
+  at 50  ground e1_slagturret n=3 form=line x=360 spacing=220
+  at 54  wave e1_latticewing n=4 form=arc x=360 spacing=60 path=straight speed=130
+  at 58  text e1_06_r3
+  at 60  pickup credits x=360 value=200
+  # The train: six wagons and the locomotive run up the track slower than we fly, so we overtake it from behind.
+  at 62  scroll 70
+  at 63  ground e1_orewagon x=360 y=-60 path=ground dir=180 speed=30
+  at 63  ground e1_orewagon x=360 y=-118 path=ground dir=180 speed=30
+  at 63  ground e1_orewagon x=360 y=-176 path=ground dir=180 speed=30
+  at 63  ground e1_orewagon x=360 y=-234 path=ground dir=180 speed=30
+  at 63  ground e1_orewagon x=360 y=-292 path=ground dir=180 speed=30
+  at 63  ground e1_orewagon x=360 y=-350 path=ground dir=180 speed=30
+  at 63  ground e1_oreloco x=360 y=-432 path=ground dir=180 speed=30
+  at 66  wave e1_skimmer n=6 form=column x=60 gap=0.3 path=sine amp=40 freq=0.5 speed=220
+  at 70  wave e1_skimmer n=6 form=column x=660 gap=0.3 path=sine amp=40 freq=0.5 speed=220
+  at 74  text e1_06_r4
+  at 78  wave e1_latticewing n=3 form=line x=360 spacing=240 path=sine amp=50 freq=0.3 speed=110
+  at 82  wave e1_crane x=150 path=hover stop=170 wait=8 diff=3
+  at 86  wave e1_mote n=8 form=column x=620 gap=0.25 path=orbit cx=360 cy=300 r=180 dur=5 side=-1
+  # A plan on the right edge, just where the locomotive's fans sweep.
+  at 92  pickup plan x=660 item=quill
+  at 94  wave e1_shard n=6 form=column x=600 gap=0.3 path=dive turn=60
+  at 98  text e1_06_r5
+  at 100 wave e1_weaver x=200 path=hover stop=150 wait=7
+  at 104 ground e1_orewagon x=140 y=-60 path=ground dir=180 speed=30 diff=3
+  at 104 ground e1_orewagon x=140 y=-118 path=ground dir=180 speed=30 diff=3
+  at 104 ground e1_orewagon x=140 y=-176 path=ground dir=180 speed=30 diff=3
+  at 108 wave e1_skimmer n=8 form=random range=600 gap=0.3 path=dive turn=60 speed=260
+  at 112 pickup cube x=120 item=e1_c18
+  at 116 scroll 80
+  at 118 wave e1_mote n=12 form=random range=640 gap=0.2 path=dive turn=50 speed=210
+  at 122 ground e1_furnace x=180
+  at 124 wave e1_latticewing n=5 form=column gap=0.6 path=strafe side=1 y=130 amp=60 freq=0.4 speed=150
+  at 130 text e1_06_r6
+  at 132 wave e1_hivecarrier x=440 path=hover stop=150 wait=9
+  at 136 ground e1_crawler n=4 form=column x=680 gap=1.3 path=ground dir=90 speed=60
+  at 140 wave e1_shard n=8 form=sides x=60 gap=0.3 path=dive turn=70
+  at 144 pickup credits x=500 value=200
+  at 148 wave e1_crane x=520 path=hover stop=190 wait=7
+  at 150 wave e1_skimmer n=6 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
+  at 156 pickup cube x=360 item=e1_c19
+  at 158 wave e1_weaver n=2 form=line x=360 spacing=300 path=hover stop=170 wait=6
+  at 164 wave e1_mote n=14 form=column x=360 gap=0.15 path=sine amp=220 freq=0.25 speed=170
+  at 168 ground e1_slagturret n=4 form=line x=360 spacing=170
+  at 172 wave e1_latticewing n=4 form=line x=360 spacing=150 path=sine amp=70 freq=0.35 speed=130 diff=3
+  at 176 wave e1_shard n=6 form=v x=360 spacing=50 path=dive turn=60
+  at 182 text e1_06_r7
+  at 190 end
