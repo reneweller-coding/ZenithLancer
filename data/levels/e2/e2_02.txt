@@ -1,0 +1,75 @@
+# Episode 2, mission 2: the floating city of Corvina. The swarm drifts into its harbours, and it is not drifting at
+# random: it follows a signal. An old transponder under the city leads to the drowned archive (secret e2_s1).
+
+level e2_02
+  title "Corvina"
+  episode 2
+  theme city
+  music e2_b
+  scroll 60
+  length 195
+  next e2_03 e2_04
+  secret e2_s1 key=e2_key_archive
+  map 0.13 0.55
+  briefing e2_02_brief
+  debrief e2_02_after
+
+  at 1   text e2_02_r1
+  at 3   wave e2_mote n=6 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=140
+  at 6   wave e2_swallow n=5 form=column x=100 gap=0.3 path=swoop side=1 cx=380 cy=320 dur=3.4 mirror=1
+  at 12  ground e2_buoy x=200
+  at 12  ground e2_buoy x=520
+  at 15  wave e2_ray n=3 form=column x=600 gap=0.6 path=swoop side=-1 cx=320 cy=260 dur=5
+  at 18  wave e2_mote n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120
+  at 22  wave e2_lancefish n=2 form=line x=360 spacing=300 path=dive turn=80 diff=3
+  at 24  pickup credits x=360 value=200
+  at 26  text e2_02_r2
+  at 28  wave e2_jelly x=150 path=hover stop=200 wait=7
+  at 29  wave e2_jelly x=570 path=hover stop=170 wait=7
+  at 32  wave e2_swallow n=6 form=sides x=60 gap=0.35 path=arc side=1 turn=90 speed=240
+  at 36  ground e2_hydrofoil x=100 n=2 form=line spacing=90 path=ground dir=-40 speed=45
+  at 38  pickup cube x=520 item=e2_c04
+  at 44  wave e2_harvester x=240 path=hover stop=150 wait=9
+  at 46  wave e2_ray n=3 form=v x=500 spacing=80 path=dive turn=50 speed=160
+  at 50  wave e2_mote n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=240 r=130 dur=5 side=-1
+  at 54  ground e2_buoy x=120 n=3 form=line spacing=90
+  at 56  wave e2_swallow n=5 form=column x=360 gap=0.3 path=loop stop=240 r=80 speed=240
+  at 58  wave e2_harvester x=500 path=hover stop=200 wait=8 diff=3
+  at 62  text e2_02_r3
+  at 64  wave e2_lancefish n=4 form=column x=200 gap=0.5 path=dive turn=100 mirror=1
+  at 70  pickup credits x=200 value=350
+  at 72  wave e2_seamine n=5 form=random range=500 gap=0.8 path=drift speed=55
+  at 78  pickup cube x=400 item=e2_c05
+  at 80  ground e2_reef x=520
+  at 82  wave e2_mote n=6 form=v x=200 spacing=60 path=sine amp=30 freq=0.4 speed=140
+  at 86  wave e2_ray n=4 form=column x=100 gap=0.6 path=swoop side=1 cx=420 cy=300 dur=5
+  at 90  wave e2_jelly n=3 form=line x=360 spacing=220 path=hover stop=180 wait=6
+  at 94  wave e2_swallow n=6 form=column x=600 gap=0.25 path=swoop side=-1 cx=300 cy=360 dur=3.2 diff=3
+  at 96  ground e2_hydrofoil x=640 n=2 form=line spacing=80 path=ground dir=50 speed=50
+  at 100 text e2_02_r4
+  at 102 wave e2_mote n=12 form=random range=600 gap=0.25 path=zigzag amp=60 freq=0.5 speed=170
+  at 106 pickup credits x=500 value=300
+  at 110 scroll 90
+  at 112 wave e2_swallow n=6 form=v x=360 spacing=50 path=straight speed=300 repeat=3 every=4
+  at 116 ground e2_buoy x=180 n=4 form=line spacing=120
+  at 120 wave e2_lancefish n=3 form=line x=360 spacing=150 path=dive turn=80
+  at 124 text e2_02_r5
+  at 126 wave e2_ray n=3 form=column x=600 gap=0.5 path=swoop side=-1 cx=260 cy=260 dur=4.6
+  at 128 wave e2_jelly x=110 path=hover stop=260 wait=6
+  at 128 pickup key x=34 item=e2_key_archive
+  at 129 wave e2_mote n=8 form=column x=60 gap=0.25 path=straight speed=200
+  at 132 wave e2_harvester x=560 path=hover stop=170 wait=8
+  at 136 scroll 60
+  at 138 pickup cube x=600 item=e2_c06
+  at 146 wave e2_harvester n=2 form=line x=360 spacing=360 path=hover stop=160 wait=10
+  at 148 text e2_02_r6
+  at 150 wave e2_mote n=10 form=column x=120 gap=0.3 path=orbit cx=360 cy=220 r=160 dur=6 side=1 mirror=1
+  at 156 ground e2_reef x=200
+  at 156 ground e2_reef x=540 diff=3
+  at 160 wave e2_ray n=4 form=v x=360 spacing=90 path=dive turn=50 speed=160
+  at 166 wave e2_swallow n=6 form=sides x=80 gap=0.3 path=arc side=-1 turn=90 speed=240
+  at 170 wave e2_jelly x=360 path=hover stop=180 wait=8 drop=credits value=400
+  at 176 pickup credits x=360 value=350
+  at 180 wave e2_lancefish n=4 form=line x=360 spacing=130 path=dive turn=90 diff=3
+  at 182 text e2_02_r7
+  at 190 end

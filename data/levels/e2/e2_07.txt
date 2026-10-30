@@ -1,0 +1,71 @@
+# Episode 2, mission 7 (fork A): Salgado's flotilla flees north to the polar ice, the Directorate in pursuit.
+# Ice floes in the channels, gunboats in the leads, frigates closing in like a pincer.
+
+level e2_07
+  title "Eisrand"
+  episode 2
+  theme ice
+  music e2_a
+  scroll 70
+  length 196
+  next e2_09
+  map 0.65 0.25
+  briefing e2_07_brief
+
+  at 1   text e2_07_r1
+  at 3   wave e2_sentry n=6 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=150
+  at 6   wave e2_interceptor n=4 form=column x=120 gap=0.4 path=swoop side=1 cx=380 cy=280 dur=3.4 mirror=1
+  at 12  obstacle e2_floe n=3 form=random range=560 gap=1.5 path=drift speed=60
+  at 14  ground e2_gunboat x=200 path=ground dir=-20 speed=25
+  at 18  wave e2_sentry n=8 form=v x=360 spacing=55 path=sine amp=30 freq=0.4 speed=130 drop=credits value=300
+  at 22  wave e2_interceptor n=3 form=v x=360 spacing=70 path=dive turn=50 speed=250 diff=3
+  at 24  pickup credits x=300 value=200
+  at 26  text e2_07_r2
+  at 28  wave e2_frigate x=360 path=hover stop=150 wait=8
+  at 30  wave e2_mote n=6 form=random range=600 gap=0.5 path=drift speed=70
+  at 34  wave e2_interceptor n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90 speed=280
+  at 38  pickup cube x=520 item=e2_c17
+  at 42  obstacle e2_floe n=4 form=random range=600 gap=1.2 path=drift speed=70
+  at 44  ground e2_gunboat n=2 form=line x=360 spacing=300
+  at 48  wave e2_sentry n=8 form=column x=120 gap=0.3 path=orbit cx=360 cy=240 r=150 dur=5 side=1 mirror=1
+  at 54  wave e2_bomber n=2 form=line x=360 spacing=300 path=straight speed=100
+  at 58  wave e2_interceptor n=4 form=column x=600 gap=0.4 path=swoop side=-1 cx=340 cy=300 dur=3.4
+  at 60  text e2_07_r3
+  at 62  wave e2_frigate x=200 path=hover stop=160 wait=8
+  at 63  wave e2_frigate x=520 path=hover stop=140 wait=8 diff=3
+  at 66  wave e2_sentry n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=120 drop=shield
+  at 72  pickup credits x=420 value=350
+  at 74  obstacle e2_floe n=5 form=random range=620 gap=1.0 path=drift speed=80
+  at 76  wave e2_seamine n=4 form=random range=560 gap=0.8 path=drift speed=60
+  at 82  pickup cube x=200 item=e2_c18
+  at 84  scroll 100
+  at 85  text e2_07_r4
+  at 86  ground e2_gunboat n=3 form=column x=200 gap=2
+  at 86  ground e2_gunboat n=3 form=column x=520 gap=2
+  at 88  wave e2_interceptor n=4 form=v x=360 spacing=70 path=dive turn=60 speed=260
+  at 94  wave e2_sentry n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=230
+  at 100 obstacle e2_floe n=4 form=random range=600 gap=1 path=drift speed=100
+  at 104 wave e2_frigate x=360 path=hover stop=140 wait=8
+  at 106 scroll 70
+  at 108 text e2_07_r5
+  at 110 wave e2_interceptor n=6 form=column x=120 gap=0.25 path=swoop side=1 cx=400 cy=320 dur=3.2 mirror=1
+  at 116 pickup credits x=360 value=300
+  at 118 wave e2_bomber n=3 form=line x=360 spacing=220 path=straight speed=100 diff=3
+  at 126 wave e2_mote n=8 form=column x=360 gap=0.3 path=loop stop=260 r=100 speed=200
+  at 130 wave e2_jelly n=2 form=line x=360 spacing=300 path=hover stop=180 wait=6
+  at 134 wave e2_interceptor n=4 form=column x=100 gap=0.4 path=swoop side=1 cx=360 cy=260 dur=3.6
+  at 138 ground e2_gunboat x=150 path=ground dir=-30 speed=30
+  at 138 ground e2_gunboat x=570 path=ground dir=30 speed=30
+  at 140 text e2_07_r6
+  at 142 wave e2_frigate x=200 path=hover stop=150 wait=9
+  at 144 wave e2_frigate x=520 path=hover stop=170 wait=9
+  at 148 wave e2_sentry n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.4 speed=150
+  at 152 obstacle e2_floe n=4 form=random range=600 gap=1.2 path=drift speed=70
+  at 156 wave e2_interceptor n=6 form=sides x=60 gap=0.3 path=arc side=-1 turn=90 speed=280 diff=3
+  at 160 pickup credits x=200 value=300
+  at 162 wave e2_lancefish n=3 form=line x=360 spacing=150 path=dive turn=80
+  at 166 wave e2_sentry n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=240 r=140 dur=5 side=-1 mirror=1 drop=credits value=400
+  at 172 text e2_07_r7
+  at 176 pickup credits x=500 value=300
+  at 182 wave e2_interceptor n=4 form=column x=120 gap=0.4 path=swoop side=1 cx=380 cy=280 dur=3.4
+  at 190 end

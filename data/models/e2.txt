@@ -1,0 +1,418 @@
+# Episode 2 "Gezeitenfall" (Thalassa): the models. Nose towards -z.
+# Tessellate: dark violet and gunmetal hulls, magenta and sea-glass cyan lattice crystals.
+# Directorate: white and navy hulls, amber lights, crisp military shapes.
+
+# ---------------------------------------------------------------------------------------------- Tessellate
+
+# Gischtfunke: a spray of lattice, the smallest thing the swarm sends over the sea.
+model e2_mote
+  part sphere r=4.5 seg=6 color=#2e2840 noise=0.12
+  part crystal r=2.2 len=12 z=-6 color=#48e8ff emit=0.8
+  part crystal r=2.2 len=10 z=6 color=#48e8ff emit=0.6
+  part crystal r=1.8 len=9 x=6 rot=90 color=#ff48d8 emit=0.75 mirror=1
+  part ring r=9 thick=0.7 seg=12 color=#7af8ff emit=0.9 group=spin spin=300
+  part light r=1.5 y=4 color=#ffffff
+
+# Gitterschwalbe: a forked tail and long swept wings, fast popcorn that swoops in from the sides.
+model e2_swallow
+  part hull len=24 wid=7 hgt=5 shape=arrow color=#3a3450
+  part wing span=14 root=11 tip=2 sweep=13 z=2 thick=1 color=#2e2840 stripe=#48e8ff
+  part spike r=1.3 len=12 x=3 z=14 rot=168 color=#4a4262 mirror=1
+  part crystal r=2 len=8 y=2 z=-2 color=#48e8ff emit=0.8
+  part engine r=1.6 len=5 z=10 glow=#ff48d8 color=#221c30
+  part light r=1 z=-10 y=1.5 color=#ff70f0
+  part light r=0.9 x=13 z=10 color=#7af8ff mirror=1
+
+# Gitterrochen: a manta of lattice, wide and flat, glowing seams on its wings.
+model e2_ray
+  part plate pts="0,-17;10,-8;26,5;9,9;0,15;-9,9;-26,5;-10,-8" thick=2.4 color=#3a3450
+  part hull len=26 wid=11 hgt=7 shape=blob y=1 color=#4a4262
+  part spike r=1.6 len=9 x=4 z=-18 rot=8 color=#2e2840 mirror=1
+  part spike r=1 len=20 z=24 rot=180 color=#2e2840
+  part crystal r=1.1 len=22 x=12 z=0 rot=62 y=1.4 color=#48e8ff emit=0.75 mirror=1
+  part crystal r=1.1 len=14 x=8 z=7 rot=100 y=1.4 color=#ff48d8 emit=0.6 mirror=1
+  part dome rx=4 ry=3 rz=6 z=-5 y=3 color=#ff48d8 emit=0.6
+  part engine r=2 len=5 x=5 z=11 glow=#ff48d8 color=#221c30
+  part light r=1.3 x=25 z=5 color=#7af8ff mirror=1
+  part greeble n=6 w=8 d=14 y=3 z=4 size=1.4 seed=5 color=#5a5070
+
+# Speerfisch: a needle with a glass spear for a nose; it dives straight at the pilot.
+model e2_lancefish
+  part hull len=34 wid=8 hgt=7 shape=needle color=#3a3450
+  part spike r=1.5 len=16 z=-24 color=#7af8ff emit=0.55
+  part fin h=6 root=12 tip=3 sweep=6 z=2 y=2 color=#2e2840
+  part wing span=9 root=8 tip=2 sweep=6 z=-2 thick=0.8 color=#2e2840 stripe=#48e8ff
+  part wing span=7 root=6 tip=1 sweep=6 z=13 thick=0.8 color=#2e2840 stripe=#ff48d8
+  part light r=1.2 x=3 z=-10 y=2 color=#48e8ff mirror=1
+  part crystal r=1.5 len=10 y=3 z=6 color=#ff48d8 emit=0.7
+  part engine r=2 len=6 z=18 glow=#ff48d8 color=#221c30
+
+# Gitterqualle: a glass bell with a glowing heart and trailing lattice tendrils.
+model e2_jelly
+  part dome r=13 ry=9 color=#6a3a90 glass=1 emit=0.3
+  part sphere r=6 y=2 color=#48e8ff emit=0.85
+  part ring r=13 thick=1.2 seg=16 color=#ff48d8 emit=0.7
+  part ring r=8 thick=0.6 y=5 seg=12 color=#7af8ff emit=0.8 group=spin spin=-70
+  part spike r=1.1 len=16 x=10 z=17.3 rot=150 color=#9a6ac0 emit=0.35 mirror=1
+  part spike r=1.1 len=18 x=5.2 z=19.3 rot=165 color=#9a6ac0 emit=0.35 mirror=1
+  part spike r=1.2 len=20 z=21 rot=180 color=#b07ad0 emit=0.4
+  part spike r=0.9 len=8 x=13 z=-7 rot=60 color=#7af8ff emit=0.6 mirror=1
+  part spike r=0.9 len=8 z=-15 color=#7af8ff emit=0.6
+  part light r=1.4 x=9 z=-9 y=3 color=#ff48d8 mirror=1
+
+# Gezeitensammler: a harvester gunship on two pontoons, its scoop drinking the sea.
+model e2_harvester
+  part hull len=56 wid=26 hgt=12 shape=hex round=3 color=#3a3450
+  part hull len=46 wid=9 hgt=8 shape=cigar x=21 z=4 color=#2e2840 mirror=1
+  part box w=32 h=6 d=12 z=-30 taper=0.3 color=#4a4262
+  part box w=27 h=2 d=4 z=-36 y=-1 color=#48e8ff emit=0.65
+  part crystal r=5 len=18 y=8 z=-4 color=#ff48d8 emit=0.8
+  part crystal r=3.5 len=12 x=8 y=7 z=7 rot=30 color=#48e8ff emit=0.75 mirror=1
+  part ring r=13 thick=1.2 y=7 color=#ff48d8 emit=0.5 group=spin spin=90
+  part gun r=1.4 len=12 x=21 z=-20 color=#221c30
+  part engine r=3 len=8 x=21 z=28 glow=#ff48d8 color=#221c30
+  part engine r=3.5 len=8 x=8 z=30 glow=#48e8ff color=#221c30
+  part greeble n=16 w=20 d=34 y=6 z=6 size=2.5 seed=31 color=#4a4262
+  part light r=1.6 x=21 z=-14 y=4 color=#48e8ff mirror=1
+  part light r=1.2 x=12 z=-26 y=3 color=#ff48d8 mirror=1
+
+# Gittergleiter: a lattice catamaran on hydrofoils with a twin gun on its deck.
+model e2_hydrofoil
+  part hull len=46 wid=8 hgt=7 shape=dart x=13 color=#3a3450 mirror=1
+  part plate pts="-13,-12;13,-12;15,14;-15,14" thick=2 y=2 color=#2e2840
+  part box w=16 h=5 d=12 y=4 z=5 color=#4a4262
+  part wing span=8 root=6 tip=3 sweep=2 x=17 z=-14 thick=0.8 color=#4a4262
+  part wing span=6 root=5 tip=3 sweep=2 x=17 z=12 thick=0.8 color=#4a4262
+  part crystal r=2.5 len=12 y=7 z=12 color=#48e8ff emit=0.8
+  part disc r=6 h=3 y=7 z=-3 color=#4a4262 group=head pivot=0,-3
+  part gun r=1.2 len=14 x=2 y=8 z=-10 color=#221c30 group=head pivot=0,-3
+  part light r=1.2 y=10 z=-1 color=#ff48d8 group=head pivot=0,-3
+  part light r=1.3 x=13 z=-21 y=3 color=#48e8ff mirror=1
+
+# Bojengeschütz: a lattice buoy with a glowing float collar and one long gun.
+model e2_buoy
+  part ring r=13 thick=3 seg=16 color=#ff48d8 emit=0.35
+  part disc r=12 h=4 seg=8 color=#2e2840
+  part box w=12 h=7 d=12 y=4 taper=0.35 color=#3a3450 group=head pivot=0,0
+  part gun r=1.8 len=20 y=7 z=-12 color=#221c30 group=head pivot=0,0
+  part crystal r=2.5 len=8 y=9 z=4 color=#48e8ff emit=0.8 group=head pivot=0,0
+  part light r=1.4 x=9 y=3 color=#48e8ff mirror=1
+  part light r=1.4 z=9 y=3 color=#48e8ff
+  part light r=1.4 z=-9 y=3 color=#48e8ff
+
+# Gitterriff: a floating reef the swarm grows on the open sea; crystals bloom from it.
+model e2_reef
+  part plate pts="0,-44;20,-36;40,-12;44,10;28,34;4,44;-22,38;-42,16;-40,-14;-22,-38" thick=6 color=#2e2840 noise=0.12
+  part plate pts="0,-26;18,-14;22,10;4,24;-18,18;-24,-6" thick=4 y=3 color=#3a3450
+  part crystal r=8 len=32 y=10 z=-4 color=#ff48d8 emit=0.8
+  part crystal r=6 len=24 y=9 z=-2 rot=90 color=#48e8ff emit=0.7
+  part crystal r=4 len=20 x=24 z=-14 rot=50 y=6 color=#48e8ff emit=0.8
+  part crystal r=4 len=18 x=-22 z=18 rot=-30 y=6 color=#48e8ff emit=0.8
+  part crystal r=3 len=14 x=20 z=24 rot=120 y=5 color=#ff48d8 emit=0.7
+  part crystal r=3 len=14 x=-26 z=-18 rot=200 y=5 color=#ff48d8 emit=0.7
+  part crystal r=2.5 len=10 x=34 z=8 rot=80 y=4 color=#7af8ff emit=0.7
+  part ring r=17 thick=1.5 y=8 color=#48e8ff emit=0.6 group=spin spin=40
+  part greeble n=36 w=70 d=70 y=3 size=4 seed=41 color=#4a4262
+  part light r=2 x=36 z=6 color=#ff48d8
+  part light r=2 x=-34 z=-10 color=#ff48d8
+  part light r=2 x=4 z=40 color=#7af8ff
+
+# Treibmine: a sea mine with a glowing float band, spiked all round.
+model e2_seamine
+  part sphere r=7 seg=10 color=#2e2840
+  part ring r=7.4 thick=1.4 color=#48e8ff emit=0.6
+  part spike r=1.4 len=8 z=-10 color=#4a4262
+  part spike r=1.4 len=8 z=10 rot=180 color=#4a4262
+  part spike r=1.4 len=8 x=8.66 z=-5 rot=60 color=#4a4262 mirror=1
+  part spike r=1.4 len=8 x=8.66 z=5 rot=120 color=#4a4262 mirror=1
+  part light r=2 y=6 color=#ff48d8
+
+# Eisscholle: a floe of polar ice with a frozen lattice crystal inside.
+model e2_floe
+  part plate pts="0,-26;14,-22;26,-8;24,10;12,24;-6,26;-22,16;-28,-2;-18,-20" thick=8 color=#7e9cbc noise=0.2
+  part sphere rx=12 ry=7 rz=10 x=8 z=-6 y=3 seg=6 color=#a8c2dc noise=0.22
+  part box w=10 h=6 d=8 x=-12 z=10 y=2 rot=30 color=#6e8cae noise=0.2
+  part box w=7 h=5 d=6 x=14 z=12 y=2 rot=-20 color=#98b4d0 noise=0.2
+  part crystal r=4 len=16 y=6 z=4 rot=40 color=#ff48d8 emit=0.7
+  part crystal r=2.5 len=10 x=-10 y=5 z=-8 rot=-30 color=#48e8ff emit=0.6
+
+# ---------------------------------------------------------------------------------------------- Directorate
+
+# Wachdrohne: a white patrol saucer with amber running lights.
+model e2_sentry
+  part disc r=8 h=4 seg=12 color=#2a3a66
+  part ring r=8 thick=1.6 color=#d4dae2
+  part dome r=4.5 ry=3 y=2 color=#8a94a6
+  part box w=22 h=2 d=4 color=#c8ced8
+  part light r=1.4 x=11 color=#ffb030 mirror=1
+  part light r=1.6 y=4 color=#ffc860
+  part gun r=0.9 len=8 x=3 z=-7 color=#3a4250
+
+# Abfangjäger Klinge: a crisp delta with canards and twin fins.
+model e2_interceptor
+  part hull len=34 wid=8 hgt=6 shape=dart color=#d4dae2
+  part wing span=16 root=20 tip=3 sweep=16 z=6 thick=1.2 color=#2a3a66 stripe=#d4dae2
+  part wing span=6 root=6 tip=2 sweep=4 z=-10 thick=1 color=#c8ced8
+  part fin h=6 root=8 tip=3 sweep=4 x=4 z=12 y=1 roll=-15 color=#1e2c52 mirror=1
+  part dome rx=2.5 ry=2 rz=6 z=-5 y=2.5 color=#ffb030 emit=0.5
+  part engine r=2.2 len=7 x=3 z=17 glow=#ffd890 color=#5a6474
+  part gun r=0.8 len=8 x=7 z=-2 color=#3a4250
+  part light r=1 x=16 z=13 color=#ffb030 mirror=1
+
+# Patrouillenboot: a Directorate gunboat, white above a navy waterline.
+model e2_gunboat
+  part hull len=50 wid=20 hgt=4 shape=dart y=-2 color=#c8582a
+  part hull len=62 wid=18 hgt=8 shape=dart color=#2a3a66
+  part box w=12 h=8 d=16 y=6 z=6 taper=0.2 color=#d4dae2
+  part box w=8 h=3 d=5 y=11 z=1 color=#ffb030 emit=0.4
+  part disc r=3 h=1 y=14 z=10 color=#8a94a6
+  part box w=6 h=3 d=6 y=6 z=22 color=#8a94a6
+  part disc r=6 h=3 y=6 z=-14 color=#8a94a6 group=head pivot=0,-14
+  part gun r=1.2 len=14 x=1.8 y=7 z=-21 color=#3a4250 group=head pivot=0,-14
+  part light r=1.2 y=9 z=-10 color=#ffb030 group=head pivot=0,-14
+  part light r=1.2 x=8 z=-4 y=4 color=#ffb030 mirror=1
+  part light r=1.4 z=29 y=4 color=#ff4030
+
+# Fregatte: a long white frigate with sponsons, a bridge tower and missile pods.
+model e2_frigate
+  part hull len=76 wid=22 hgt=10 shape=hex round=4 color=#d4dae2
+  part hull len=60 wid=10 hgt=6 shape=box x=14 z=6 color=#2a3a66 mirror=1
+  part box w=10 h=1 d=56 y=5.5 z=2 color=#1e2c52
+  part box w=14 h=10 d=18 y=8 z=8 taper=0.25 color=#d8dee6
+  part box w=10 h=2 d=4 y=13 z=1 color=#1e2c52
+  part disc r=4 h=1.5 y=14 z=14 color=#8a94a6
+  part wing span=12 root=18 tip=10 sweep=4 x=18 z=12 thick=2 color=#1e2c52
+  part gun r=1.3 len=16 x=14 z=-30 color=#3a4250
+  part box w=6 h=4 d=8 x=19 y=4 z=-14 color=#8a94a6 mirror=1
+  part engine r=3.5 len=10 x=10 z=40 glow=#ffd890 color=#5a6474
+  part engine r=4 len=10 z=41 glow=#ffe8b0 color=#5a6474
+  part greeble n=20 w=18 d=50 y=5 z=0 size=2 seed=51 color=#c8ced8
+  part light r=1.4 x=24 z=-10 color=#ffb030 mirror=1
+  part light r=1.6 y=14 z=6 color=#ff4030
+
+# Torpedobomber: a flying wing on twin booms with a torpedo under its belly.
+model e2_bomber
+  part wing span=26 root=22 tip=8 sweep=8 thick=3 color=#2a3a66 stripe=#d4dae2
+  part hull len=30 wid=12 hgt=8 shape=tear z=-2 color=#d0d6e0
+  part hull len=40 wid=6 hgt=6 shape=cigar x=14 z=6 color=#c8ced8 mirror=1
+  part hull len=24 wid=5 hgt=5 shape=cigar y=-4 z=-2 color=#1e2c52
+  part box w=32 h=1.5 d=5 z=25 color=#1e2c52
+  part fin h=6 root=7 tip=3 sweep=3 x=14 z=23 color=#1e2c52 mirror=1
+  part dome rx=3 ry=2.4 rz=6 z=-10 y=3 color=#ffb030 emit=0.5
+  part engine r=2.5 len=8 x=14 z=28 glow=#ffd890 color=#5a6474
+  part light r=1.2 x=26 z=6 color=#ffb030 mirror=1
+
+# Versorgungsfrachter: a boxy supply hauler stacked with containers.
+model e2_freighter
+  part hull len=72 wid=26 hgt=12 shape=box round=5 color=#8a94a6
+  part box w=20 h=8 d=10 y=6 z=-30 taper=0.3 color=#d4dae2
+  part box w=12 h=2 d=3 y=10 z=-34 color=#ffb030 emit=0.4
+  part box w=10 h=8 d=14 x=6.5 y=7 z=-14 color=#1e2c52
+  part box w=10 h=8 d=14 x=-6.5 y=7 z=-14 color=#c86a30
+  part box w=10 h=8 d=14 x=6.5 y=7 z=2 color=#d4dae2
+  part box w=10 h=8 d=14 x=-6.5 y=7 z=2 color=#2a6a8a
+  part box w=10 h=8 d=14 x=6.5 y=7 z=18 color=#c86a30
+  part box w=10 h=8 d=14 x=-6.5 y=7 z=18 color=#1e2c52
+  part engine r=4 len=10 x=8 z=40 glow=#ffd890 color=#5a6474
+  part light r=1.4 x=13 z=-30 color=#ffb030 mirror=1
+  part light r=1.4 x=13 z=34 color=#ff4030 mirror=1
+
+# ---------------------------------------------------------------------------------------------- bosses
+
+# Brandungsorgel: a wave-power station the swarm has turned into an instrument. Its pipes sing the swarm in.
+model e2_organ
+  part hull len=150 wid=190 hgt=18 shape=hex round=3 color=#2e2840
+  part hull len=120 wid=150 hgt=10 shape=hex round=3 y=6 color=#3a3450
+  part hull len=160 wid=26 hgt=14 shape=cigar x=88 color=#4a4262 mirror=1
+  part gun r=4.5 len=80 y=14 z=0 color=#5a5470
+  part gun r=4.2 len=72 x=10 y=14 z=4 color=#5a5470
+  part gun r=4 len=64 x=20 y=13 z=8 color=#5a5470
+  part gun r=3.8 len=56 x=30 y=12 z=12 color=#5a5470
+  part gun r=3.6 len=48 x=40 y=11 z=16 color=#5a5470
+  part light r=3 y=14 z=-40 color=#7af8ff
+  part light r=2.8 x=10 y=14 z=-32 color=#48e8ff mirror=1
+  part light r=2.6 x=20 y=13 z=-24 color=#48e8ff mirror=1
+  part light r=2.4 x=30 y=12 z=-16 color=#48e8ff mirror=1
+  part light r=2.2 x=40 y=11 z=-8 color=#48e8ff mirror=1
+  part box w=96 h=4 d=10 y=13 z=42 color=#4a4262
+  part crystal r=14 len=40 y=26 z=46 color=#ff48d8 emit=0.85
+  part ring r=28 thick=2.5 y=22 z=46 color=#48e8ff emit=0.7
+  part crystal r=6 len=24 x=62 y=10 z=-40 rot=40 color=#ff48d8 emit=0.75
+  part crystal r=5 len=20 x=-58 y=10 z=38 rot=-60 color=#ff48d8 emit=0.75
+  part crystal r=5 len=22 x=66 y=10 z=44 rot=120 color=#48e8ff emit=0.7
+  part crystal r=4 len=16 x=-64 y=10 z=-34 rot=210 color=#48e8ff emit=0.7
+  part greeble n=50 w=150 d=110 y=11 size=5 seed=71 color=#4a4262
+  part light r=2.5 x=90 z=-74 color=#ff48d8 mirror=1
+  part light r=2.5 x=90 z=74 color=#ff48d8 mirror=1
+
+# An organ pipe cluster on the station's pontoons: three pipes that turn to the pilot.
+model e2_organ_pipe
+  part disc r=16 h=6 y=8 seg=8 color=#2e2840
+  part ring r=16 thick=1.5 y=11 color=#48e8ff emit=0.5
+  part box w=18 h=8 d=18 y=13 taper=0.3 color=#3a3450 group=head pivot=0,0
+  part gun r=3 len=30 x=6 y=18 z=-12 color=#5a5470 group=head pivot=0,0
+  part gun r=3.6 len=36 y=19 z=-15 color=#5a5470 group=head pivot=0,0
+  part light r=2.2 x=6 y=18 z=-27 color=#48e8ff mirror=1 group=head pivot=0,0
+  part light r=2.6 y=19 z=-33 color=#7af8ff group=head pivot=0,0
+  part crystal r=4 len=12 y=20 z=8 color=#ff48d8 emit=0.8 group=head pivot=0,0
+
+# Kreuzer Mandat: the Directorate cruiser, long and white, with a spinal laser and a hangar for drones.
+model e2_mandat
+  part hull len=200 wid=74 hgt=10 shape=hex round=5 y=-6 color=#1e2c52
+  part hull len=230 wid=68 hgt=26 shape=hex round=5 color=#d4dae2
+  part hull len=60 wid=40 hgt=20 shape=dart z=-112 color=#d8dee6
+  part box w=10 h=4 d=160 y=12 z=-6 color=#1e2c52
+  part box w=30 h=6 d=26 y=10 z=-20 color=#141a2a
+  part box w=24 h=1 d=2 y=13.5 z=-34 color=#ffb030 emit=0.6
+  part box w=34 h=20 d=40 y=18 z=34 taper=0.3 color=#d8dee6
+  part box w=26 h=3 d=5 y=28 z=18 color=#ffb030 emit=0.5
+  part disc r=8 h=2 y=32 z=38 color=#8a94a6
+  part gun r=3 len=60 y=12 z=-100 color=#3a4250
+  part light r=3 y=12 z=-132 color=#ffd060
+  part wing span=30 root=60 tip=24 sweep=20 x=33 z=56 thick=5 color=#c8ced8 stripe=#1e2c52
+  part engine r=10 len=20 x=22 z=118 glow=#ffe8b0 color=#5a6474
+  part engine r=12 len=20 z=120 glow=#ffe8b0 color=#5a6474
+  part greeble n=50 w=50 d=170 y=13 size=4 seed=61 color=#c8ced8
+  part light r=2 x=34 z=-80 color=#ffb030 mirror=1
+  part light r=2 x=35 z=-30 color=#ffb030 mirror=1
+  part light r=2 x=35 z=20 color=#ffb030 mirror=1
+  part light r=2 x=60 z=80 color=#ff4030 mirror=1
+
+# A naval twin turret of the Directorate (on the Mandat and the icebreaker).
+model e2_mandat_turret
+  part disc r=13 h=5 y=13 seg=10 color=#b8c0cc
+  part ring r=13 thick=1 y=15 color=#1e2c52
+  part box w=16 h=8 d=18 y=18 taper=0.3 color=#d4dae2 group=head pivot=0,0
+  part gun r=1.8 len=24 x=3.5 y=20 z=-14 color=#3a4250 group=head pivot=0,0
+  part box w=10 h=1 d=3 y=22.5 z=-5 color=#1e2c52 group=head pivot=0,0
+  part light r=1.6 y=23 z=5 color=#ffb030 group=head pivot=0,0
+
+# Leviathan: a Directorate carrier the swarm has grown into; the flight deck still launches, the lattice sings.
+model e2_leviathan
+  part hull len=270 wid=136 hgt=10 shape=box round=4 y=-10 color=#1e2c52
+  part hull len=280 wid=126 hgt=30 shape=box round=4 color=#b8c0cc
+  part hull len=90 wid=120 hgt=26 shape=dart z=-150 color=#b8c0cc
+  part box w=104 h=3 d=250 x=6 y=16 z=-8 color=#3a4250
+  part box w=30 h=1 d=150 x=-18 y=17.8 z=44 rot=-9 color=#4a5466
+  part box w=1.6 h=1 d=200 x=6 y=18.6 z=-30 color=#ffb030 emit=0.35
+  part box w=46 h=1 d=2 x=6 y=18.6 z=-128 color=#ffb030 emit=0.45
+  part box w=1.2 h=1 d=130 x=-18 y=18.6 z=44 rot=-9 color=#d4dae2 emit=0.25
+  part box w=20 h=36 d=60 x=-66 y=26 z=10 taper=0.15 color=#d4dae2
+  part box w=16 h=3 d=10 x=-66 y=45 z=0 color=#ffb030 emit=0.5
+  part disc r=7 h=2 x=-66 y=47 z=24 color=#8a94a6
+  part plate pts="-44,-30;6,-48;52,-24;60,30;40,84;-8,100;-52,76;-60,20" thick=3 y=19 color=#3a3450
+  part plate pts="24,-112;46,-122;56,-92;44,-70;22,-80" thick=2 y=19 color=#3a3450
+  part plate pts="-52,100;-18,104;-8,128;-40,136;-58,120" thick=2 y=19 color=#3a3450
+  part crystal r=22 len=70 y=36 color=#ff48d8 emit=0.85
+  part crystal r=13 len=44 y=30 rot=90 color=#48e8ff emit=0.75
+  part ring r=44 thick=3 y=30 color=#48e8ff emit=0.7 group=spin spin=35
+  part crystal r=9 len=40 x=40 y=24 z=62 rot=140 color=#48e8ff emit=0.75
+  part crystal r=9 len=36 x=-40 y=24 z=68 rot=210 color=#ff48d8 emit=0.75
+  part crystal r=7 len=32 x=52 y=22 z=16 rot=70 color=#ff48d8 emit=0.75
+  part crystal r=6 len=28 x=-32 y=22 z=-44 rot=-20 color=#48e8ff emit=0.7
+  part crystal r=6 len=24 x=44 y=22 z=-98 rot=30 color=#ff48d8 emit=0.7
+  part crystal r=5 len=22 x=-34 y=22 z=118 rot=200 color=#48e8ff emit=0.7
+  part crystal r=4 len=16 x=-50 y=22 z=-110 rot=-50 color=#ff48d8 emit=0.7
+  part engine r=13 len=24 x=40 z=148 glow=#ff48d8 color=#2a2436
+  part engine r=11 len=22 z=146 glow=#48e8ff color=#2a2436
+  part greeble n=26 w=8 d=240 x=58 y=15 size=4 seed=81 color=#a8b0bc
+  part greeble n=20 w=6 d=200 x=-56 y=15 z=-20 size=4 seed=82 color=#a8b0bc
+  part light r=2.4 x=64 z=-120 color=#ffb030 mirror=1
+  part light r=2.4 x=64 z=-60 color=#ffb030 mirror=1
+  part light r=2.4 x=64 z=110 color=#ffb030 mirror=1
+  part light r=2.6 x=58 z=60 color=#ff48d8 mirror=1
+
+# A launch bay on the Leviathan's deck, half overgrown: it throws fighters at the pilot.
+model e2_lev_deck
+  part box w=30 h=8 d=36 y=20 color=#3a4250
+  part box w=18 h=4 d=26 y=24 z=-4 color=#141a2a
+  part box w=3 h=1 d=30 x=6 y=26.5 color=#ffb030 emit=0.6 mirror=1
+  part crystal r=4 len=14 x=12 y=26 z=12 rot=30 color=#ff48d8 emit=0.75
+  part crystal r=3 len=10 x=-12 y=26 z=10 rot=-50 color=#48e8ff emit=0.7
+  part light r=1.6 x=13 y=20 z=-17 color=#ffb030 mirror=1
+
+# A lattice node: the crystal knots that hold the Leviathan's (and the storm reaper's) lattice together.
+model e2_lev_node
+  part sphere r=10 y=20 seg=8 color=#2e2840
+  part crystal r=6 len=26 y=26 color=#ff48d8 emit=0.85
+  part crystal r=4 len=18 y=26 rot=90 color=#48e8ff emit=0.8
+  part ring r=15 thick=1.4 y=24 color=#ff48d8 emit=0.6 group=spin spin=120
+  part spike r=1.6 len=10 x=9.9 y=20 z=-9.9 rot=45 color=#4a4262 mirror=1
+  part spike r=1.6 len=10 x=9.9 y=20 z=9.9 rot=135 color=#4a4262 mirror=1
+
+# Der Archivar: a ring of lattice that has swallowed the drowned archive, shelves of stone circling its eye.
+model e2_archivist
+  part ring r=62 thick=5 seg=32 color=#3a3450
+  part ring r=54 thick=2 y=4 seg=32 color=#48e8ff emit=0.6
+  part box w=6 h=6 d=44 x=24 z=-24 rot=45 y=2 color=#2e2840
+  part box w=6 h=6 d=44 x=24 z=24 rot=135 y=2 color=#2e2840
+  part box w=6 h=6 d=44 x=-24 z=24 rot=225 y=2 color=#2e2840
+  part box w=6 h=6 d=44 x=-24 z=-24 rot=315 y=2 color=#2e2840
+  part box w=10 h=8 d=18 z=-40 y=4 rot=90 color=#c8b888 noise=0.15 group=spin spin=22
+  part box w=10 h=8 d=18 x=28.3 z=-28.3 y=4 rot=135 color=#b8a070 noise=0.15 group=spin spin=22
+  part box w=10 h=8 d=18 x=40 y=4 color=#d8c8a0 noise=0.15 group=spin spin=22
+  part box w=10 h=8 d=18 x=28.3 z=28.3 y=4 rot=45 color=#c8b888 noise=0.15 group=spin spin=22
+  part box w=10 h=8 d=18 z=40 y=4 rot=90 color=#b8a070 noise=0.15 group=spin spin=22
+  part box w=10 h=8 d=18 x=-28.3 z=28.3 y=4 rot=135 color=#d8c8a0 noise=0.15 group=spin spin=22
+  part box w=10 h=8 d=18 x=-40 y=4 color=#c8b888 noise=0.15 group=spin spin=22
+  part box w=10 h=8 d=18 x=-28.3 z=-28.3 y=4 rot=45 color=#b8a070 noise=0.15 group=spin spin=22
+  part sphere r=17 seg=10 color=#2e2840
+  part dome r=13 ry=10 y=6 color=#48e8ff glass=1 emit=0.75
+  part crystal r=5 len=20 y=12 color=#ff48d8 emit=0.9
+  part light r=4.5 y=17 color=#ffffff
+  part gun r=2.5 len=30 x=62 z=-20 rot=20 color=#c8b888 noise=0.15
+  part gun r=2.5 len=26 x=-58 z=34 rot=-60 color=#c8b888 noise=0.15
+  part light r=2.4 x=44 z=-44 color=#ff48d8 mirror=1
+  part light r=2.4 x=44 z=44 color=#48e8ff mirror=1
+
+# A lens of the Archivist: it reads, it aims, it burns.
+model e2_archive_lens
+  part disc r=11 h=5 y=6 seg=6 color=#3a3450
+  part ring r=10 thick=2 y=9 color=#c8b888
+  part sphere r=6 y=10 color=#48e8ff emit=0.85 group=head pivot=0,0
+  part cone r=5 len=10 y=11 z=-9 color=#7af8ff emit=0.6 group=head pivot=0,0
+  part light r=1.8 y=15 z=-4 color=#ffffff group=head pivot=0,0
+  part light r=1.4 x=9 y=8 color=#ff48d8 mirror=1
+
+# Eisbrecher Strenge: a Directorate hover icebreaker, navy and armoured, with an amber ice belt, a ram and two lift fans.
+model e2_icebreaker
+  part hull len=196 wid=94 hgt=8 shape=dart y=-8 color=#141c34
+  part hull len=190 wid=86 hgt=26 shape=dart color=#2a3a66
+  part hull len=120 wid=88 hgt=6 shape=dart z=-36 y=-2 color=#d08a2a
+  part cone r=12 len=40 z=-112 color=#8a94a6
+  part spike r=3 len=24 x=20 z=-80 rot=-25 color=#8a94a6 mirror=1
+  part box w=30 h=4 d=16 y=8 z=-74 color=#cfe2f6 noise=0.2
+  part box w=40 h=20 d=50 y=16 z=28 taper=0.2 color=#d4dae2
+  part box w=32 h=3 d=5 y=26 z=6 color=#ffb030 emit=0.5
+  part disc r=6 h=2 y=28 z=36 color=#8a94a6
+  part ring r=15 thick=2 x=30 y=12 z=-12 color=#d4dae2
+  part disc r=14 h=3 x=30 y=11 z=-12 color=#3a4250
+  part box w=26 h=2 d=4 x=30 y=13 z=-12 rot=30 color=#8a94a6 mirror=1
+  part box w=26 h=2 d=4 x=30 y=13 z=-12 rot=120 color=#8a94a6 mirror=1
+  part ring r=15 thick=3 x=26 y=6 z=92 color=#d4dae2
+  part disc r=12 h=2 x=26 y=6 z=92 color=#3a4250
+  part box w=22 h=2 d=3 x=26 y=7 z=92 rot=60 color=#8a94a6 mirror=1
+  part engine r=7 len=12 x=26 z=100 glow=#ffd890 color=#5a6474
+  part greeble n=30 w=50 d=90 y=13 z=30 size=4 seed=91 color=#4a5a86
+  part light r=2 x=40 z=-60 color=#ffb030 mirror=1
+  part light r=2 x=44 z=40 color=#ffb030 mirror=1
+  part light r=2.2 z=-132 color=#ff4030
+
+# Sturmernter: the swarm's storm reaper, swept wings set with lightning rods, its eye full of weather.
+model e2_stormreaper
+  part wing span=110 root=70 tip=18 sweep=64 thick=6 color=#2e2840 stripe=#48e8ff
+  part wing span=70 root=40 tip=10 sweep=40 z=20 y=3 thick=3 color=#3a3450 stripe=#ff48d8
+  part hull len=96 wid=40 hgt=20 shape=tear color=#3a3450
+  part sphere r=14 y=10 color=#7af8ff emit=0.9
+  part ring r=24 thick=2 y=8 color=#ff48d8 emit=0.7 group=spin spin=120
+  part ring r=32 thick=1.2 y=6 color=#48e8ff emit=0.6
+  part spike r=2 len=26 x=30 z=-24 rot=-8 color=#7af8ff emit=0.6 mirror=1
+  part spike r=2 len=24 x=56 z=-10 rot=-8 color=#7af8ff emit=0.6 mirror=1
+  part spike r=2 len=22 x=82 z=4 rot=-8 color=#7af8ff emit=0.6 mirror=1
+  part spike r=1.8 len=20 x=104 z=18 rot=-8 color=#7af8ff emit=0.6 mirror=1
+  part ring r=7 thick=1.5 x=42 y=4 z=16 color=#48e8ff emit=0.8 mirror=1
+  part ring r=6 thick=1.4 x=92 y=4 z=34 color=#48e8ff emit=0.8 mirror=1
+  part crystal r=6 len=28 z=40 y=8 color=#ff48d8 emit=0.8
+  part engine r=6 len=12 x=14 z=46 glow=#ff48d8 color=#221c30
+  part greeble n=30 w=30 d=70 y=9 size=3 seed=101 color=#4a4262
+  part light r=2.4 x=110 z=58 color=#ff48d8 mirror=1

@@ -1,0 +1,68 @@
+# Episode 2, mission 1: down through the clouds to the Equatorial Sea. The swarm harvests the fishing grounds,
+# a fisher captain calls for help, and the Directorate fleet that "protects" Thalassa is nowhere to be seen.
+
+level e2_01
+  title "Brandungslinie"
+  episode 2
+  theme ocean
+  music e2_a
+  scroll 65
+  length 182
+  next e2_02
+  arcade 1
+  map 0.03 0.55
+  briefing e2_01_brief
+
+  at 1   text e2_01_r1
+  at 3   wave e2_mote n=5 form=line x=360 spacing=100 path=sine amp=40 freq=0.4 speed=140
+  at 7   wave e2_swallow n=5 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=3.6
+  at 11  wave e2_swallow n=5 form=column x=600 gap=0.3 path=swoop side=-1 cx=360 cy=300 dur=3.6
+  at 14  ground e2_buoy x=170
+  at 14  ground e2_buoy x=550
+  at 17  wave e2_mote n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.3 speed=130 drop=credits value=300
+  at 22  pickup credits x=220 value=200
+  at 24  wave e2_ray n=3 form=column x=200 gap=0.7 path=swoop side=1 cx=360 cy=260 dur=5
+  at 27  wave e2_mote n=6 form=random range=560 gap=0.5 path=zigzag amp=50 freq=0.6 diff=3
+  at 30  text e2_01_r2
+  at 32  ground e2_hydrofoil x=80 path=ground dir=-50 speed=50
+  at 34  ground e2_hydrofoil x=640 path=ground dir=50 speed=50
+  at 37  pickup cube x=480 item=e2_c01
+  at 42  wave e2_jelly x=200 path=hover stop=180 wait=7
+  at 44  wave e2_jelly x=520 path=hover stop=220 wait=7
+  at 46  wave e2_swallow n=6 form=sides x=60 gap=0.35 path=arc side=1 turn=80 speed=240
+  at 52  wave e2_ray n=4 form=column x=600 gap=0.6 path=swoop side=-1 cx=300 cy=280 dur=5
+  at 55  wave e2_mote n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=110 drop=shield
+  at 60  ground e2_buoy x=260 n=3 form=line spacing=100
+  at 63  wave e2_lancefish n=3 form=line x=360 spacing=160 path=dive turn=70 diff=3
+  at 66  wave e2_harvester x=360 path=hover stop=160 wait=8
+  at 68  text e2_01_r3
+  at 74  wave e2_swallow n=6 form=column x=120 gap=0.25 path=swoop side=1 cx=420 cy=340 dur=3.4 mirror=1
+  at 80  pickup credits x=500 value=350
+  at 82  wave e2_seamine n=6 form=random range=600 gap=0.7 path=drift speed=60
+  at 88  pickup cube x=160 item=e2_c02
+  at 90  ground e2_reef x=360
+  at 92  text e2_01_r4
+  at 94  wave e2_mote n=6 form=line x=360 spacing=100 path=sine amp=60 freq=0.4 speed=150
+  at 98  ground e2_hydrofoil x=60 n=2 form=line spacing=80 path=ground dir=-60 speed=55
+  at 100 wave e2_ray n=3 form=column x=120 gap=0.6 path=swoop side=1 cx=420 cy=240 dur=5 mirror=1
+  at 106 wave e2_jelly n=2 form=line x=360 spacing=320 path=hover stop=160 wait=6
+  at 108 wave e2_ray n=3 form=v x=360 spacing=90 path=dive turn=40 speed=150 diff=3
+  at 112 pickup credits x=360 value=300
+  at 116 scroll 95
+  at 117 text e2_01_r5
+  at 118 wave e2_swallow n=6 form=v x=360 spacing=50 path=straight speed=300 repeat=3 every=4
+  at 122 ground e2_buoy x=150 n=4 form=line spacing=140
+  at 128 wave e2_lancefish n=4 form=line x=360 spacing=120 path=dive turn=90
+  at 132 wave e2_mote n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=210
+  at 138 pickup cube x=560 item=e2_c03
+  at 140 scroll 65
+  at 146 wave e2_harvester n=2 form=line x=360 spacing=320 path=hover stop=170 wait=10
+  at 148 text e2_01_r6
+  at 150 wave e2_swallow n=5 form=column x=360 gap=0.4 path=loop stop=260 r=90 speed=240
+  at 154 ground e2_reef x=200 diff=3
+  at 156 wave e2_ray n=4 form=column x=600 gap=0.5 path=swoop side=-1 cx=300 cy=300 dur=4.6
+  at 162 wave e2_jelly x=360 path=hover stop=200 wait=8 drop=credits value=400
+  at 166 wave e2_mote n=8 form=column x=120 gap=0.3 path=orbit cx=360 cy=260 r=150 dur=5 side=1 mirror=1
+  at 174 pickup credits x=300 value=350
+  at 176 text e2_01_r7
+  at 180 end
