@@ -122,6 +122,7 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
     // Errors are told, but the missions that can be flown are flown.
     for ( const std::string &e : cat.m_errors ) printf( "error: %s\n", e.c_str() );
     int fails = cat.m_errors.empty() ? 0 : 1;
+    if ( level == "bossrush" ) cat.m_levels["bossrush"] = bossRush( cat );
     printf( "%-22s %5s %7s %9s %8s %7s %6s %6s %s\n", "mission", "won", "time", "kills", "credits", "damage", "deaths", "boss",
             " cubes/keys/plans" );
     for ( const auto &[n, lv] : cat.m_levels )
@@ -129,6 +130,15 @@ int sim( const std::string &dir, const std::string &level, int diff, uint32_t se
         if ( !level.empty() && n != level ) continue;
         if ( episode > 0 && lv.m_episode != episode ) continue;
         Loadout load = simLoadout( cat, lv );
+        if ( n == "bossrush" && !cat.m_arcadeShips.empty() )
+        {
+            load = cat.m_arcadeShips[0].m_loadout;
+            load.m_frontLv = 11;
+            load.m_rear = load.m_rear.empty() ? "tailgun" : load.m_rear;
+            load.m_rearLv = 9;
+            load.m_gen = "singularity";
+            load.m_shield = "halo_s";
+        }
         parseLoadout( load, loadout );
         SimResult r = simulate( cat, lv, diff, load, seed, !mortal );
         printf( "%-22s %5s %6.0fs %4d/%-4d %8d %7.0f %6d %5.0fs  %d/%d/%d\n", n.c_str(), r.m_won ? "yes" : "NO", r.m_time,

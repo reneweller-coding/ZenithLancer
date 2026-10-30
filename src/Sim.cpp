@@ -61,6 +61,71 @@ const BulletKind EnemyBullets[] = { { "orb", 6, 6 },     { "needle", 4, 5 }, { "
 
 }   // namespace
 
+LevelDef bossRush( const Catalog &cat )
+{
+    LevelDef rush;
+    rush.m_name = "bossrush";
+    rush.m_title = "Bossjagd";
+    rush.m_theme = "space";
+    rush.m_music = "boss";
+    rush.m_scroll = 40;
+    // The great bosses: those of each episode's middle, its last but one and its last mission, in order, each
+    // episode over its own ground.
+    std::vector<std::pair<const EnemyDef *, std::string>> bosses;
+    const char *grounds[] = { "space", "foundry", "ocean", "asteroid", "jungle", "corona" };
+    for ( const auto &[id, ep] : cat.m_episodes )
+        for ( const char *m : { "_05", "_09", "_10" } )
+            if ( const LevelDef *lv = cat.level( "e" + std::to_string( id ) + m ) )
+                for ( const LevelEvent &ev : lv->m_events )
+                    if ( ev.m_type == "boss" )
+                        if ( const EnemyDef *b = cat.enemy( ev.m_p.arg( 0 ) ) )
+                        {
+                            bool seen = false;
+                            for ( const auto &have : bosses ) seen = seen || have.first == b;
+                            if ( !seen ) bosses.push_back( { b, id >= 1 && id <= 5 ? grounds[id] : "space" } );
+                        }
+    float       t = 2.0f;
+    std::string ground = "space";
+    for ( const auto &[b, place] : bosses )
+    {
+        if ( place != ground )
+        {
+            LevelEvent th;
+            th.m_t = t;
+            th.m_type = "theme";
+            th.m_p.m_key = "theme";
+            th.m_p.m_args = { place };
+            rush.m_events.push_back( th );
+            ground = place;
+        }
+        LevelEvent w;
+        w.m_t = t;
+        w.m_type = "warn";
+        w.m_p.m_key = "warn";
+        rush.m_events.push_back( w );
+        LevelEvent ev;
+        ev.m_t = t + 2.0f;
+        ev.m_type = "boss";
+        ev.m_p.m_key = "boss";
+        ev.m_p.m_args = { b->m_name };
+        rush.m_events.push_back( ev );
+        LevelEvent pk;
+        pk.m_t = t + 4.0f;
+        pk.m_type = "pickup";
+        pk.m_p.m_key = "pickup";
+        pk.m_p.m_args = { "shield" };
+        rush.m_events.push_back( pk );
+        t += 6.0f;
+    }
+    LevelEvent end;
+    end.m_t = t;
+    end.m_type = "end";
+    end.m_p.m_key = "end";
+    rush.m_events.push_back( end );
+    rush.m_length = t + 5.0f + 60.0f * bosses.size();   // the bosses hold the timeline: room for the fights
+    return rush;
+}
+
 int spriteOf( const std::string &name )
 {
     static const char *names[] = { "orb",   "needle", "big",   "ring",  "missile", "mine",  "shard",

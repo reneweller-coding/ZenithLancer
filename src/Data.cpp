@@ -813,6 +813,13 @@ void Catalog::check()
                 m_warnings.push_back( ev.m_p.where() + ": theme \"" + ev.m_p.arg( 0 ) + "\" is missing" );
             if ( ev.m_type == "text" && !m_story.count( ev.m_p.arg( 0 ) ) )
                 m_warnings.push_back( ev.m_p.where() + ": story \"" + ev.m_p.arg( 0 ) + "\" is missing" );
+            // A plan names a workshop good, dropped by a pickup or by a whole wave.
+            std::string plan = ev.m_type == "pickup" && ev.m_p.arg( 0 ) == "plan" ? ev.m_p.str( "item" )
+                             : ev.m_p.str( "drop" ) == "plan"                     ? ev.m_p.str( "item" )
+                                                                                  : "";
+            if ( !plan.empty() && !m_weapons.count( plan ) && !m_sidekicks.count( plan ) && !m_ships.count( plan ) &&
+                 !m_generators.count( plan ) && !m_shields.count( plan ) && !m_specials.count( plan ) )
+                m_errors.push_back( ev.m_p.where() + ": plan for an unknown good \"" + plan + "\"" );
             if ( ev.m_type == "pickup" && ev.m_p.arg( 0 ) == "cube" && !m_story.count( ev.m_p.str( "item" ) ) )
                 m_warnings.push_back( ev.m_p.where() + ": cube \"" + ev.m_p.str( "item" ) + "\" has no text" );
         }

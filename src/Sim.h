@@ -437,6 +437,14 @@ struct SimResult
 SimResult simulate( const Catalog &cat, const LevelDef &level, int difficulty, const Loadout &load, uint32_t seed,
                     bool immortal );
 
+/**
+ * @brief The boss rush's mission: the great bosses (each episode's _05, _09 and _10 missions) one after another,
+ *        each episode over its own ground.
+ * @param[in] cat  the catalog
+ * @return the mission (name "bossrush")
+ */
+LevelDef bossRush( const Catalog &cat );
+
 /** @return the sprite index of a bullet kind name (orb, needle, big ...) */
 int spriteOf( const std::string &name );
 
