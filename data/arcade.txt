@@ -2,7 +2,7 @@
 
 pilot lancer
   title "Lancer"
-  desc "Ausgewogen: solide Panzerung, die Pulslanze und ein Heckschütze."
+  desc "Ausgewogen: solide Panzerung, die Pulslanze und ein Heckschütze, der dir den Rücken freihält. Die Nova räumt auf, wenn es eng wird."
   ship lancer
   front pulse 1
   rear tailgun 1
@@ -12,10 +12,48 @@ pilot lancer
 
 pilot kestrel
   title "Turmfalke"
-  desc "Schnell und zerbrechlich, mit der gefräßigen Drehkanone und einem Funken als Begleiter."
+  desc "Schnell und zerbrechlich, mit der gefräßigen Drehkanone und einem Funken als Begleiter. Die Barriere ist dein Rettungsring."
   ship kestrel
   front vulcan 1
   side spark -
   gen dynamo
   shield veil
   special barrier
+
+pilot bastion
+  title "Bastion"
+  desc "Langsam wie ein Gießereikran, aber kaum kleinzukriegen: Streukanone vorn, Mörser hinten, ein dicker Mantel und Naniten für den Notfall."
+  ship bastion
+  front scatter 1
+  rear mortar 1
+  gen dynamo
+  shield mantle
+  special repair
+
+pilot wisp
+  title "Irrlicht"
+  desc "Winzig und flink, mit dem Nadelwerfer und zwei Funken im Schlepptau. Ein Treffer tut weh – also lass dich nicht treffen."
+  ship wisp
+  front needle 1
+  side spark spark
+  gen dynamo
+  shield veil
+  special magnet
+
+pilot corsair
+  title "Korsar"
+  desc "Quills alter Schmugglerjäger mit dem Hornissenschwarm, der sich seine Ziele selbst sucht. Ohne Heckwaffe, aber mit einem Schwarm Kampfdrohnen."
+  ship corsair
+  front hornet 1
+  gen dynamo
+  shield ward
+  special drones
+
+pilot halcyon
+  title "Eisvogel"
+  desc "Der Aufklärer aus Thalassa mit dem Wellenbrecher, dessen Ringe durch ganze Reihen rollen. Die Zeitlupe verschafft dir Luft."
+  ship halcyon
+  front ripple 1
+  gen dynamo
+  shield veil
+  special timeslow

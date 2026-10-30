@@ -1,4 +1,8 @@
 # Generators, shields and specials.
+# A generator feeds the guns and the shield: power (energy a second) and capacity (what it stores).
+# A front gun at level 11 wants about the power of a generator of its tier (tier 1 ~55/s, tier 5 ~150/s).
+
+# ---------------------------------------------------------------------------------------------------- generators
 
 generator cell
   title "Zellblock"
@@ -16,6 +20,58 @@ generator dynamo
   power 50
   capacity 80
 
+generator fusion
+  title "Fusionskern"
+  desc "Ein Fusionsreaktor in Koffergröße, wie ihn die Frachter von Thalassa fliegen. Ruhig, zuverlässig und kräftig genug für zwei ausgebaute Waffen."
+  price 6500
+  tier 2
+  power 70
+  capacity 110
+
+generator plasmaheart
+  title "Plasmaherz"
+  desc "Eine pulsierende Plasmakammer aus einem Bergbaukreuzer des Splitters. Man hört sie schlagen, wenn das Cockpit still ist."
+  price 15000
+  tier 3
+  power 95
+  capacity 150
+
+generator starforge
+  title "Sternenschmiede"
+  desc "Ein Fusionsfeuer, eingeschlossen in Magnetfeldern, heiß wie die Oberfläche eines Sterns. Speist auch schwere Waffen ohne Murren."
+  price 32000
+  tier 4
+  power 125
+  capacity 200
+
+generator singularity
+  title "Singularität"
+  desc "Ein winziges Schwarzes Loch in einem Käfig aus Kraftfeldern. Es gibt mehr Energie ab, als jede Waffe verbrauchen kann – solange der Käfig hält."
+  price 60000
+  tier 5
+  power 170
+  capacity 280
+
+generator ember_core
+  title "Glutkern"
+  desc "Ein Kern aus der Tiefe einer Gießerei, der nie ganz erkaltet. Mehr Leistung als ein Dynamo, aber fast kein Speicher: Wer zu lange feuert, steht im Dunkeln."
+  price 3000
+  tier 9
+  hidden 1
+  power 62
+  capacity 36
+
+generator sunheart
+  title "Sonnenherz"
+  desc "Okonjos Prototyp aus dem Splitter: ein Speicher aus Sonnenplasma, groß genug für minutenlanges Dauerfeuer, und eine Leistung, die mit den Großen mithält."
+  price 19000
+  tier 9
+  hidden 1
+  power 110
+  capacity 420
+
+# ---------------------------------------------------------------------------------------------------- shields
+
 shield veil
   title "Schleier"
   desc "Ein dünnes Feld, das ein paar Treffer schluckt und langsam nachwächst."
@@ -28,13 +84,76 @@ shield veil
 
 shield ward
   title "Schutzwall"
-  desc "Doppelt so stark wie der Schleier und schneller wieder da. Zieht dafür mehr Energie."
+  desc "Fast doppelt so stark wie der Schleier und schneller wieder da. Zieht dafür mehr Energie."
   price 2200
   tier 1
   max 18
   regen 2.5
   cost 3
   delay 1.2
+
+shield mantle
+  title "Mantel"
+  desc "Ein dichtes Feld, das sich wie ein schwerer Umhang um das Schiff legt. Hält eine ganze Salve aus und erholt sich zügig."
+  price 6000
+  tier 2
+  max 26
+  regen 3.5
+  cost 3
+  delay 1.1
+
+shield fortress
+  title "Festung"
+  desc "Ein Panzerfeld aus der Werft der Direktoratsflotte. Gewaltig stark, aber es braucht eine Weile, bis es nach einem Treffer wieder wächst."
+  price 14000
+  tier 3
+  max 38
+  regen 4
+  cost 3.5
+  delay 1.5
+
+shield prismshield
+  title "Prismenschild"
+  desc "Bricht einschlagende Energie wie ein Prisma und verteilt sie über die ganze Hülle. Stark und überraschend schnell wieder voll."
+  price 28000
+  tier 4
+  max 44
+  regen 6.5
+  cost 3
+  delay 0.9
+
+shield halo_s
+  title "Heiligenschein"
+  desc "Ein goldener Ring aus Licht um das Schiff, der sich fast so schnell erneuert, wie man ihn verbraucht."
+  price 45000
+  tier 5
+  max 52
+  regen 9
+  cost 2.8
+  delay 0.7
+
+shield aegis
+  title "Ägis"
+  desc "Das stärkste Feld, das je in einen Jäger passte: ein Schild, an dem ganze Breitseiten zerschellen."
+  price 62000
+  tier 5
+  max 60
+  regen 7
+  cost 3.2
+  delay 1
+
+shield mirrorshield
+  title "Spiegelschild"
+  desc "Ein Feld aus lebendem Kristall, gewachsen in Sylvaras Tiefe. Es hält weniger aus als die großen Schilde, schließt sich aber fast im selben Augenblick wieder."
+  price 24000
+  tier 9
+  hidden 1
+  max 36
+  regen 12
+  cost 2.2
+  delay 0.5
+
+# ---------------------------------------------------------------------------------------------------- specials
 
 special nova_s
   title "Nova"
@@ -56,3 +175,63 @@ special barrier
   charges 2
   time 4
   color #a0e8ff
+
+special magnet
+  title "Magnet"
+  desc "Zehn Sekunden lang fliegt dir jede Kiste, jeder Kristall und jeder Kredit im Feld von selbst zu. Quill liebt dieses Ding."
+  price 600
+  tier 1
+  kind magnet
+  charges 3
+  time 10
+  color #ffd060
+
+special repair
+  title "Notreparatur"
+  desc "Ein Schwarm Wartungsnaniten, der in Sekunden Risse schweißt und Platten flickt. Bringt einen guten Teil der Panzerung zurück."
+  price 4000
+  tier 2
+  kind repair
+  charges 2
+  color #70ff90
+
+special drones
+  title "Drohnenschwarm"
+  desc "Vier Kampfdrohnen lösen sich vom Rumpf, umkreisen dich acht Sekunden lang und feuern selbst auf alles in Sicht."
+  price 6500
+  tier 2
+  kind drones
+  charges 2
+  time 8
+  color #a0ffc8
+
+special timeslow
+  title "Zeitlupe"
+  desc "Ein Feld, das die Zeit um dich herum dehnt: Sechs Sekunden lang kriechen Gegner und Kugeln, nur du nicht."
+  price 12000
+  tier 3
+  kind timeslow
+  charges 2
+  time 6
+  color #c0a0ff
+
+special supernova
+  title "Supernova"
+  desc "Die große Schwester der Nova: eine Lichtwelle, die fast das ganze Feld erfasst, alle Kugeln löscht und selbst schwere Ziele zerreißt."
+  price 26000
+  tier 4
+  kind nova
+  charges 2
+  radius 520
+  power 300
+  color #fff0c0
+
+special lance
+  title "Sonnenlanze"
+  desc "Fünf Sekunden lang bricht ein breiter Strahl aus Sonnenlicht aus dem Bug und verbrennt alles, was vor dir liegt."
+  price 48000
+  tier 5
+  kind lance
+  charges 2
+  time 5
+  color #ffe6a0

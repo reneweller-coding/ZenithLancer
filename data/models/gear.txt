@@ -1,0 +1,141 @@
+# The sidekicks: small (radius 4-8), nose towards -z, glowing where they fire from.
+
+model pip
+  part sphere r=4 color=#9aa4b4
+  part ring r=5.5 thick=0.8 color=#5adca8 emit=0.6
+  part gun r=0.8 len=7 z=-5 color=#4a5260
+  part light r=1.2 z=-2 y=3 color=#80ffd0
+
+model spark
+  part crystal r=3 len=9 color=#ffd870 emit=0.35
+  part ring r=4.5 thick=0.6 color=#fff0b0 emit=0.8 group=spin spin=360
+
+model sparrow
+  part hull len=10 wid=3.5 hgt=2.6 shape=dart color=#c89850
+  part wing span=5 root=4 tip=1.5 sweep=2.5 z=1 thick=0.6 color=#e0b060 stripe=#fff0c0
+  part fin h=2 root=3 tip=1 sweep=1.5 z=3.5 color=#a87838
+  part engine r=1 len=2.5 z=5 glow=#ffcf80 color=#6a5030
+  part light r=0.6 z=-2 y=1.3 color=#ffe0a0
+
+model rocketpod
+  part hull len=12 wid=5 hgt=5 shape=cigar color=#8a9098
+  part gun r=0.9 len=4 x=1.4 z=-6 color=#3a3e44
+  part gun r=0.9 len=4 y=1.4 z=-6 color=#3a3e44
+  part wing span=3 root=4 tip=2 sweep=1.5 z=4 thick=0.5 color=#ff8a50
+  part fin h=3 root=4 tip=2 sweep=1.5 z=4 y=1.5 color=#ff8a50
+  part engine r=1.6 len=2 z=6.5 glow=#ff8a50 color=#4a4e54
+  part light r=0.8 z=-2 y=2.4 color=#ff5030
+
+model bulwark
+  part hull len=10 wid=9 hgt=5 shape=hex round=3 color=#7080a0
+  part plate pts="-7,-6;7,-6;8,-3;0,-1;-8,-3" thick=1.4 y=0.5 color=#b0c8ff emit=0.35
+  part box w=2.4 h=4 d=8 x=5.5 z=1 taper=0.3 color=#5a6680 mirror=1
+  part dome r=2.2 y=2 color=#d0e0ff emit=0.7
+  part engine r=1.2 len=2 x=2.5 z=5.5 glow=#b0c8ff color=#4a5268
+
+model glimmer
+  part crystal r=2.6 len=8 color=#e8d0ff emit=0.7
+  part crystal r=1.6 len=6 rot=90 color=#c8a0ff emit=0.6
+  part ring r=5 thick=0.4 color=#f0e0ff emit=0.9 group=spin spin=200
+
+model lancet
+  part hull len=13 wid=3 hgt=2.4 shape=needle color=#d0e8e4
+  part gun r=0.6 len=6 z=-7 color=#80ffe0 emit=0.6
+  part wing span=3 root=4 tip=1 sweep=2 z=3 thick=0.5 color=#80ffe0 stripe=#ffffff
+  part engine r=0.9 len=2 z=6.5 glow=#80ffe0 color=#4a5a58
+
+model charger
+  part sphere r=3 color=#60a0ff emit=0.9
+  part ring r=4.4 thick=0.5 pitch=90 color=#4a6aa0
+  part ring r=5.2 thick=0.6 color=#a0c8ff emit=0.5 group=spin spin=240
+  part gun r=1 len=4 z=-5 color=#3a4a6a
+
+model flak
+  part disc r=4.5 h=2 color=#6a6458
+  part box w=5 h=2.4 d=4 y=1.8 taper=0.3 color=#8a8270
+  part gun r=0.7 len=6 x=1.2 y=2 z=-4 color=#3a3a36
+  part light r=0.7 y=3.2 z=1 color=#ffb050
+
+model warden
+  part hull len=11 wid=7 hgt=4 shape=tear color=#3a5a44
+  part dome rx=2.4 ry=2 rz=3 y=1.4 z=-1 color=#70ff90 emit=0.7
+  part gun r=0.7 len=5 x=1.6 z=-5 y=0.6 color=#2a3a30
+  part fin h=3 root=4 tip=1.5 sweep=2 x=2.5 z=3 roll=-25 mirror=1 color=#5a8a64
+  part engine r=1.1 len=2 z=6 glow=#70ff90 color=#2a3a30
+
+model stinger
+  part hull len=12 wid=4.5 hgt=4 shape=tear color=#ffd030
+  part box w=4.4 h=0.6 d=1.2 y=1.8 z=1 color=#1a1a1a
+  part box w=3.6 h=0.6 d=1.2 y=1.4 z=3.5 color=#1a1a1a
+  part spike r=0.8 len=5 z=-7 color=#2a2a2a
+  part wing span=4 root=3 tip=1.5 sweep=1 z=-1 y=1.5 dihedral=1 thick=0.3 color=#e0f0ff emit=0.3
+  part light r=0.7 z=-3 y=1.6 color=#ff4020
+
+model cometpod
+  part cone r=3 len=9 r2=0.5 color=#8a5a40
+  part ring r=3.6 thick=0.5 z=1 pitch=90 color=#ff9050 emit=0.7
+  part wing span=2.5 root=3 tip=1 sweep=1 z=3 thick=0.4 color=#ff7030
+  part engine r=2.6 len=3 z=5.5 glow=#ff7030 color=#4a3a30
+
+model arcpod
+  part sphere r=3 color=#5a4a7a
+  part spike r=0.7 len=4 x=3.4 rot=90 color=#d0b0ff emit=0.6 mirror=1
+  part spike r=0.7 len=4 z=-3.4 color=#d0b0ff emit=0.6
+  part light r=1.3 y=2.5 color=#e0c8ff
+  part ring r=5 thick=0.5 color=#b080ff emit=0.9 group=spin spin=300
+
+model phoenix
+  part hull len=12 wid=4 hgt=3 shape=dart color=#c84a20
+  part wing span=8 root=6 tip=2 sweep=4 z=1 thick=0.6 dihedral=1.5 color=#ff6a20 stripe=#ffd040
+  part fin h=3 root=4 tip=1 sweep=2 z=4 color=#ff9030
+  part engine r=1.4 len=3 z=6 glow=#ffb030 color=#5a2a10
+  part light r=0.7 z=-3 y=1.4 color=#ffe080
+
+model hydra
+  part disc r=4 h=2 color=#3a5a2a
+  part ring r=4.6 thick=0.5 color=#6aaa40
+  part cone r=1.4 len=6 z=-4 y=1 color=#9cff50 emit=0.3
+  part cone r=1.2 len=5 x=3 z=-3 y=1 rot=-20 color=#9cff50 emit=0.3 mirror=1
+  part light r=0.6 y=1.8 color=#ff4040
+
+model lantern
+  part sphere r=2.6 color=#ffc860 emit=1
+  part disc r=3.2 h=0.8 y=2.6 color=#5a4020
+  part disc r=3.2 h=0.8 y=-2.6 color=#5a4020
+  part cone r=1.2 len=2 y=3.6 pitch=90 color=#5a4020
+  part ring r=4.5 thick=0.4 color=#ffd890 emit=0.6 group=spin spin=90
+
+model sentinel
+  part sphere r=3.6 color=#3a3a44
+  part light r=1.6 z=-3.2 color=#ff3030
+  part spike r=0.6 len=3 x=3.6 z=1 rot=90 color=#6a6a74 mirror=1
+  part ring r=5.2 thick=0.6 color=#ff6060 emit=0.5
+
+model mirror
+  part plate pts="0,-6;4,0;0,6;-4,0" thick=0.8 color=#e8f0ff emit=0.35
+  part crystal r=1.4 len=5 color=#ffffff emit=0.8
+  part ring r=5.5 thick=0.4 color=#c0e0ff emit=0.7 group=spin spin=160
+
+model seraph
+  part sphere r=2 color=#fff6e0 emit=0.6
+  part wing span=6 root=4 tip=1.5 sweep=-1 z=-1 thick=0.4 dihedral=2 color=#ffffff stripe=#ffe090
+  part wing span=5 root=3.5 tip=1.5 sweep=2 z=2 thick=0.4 dihedral=-1 color=#f0f0ff stripe=#ffe090
+  part ring r=2.4 thick=0.35 y=3 color=#ffe070 emit=1
+
+model eclipse
+  part sphere r=4 color=#0a0610
+  part ring r=4.6 thick=0.4 pitch=90 color=#c080ff emit=0.8
+  part ring r=5.8 thick=0.8 color=#9040ff emit=1 group=spin spin=60
+
+model talon
+  part hull len=9 wid=4 hgt=3 shape=blob color=#6a4a30
+  part wing span=3.5 root=4 tip=1 sweep=2 z=2 thick=0.4 color=#8a6040
+  part spike r=0.8 len=6 x=2 z=-5 rot=-15 color=#ff9030 emit=0.3 mirror=1
+  part spike r=0.8 len=6 z=-5.5 color=#ff9030 emit=0.3
+  part light r=0.8 y=1.6 z=-1 color=#ffc060
+
+model starling
+  part hull len=9 wid=3 hgt=2.4 shape=dart color=#40c0d0 emit=0.4
+  part wing span=6 root=4 tip=1.2 sweep=3.5 z=0.5 thick=0.4 dihedral=1 color=#80ffff stripe=#ffffff emit=0.3
+  part light r=0.8 z=-2 y=1 color=#e0ffff
+  part ring r=5 thick=0.3 color=#a0ffff emit=0.8 group=spin spin=-240

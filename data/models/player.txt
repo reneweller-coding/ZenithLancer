@@ -1,4 +1,4 @@
-# The pilots' hulls and sidekicks. Nose towards -z.
+# The pilots' hulls. Nose towards -z, 32-44 long; the sidekicks' models are in gear.txt.
 
 model lancer
   part hull len=40 wid=11 hgt=7 shape=dart color=#c8d0dc
@@ -10,6 +10,7 @@ model lancer
   part engine r=3.2 len=6 z=20 glow=#80d8ff color=#5a6474
   part gun r=0.9 len=12 x=4 z=-14 color=#4a5260
   part light r=1 x=19 z=13 color=#ff4040
+  part light r=1 x=-19 z=13 color=#40ff70
   part greeble n=6 w=6 d=12 z=4 y=3 size=1.4 seed=3 color=#8a94a4
 
 model kestrel
@@ -19,17 +20,108 @@ model kestrel
   part dome rx=2.4 ry=2.2 rz=6 z=-4 y=2.2 color=#ffc860 emit=0.5
   part engine r=2.4 len=8 z=18 glow=#ffb060 color=#6a6e76
   part fin h=6 root=7 tip=3 sweep=4 x=4 z=13 roll=-20 mirror=1 color=#a8aeb8
-  part light r=0.9 x=21 z=10 color=#ffd060
+  part light r=0.9 x=21 z=10 color=#ffd060 mirror=1
 
-model pip
-  part sphere r=4 color=#9aa4b4
-  part ring r=5.5 thick=0.8 color=#5adca8 emit=0.6
-  part gun r=0.8 len=7 z=-5 color=#4a5260
-  part light r=1.2 z=-2 y=3 color=#80ffd0
+# A flying bunker: a boxy hull, armour shoulders, stubby thick wings, two heavy engines.
+model bastion
+  part hull len=38 wid=13 hgt=9 shape=hammer round=3 color=#7a7f6a
+  part hull len=24 wid=6 hgt=6 shape=box round=3 x=9 z=6 color=#5e6352 mirror=1
+  part wing span=20 root=15 tip=8 sweep=5 z=7 thick=3 color=#6a7060 stripe=#e8a030
+  part engine r=3.8 len=10 x=9 z=19 glow=#ff9a40 color=#4a4e44
+  part dome rx=3.2 ry=2.4 rz=5 z=-9 y=4 color=#ffb040 emit=0.55
+  part gun r=1.4 len=12 x=5 z=-17 color=#3a3d36
+  part box w=12 h=0.6 d=3 z=-14 y=4.2 color=#e8a030
+  part box w=1.6 h=0.6 d=18 z=4 y=4.4 color=#e8a030
+  part greeble n=8 w=8 d=12 z=6 y=4 size=1.6 seed=5 color=#6a7060
+  part light r=1.1 x=20 z=10 color=#ff5030 mirror=1
 
-model spark
-  part crystal r=3 len=9 color=#ffd870 emit=0.35
-  part ring r=4.5 thick=0.6 color=#fff0b0 emit=0.8 group=spin spin=360
+# Light as a breath: a teardrop, forward-swept crescent wings, one big glowing engine with a ring.
+model wisp
+  part hull len=32 wid=8 hgt=6 shape=tear color=#e8ecf4
+  part wing span=15 root=10 tip=3 sweep=-5 z=2 thick=1 dihedral=1.5 color=#d8dcec stripe=#9a6cff
+  part wing span=8 root=6 tip=2 sweep=5 z=11 thick=0.8 color=#c8ccdc
+  part engine r=3.4 len=8 z=15 glow=#a8f0ff color=#8890a0
+  part ring r=4.6 thick=0.6 z=14 pitch=90 color=#a8f0ff emit=0.8
+  part dome rx=2.6 ry=2.6 rz=6 z=-5 y=2.2 color=#80f0ff emit=0.6 glass=1
+  part light r=0.9 x=15 z=1 color=#c0a0ff mirror=1
+
+# The smuggler: dark arrow hull, red stripes, canards, two nacelles with tail fins.
+model corsair
+  part hull len=40 wid=10 hgt=6.5 shape=arrow color=#3a3442
+  part wing span=17 root=15 tip=4 sweep=12 z=7 thick=1.4 color=#4a4252 stripe=#e02838
+  part wing span=7 root=6 tip=2 sweep=3 z=-10 thick=1 color=#4a4252 stripe=#e02838
+  part hull len=16 wid=5 hgt=4 shape=cigar x=7 z=10 y=-0.5 color=#2a2630 mirror=1
+  part engine r=2.4 len=6 x=7 z=19 glow=#ff4050 color=#2a2630
+  part fin h=7 root=8 tip=3 sweep=5 x=7 z=12 y=1 roll=-15 mirror=1 color=#4a4252
+  part dome rx=2.6 ry=2.2 rz=6 z=-6 y=2.6 color=#ff5060 emit=0.55
+  part gun r=0.9 len=10 x=3 z=-17 color=#1a1a20
+  part box w=1.2 h=0.5 d=24 y=3.3 z=2 color=#e02838
+  part light r=0.9 x=17 z=12 color=#ff3040 mirror=1
+
+# The kingfisher: a blue needle with an orange belly, long slim wings and a beak.
+model halcyon
+  part hull len=38 wid=8 hgt=6 shape=needle color=#2a78d8
+  part hull len=26 wid=6 hgt=3 shape=cigar y=-1.8 z=3 color=#ff8a30
+  part wing span=21 root=11 tip=4 sweep=9 z=4 thick=1.1 dihedral=-1 color=#3a88e8 stripe=#ff8a30
+  part wing span=8 root=6 tip=2.5 sweep=4 z=15 thick=0.8 color=#2a68c0
+  part engine r=2.2 len=7 x=3.5 z=18 glow=#60c8ff color=#1a3a6a
+  part dome rx=2.3 ry=2.2 rz=6 z=-6 y=2.2 color=#80e8ff emit=0.6
+  part spike r=0.9 len=6 z=-21 color=#ffb050
+  part light r=0.8 x=21 z=8 color=#ffa040 mirror=1
+
+# The Directorate's heavy fighter-bomber: broad swept wings, three engines, wing guns, missiles.
+model warhawk
+  part hull len=42 wid=12 hgt=8 shape=dart color=#6a7468
+  part wing span=23 root=20 tip=6 sweep=14 z=6 thick=2 dihedral=-1.5 color=#5a6458 stripe=#d0c040
+  part wing span=10 root=8 tip=3 sweep=5 z=17 thick=1.2 color=#5a6458
+  part fin h=8 root=10 tip=4 sweep=5 x=5 z=14 y=2 roll=-10 mirror=1 color=#5a6458
+  part engine r=3 len=8 z=21 glow=#ff8040 color=#3a403a
+  part engine r=2.4 len=7 x=7 z=19 glow=#ff8040 color=#3a403a
+  part gun r=1.2 len=10 x=13 z=-2 color=#2a2e2a
+  part hull len=10 wid=2.4 hgt=2.4 shape=cigar x=18 z=7 y=-1.6 color=#e0d8c0 mirror=1
+  part dome rx=3 ry=2.4 rz=7 z=-7 y=3.4 color=#ffd040 emit=0.5
+  part greeble n=6 w=8 d=14 z=4 y=3.6 size=1.3 seed=9 color=#7a8478
+  part light r=1 x=23 z=14 color=#40ff60 mirror=1
+
+# Three pairs of wings in white and gold, a halo around the hull.
+model seraphim
+  part hull len=40 wid=7 hgt=6 shape=needle color=#f0f0f6
+  part wing span=17 root=10 tip=3 sweep=-3 z=-5 thick=0.9 dihedral=3 color=#cfcadc stripe=#ffc040
+  part wing span=22 root=12 tip=4 sweep=8 z=5 thick=0.9 color=#dcd8e6 stripe=#ffc040
+  part wing span=14 root=8 tip=3 sweep=10 z=14 thick=0.8 dihedral=-2 color=#c4c0d2 stripe=#ffc040
+  part ring r=7 thick=0.7 z=4 color=#ffd060 emit=0.5
+  part engine r=2.4 len=7 z=19 glow=#ffe090 color=#c8c0d0
+  part engine r=1.6 len=5 x=5 z=17 glow=#ffe090 color=#c8c0d0
+  part dome rx=2.2 ry=2.2 rz=7 z=-7 y=2.2 color=#ffe070 emit=0.65 glass=1
+  part light r=0.9 x=22 z=8 color=#ffffff mirror=1
+
+# Okonjo's last design: the Lancer grown up, white and sun-gold, a ring around the main engine.
+model zenithmk2
+  part hull len=44 wid=12 hgt=7.5 shape=dart color=#e8ecf2
+  part hull len=20 wid=6.5 hgt=4.5 shape=cigar z=10 y=-1 x=10 color=#9aa4b4 mirror=1
+  part wing span=21 root=19 tip=6 sweep=12 z=6 thick=1.7 dihedral=-1 color=#d4dae4 stripe=#ffb020
+  part wing span=8 root=7 tip=3 sweep=3 z=-12 thick=1 color=#c4cad4 stripe=#ffb020
+  part fin h=8 root=10 tip=4 sweep=5 z=14 y=2.5 color=#c4cad4
+  part engine r=3.6 len=7 z=22 glow=#ffd060 color=#5a6474
+  part engine r=2.8 len=7 x=10 z=21 glow=#ffd060 color=#5a6474
+  part ring r=5 thick=0.8 z=22 pitch=90 color=#ffc040 emit=0.9
+  part dome rx=3.2 ry=2.8 rz=8 z=-6 y=3 color=#ffc040 emit=0.6
+  part gun r=1 len=14 x=4.5 z=-16 color=#4a5260
+  part box w=1.6 h=0.5 d=30 y=3.8 z=-1 color=#ffb020
+  part light r=1.1 x=21 z=12 color=#ffd060 mirror=1
+
+# An ancient hull: bronze and verdigris, crystals glowing from within.
+model relic
+  part hull len=42 wid=11 hgt=8 shape=hex round=3 color=#8a6a3a
+  part wing span=18 root=18 tip=10 sweep=6 z=6 thick=2.2 dihedral=-2 color=#5a8a6a stripe=#3ad8c0
+  part crystal r=2.4 len=12 x=12 z=4 y=2 color=#40ffe0 emit=0.9 mirror=1
+  part crystal r=3 len=14 z=-6 y=4 color=#40ffe0 emit=0.8
+  part engine r=3.4 len=8 z=21 glow=#40ffd0 color=#6a5030
+  part engine r=2.2 len=6 x=6 z=20 glow=#40ffd0 color=#6a5030
+  part ring r=6.5 thick=1 z=9 color=#b08840
+  part spike r=1 len=7 x=17 z=3 color=#b08840 mirror=1
+  part greeble n=10 w=8 d=24 z=2 y=4 size=1.4 seed=21 color=#7a5a30
+  part light r=1 x=19 z=10 color=#40ffe0 mirror=1
 
 model target
   part disc r=14 h=4 color=#5a6270

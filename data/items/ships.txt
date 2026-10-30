@@ -1,4 +1,4 @@
-# Hulls.
+# Hulls: armor, speed (field units a second), accel, radius (the hit circle), gen (generator bonus, 0.1 = +10 %).
 
 ship lancer
   title "Lancer"
@@ -21,3 +21,99 @@ ship kestrel
   speed 410
   accel 3400
   radius 7
+
+ship bastion
+  title "Bastion"
+  desc "Ein fliegender Bunker aus Pyras Gießereien: dicke Platten, zwei schwere Triebwerke, behäbig in den Kurven. Was ihn trifft, prallt meistens ab."
+  price 6500
+  tier 2
+  model bastion
+  armor 40
+  speed 300
+  accel 2200
+  radius 10
+
+ship wisp
+  title "Irrlicht"
+  desc "Kaum mehr als ein Cockpit mit Flügeln und einem Triebwerk, das heller brennt, als es sollte. Winzig, flink und mit einem Energieüberschuss."
+  price 8000
+  tier 2
+  model wisp
+  armor 20
+  speed 430
+  accel 3800
+  radius 6
+  gen 0.1
+
+ship corsair
+  title "Korsar"
+  desc "Ein Schmugglerjäger aus Quills altem Bestand, schwarz lackiert und mit roten Streifen. Schnell genug zum Fliehen, stark genug zum Bleiben."
+  price 14000
+  tier 3
+  model corsair
+  armor 34
+  speed 370
+  accel 3000
+  radius 8
+  gen 0.05
+
+ship halcyon
+  title "Eisvogel"
+  desc "Ein Aufklärer aus Thalassas Sturmgeschwadern, blau und orange wie der Vogel, nach dem er heißt. Schlank, wendig und mit sparsamen Leitungen."
+  price 18000
+  tier 3
+  model halcyon
+  armor 30
+  speed 395
+  accel 3400
+  radius 7
+  gen 0.15
+
+ship warhawk
+  title "Kriegsfalke"
+  desc "Ein schwerer Jagdbomber des Direktorats, von Salgados Leuten erbeutet. Drei Triebwerke, breite Schwingen und Panzerung für einen Frontflug."
+  price 28000
+  tier 4
+  model warhawk
+  armor 46
+  speed 350
+  accel 2800
+  radius 9
+  gen 0.1
+
+ship seraphim
+  title "Seraphim"
+  desc "Ein Kunstwerk aus weißem Stahl und goldenem Glas mit drei Flügelpaaren. Schnell, kaum zu treffen, mit einem Generatorkreis wie ein Herzschlag."
+  price 36000
+  tier 4
+  model seraphim
+  armor 38
+  speed 410
+  accel 3600
+  radius 7
+  gen 0.2
+
+ship zenithmk2
+  title "Zenit Mk II"
+  desc "Okonjos letzter Entwurf: der Lancer, wie er hätte sein sollen. Schwere Panzerung, ein Ring um das Haupttriebwerk und Leistung im Überfluss."
+  price 62000
+  tier 5
+  model zenithmk2
+  armor 55
+  speed 400
+  accel 3500
+  radius 8
+  gen 0.2
+
+ship relic
+  title "Relikt"
+  desc "Ein Jäger aus der Zeit der ersten Kolonieschiffe, vom Chor in den Wurzeln Sylvaras bewahrt. Grünspan auf Bronze, Kristalle, die von innen glühen – und eine Kraft, die niemand mehr bauen kann."
+  price 40000
+  tier 9
+  hidden 1
+  model relic
+  armor 60
+  speed 360
+  accel 2600
+  radius 9
+  gen 0.3
