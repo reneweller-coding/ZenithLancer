@@ -66,6 +66,14 @@ public:
      */
     void init( int w, int h );
 
+    /**
+     * @brief Looks at a part of the field only (the workshop's test range): a field point in the middle of the
+     *        picture and half the height shown, in field units. init() shows the whole field.
+     * @param[in] center  the field point in the middle
+     * @param[in] halfH   half the height shown
+     */
+    void setView( Vector2 center, float halfH );
+
     /** @brief Lets go of the targets (and, for the last renderer, the shared things). */
     void shutdown();
 
@@ -152,6 +160,7 @@ private:
     int               m_w = 0, m_h = 0;
     float             m_scale = 1.0f;     ///< pixels per field unit
     float             m_halfH = FieldH * 0.5f;
+    Vector2           m_center = { FieldW * 0.5f, FieldH * 0.5f };   ///< the field point in the picture's middle
     RenderTexture2D   m_hdr = {};
     RenderTexture2D   m_out = {};
     RenderTexture2D   m_shadow = {};          ///< what flies, cast along the sun onto the ground's plane

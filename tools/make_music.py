@@ -128,6 +128,13 @@ def main():
                 shown.append("t%d =" % (n + 1))
                 continue
             x, fs = sf.read(source, dtype="float32", always_2d=True)
+            # The loop's seam: where the end does not meet the start, a 3 ms dip on both sides instead of a click.
+            if float(np.max(np.abs(x[-1] - x[0]))) > 0.01:
+                n = int(0.003 * fs)
+                ramp = (0.5 - 0.5 * np.cos(np.linspace(0.0, np.pi, n)))[:, None].astype(np.float32)
+                x = x.copy()
+                x[:n] *= ramp
+                x[-n:] *= ramp[::-1]
             gain = min(target(cue["id"]) - lufs(x, fs), PEAK_DB - peak_db(x))
             encode(x * 10.0 ** (gain / 20.0), fs, path, 4)
             total += os.path.getsize(path)

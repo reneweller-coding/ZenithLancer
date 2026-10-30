@@ -420,6 +420,7 @@ void Renderer::init( int w, int h )
     }
     float aspect = w / (float)h;
     m_halfH = std::max( FieldH * 0.5f, FieldW * 0.5f / aspect ) * 1.0f;
+    m_center = { FieldW * 0.5f, FieldH * 0.5f };
     m_scale = h / ( 2.0f * m_halfH );
     m_cam.position = { FieldW * 0.5f, CamHeight, FieldH * 0.5f };
     m_cam.target = { FieldW * 0.5f, 0, FieldH * 0.5f };
@@ -483,9 +484,17 @@ Rectangle Renderer::fieldRect() const
     return { a.x, a.y, b.x - a.x, b.y - a.y };
 }
 
+void Renderer::setView( Vector2 center, float halfH )
+{
+    m_center = center;
+    m_halfH = halfH;
+    m_scale = m_h / ( 2.0f * m_halfH );
+    m_cam.fovy = 2.0f * std::atan( m_halfH / CamHeight ) / Deg;
+}
+
 Vector2 Renderer::toPixels( Vector2 f ) const
 {
-    return { m_w * 0.5f + ( f.x - FieldW * 0.5f ) * m_scale, m_h * 0.5f + ( f.y - FieldH * 0.5f ) * m_scale };
+    return { m_w * 0.5f + ( f.x - m_center.x ) * m_scale, m_h * 0.5f + ( f.y - m_center.y ) * m_scale };
 }
 
 Vector3 Renderer::groundPoint( Vector2 f, double scroll ) const
@@ -1203,8 +1212,8 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
 void Renderer::draw( const World &w, const Catalog &cat )
 {
     const Look &L = m_terrain.look();
-    m_cam.position = { FieldW * 0.5f + m_shakeOff.x, CamHeight, FieldH * 0.5f + m_shakeOff.y };
-    m_cam.target = { FieldW * 0.5f + m_shakeOff.x, 0, FieldH * 0.5f + m_shakeOff.y };
+    m_cam.position = { m_center.x + m_shakeOff.x, CamHeight, m_center.y + m_shakeOff.y };
+    m_cam.target = { m_center.x + m_shakeOff.x, 0, m_center.y + m_shakeOff.y };
     // What flies casts its shadow first, into a picture of its own that the ground reads.
     drawShadows( w, cat );
     BeginTextureMode( m_hdr );

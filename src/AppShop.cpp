@@ -45,6 +45,7 @@ void App::previewSetup()
 {
     m_shopWorld.begin( &m_cat, nullptr, ModeE::PREVIEW, 2, 7 );
     m_preview.setTheme( m_cat, "range", 3 );
+    m_preview.setView( { FieldW * 0.5f, 470.0f }, 250.0f );
     m_preview.reset();
 }
 
@@ -308,6 +309,8 @@ void App::shop( float dt )
             m_previewKey = key;
             previewSetup();
             m_shopWorld.addPlayer( 0, test, 0 );
+            m_shopWorld.m_players[0].m_pos.y = 640.0f;
+            m_shopWorld.m_players[0].m_invuln = 0.0f;   // no blinking on the test range
             m_previewT = 0;
         }
         static EnemyDef target;
@@ -329,7 +332,7 @@ void App::shop( float dt )
         {
             Line still;
             still.m_kv["path"] = "still";
-            int i = m_shopWorld.spawn( &target, { 120.0f + ( m_shopWorld.m_nextId % 5 ) * 120.0f, 120.0f + ( m_shopWorld.m_nextId % 3 ) * 70.0f }, &still );
+            int i = m_shopWorld.spawn( &target, { 160.0f + ( m_shopWorld.m_nextId % 5 ) * 100.0f, 260.0f + ( m_shopWorld.m_nextId % 3 ) * 60.0f }, &still );
             if ( i >= 0 ) m_shopWorld.m_enemies[(size_t)i].m_entered = true;
         }
         m_previewT += dt;

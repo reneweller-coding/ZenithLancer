@@ -236,7 +236,26 @@ theme lava
   clouds #ffffff 0.5        # cloud layers between ground and field
   space 1                   # no ground: stars (with rocks 0..1 floating rocks, nebula #a #b)
   exposure 1  bloom 0.9
+  groundlight 0.5           # how brightly the ground is lit (keep it darker than ships and bullets)
 ```
+
+The ground has its own shader per style; these keys shape it (all optional):
+
+| key | values |
+|---|---|
+| `style` | rock sand island ice jungle plating lattice corona city foundry hive (guessed from the other keys if missing) |
+| `fluid` | water lava bio none — what fills below the `water` level (animated: waves, glints, foam; lava crust; glowing ooze) |
+| `glow` | `#c amount [#c2]` — glowing lines (channels, circuits, filaments), a second colour optional |
+| `nebula` | `#a #b [amount]` (space themes) · `stars n` (density) · `planet #c radius x y [rings]` (x, y 0..1 of the view) |
+| `rivers` | `n [width] [canyon]` — rivers along the flight (dry canyons where there is no water) |
+| `leads`, `dunes`, `mesas`, `channels`, `paint` | amounts of ice leads, dunes, flat-topped mesas, molten channels, painted deck rings |
+| `waves`, `windows`, `lightning`, `detail` | water motion, lit windows in cities, lightning in storm clouds, small relief |
+| `mist` | `#c amount [top]` — mist in the valleys |
+| `walls` | `height [corridor]` — rock walls at both sides (caves, gorges) |
+| `crystals` | `n [#c1] [#c2]` — glowing crystals and fungi |
+
+Themes: space asteroid nebula gallery station range lava desert foundry ocean storm ice city jungle hive corona lattice
+river cave (and episode 5's own `e5_corona` in data/levels/e5/e5_themes.txt).
 
 ## Workshop goods (`data/items/*.txt`)
 
