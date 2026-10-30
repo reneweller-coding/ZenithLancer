@@ -12,7 +12,7 @@ import time
 
 FLAG = r"G:\Tools\Games\GPU_BELEGT.txt"
 PAUSE = r"G:\Tools\Games\GPU_PAUSE.txt"
-GAMES = ("kipkepler.exe", "spaceopera.exe", "darkconcordance.exe", "darkconcordance2.exe")
+GAMES = ("kipkepler.exe", "spaceopera.exe", "darkconcordance.exe", "darkconcordance2.exe", "zenithlancer.exe")
 
 
 def games_running():

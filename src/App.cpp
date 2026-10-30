@@ -1547,8 +1547,12 @@ int App::appTest()
                 want = rest.substr( 0, colon );
                 limit = atoi( rest.substr( colon + 1 ).c_str() );
             }
+            auto now = [&]() -> std::string {
+                if ( want == "boss" && m_screen == ScreenE::PLAY && m_world.boss() >= 0 ) return "boss";
+                return ScreenNames[(int)m_screen];
+            };
             int n = 0;
-            while ( ScreenNames[(int)m_screen] != want && n++ < ( until ? limit : 0 ) )
+            while ( now() != want && n++ < ( until ? limit : 0 ) )
             {
                 m_in.script( {} );
                 m_in.update();
@@ -1558,9 +1562,21 @@ int App::appTest()
                 m_t += 1.0f / 60.0f;
                 if ( m_screen != last ) printf( "screen %s\n", ScreenNames[(int)( last = m_screen )] );
             }
-            bool ok = ScreenNames[(int)m_screen] == want;
+            bool ok = now() == want;
             printf( "%s %s (screen %s)\n", ok ? "ok  " : "FAIL", w.c_str(), ScreenNames[(int)m_screen] );
             if ( !ok ) ++fails;
+            continue;
+        }
+        if ( w == "kill" )
+        {
+            // Every pilot down at once (and no lives left): the mission is lost.
+            for ( Player &p : m_world.m_players )
+                if ( p.m_active )
+                {
+                    p.m_alive = false;
+                    p.m_lives = 0;
+                    p.m_dead = 5.0f;
+                }
             continue;
         }
         m_in.script( { w } );
@@ -1614,10 +1630,17 @@ void App::screenShot()
         {
             if ( m_mode == ModeE::ARCADE && !m_cat.m_arcadeShips.empty() ) m_carry[0] = m_cat.m_arcadeShips[0].m_loadout;
             startMission( m_level );
-            for ( int i = 0; i < 60 * 20; ++i )
+            // A lost mission is lost at its boss (the picture shows the boss retry); the others fly 20 s.
+            for ( int i = 0; i < 60 * ( s == "failed" ? 600 : 20 ); ++i )
             {
                 PlayerInput in[2] = { autopilot( m_world, 0 ), {} };
                 m_world.step( in );
+                if ( s == "failed" && m_world.boss() >= 0 )
+                {
+                    m_bossSave = m_world;
+                    m_hasBossSave = true;
+                    break;
+                }
             }
             m_last = m_world.m_stats;
             m_earned = m_world.m_players[0].m_credits;

@@ -1,0 +1,33 @@
+# A lost boss fight: the failed screen offers the boss again, which starts with the boss on the field and the pilot
+# whole; the whole mission can still be restarted (ZenithLancer --apptest tools/apptest_boss.txt with ZENITH_HOME set).
+expect:title
+accept
+expect:main
+accept                  # Kampagne
+expect:slots
+accept                  # slot 1, empty
+expect:difficulty
+accept                  # Normal
+expect:episode
+accept                  # episode 1
+expect:story
+back
+expect:plan
+accept                  # the first mission
+expect:story
+back
+until:play:20
+until:boss:3000         # the dock guardian comes
+wait wait wait wait wait wait
+kill                    # shot down in the boss fight
+until:failed:200
+accept                  # the first choice: the boss again
+until:boss:20           # the boss is there at once
+wait wait wait
+kill
+until:failed:200
+down accept             # this time the whole mission
+until:play:20
+pause
+down down accept        # abort: back to the plan
+until:plan:50

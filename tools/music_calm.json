@@ -1,0 +1,18 @@
+{
+  "name": "Zenith Lancer calm",
+  "style": "1990s PC game soundtrack reimagined with modern production, melodic electronic music, soft and spacious",
+  "key": "A minor",
+  "bpm": 90,
+  "timesig": "4",
+  "takes": 2,
+  "format": "flac",
+  "seed": 7713,
+  "cues": [
+    { "id": "plan", "type": "loop", "bars": 16, "bpm": 92, "key": "A minor",
+      "style": "calm mission briefing map music, slow pulsing synth bass, soft arpeggio, distant pads, light ticking hi-hats, no kick drum, focused and thoughtful, low energy",
+      "hint": "instrumental video game menu music, calm, quiet, sparse, constant mood, no intro, no ending" },
+    { "id": "story", "type": "loop", "bars": 12, "bpm": 76, "key": "E minor",
+      "style": "quiet story music, soft solo piano melody, warm string pad, gentle synth bells, reflective and hopeful, slow, no drums",
+      "hint": "instrumental video game background music, calm and emotional, quiet, sparse, no percussion, constant mood, no intro, no ending" }
+  ]
+}

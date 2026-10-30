@@ -1,8 +1,10 @@
-"""Makes the game's music: tools/music.json -> the AudioGenerator's soundtrack mode (ACE-Step 1.5, local on the GPU)
--> work/music, then every take levelled to the same loudness and written as OGG Vorbis (quality 4, the format raylib
+"""Makes the game's music: tools/music.json (the action pieces) and tools/music_calm.json (story and plan, without
+the action's driving style, which every cue of a spec inherits) -> the AudioGenerator's soundtrack mode (ACE-Step 1.5,
+local on the GPU) -> work/music, then every take levelled to the same loudness and written as OGG Vorbis (quality 4, the format raylib
 streams) to assets/music/<cue>.ogg (take 1) and <cue>_2.ogg (take 2; the game picks one of them at random).
 
-    G:\\Tools\\PythonSkripts\\AudioGenerator\\venv\\Scripts\\python.exe tools\\make_music.py [--encode-only] [--force]
+    G:\\Tools\\PythonSkripts\\AudioGenerator\\venv\\Scripts\\python.exe tools\\make_music.py [--spec music_calm.json]
+        [--encode-only] [--force]
 
 The generator runs below normal priority. Needs numpy, scipy and soundfile (the AudioGenerator's venv has them) and
 ffmpeg with libvorbis on the PATH. Before starting it: no other GPU job and no game instance may run (one GPU user at
@@ -20,6 +22,7 @@ import soundfile as sf
 from scipy.signal import lfilter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SPECS = ("music.json", "music_calm.json")
 AUDIOGEN = r"G:\Tools\PythonSkripts\AudioGenerator"
 
 # The music sits under the effects: a shooter's guns and explosions must cut through. Bosses a little louder, the
@@ -102,22 +105,23 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--encode-only", action="store_true", help="only level and encode what work/music holds")
     ap.add_argument("--force", action="store_true", help="encode again even where the OGG is newer")
+    ap.add_argument("--spec", action="append", help="generate only this spec of tools/ (repeatable)")
     args = ap.parse_args()
     FORCE = args.force
-    spec = os.path.join(ROOT, "tools", "music.json")
     work = os.path.join(ROOT, "work", "music")
     os.makedirs(work, exist_ok=True)
     if not args.encode_only:
-        nice_run([os.path.join(AUDIOGEN, "venv", "Scripts", "python.exe"), "main.py", "--soundtrack", spec,
-                  "--soundtrack-out", work], AUDIOGEN, os.path.join(work, "gen.log"))
-    found = [d for d in os.listdir(work) if os.path.isfile(os.path.join(work, d, "manifest.json"))]
+        for name in args.spec or SPECS:
+            nice_run([os.path.join(AUDIOGEN, "venv", "Scripts", "python.exe"), "main.py", "--soundtrack",
+                      os.path.join(ROOT, "tools", name), "--soundtrack-out", work], AUDIOGEN,
+                     os.path.join(work, "gen_%s.log" % name[:-5]))
+    found = sorted(d for d in os.listdir(work) if os.path.isfile(os.path.join(work, d, "manifest.json")))
     if not found:
         sys.exit("no manifest.json under " + work)
-    src = os.path.join(work, found[0])
-    manifest = json.load(open(os.path.join(src, "manifest.json"), encoding="utf-8"))
     out = os.path.join(ROOT, "assets", "music")
     total = 0
-    for cue in manifest["cues"]:
+    for src, cue in [(os.path.join(work, d), c) for d in found
+                     for c in json.load(open(os.path.join(work, d, "manifest.json"), encoding="utf-8"))["cues"]]:
         files = cue["levels"][0]["files"]
         shown = []
         for n, f in enumerate(files[:2]):
