@@ -1,0 +1,78 @@
+# Episode 4, mission 2: the Choir sends a tide of spores against the swarm while Directorate squads burn the
+# forest "to contain the infection". Nadia flies through both. At the end the path forks: the river (e4_03) or the
+# hive city (e4_04).
+
+level e4_02
+  title "Sporenflut"
+  episode 4
+  theme jungle
+  music e4_b
+  scroll 70
+  length 210
+  next e4_03 e4_04
+  map 0.20 0.40
+  briefing e4_02_brief
+  debrief e4_02_after
+
+  at 1   text e4_02_r1
+  at 3   wave e4_seedmine n=8 form=random range=640 gap=0.45 path=drift speed=75
+  at 7   wave e4_dirjet n=4 form=column x=620 gap=0.35 path=swoop side=-1 cx=340 cy=300 dur=3.4
+  at 11  wave e4_dirjet n=4 form=column x=100 gap=0.35 path=swoop side=1 cx=380 cy=300 dur=3.4
+  at 14  ground e4_dirtank x=180 path=ground dir=-90 speed=20
+  at 14  ground e4_dirtank x=540 path=ground dir=90 speed=20
+  at 18  wave e4_sporeling n=8 form=v x=360 spacing=55 path=sine amp=40 freq=0.35 speed=140
+  at 22  wave e4_mothwing n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=70
+  at 24  pickup credits x=480 value=450
+  at 26  wave e4_dirgunboat x=360 path=hover stop=170 wait=6
+  at 28  wave e4_seedmine n=6 form=random range=600 gap=0.5 path=drift speed=80 diff=3
+  at 32  text e4_02_r2
+  at 34  wave e4_shard n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=250 r=150 dur=5 side=1
+  at 38  ground e4_dirflak x=150
+  at 38  ground e4_dirflak x=570
+  at 41  wave e4_lancefly n=4 form=line x=360 spacing=130 path=dive turn=90
+  at 45  pickup cube x=300 item=e4_c04
+  at 47  wave e4_umbrella n=2 form=line x=360 spacing=320 path=hover stop=200 wait=6
+  at 50  wave e4_sporeling n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=190
+  at 55  ground e4_dirtank x=120 n=3 form=line spacing=110 path=ground dir=-90 speed=22
+  at 57  wave e4_dirjet n=6 form=v x=360 spacing=55 path=straight speed=310
+  at 62  wave e4_beetle x=220 path=hover stop=160 wait=7
+  at 64  wave e4_beetle x=500 path=hover stop=200 wait=7 diff=3
+  at 66  wave e4_mothwing n=5 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=340 dur=3.8 mirror=1
+  at 72  text e4_02_r3
+  at 73  pickup credits x=200 value=500
+  at 75  scroll 45
+  at 76  wave e4_seedmine n=10 form=random range=660 gap=0.35 path=drift speed=90
+  at 80  ground e4_sporepod x=180
+  at 80  ground e4_sporepod x=540
+  at 84  wave e4_prism n=4 form=column x=100 gap=0.4 path=arc side=1 turn=60 mirror=1
+  at 90  wave e4_dirgunboat n=2 form=line x=360 spacing=300 path=hover stop=170 wait=7
+  at 94  ground e4_dirflak x=360
+  at 98  wave e4_sporeling n=8 form=column x=360 gap=0.25 path=sine amp=160 freq=0.3
+  at 102 pickup cube x=600 item=e4_c05
+  at 104 scroll 70
+  at 106 text e4_02_r4
+  at 108 wave e4_lancefly n=6 form=sides x=80 gap=0.45 path=dive turn=90
+  at 112 wave e4_dirjet n=5 form=column x=360 gap=0.3 path=loop stop=220 r=90
+  at 116 ground e4_crawler x=100 path=ground dir=-90 speed=24
+  at 118 wave e4_umbrella x=360 path=hover stop=180 wait=7
+  at 122 wave e4_shard n=12 form=random range=640 gap=0.2 path=zigzag amp=60 freq=0.6 speed=200
+  at 128 pickup credits x=360 value=600
+  at 130 wave e4_mothwing n=10 form=grid cols=5 x=360 spacing=75 dy=55 path=straight speed=130 drop=shield
+  at 136 ground e4_dirtank x=600 n=2 form=line spacing=120 path=ground dir=90 speed=22
+  at 138 wave e4_dirjet n=4 form=line x=360 spacing=150 path=dive turn=80 diff=3
+  at 142 text e4_02_r5
+  at 144 wave e4_seedmine n=8 form=random range=640 gap=0.4 path=drift speed=85
+  at 146 wave e4_broodmother x=360 path=hover stop=140 wait=10
+  at 150 wave e4_lancefly n=3 form=column x=140 gap=0.4 path=dive turn=110 mirror=1
+  at 156 pickup cube x=150 item=e4_c06
+  at 160 wave e4_dirgunboat n=2 form=line x=360 spacing=320 path=hover stop=150 wait=8
+  at 162 wave e4_sporeling n=8 form=v x=360 spacing=60 path=sine amp=50 freq=0.4 speed=150
+  at 168 ground e4_dirflak x=180
+  at 168 ground e4_dirflak x=540
+  at 172 wave e4_dirjet n=6 form=sides x=70 gap=0.35 path=arc side=1 turn=80
+  at 178 wave e4_mothwing n=8 form=random range=640 gap=0.25 path=dive turn=50 speed=220
+  at 184 wave e4_beetle x=360 path=hover stop=170 wait=7
+  at 186 wave e4_prism n=4 form=line x=360 spacing=120 path=arc side=-1 turn=60 diff=3
+  at 194 text e4_02_r6
+  at 196 pickup credits x=360 value=800
+  at 202 end

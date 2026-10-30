@@ -1,0 +1,76 @@
+# Episode 4, mission 8 (the orbit path): through Voss's fleet as it tears itself apart. Loyal crews fight the
+# amber swarm, converted frigates fire on everyone, wreckage drifts. A wing of amber darts carries a plan
+# (mirrorshield).
+
+level e4_08
+  title "Treuebruch"
+  episode 4
+  theme space
+  music e4_a
+  scroll 85
+  length 220
+  next e4_09
+  map 0.76 0.16
+  briefing e4_08_brief
+  debrief e4_08_after
+
+  at 1   text e4_08_r1
+  at 3   wave e4_amberdart n=6 form=v x=360 spacing=55 path=straight speed=290
+  at 7   obstacle rock n=3 form=random range=560 gap=0.8 path=drift speed=70
+  at 8   wave e4_dirjet n=4 form=column x=110 gap=0.35 path=swoop side=1 cx=380 cy=300 dur=3.4 mirror=1
+  at 13  wave e4_shard n=8 form=random range=620 gap=0.3 path=sine amp=50 freq=0.6
+  at 17  wave e4_dirgunboat x=240 path=hover stop=170 wait=6
+  at 19  wave e4_amberwarden x=480 path=hover stop=210 wait=6
+  at 23  pickup credits x=360 value=450
+  at 25  wave e4_amberdart n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 28  wave e4_dirjet n=6 form=random range=600 gap=0.3 path=dive turn=60 diff=3
+  at 31  text e4_08_r2
+  at 33  obstacle rock n=4 form=random range=620 gap=0.7 path=drift speed=80
+  at 35  wave e4_dirfrigate x=360 path=hover stop=140 wait=11
+  at 38  wave e4_amberdart n=5 form=column x=100 gap=0.3 path=loop stop=230 r=90 mirror=1
+  at 45  pickup cube x=180 item=e4_c22
+  at 47  wave e4_latticeship x=360 path=hover stop=170 wait=7
+  at 50  wave e4_seedmine n=6 form=random range=640 gap=0.5 path=drift speed=80
+  at 54  wave e4_dirjet n=6 form=v x=360 spacing=50 path=straight speed=310
+  at 58  wave e4_amberwarden x=220 path=hover stop=170 wait=7
+  at 58  wave e4_amberwarden x=500 path=hover stop=200 wait=7 diff=3
+  at 64  pickup credits x=540 value=500
+  at 66  text e4_08_r3
+  at 68  scroll 50
+  at 68  obstacle rock n=6 form=random range=660 gap=0.5 path=drift speed=60
+  at 70  wave e4_shard n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=210
+  at 75  wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
+  at 81  wave e4_dirgunboat x=360 path=hover stop=160 wait=7
+  at 85  pickup cube x=420 item=e4_c23
+  at 87  scroll 85
+  at 88  wave e4_amberdart n=6 form=random range=600 gap=0.3 path=dive turn=80
+  at 92  wave e4_dirfrigate x=200 path=hover stop=150 wait=10
+  at 94  wave e4_dirfrigate x=520 path=hover stop=190 wait=10 diff=3
+  at 98  text e4_08_r4
+  at 100 wave e4_amberdart n=8 form=sides x=40 gap=0.25 path=arc side=1 turn=120 speed=320 drop=plan item=mirrorshield
+  at 106 wave e4_latticeship x=360 path=hover stop=170 wait=7
+  at 108 wave e4_dirjet n=5 form=column x=620 gap=0.3 path=swoop side=-1 cx=340 cy=320 dur=3.4
+  at 113 pickup credits x=200 value=600
+  at 115 obstacle rock n=4 form=random range=620 gap=0.6 path=drift speed=80
+  at 117 wave e4_prism n=5 form=v x=360 spacing=55 path=straight speed=320
+  at 121 wave e4_amberwarden x=360 path=hover stop=160 wait=8
+  at 125 wave e4_shard n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=270 r=150 dur=5 side=1
+  at 130 text e4_08_r5
+  at 132 wave e4_dirjet n=8 form=random range=640 gap=0.3 path=dive turn=60 speed=260
+  at 137 wave e4_dirgunboat n=2 form=line x=360 spacing=320 path=hover stop=160 wait=7
+  at 144 wave e4_seedmine n=8 form=random range=640 gap=0.4 path=drift speed=90
+  at 148 wave e4_amberdart n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90
+  at 154 wave e4_dirfrigate x=360 path=hover stop=140 wait=11
+  at 157 wave e4_amberdart n=4 form=line x=360 spacing=140 path=dive turn=90 diff=3
+  at 160 pickup credits x=360 value=600
+  at 162 wave e4_shard n=10 form=grid cols=5 x=360 spacing=75 dy=55 path=straight speed=140 drop=shield
+  at 168 wave e4_amberwarden x=240 path=hover stop=170 wait=8
+  at 170 wave e4_amberwarden x=480 path=hover stop=210 wait=8
+  at 176 wave e4_dirjet n=5 form=column x=100 gap=0.3 path=loop stop=240 r=90 mirror=1
+  at 182 obstacle rock n=4 form=random range=620 gap=0.6 path=drift speed=80
+  at 184 wave e4_amberdart n=6 form=v x=360 spacing=50 path=straight speed=330 repeat=2 every=4
+  at 194 wave e4_latticeship x=360 path=hover stop=170 wait=7
+  at 196 wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
+  at 204 text e4_08_r6
+  at 206 pickup credits x=360 value=800
+  at 212 end

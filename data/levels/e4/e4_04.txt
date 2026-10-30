@@ -1,0 +1,76 @@
+# Episode 4, mission 4 (the hive path): through Neu-Maren, the colony town the swarm has grown into combs. In its
+# ruins a Directorate courier carries the access key to the Kaltkammer (secret e4_s2).
+
+level e4_04
+  title "Wabenstadt"
+  episode 4
+  theme hive
+  music e4_b
+  scroll 60
+  length 215
+  next e4_05
+  secret e4_s2 key=e4_key_cold
+  map 0.36 0.22
+  briefing e4_04_brief
+  debrief e4_04_after
+
+  at 1   text e4_04_r1
+  at 3   wave e4_hivemite n=8 form=line x=360 spacing=75 path=zigzag amp=50 freq=0.6 speed=150
+  at 8   wave e4_shard n=6 form=column x=120 gap=0.35 path=swoop side=1 cx=360 cy=300 dur=3.6
+  at 12  wave e4_shard n=6 form=column x=600 gap=0.35 path=swoop side=-1 cx=360 cy=300 dur=3.6
+  at 15  ground e4_sporepod x=180
+  at 15  ground e4_sporepod x=540
+  at 19  wave e4_hivemite n=10 form=v x=360 spacing=50 path=sine amp=40 freq=0.4 speed=160
+  at 23  pickup credits x=360 value=450
+  at 25  wave e4_prism n=4 form=line x=360 spacing=140 path=arc side=1 turn=60
+  at 28  wave e4_hivemite n=8 form=random range=600 gap=0.3 path=dive turn=40 speed=220 diff=3
+  at 31  text e4_04_r2
+  at 33  wave e4_latticeship x=360 path=hover stop=170 wait=7
+  at 36  ground e4_crawler x=110 path=ground dir=-90 speed=22
+  at 40  wave e4_shard n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=260 r=140 dur=5 side=1
+  at 44  wave e4_shard n=8 form=column x=120 gap=0.3 path=orbit cx=360 cy=260 r=140 dur=5 side=-1
+  at 48  pickup cube x=180 item=e4_c10
+  at 50  wave e4_umbrella n=2 form=line x=360 spacing=300 path=hover stop=200 wait=6
+  at 54  ground e4_thornvine x=200 n=3 form=line spacing=160
+  at 58  wave e4_lancefly n=4 form=column x=160 gap=0.35 path=dive turn=100 mirror=1
+  at 63  wave e4_broodmother x=360 path=hover stop=150 wait=10
+  at 66  wave e4_hivemite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
+  at 72  text e4_04_r3
+  at 73  pickup credits x=540 value=500
+  at 76  wave e4_prism n=5 form=v x=360 spacing=55 path=straight speed=320
+  at 80  ground e4_sporepod x=360
+  at 82  wave e4_beetle x=220 path=hover stop=170 wait=7
+  at 84  wave e4_beetle x=500 path=hover stop=210 wait=7
+  at 88  wave e4_hivemite n=12 form=random range=640 gap=0.2 path=zigzag amp=70 freq=0.7 speed=200
+  at 94  wave e4_latticeship n=2 form=line x=360 spacing=320 path=hover stop=170 wait=8 diff=3
+  at 98  pickup cube x=420 item=e4_c11
+  at 101 text e4_04_r4
+  at 103 scroll 40
+  at 104 ground e4_crawler x=620 path=ground dir=90 speed=22
+  at 104 ground e4_crawler x=100 path=ground dir=-90 speed=22
+  at 108 wave e4_shard n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=210
+  at 112 ground e4_thornvine x=360 n=2 form=line spacing=260
+  at 116 wave e4_umbrella x=360 path=hover stop=170 wait=7
+  at 120 wave e4_dirjet n=4 form=column x=100 gap=0.35 path=swoop side=1 cx=380 cy=320 dur=3.4
+  at 123 wave e4_dirjet n=4 form=column x=620 gap=0.35 path=swoop side=-1 cx=340 cy=320 dur=3.4
+  at 126 scroll 60
+  at 128 pickup credits x=200 value=600
+  at 130 text e4_04_r5
+  at 131 wave e4_prism n=6 form=sides x=40 gap=0.3 path=arc side=1 turn=120 speed=300 drop=key item=e4_key_cold
+  at 137 wave e4_hivemite n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=130 drop=shield
+  at 142 wave e4_latticeship x=240 path=hover stop=160 wait=8
+  at 144 wave e4_lancefly n=4 form=line x=360 spacing=130 path=dive turn=90
+  at 150 ground e4_sporepod x=150
+  at 150 ground e4_sporepod x=570
+  at 154 wave e4_shard n=8 form=v x=360 spacing=50 path=sine amp=60 freq=0.4 speed=160
+  at 158 pickup cube x=600 item=e4_c12
+  at 161 wave e4_broodmother x=360 path=hover stop=140 wait=10
+  at 164 wave e4_hivemite n=6 form=column x=110 gap=0.3 path=swoop side=1 cx=360 cy=360 dur=3.8 mirror=1
+  at 172 wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
+  at 178 ground e4_crawler x=360 path=ground
+  at 180 wave e4_beetle x=360 path=hover stop=170 wait=7 diff=3
+  at 184 wave e4_shard n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=200
+  at 190 wave e4_hivemite n=8 form=v x=360 spacing=50 path=sine amp=50 freq=0.4 speed=170
+  at 198 text e4_04_r6
+  at 200 pickup credits x=360 value=800
+  at 206 end

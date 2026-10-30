@@ -1,0 +1,66 @@
+# Episode 4, secret mission 2: the Kaltkammer, a Directorate lab hidden on Sylvara's small moonlet, where the
+# command keys were tested long before the Quiet Flare. Opened by the key in e4_04; leads back to e4_05.
+
+level e4_s2
+  title "Kaltkammer"
+  episode 4
+  theme station
+  music secret
+  scroll 65
+  length 185
+  next e4_05
+  issecret 1
+  map 0.46 0.08
+  briefing e4_s2_brief
+  debrief e4_s2_after
+
+  at 1   text e4_s2_r1
+  at 3   wave e4_dirjet n=5 form=v x=360 spacing=60 path=straight speed=280
+  at 7   ground e4_dirflak x=170
+  at 20  ground e4_dirflak x=550
+  at 10  wave e4_shard n=6 form=column x=120 gap=0.35 path=swoop side=1 cx=360 cy=300 dur=3.6 mirror=1
+  at 15  wave e4_dirgunboat x=360 path=hover stop=170 wait=6
+  at 18  ground e4_dirtank x=110 n=2 form=line spacing=120 path=ground dir=-90 speed=22
+  at 21  pickup credits x=360 value=500
+  at 23  wave e4_dirjet n=6 form=sides x=70 gap=0.35 path=arc side=1 turn=80
+  at 28  text e4_s2_r2
+  at 30  wave e4_amberdart n=4 form=line x=360 spacing=140 path=dive turn=90
+  at 34  ground e4_dirflak x=360
+  at 37  wave e4_shard n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=200
+  at 42  pickup cube x=180 item=e4_c31
+  at 44  wave e4_dirgunboat n=2 form=line x=360 spacing=320 path=hover stop=160 wait=7
+  at 48  wave e4_amberdart n=5 form=column x=100 gap=0.3 path=loop stop=230 r=90 mirror=1
+  at 55  ground e4_dirtank x=610 n=2 form=line spacing=120 path=ground dir=90 speed=22
+  at 58  wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
+  at 62  pickup credits x=540 value=600
+  at 64  text e4_s2_r3
+  at 66  wave e4_amberwarden x=360 path=hover stop=170 wait=8
+  at 69  wave e4_dirjet n=6 form=random range=600 gap=0.3 path=dive turn=60 speed=260
+  at 74  ground e4_dirflak x=200
+  at 74  ground e4_dirflak x=520
+  at 78  wave e4_shard n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=260 r=150 dur=5 side=1
+  at 82  wave e4_shard n=8 form=column x=120 gap=0.3 path=orbit cx=360 cy=260 r=150 dur=5 side=-1
+  at 87  pickup cube x=420 item=e4_c32
+  at 89  scroll 100
+  at 90  text e4_s2_r4
+  at 91  wave e4_amberdart n=6 form=v x=360 spacing=50 path=straight speed=330 repeat=3 every=4
+  at 92  ground e4_dirtank x=360 n=3 form=line spacing=180
+  at 104 scroll 65
+  at 105 wave e4_dirfrigate x=360 path=hover stop=140 wait=11
+  at 108 wave e4_dirjet n=4 form=column x=110 gap=0.35 path=swoop side=1 cx=380 cy=320 dur=3.4 mirror=1
+  at 114 pickup credits x=200 value=600
+  at 116 wave e4_amberwarden x=240 path=hover stop=170 wait=8
+  at 118 wave e4_amberwarden x=480 path=hover stop=210 wait=8 diff=3
+  at 122 wave e4_shard n=10 form=grid cols=5 x=360 spacing=75 dy=55 path=straight speed=140 drop=shield
+  at 128 text e4_s2_r5
+  at 130 ground e4_dirflak x=150
+  at 130 ground e4_dirflak x=570
+  at 134 wave e4_amberdart n=8 form=random range=640 gap=0.3 path=dive turn=60 speed=260
+  at 142 wave e4_dirgunboat x=240 path=hover stop=160 wait=7
+  at 144 wave e4_amberwarden x=480 path=hover stop=200 wait=7
+  at 150 wave e4_prism n=5 form=v x=360 spacing=55 path=straight speed=320
+  at 156 wave e4_dirfrigate x=360 path=hover stop=140 wait=10
+  at 160 wave e4_amberdart n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90
+  at 168 text e4_s2_r6
+  at 170 pickup credits x=360 value=900
+  at 176 end
