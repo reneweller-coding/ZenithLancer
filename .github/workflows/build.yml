@@ -1,6 +1,6 @@
 # Zenith Lancer: every push and pull request built for Windows and Linux with the presets of CMakePresets.json, and
-# the headless tests run (ctest -R "data|missions": every data file, every mission flown to its end by the
-# autopilot). The app tests play the screens in a window and stay with the local builds (build.ps1 -Test). Nothing is
+# the headless tests run (every data file, every mission flown to its end by the autopilot, the replays, the golden
+# replays), once more under the sanitizers. The app tests play the screens in a window and stay with the local builds (build.ps1 -Test). Nothing is
 # packed; tags are release.yml's.
 name: build
 
@@ -31,7 +31,7 @@ jobs:
         run: cmake --build --preset msvc --parallel
 
       - name: Headless tests
-        run: ctest --preset msvc -R "data|missions"
+        run: ctest --preset msvc -R "data|missions|achievements|replays|golden"
 
   linux:
     runs-on: ubuntu-22.04
@@ -55,4 +55,32 @@ jobs:
         run: cmake --build --preset linux --parallel
 
       - name: Headless tests
-        run: ctest --preset linux -R "data|missions"
+        run: ctest --preset linux -R "data|missions|achievements|replays|golden"
+
+  sanitize:
+    # The same headless tests under AddressSanitizer and UndefinedBehaviorSanitizer: memory errors and undefined
+    # behaviour stop the run with a report.
+    runs-on: ubuntu-22.04
+    timeout-minutes: 90
+    env:
+      CC: gcc-12
+      CXX: g++-12
+      ASAN_OPTIONS: detect_leaks=1:abort_on_error=1
+      UBSAN_OPTIONS: print_stacktrace=1
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: The compiler and the headers GLFW needs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends g++-12 libx11-dev libxrandr-dev libxinerama-dev \
+            libxcursor-dev libxi-dev libxext-dev libgl1-mesa-dev
+
+      - name: Configure (GCC 12, sanitizers)
+        run: cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=RelWithDebInfo -DZENITH_SANITIZE=ON
+
+      - name: Build
+        run: cmake --build build/sanitize --parallel
+
+      - name: Headless tests
+        run: ctest --test-dir build/sanitize --output-on-failure -R "data|missions|achievements|replays|golden"

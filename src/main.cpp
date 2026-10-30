@@ -33,6 +33,7 @@
 
 #include <raylib.h>
 
+#include <algorithm>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -354,6 +355,175 @@ int replayTest( const std::string &dir, const std::string &level, int diff, uint
     return fails == 0 ? 0 : 1;
 }
 
+/** @brief A golden replay: a flight of the autopilot kept in tests/golden, played back by every test run. */
+struct Golden
+{
+    const char *m_name;
+    const char *m_mission;
+    ModeE       m_mode;
+    int         m_diff;
+    uint32_t    m_seed;
+    int         m_pilots;
+    int         m_rules;
+    bool        m_retry;   ///< the boss fought again from its checkpoint
+};
+
+const Golden Goldens[] = {
+    { "campaign_e1_01", "e1_01", ModeE::CAMPAIGN, 2, 101, 1, 0, false },
+    { "boss_retry_e3_05", "e3_05", ModeE::CAMPAIGN, 3, 102, 1, 0, true },
+    { "arcade2_e2_03", "e2_03", ModeE::ARCADE, 4, 103, 2, 0, false },
+    { "survival_rules", "survival", ModeE::ARCADE, 2, 104, 1, (int)RuleE::DOUBLE | (int)RuleE::GLASS, false },
+    { "bossrush", "bossrush", ModeE::BOSSRUSH, 2, 105, 1, 0, false },
+};
+
+/** @brief The generated missions a replay may name (the boss rush, the survival flight of its seed). */
+void generated( Catalog &cat, const ReplayHeader &h )
+{
+    cat.m_levels["bossrush"] = bossRush( cat );
+    if ( h.m_mission == "survival" ) cat.m_levels["survival"] = survival( cat, h.m_seed );
+}
+
+/** @brief Plays a replay back from its file alone; the World at its end. */
+void playBack( World &w, World &save, const Catalog &cat, ReplayPlayer &pl )
+{
+    startWorld( w, cat, pl.header() );
+    for ( ;; )
+    {
+        for ( ReplayMarkE m : pl.marks() )
+            if ( m == ReplayMarkE::RETRY ) restoreBoss( w, save );
+            else continueArcade( w );
+        PlayerInput in[2];
+        if ( !pl.next( in ) ) break;
+        w.step( in );
+        for ( const SimEvent &ev : w.m_events )
+            if ( ev.m_type == EvE::BOSSSTART ) save = w;
+    }
+}
+
+/**
+ * @brief --goldenmake DIR: the golden replays recorded anew (after a change to the game that is meant): a campaign
+ *        mission, a boss fought again from its checkpoint, the arcade for two on Impossible, a survival flight
+ *        under two weekly rules and the boss rush, each flown by the autopilot as the app would record it.
+ */
+int goldenMake( const std::string &dataDir, const std::string &dir )
+{
+    namespace fs = std::filesystem;
+    Catalog cat;
+    cat.load( dataDir );
+    std::error_code e;
+    fs::create_directories( dir, e );
+    auto w = std::make_unique<World>(), save = std::make_unique<World>();
+    for ( const Golden &g : Goldens )
+    {
+        ReplayHeader h;
+        h.m_version = ZENITH_VERSION;
+        h.m_mode = g.m_mode;
+        h.m_mission = g.m_mission;
+        h.m_difficulty = g.m_diff;
+        h.m_seed = g.m_seed;
+        h.m_pilots = g.m_pilots;
+        h.m_rules = g.m_rules;
+        h.m_data = cat.m_hash;
+        h.m_lang = "en";
+        h.m_date = "2026-10-30 12:00:00";
+        generated( cat, h );
+        const LevelDef *lv = cat.level( g.m_mission );
+        if ( !lv ) continue;
+        for ( int i = 0; i < g.m_pilots; ++i )
+        {
+            if ( g.m_mode == ModeE::CAMPAIGN ) h.m_load[i] = midLoadout( cat, lv->m_episode );
+            else if ( !cat.m_arcadeShips.empty() )
+            {
+                h.m_load[i] = cat.m_arcadeShips[(size_t)i % cat.m_arcadeShips.size()].m_loadout;
+                h.m_lives[i] = 2;
+            }
+            if ( g.m_mode == ModeE::BOSSRUSH )
+            {
+                Loadout &o = h.m_load[i];
+                o.m_frontLv = 11;
+                o.m_rear = o.m_rear.empty() ? "tailgun" : o.m_rear;
+                o.m_rearLv = 9;
+                o.m_gen = "singularity";
+                o.m_shield = "halo_s";
+            }
+        }
+        startWorld( *w, cat, h );
+        ReplayRecorder rec;
+        rec.begin( h );
+        bool  saved = false, retried = false;
+        float savedAt = 0.0f, limit = lv->m_length + 400.0f;
+        while ( !w->finished() && !w->failed() && w->m_clock < limit )
+        {
+            if ( g.m_retry && saved && !retried && w->m_clock >= savedAt + 6.0f )
+            {
+                rec.mark( ReplayMarkE::RETRY );
+                restoreBoss( *w, *save );
+                retried = true;
+            }
+            PlayerInput in[2] = { autopilot( *w, 0 ), g.m_pilots > 1 ? autopilot( *w, 1 ) : PlayerInput() };
+            in[0] = quantize( in[0] );
+            in[1] = quantize( in[1] );
+            rec.push( in );
+            w->step( in );
+            for ( const SimEvent &ev : w->m_events )
+                if ( ev.m_type == EvE::BOSSSTART )
+                {
+                    *save = *w;
+                    saved = true;
+                    savedAt = w->m_clock;
+                }
+        }
+        long long score = w->m_players[0].m_score + w->m_players[1].m_score;
+        rec.finish( w->finished(), score, w->m_clock );
+        std::string file = ( fs::path( dir ) / ( std::string( g.m_name ) + ReplayExt ) ).string();
+        printf( "%-18s %6d steps %7zu bytes %s %5.0fs %9lld\n", g.m_name, rec.steps(), rec.bytes(), w->finished() ? "won " : "lost",
+                w->m_clock, score );
+        if ( !rec.save( file ) ) return 1;
+    }
+    return 0;
+}
+
+/**
+ * @brief --goldentest DIR: every golden replay played back; its end must be the recorded one to the bit (the clock,
+ *        the score, the result). A difference means the simulation changed: wanted, then --goldenmake records them
+ *        anew; else it is a bug.
+ * @return 0 when all are the same
+ */
+int goldenTest( const std::string &dataDir, const std::string &dir )
+{
+    namespace fs = std::filesystem;
+    Catalog cat;
+    cat.load( dataDir );
+    std::vector<ReplayHeader> list = listReplays( dir );
+    std::sort( list.begin(), list.end(), []( const ReplayHeader &a, const ReplayHeader &b ) { return a.m_path < b.m_path; } );
+    auto w = std::make_unique<World>(), save = std::make_unique<World>();
+    int  fails = list.empty() ? 1 : 0;
+    for ( const ReplayHeader &h : list )
+    {
+        ReplayPlayer pl;
+        std::string  why;
+        if ( !pl.load( h.m_path ) ) why = pl.error();
+        else if ( h.m_data != cat.m_hash ) why = "the data changed since it was recorded (--goldenmake records it anew)";
+        else
+        {
+            generated( cat, h );
+            if ( !cat.level( h.m_mission ) ) why = "no mission " + h.m_mission;
+            else
+            {
+                playBack( *w, *save, cat, pl );
+                long long score = w->m_players[0].m_score + w->m_players[1].m_score;
+                if ( w->m_clock != h.m_time ) why = "the clock";
+                else if ( score != h.m_endScore ) why = "the score";
+                else if ( w->finished() != ( h.m_end == ReplayEndE::WON ) ) why = "the result";
+            }
+        }
+        printf( "%-24s %s\n", fs::path( h.m_path ).filename().string().c_str(), why.empty() ? "same" : ( "DIFFERS: " + why ).c_str() );
+        if ( !why.empty() ) ++fails;
+    }
+    printf( "%s\n", fails == 0 ? "golden replays: all the same" : "golden replays: FAILED" );
+    return fails == 0 ? 0 : 1;
+}
+
 }   // namespace
 
 int main( int argc, char **argv )
@@ -367,6 +537,7 @@ int main( int argc, char **argv )
     uint32_t    seed = 1;
     int         episode = 0;
     std::string replayLevel = "-";   // "-": no --replaytest
+    std::string goldenMakeDir, goldenTestDir;
     for ( int i = 1; i < argc; ++i )
     {
         std::string a = argv[i];
@@ -383,6 +554,7 @@ int main( int argc, char **argv )
                     "  --bench [all]              heavy missions flown, frame times measured (<user>/bench.txt)\n"
                     "  --video FILE (--replay R | --level NAME) [--seconds S] [--fps N] [--size WxH]   an MP4 (ffmpeg)\n"
                     "  --deckcheck                every screen at 1280x800, the smallest text measured\n"
+                    "  --goldentest DIR | --goldenmake DIR   the golden replays played back (or recorded anew)\n"
                     "loadout: \"ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,shield=ward,special=nova_s\"\n" );
             return 0;
         }
@@ -421,6 +593,8 @@ int main( int argc, char **argv )
         else if ( a == "--seconds" ) o.m_videoSeconds = (float)atof( next().c_str() );
         else if ( a == "--fps" ) o.m_videoFps = atoi( next().c_str() );
         else if ( a == "--deckcheck" ) o.m_deckCheck = true;
+        else if ( a == "--goldenmake" ) goldenMakeDir = next();
+        else if ( a == "--goldentest" ) goldenTestDir = next();
         else if ( a == "--bench" )
         {
             o.m_bench = true;
@@ -430,6 +604,8 @@ int main( int argc, char **argv )
     }
     if ( replayLevel != "-" )
         return replayTest( dataDir( o.m_data ), replayLevel, o.m_difficulty, seed, mortal, loadout );
+    if ( !goldenMakeDir.empty() ) return goldenMake( dataDir( o.m_data ), goldenMakeDir );
+    if ( !goldenTestDir.empty() ) return goldenTest( dataDir( o.m_data ), goldenTestDir );
     if ( doWeapons ) return weapons( dataDir( o.m_data ) );
     if ( doLang ) return langCheck( dataDir( o.m_data ), langOnly == "all" ? "" : langOnly );
     if ( doAchieve ) return achievements( dataDir( o.m_data ) );

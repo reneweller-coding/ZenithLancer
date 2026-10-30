@@ -15,6 +15,7 @@ set( CMAKE_CXX_STANDARD_REQUIRED ON )
 set( CMAKE_CXX_EXTENSIONS OFF )
 
 set( ZENITH_BIN_DIR "" CACHE PATH "where the game is copied after each build (bin/<preset>)" )
+option( ZENITH_SANITIZE "GCC/Clang: build with AddressSanitizer and UndefinedBehaviorSanitizer" OFF )
 
 include( FetchContent )
 set( ZENITH_EXTRACT_TIMESTAMP "" )
@@ -48,7 +49,14 @@ else()
     # -fwrapv: an int that overflows wraps round as with MSVC, so a seed plays the same everywhere.
     target_compile_options( ZenithLancer PRIVATE -Wall -Wextra -Wno-missing-field-initializers -Wno-unused-parameter
                                                  -fwrapv )
-    target_link_options( ZenithLancer PRIVATE -static-libstdc++ -static-libgcc )
+    if( ZENITH_SANITIZE )
+        # AddressSanitizer and UndefinedBehaviorSanitizer for the headless tests (CI's sanitize job).
+        target_compile_options( ZenithLancer PRIVATE -fsanitize=address,undefined -fno-omit-frame-pointer
+                                                     -fno-sanitize-recover=undefined )
+        target_link_options( ZenithLancer PRIVATE -fsanitize=address,undefined )
+    else()
+        target_link_options( ZenithLancer PRIVATE -static-libstdc++ -static-libgcc )
+    endif()
 endif()
 
 if( ZENITH_BIN_DIR )
@@ -65,6 +73,9 @@ add_test( NAME achievements COMMAND ZenithLancer --achievements )
 add_test( NAME missions COMMAND ZenithLancer --simall --difficulty 2 )
 # A mission recorded and played back from its file ends the same to the bit (episode 1 and the boss rush).
 add_test( NAME replays COMMAND ZenithLancer --replaytest )
+# The golden replays (tests/golden): flights recorded once must end the same to the bit, so any change to the
+# simulation shows (a wanted one: ZenithLancer --goldenmake tests/golden records them anew).
+add_test( NAME golden COMMAND ZenithLancer --goldentest ${CMAKE_SOURCE_DIR}/tests/golden )
 # The screens played through by scripts (a hidden window; the saves go to a test folder in the build).
 foreach( flow campaign arcade boss modes )
     add_test( NAME app_${flow} COMMAND ZenithLancer --apptest ${CMAKE_SOURCE_DIR}/tools/apptest_${flow}.txt )

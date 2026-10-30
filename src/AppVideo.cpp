@@ -8,6 +8,7 @@
 #include "App.h"
 
 #include "Files.h"
+#include "Process.h"
 #include "Ui.h"
 
 #include <raylib.h>
@@ -19,11 +20,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-
-#ifdef _WIN32
-#define popen _popen
-#define pclose _pclose
-#endif
 
 namespace zenith
 {
@@ -63,7 +59,8 @@ int App::video()
               "ffmpeg -y -loglevel error -f rawvideo -pix_fmt rgba -s %dx%d -r %d -i - -vf vflip -c:v libx264 -preset medium "
               "-crf 18 -pix_fmt yuv420p \"%s\"",
               W, H, fps, tmp.c_str() );
-    FILE *pipe = popen( cmd, "wb" );
+    // ffmpeg in the background (no console window), the frames through its standard input.
+    ChildPipe *pipe = startPiped( cmd );
     if ( !pipe )
     {
         printf( "cannot start ffmpeg (is it on the PATH?)\n" );
@@ -89,14 +86,14 @@ int App::video()
         m_t += 1.0f / fps;
         if ( music.empty() || music.back().second != m_audio.piece() ) music.push_back( { frames, m_audio.piece() } );
         Image img = LoadImageFromTexture( rt.texture );
-        ok = ok && img.data && fwrite( img.data, 1, (size_t)W * H * 4, pipe ) == (size_t)W * H * 4;
+        ok = ok && img.data && writePiped( pipe, img.data, (size_t)W * H * 4 );
         UnloadImage( img );
         if ( !ok ) break;
         if ( frames % ( fps * 10 ) == 0 ) printf( "%d s\n", frames / fps ), fflush( stdout );
     }
     Renderer::s_outer = nullptr;
     UnloadRenderTexture( rt );
-    ok = pclose( pipe ) == 0 && ok;
+    ok = finishPiped( pipe ) == 0 && ok;
     if ( !ok || frames == 0 )
     {
         printf( "ffmpeg failed\n" );
@@ -130,7 +127,7 @@ int App::video()
     std::string mux = "ffmpeg -y -loglevel error -i \"" + tmp + "\"" + inputs + " -filter_complex \"" + filter + joined +
                       "concat=n=" + std::to_string( n ) + ":v=0:a=1[aout]\" -map 0:v -map \"[aout]\" -c:v copy -c:a aac -b:a 192k -shortest \"" +
                       out + "\"";
-    int r = std::system( mux.c_str() );
+    int r = runQuiet( mux );
     fs::remove( tmp, e );
     printf( "%s: %d frames, %.1f s, %d piece(s) of music\n", r == 0 ? out.c_str() : "FAILED", frames, frames / (float)fps, n );
     return r == 0 ? 0 : 1;
