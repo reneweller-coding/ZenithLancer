@@ -39,6 +39,7 @@
 #include <filesystem>
 #include <memory>
 #include <string>
+#include <vector>
 
 using namespace zenith;
 
@@ -60,10 +61,10 @@ std::string dataDir( const std::string &given )
  */
 Loadout simLoadout( const Catalog &cat, const LevelDef &lv ) { return midLoadout( cat, lv.m_episode ); }
 
-int validate( const std::string &dir )
+int validate( const std::string &dir, const std::vector<std::string> &mods )
 {
     Catalog cat;
-    cat.load( dir );
+    cat.load( dir, mods );
     for ( const std::string &w : cat.m_warnings ) printf( "warning: %s\n", w.c_str() );
     for ( const std::string &e : cat.m_errors ) printf( "error: %s\n", e.c_str() );
     size_t events = 0;
@@ -360,6 +361,7 @@ int main( int argc, char **argv )
     Options     o;
     std::string simLevel, dumpDir, loadout, langOnly;
     bool        doLang = false;
+    std::vector<std::string> modDirs;   // --mod FOLDER: a mod's data over the game's (with --validate)
     bool        doAchieve = false;
     bool        doValidate = false, doSimAll = false, mortal = false, doWeapons = false;
     uint32_t    seed = 1;
@@ -372,12 +374,13 @@ int main( int argc, char **argv )
         {
             printf( "ZenithLancer [--mute] [--windowed|--fullscreen] [--size WxH] [--data DIR] [--assets DIR]\n"
                     "             [--level NAME [--difficulty N] [--arcade] [--auto] [--loadout ...] [--theme T]]\n"
-                    "  --validate                 check every data file\n"
+                    "  --validate [--mod FOLDER]  check every data file (and a mod's data over them)\n"
                     "  --sim NAME | --simall [--episode E] [--difficulty N] [--seed S] [--mortal] [--loadout ...]\n"
                     "  --weapons                  every gun's damage and energy a second\n"
                     "  --replaytest [MISSION]     record and play back episode 1 and the boss rush (or one mission)\n"
                     "  --shot FILE --level NAME [--at S] | --screen NAME --shot FILE | --gallery FILE\n"
                     "  --apptest SCRIPT           (with ZENITH_HOME set)    --dumpsfx DIR\n"
+                    "  --bench [all]              heavy missions flown, frame times measured (<user>/bench.txt)\n"
                     "loadout: \"ship=lancer,front=pulse:5,rear=tailgun:3,left=pip,right=-,gen=dynamo,shield=ward,special=nova_s\"\n" );
             return 0;
         }
@@ -396,6 +399,7 @@ int main( int argc, char **argv )
         else if ( a == "--at" ) o.m_at = (float)atof( next().c_str() );
         else if ( a == "--gallery" ) o.m_gallery = next();
         else if ( a == "--validate" ) doValidate = true;
+        else if ( a == "--mod" ) modDirs.push_back( next() + "/data" );
         else if ( a == "--sim" ) simLevel = next();
         else if ( a == "--simall" ) doSimAll = true;
         else if ( a == "--seed" ) seed = (uint32_t)atoi( next().c_str() );
@@ -409,6 +413,11 @@ int main( int argc, char **argv )
         else if ( a == "--theme" ) o.m_theme = next();
         else if ( a == "--screen" ) o.m_screen = next();
         else if ( a == "--apptest" ) o.m_test = next();
+        else if ( a == "--bench" )
+        {
+            o.m_bench = true;
+            if ( i + 1 < argc && std::string( argv[i + 1] ) == "all" ) o.m_benchAll = true, ++i;
+        }
         else if ( a == "--replaytest" ) replayLevel = i + 1 < argc && argv[i + 1][0] != '-' ? next() : "";
     }
     if ( replayLevel != "-" )
@@ -416,14 +425,14 @@ int main( int argc, char **argv )
     if ( doWeapons ) return weapons( dataDir( o.m_data ) );
     if ( doLang ) return langCheck( dataDir( o.m_data ), langOnly == "all" ? "" : langOnly );
     if ( doAchieve ) return achievements( dataDir( o.m_data ) );
-    if ( doValidate ) return validate( dataDir( o.m_data ) );
+    if ( doValidate ) return validate( dataDir( o.m_data ), modDirs );
     if ( !simLevel.empty() || doSimAll ) return sim( dataDir( o.m_data ), simLevel, o.m_difficulty, seed, mortal, episode, loadout );
     if ( !dumpDir.empty() )
     {
         Audio::dump( dumpDir );
         return 0;
     }
-    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_test.empty() ) o.m_mute = true;
+    if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_test.empty() || o.m_bench ) o.m_mute = true;
     if ( !o.m_shot.empty() ) o.m_auto = true;
     if ( !o.m_test.empty() )
     {
@@ -435,7 +444,7 @@ int main( int argc, char **argv )
             return 2;
         }
         std::error_code e;
-        for ( const char *f : { "slot1.txt", "slot2.txt", "slot3.txt", "profile.txt", "settings.txt" } )
+        for ( const char *f : { "slot1.txt", "slot2.txt", "slot3.txt", "profile.txt", "settings.txt", "feats.txt" } )
             std::filesystem::remove( std::filesystem::path( home ) / f, e );
     }
     App app;

@@ -45,6 +45,33 @@ Bosse:     Wer einen Bosskampf verliert, darf den Boss direkt noch einmal angehe
 Geheimes:  Manche Einsätze verbergen ein Peilsignal. Wer es findet, entdeckt einen
            geheimen Kurs.
 
+Spielarten
+----------
+Kampagne für zwei:  Zwei Piloten mit eigener Ausrüstung und eigener Kasse. In der Werkstatt
+                    wechselt Tab / Y den Piloten. Ein abgeschossener Pilot kehrt nach acht
+                    Sekunden zurück, solange der andere noch fliegt. In der Einsatzplanung
+                    steigt der zweite Pilot jederzeit ein oder aus.
+Neues Spiel+:       Nach dem Ende der Kampagne geht der Speicherplatz mit aller Ausrüstung
+                    wieder in Episode 1 weiter, die Gegner zäher und schneller, alle Waren offen.
+Überleben:          Welle um Welle bis zum letzten Leben. Der Tagesflug hat für alle am selben
+                    Tag dieselben Wellen.
+Übung:              Jeder schon geflogene Einsatz, ganz oder nur sein Boss, mit der Ausrüstung
+                    der Episode oder eines Speicherplatzes. Nichts davon zählt.
+Wiederholungen:     Jeder Einsatz wird aufgenommen und lässt sich ansehen (Tab / Y: Tempo).
+Erfolge:            44 Erfolge und eine Statistik über alle Spiele.
+Mods:               Eigene Waffen, Schiffe, Gegner und Einsätze im Ordner mods (siehe
+                    docs/MODDING.md im Quelltext oder mods/example).
+
+Hilfen und Grafik (Optionen)
+----------------------------
+Gegnergeschosse kräftig umrandet oder in Farben für Rot-Grün- und Blau-Gelb-Sehschwäche,
+Spieltempo 70 bis 100 %, Auto-Bombe, gedämpfte Blitze, Stimmen an oder aus.
+Grafik "Flüssig", "Ausgewogen" (Steam Deck) oder "Qualität". Wer messen will:
+    ZenithLancer --bench all
+fliegt schwere Abschnitte und schreibt die Bildraten nach bench.txt im Spielerordner.
+Jeder Einsatz schreibt eine Zeile in playlog.txt (was geflogen wurde, wo und wodurch
+abgeschossen).
+
 Speicherstände und Einstellungen
 --------------------------------
 Windows: %APPDATA%\ZenithLancer
@@ -103,6 +130,33 @@ Bosses:    lose a boss fight and you may fight the boss again from its start,
            with full armour and everything you earned before it.
 Blueprints: some missions hide blueprints for special equipment.
 Secrets:   some missions hide a beacon. Find it and a secret course opens.
+
+Ways to play
+------------
+Campaign for two:  two pilots with gear and money of their own. In the workshop Tab / Y
+                   serves the other pilot. A pilot shot down comes back after eight seconds
+                   as long as the other one still flies. In mission planning the second
+                   pilot joins or leaves at any time.
+New Game+:         after the campaign's end the save slot goes on in episode 1 with all its
+                   gear, the enemies tougher and faster, every good on sale.
+Survival:          wave after wave until the last life. The daily flight has the same waves
+                   for everyone on the same day.
+Practice:          any mission flown before, whole or just its boss, with the episode's gear
+                   or a save slot's. None of it counts.
+Replays:           every mission is recorded and can be watched (Tab / Y: speed).
+Achievements:      44 achievements and statistics across all games.
+Mods:              your own guns, ships, enemies and missions in the mods folder (see
+                   docs/MODDING.md in the source or mods/example).
+
+Aids and graphics (Options)
+---------------------------
+Enemy bullets with a strong rim or in colours for red-green and blue-yellow colour
+blindness, game speed 70 to 100 %, auto-bomb, dimmed flashes, voices on or off.
+Graphics "Smooth", "Balanced" (Steam Deck) or "Quality". To measure:
+    ZenithLancer --bench all
+flies heavy stretches and writes the frame rates to bench.txt in the player folder.
+Every mission writes a line to playlog.txt (what was flown, where and by what the
+pilots were shot down).
 
 Saves and settings
 ------------------

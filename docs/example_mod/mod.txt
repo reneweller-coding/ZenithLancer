@@ -1,0 +1,5 @@
+title Beispiel: Quills Funkenspeier
+title_en Example: Quill's Spark Spitter
+author Zenith Lancer
+desc Eine neue Frontkanone in Quills Werkstatt (ab Episode 1) und eine Arcade-Pilotin, die sie fliegt. Zeigt, wie eine Mod Daten hinzufügt.
+desc_en A new front gun in Quill's workshop (from episode 1) and an arcade pilot who flies it. Shows how a mod adds data.

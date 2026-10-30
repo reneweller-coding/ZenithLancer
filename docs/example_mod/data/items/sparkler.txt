@@ -1,0 +1,16 @@
+# The example mod's gun: everything a front gun can say (docs/DATA.md, "Workshop goods").
+
+front sparkler
+  title "Funkenspeier"
+  title_en "Spark Spitter"
+  desc "Quill schwört, er habe ihn aus einem Feuerwerkswerfer gebaut. Speit Funken in einem breiten, flackernden Fächer, der mit jeder Stufe dichter wird."
+  desc_en "Quill swears he built it out of a firework launcher. Spits sparks in a wide, flickering fan that grows denser with every level."
+  price 650
+  tier 1
+  rate 7..10
+  energy 2.5..6
+  sound spread
+  shot fan lv=1-3 n=3 spread=24..30 speed=820 dmg=2.6..3.4 size=3.4 color=#ffb050 sprite=spark
+  shot fan lv=4-7 n=5 spread=30..40 speed=860 dmg=2.6..3.6 size=3.6 color=#ffc060 sprite=spark
+  shot fan lv=8-11 n=7 spread=40..50 speed=900 dmg=2.8..3.8 size=3.8 color=#ffd070 sprite=spark
+  shot row lv=6-11 n=1 speed=1000 dmg=4..6 size=4.5 color=#fff0a0 sprite=pulse every=2

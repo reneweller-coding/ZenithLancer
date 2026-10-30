@@ -336,6 +336,7 @@ bool startWorld( World &w, const Catalog &cat, const ReplayHeader &head )
     const LevelDef *lv = cat.level( head.m_mission );
     if ( !lv ) return false;
     w.begin( &cat, lv, head.m_mode, head.m_difficulty, head.m_seed );
+    w.setPlus( head.m_ngPlus );
     for ( int i = 0; i < std::clamp( head.m_pilots, 1, 2 ); ++i )
     {
         w.addPlayer( i, head.m_load[i], head.m_lives[i] );

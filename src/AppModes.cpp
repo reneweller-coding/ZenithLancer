@@ -2,13 +2,15 @@
  * @file AppModes.cpp
  * @brief The ways to play beside the campaign and the arcade: the campaign for two (the second pilot joining and
  *        leaving), the practice flights (any mission flown before, whole or straight to its boss, with the gear of the
- *        episode or of a save slot), the mods screen; and the play log every mission writes a line to.
+ *        episode or of a save slot), the survival flight (the day's or a free one), the replays, the achievements and
+ *        the statistics, the mods screen; and the play log every mission writes a line to.
  * @author Rene Weller
  */
 #include "App.h"
 
 #include "Files.h"
 #include "Lang.h"
+#include "Survival.h"
 #include "Ui.h"
 
 #include <raylib.h>
@@ -74,6 +76,8 @@ void App::startPractice( bool boss )
     m_mode = ModeE::CAMPAIGN;
     startMission( m_level );
     if ( boss ) toBoss();
+    m_feats.add( "practice" );
+    checkFeats();
 }
 
 void App::toBoss()
@@ -91,6 +95,8 @@ void App::toBoss()
             if ( e.m_type == EvE::THEME ) theme = e.m_name;
     }
     m_world.m_immortal = false;
+    // The flight ahead was not recorded: this flight is not replayed.
+    m_rec.clear();
     for ( int i = 0; i < 2; ++i )
     {
         Player &p = m_world.m_players[i];
@@ -386,9 +392,384 @@ float App::menuSize( size_t items, float most ) const
 namespace zenith
 {
 
-// Filled once the survival, replay and achievement modules are in (their screens go back for now).
-void App::survivalMenu( float dt ) { (void)dt; go( ScreenE::MAIN ); }
-void App::replays( float dt ) { (void)dt; go( ScreenE::MAIN ); }
-void App::stats( float dt ) { (void)dt; go( ScreenE::MAIN ); }
+// ---------------------------------------------------------------------------------------------------- survival
+
+void App::startSurvival()
+{
+    // The endless flight under arcade rules: three lives, no continues, the waves from the seed.
+    m_cat.m_levels["survival"] = survival( m_cat, m_survivalSeed );
+    m_carry[0] = m_cat.m_arcadeShips[(size_t)m_pilot[0]].m_loadout;
+    m_lives[0] = 3;
+    m_score[0] = m_score[1] = 0;
+    m_continues = 0;
+    m_players = 1;
+    m_episode = 1;
+    m_run = { "survival" };
+    m_runIdx = 0;
+    startMission( "survival" );
+}
+
+void App::survivalMenu( float dt )
+{
+    drawBackdrop( dt, true );
+    float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
+    heading( "Überleben", "Welle um Welle, Boss um Boss, bis nichts mehr geht." );
+    std::string day = today();
+    auto        best = m_prof.m_daily.find( day );
+    std::vector<std::string> items = { tf( "Tagesflug vom %s", day.c_str() ), T( "Freier Flug" ), T( "Zurück" ) };
+    float pw = 900 * k;
+    ui::panel( { W * 0.5f - pw * 0.5f, H * 0.3f - 30 * k, pw, 330 * k } );
+    int c = menu( items, W * 0.5f, H * 0.3f, pw - 80 * k, m_sel, 36, nullptr, true );
+    const char *about = m_sel == 0 ? "Für alle am selben Tag dieselben Wellen, auf Normal. Dein bester Tagesflug zählt."
+                      : m_sel == 1 ? "Neue Wellen bei jedem Flug, die Schwierigkeit nach Wahl." : "";
+    for ( size_t i = 0; const std::string &l : ui::wrap( T( about ), pw - 100 * k, 24 ) )
+        ui::text( l, W * 0.5f, H * 0.3f + 200 * k + ( i++ ) * 32 * k, 24, ui::Ink, ui::AlignE::CENTER );
+    if ( best != m_prof.m_daily.end() )
+        ui::text( tf( "Heute bester Flug: %s Punkte", fmt( best->second ).c_str() ), W * 0.5f, H * 0.3f + 270 * k, 24, ui::Gold, ui::AlignE::CENTER );
+    hints( "Eingabe / A: wählen    Esc / B: zurück" );
+    if ( c == 2 || m_in.back() )
+    {
+        m_survival = m_daily = false;
+        go( ScreenE::MAIN );
+        return;
+    }
+    if ( c < 0 ) return;
+    m_mode = ModeE::ARCADE;
+    m_players = 1;
+    m_survival = true;
+    m_daily = c == 0;
+    m_survivalSeed = m_daily ? dailySeed() : (uint32_t)( GetTime() * 1000.0 ) ^ 0x51ab;
+    if ( m_daily )
+    {
+        // The day's flight is the same for everyone: Normal.
+        m_diff = std::min( 2, (int)m_cat.m_difficulties.size() - 1 );
+        m_pilotStep = 0;
+        go( ScreenE::PILOTS );
+    }
+    else
+        go( ScreenE::DIFFICULTY );
+}
+
+// ---------------------------------------------------------------------------------------------------- replays
+
+void App::saveReplay( bool won )
+{
+    if ( m_replaying || !m_rec.active() || m_recPath.empty() || !m_opt.m_test.empty() ) return;
+    long long score = 0;
+    for ( const Player &p : m_world.m_players )
+        if ( p.m_active ) score += p.m_score;
+    m_rec.finish( won, score, m_world.m_clock );
+    m_rec.save( m_recPath );
+    pruneReplays( userDir() + "replays", 40 );
+}
+
+void App::startReplay( const ReplayHeader &h )
+{
+    if ( !m_play.load( h.m_path ) ) return;
+    // The generated missions are made again from what the replay says.
+    if ( h.m_mission == "bossrush" ) m_cat.m_levels["bossrush"] = bossRush( m_cat );
+    if ( h.m_mission == "survival" ) m_cat.m_levels["survival"] = survival( m_cat, h.m_seed );
+    const LevelDef *lv = m_cat.level( h.m_mission );
+    if ( !lv || !startWorld( m_world, m_cat, h ) ) return;
+    m_mode = h.m_mode;
+    m_players = h.m_pilots;
+    m_level = h.m_mission;
+    m_survival = h.m_mission == "survival";
+    m_practice = false;
+    m_replaying = true;
+    m_replayEnd = false;
+    m_replaySpeed = 1;
+    m_rec.clear();
+    m_view.setTheme( m_cat, lv->m_theme, lv->m_seed );
+    m_view.reset();
+    m_audio.music( lv->m_music );
+    m_acc = 0;
+    m_paused = false;
+    m_radio.clear();
+    m_warnT = 0;
+    m_hasBossSave = false;
+    m_bossTries = 0;
+    m_themeT = 0;
+    m_themeNext.clear();
+    m_introT = 0;
+    m_outroT = -1;
+    m_feats.add( "replays_watched" );
+    checkFeats();
+    go( ScreenE::PLAY );
+}
+
+void App::stopReplay()
+{
+    m_replaying = false;
+    m_survival = false;
+    m_audio.voice( "", "" );
+    newDemo();
+    go( ScreenE::REPLAYS );
+}
+
+void App::replays( float dt )
+{
+    drawBackdrop( dt, true );
+    float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
+    if ( m_t < 0.01f ) m_replayList = listReplays( userDir() + "replays" );
+    heading( "Wiederholungen", tf( "%d Aufnahmen", (int)m_replayList.size() ) );
+    float pw = std::min( W - 80 * k, 1500 * k );
+    Rectangle r = { W * 0.5f - pw * 0.5f, H * 0.2f, pw, H * 0.68f };
+    ui::panel( r );
+    if ( m_replayList.empty() )
+    {
+        ui::text( "Noch keine Aufnahme. Jeder Einsatz wird aufgenommen.", W * 0.5f, r.y + 60 * k, 30, ui::Dim, ui::AlignE::CENTER );
+        hints( "Esc / B: zurück" );
+        if ( m_in.back() || m_in.accept() ) go( ScreenE::MAIN );
+        return;
+    }
+    auto title = [&]( const ReplayHeader &h ) {
+        const LevelDef *lv = m_cat.level( h.m_mission );
+        std::string     name = h.m_mission == "survival" ? std::string( T( "Überleben" ) ) : h.m_mission == "bossrush" ? std::string( T( "Bossjagd" ) )
+                             : lv ? L( lv->m_title, lv->m_titleEn ) : h.m_mission;
+        return h.m_date.substr( 0, 16 ) + "   " + name;
+    };
+    int rows = (int)( ( r.height - 60 * k ) / ( ui::height( 26 ) * 1.45f ) );
+    int n = (int)m_replayList.size();
+    int first = std::clamp( m_sel - rows / 2, 0, std::max( 0, n - rows ) );
+    std::vector<std::string> view;
+    for ( int i = first; i < std::min( n, first + rows ); ++i ) view.push_back( title( m_replayList[(size_t)i] ) );
+    int sel = m_sel - first;
+    int c = menu( view, r.x + 40 * k, r.y + 30 * k, pw * 0.55f, sel, 26 );
+    m_sel = std::clamp( first + sel, 0, n - 1 );
+    // The chosen one's facts.
+    const ReplayHeader &h = m_replayList[(size_t)m_sel];
+    float x = r.x + pw * 0.6f, y = r.y + 30 * k;
+    auto  fact = [&]( const std::string &a, const std::string &b, Color col = ui::Ink ) {
+        ui::text( a, x, y, 22, ui::Dim );
+        ui::text( b, x + 220 * k, y, 24, col );
+        y += 38 * k;
+    };
+    const char *modes[] = { "Kampagne", "Arcade", "Bossjagd", "Werkstatt" };
+    fact( T( "Spielart" ), h.m_mission == "survival" ? std::string( T( "Überleben" ) ) : std::string( T( modes[std::clamp( (int)h.m_mode, 0, 3 )] ) ) +
+                                                     ( h.m_pilots > 1 ? "  ·  " + std::string( T( "zu zweit" ) ) : std::string() ) );
+    fact( T( "Schwierigkeit" ), L( m_cat.difficulty( h.m_difficulty ).m_title, m_cat.difficulty( h.m_difficulty ).m_titleEn ) +
+                                    ( h.m_ngPlus > 0 ? tf( "  ·  NG+%d", h.m_ngPlus ) : std::string() ) );
+    const ShipDef *ship = m_cat.ship( h.m_load[0].m_ship );
+    fact( T( "Rumpf" ), ship ? L( ship->m_title, ship->m_titleEn ) : h.m_load[0].m_ship );
+    int secs = (int)h.m_time;
+    fact( T( "Flugzeit" ), std::to_string( secs / 60 ) + ":" + ( secs % 60 < 10 ? "0" : "" ) + std::to_string( secs % 60 ) );
+    fact( T( "Punkte" ), fmt( h.m_endScore ), ui::Gold );
+    fact( T( "Ergebnis" ), T( h.m_end == ReplayEndE::WON ? "geschafft" : h.m_end == ReplayEndE::LOST ? "verloren" : "abgebrochen" ),
+          h.m_end == ReplayEndE::WON ? ui::Good : ui::Ink );
+    bool old = h.m_format > ReplayFormat;
+    bool other = h.m_version != ZENITH_VERSION;
+    if ( old ) fact( "", T( "Aus einer neueren Fassung: nicht abspielbar." ), ui::Warn );
+    else if ( other ) fact( "", tf( "Aufgenommen mit %s: kann abweichen.", h.m_version.c_str() ), ui::Warn );
+    hints( "Eingabe / A: abspielen    Esc / B: zurück" );
+    if ( c >= 0 && !old ) startReplay( m_replayList[(size_t)( first + c )] );
+    else if ( m_in.back() ) go( ScreenE::MAIN );
+}
+
+// ---------------------------------------------------------------------------------------------------- achievements
+
+void App::countMission( bool won )
+{
+    // What a mission adds to the achievements (practice flights and replays add nothing).
+    if ( m_practice || m_replaying || !m_opt.m_test.empty() || !m_world.m_level ) return;
+    const Stats &st = m_world.m_stats;
+    m_feats.add( "kills", st.m_kills );
+    m_feats.add( "bosses", st.m_bossKills );
+    m_feats.add( "deaths", st.m_deaths );
+    m_feats.add( "seconds", st.m_time );
+    for ( const std::string &c : st.m_cubes ) m_feats.once( "cubes", c );
+    for ( const std::string &p : st.m_plans ) m_feats.once( "plans", p );
+    if ( won )
+    {
+        m_feats.add( "missions" );
+        if ( st.m_damage <= 0.0f ) m_feats.add( "nodamage" );
+        if ( st.m_spawned > 0 && st.m_kills >= st.m_spawned ) m_feats.add( "allkills" );
+        if ( m_world.m_level->m_isSecret ) m_feats.once( "secrets", m_world.m_level->m_name );
+    }
+    if ( m_mode == ModeE::CAMPAIGN && won )
+    {
+        long long earned = 0;
+        for ( const Player &p : m_world.m_players )
+            if ( p.m_active ) earned += p.m_credits;
+        m_feats.add( "credits", (double)earned );
+        m_feats.max( "max_credits", (double)( m_camp.m_credits + earned ) );
+        if ( m_camp.m_coop ) m_feats.add( "coop_missions" );
+    }
+    if ( m_survival )
+    {
+        m_feats.max( "survival_seconds", st.m_time );
+        if ( m_daily ) m_feats.add( "survival_daily" );
+    }
+    if ( m_mode == ModeE::BOSSRUSH && won )
+    {
+        m_feats.add( "bossrush_done" );
+        if ( m_diff >= 2 ) m_feats.min( "bossrush_best", st.m_time );
+    }
+    checkFeats();
+}
+
+void App::checkFeats()
+{
+    if ( !m_opt.m_test.empty() ) return;
+    for ( const AchievementDef *a : newlyUnlocked( m_feats, m_achieve, today() ) )
+    {
+        m_toasts.push_back( a );
+        m_audio.play( SfxE::CUBE );
+    }
+    m_feats.save( featsPath() );
+}
+
+void App::drawToasts( float dt )
+{
+    // A new achievement: a card at the top right for four seconds.
+    if ( m_toasts.empty() ) return;
+    m_toastT += dt;
+    const AchievementDef *a = m_toasts.front();
+    float k = ui::k(), W = (float)GetScreenWidth();
+    float in = std::min( 1.0f, std::min( m_toastT * 4.0f, ( 4.0f - m_toastT ) * 3.0f ) );
+    Rectangle r = { W - 560 * k, 20 * k - ( 1.0f - in ) * 140 * k, 540 * k, 104 * k };
+    DrawRectangleRec( r, { 8, 14, 26, 235 } );
+    DrawRectangleLinesEx( r, 2 * k, ui::Gold );
+    ui::text( "ERFOLG", r.x + 20 * k, r.y + 12 * k, 20, ui::Gold );
+    ui::text( L( a->m_title, a->m_titleEn ), r.x + 20 * k, r.y + 38 * k, 28, WHITE );
+    ui::text( L( a->m_desc, a->m_descEn ), r.x + 20 * k, r.y + 72 * k, 18, ui::Dim );
+    if ( m_toastT > 4.0f )
+    {
+        m_toasts.pop_front();
+        m_toastT = 0.0f;
+    }
+}
+
+void App::stats( float dt )
+{
+    drawBackdrop( dt, true );
+    float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
+    int done = 0;
+    for ( const AchievementDef &a : m_achieve.m_achievements ) done += m_feats.unlocked( a.m_name ) ? 1 : 0;
+    if ( m_in.left() || m_in.right() || m_in.prevTab() || m_in.nextTab() )
+    {
+        m_statsTab = 1 - m_statsTab;
+        m_sel = 0;
+        m_audio.play( SfxE::MOVE );
+    }
+    heading( m_statsTab == 0 ? "Erfolge" : "Statistik",
+             m_statsTab == 0 ? tf( "%d von %d", done, (int)m_achieve.m_achievements.size() ) : std::string( T( "Über alle Spiele" ) ) );
+    float pw = std::min( W - 80 * k, 1400 * k );
+    Rectangle r = { W * 0.5f - pw * 0.5f, H * 0.2f, pw, H * 0.68f };
+    ui::panel( r );
+    int n = m_statsTab == 0 ? (int)m_achieve.m_achievements.size() : (int)m_achieve.m_stats.size();
+    float rowH = ( m_statsTab == 0 ? 74 : 46 ) * k;
+    int   rows = std::max( 1, (int)( ( r.height - 40 * k ) / rowH ) );
+    if ( m_in.up() ) m_sel = std::max( 0, m_sel - 1 );
+    if ( m_in.down() ) m_sel = std::min( std::max( 0, n - 1 ), m_sel + 1 );
+    int first = std::clamp( m_sel - rows / 2, 0, std::max( 0, n - rows ) );
+    for ( int i = first; i < std::min( n, first + rows ); ++i )
+    {
+        float y = r.y + 20 * k + ( i - first ) * rowH;
+        if ( i == m_sel ) ui::highlight( { r.x + 20 * k, y - 4 * k, pw - 40 * k, rowH - 6 * k }, m_t );
+        if ( m_statsTab == 0 )
+        {
+            const AchievementDef &a = m_achieve.m_achievements[(size_t)i];
+            bool                  got = m_feats.unlocked( a.m_name );
+            bool                  veiled = a.m_hidden && !got;
+            ui::text( veiled ? "???" : L( a.m_title, a.m_titleEn ), r.x + 40 * k, y, 28, got ? ui::Gold : ui::Ink );
+            ui::text( veiled ? std::string( T( "Ein verborgener Erfolg." ) ) : L( a.m_desc, a.m_descEn ), r.x + 40 * k, y + 34 * k, 20, ui::Dim );
+            if ( got )
+                ui::text( m_feats.m_unlocked.at( a.m_name ), r.x + pw - 40 * k, y + 4 * k, 22, ui::Gold, ui::AlignE::RIGHT );
+            else if ( !veiled )
+                ui::bar( { r.x + pw - 300 * k, y + 14 * k, 260 * k, 8 * k }, progress( m_feats, a ), { 120, 200, 255, 255 } );
+        }
+        else
+        {
+            const StatDef &s = m_achieve.m_stats[(size_t)i];
+            ui::text( L( s.m_title, s.m_titleEn ), r.x + 40 * k, y, 28, ui::Ink );
+            ui::text( statText( m_feats, s ), r.x + pw - 40 * k, y, 28, WHITE, ui::AlignE::RIGHT );
+        }
+    }
+    hints( "Links/Rechts: Erfolge / Statistik    Esc / B: zurück" );
+    if ( m_in.back() || m_in.accept() ) go( ScreenE::MAIN );
+}
+
+}   // namespace zenith
+
+namespace zenith
+{
+
+// ---------------------------------------------------------------------------------------------------- benchmark
+
+void App::bench()
+{
+    // Heavy stretches flown by the autopilot with the full picture, no frame limit: the opening of each episode's
+    // last mission and its boss. The frame times go to the screen's console and to <user>/bench.txt.
+    std::vector<std::string> names;
+    for ( const char *n : { "e1_10", "e2_10", "e3_10", "e4_10", "e5_10" } )
+        if ( m_cat.level( n ) ) names.push_back( n );
+    std::vector<int> levels = m_opt.m_benchAll ? std::vector<int>{ 0, 1, 2 } : std::vector<int>{ quality() };
+    const char      *qname[] = { "performance", "balanced", "quality" };
+    std::string      report;
+    char             line[256];
+    snprintf( line, sizeof( line ), "Zenith Lancer %s bench, %dx%d%s\n", ZENITH_VERSION, GetScreenWidth(), GetScreenHeight(),
+              getenv( "SteamDeck" ) ? " (Steam Deck)" : "" );
+    report += line;
+    SetTargetFPS( 0 );
+    m_opt.m_auto = true;
+    for ( int q : levels )
+    {
+        m_view.m_quality = q;
+        resize();
+        std::vector<float> all;
+        for ( const std::string &n : names )
+            for ( int part = 0; part < 2; ++part )
+            {
+                m_practice = true;
+                m_practiceGear = 0;
+                m_mode = ModeE::CAMPAIGN;
+                m_level = n;
+                startMission( n );
+                if ( part == 1 ) toBoss();
+                m_world.m_immortal = true;
+                std::vector<float> times;
+                double             start = GetTime();
+                while ( GetTime() - start < 20.0 && !WindowShouldClose() && !m_world.finished() )
+                {
+                    m_in.update();
+                    BeginDrawing();
+                    ClearBackground( BLACK );
+                    frame( std::min( GetFrameTime(), 0.1f ) );
+                    EndDrawing();
+                    if ( GetTime() - start > 1.0 ) times.push_back( GetFrameTime() );
+                }
+                if ( times.empty() ) continue;
+                std::vector<float> sorted = times;
+                std::sort( sorted.begin(), sorted.end() );
+                double sum = 0;
+                for ( float t : times ) sum += t;
+                float avg = (float)( sum / times.size() ), p99 = sorted[(size_t)( sorted.size() * 0.99 )], worst = sorted.back();
+                snprintf( line, sizeof( line ), "%-12s %-6s %-5s  %6.1f fps   1%% low %6.1f fps   worst %6.1f ms\n",
+                          qname[q], n.c_str(), part ? "boss" : "start", 1.0f / avg, 1.0f / p99, worst * 1000.0f );
+                report += line;
+                printf( "%s", line );
+                fflush( stdout );
+                all.insert( all.end(), times.begin(), times.end() );
+            }
+        if ( !all.empty() )
+        {
+            std::sort( all.begin(), all.end() );
+            double sum = 0;
+            for ( float t : all ) sum += t;
+            snprintf( line, sizeof( line ), "%-12s all           %6.1f fps   1%% low %6.1f fps\n", qname[q], all.size() / sum,
+                      1.0f / all[(size_t)( all.size() * 0.99 )] );
+            report += line;
+            printf( "%s", line );
+        }
+    }
+    m_practice = false;
+    if ( FILE *f = fopen( ( userDir() + "bench.txt" ).c_str(), "w" ) )
+    {
+        fputs( report.c_str(), f );
+        fclose( f );
+    }
+    printf( "written: %sbench.txt\n", userDir().c_str() );
+}
 
 }   // namespace zenith

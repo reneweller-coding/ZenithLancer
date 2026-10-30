@@ -8,10 +8,12 @@
  */
 #pragma once
 
+#include "Achieve.h"
 #include "Audio.h"
 #include "Data.h"
 #include "Input.h"
 #include "Render.h"
+#include "Replay.h"
 #include "Save.h"
 #include "Sim.h"
 
@@ -44,6 +46,7 @@ struct Options
     std::string m_screen;               ///< --screen: --shot takes a picture of this screen instead
     std::string m_test;                 ///< --apptest: a script of presses and expectations (docs in main.cpp)
     bool        m_bench = false;        ///< --bench: fly the heavy missions and measure the frame times
+    bool        m_benchAll = false;     ///< --bench all: at each graphics setting
 };
 
 /** @brief The screens. */
@@ -157,6 +160,14 @@ private:
     void loadCatalog();
     const Texture2D *portrait( const std::string &from );
     int  quality() const;
+    void bench();
+    void saveReplay( bool won );
+    void startReplay( const ReplayHeader &h );
+    void stopReplay();
+    void startSurvival();
+    void countMission( bool won );
+    void checkFeats();
+    void drawToasts( float dt );
 
     Options          m_opt;
     Catalog          m_cat;
@@ -258,6 +269,23 @@ private:
     std::map<std::string, Texture2D>   m_portraits;
     std::string      m_voiceFor;               ///< the story entry whose voice was started
     float            m_autoBombT[2] = { 0, 0 };
+
+    // Replays: every mission recorded (<user>/replays), any of them played back.
+    ReplayRecorder   m_rec;
+    std::string      m_recPath;
+    ReplayPlayer     m_play;
+    bool             m_replaying = false;
+    bool             m_replayEnd = false;
+    int              m_replaySpeed = 1;
+    std::vector<ReplayHeader> m_replayList;
+
+    // Achievements and the statistics.
+    Feats            m_feats;
+    AchievementList  m_achieve;
+    std::deque<const AchievementDef *> m_toasts;
+    float            m_toastT = 0.0f;
+    bool             m_bossHit = false;        ///< the pilots were hit since the boss came
+    int              m_statsTab = 0;
 };
 
 }   // namespace zenith

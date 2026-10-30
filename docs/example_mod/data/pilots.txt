@@ -1,0 +1,13 @@
+# The example mod's arcade pilot (data/arcade.txt shows the game's own).
+
+pilot sparrow
+  title "Spatz"
+  title_en "Sparrow"
+  desc "Quills Nichte, so hört man. Fliegt den leichten Lancer mit dem Funkenspeier und hält nichts von Vorsicht."
+  desc_en "Quill's niece, so they say. Flies the light Lancer with the Spark Spitter and thinks little of caution."
+  ship lancer
+  front sparkler 1
+  rear tailgun 1
+  gen dynamo
+  shield ward
+  special nova_s

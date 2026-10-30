@@ -26,29 +26,51 @@ void App::startMission( const std::string &name )
     if ( !lv ) return;
     m_level = name;
     crash::context( "mission " + name );
-    uint32_t seed = (uint32_t)( GetTime() * 1000.0 ) ^ 0x5eed;
-    bool     camp = m_mode == ModeE::CAMPAIGN && !m_practice;
-    m_world.begin( &m_cat, lv, m_mode, camp ? m_camp.m_difficulty : m_diff, seed );
-    m_prof.m_flown.insert( name );
+    // The set-up, written down first: the replay starts the same World from it.
+    bool         camp = m_mode == ModeE::CAMPAIGN && !m_practice;
+    ReplayHeader head;
+    head.m_version = ZENITH_VERSION;
+    head.m_mode = m_mode;
+    head.m_mission = name;
+    head.m_difficulty = camp ? m_camp.m_difficulty : m_diff;
+    // The survival flight's World plays from its own seed too: a day's flight is the same for everyone.
+    head.m_seed = m_survival ? m_survivalSeed : (uint32_t)( GetTime() * 1000.0 ) ^ 0x5eed;
+    head.m_lang = language();
     if ( camp )
     {
         // The campaign: New Game+ makes it harder; for two, the second pilot flies with gear of their own.
-        m_world.setPlus( m_camp.m_plus );
-        m_players = m_camp.m_coop ? 2 : 1;
-        m_world.addPlayer( 0, m_camp.m_load, 0 );
-        if ( m_camp.m_coop ) m_world.addPlayer( 1, m_camp.m_load2, 0 );
+        head.m_ngPlus = m_camp.m_plus;
+        head.m_pilots = m_camp.m_coop ? 2 : 1;
+        head.m_load[0] = m_camp.m_load;
+        head.m_load[1] = m_camp.m_load2;
     }
     else if ( m_practice )
     {
-        m_players = 1;
-        m_world.addPlayer( 0, practiceLoad( *lv ), 0 );
+        head.m_pilots = 1;
+        head.m_load[0] = practiceLoad( *lv );
     }
     else
+    {
+        head.m_pilots = m_players;
         for ( int i = 0; i < m_players; ++i )
         {
-            m_world.addPlayer( i, m_carry[i], std::max( 0, m_lives[i] - 1 ) );
-            m_world.m_players[i].m_score = m_score[i];
+            head.m_load[i] = m_carry[i];
+            head.m_lives[i] = std::max( 0, m_lives[i] - 1 );
+            head.m_score[i] = m_score[i];
         }
+    }
+    m_players = head.m_pilots;
+    startWorld( m_world, m_cat, head );
+    m_prof.m_flown.insert( name );
+    m_rec.begin( head );
+    {
+        char   stamp[32];
+        time_t now = time( nullptr );
+        strftime( stamp, sizeof( stamp ), "%Y%m%d-%H%M%S", localtime( &now ) );
+        m_recPath = userDir() + "replays/" + stamp + "_" + name + ReplayExt;
+    }
+    m_replaying = false;
+    m_bossHit = false;
     m_view.setTheme( m_cat, m_opt.m_theme.empty() ? lv->m_theme : m_opt.m_theme, lv->m_seed );
     m_view.reset();
     m_audio.music( lv->m_music );
@@ -90,6 +112,8 @@ void App::endMission( bool won )
     m_last = m_world.m_stats;
     m_prof.m_kills += m_last.m_kills;
     logMission( won ? "won" : "lost" );
+    saveReplay( won );
+    countMission( won );
     if ( m_practice )
     {
         // A practice flight keeps nothing but the log.
@@ -150,6 +174,21 @@ void App::endMission( bool won )
         go( ScreenE::FAILED );
         return;
     }
+    if ( m_survival )
+    {
+        // The survival flight: its time counts; a day's flight keeps its best score.
+        if ( m_daily )
+        {
+            long long &best = m_prof.m_daily[today()];
+            best = std::max( best, m_score[0] );
+        }
+        m_scoreKey = diffKey();
+        m_name = "PILOT";
+        m_nameCursor = 0;
+        m_prof.save( userDir() + "profile.txt" );
+        go( m_prof.place( m_scoreKey, m_score[0] ) >= 0 ? ScreenE::NAME : ScreenE::SCORES );
+        return;
+    }
     if ( m_mode == ModeE::BOSSRUSH )
     {
         m_scoreKey = diffKey();
@@ -181,10 +220,26 @@ void App::play( float dt )
         float   s = m_view.pixelScale();
         Vector2 mf = { FieldW * 0.5f + ( mp.x - GetScreenWidth() * 0.5f ) / s, FieldH * 0.5f + ( mp.y - GetScreenHeight() * 0.5f ) / s };
         if ( m_in.scripted() ) m_acc = Dt * 120;   // the app test: two seconds of mission a frame
-        while ( m_acc >= Dt && steps < ( m_in.scripted() ? 120 : 5 ) )
+        if ( m_replaying ) m_acc += dt * ( m_replaySpeed - clampf( m_set.m_speed, 0.5f, 1.0f ) );
+        while ( m_acc >= Dt && steps < ( m_in.scripted() ? 120 : 5 * m_replaySpeed ) )
         {
             PlayerInput in[2];
-            for ( int i = 0; i < 2; ++i )
+            if ( m_replaying )
+            {
+                // A replay: its marks first (a boss fought again, a continue), then the step's recorded inputs.
+                for ( ReplayMarkE mk : m_play.marks() )
+                {
+                    if ( mk == ReplayMarkE::RETRY ) retryBoss();
+                    else continueArcade( m_world );
+                }
+                if ( !m_play.next( in ) )
+                {
+                    m_replayEnd = true;
+                    m_acc = 0;
+                    break;
+                }
+            }
+            for ( int i = 0; i < 2 && !m_replaying; ++i )
             {
                 if ( !m_world.m_players[i].m_active ) continue;
                 in[i] = m_opt.m_auto || m_in.scripted() ? autopilot( m_world, i ) : m_in.player( i, m_players, m_set.m_mouse ? &mf : nullptr, m_set.m_autofire );
@@ -201,15 +256,23 @@ void App::play( float dt )
                             break;
                         }
             }
+            if ( !m_replaying )
+            {
+                // What the World gets is what the replay keeps, to the bit.
+                for ( int i = 0; i < 2; ++i ) in[i] = quantize( in[i] );
+                m_rec.push( in );
+            }
             m_world.step( in );
             m_in.consumed();
             m_view.events( m_world );
             m_audio.events( m_world );
             // The checkpoint: the campaign and the boss rush may fight a lost boss again from here.
             for ( const SimEvent &e : m_world.m_events )
+            {
                 if ( e.m_type == EvE::BOSSSTART )
                 {
-                    m_prof.m_bosses.insert( m_level );
+                    if ( !m_replaying ) m_prof.m_bosses.insert( m_level );
+                    m_bossHit = false;
                     if ( m_mode == ModeE::CAMPAIGN || m_mode == ModeE::BOSSRUSH )
                     {
                         m_bossSave = m_world;
@@ -217,6 +280,16 @@ void App::play( float dt )
                         m_bossTries = 0;
                     }
                 }
+                else if ( e.m_type == EvE::PLAYERHIT && m_world.boss() >= 0 )
+                    m_bossHit = true;
+                else if ( e.m_type == EvE::BOSSDIE && !m_replaying && !m_practice )
+                {
+                    // A boss down without a scratch, or after a fight lost before.
+                    if ( !m_bossHit ) m_feats.add( "boss_nohit" );
+                    if ( m_bossTries > 0 ) m_feats.add( "bossretries" );
+                    checkFeats();
+                }
+            }
             for ( const SimEvent &e : m_world.m_events )
             {
                 if ( e.m_type == EvE::TEXT )
@@ -326,16 +399,31 @@ void App::play( float dt )
         }
         if ( m_warnT > 0 ) m_warnT -= dt;
     }
+    // A replay runs to its last step (the outro is in it), then back to the list.
+    if ( m_replaying )
+    {
+        if ( m_replayEnd )
+        {
+            m_outroT = std::max( m_outroT, 0.0f ) + dt;
+            if ( m_outroT > 1.5f )
+            {
+                stopReplay();
+                return;
+            }
+        }
+        else
+            m_outroT = -1;
+    }
     // The end of the mission: a fade, then what follows.
-    if ( m_outroT < 0 && ( m_world.finished() || m_world.failed() ) )
+    else if ( m_outroT < 0 && ( m_world.finished() || m_world.failed() ) )
     {
         m_outroT = 0;
         m_won = m_world.finished();
     }
-    if ( m_outroT >= 0 && !m_paused )
+    if ( m_outroT >= 0 && !m_paused && !m_replaying )
     {
         m_outroT += m_in.scripted() ? 0.5f : dt;
-        if ( !m_won && m_mode == ModeE::ARCADE && m_outroT > 0.8f )
+        if ( !m_won && m_mode == ModeE::ARCADE && !m_survival && m_outroT > 0.8f )
         {
             m_outroT = -1;
             m_world.m_failed = true;
@@ -350,6 +438,11 @@ void App::play( float dt )
         }
     }
     m_view.m_fade = m_introT < 0.6f ? 1.0f - m_introT / 0.6f : m_outroT > 0.8f ? std::min( 1.0f, ( m_outroT - 0.8f ) / 1.2f ) : 0.0f;
+    if ( m_replaying && !m_paused && m_in.other() )
+    {
+        m_replaySpeed = m_replaySpeed >= 4 ? 1 : m_replaySpeed * 2;
+        m_audio.play( SfxE::MOVE );
+    }
     m_view.update( m_world, m_paused ? 0.0f : dt );
     m_view.draw( m_world, m_cat );
     m_view.present( { 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() } );
@@ -472,8 +565,17 @@ void App::hud()
         {
             float x = f.x + f.width + 15 * k, y = H * 0.86f;
             ui::text( L( lv->m_title, lv->m_titleEn ), x + 18 * k, y, 22, ui::Dim );
-            float prog = clampf( m_world.m_time / std::max( 1.0f, lv->m_length ), 0, 1 );
-            ui::bar( { x + 18 * k, y + 32 * k, pw - 36 * k, 6 * k }, prog, { 140, 160, 200, 255 } );
+            if ( m_survival )
+            {
+                int secs = (int)m_world.m_clock;
+                ui::text( std::to_string( secs / 60 ) + ":" + ( secs % 60 < 10 ? "0" : "" ) + std::to_string( secs % 60 ), x + pw - 18 * k, y,
+                          22, ui::Gold, ui::AlignE::RIGHT );
+            }
+            else
+            {
+                float prog = clampf( m_world.m_time / std::max( 1.0f, lv->m_length ), 0, 1 );
+                ui::bar( { x + 18 * k, y + 32 * k, pw - 36 * k, 6 * k }, prog, { 140, 160, 200, 255 } );
+            }
             ui::text( L( m_cat.difficulty( m_world.m_diffIndex ).m_title, m_cat.difficulty( m_world.m_diffIndex ).m_titleEn ), x + 18 * k, y + 48 * k, 18, ui::Dim );
         }
     }
@@ -531,37 +633,30 @@ void App::hud()
     {
         float a = std::min( 1.0f, std::min( m_introT * 2.0f, ( 4.0f - m_introT ) * 1.5f ) );
         float y = f.y + f.height * 0.3f;
-        ui::text( m_mode == ModeE::CAMPAIGN || lv->m_episode > 0 ? tf( "Episode %d", lv->m_episode ) : "", f.x + f.width * 0.5f, y, 26,
+        ui::text( ( m_mode == ModeE::CAMPAIGN || lv->m_episode > 0 ) && !m_survival && lv->m_name != "bossrush" ? tf( "Episode %d", lv->m_episode ) : "",
+                  f.x + f.width * 0.5f, y, 26,
                   { 110, 200, 255, (unsigned char)( 255 * a ) }, ui::AlignE::CENTER );
         ui::text( L( lv->m_title, lv->m_titleEn ), f.x + f.width * 0.5f, y + 40 * k, 58, { 255, 255, 255, (unsigned char)( 255 * a ) }, ui::AlignE::CENTER );
     }
-    if ( m_outroT > 0.2f && m_won )
+    if ( m_outroT > 0.2f && m_won && !m_replaying )
         ui::text( m_mode == ModeE::ARCADE ? "ABSCHNITT GESCHAFFT" : "EINSATZ ERFÜLLT", f.x + f.width * 0.5f, f.y + f.height * 0.4f, 52, ui::Good, ui::AlignE::CENTER );
+    if ( m_replaying )
+    {
+        float a = 0.6f + 0.4f * std::sin( m_t * 3.0f );
+        ui::text( tf( "WIEDERHOLUNG  ·  %dx", m_replaySpeed ), f.x + f.width * 0.5f, f.y + f.height - 50 * k, 26,
+                  { 255, 220, 140, (unsigned char)( 255 * a ) }, ui::AlignE::CENTER );
+    }
     (void)W;
 }
 
 void App::retryBoss()
 {
-    // Back to the moment the boss came, with full armour, shield and energy; what was earned before stays.
-    m_world = m_bossSave;
+    // Back to the moment the boss came, with full armour, shield and energy; what was earned before stays (the
+    // World's part is the replay's too).
+    if ( !m_replaying ) m_rec.mark( ReplayMarkE::RETRY );
+    restoreBoss( m_world, m_bossSave );
     ++m_bossTries;
-    for ( int i = 0; i < 2; ++i )
-    {
-        Player &p = m_world.m_players[i];
-        if ( !p.m_active ) continue;
-        p.m_alive = true;
-        p.m_dead = 0;
-        p.m_armor = p.m_armorMax;
-        p.m_shield = p.m_shieldDef ? p.m_shieldDef->m_max : 0.0f;
-        p.m_energy = p.m_energyMax;
-        p.m_invuln = 2.0f;
-        if ( p.m_special ) p.m_charges = std::max( p.m_charges, p.m_special->m_charges );
-        if ( m_mode == ModeE::BOSSRUSH ) p.m_lives = std::max( p.m_lives, 1 );
-    }
-    // The bullets of the moment go: the fight starts clean.
-    for ( Bullet &b : m_world.m_bullets )
-        if ( !b.m_player ) b.m_dead = true;
-    m_world.m_lasers.clear();
+    m_bossHit = false;
     m_view.reset();
     m_acc = 0;
     m_paused = false;
@@ -588,7 +683,7 @@ void App::pauseMenu( float dt )
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
     DrawRectangle( 0, 0, (int)W, (int)H, { 0, 0, 0, 140 } );
     ui::text( "PAUSE", W * 0.5f, H * 0.25f, 72, WHITE, ui::AlignE::CENTER );
-    std::vector<std::string> items = { "Weiter", "Optionen", m_mode == ModeE::CAMPAIGN ? "Einsatz abbrechen" : "Spiel beenden" };
+    std::vector<std::string> items = { "Weiter", "Optionen", m_replaying ? "Wiederholung beenden" : m_mode == ModeE::CAMPAIGN ? "Einsatz abbrechen" : "Spiel beenden" };
     ui::panel( { W * 0.5f - 320 * k, H * 0.38f - 30 * k, 640 * k, 240 * k } );
     int c = menu( items, W * 0.5f, H * 0.38f, 560 * k, m_pauseSel, 36, nullptr, true );
     if ( c == 0 || m_in.back() )
@@ -602,10 +697,16 @@ void App::pauseMenu( float dt )
         m_screen = ScreenE::OPTIONS;
         m_sel = 0;
     }
+    else if ( c == 2 && m_replaying )
+    {
+        m_paused = false;
+        stopReplay();
+    }
     else if ( c == 2 )
     {
         m_paused = false;
         logMission( "abort" );
+        saveReplay( false );
         if ( m_practice )
         {
             m_practiceStep = 1;

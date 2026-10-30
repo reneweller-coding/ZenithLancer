@@ -55,6 +55,10 @@ bool App::init( const Options &o )
     m_assets = pick( o.m_assets, "assets" );
     m_set.load( userDir() + "settings.txt" );
     loadCatalog();
+    m_achieve.load( achievementsPath( data ) );
+    m_achieve.check( m_cat );
+    for ( const std::string &e : m_achieve.m_errors ) TraceLog( LOG_WARNING, "ACHIEVEMENTS: %s", e.c_str() );
+    m_feats.load( featsPath() );
     {
         // Who shows which portrait: "<portrait> <voice> <the from as written>".
         FILE *f = fopen( ( data + "/lang/speakers.txt" ).c_str(), "r" );
@@ -83,7 +87,7 @@ bool App::init( const Options &o )
     int  w = o.m_width > 0 ? o.m_width : m_set.m_width > 0 ? m_set.m_width : deck ? 1280 : 1600;
     int  h = o.m_height > 0 ? o.m_height : m_set.m_height > 0 ? m_set.m_height : deck ? 800 : 900;
     unsigned flags = FLAG_WINDOW_RESIZABLE;
-    if ( m_set.m_vsync ) flags |= FLAG_VSYNC_HINT;
+    if ( m_set.m_vsync && !o.m_bench ) flags |= FLAG_VSYNC_HINT;
     if ( !o.m_shot.empty() || !o.m_gallery.empty() || !o.m_shop.empty() || !o.m_test.empty() ) flags = FLAG_WINDOW_HIDDEN;
     SetConfigFlags( flags );
     SetTraceLogLevel( LOG_WARNING );
@@ -227,6 +231,11 @@ void App::run()
         screenShot();
         return;
     }
+    if ( m_opt.m_bench )
+    {
+        bench();
+        return;
+    }
     if ( !m_opt.m_shot.empty() )
     {
         // A picture of the mission after some seconds (the autopilot flies), then quit.
@@ -359,6 +368,7 @@ void App::frame( float dt )
     case ScreenE::MODS: mods( dt ); break;
     case ScreenE::QUIT: m_running = false; break;
     }
+    drawToasts( dt );
 }
 
 // ---------------------------------------------------------------------------------------------------- backdrop
@@ -703,6 +713,11 @@ void App::slots( float dt )
             m_episode = m_camp.m_episode;
             if ( two && !m_camp.m_coop ) join2();
             m_players = m_camp.m_coop ? 2 : 1;
+            if ( m_camp.m_plus > 0 )
+            {
+                m_feats.max( "ngplus", m_camp.m_plus );
+                checkFeats();
+            }
             go( ScreenE::PLAN );
         }
         else if ( c == 1 )
@@ -1121,6 +1136,10 @@ void App::results( float dt )
                 auto nx = m_cat.m_episodes.find( m_episode + 1 );
                 if ( nx == m_cat.m_episodes.end() )
                 {
+                    // An arcade run to its end.
+                    m_feats.add( m_players > 1 ? "arcade2_runs" : "arcade_runs" );
+                    if ( m_continues == 0 ) m_feats.add( "arcade_clean" );
+                    checkFeats();
                     m_scoreKey = diffKey();
                     m_name = "PILOT";
                     m_nameCursor = 0;
@@ -1152,6 +1171,7 @@ void App::campaignNext( const LevelDef &lv )
         m_camp.m_choices.clear();
         auto ep = m_cat.m_episodes.find( m_camp.m_episode );
         if ( ep != m_cat.m_episodes.end() ) queueStory( ep->second.m_ending );
+        m_feats.max( "episode" + std::to_string( m_camp.m_episode ), 1 );
         m_prof.m_episodes = std::max( m_prof.m_episodes, m_camp.m_episode + 1 );
         m_prof.m_arcadeEpisodes = std::max( m_prof.m_arcadeEpisodes, m_camp.m_episode + 1 );
         auto nx = m_cat.m_episodes.find( m_camp.m_episode + 1 );
@@ -1159,6 +1179,10 @@ void App::campaignNext( const LevelDef &lv )
         {
             // The end of the campaign: the boss rush opens, and the next difficulty.
             m_prof.m_bossRush = true;
+            m_feats.max( "campaign_diff", m_camp.m_difficulty );
+            if ( m_camp.m_coop ) m_feats.max( "campaign_coop", 1 );
+            m_feats.max( "ngplus", m_camp.m_plus + 1 );
+            checkFeats();
             if ( m_camp.m_difficulty >= m_prof.m_maxDiff ) m_prof.m_maxDiff = std::min( (int)m_cat.m_difficulties.size() - 1, m_prof.m_maxDiff + 1 );
             m_prof.save( userDir() + "profile.txt" );
             m_scoreKey = diffKey();
@@ -1257,7 +1281,8 @@ void App::pilots( float dt )
 {
     drawBackdrop( dt, true );
     float k = ui::k(), W = (float)GetScreenWidth(), H = (float)GetScreenHeight();
-    heading( m_players > 1 ? tf( "Pilot %d wählt", m_pilotStep + 1 ) : std::string( "Wähle dein Schiff" ), m_mode == ModeE::BOSSRUSH ? "Bossjagd" : "Arcade" );
+    heading( m_players > 1 ? tf( "Pilot %d wählt", m_pilotStep + 1 ) : std::string( "Wähle dein Schiff" ),
+             m_mode == ModeE::BOSSRUSH ? "Bossjagd" : m_survival ? "Überleben" : "Arcade" );
     std::vector<std::string> items;
     for ( const ArcadeShip &a : m_cat.m_arcadeShips ) items.push_back( L( a.m_title, a.m_titleEn ) );
     if ( items.empty() )
@@ -1277,7 +1302,7 @@ void App::pilots( float dt )
     if ( m_in.back() )
     {
         if ( m_pilotStep > 0 ) --m_pilotStep;
-        else go( ScreenE::DIFFICULTY );
+        else go( m_survival && m_daily ? ScreenE::SURVIVAL : ScreenE::DIFFICULTY );
     }
     if ( c < 0 ) return;
     m_pilot[m_pilotStep] = c;
@@ -1289,6 +1314,8 @@ void App::pilots( float dt )
     }
     if ( m_mode == ModeE::BOSSRUSH )
         startBossRush();
+    else if ( m_survival )
+        startSurvival();
     else
         go( ScreenE::EPISODE );
 }
@@ -1341,16 +1368,10 @@ void App::continueScreen( float dt )
     if ( m_in.accept() )
     {
         ++m_continues;
-        for ( int i = 0; i < m_players; ++i )
-        {
-            Player &p = m_world.m_players[i];
-            if ( !p.m_active ) continue;
-            p.m_lives = 3;
-            p.m_score = 0;
-            p.m_dead = 5.0f;
-        }
+        // The World's part is the replay's too.
+        m_rec.mark( ReplayMarkE::CONTINUE );
+        continueArcade( m_world );
         m_score[0] = m_score[1] = 0;
-        m_world.m_failed = false;
         m_audio.play( SfxE::LIFE );
         m_screen = ScreenE::PLAY;
         m_paused = false;
@@ -1358,6 +1379,7 @@ void App::continueScreen( float dt )
     }
     if ( left < 0 || m_in.back() )
     {
+        saveReplay( false );
         m_scoreKey = diffKey();
         m_name = "PILOT";
         m_nameCursor = 0;
@@ -1433,6 +1455,10 @@ void App::nameEntry( float dt )
         h.m_pilot = m_mode == ModeE::CAMPAIGN ? m_camp.m_load.m_ship : m_cat.m_arcadeShips.empty() ? "" : m_cat.m_arcadeShips[(size_t)m_pilot[0]].m_name;
         m_prof.add( m_scoreKey, h );
         m_prof.save( userDir() + "profile.txt" );
+        // The run's replay is kept as the list's best (pruning leaves best_ files alone).
+        std::error_code e;
+        if ( !m_recPath.empty() && fs::exists( m_recPath, e ) )
+            fs::copy_file( m_recPath, userDir() + "replays/best_" + m_scoreKey + ReplayExt, fs::copy_options::overwrite_existing, e );
         m_audio.play( SfxE::BUY );
         go( ScreenE::SCORES );
     }
@@ -1567,7 +1593,7 @@ void App::options( float dt )
     std::string fps = m_set.m_fps == 0 ? std::string( T( "ohne Grenze" ) ) : std::to_string( m_set.m_fps );
     auto        on = [&]( bool b ) { return std::string( T( b ? "an" : "aus" ) ); };
     auto        row = [&]( const char *name, const std::string &value ) { return std::string( T( name ) ) + ":  " + value; };
-    const char *quality[] = { "Leistung", "Ausgewogen", "Qualität" };
+    const char *quality[] = { "Flüssig", "Ausgewogen", "Qualität" };
     const char *bullets[] = { "wie gemacht", "kräftig", "Rot-Grün-Sehschwäche", "Blau-Gelb-Sehschwäche" };
     enum RowE { LANG, MUSIC, EFFECTS, VOICES, FULL, FPS, QUALITY, SHAKE, FLASH, BULLETS, SPEED, BOMB, AUTOFIRE, MOUSE,
                 HITBOX, TEXT, RUMBLE, KEYS, BACK, ROWS };
@@ -1604,7 +1630,7 @@ void App::options( float dt )
     // What the selected line does, under the list.
     const char *help[ROWS] = {};
     help[VOICES] = "Die Stimmen der Funksprüche und Besprechungen. Die Texte bleiben immer zu lesen.";
-    help[QUALITY] = "Leistung: kleineres Bild, weniger Leuchten und Partikel (Steam Deck). Qualität: alles.";
+    help[QUALITY] = "Flüssig: kleineres Bild, weniger Leuchten und Partikel. Ausgewogen: für das Steam Deck. Qualität: alles.";
     help[FLASH] = "Explosionen, Treffer und Übergänge blitzen schwächer auf.";
     help[BULLETS] = "Gegnergeschosse mit dunklem Rand, auf Wunsch in Farben für Farbsehschwächen.";
     help[SPEED] = "Das ganze Spiel läuft langsamer. Eine Hilfe, keine Schande.";

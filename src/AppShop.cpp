@@ -408,8 +408,11 @@ void App::shop( float dt )
             }
             else
             {
+                m_feats.add( "spent", upgradePrice( *w, lv ) );
                 money -= upgradePrice( *w, lv );
                 ++lv;
+                if ( m_tab == 1 ) m_feats.max( "max_front", lv );
+                checkFeats();
                 m_audio.play( SfxE::BUY );
             }
         }
@@ -431,6 +434,7 @@ void App::shop( float dt )
             return;
         }
         money -= cost;
+        if ( cost > 0 ) m_feats.add( "spent", cost );
         *slot = sel->m_name;
         if ( m_tab == 1 ) o.m_frontLv = 1;
         if ( m_tab == 2 ) o.m_rearLv = 1;
