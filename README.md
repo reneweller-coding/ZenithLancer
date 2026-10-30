@@ -64,16 +64,19 @@ her from world to world.
 
 ### New in 1.0.0
 
-- **The campaign for two:** two pilots fly the campaign together.
-- **New Game+:** a finished campaign begins again, harder.
-- **Practice:** any boss or mission you have reached, on its own.
-- **Daily survival:** a new survival challenge every day.
+- **The campaign for two:** two pilots fly the campaign together, each with their own gear and money; a pilot shot
+  down comes back while the other one flies.
+- **New Game+:** a finished campaign begins again in episode 1 with all its gear, the enemies tougher.
+- **Practice:** any mission you have flown, whole or straight to its boss.
+- **Survival:** endless waves and bosses; the daily flight has the same waves for everyone on the same day.
 - **Replays** of your runs, **achievements** and **statistics**.
 - **Accessibility:** bullet contrast and colour-blind palettes, the game speed, auto-bomb, reduced flashes.
 - **Graphics quality** settings and a **benchmark mode**, made for the Steam Deck.
 - **A play log** of your sessions.
-- **Mods:** a `mods` folder beside the game, one folder for each mod; `mods/example` shows how one is built.
-- **Speaker portraits and voiced radio calls,** and **music in layers** that rise and fall with the fight.
+- **Mods:** a `mods` folder in your player folder or beside the game, one folder for each mod; `mods/example` shows
+  how one is built ([docs/MODDING.md](docs/MODDING.md)).
+- **Speaker portraits and voiced radio calls, briefings and endings** (German and English), and **music in layers**
+  that rise and fall with the fight.
 
 ## Playing
 
@@ -197,16 +200,18 @@ Geräuscheffekte erzeugt das Programm selbst, aus Textdateien, die jeder ändern
 
 ### Neu in 1.0.0
 
-- **Die Kampagne zu zweit:** zwei Piloten fliegen die Kampagne gemeinsam.
-- **New Game+:** eine beendete Kampagne beginnt von vorn, härter.
-- **Training:** jeder erreichte Boss und jede erreichte Mission für sich.
-- **Tägliches Überleben:** jeden Tag eine neue Überlebensprobe.
+- **Die Kampagne zu zweit:** zwei Piloten fliegen die Kampagne gemeinsam, jeder mit eigener Ausrüstung und Kasse; ein
+  abgeschossener Pilot kehrt zurück, solange der andere fliegt.
+- **Neues Spiel+:** eine beendete Kampagne beginnt mit aller Ausrüstung wieder in Episode 1, die Gegner zäher.
+- **Übung:** jeder schon geflogene Einsatz, ganz oder gleich sein Boss.
+- **Überleben:** Wellen und Bosse ohne Ende; der Tagesflug hat für alle am selben Tag dieselben Wellen.
 - **Wiederholungen** der eigenen Läufe, **Erfolge** und **Statistiken**.
 - **Barrierefreiheit:** Kugelkontrast und Farbpaletten für Farbfehlsichtige, Spieltempo, automatische Bombe, weniger
   Blitze.
 - **Grafikqualität** in Stufen und ein **Benchmark**, gemacht für das Steam Deck.
 - **Ein Spielprotokoll** der eigenen Sitzungen.
-- **Mods:** ein Ordner `mods` neben dem Spiel, je Mod ein Unterordner; `mods/example` zeigt, wie einer gebaut ist.
+- **Mods:** ein Ordner `mods` im Spielerordner oder neben dem Spiel, je Mod ein Unterordner; `mods/example` zeigt,
+  wie einer gebaut ist ([docs/MODDING.md](docs/MODDING.md)).
 - **Porträts der Sprecher und gesprochene Funksprüche,** und **Musik in Schichten**, die mit dem Kampf steigt und
   fällt.
 

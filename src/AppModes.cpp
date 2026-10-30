@@ -454,7 +454,7 @@ void App::survivalMenu( float dt )
 
 void App::saveReplay( bool won )
 {
-    if ( m_replaying || !m_rec.active() || m_recPath.empty() || !m_opt.m_test.empty() ) return;
+    if ( m_replaying || !m_rec.active() || m_recPath.empty() || !m_opt.m_test.empty() || m_opt.m_bench ) return;
     long long score = 0;
     for ( const Player &p : m_world.m_players )
         if ( p.m_active ) score += p.m_score;

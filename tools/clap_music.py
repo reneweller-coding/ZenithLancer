@@ -10,6 +10,7 @@ descriptions is a wrong piece.
 import glob
 import json
 import os
+import sys
 
 import numpy as np
 import soundfile as sf
@@ -63,8 +64,11 @@ def density(mono, sr):
 
 def main():
     torch.set_num_threads(max(1, (os.cpu_count() or 4) // 2))
-    spec = json.load(open(os.path.join(ROOT, "tools", "music.json"), encoding="utf-8"))
-    cues = {c["id"]: c["style"] for c in spec["cues"]}
+    cues = {}
+    for name in ("music.json", "music_calm.json"):
+        spec = json.load(open(os.path.join(ROOT, "tools", name), encoding="utf-8"))
+        cues.update({c["id"]: c["style"] for c in spec["cues"]})
+    only = set(sys.argv[1:])
     ids = list(cues)
     model = ClapModel.from_pretrained(MODEL).eval()
     proc = ClapProcessor.from_pretrained(MODEL)
@@ -81,6 +85,8 @@ def main():
     for path in sorted(glob.glob(os.path.join(ROOT, "assets", "music", "*.ogg"))):
         name = os.path.basename(path)[:-4]
         cue = name[:-2] if name.endswith("_2") else name
+        if cue not in cues or (only and cue not in only):
+            continue
         wins, mono, sr = windows(path)
         with torch.no_grad():
             a = model.get_audio_features(**proc(audios=wins, sampling_rate=sr, return_tensors="pt"))

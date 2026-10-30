@@ -1,0 +1,74 @@
+# The new ways to play, screen by screen: the campaign for two (workshop for the second pilot, a mission given up),
+# the day's survival flight to its end, a practice flight, a replay of a mission, the achievements, the mods.
+# (ZenithLancer --apptest tools/apptest_modes.txt with ZENITH_HOME set)
+expect:title
+accept
+expect:main
+down accept             # Kampagne für zwei
+expect:slots
+accept                  # slot 1, empty
+expect:difficulty
+accept                  # Normal
+expect:episode
+accept                  # episode 1
+expect:story
+back
+expect:plan
+down accept             # Werkstatt
+expect:shop
+other                   # the second pilot's gear
+back
+expect:plan
+accept                  # the first mission
+expect:story
+back
+until:play:20
+wait wait wait
+pause
+down down accept        # abort: back to the plan
+until:plan:50
+down down down down down down accept   # save and main menu
+expect:main
+down down down down accept             # Überleben
+expect:survival
+accept                  # the day's flight
+expect:pilots
+accept
+until:play:20
+wait wait wait
+kill
+until:name:300
+accept
+expect:scores
+back
+expect:main
+down down down down down accept        # Übung (the boss rush is still locked)
+expect:practice
+accept                  # the mission flown before
+accept                  # the whole mission
+until:play:20
+wait
+pause
+down down accept        # abort: back to practice
+until:practice:50
+back back
+expect:main
+down down down down down down accept   # Wiederholungen
+expect:replays
+accept                  # the newest one
+until:play:20
+wait wait
+pause
+down down accept        # end the replay
+until:replays:50
+back
+expect:main
+down down down down down down down down accept   # Erfolge und Statistik
+expect:stats
+right
+back
+expect:main
+down down down down down down down down down down down accept   # Mods
+expect:mods
+back
+expect:main

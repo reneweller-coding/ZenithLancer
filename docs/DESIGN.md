@@ -23,6 +23,44 @@ Deck (Linux build, 1280×800, pad).
 - **Bossjagd** – every boss in a row (opens after the campaign).
 - **Überleben** – one long mission under arcade rules whose waves rise through all five episodes until the
   lives are gone; its own seed or the day's (see "Survival").
+- **Kampagne für zwei** – the campaign with a second pilot of their own gear and money (the save keeps both;
+  `p2.` lines). The workshop serves one pilot at a time (Tab / Y). A pilot shot down comes back after 8 s while the
+  other one flies; the mission is lost only when both are down at once. The second pilot joins or leaves in the
+  plan; "share the credits" evens the money out.
+- **Neues Spiel+** – a finished campaign's slot goes on in episode 1 with its gear, money, plans and log crystals;
+  every tier of goods is on sale. Each round makes the enemies tougher (hp +35 %, fire +20 %, bullet speed +6 %,
+  damage +15 % a round; credits +25 % to answer it; from the second round dying ships leave a last bullet:
+  `World::setPlus`).
+- **Übung** – any mission flown before, whole or straight to its boss (the autopilot flies ahead unhurt, the pilot
+  takes over at the boss), with the episode's middle gear (`midLoadout`) or a save slot's. Nothing is kept.
+- **Bosses again** – a lost boss fight in the campaign, the practice and the boss rush starts again at the boss
+  (`EvE::BOSSSTART` keeps the World), with full armour and what was earned before.
+
+## Replays, achievements, the play log
+
+Every mission is recorded (`src/Replay.*`, `<user>/replays/*.zlr`, the newest 40 and the best of each score list):
+the set-up and the pilots' inputs, quantized before the World sees them, so a replay plays the same to the bit. A
+boss fought again and an arcade continue are marks in it. Replays of another version or platform may drift.
+Achievements and statistics (`src/Achieve.*`, `data/lang/achievements.txt`) count from the World's statistics at
+each mission's end and a few moments in flight (a boss down without a hit). Every mission writes a line to
+`<user>/playlog.txt` (`tools/playlog_report.py` sums them: where and by what the pilots were shot down).
+
+## Aids and graphics
+
+Enemy bullets strong (a wider dark halo) or in one colour for red-green or blue-yellow colour blindness; the game
+speed 70–100 %; auto-bomb (the special fires when the armour is under a quarter and a bullet is close); dimmed
+flashes; voices on or off. Graphics: Smooth (67 % of the pixels, four bloom passes, 2500 particles), Balanced (80 %,
+the Steam Deck's default), Quality (all). `--bench [all]` flies the opening and the boss of each episode's last
+mission and writes the frame rates to `<user>/bench.txt`.
+
+## Voices, portraits, music layers
+
+The story's radio calls, briefings, debriefings, intros and endings are spoken (`tools/make_voices.py`, Qwen3-TTS
+locally, a designed voice per figure, `assets/voice/<language>/<key>.ogg`); `data/lang/speakers.txt` says who has
+which voice and portrait (`assets/portraits`, FLUX.2 [klein] locally). The music ducks under a voice. Stage pieces
+have a quiet layer (`<piece>_low.ogg`, an ACE-Step cover of the same length) that plays in step with the full
+piece; the game fades between them by how much is on the field. The calm pieces (story, plan) have a spec of their
+own (`tools/music_calm.json`): a spec's style goes in front of every one of its cues.
 
 ## Difficulties (`data/difficulty.txt`)
 

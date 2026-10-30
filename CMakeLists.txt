@@ -66,7 +66,7 @@ add_test( NAME missions COMMAND ZenithLancer --simall --difficulty 2 )
 # A mission recorded and played back from its file ends the same to the bit (episode 1 and the boss rush).
 add_test( NAME replays COMMAND ZenithLancer --replaytest )
 # The screens played through by scripts (a hidden window; the saves go to a test folder in the build).
-foreach( flow campaign arcade boss )
+foreach( flow campaign arcade boss modes )
     add_test( NAME app_${flow} COMMAND ZenithLancer --apptest ${CMAKE_SOURCE_DIR}/tools/apptest_${flow}.txt )
     set_tests_properties( app_${flow} PROPERTIES ENVIRONMENT "ZENITH_HOME=${CMAKE_BINARY_DIR}/testhome_${flow}" )
 endforeach()
