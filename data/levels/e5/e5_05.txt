@@ -22,7 +22,7 @@ level e5_05
   at 15  wave e5_petal n=6 form=column x=100 gap=0.3 path=swoop side=1 cx=360 cy=300 dur=4 mirror=1
   at 21  wave e5_lantern x=360 path=hover stop=160 wait=7
   at 25  wave e5_shard n=8 form=random range=560 gap=0.3 path=dive turn=60 diff=3
-  at 27  pickup credits x=300 value=1100
+  at 27  pickup credits x=300 value=460
   at 30  text e5_05_r2
   at 32  wave e5_weaver x=360 path=hover stop=140 wait=7
   at 36  wave e5_spear n=4 form=column x=180 gap=0.5 path=dive turn=60 mirror=1
@@ -39,7 +39,7 @@ level e5_05
   at 72  text e5_05_r3
   at 74  wave e5_sail x=0 path=strafe side=1 y=110 speed=80
   at 76  wave e5_petal n=8 form=column x=620 gap=0.3 path=orbit cx=360 cy=280 r=150 dur=5 side=-1
-  at 82  pickup credits x=480 value=1300
+  at 82  pickup credits x=480 value=545
   at 85  wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=290
 
   # a breath, then the forge's floor
@@ -50,7 +50,7 @@ level e5_05
   at 105 wave e5_wisp n=5 form=column x=360 gap=0.5 path=chase turn=50 dur=2.6
   at 110 wave e5_spear n=6 form=v x=360 spacing=55 path=dive turn=40
   at 112 wave e5_prism x=360 path=hover stop=220 wait=5 diff=3
-  at 116 pickup credits x=200 value=1300
+  at 116 pickup credits x=200 value=545
   at 118 scroll 70
   at 120 wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
   at 127 wave e5_weaver n=2 form=line x=360 spacing=320 path=hover stop=150 wait=7
@@ -60,7 +60,7 @@ level e5_05
   # the smith's anvil: Quill sends a last crate, then the forge falls silent
   at 143 text e5_05_r4
   at 147 pickup shield x=360
-  at 148 pickup credits x=200 value=1500
+  at 148 pickup credits x=200 value=630
   at 150 text e5_05_r5
   at 152 warn
   at 153 music e5_boss

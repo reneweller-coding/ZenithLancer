@@ -9,12 +9,12 @@ enemy e5_mote
   model e5_mote
   hp 30
   radius 12
-  score 250
+  score 105
   speed 160
   path sine amp=70 freq=0.45
   face down
   fire aimed every=2.6 delay=1.0 speed=210 bullet=orb color=#ffd060
-  drop credits 0.12 value=220
+  drop credits 0.12 value=90
   explode small
   contact 8
 
@@ -23,12 +23,12 @@ enemy e5_shard
   model e5_shard
   hp 36
   radius 13
-  score 290
+  score 120
   speed 260
   path dive turn=80
   face move
   fire aimed every=2.0 delay=0.6 speed=250 bullet=needle color=#ff50d0 cap=1
-  drop credits 0.12 value=230
+  drop credits 0.12 value=95
   explode small
   contact 9
 
@@ -37,12 +37,12 @@ enemy e5_petal
   model e5_petal
   hp 44
   radius 14
-  score 320
+  score 135
   speed 220
   path swoop side=1 cx=360 cy=280 dur=4
   face move
   fire fan n=3 spread=14 every=2.2 delay=0.9 speed=200 bullet=orb color=#ffe080 cap=2
-  drop credits 0.12 value=250
+  drop credits 0.12 value=105
   explode small
   contact 8
 
@@ -51,7 +51,7 @@ enemy e5_seedling
   model e5_seedling
   hp 26
   radius 10
-  score 170
+  score 70
   speed 170
   path chase turn=80 dur=2.2
   face move
@@ -66,12 +66,12 @@ enemy e5_spear
   model e5_spear
   hp 100
   radius 15
-  score 680
+  score 285
   speed 290
   path dive turn=60
   face move
   fire aimed n=2 spread=6 every=1.6 delay=0.5 speed=270 bullet=needle color=#fff0b0 burst=3 gap=0.1 cap=1
-  drop credits 0.2 value=430
+  drop credits 0.2 value=180
   explode small
   contact 12
 
@@ -80,13 +80,13 @@ enemy e5_moth
   model e5_moth
   hp 120
   radius 18
-  score 760
+  score 320
   speed 200
   path swoop side=1 cx=360 cy=300 dur=5
   face move
   fire fan n=5 spread=14 every=2.3 delay=1.0 speed=190 bullet=orb color=#ffd060 cap=2
   fire aimed every=2.9 delay=1.8 speed=240 bullet=needle color=#ff60e0 diff=3
-  drop credits 0.2 value=460
+  drop credits 0.2 value=195
   explode medium
   contact 12
 
@@ -95,13 +95,13 @@ enemy e5_prism
   model e5_prism
   hp 150
   radius 18
-  score 900
+  score 380
   speed 170
   path hover stop=190 wait=4 amp=60 freq=0.3 exit=0
   face down
   fire aimed n=3 spread=18 every=1.9 delay=0.9 speed=230 bullet=shard color=#fff0b0
   fire ring n=10 rot=9 every=3.2 delay=2.0 speed=150 bullet=orb color=#ff50d0
-  drop credits 0.3 value=570
+  drop credits 0.3 value=240
   explode medium
   contact 12
 
@@ -110,12 +110,12 @@ enemy e5_wisp
   model e5_wisp
   hp 90
   radius 15
-  score 610
+  score 255
   speed 200
   path chase turn=55 dur=2.4
   face move
   fire rain n=3 spread=25 every=1.7 delay=0.8 speed=170 bullet=orb color=#ff50d0
-  drop credits 0.2 value=400
+  drop credits 0.2 value=170
   explode small
   contact 12
 
@@ -124,13 +124,13 @@ enemy e5_weaver
   model e5_weaver
   hp 180
   radius 22
-  score 1080
+  score 455
   speed 120
   path hover stop=150 wait=7 amp=80 freq=0.2 exit=180
   face down
   fire wall n=14 every=5.0 delay=1.6 speed=120 bullet=shard color=#ffd060
   fire aimed every=2.4 delay=1.0 speed=220 bullet=needle color=#ff50d0
-  drop credits 0.4 value=640
+  drop credits 0.4 value=270
   explode medium
   contact 14
 
@@ -139,12 +139,12 @@ enemy e5_raider
   model e5_raider
   hp 130
   radius 16
-  score 790
+  score 330
   speed 240
   path arc side=1 turn=70
   face move
   fire aimed every=1.8 delay=0.6 speed=260 bullet=needle color=#ff4030 burst=3 gap=0.12 cap=2
-  drop credits 0.2 value=510
+  drop credits 0.2 value=215
   explode medium
   contact 12
 
@@ -153,12 +153,12 @@ enemy e5_streak
   model e5_streak
   hp 95
   radius 14
-  score 1260
+  score 530
   speed 420
   path straight
   face move
   fire aimed every=9 delay=0.4 speed=260 bullet=needle color=#fff6d0 cap=1
-  drop credits 0.3 value=570
+  drop credits 0.3 value=240
   explode small
   contact 12
 
@@ -169,13 +169,13 @@ enemy e5_lantern
   model e5_lantern
   hp 520
   radius 30
-  score 3240
+  score 1360
   speed 100
   path hover stop=170 wait=8 amp=70 freq=0.2 exit=180
   face down
   fire spiral n=3 rot=14 every=0.34 delay=1.5 speed=150 bullet=orb color=#ffd060
   fire aimed every=2.6 delay=2.2 speed=200 bullet=big color=#fff0b0
-  drop credits 1 value=1290
+  drop credits 1 value=540
   drop shield 0.15
   explode large
   contact 20
@@ -185,14 +185,14 @@ enemy e5_cantor
   model e5_cantor
   hp 620
   radius 34
-  score 3780
+  score 1590
   speed 90
   path hover stop=160 wait=9 amp=50 freq=0.15 exit=180
   face down
   fire ring n=14 rot=7 every=1.6 delay=1.2 speed=140 bullet=ring color=#ff50d0
   fire fan n=5 spread=12 every=2.4 delay=2.0 speed=200 bullet=orb color=#ffe080
   fire ring n=20 rot=4 every=1.6 delay=2.0 speed=110 bullet=orb color=#ffd060 diff=3
-  drop credits 1 value=1570
+  drop credits 1 value=660
   explode large
   contact 20
 
@@ -201,14 +201,14 @@ enemy e5_enforcer
   model e5_enforcer
   hp 680
   radius 34
-  score 3960
+  score 1665
   speed 90
   path hover stop=150 wait=9 amp=90 freq=0.2 exit=180
   face down
   fire missile every=3.4 delay=1.5 speed=170 turn=70 color=#ff5030 x=27 z=6 mirror=1
   fire fan n=7 spread=11 every=2.6 delay=2.2 speed=210 bullet=orb color=#ff4030
   fire aimed n=2 spread=5 burst=3 gap=0.12 every=3.0 delay=1.0 speed=270 bullet=needle color=#ffa090 x=8 z=40 mirror=1 diff=3
-  drop credits 1 value=1720
+  drop credits 1 value=720
   explode large
   contact 20
 
@@ -217,13 +217,13 @@ enemy e5_sail
   model e5_sail
   hp 560
   radius 36
-  score 3600
+  score 1510
   speed 70
   path strafe side=1 y=110 amp=40 freq=0.2
   face down
   fire laser warn=1.1 dur=1.6 width=14 damage=26 every=5.0 delay=2.0 dir=1 z=36 color=#fff0b0
   fire aimed n=3 spread=14 every=2.2 delay=1.2 speed=210 bullet=shard color=#ff50d0
-  drop credits 1 value=1430
+  drop credits 1 value=600
   explode large
   contact 20
 
@@ -235,12 +235,12 @@ enemy e5_spire
   kind ground
   hp 190
   radius 18
-  score 1180
+  score 495
   face fixed
   aimhead 1
   fire aimed n=3 spread=12 every=3.0 delay=1.2 speed=210 bullet=shard color=#fff0b0
   fire spiral n=2 rot=23 every=0.55 delay=2.0 speed=140 bullet=orb color=#ff50d0 diff=3
-  drop credits 0.5 value=430
+  drop credits 0.5 value=180
   explode medium
 
 enemy e5_node
@@ -249,11 +249,11 @@ enemy e5_node
   kind ground
   hp 320
   radius 22
-  score 1440
+  score 605
   face fixed
   fire ring n=12 rot=8 every=2.3 delay=1.2 speed=140 bullet=orb color=#ffd060
   fire aimed n=2 spread=8 every=2.2 delay=1.5 speed=230 bullet=orb color=#ff50d0
-  drop credits 0.5 value=570
+  drop credits 0.5 value=240
   explode large
 
 enemy e5_dockgun
@@ -262,11 +262,11 @@ enemy e5_dockgun
   kind ground
   hp 280
   radius 20
-  score 1260
+  score 530
   face fixed
   aimhead 1
   fire aimed n=2 spread=5 burst=3 gap=0.15 every=2.5 delay=1.0 speed=250 bullet=needle color=#ff60c0
-  drop credits 0.5 value=510
+  drop credits 0.5 value=215
   explode medium
 
 # ------------------------------------------------------------------------------------------------ obstacle
@@ -277,11 +277,11 @@ enemy e5_crystal
   kind obstacle
   hp 420
   radius 24
-  score 540
+  score 225
   speed 60
   path drift
   face spin
-  drop credits 0.6 value=570
+  drop credits 0.6 value=240
   explode medium
   contact 20
 
@@ -293,7 +293,7 @@ enemy e5_ringsmith
   kind boss
   hp 8000
   radius 105
-  score 7000
+  score 2940
   speed 110
   path boss stop=270 amp=130 freq=0.25
   face down
@@ -306,7 +306,7 @@ enemy e5_ringsmith
   fire laser warn=1.3 dur=2.6 width=16 damage=30 every=6.5 delay=1.0 dir=-72 rot=20 x=-60 z=20 color=#ffd060 from=0.4
   fire spawn spawn=e5_mote every=5 delay=4 z=-40 until=0.2
   fire ring n=24 rot=5 every=3.0 delay=2.5 speed=115 bullet=orb color=#ffe080 diff=3
-  drop credits 1 value=3000
+  drop credits 1 value=1260
   explode huge
 
 enemy e5_ringsmith_hand
@@ -315,12 +315,12 @@ enemy e5_ringsmith_hand
   kind part
   hp 700
   radius 26
-  score 1400
+  score 590
   face down
   aimhead 1
   fire aimed n=3 spread=9 every=1.8 delay=1.5 speed=230 bullet=needle color=#fff0b0
   fire fan n=4 spread=20 every=3.4 delay=2.4 speed=170 bullet=big color=#ff9a30 diff=3
-  drop credits 1 value=800
+  drop credits 1 value=335
   explode large
 
 # ------------------------------------------------------------------------------------------------ Voss's citadel (e5_08)
@@ -331,7 +331,7 @@ enemy e5_citadel
   kind boss
   hp 10000
   radius 110
-  score 9000
+  score 3780
   speed 100
   path boss stop=262 amp=110 freq=0.22
   face down
@@ -347,7 +347,7 @@ enemy e5_citadel
   fire spiral n=3 rot=17 every=0.3 delay=0.5 speed=150 bullet=orb color=#ff50d0 from=0.25
   fire ring n=14 rot=11 every=2.6 delay=1.0 speed=125 bullet=ring color=#ff4030 from=0.25
   fire ring n=22 rot=6 every=2.6 delay=2.0 speed=120 bullet=orb color=#ff6050 diff=3
-  drop credits 1 value=5000
+  drop credits 1 value=2100
   explode huge
 
 enemy e5_citadel_gun
@@ -356,11 +356,11 @@ enemy e5_citadel_gun
   kind part
   hp 500
   radius 22
-  score 1200
+  score 505
   face down
   aimhead 1
   fire aimed n=2 spread=6 burst=2 gap=0.15 every=2.3 delay=1.4 speed=240 bullet=needle color=#ff6050
-  drop credits 1 value=600
+  drop credits 1 value=250
   explode large
 
 # ------------------------------------------------------------------------------------------------ the Crown's guardian (e5_09)
@@ -371,7 +371,7 @@ enemy e5_warden
   kind boss
   hp 11500
   radius 110
-  score 9000
+  score 3780
   speed 100
   path boss stop=270 amp=120 freq=0.2
   face down
@@ -385,7 +385,7 @@ enemy e5_warden
   fire ring n=24 rot=6 every=1.8 delay=0.5 speed=110 bullet=orb color=#fff0b0 from=0.25
   fire aimed n=3 spread=10 every=2.6 delay=1.5 speed=220 bullet=orb color=#ff50d0 from=0.25
   fire fan n=7 spread=10 every=2.6 delay=3.0 speed=190 bullet=shard color=#ffe080 diff=3
-  drop credits 1 value=5000
+  drop credits 1 value=2100
   explode huge
 
 enemy e5_warden_eye
@@ -394,12 +394,12 @@ enemy e5_warden_eye
   kind part
   hp 600
   radius 24
-  score 1400
+  score 590
   face down
   aimhead 1
   fire laser warn=1.2 dur=0.9 width=10 damage=15 every=5.5 delay=3.0 color=#ff50d0
   fire aimed n=3 spread=10 every=2.1 delay=1.2 speed=220 bullet=needle color=#ffe080
-  drop credits 1 value=800
+  drop credits 1 value=335
   explode large
 
 # ------------------------------------------------------------------------------------------------ the Curator (e5_10)
@@ -410,7 +410,7 @@ enemy e5_curator
   kind boss
   hp 14500
   radius 122
-  score 8000
+  score 3360
   speed 90
   path boss stop=280 amp=100 freq=0.18
   face down
@@ -436,7 +436,7 @@ enemy e5_curator
   fire spiral n=4 rot=7 every=0.38 delay=1.0 speed=150 bullet=ring color=#ff50d0 size=6 damage=6 from=0.2
   fire aimed n=3 spread=12 every=2.4 delay=1.2 speed=220 bullet=orb color=#ffffff from=0.2
   fire fan n=11 spread=8 every=2.6 delay=2.0 speed=180 bullet=shard color=#ffe080 diff=3
-  drop credits 1 value=10000
+  drop credits 1 value=4200
   explode huge
 
 enemy e5_curator_petal
@@ -445,12 +445,12 @@ enemy e5_curator_petal
   kind part
   hp 450
   radius 24
-  score 1500
+  score 630
   face down
   aimhead 1
   fire aimed n=2 spread=8 every=2.1 delay=1.6 speed=220 bullet=needle color=#ffe080
   fire fan n=3 spread=25 every=3.6 delay=3.0 speed=160 bullet=big color=#ff50d0 diff=3
-  drop credits 1 value=900
+  drop credits 1 value=380
   explode large
 
 # ------------------------------------------------------------------------------------------------ the first seed (e5_s1)
@@ -461,7 +461,7 @@ enemy e5_firstseed
   kind boss
   hp 9000
   radius 100
-  score 8000
+  score 3360
   speed 90
   path boss stop=272 amp=110 freq=0.2
   face down
@@ -471,5 +471,5 @@ enemy e5_firstseed
   fire ring n=13 rot=13.7 every=1.7 delay=1.0 speed=120 bullet=ring color=#ff50d0 from=0.5
   fire spiral n=1 rot=-137.5 every=0.09 delay=0.5 speed=120 bullet=orb color=#fff0b0 from=0.25
   fire ring n=21 rot=8 every=2.4 delay=2.0 speed=110 bullet=orb color=#ff70e0 diff=3
-  drop credits 1 value=4000
+  drop credits 1 value=1680
   explode huge

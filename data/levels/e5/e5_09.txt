@@ -22,7 +22,7 @@ level e5_09
   at 15  ground e5_spire x=610
   at 17  wave e5_cantor x=360 path=hover stop=150 wait=8
   at 22  wave e5_mote n=10 form=random range=600 gap=0.3 path=zigzag amp=50 freq=0.5 diff=3
-  at 25  pickup credits x=200 value=1300
+  at 25  pickup credits x=200 value=545
   at 27  text e5_09_r2
   at 29  wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=380 cy=260 dur=5 mirror=1
   at 36  wave e5_weaver x=360 path=hover stop=140 wait=7
@@ -37,7 +37,7 @@ level e5_09
   at 60  ground e5_node n=2 form=line x=360 spacing=320
   at 63  wave e5_prism n=3 form=line x=360 spacing=220 path=hover stop=190 wait=6
   at 69  wave e5_streak n=6 form=random range=600 gap=0.45 path=straight speed=420
-  at 73  pickup credits x=480 value=1400
+  at 73  pickup credits x=480 value=590
   at 76  wave e5_lantern n=2 form=line x=360 spacing=340 path=hover stop=150 wait=7
   at 82  wave e5_petal n=8 form=column x=620 gap=0.3 path=swoop side=-1 cx=340 cy=280 dur=4.5
   at 86  wave e5_cantor x=360 path=hover stop=130 wait=7 diff=3
@@ -50,17 +50,17 @@ level e5_09
   at 102 ground e5_spire x=610 n=2 form=column gap=2
   at 104 wave e5_moth n=6 form=column x=100 gap=0.4 path=orbit cx=360 cy=260 r=160 dur=4 side=1
   at 110 wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=280
-  at 114 pickup credits x=360 value=1500
+  at 114 pickup credits x=360 value=630
   at 116 wave e5_weaver x=360 path=hover stop=130 wait=7
   at 120 wave e5_sail x=0 path=strafe side=-1 y=200 speed=80
-  at 126 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=30 freq=0.3 speed=130 drop=credits value=2200
+  at 126 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=30 freq=0.3 speed=130 drop=credits value=925
   at 130 pickup cube x=180 item=e5_c24
 
   # the guardian
   at 134 text e5_09_r5
   at 136 pickup shield x=360
-  at 137 pickup credits x=200 value=1500
-  at 138 pickup credits x=520 value=1500
+  at 137 pickup credits x=200 value=630
+  at 138 pickup credits x=520 value=630
   at 140 warn
   at 141 music e5_boss
   at 143 boss e5_warden

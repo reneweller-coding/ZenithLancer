@@ -9,12 +9,12 @@ enemy e3_chip
   model e3_chip
   hp 12
   radius 11
-  score 40
+  score 35
   speed 190
   path sine amp=50 freq=0.6
   face down
   fire aimed every=2.8 delay=1.2 speed=210 bullet=shard color=#ff60e0 cap=2
-  drop credits 0.12 value=40
+  drop credits 0.12 value=35
   drop power 0.03 mode=arcade
   explode small
   contact 12
@@ -24,12 +24,12 @@ enemy e3_mite
   model e3_mite
   hp 17
   radius 12
-  score 45
+  score 40
   speed 240
   path dive turn=80
   face move
   fire aimed every=2.2 delay=0.8 speed=230 bullet=needle color=#ff70f0 cap=2
-  drop credits 0.15 value=50
+  drop credits 0.15 value=45
   drop power 0.03 mode=arcade
   explode small
   contact 18
@@ -39,12 +39,12 @@ enemy e3_prospector
   model e3_prospector
   hp 19
   radius 13
-  score 55
+  score 50
   speed 150
   path sine amp=70 freq=0.35
   face down
   fire fan n=3 spread=14 every=2.6 delay=1.0 speed=200 bullet=orb color=#ff9040
-  drop credits 0.25 value=60
+  drop credits 0.25 value=50
   drop power 0.04 mode=arcade
   explode small
   contact 15
@@ -54,12 +54,12 @@ enemy e3_mine
   model e3_mine
   hp 16
   radius 12
-  score 40
+  score 35
   speed 55
   path drift
   face spin
   fire ring n=10 every=99 delay=3.6 speed=150 bullet=shard color=#ff50d0 cap=1
-  drop credits 0.2 value=50
+  drop credits 0.2 value=45
   explode small
   contact 30
 
@@ -70,13 +70,13 @@ enemy e3_shardwing
   model e3_shardwing
   hp 44
   radius 15
-  score 120
+  score 105
   speed 220
   path swoop side=1 cx=360 cy=300 dur=4
   face move
   fire aimed n=2 spread=8 every=1.9 delay=0.7 speed=250 bullet=shard color=#ff50d0 cap=3
   fire fan n=4 spread=14 every=3.8 delay=1.8 speed=175 bullet=orb color=#40e0ff diff=3
-  drop credits 0.25 value=90
+  drop credits 0.25 value=80
   drop power 0.08 mode=arcade
   explode small
   contact 20
@@ -86,12 +86,12 @@ enemy e3_hunter
   model e3_hunter
   hp 42
   radius 15
-  score 130
+  score 115
   speed 235
   path arc side=1 turn=70
   face move
   fire aimed n=3 spread=5 every=2.1 delay=0.8 speed=280 bullet=needle color=#ffc060 burst=2 gap=0.15 cap=2
-  drop credits 0.3 value=100
+  drop credits 0.3 value=85
   drop power 0.08 mode=arcade
   explode small
   contact 20
@@ -103,13 +103,13 @@ enemy e3_borer
   model e3_borer
   hp 78
   radius 18
-  score 170
+  score 150
   speed 120
   path straight
   face move
   fire down n=3 spread=14 every=2.4 delay=1.0 speed=200 bullet=big damage=8 color=#ff50d0
   fire aimed every=3.2 delay=2.2 speed=220 bullet=shard color=#40e0ff diff=3
-  drop credits 0.4 value=120
+  drop credits 0.4 value=105
   drop power 0.12 mode=arcade
   explode medium
   contact 30
@@ -119,13 +119,13 @@ enemy e3_tunneler
   model e3_tunneler
   hp 230
   radius 32
-  score 450
+  score 390
   speed 60
   path straight
   face move
   fire ring n=12 every=3.4 delay=1.5 rot=11 speed=140 bullet=orb color=#ff50d0
   fire aimed n=3 spread=12 every=2.6 delay=2.4 speed=200 bullet=big damage=8 color=#40e0ff
-  drop credits 1 value=300
+  drop credits 1 value=260
   drop power 0.4 mode=arcade
   explode large
   contact 40
@@ -137,13 +137,13 @@ enemy e3_hauler
   model e3_hauler
   hp 200
   radius 30
-  score 400
+  score 350
   speed 80
   path hover stop=180 wait=6 amp=60 freq=0.2 exit=0
   face down
   fire fan n=7 spread=14 every=2.6 delay=1.4 speed=170 bullet=orb color=#ff9040
   fire missile every=4.2 delay=2.6 speed=170 turn=70 damage=8 color=#ffb040 x=15 z=34 mirror=1
-  drop credits 1 value=250
+  drop credits 1 value=220
   drop power 0.4 mode=arcade
   explode large
   contact 35
@@ -153,13 +153,13 @@ enemy e3_frigate
   model e3_frigate
   hp 210
   radius 32
-  score 450
+  score 390
   speed 90
   path hover stop=160 wait=7 amp=80 freq=0.22 exit=0
   face down
   fire aimed n=5 spread=7 every=2.5 delay=1.2 speed=260 bullet=needle color=#ffc060
   fire laser warn=1.4 dur=1.0 width=14 damage=13 every=8.0 delay=3.0 color=#ffb040 z=48
-  drop credits 1 value=300
+  drop credits 1 value=260
   drop power 0.4 mode=arcade
   explode large
   contact 35
@@ -169,14 +169,14 @@ enemy e3_carrier
   model e3_carrier
   hp 560
   radius 50
-  score 1000
+  score 870
   speed 50
   path hover stop=140 wait=14 amp=120 freq=0.12 exit=0
   face down
   fire spawn spawn=e3_chip every=2.6 delay=2.0 x=24 z=50 mirror=1
   fire fan n=9 spread=11 every=3.0 delay=1.5 speed=160 bullet=orb color=#ff50d0
   fire ring n=16 every=4.4 delay=3.5 rot=7 speed=130 bullet=shard color=#40e0ff diff=3
-  drop credits 1 value=500
+  drop credits 1 value=435
   drop power 1 mode=arcade
   explode huge
   contact 40
@@ -189,11 +189,11 @@ enemy e3_pebble
   kind obstacle
   hp 28
   radius 13
-  score 20
+  score 15
   speed 90
   path drift
   face spin
-  drop credits 0.15 value=40
+  drop credits 0.15 value=35
   explode small
   contact 20
 
@@ -203,11 +203,11 @@ enemy e3_rock
   kind obstacle
   hp 120
   radius 26
-  score 60
+  score 50
   speed 70
   path drift
   face spin
-  drop credits 0.4 value=90
+  drop credits 0.4 value=80
   explode medium
   contact 35
 
@@ -217,11 +217,11 @@ enemy e3_hulk
   kind obstacle
   hp 320
   radius 34
-  score 220
+  score 190
   speed 45
   path drift
   face down
-  drop credits 1 value=150
+  drop credits 1 value=130
   explode large
   contact 40
 
@@ -231,7 +231,7 @@ enemy e3_ironrock
   kind obstacle
   hp 9999
   radius 46
-  score 0
+  score 5
   speed 60
   path drift
   face spin
@@ -246,12 +246,12 @@ enemy e3_crystalrock
   kind obstacle
   hp 150
   radius 26
-  score 130
+  score 115
   speed 60
   path drift
   face spin
   fire ring n=10 every=3.6 delay=1.6 rot=12 speed=140 bullet=shard color=#ff50d0
-  drop credits 1 value=100
+  drop credits 1 value=85
   explode medium
   contact 35
 
@@ -263,11 +263,11 @@ enemy e3_drillturret
   kind ground
   hp 75
   radius 18
-  score 160
+  score 140
   face down
   aimhead 1
   fire aimed n=2 spread=6 every=2.6 delay=1.0 speed=230 bullet=orb color=#ff9040 burst=2 gap=0.2
-  drop credits 0.5 value=120
+  drop credits 0.5 value=105
   explode medium
 
 enemy e3_cutter
@@ -276,12 +276,12 @@ enemy e3_cutter
   kind ground
   hp 115
   radius 20
-  score 240
+  score 210
   face down
   aimhead 1
   fire laser warn=1.3 dur=1.2 width=14 damage=12 dir=0.01 every=5.5 delay=2.0 color=#ff6040 z=14
   fire aimed n=3 spread=10 every=3.0 delay=2.8 speed=200 bullet=orb color=#ffb040
-  drop credits 0.6 value=160
+  drop credits 0.6 value=140
   explode medium
 
 # ------------------------------------------------------------------------------------------------ mini-bosses
@@ -292,7 +292,7 @@ enemy e3_ore_titan
   kind boss
   hp 1400
   radius 60
-  score 2000
+  score 1740
   speed 80
   path boss stop=170 amp=140 freq=0.3
   face down
@@ -301,7 +301,7 @@ enemy e3_ore_titan
   fire laser warn=1.3 dur=1.6 width=18 damage=15 dir=0.01 every=7 delay=1 x=44 z=50 mirror=1 from=0.55
   fire rain n=4 spread=30 dir=0.01 every=1.8 delay=0.5 speed=145 bullet=big damage=9 color=#ffa040 from=0.55
   fire spawn spawn=e3_prospector every=6 delay=4 z=-30 until=0.3
-  drop credits 1 value=1000
+  drop credits 1 value=870
   drop power 1 mode=arcade
   explode huge
   contact 40
@@ -312,7 +312,7 @@ enemy e3_tracker
   kind boss
   hp 1500
   radius 60
-  score 2200
+  score 1915
   speed 90
   path boss stop=160 amp=160 freq=0.28
   face down
@@ -321,7 +321,7 @@ enemy e3_tracker
   fire laser warn=1.3 dur=1.6 width=16 damage=15 every=6.5 delay=4.0 color=#ffb040 z=60 from=0.7
   fire fan n=11 spread=10 every=3.2 delay=1.0 speed=180 bullet=orb color=#ffa040 from=0.45
   fire spawn spawn=e3_hunter every=7 delay=5 x=40 z=0 until=0.25
-  drop credits 1 value=1000
+  drop credits 1 value=870
   drop power 1 mode=arcade
   explode huge
   contact 40
@@ -334,7 +334,7 @@ enemy e3_queen
   kind boss
   hp 3500
   radius 50
-  score 4000
+  score 3480
   speed 110
   path boss stop=180 amp=100 freq=0.22
   face down
@@ -356,7 +356,7 @@ enemy e3_queen
   fire laser warn=1.5 dur=2.4 width=16 damage=14 dir=35 rot=-26 every=7.5 delay=1.5 color=#ff40d0 x=-44 z=150 from=0.3
   fire laser warn=1.5 dur=2.4 width=16 damage=14 dir=-35 rot=26 every=7.5 delay=1.5 color=#ff40d0 x=44 z=150 from=0.3
   fire spawn spawn=e3_mite every=3.6 delay=2.0 x=92 z=-40 mirror=1 from=0.3
-  drop credits 1 value=1500
+  drop credits 1 value=1305
   drop power 1 mode=arcade
   explode huge
   contact 45
@@ -367,7 +367,7 @@ enemy e3_queen_jaw
   kind part
   hp 170
   radius 22
-  score 400
+  score 350
   face down
   fire aimed n=3 spread=10 every=2.0 delay=1.6 speed=230 bullet=needle color=#ff70f0
   fire down n=2 spread=18 every=1.4 delay=0.8 speed=210 bullet=shard color=#40e0ff diff=3
@@ -379,7 +379,7 @@ enemy e3_queen_sac
   kind part
   hp 120
   radius 20
-  score 350
+  score 305
   face down
   fire spawn spawn=e3_mite every=5.5 delay=3.0
   fire ring n=8 every=3.2 delay=2.0 rot=20 speed=150 bullet=orb color=#ff60e0
@@ -393,7 +393,7 @@ enemy e3_whitethorn
   kind boss
   hp 4200
   radius 72
-  score 3500
+  score 3045
   speed 110
   path boss stop=200 amp=110 freq=0.2
   face down
@@ -412,7 +412,7 @@ enemy e3_whitethorn
   fire wall n=12 every=5.0 delay=3.0 speed=140 bullet=needle color=#ffc060 from=0.3
   fire aimed n=3 spread=8 every=1.6 delay=0.8 speed=260 bullet=big color=#ffb040 from=0.3
   fire spawn spawn=e3_hunter every=6.5 delay=4.0 x=58 z=-40 mirror=1 from=0.3
-  drop credits 1 value=1500
+  drop credits 1 value=1305
   drop power 1 mode=arcade
   explode huge
   contact 45
@@ -423,7 +423,7 @@ enemy e3_wt_gun
   kind part
   hp 260
   radius 18
-  score 350
+  score 305
   face down
   aimhead 1
   fire aimed n=2 spread=10 every=2.1 delay=1.4 speed=240 bullet=orb color=#ffb040
@@ -438,7 +438,7 @@ enemy e3_mind
   kind boss
   hp 3500
   radius 70
-  score 3000
+  score 2610
   speed 100
   path boss stop=185 amp=90 freq=0.16
   face down
@@ -460,7 +460,7 @@ enemy e3_mind
   fire spiral n=4 rot=-11 every=0.26 delay=0.5 speed=145 bullet=shard color=#40e0ff from=0.3
   fire laser warn=1.5 dur=1.5 width=20 damage=15 every=6.5 delay=3.0 color=#ff60e0 z=100 from=0.3
   fire spawn spawn=e3_chip every=4.6 delay=1.5 x=80 z=40 mirror=1 from=0.3
-  drop credits 1 value=1000
+  drop credits 1 value=870
   drop power 1 mode=arcade
   explode huge
   contact 50
@@ -471,7 +471,7 @@ enemy e3_mind_eye
   kind part
   hp 200
   radius 20
-  score 350
+  score 305
   face down
   aimhead 1
   fire laser warn=1.4 dur=1.0 width=12 damage=12 every=6.5 delay=3.0 color=#40e0ff
@@ -484,7 +484,7 @@ enemy e3_mind_shard
   kind part
   hp 200
   radius 28
-  score 350
+  score 305
   face down
   fire fan n=4 spread=18 every=2.8 delay=1.8 speed=170 bullet=orb color=#ff50d0
   fire down n=3 spread=20 every=3.0 delay=2.6 speed=190 bullet=big color=#40e0ff diff=3

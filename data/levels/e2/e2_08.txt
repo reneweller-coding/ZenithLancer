@@ -20,7 +20,7 @@ level e2_08
   at 14  wave e2_sentry n=6 form=line x=360 spacing=90 path=sine amp=40 freq=0.4 speed=150
   at 18  wave e2_freighter n=2 form=column x=-40 y=150 gap=3 path=straight dir=-90 speed=70
   at 20  wave e2_swallow n=6 form=column x=600 gap=0.3 path=swoop side=-1 cx=320 cy=320 dur=3.4
-  at 24  pickup credits x=300 value=200
+  at 24  pickup credits x=300 value=145
   at 26  text e2_08_r2
   at 28  wave e2_jelly x=200 path=hover stop=200 wait=7
   at 30  wave e2_jelly x=520 path=hover stop=170 wait=7
@@ -36,7 +36,7 @@ level e2_08
   at 62  wave e2_freighter n=3 form=column x=760 y=200 gap=2.5 path=straight dir=90 speed=70
   at 64  wave e2_interceptor n=4 form=v x=360 spacing=70 path=dive turn=60 speed=260
   at 68  wave e2_mote n=12 form=random range=640 gap=0.2 path=dive turn=40 speed=210
-  at 72  pickup credits x=420 value=350
+  at 72  pickup credits x=420 value=255
   at 74  wave e2_seamine n=6 form=random range=600 gap=0.6 path=drift speed=55
   at 80  pickup cube x=180 item=e2_c20
   at 82  ground e2_reef x=360
@@ -47,7 +47,7 @@ level e2_08
   at 98  text e2_08_r4
   at 100 wave e2_sentry n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=120 drop=shield
   at 106 wave e2_ray n=3 form=v x=360 spacing=90 path=dive turn=40 speed=150
-  at 110 pickup credits x=360 value=300
+  at 110 pickup credits x=360 value=220
   at 112 scroll 90
   at 113 text e2_08_r5
   at 114 wave e2_interceptor n=6 form=v x=360 spacing=50 path=straight speed=320 repeat=2 every=4
@@ -62,9 +62,9 @@ level e2_08
   at 150 wave e2_mote n=10 form=column x=120 gap=0.3 path=orbit cx=360 cy=240 r=160 dur=6 side=1 mirror=1
   at 156 wave e2_interceptor n=4 form=column x=600 gap=0.4 path=swoop side=-1 cx=340 cy=300 dur=3.4
   at 160 wave e2_bomber n=2 form=line x=360 spacing=300 path=straight speed=100 diff=3
-  at 164 wave e2_jelly n=2 form=line x=360 spacing=280 path=hover stop=180 wait=7 drop=credits value=300
+  at 164 wave e2_jelly n=2 form=line x=360 spacing=280 path=hover stop=180 wait=7 drop=credits value=220
   at 170 wave e2_sentry n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.4 speed=150
-  at 174 pickup credits x=300 value=300
+  at 174 pickup credits x=300 value=220
   at 176 text e2_08_r7
   at 182 wave e2_ray n=3 form=column x=100 gap=0.6 path=swoop side=1 cx=420 cy=260 dur=5
   at 190 end

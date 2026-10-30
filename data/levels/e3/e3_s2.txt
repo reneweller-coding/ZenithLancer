@@ -22,7 +22,7 @@ level e3_s2
   at 12  wave e3_hunter n=4 form=column x=600 gap=0.4 path=arc side=-1 turn=60
   at 16  obstacle e3_hulk x=360 path=drift speed=30
   at 18  wave e3_hunter n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60
-  at 22  pickup credits x=360 value=600
+  at 22  pickup credits x=360 value=520
   at 24  wave e3_frigate x=200 path=hover stop=150 wait=6
   at 28  wave e3_mine n=6 form=random range=600 gap=0.5 path=drift speed=50
   at 30  text e3_s2_r2
@@ -38,11 +38,11 @@ level e3_s2
   at 58  obstacle e3_hulk x=240 path=drift speed=35
   at 60  wave e3_frigate x=480 path=hover stop=160 wait=6
   at 64  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=90
-  at 68  pickup credits x=200 value=600
-  at 70  wave e3_hunter n=6 form=column x=360 gap=0.3 path=loop stop=230 r=90 speed=220 drop=credits value=800
+  at 68  pickup credits x=200 value=520
+  at 70  wave e3_hunter n=6 form=column x=360 gap=0.3 path=loop stop=230 r=90 speed=220 drop=credits value=695
   at 76  wave e3_mine n=6 form=line x=360 spacing=110 path=drift speed=50
   at 78  wave e3_frigate x=240 path=hover stop=180 wait=6 diff=3
-  at 82  pickup credits x=540 value=600
+  at 82  pickup credits x=540 value=520
   at 86  pickup cube x=160 item=e3_c34
 
   # The arks' own graveyard: the great hulls lie close together, the swarm grows between them.
@@ -55,7 +55,7 @@ level e3_s2
   at 106 wave e3_borer n=2 form=line x=360 spacing=300 path=straight speed=90
   at 110 wave e3_chip n=10 form=random range=600 gap=0.25 path=sine amp=50 freq=0.6 speed=160
   at 114 obstacle e3_hulk n=2 form=line x=360 spacing=440 path=drift speed=40 diff=3
-  at 116 pickup credits x=360 value=800
+  at 116 pickup credits x=360 value=695
   at 120 wave e3_carrier x=360 path=hover stop=130 wait=12 amp=120
   at 126 wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
   at 132 pickup cube x=360 item=e3_c35
@@ -66,11 +66,11 @@ level e3_s2
   at 139 wave e3_hunter n=2 form=line x=520 spacing=60 path=arc side=-1 turn=70 repeat=3 every=3
   at 148 wave e3_frigate n=2 form=line x=360 spacing=320 path=hover stop=160 wait=6
   at 154 obstacle e3_hulk x=200 path=drift speed=35
-  at 156 pickup credits x=540 value=600
+  at 156 pickup credits x=540 value=520
   at 160 text e3_s2_r6
   at 162 warn
   at 162 music boss
   at 165 boss e3_tracker
   at 167 text e3_s2_r7
-  at 168 pickup credits x=360 value=1000
+  at 168 pickup credits x=360 value=870
   at 172 end

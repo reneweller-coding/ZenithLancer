@@ -182,6 +182,7 @@ struct EnemyDef
     float                m_scale = 1.0f;             ///< the model's size
     bool                 m_solid = true;             ///< player bullets stop on it (an obstacle may let them pass)
     bool                 m_invulnerable = false;     ///< cannot be destroyed (obstacles)
+    float                m_life = 40.0f;             ///< seconds it may stay on the field (bosses: always)
     std::string          m_where;
 };
 

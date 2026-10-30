@@ -91,6 +91,7 @@ enemy e1_dart
   drop power 0.08 mode=arcade
   explode small                # small | medium | large | huge
   contact 15                   # damage when it rams the pilot
+  life 40                      # seconds it may stay on the field before it is gone (long trains: more)
   part e1_turret x=-20 z=10    # parts fixed to it (their own enemy entries, kind part); x/z scale with `scale`, y lifts it
   shielded 1                   # cannot be hurt while parts live
   solid 1 / invulnerable 1     # obstacles: bullets stop / it cannot be destroyed
@@ -203,7 +204,8 @@ Every event line may have `diff=N` (from difficulty N on) or `diff=A-B`, `repeat
 Wave values: `n`, `form` (single column line v arc random sides grid), `x` `y` (start; y defaults -40),
 `spacing` (line/v/arc/grid), `gap` (seconds between the ships of column/random/sides), `range` (random: width),
 `cols` `dy` (grid), `mirror=1` (a mirrored copy: x → 720 - x, side flipped), `delay`, `hp` (multiplier),
-`drop=<what> [item=] [value=]` (left by the wave's last ship when all of it is shot down), and any path value
+`drop=<what> [item=] [value=]` (left by the wave's last ship when all of it is shot down; without it a wave of 5 or
+more leaves 10 credits a ship, or `bonus=` credits), and any path value
 (`path speed amp freq stop wait dir turn cx cy r side dur pts exit accel phase`).
 
 Pacing guide: missions of 150–240 s; something on the field all the time; a breath every 30–40 s; a mid-boss or

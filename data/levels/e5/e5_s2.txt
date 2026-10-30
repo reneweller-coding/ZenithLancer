@@ -22,13 +22,13 @@ level e5_s2
   at 16  wave e5_enforcer x=360 path=hover stop=150 wait=7
   at 21  ground e5_dockgun n=3 form=line x=360 spacing=230
   at 24  wave e5_raider n=6 form=random range=560 gap=0.4 path=dive turn=50
-  at 28  pickup credits x=200 value=1600
+  at 28  pickup credits x=200 value=670
   at 30  text e5_s2_r2
   at 32  wave e5_shard n=10 form=column x=100 gap=0.18 path=swoop side=1 cx=360 cy=340 dur=3.4 mirror=1
   at 38  pickup cube x=520 item=e5_c30
 
   # a breath in the cold storage halls
-  at 40  pickup credits x=360 value=2000
+  at 40  pickup credits x=360 value=840
   at 41  wave e5_mote n=6 form=line x=360 spacing=100 path=sine amp=30 freq=0.3 speed=120
   at 45  ground e5_dockgun x=120 n=2 form=column gap=2
   at 45  ground e5_dockgun x=600 n=2 form=column gap=2
@@ -36,34 +36,34 @@ level e5_s2
   at 54  wave e5_raider n=8 form=sides x=70 gap=0.35 path=arc side=1 turn=70 drop=shield
   at 60  text e5_s2_r3
   at 62  wave e5_spear n=6 form=v x=360 spacing=55 path=dive turn=40
-  at 67  pickup credits x=360 value=1800
+  at 67  pickup credits x=360 value=755
   at 70  wave e5_lantern x=360 path=hover stop=150 wait=7
   at 74  wave e5_raider n=6 form=column x=600 gap=0.4 path=orbit cx=360 cy=260 r=150 dur=4 side=-1
   at 80  pickup cube x=160 item=e5_c31
 
   # a breath, then the vault doors
-  at 83  pickup credits x=520 value=2000
+  at 83  pickup credits x=520 value=840
   at 84  wave e5_mote n=8 form=grid cols=4 x=360 spacing=90 dy=60 path=straight speed=120
   at 88  text e5_s2_r4
   at 90  ground e5_dockgun n=4 form=line x=360 spacing=150
   at 93  wave e5_enforcer x=200 path=hover stop=140 wait=8
   at 96  wave e5_enforcer x=520 path=hover stop=180 wait=8 diff=3
-  at 101 wave e5_raider n=6 form=column x=120 gap=0.4 path=swoop side=1 cx=380 cy=260 dur=4.5 drop=credits value=2400
-  at 106 pickup credits x=200 value=1800
+  at 101 wave e5_raider n=6 form=column x=120 gap=0.4 path=swoop side=1 cx=380 cy=260 dur=4.5 drop=credits value=1010
+  at 106 pickup credits x=200 value=755
   at 108 wave e5_prism n=2 form=line x=360 spacing=300 path=hover stop=200 wait=5
   at 114 wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=280
   at 120 pickup cube x=360 item=e5_c32
 
   # the vault itself: Voss's last loyal guard
-  at 122 pickup credits x=200 value=2000
+  at 122 pickup credits x=200 value=840
   at 124 text e5_s2_r5
   at 126 ground e5_dockgun x=140 n=2 form=column gap=2
   at 126 ground e5_dockgun x=580 n=2 form=column gap=2
-  at 128 wave e5_enforcer n=2 form=line x=360 spacing=300 path=hover stop=150 wait=9 drop=credits value=4000
+  at 128 wave e5_enforcer n=2 form=line x=360 spacing=300 path=hover stop=150 wait=9 drop=credits value=1680
   at 130 wave e5_enforcer x=360 path=hover stop=200 wait=8 diff=3
   at 136 wave e5_raider n=6 form=column x=150 gap=0.4 path=swoop side=1 cx=360 cy=280 dur=4.5 mirror=1
   at 146 wave e5_lantern x=360 path=hover stop=150 wait=7
-  at 150 pickup credits x=360 value=2000
+  at 150 pickup credits x=360 value=840
   at 153 wave e5_raider n=6 form=random range=600 gap=0.4 path=dive turn=50
   at 160 text e5_s2_r6
   at 164 end

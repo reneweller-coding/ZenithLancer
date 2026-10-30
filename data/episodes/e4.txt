@@ -5,12 +5,11 @@ episode 4
   intro e4_intro
   ending e4_ending
   credits 60000
-  # intended: ship warhawk, front helix 4, rear halo 3, side hydra phoenix, gen starforge, shield prismshield, special supernova
-  ship kestrel
-  front pulse 8
-  rear tailgun 6
-  side pip pip
-  gen dynamo
-  shield ward
-  special nova_s
+  ship warhawk
+  front helix 4
+  rear halo 3
+  side hydra phoenix
+  gen starforge
+  shield prismshield
+  special supernova
   arcade e4_01 e4_03 e4_05 e4_06 e4_09 e4_10

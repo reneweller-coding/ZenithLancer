@@ -21,12 +21,12 @@ level e3_04
   at 17  ground e3_cutter x=360
   at 19  wave e3_borer x=200 path=straight speed=100
   at 21  wave e3_borer x=520 path=straight speed=100
-  at 24  pickup credits x=360 value=400
+  at 24  pickup credits x=360 value=350
   at 26  wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=70
   at 29  wave e3_chip n=8 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=280 dur=4 diff=3
   at 31  text e3_04_r2
   at 33  ground e3_drillturret x=360 n=3 form=line spacing=200
-  at 35  wave e3_prospector n=8 form=grid cols=4 x=360 spacing=90 dy=60 path=straight speed=110 drop=credits value=500
+  at 35  wave e3_prospector n=8 form=grid cols=4 x=360 spacing=90 dy=60 path=straight speed=110 drop=credits value=435
   at 40  wave e3_tunneler x=360 path=straight speed=50
   at 44  wave e3_mite n=6 form=random range=600 gap=0.35 path=dive turn=100
   at 48  pickup cube x=600 item=e3_c10
@@ -39,7 +39,7 @@ level e3_04
   at 62  ground e3_drillturret x=360
   at 63  wave e3_borer n=3 form=line x=360 spacing=200 path=straight speed=110
   at 68  wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=340 cy=280 dur=4.5
-  at 72  pickup credits x=200 value=400
+  at 72  pickup credits x=200 value=350
   at 74  wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=110
   at 78  ground e3_cutter x=360 diff=3
   at 80  wave e3_prospector n=6 form=v x=360 spacing=60 path=straight speed=160
@@ -56,10 +56,10 @@ level e3_04
   at 106 wave e3_mite n=8 form=sides x=50 gap=0.3 path=arc side=1 turn=80
   at 110 obstacle e3_rock n=3 form=random range=520 gap=1.2 path=drift speed=80
   at 112 ground e3_drillturret x=360 n=2 form=line spacing=360
-  at 114 wave e3_borer n=4 form=line x=360 spacing=150 path=straight speed=120 drop=credits value=600
+  at 114 wave e3_borer n=4 form=line x=360 spacing=150 path=straight speed=120 drop=credits value=520
   at 118 wave e3_tunneler x=360 path=straight speed=60 diff=3
   at 120 scroll 55
-  at 122 pickup credits x=360 value=500
+  at 122 pickup credits x=360 value=435
 
   # The ore bunker.
   at 126 text e3_04_r6
@@ -72,7 +72,7 @@ level e3_04
   at 150 pickup cube x=360 item=e3_c12
   at 152 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
   at 156 ground e3_drillturret x=360 n=3 form=line spacing=150
-  at 160 pickup credits x=540 value=500
+  at 160 pickup credits x=540 value=435
 
   # The brood carrier in the bunker, with worms on its flanks.
   at 164 text e3_04_r7
@@ -82,6 +82,6 @@ level e3_04
   at 178 wave e3_mite n=6 form=random range=560 gap=0.4 path=dive turn=90
   at 184 wave e3_chip n=6 form=line x=360 spacing=100 path=sine amp=50 freq=0.5 speed=150
   at 190 wave e3_tunneler x=360 path=straight speed=55 diff=3
-  at 196 pickup credits x=360 value=600
+  at 196 pickup credits x=360 value=520
   at 200 text e3_04_r8
   at 203 end

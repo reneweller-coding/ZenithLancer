@@ -366,6 +366,11 @@ public:
     std::vector<Bullet>   m_born;              ///< bullets made while others are moved (joined after the step)
     std::vector<DropDef>  m_waveDrop;          ///< what a wave leaves when all of it is killed
     std::vector<Vector2>  m_waveLast;          ///< where its last one died
+    std::vector<int>      m_waveBonus;         ///< credits for all of it (-1: by its size)
+    std::vector<char>     m_shut;              ///< enemies whose shield holds while their parts live (this step)
+
+    /** @brief Marks the shielded bodies whose parts still live (m_shut). */
+    void markShut();
 
 private:
     void runTimeline();

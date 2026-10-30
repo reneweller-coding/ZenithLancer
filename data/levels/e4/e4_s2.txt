@@ -21,7 +21,7 @@ level e4_s2
   at 10  wave e4_shard n=6 form=column x=120 gap=0.35 path=swoop side=1 cx=360 cy=300 dur=3.6 mirror=1
   at 15  wave e4_dirgunboat x=360 path=hover stop=170 wait=6
   at 18  ground e4_dirtank x=110 n=2 form=line spacing=120 path=ground dir=-90 speed=22
-  at 21  pickup credits x=360 value=500
+  at 21  pickup credits x=360 value=380
   at 23  wave e4_dirjet n=6 form=sides x=70 gap=0.35 path=arc side=1 turn=80
   at 28  text e4_s2_r2
   at 30  wave e4_amberdart n=4 form=line x=360 spacing=140 path=dive turn=90
@@ -32,7 +32,7 @@ level e4_s2
   at 48  wave e4_amberdart n=5 form=column x=100 gap=0.3 path=loop stop=230 r=90 mirror=1
   at 55  ground e4_dirtank x=610 n=2 form=line spacing=120 path=ground dir=90 speed=22
   at 58  wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
-  at 62  pickup credits x=540 value=600
+  at 62  pickup credits x=540 value=455
   at 64  text e4_s2_r3
   at 66  wave e4_amberwarden x=360 path=hover stop=170 wait=8
   at 69  wave e4_dirjet n=6 form=random range=600 gap=0.3 path=dive turn=60 speed=260
@@ -48,7 +48,7 @@ level e4_s2
   at 104 scroll 65
   at 105 wave e4_dirfrigate x=360 path=hover stop=140 wait=11
   at 108 wave e4_dirjet n=4 form=column x=110 gap=0.35 path=swoop side=1 cx=380 cy=320 dur=3.4 mirror=1
-  at 114 pickup credits x=200 value=600
+  at 114 pickup credits x=200 value=455
   at 116 wave e4_amberwarden x=240 path=hover stop=170 wait=8
   at 118 wave e4_amberwarden x=480 path=hover stop=210 wait=8 diff=3
   at 122 wave e4_shard n=10 form=grid cols=5 x=360 spacing=75 dy=55 path=straight speed=140 drop=shield
@@ -62,5 +62,5 @@ level e4_s2
   at 156 wave e4_dirfrigate x=360 path=hover stop=140 wait=10
   at 160 wave e4_amberdart n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90
   at 168 text e4_s2_r6
-  at 170 pickup credits x=360 value=900
+  at 170 pickup credits x=360 value=685
   at 176 end

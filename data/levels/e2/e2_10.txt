@@ -35,7 +35,7 @@ level e2_10
   at 62  wave e2_ray n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=300 cy=280 dur=4.6
   at 66  wave e2_sentry n=10 form=random range=600 gap=0.25 path=dive turn=40 speed=220
   at 68  wave e2_lancefish n=4 form=column x=200 gap=0.4 path=dive turn=90 mirror=1 diff=3
-  at 72  pickup credits x=420 value=300
+  at 72  pickup credits x=420 value=220
   at 74  wave e2_seamine n=6 form=random range=600 gap=0.6 path=drift speed=60 dir=30
   at 82  pickup cube x=180 item=e2_c25
   at 84  scroll 105

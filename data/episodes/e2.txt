@@ -5,12 +5,11 @@ episode 2
   intro e2_intro
   ending e2_ending
   credits 12000
-  # intended: ship kestrel, front hornet 3, rear sweep 2, side glimmer pip, gen fusion, shield mantle, special drones
-  ship lancer
-  front pulse 4
-  rear tailgun 2
-  side pip -
-  gen dynamo
-  shield ward
-  special nova_s
+  ship kestrel
+  front hornet 3
+  rear sweep 2
+  side glimmer pip
+  gen fusion
+  shield mantle
+  special drones
   arcade e2_01 e2_03 e2_05 e2_06 e2_08 e2_10

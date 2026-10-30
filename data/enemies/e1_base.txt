@@ -6,7 +6,7 @@ enemy e1_dockwarden
   title "Dockwächter"
   model e1_dockwarden
   kind boss
-  hp 900
+  hp 750
   radius 52
   score 800
   speed 120

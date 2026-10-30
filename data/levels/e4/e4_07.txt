@@ -21,7 +21,7 @@ level e4_07
   at 14  ground e4_thornvine x=150
   at 14  ground e4_thornvine x=570
   at 18  wave e4_hivemite n=10 form=v x=360 spacing=50 path=sine amp=40 freq=0.4 speed=160
-  at 22  pickup credits x=360 value=450
+  at 22  pickup credits x=360 value=340
   at 24  wave e4_amberwarden x=360 path=hover stop=170 wait=7
   at 27  wave e4_hivemite n=8 form=random range=600 gap=0.3 path=zigzag amp=60 freq=0.7 diff=3
   at 30  text e4_07_r2
@@ -36,7 +36,7 @@ level e4_07
   at 60  wave e4_beetle x=500 path=hover stop=200 wait=7
   at 64  wave e4_sporeling n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=190
   at 68  text e4_07_r3
-  at 69  pickup credits x=180 value=500
+  at 69  pickup credits x=180 value=380
   at 71  scroll 35
   at 72  ground e4_crawler x=620 path=ground dir=90 speed=24
   at 72  ground e4_crawler x=100 path=ground dir=-90 speed=24
@@ -53,7 +53,7 @@ level e4_07
   at 112 ground e4_sporepod x=180
   at 112 ground e4_sporepod x=540
   at 116 wave e4_amberwarden n=2 form=line x=360 spacing=320 path=hover stop=170 wait=8
-  at 122 pickup credits x=540 value=600
+  at 122 pickup credits x=540 value=455
   at 124 wave e4_mothwing n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
   at 128 wave e4_amberdart n=6 form=random range=620 gap=0.3 path=dive turn=80 diff=3
   at 132 text e4_07_r5
@@ -70,5 +70,5 @@ level e4_07
   at 178 wave e4_lancefly n=4 form=line x=360 spacing=130 path=dive turn=90
   at 184 wave e4_hivemite n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=210
   at 192 text e4_07_r6
-  at 194 pickup credits x=360 value=800
+  at 194 pickup credits x=360 value=610
   at 200 end

@@ -21,7 +21,7 @@ level e4_08
   at 13  wave e4_shard n=8 form=random range=620 gap=0.3 path=sine amp=50 freq=0.6
   at 17  wave e4_dirgunboat x=240 path=hover stop=170 wait=6
   at 19  wave e4_amberwarden x=480 path=hover stop=210 wait=6
-  at 23  pickup credits x=360 value=450
+  at 23  pickup credits x=360 value=340
   at 25  wave e4_amberdart n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=80
   at 28  wave e4_dirjet n=6 form=random range=600 gap=0.3 path=dive turn=60 diff=3
   at 31  text e4_08_r2
@@ -34,7 +34,7 @@ level e4_08
   at 54  wave e4_dirjet n=6 form=v x=360 spacing=50 path=straight speed=310
   at 58  wave e4_amberwarden x=220 path=hover stop=170 wait=7
   at 58  wave e4_amberwarden x=500 path=hover stop=200 wait=7 diff=3
-  at 64  pickup credits x=540 value=500
+  at 64  pickup credits x=540 value=380
   at 66  text e4_08_r3
   at 68  scroll 50
   at 68  obstacle rock n=6 form=random range=660 gap=0.5 path=drift speed=60
@@ -50,7 +50,7 @@ level e4_08
   at 100 wave e4_amberdart n=8 form=sides x=40 gap=0.25 path=arc side=1 turn=120 speed=320 drop=plan item=mirrorshield
   at 106 wave e4_latticeship x=360 path=hover stop=170 wait=7
   at 108 wave e4_dirjet n=5 form=column x=620 gap=0.3 path=swoop side=-1 cx=340 cy=320 dur=3.4
-  at 113 pickup credits x=200 value=600
+  at 113 pickup credits x=200 value=455
   at 115 obstacle rock n=4 form=random range=620 gap=0.6 path=drift speed=80
   at 117 wave e4_prism n=5 form=v x=360 spacing=55 path=straight speed=320
   at 121 wave e4_amberwarden x=360 path=hover stop=160 wait=8
@@ -62,7 +62,7 @@ level e4_08
   at 148 wave e4_amberdart n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90
   at 154 wave e4_dirfrigate x=360 path=hover stop=140 wait=11
   at 157 wave e4_amberdart n=4 form=line x=360 spacing=140 path=dive turn=90 diff=3
-  at 160 pickup credits x=360 value=600
+  at 160 pickup credits x=360 value=455
   at 162 wave e4_shard n=10 form=grid cols=5 x=360 spacing=75 dy=55 path=straight speed=140 drop=shield
   at 168 wave e4_amberwarden x=240 path=hover stop=170 wait=8
   at 170 wave e4_amberwarden x=480 path=hover stop=210 wait=8
@@ -72,5 +72,5 @@ level e4_08
   at 194 wave e4_latticeship x=360 path=hover stop=170 wait=7
   at 196 wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
   at 204 text e4_08_r6
-  at 206 pickup credits x=360 value=800
+  at 206 pickup credits x=360 value=610
   at 212 end

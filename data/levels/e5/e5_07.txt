@@ -20,7 +20,7 @@ level e5_07
   at 18  obstacle e5_crystal n=2 form=line x=360 spacing=400 path=drift speed=50
   at 21  wave e5_sail x=0 path=strafe side=1 y=110 speed=80
   at 25  wave e5_mote n=8 form=random range=560 gap=0.35 path=zigzag amp=50 freq=0.5
-  at 28  pickup credits x=200 value=1100
+  at 28  pickup credits x=200 value=460
   at 30  text e5_07_r2
   at 32  wave e5_moth n=4 form=column x=150 gap=0.6 path=swoop side=1 cx=380 cy=260 dur=5 mirror=1
   at 38  wave e5_prism n=2 form=line x=360 spacing=300 path=hover stop=190 wait=5 diff=3
@@ -29,14 +29,14 @@ level e5_07
 
   # a breath in the dust
   at 47  obstacle e5_crystal n=3 form=random range=560 gap=1.2 path=drift speed=50
-  at 50  pickup credits x=360 value=1500
+  at 50  pickup credits x=360 value=630
   at 52  wave e5_mote n=10 form=grid cols=5 x=360 spacing=80 dy=60 path=straight speed=120 drop=shield
   at 57  wave e5_sail x=0 path=strafe side=-1 y=140 speed=85
   at 60  wave e5_petal n=8 form=column x=100 gap=0.3 path=orbit cx=360 cy=260 r=150 dur=5 side=1
   at 66  wave e5_lantern x=360 path=hover stop=150 wait=7
   at 70  text e5_07_r3
   at 72  wave e5_streak n=6 form=random range=600 gap=0.45 path=straight speed=420
-  at 76  pickup credits x=480 value=1300
+  at 76  pickup credits x=480 value=545
   at 80  wave e5_prism n=3 form=line x=360 spacing=220 path=hover stop=190 wait=6
   at 86  wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=280
   at 92  pickup cube x=160 item=e5_c18
@@ -46,13 +46,13 @@ level e5_07
   at 98  wave e5_sail x=0 path=strafe side=1 y=100 speed=70
   at 101 wave e5_sail x=0 path=strafe side=-1 y=210 speed=70
   at 104 wave e5_moth n=6 form=column x=360 gap=0.5 path=sine amp=100 freq=0.3 speed=120
-  at 110 wave e5_mote n=10 form=random range=600 gap=0.3 path=dive turn=40 speed=200 drop=credits value=1600
+  at 110 wave e5_mote n=10 form=random range=600 gap=0.3 path=dive turn=40 speed=200 drop=credits value=670
   at 114 wave e5_prism x=360 path=hover stop=220 wait=5 diff=3
-  at 118 pickup credits x=360 value=1300
+  at 118 pickup credits x=360 value=545
 
   # a breath, then the belt thins
   at 124 obstacle e5_crystal n=3 form=random range=560 gap=1.0 path=drift speed=55
-  at 126 pickup credits x=520 value=1500
+  at 126 pickup credits x=520 value=630
   at 128 wave e5_mote n=6 form=v x=360 spacing=60 path=sine amp=30 freq=0.3 speed=130
   at 132 text e5_07_r5
   at 134 wave e5_cantor x=360 path=hover stop=150 wait=8
@@ -66,10 +66,10 @@ level e5_07
   # out of the belt: Zenith Station rises over the sun's pole
   at 172 wave e5_sail x=0 path=strafe side=1 y=120 speed=90
   at 174 wave e5_shard n=10 form=column x=100 gap=0.18 path=swoop side=1 cx=360 cy=340 dur=3.4 mirror=1
-  at 180 pickup credits x=200 value=1500
+  at 180 pickup credits x=200 value=630
   at 182 wave e5_cantor n=2 form=line x=360 spacing=330 path=hover stop=160 wait=8
   at 188 wave e5_prism n=2 form=line x=360 spacing=300 path=hover stop=200 wait=5 diff=3
-  at 190 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=30 freq=0.3 speed=130 drop=credits value=2000
+  at 190 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=30 freq=0.3 speed=130 drop=credits value=840
   at 198 wave e5_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=220
   at 205 text e5_07_r6
   at 209 end

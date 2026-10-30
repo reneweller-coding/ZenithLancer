@@ -23,13 +23,13 @@ level e3_10
   at 15  wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=340 cy=260 dur=4.5
   at 19  wave e3_borer n=2 form=line x=360 spacing=320 path=straight speed=100
   at 22  ground e3_cutter x=360
-  at 24  pickup credits x=200 value=300
+  at 24  pickup credits x=200 value=260
   at 26  wave e3_chip n=10 form=sides x=60 gap=0.25 path=arc side=1 turn=70
   at 28  wave e3_shardwing n=4 form=column x=100 gap=0.45 path=swoop side=1 cx=380 cy=260 dur=4.5 diff=3
   at 31  text e3_10_r2
   at 33  wave e3_tunneler x=240 path=straight speed=55
   at 36  ground e3_drillturret x=520 n=2 form=line spacing=120
-  at 38  wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100 drop=credits value=300
+  at 38  wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100 drop=credits value=260
   at 44  obstacle e3_crystalrock n=2 form=line x=360 spacing=360 path=drift speed=55
   at 46  pickup cube x=480 item=e3_c28
 
@@ -42,7 +42,7 @@ level e3_10
   at 62  wave e3_mine n=6 form=line x=360 spacing=110 path=drift speed=60
   at 66  ground e3_drillturret x=360 n=3 form=line spacing=180
   at 68  wave e3_hauler x=360 path=hover stop=160 wait=6
-  at 70  pickup credits x=540 value=300
+  at 70  pickup credits x=540 value=260
   at 72  wave e3_chip n=10 form=column x=360 gap=0.22 path=orbit cx=360 cy=250 r=160 dur=5 side=1
   at 76  wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=-1 turn=80
   at 78  wave e3_tunneler x=500 path=straight speed=60 diff=3
@@ -61,7 +61,7 @@ level e3_10
   at 116 obstacle e3_ironrock x=560 path=drift speed=55
   at 118 wave e3_borer n=4 form=line x=360 spacing=150 path=straight speed=120
   at 122 scroll 50
-  at 124 pickup credits x=360 value=200
+  at 124 pickup credits x=360 value=175
 
   # A breath. Okonjo talks you to the heart.
   at 128 text e3_10_r5
@@ -73,9 +73,9 @@ level e3_10
   at 146 wave e3_shardwing n=6 form=sides x=60 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4
   at 152 wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100
   at 156 obstacle e3_crystalrock n=2 form=line x=360 spacing=300 path=drift speed=60 diff=3
-  at 160 pickup credits x=200 value=200
+  at 160 pickup credits x=200 value=175
   at 162 wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120
-  at 168 pickup credits x=520 value=300
+  at 168 pickup credits x=520 value=260
 
   # The heart of the Bell Stone.
   at 172 text e3_10_r6
@@ -84,5 +84,5 @@ level e3_10
   at 177 text e3_10_r7
   at 178 boss e3_mind
   at 180 text e3_10_r8
-  at 182 pickup credits x=360 value=400
+  at 182 pickup credits x=360 value=350
   at 186 end

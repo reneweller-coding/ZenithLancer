@@ -22,7 +22,7 @@ level e2_09
   at 14  obstacle e2_floe n=3 form=random range=560 gap=1.5 path=drift speed=60
   at 18  wave e2_mote n=8 form=v x=360 spacing=55 path=sine amp=30 freq=0.4 speed=140
   at 22  wave e2_interceptor n=3 form=v x=360 spacing=70 path=dive turn=50 speed=250 diff=3
-  at 24  pickup credits x=300 value=200
+  at 24  pickup credits x=300 value=145
   at 26  text e2_09_r2
   at 28  wave e2_frigate x=360 path=hover stop=150 wait=8
   at 30  wave e2_sentry n=8 form=column x=120 gap=0.3 path=orbit cx=360 cy=240 r=150 dur=5 side=1 mirror=1
@@ -36,7 +36,7 @@ level e2_09
   at 58  wave e2_bomber n=2 form=line x=360 spacing=300 path=straight speed=100
   at 60  text e2_09_r3
   at 62  wave e2_interceptor n=6 form=column x=110 gap=0.22 path=swoop side=1 cx=360 cy=320 dur=3 mirror=1 hp=0.7 drop=plan item=talon
-  at 68  pickup credits x=200 value=300
+  at 68  pickup credits x=200 value=220
   at 70  wave e2_sentry n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=120 drop=shield
   at 74  obstacle e2_floe n=5 form=random range=620 gap=1.0 path=drift speed=80
   at 76  wave e2_seamine n=4 form=random range=560 gap=0.8 path=drift speed=60
@@ -52,7 +52,7 @@ level e2_09
   at 102 scroll 65
   at 104 wave e2_sentry n=8 form=column x=600 gap=0.3 path=orbit cx=360 cy=240 r=140 dur=5 side=-1
   at 108 wave e2_lancefish n=4 form=column x=200 gap=0.4 path=dive turn=90 mirror=1
-  at 112 pickup credits x=500 value=300
+  at 112 pickup credits x=500 value=220
   at 114 text e2_09_r5
   at 116 wave e2_freighter n=3 form=column x=760 y=140 gap=2.5 path=straight dir=90 speed=70
   at 120 wave e2_interceptor n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=90 speed=280
@@ -60,7 +60,7 @@ level e2_09
   at 128 wave e2_jelly x=200 path=hover stop=200 wait=7 diff=3
   at 132 wave e2_ray n=4 form=column x=100 gap=0.5 path=swoop side=1 cx=420 cy=280 dur=4.8
   at 136 pickup cube x=360 item=e2_c23
-  at 138 wave e2_sentry n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.4 speed=150 drop=credits value=350
+  at 138 wave e2_sentry n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.4 speed=150 drop=credits value=255
   at 146 text e2_09_r6
   at 148 music boss
   at 149 warn

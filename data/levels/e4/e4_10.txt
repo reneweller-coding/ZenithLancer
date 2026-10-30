@@ -18,7 +18,7 @@ level e4_10
   at 12  wave e4_shard n=8 form=random range=620 gap=0.3 path=sine amp=50 freq=0.6
   at 16  wave e4_amberwarden x=240 path=hover stop=170 wait=6
   at 18  wave e4_dirgunboat x=480 path=hover stop=210 wait=6
-  at 22  pickup credits x=360 value=500
+  at 22  pickup credits x=360 value=380
   at 24  wave e4_dirjet n=6 form=sides x=60 gap=0.3 path=arc side=1 turn=80
   at 27  wave e4_amberdart n=6 form=random range=600 gap=0.3 path=dive turn=80 diff=3
   at 30  text e4_10_r2
@@ -30,7 +30,7 @@ level e4_10
   at 50  wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
   at 56  wave e4_amberwarden x=220 path=hover stop=170 wait=7
   at 56  wave e4_amberwarden x=500 path=hover stop=200 wait=7 diff=3
-  at 62  pickup credits x=180 value=550
+  at 62  pickup credits x=180 value=420
   at 64  text e4_10_r3
   at 66  wave e4_mothwing n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=230
   at 70  wave e4_amberdart n=6 form=v x=360 spacing=50 path=straight speed=320 repeat=2 every=4
@@ -46,7 +46,7 @@ level e4_10
   at 106 wave e4_amberwarden x=360 path=hover stop=170 wait=8
   at 108 wave e4_dirjet n=5 form=column x=620 gap=0.3 path=swoop side=-1 cx=340 cy=320 dur=3.4
   at 112 wave e4_amberdart n=4 form=line x=360 spacing=140 path=dive turn=90 diff=3
-  at 116 pickup credits x=540 value=600
+  at 116 pickup credits x=540 value=455
   at 118 wave e4_latticeship n=2 form=line x=360 spacing=320 path=hover stop=170 wait=8
   at 122 wave e4_shard n=10 form=grid cols=5 x=360 spacing=75 dy=55 path=straight speed=140 drop=shield
   at 128 wave e4_dirfrigate x=360 path=hover stop=140 wait=10 diff=3
@@ -56,12 +56,12 @@ level e4_10
   at 140 wave e4_amberwarden x=480 path=hover stop=210 wait=7
   at 146 wave e4_amberdart n=8 form=random range=640 gap=0.3 path=dive turn=60 speed=260
   at 150 pickup cube x=360 item=e4_c28
-  at 154 pickup credits x=360 value=600
+  at 154 pickup credits x=360 value=455
   at 158 clear
   at 158 warn
   at 159 music e4_boss
   at 162 text e4_10_r6
   at 162 boss e4_diktat
   at 164 text e4_10_r7
-  at 166 pickup credits x=360 value=800
+  at 166 pickup credits x=360 value=610
   at 175 end

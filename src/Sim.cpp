@@ -148,6 +148,15 @@ int World::boss() const
     return -1;
 }
 
+void World::markShut()
+{
+    m_shut.assign( m_enemies.size(), 0 );
+    for ( const Enemy &pe : m_enemies )
+        if ( pe.m_parent >= 0 && pe.m_parent < (int)m_enemies.size() && !pe.m_dead && !pe.m_gone &&
+             m_enemies[(size_t)pe.m_parent].m_def->m_shielded )
+            m_shut[(size_t)pe.m_parent] = 1;
+}
+
 int World::nearestEnemy( Vector2 from, float range, int skip ) const
 {
     int   best = -1;
@@ -156,6 +165,8 @@ int World::nearestEnemy( Vector2 from, float range, int skip ) const
     {
         const Enemy &e = m_enemies[i];
         if ( (int)i == skip || e.m_dead || e.m_gone || e.m_def->m_invulnerable ) continue;
+        // Seeking weapons leave a shielded body alone while its parts live: they go for the parts.
+        if ( i < m_shut.size() && m_shut[i] ) continue;
         if ( e.m_pos.y < -20 || e.m_pos.y > FieldH + 10 || e.m_pos.x < -10 || e.m_pos.x > FieldW + 10 ) continue;
         float d = dist2( from, e.m_pos );
         if ( d < bd )
@@ -327,6 +338,7 @@ void World::spawnWave( const Line &p, bool ground )
         wd.m_value = p.integer( "value", 0 );
     }
     m_waveDrop.push_back( wd );
+    m_waveBonus.push_back( p.integer( "bonus", -1 ) );
 
     Rng r;
     r.seed( (uint32_t)p.integer( "seed", 1 ) * 7919u + m_rng.next() % 3u );
@@ -547,6 +559,7 @@ void World::step( const PlayerInput in[2] )
     m_scroll += clampf( m_scrollGoal - m_scroll, -40.0f * Dt, 40.0f * Dt );
     m_scrollPos += m_scroll * Dt;
     runTimeline();
+    markShut();
     for ( int i = 0; i < 2; ++i )
     {
         if ( !m_players[i].m_active ) continue;
@@ -555,12 +568,14 @@ void World::step( const PlayerInput in[2] )
         firePlayer( i, in[i] );
     }
     moveEnemies();
+    markShut();
     for ( size_t i = 0; i < m_enemies.size(); ++i ) fireEnemy( (int)i );
     moveBullets();
     moveLasers();
     movePickups();
     collide();
     compact();
+    markShut();
     m_bullets.insert( m_bullets.end(), m_born.begin(), m_born.end() );
     m_born.clear();
     int b = boss();
@@ -1341,7 +1356,7 @@ void World::moveEnemies()
         if ( inside ) e.m_entered = true;
         bool out = e.m_pos.y > FieldH + r + 60 || e.m_pos.x < -r - 140 || e.m_pos.x > FieldW + r + 140 ||
                    e.m_pos.y < -r - 260;
-        if ( ( e.m_entered && out ) || e.m_t > 40.0f + ( e.m_def->m_kind == EnemyKindE::BOSS ? 1e6f : 0.0f ) )
+        if ( ( e.m_entered && out ) || e.m_t > e.m_def->m_life + ( e.m_def->m_kind == EnemyKindE::BOSS ? 1e6f : 0.0f ) )
         {
             if ( e.m_def->m_kind != EnemyKindE::BOSS ) e.m_gone = true;
         }
@@ -1799,8 +1814,12 @@ void World::killEnemy( int idx, int owner )
                 d2.m_chance = 1.0f;
                 drop( e, d2 );
             }
-            else if ( m_waveSize[(size_t)e.m_wave] >= 5 && m_mode == ModeE::CAMPAIGN )
-                dropAt( PickE::CREDITS, e.m_pos, 25 * m_waveSize[(size_t)e.m_wave], "" );
+            else if ( m_mode == ModeE::CAMPAIGN )
+            {
+                int bonus = m_waveBonus[(size_t)e.m_wave];
+                if ( bonus < 0 ) bonus = m_waveSize[(size_t)e.m_wave] >= 5 ? 10 * m_waveSize[(size_t)e.m_wave] : 0;
+                if ( bonus > 0 ) dropAt( PickE::CREDITS, e.m_pos, bonus, "" );
+            }
         }
     }
     if ( m_diff.m_revenge && d.m_kind == EnemyKindE::AIR && !m_enemies.empty() )

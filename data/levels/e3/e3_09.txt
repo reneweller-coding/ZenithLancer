@@ -23,7 +23,7 @@ level e3_09
   at 15  ground e3_cutter x=360
   at 17  wave e3_hunter n=5 form=v x=360 spacing=60 path=dive turn=60 speed=230
   at 21  wave e3_frigate x=200 path=hover stop=150 wait=6
-  at 24  pickup credits x=540 value=400
+  at 24  pickup credits x=540 value=350
   at 26  wave e3_chip n=8 form=column x=600 gap=0.3 path=swoop side=-1 cx=360 cy=300 dur=4
   at 28  wave e3_hunter n=4 form=column x=100 gap=0.4 path=arc side=1 turn=80 diff=3
   at 31  text e3_09_r2
@@ -41,8 +41,8 @@ level e3_09
   at 60  ground e3_drillturret x=360 n=2 form=line spacing=280
   at 62  wave e3_hauler x=360 path=hover stop=160 wait=6
   at 66  wave e3_frigate x=180 path=hover stop=180 wait=6 diff=3
-  at 68  pickup credits x=360 value=500
-  at 70  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120 drop=credits value=500
+  at 68  pickup credits x=360 value=435
+  at 70  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120 drop=credits value=435
   at 76  wave e3_hunter n=4 form=column x=620 gap=0.35 path=swoop side=-1 cx=360 cy=280 dur=3.6 mirror=1
   at 82  text e3_09_r4
   at 84  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
@@ -59,7 +59,7 @@ level e3_09
   at 112 wave e3_shardwing n=5 form=v x=360 spacing=60 path=dive turn=60
   at 116 wave e3_hunter n=4 form=column x=100 gap=0.4 path=arc side=1 turn=80
   at 118 scroll 60
-  at 120 pickup credits x=360 value=500
+  at 120 pickup credits x=360 value=435
   at 124 wave e3_mine n=8 form=random range=640 gap=0.4 path=drift speed=80
   at 126 ground e3_cutter x=70
   at 127 ground e3_cutter x=260
@@ -71,7 +71,7 @@ level e3_09
   at 148 wave e3_hunter n=2 form=line x=200 spacing=60 path=arc side=1 turn=70 repeat=3 every=3
   at 149 wave e3_hunter n=2 form=line x=520 spacing=60 path=arc side=-1 turn=70 repeat=3 every=3
   at 158 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100 diff=3
-  at 160 pickup credits x=200 value=500
+  at 160 pickup credits x=200 value=435
 
   # The Weißdorn.
   at 164 text e3_09_r6
@@ -80,5 +80,5 @@ level e3_09
   at 169 text e3_09_r7
   at 170 boss e3_whitethorn
   at 172 text e3_09_r8
-  at 174 pickup credits x=360 value=800
+  at 174 pickup credits x=360 value=695
   at 178 end

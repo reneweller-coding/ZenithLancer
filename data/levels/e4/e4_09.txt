@@ -21,7 +21,7 @@ level e4_09
   at 12  ground e4_thornvine x=570
   at 15  wave e4_amberdart n=5 form=column x=600 gap=0.3 path=swoop side=-1 cx=340 cy=300 dur=3.4
   at 19  wave e4_lancefly n=4 form=line x=360 spacing=130 path=dive turn=90
-  at 22  pickup credits x=360 value=450
+  at 22  pickup credits x=360 value=340
   at 24  wave e4_umbrella n=2 form=line x=360 spacing=300 path=hover stop=200 wait=6
   at 27  wave e4_sporeling n=10 form=random range=640 gap=0.25 path=dive turn=40 speed=190 diff=3
   at 30  text e4_09_r2
@@ -36,7 +36,7 @@ level e4_09
   at 57  wave e4_broodmother x=360 path=hover stop=140 wait=10
   at 60  wave e4_lancefly n=3 form=column x=140 gap=0.4 path=dive turn=110 mirror=1
   at 66  text e4_09_r3
-  at 67  pickup credits x=180 value=500
+  at 67  pickup credits x=180 value=380
   at 70  wave e4_amberwarden x=240 path=hover stop=170 wait=7
   at 72  wave e4_umbrella x=500 path=hover stop=210 wait=7
   at 76  ground e4_thornvine x=360 n=3 form=line spacing=200
@@ -51,7 +51,7 @@ level e4_09
   at 108 scroll 60
   at 109 wave e4_beetle n=2 form=line x=360 spacing=300 path=hover stop=170 wait=8
   at 112 wave e4_amberdart n=4 form=line x=360 spacing=140 path=dive turn=90 diff=3
-  at 116 pickup credits x=540 value=600
+  at 116 pickup credits x=540 value=455
   at 118 wave e4_mothwing n=6 form=column x=110 gap=0.3 path=loop stop=230 r=90 mirror=1
   at 124 ground e4_sporepod x=360
   at 124 ground e4_thornvine x=150
@@ -61,12 +61,12 @@ level e4_09
   at 138 text e4_09_r5
   at 140 wave e4_umbrella n=3 form=line x=360 spacing=230 path=hover stop=190 wait=6
   at 145 wave e4_sporeling n=8 form=column x=360 gap=0.25 path=sine amp=170 freq=0.3
-  at 150 pickup credits x=360 value=500
+  at 150 pickup credits x=360 value=380
   at 154 warn
   at 155 music e4_boss
   at 158 text e4_09_r6
   at 158 boss e4_thornmother
   at 160 music e4_a
   at 160 text e4_09_r7
-  at 162 pickup credits x=360 value=1200
+  at 162 pickup credits x=360 value=910
   at 171 end

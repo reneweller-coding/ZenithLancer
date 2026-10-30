@@ -22,13 +22,13 @@ level e3_05
   at 15  wave e3_borer n=2 form=line x=360 spacing=320 path=straight speed=100
   at 18  obstacle e3_crystalrock x=360 path=drift speed=60
   at 20  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
-  at 24  pickup credits x=200 value=400
+  at 24  pickup credits x=200 value=350
   at 26  wave e3_shardwing n=4 form=column x=100 gap=0.45 path=swoop side=1 cx=380 cy=260 dur=4.5
   at 28  wave e3_shardwing n=4 form=column x=620 gap=0.45 path=swoop side=-1 cx=340 cy=260 dur=4.5 diff=3
   at 31  text e3_05_r2
   at 33  wave e3_tunneler x=240 path=straight speed=55
   at 36  obstacle e3_rock n=3 form=random range=560 gap=1.0 path=drift speed=70
-  at 38  wave e3_mite n=10 form=sides x=60 gap=0.25 path=arc side=1 turn=80 drop=credits value=500
+  at 38  wave e3_mite n=10 form=sides x=60 gap=0.25 path=arc side=1 turn=80 drop=credits value=435
   at 44  wave e3_mine n=6 form=random range=600 gap=0.5 path=drift speed=70
   at 48  pickup cube x=480 item=e3_c13
 
@@ -40,7 +40,7 @@ level e3_05
   at 63  wave e3_borer n=3 form=line x=360 spacing=220 path=straight speed=110
   at 66  obstacle e3_crystalrock x=360 path=drift speed=60 diff=3
   at 68  wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=240 r=90 speed=200
-  at 72  pickup credits x=360 value=500
+  at 72  pickup credits x=360 value=435
   at 74  wave e3_mite n=8 form=random range=620 gap=0.3 path=dive turn=110
   at 78  wave e3_carrier x=360 path=hover stop=130 wait=12 amp=130
   at 84  wave e3_chip n=6 form=line x=360 spacing=100 path=sine amp=60 freq=0.6 speed=160
@@ -65,7 +65,7 @@ level e3_05
   at 136 pickup plan x=690 item=fang
   at 138 wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=-1 turn=80
   at 142 scroll 50
-  at 144 pickup credits x=360 value=500
+  at 144 pickup credits x=360 value=435
 
   # The hive's mouth. Brood first, then her.
   at 148 text e3_05_r5
@@ -74,12 +74,12 @@ level e3_05
   at 158 wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100
   at 162 pickup cube x=360 item=e3_c15
   at 164 wave e3_shardwing n=4 form=column x=620 gap=0.4 path=swoop side=-1 cx=360 cy=280 dur=4 mirror=1
-  at 170 pickup credits x=200 value=400
+  at 170 pickup credits x=200 value=350
   at 174 text e3_05_r6
   at 175 warn
   at 175 music e3_boss
   at 178 text e3_05_r7
   at 179 boss e3_queen
   at 181 text e3_05_r8
-  at 183 pickup credits x=360 value=800
+  at 183 pickup credits x=360 value=695
   at 186 end

@@ -22,11 +22,11 @@ level e5_01
   at 19  obstacle e5_crystal x=150 path=drift speed=55
   at 22  wave e5_moth n=3 form=column x=140 gap=0.7 path=swoop side=1 cx=420 cy=260 dur=5 mirror=1
   at 26  wave e5_mote n=8 form=random range=560 gap=0.35 path=zigzag amp=50 freq=0.5 diff=3
-  at 28  pickup credits x=240 value=900
+  at 28  pickup credits x=240 value=380
   at 30  text e5_01_r2
   at 31  wave e5_lantern x=360 path=hover stop=160 wait=7
   at 34  wave e5_shard n=4 form=line x=360 spacing=150 path=dive turn=80
-  at 40  wave e5_petal n=7 form=arc x=360 spacing=40 path=sine amp=60 freq=0.3 speed=150 drop=credits value=1400
+  at 40  wave e5_petal n=7 form=arc x=360 spacing=40 path=sine amp=60 freq=0.3 speed=150 drop=credits value=590
   at 45  pickup cube x=520 item=e5_c01
 
   # a breath: crystals drifting in the wind
@@ -39,7 +39,7 @@ level e5_01
   at 70  text e5_01_r3
   at 72  wave e5_shard n=12 form=random range=620 gap=0.24 path=dive turn=40 speed=280
   at 78  wave e5_lantern n=2 form=line x=360 spacing=330 path=hover stop=150 wait=7
-  at 82  pickup credits x=480 value=1100
+  at 82  pickup credits x=480 value=460
   at 86  wave e5_petal n=6 form=column x=100 gap=0.3 path=orbit cx=360 cy=260 r=150 dur=5 side=1
   at 90  wave e5_petal n=6 form=column x=620 gap=0.3 path=orbit cx=360 cy=260 r=150 dur=5 side=-1
   at 95  wave e5_moth n=4 form=column x=360 gap=0.8 path=loop stop=260 r=90 diff=3
@@ -54,7 +54,7 @@ level e5_01
   at 116 wave e5_cantor x=360 path=hover stop=160 wait=8
   at 118 wave e5_mote n=8 form=sides x=60 gap=0.4 path=arc side=1 turn=70
   at 126 wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=360 cy=240 dur=5 mirror=1 diff=3
-  at 128 pickup credits x=300 value=1200
+  at 128 pickup credits x=300 value=505
   at 131 wave e5_shard n=10 form=column x=120 gap=0.18 path=swoop side=1 cx=360 cy=360 dur=3.4
   at 134 wave e5_shard n=10 form=column x=600 gap=0.18 path=swoop side=-1 cx=360 cy=360 dur=3.4
   at 140 scroll 80
@@ -66,11 +66,11 @@ level e5_01
   # the first spar of the Crown: its keepers come out to meet the Lancer
   at 156 obstacle e5_crystal n=2 form=line x=360 spacing=440 path=drift speed=45
   at 160 text e5_01_r5
-  at 162 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=40 freq=0.3 speed=130 drop=credits value=1800
+  at 162 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=40 freq=0.3 speed=130 drop=credits value=755
   at 167 wave e5_weaver x=360 path=hover stop=140 wait=8
   at 172 wave e5_cantor n=2 form=line x=360 spacing=360 path=hover stop=170 wait=9
   at 176 wave e5_spear n=4 form=column x=360 gap=0.6 path=dive turn=70
-  at 182 pickup credits x=360 value=1500
+  at 182 pickup credits x=360 value=630
   at 186 wave e5_moth n=6 form=column x=100 gap=0.4 path=orbit cx=360 cy=280 r=160 dur=4 side=1 mirror=1
   at 192 wave e5_mote n=12 form=random range=640 gap=0.25 path=dive turn=40 speed=220
   at 200 text e5_01_r6

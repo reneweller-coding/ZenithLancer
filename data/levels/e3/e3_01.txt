@@ -20,13 +20,13 @@ level e3_01
   at 17  obstacle e3_rock x=200 path=drift speed=60
   at 18  obstacle e3_rock x=520 path=drift speed=65
   at 19  wave e3_mite n=6 form=random range=520 gap=0.4 path=dive turn=90
-  at 24  pickup credits x=360 value=400
+  at 24  pickup credits x=360 value=350
   at 26  wave e3_shardwing n=4 form=column x=100 gap=0.5 path=swoop side=1 cx=380 cy=260 dur=4.5
   at 28  wave e3_mite n=6 form=random range=560 gap=0.35 path=dive turn=100 diff=3
   at 31  text e3_01_r2
   at 33  wave e3_borer n=2 form=line x=360 spacing=300 path=straight speed=90
   at 36  obstacle e3_pebble n=8 form=random range=640 gap=0.5 path=drift speed=100
-  at 40  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120 drop=credits value=500
+  at 40  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=120 drop=credits value=435
   at 46  pickup cube x=150 item=e3_c01
 
   # A breath, then the first iron rocks: they cannot be shot, only flown around.
@@ -38,7 +38,7 @@ level e3_01
   at 62  wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=70
   at 66  wave e3_borer x=360 path=straight speed=100
   at 68  wave e3_shardwing n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=340 cy=260 dur=4.5 diff=3
-  at 72  pickup credits x=540 value=400
+  at 72  pickup credits x=540 value=350
   at 74  wave e3_chip n=8 form=column x=360 gap=0.25 path=orbit cx=360 cy=260 r=150 dur=5 side=1
   at 80  text e3_01_r4
   at 82  wave e3_hauler x=240 path=hover stop=170 wait=6
@@ -59,7 +59,7 @@ level e3_01
   at 120 obstacle e3_crystalrock x=560 path=drift speed=70
   at 122 wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=90
   at 124 obstacle e3_ironrock x=120 path=drift speed=75 diff=3
-  at 126 pickup credits x=360 value=500
+  at 126 pickup credits x=360 value=435
   at 128 obstacle e3_pebble n=10 form=random range=660 gap=0.4 path=drift speed=110
   at 131 wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=240 r=90 speed=200
   at 136 scroll 50
@@ -71,14 +71,14 @@ level e3_01
   at 147 wave e3_chip n=8 form=column x=600 gap=0.3 path=swoop side=-1 cx=300 cy=320 dur=4
   at 151 wave e3_shardwing n=4 form=line x=360 spacing=120 path=dive turn=60
   at 154 obstacle e3_rock n=3 form=random range=560 gap=1.2 path=drift speed=75
-  at 157 wave e3_mite n=10 form=sides x=50 gap=0.25 path=arc side=1 turn=80 drop=credits value=500
-  at 162 pickup credits x=200 value=400
+  at 157 wave e3_mite n=10 form=sides x=50 gap=0.25 path=arc side=1 turn=80 drop=credits value=435
+  at 162 pickup credits x=200 value=350
   at 164 wave e3_tunneler x=500 path=straight speed=55 diff=3
   at 166 text e3_01_r7
   at 168 wave e3_carrier x=360 path=hover stop=140 wait=16 amp=140
   at 172 wave e3_chip n=6 form=line x=360 spacing=100 path=sine amp=50 freq=0.5 speed=140
   at 180 wave e3_mite n=6 form=random range=560 gap=0.4 path=dive turn=90
   at 188 wave e3_shardwing n=3 form=v x=360 spacing=70 path=dive turn=50
-  at 196 pickup credits x=360 value=600
+  at 196 pickup credits x=360 value=520
   at 200 text e3_01_r8
   at 203 end

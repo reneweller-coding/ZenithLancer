@@ -21,7 +21,7 @@ level e4_03
   at 15  ground e4_thornvine x=140
   at 15  ground e4_thornvine x=580
   at 18  wave e4_riverray n=5 form=v x=360 spacing=70 path=sine amp=60 freq=0.25 speed=130
-  at 22  pickup credits x=360 value=450
+  at 22  pickup credits x=360 value=340
   at 24  wave e4_dirgunboat x=200 path=hover stop=170 wait=6
   at 26  wave e4_dirgunboat x=520 path=hover stop=200 wait=6 diff=3
   at 28  wave e4_shard n=8 form=random range=600 gap=0.35 path=sine amp=50 freq=0.6
@@ -37,7 +37,7 @@ level e4_03
   at 63  wave e4_beetle x=360 path=hover stop=180 wait=7
   at 66  wave e4_mothwing n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
   at 71  text e4_03_r3
-  at 72  pickup credits x=180 value=500
+  at 72  pickup credits x=180 value=380
   at 74  scroll 130
   at 75  wave e4_riverray n=8 form=random range=620 gap=0.35 path=straight speed=260
   at 80  wave e4_shard n=10 form=random range=640 gap=0.2 path=dive turn=40 speed=230
@@ -53,7 +53,7 @@ level e4_03
   at 113 wave e4_umbrella x=360 path=hover stop=170 wait=7
   at 118 wave e4_mothwing n=12 form=sides x=40 gap=0.22 path=arc side=1 turn=110 speed=290 drop=plan item=starling
   at 124 wave e4_riverray n=4 form=line x=360 spacing=150 path=sine amp=90 freq=0.3 speed=140
-  at 128 pickup credits x=540 value=600
+  at 128 pickup credits x=540 value=455
   at 130 wave e4_prism n=4 form=column x=120 gap=0.4 path=arc side=1 turn=60 mirror=1
   at 136 ground e4_sporepod x=360
   at 136 ground e4_dirtank x=150 path=ground dir=-90 speed=20
@@ -70,5 +70,5 @@ level e4_03
   at 176 wave e4_mothwing n=10 form=grid cols=5 x=360 spacing=75 dy=55 path=straight speed=140 drop=shield
   at 184 wave e4_riverray n=5 form=v x=360 spacing=70 path=sine amp=60 freq=0.3 speed=150
   at 190 text e4_03_r6
-  at 192 pickup credits x=360 value=800
+  at 192 pickup credits x=360 value=610
   at 198 end

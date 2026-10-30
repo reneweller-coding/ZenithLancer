@@ -517,8 +517,13 @@ void App::pauseMenu( float dt )
             go( ScreenE::PLAN );
         else
         {
+            // An arcade game given up still counts: a good score gets its name.
+            for ( int i = 0; i < m_players; ++i ) m_score[i] = m_world.m_players[i].m_score;
+            m_scoreKey = diffKey();
+            m_name = "PILOT";
+            m_nameCursor = 0;
             newDemo();
-            go( ScreenE::MAIN );
+            go( m_prof.place( m_scoreKey, m_score[0] + ( m_players > 1 ? m_score[1] : 0 ) ) >= 0 ? ScreenE::NAME : ScreenE::MAIN );
         }
     }
 }

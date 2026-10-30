@@ -20,7 +20,7 @@ level e2_s2
   at 12  wave e2_jelly n=3 form=line x=360 spacing=220 path=hover stop=180 wait=6
   at 16  wave e2_ray n=3 form=column x=100 gap=0.6 path=swoop side=1 cx=420 cy=280 dur=5
   at 20  wave e2_seamine n=5 form=random range=600 gap=0.6 path=drift speed=90 dir=40
-  at 24  pickup credits x=300 value=300
+  at 24  pickup credits x=300 value=220
   at 26  text e2_s2_r2
   at 28  wave e2_harvester x=200 path=hover stop=160 wait=8
   at 30  wave e2_harvester x=520 path=hover stop=190 wait=8 diff=3
@@ -32,7 +32,7 @@ level e2_s2
   at 50  wave e2_mote n=8 form=column x=360 gap=0.3 path=loop stop=260 r=100 speed=200
   at 56  wave e2_ray n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=300 cy=280 dur=4.6
   at 60  wave e2_mote n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=110 drop=shield
-  at 66  pickup credits x=420 value=350
+  at 66  pickup credits x=420 value=255
   at 68  scroll 85
   at 70  wave e2_swallow n=6 form=v x=360 spacing=50 path=straight speed=320 repeat=3 every=3.5
   at 74  wave e2_seamine n=6 form=random range=620 gap=0.5 path=drift speed=80 dir=-40
@@ -44,7 +44,7 @@ level e2_s2
   at 96  wave e2_jelly x=200 path=hover stop=200 wait=7
   at 98  wave e2_jelly x=520 path=hover stop=170 wait=7
   at 102 wave e2_swallow n=6 form=sides x=60 gap=0.3 path=arc side=-1 turn=100 speed=240
-  at 106 pickup credits x=300 value=300
+  at 106 pickup credits x=300 value=220
   at 110 wave e2_mote n=10 form=column x=120 gap=0.3 path=orbit cx=360 cy=240 r=160 dur=6 side=1 mirror=1
   at 116 pickup cube x=360 item=e2_c31
   at 122 music boss

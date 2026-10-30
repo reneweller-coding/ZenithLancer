@@ -20,7 +20,7 @@ level e5_03
   at 18  wave e5_lantern x=360 path=hover stop=160 wait=7
   at 22  wave e5_wisp n=4 form=sides x=80 gap=0.6 path=chase turn=60 dur=2.2
   at 26  wave e5_shard n=8 form=v x=360 spacing=50 path=dive turn=60 diff=3
-  at 28  pickup credits x=200 value=1000
+  at 28  pickup credits x=200 value=420
   at 30  text e5_03_r2
   at 32  wave e5_sail x=0 path=strafe side=1 y=110 speed=80
   at 35  wave e5_mote n=10 form=grid cols=5 x=360 spacing=80 dy=60 path=straight speed=130 drop=shield
@@ -37,7 +37,7 @@ level e5_03
   at 66  wave e5_lantern x=200 path=hover stop=150 wait=7
   at 67  wave e5_lantern x=520 path=hover stop=190 wait=7 diff=3
   at 72  wave e5_wisp n=5 form=column x=360 gap=0.5 path=chase turn=50 dur=2.6
-  at 76  pickup credits x=360 value=1200
+  at 76  pickup credits x=360 value=505
   at 79  wave e5_moth n=4 form=line x=360 spacing=150 path=sine amp=40 freq=0.25 speed=120
   at 84  scroll 90
   at 86  wave e5_shard n=12 form=random range=640 gap=0.22 path=dive turn=40 speed=290
@@ -49,8 +49,8 @@ level e5_03
   at 99  wave e5_sail x=0 path=strafe side=-1 y=200 speed=75
   at 102 wave e5_petal n=8 form=column x=360 gap=0.35 path=sine amp=90 freq=0.35 speed=150
   at 108 wave e5_wisp n=4 form=line x=360 spacing=160 path=chase turn=45 dur=2.4 diff=3
-  at 112 wave e5_mote n=10 form=random range=600 gap=0.3 path=dive turn=40 speed=200 drop=credits value=1600
-  at 118 pickup credits x=540 value=1300
+  at 112 wave e5_mote n=10 form=random range=600 gap=0.3 path=dive turn=40 speed=200 drop=credits value=670
+  at 118 pickup credits x=540 value=545
 
   # a breath: the flares settle
   at 122 wave e5_mote n=6 form=v x=360 spacing=60 path=sine amp=30 freq=0.3 speed=130
@@ -66,11 +66,11 @@ level e5_03
   # the eye of the storm: three lanterns hold it open
   at 166 text e5_03_r6
   at 168 scroll 60
-  at 169 wave e5_lantern n=3 form=arc x=360 spacing=110 path=hover stop=150 wait=10 drop=credits value=2500
+  at 169 wave e5_lantern n=3 form=arc x=360 spacing=110 path=hover stop=150 wait=10 drop=credits value=1050
   at 175 wave e5_wisp n=4 form=line x=360 spacing=160 path=chase turn=45 dur=2.2
   at 180 wave e5_petal n=8 form=column x=100 gap=0.3 path=orbit cx=360 cy=300 r=160 dur=5 side=1 mirror=1
   at 186 wave e5_cantor x=360 path=hover stop=130 wait=8 diff=3
-  at 188 pickup credits x=360 value=1500
+  at 188 pickup credits x=360 value=630
   at 192 wave e5_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=220
   at 200 text e5_03_r7
   at 205 end

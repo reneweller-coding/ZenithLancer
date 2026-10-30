@@ -22,13 +22,13 @@ level e3_06
   at 11  wave e3_shardwing n=3 form=column x=720 gap=0.6 path=strafe side=-1 y=260 amp=40 freq=0.4 speed=200
   at 15  wave e3_mine n=5 form=random range=560 gap=0.7 path=drift speed=60
   at 18  wave e3_chip n=8 form=column x=120 gap=0.3 path=swoop side=1 cx=360 cy=360 dur=4.5 mirror=1
-  at 24  pickup credits x=360 value=400
+  at 24  pickup credits x=360 value=350
   at 26  wave e3_hunter n=4 form=column x=620 gap=0.4 path=arc side=-1 turn=70
   at 28  wave e3_hunter n=4 form=column x=100 gap=0.4 path=arc side=1 turn=70 diff=3
   at 31  text e3_06_r2
   at 33  wave e3_shardwing n=6 form=sides x=60 gap=0.4 path=swoop side=1 cx=360 cy=300 dur=4
   at 38  wave e3_borer n=2 form=line x=360 spacing=300 path=straight speed=90
-  at 40  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=110 drop=credits value=500
+  at 40  wave e3_chip n=10 form=grid cols=5 x=360 spacing=70 dy=55 path=straight speed=110 drop=credits value=435
   at 46  pickup cube x=200 item=e3_c16
 
   # Out of the dust from below: the swarm likes to come where nobody looks.
@@ -38,7 +38,7 @@ level e3_06
   at 60  wave e3_mite n=8 form=random range=600 gap=0.3 path=dive turn=100
   at 64  wave e3_frigate x=360 path=hover stop=150 wait=7
   at 66  wave e3_hunter n=6 form=column x=0 gap=0.35 path=swoop side=1 cx=360 cy=260 dur=3.8
-  at 70  pickup credits x=540 value=400
+  at 70  pickup credits x=540 value=350
   at 72  wave e3_shardwing n=6 form=column x=360 gap=0.4 path=loop stop=230 r=90 speed=200
   at 76  wave e3_mine n=6 form=line x=360 spacing=110 path=drift speed=55
   at 80  wave e3_chip n=8 form=column x=600 gap=0.25 path=orbit cx=360 cy=280 r=160 dur=5 side=-1
@@ -56,7 +56,7 @@ level e3_06
   at 112 wave e3_mine n=6 form=column x=640 gap=0.8 path=drift speed=70
   at 116 wave e3_mite n=8 form=sides x=60 gap=0.3 path=arc side=1 turn=80
   at 120 wave e3_mine n=8 form=random range=660 gap=0.35 path=drift speed=80 diff=3
-  at 122 pickup credits x=200 value=500
+  at 122 pickup credits x=200 value=435
 
   # The siege of the observatory: the Directorate from one side, the swarm from the other.
   at 128 text e3_06_r6
@@ -69,13 +69,13 @@ level e3_06
   at 150 wave e3_frigate n=2 form=line x=360 spacing=320 path=hover stop=150 wait=6
   at 154 wave e3_shardwing n=6 form=random range=600 gap=0.4 path=dive turn=60
   at 158 wave e3_hunter n=4 form=v x=360 spacing=60 path=dive turn=60 diff=3
-  at 162 pickup credits x=360 value=500
+  at 162 pickup credits x=360 value=435
   at 166 text e3_06_r7
   at 168 wave e3_hunter n=2 form=line x=200 spacing=60 path=arc side=1 turn=70 repeat=3 every=3
   at 169 wave e3_hunter n=2 form=line x=520 spacing=60 path=arc side=-1 turn=70 repeat=3 every=3
   at 178 wave e3_mite n=10 form=random range=600 gap=0.25 path=dive turn=100
   at 184 wave e3_frigate x=360 path=hover stop=150 wait=8
   at 190 wave e3_chip n=6 form=line x=360 spacing=100 path=sine amp=40 freq=0.5 speed=150
-  at 196 pickup credits x=360 value=600
+  at 196 pickup credits x=360 value=520
   at 200 text e3_06_r8
   at 204 end

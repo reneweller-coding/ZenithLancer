@@ -165,7 +165,7 @@ const std::set<std::string> WaveKeys = { "n",     "form",  "x",     "y",     "sp
                                          "cx",    "cy",    "r",     "pts",   "dur",     "rows",  "cols", "dx",
                                          "dy",    "spread", "repeat", "every", "diff",   "range", "leave", "accel",
                                          "delay", "hp",    "drop",  "value", "item",    "exit",  "face", "phase",
-                                         "item2", "chance", "loop",  "orbit", "seed",   "hold",  "clear" };
+                                         "item2", "chance", "loop",  "orbit", "seed",   "hold",  "clear", "bonus" };
 
 }   // namespace
 
@@ -495,6 +495,7 @@ bool Catalog::load( const std::string &dir )
                 else if ( k == "scale" ) d.m_scale = l.argNum( 0, 1.0f );
                 else if ( k == "solid" ) d.m_solid = l.argNum( 0, 1 ) != 0;
                 else if ( k == "invulnerable" ) d.m_invulnerable = l.argNum( 0, 1 ) != 0;
+                else if ( k == "life" ) d.m_life = l.argNum( 0, 40.0f );
                 else unknown( b, l, m_errors );
             }
             if ( d.m_kind == EnemyKindE::GROUND && d.m_path.m_key == "straight" && d.m_path.m_args.empty() )

@@ -51,6 +51,7 @@ enemy turret
   hp 40
   radius 18
   score 80
+  path ground
   face down
   aimhead 1
   fire aimed every=2.4 delay=1.0 speed=210 bullet=orb color=#ff60c0
@@ -65,6 +66,7 @@ enemy tank
   radius 20
   score 100
   speed 40
+  path ground
   face fixed
   aimhead 1
   fire aimed n=2 spread=8 every=2.8 delay=1.2 speed=230 bullet=big color=#ff8040

@@ -24,8 +24,12 @@ back                    # continue
 wait wait wait
 until:results:3000
 wait wait wait wait wait wait wait wait
-accept                  # the next mission or the end of the run
-until:name:400
+accept                  # the run's next mission
+until:play:400
+wait wait wait wait wait wait
+pause
+down down accept        # end the game: the score makes the list
+until:name:50
 accept                  # the name as it stands
 until:scores:50
 back
@@ -40,7 +44,11 @@ accept
 until:play:20
 wait wait wait wait wait wait
 pause
-down down accept        # end the game
+down down accept        # end the game (the list still has room: a name)
+until:name:50
+accept
+until:scores:50
+back
 until:main:50
 down down down down down accept   # Optionen (Bossjagd is still closed and skipped)
 expect:options

@@ -20,7 +20,7 @@ level e2_03
   at 14  wave e2_mote n=6 form=v x=360 spacing=60 path=sine amp=70 freq=0.5 speed=150
   at 18  wave e2_ray n=3 form=column x=100 gap=0.6 path=swoop side=1 cx=420 cy=280 dur=5
   at 20  wave e2_seamine n=4 form=random range=500 gap=0.8 path=drift speed=70 dir=30 diff=3
-  at 24  pickup credits x=300 value=200
+  at 24  pickup credits x=300 value=145
   at 26  text e2_03_r2
   at 28  wave e2_harvester x=200 path=hover stop=160 wait=9
   at 30  wave e2_swallow n=5 form=column x=80 gap=0.3 path=swoop side=1 cx=400 cy=340 dur=3.2
@@ -34,7 +34,7 @@ level e2_03
   at 60  wave e2_lancefish n=4 form=column x=150 gap=0.4 path=dive turn=90 mirror=1 diff=3
   at 64  text e2_03_r3
   at 66  wave e2_mote n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=130 drop=shield
-  at 72  pickup credits x=420 value=350
+  at 72  pickup credits x=420 value=255
   at 74  wave e2_seamine n=6 form=random range=620 gap=0.6 path=drift speed=60 dir=25
   at 82  scroll 110
   at 83  text e2_03_r4
@@ -53,7 +53,7 @@ level e2_03
   at 124 wave e2_swallow n=6 form=column x=600 gap=0.25 path=swoop side=-1 cx=320 cy=320 dur=3.4 mirror=1
   at 130 wave e2_ray n=4 form=v x=360 spacing=90 path=dive turn=40 speed=150
   at 134 wave e2_seamine n=6 form=random range=600 gap=0.5 path=drift speed=70 dir=-30
-  at 136 pickup credits x=360 value=350
+  at 136 pickup credits x=360 value=255
   at 140 text e2_03_r6
   at 142 wave e2_harvester x=180 path=hover stop=160 wait=10
   at 142 wave e2_harvester x=540 path=hover stop=200 wait=10
@@ -61,8 +61,8 @@ level e2_03
   at 152 wave e2_lancefish n=3 form=column x=360 gap=0.6 path=dive turn=100 repeat=2 every=4
   at 160 wave e2_ray n=3 form=column x=100 gap=0.6 path=swoop side=1 cx=420 cy=260 dur=5 diff=3
   at 164 wave e2_swallow n=6 form=sides x=60 gap=0.3 path=arc side=-1 turn=100 speed=240
-  at 168 wave e2_jelly n=2 form=line x=360 spacing=280 path=hover stop=180 wait=7 drop=credits value=400
-  at 176 pickup credits x=200 value=300
+  at 168 wave e2_jelly n=2 form=line x=360 spacing=280 path=hover stop=180 wait=7 drop=credits value=290
+  at 176 pickup credits x=200 value=220
   at 178 text e2_03_r7
   at 182 wave e2_mote n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.4 speed=150
   at 190 end

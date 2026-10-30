@@ -18,7 +18,7 @@ level e5_10
   at 13  wave e5_wisp n=4 form=line x=360 spacing=150 path=chase turn=50 dur=2.4
   at 17  wave e5_lantern x=360 path=hover stop=160 wait=7
   at 21  wave e5_shard n=10 form=random range=600 gap=0.25 path=dive turn=50 diff=3
-  at 24  pickup credits x=200 value=1500
+  at 24  pickup credits x=200 value=630
   at 26  text e5_10_r2
 
   # the corona's choir: lanterns and choir-ships in a crown, the sky full of rings
@@ -36,7 +36,7 @@ level e5_10
   at 61  wave e5_sail x=0 path=strafe side=-1 y=210 speed=80 diff=3
   at 63  wave e5_wisp n=6 form=sides x=60 gap=0.5 path=chase turn=55 dur=2.4
   at 68  wave e5_prism n=3 form=line x=360 spacing=220 path=hover stop=190 wait=6
-  at 73  pickup credits x=480 value=1600
+  at 73  pickup credits x=480 value=670
   at 75  wave e5_streak n=8 form=random range=620 gap=0.35 path=straight speed=430
   at 80  wave e5_weaver x=360 path=hover stop=140 wait=7
 
@@ -46,10 +46,10 @@ level e5_10
   at 88  wave e5_spear n=6 form=v x=360 spacing=55 path=dive turn=40
   at 93  wave e5_shard n=10 form=column x=100 gap=0.18 path=swoop side=1 cx=360 cy=340 dur=3.4 mirror=1
   at 99  wave e5_wisp n=5 form=column x=360 gap=0.5 path=chase turn=50 dur=2.6
-  at 103 pickup credits x=360 value=1600
+  at 103 pickup credits x=360 value=670
   at 105 wave e5_moth n=6 form=column x=150 gap=0.5 path=swoop side=1 cx=360 cy=260 dur=5 mirror=1
   at 111 scroll 80
-  at 112 wave e5_cantor n=2 form=line x=360 spacing=340 path=hover stop=160 wait=8 drop=credits value=2500
+  at 112 wave e5_cantor n=2 form=line x=360 spacing=340 path=hover stop=160 wait=8 drop=credits value=1050
   at 118 pickup cube x=200 item=e5_c26
   at 120 wave e5_petal n=10 form=grid cols=5 x=360 spacing=90 dy=50 path=sine amp=30 freq=0.3 speed=130
   at 126 wave e5_lantern x=360 path=hover stop=150 wait=7 diff=3
@@ -57,7 +57,7 @@ level e5_10
   # the last guard of light, then silence
   at 130 text e5_10_r5
   at 132 wave e5_streak n=6 form=random range=600 gap=0.45 path=straight speed=420
-  at 136 wave e5_lantern n=3 form=arc x=360 spacing=110 path=hover stop=150 wait=9 drop=credits value=3000
+  at 136 wave e5_lantern n=3 form=arc x=360 spacing=110 path=hover stop=150 wait=9 drop=credits value=1260
   at 142 wave e5_wisp n=4 form=line x=360 spacing=160 path=chase turn=45 dur=2.2
   at 148 wave e5_mote n=12 form=random range=620 gap=0.25 path=dive turn=40 speed=220
 
@@ -65,8 +65,8 @@ level e5_10
   at 158 scroll 50
   at 159 text e5_10_r6
   at 163 pickup shield x=360
-  at 164 pickup credits x=200 value=1000
-  at 165 pickup credits x=520 value=1000
+  at 164 pickup credits x=200 value=420
+  at 165 pickup credits x=520 value=420
   at 167 text e5_10_r7
   at 171 music final
   at 172 warn

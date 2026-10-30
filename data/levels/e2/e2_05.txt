@@ -23,7 +23,7 @@ level e2_05
   at 14  wave e2_ray n=3 form=column x=600 gap=0.6 path=swoop side=-1 cx=320 cy=260 dur=5
   at 18  wave e2_jelly n=2 form=line x=360 spacing=300 path=hover stop=180 wait=6
   at 22  wave e2_lancefish n=3 form=line x=360 spacing=150 path=dive turn=80
-  at 24  pickup credits x=300 value=200
+  at 24  pickup credits x=300 value=145
   at 26  text e2_05_r2
   at 28  ground e2_hydrofoil n=3 form=column x=40 gap=1.0 path=ground dir=-60 speed=60
   at 30  wave e2_mote n=10 form=grid cols=5 x=360 spacing=70 dy=60 path=straight speed=120 drop=shield
@@ -38,7 +38,7 @@ level e2_05
   at 60  wave e2_jelly x=520 path=hover stop=170 wait=7
   at 62  text e2_05_r3
   at 64  wave e2_swallow n=6 form=v x=360 spacing=50 path=straight speed=300 repeat=2 every=4
-  at 70  pickup credits x=500 value=350
+  at 70  pickup credits x=500 value=255
   at 72  wave e2_seamine n=6 form=random range=600 gap=0.6 path=drift speed=60
   at 80  pickup cube x=520 item=e2_c12
   at 82  ground e2_reef x=200
@@ -58,7 +58,7 @@ level e2_05
   at 118 wave e2_mote n=8 form=column x=680 gap=0.25 path=straight speed=200
   at 120 wave e2_lancefish n=2 form=line x=600 spacing=80 path=dive turn=60 diff=3
   at 122 scroll 65
-  at 124 pickup credits x=360 value=300
+  at 124 pickup credits x=360 value=220
   at 128 text e2_05_r6
   at 130 wave e2_ray n=4 form=column x=620 gap=0.5 path=swoop side=-1 cx=300 cy=280 dur=4.6
   at 134 wave e2_mote n=8 form=v x=360 spacing=50 path=sine amp=30 freq=0.4 speed=150

@@ -5,12 +5,11 @@ episode 5
   intro e5_intro
   ending e5_ending
   credits 120000
-  # intended: ship seraphim, front comet 6, rear backbeam 5, side seraph mirror, gen singularity, shield halo_s, special lance
-  ship kestrel
-  front scatter 9
-  rear tailgun 8
-  side pip pip
-  gen dynamo
-  shield ward
-  special nova_s
+  ship seraphim
+  front comet 6
+  rear backbeam 5
+  side seraph mirror
+  gen singularity
+  shield halo_s
+  special lance
   arcade e5_01 e5_03 e5_05 e5_07 e5_09 e5_10
