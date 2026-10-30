@@ -410,7 +410,8 @@ void App::play( float dt )
         if ( m_replayEnd && !m_paused )
         {
             m_outroT = std::max( m_outroT, 0.0f ) + dt;
-            if ( m_outroT > 1.5f )
+            // Over: a short fade, or any key at once.
+            if ( m_outroT > 1.5f || m_in.accept() || m_in.back() || m_in.pause() )
             {
                 stopReplay();
                 return;

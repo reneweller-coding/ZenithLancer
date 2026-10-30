@@ -59,8 +59,8 @@ accept                  # the newest one
 until:play:20
 wait wait wait wait
 pause
-down down accept        # end the replay
-until:replays:50
+down down accept        # end the replay (or, when it was over already, back to the list)
+until:replays:200
 back
 expect:main
 down down down down down down down down accept   # Erfolge und Statistik
