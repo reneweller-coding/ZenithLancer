@@ -2412,10 +2412,12 @@ void World::collide()
             float r = en.m_def->m_radius * ( en.m_ground ? GroundFactor : 1.0f ) * en.m_def->m_scale;
             if ( dist2( b.m_pos, en.m_pos ) > ( r + b.m_radius ) * ( r + b.m_radius ) ) continue;
             if ( !en.m_def->m_solid && en.m_def->m_invulnerable ) continue;
+            // (Read before the hit: a structure destroyed leaves a ruin, a new enemy, and en may then point nowhere.)
+            bool scenery = en.m_def->m_scenery;
             hitEnemy( (int)e, b.m_damage, b.m_owner, b.m_pos );
             b.m_lastHit = (int)e;
             // A structure of the ground does not stop a shot: it flies on to what it was fired at.
-            if ( en.m_def->m_scenery ) continue;
+            if ( scenery ) continue;
             if ( b.m_explode > 0 )
             {
                 for ( size_t o = 0; o < m_enemies.size(); ++o )
