@@ -7,6 +7,7 @@ episode 6
   first e6_01
   intro e6_intro
   ending e6_ending
+  swarm every=3.6 group=6 e6_sdart e6_sring e6_sneedle e6_smoth
   credits 160000
   ship seraphim
   front tempest 8

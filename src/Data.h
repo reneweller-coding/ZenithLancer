@@ -185,6 +185,8 @@ struct EnemyDef
     bool                 m_invulnerable = false;     ///< cannot be destroyed (obstacles)
     float                m_life = 40.0f;             ///< seconds it may stay on the field (bosses: always)
     bool                 m_scenery = false;          ///< a structure of the ground: no kill count, shots pass on through
+    bool                 m_swarm = false;            ///< a swarm flier (the episode's "swarm" line): not in the kill ratio
+    float                m_worth = 1.0f;             ///< the share of its score paid as credits in the campaign
     std::string          m_ruin;                     ///< what it leaves when destroyed (an enemy entry, "" nothing)
     std::string          m_where;
 };
@@ -363,6 +365,9 @@ struct EpisodeDef
     Loadout                  m_loadout;        ///< ... and the gear
     std::vector<std::string> m_arcade;         ///< the arcade run's missions (in order)
     bool                     m_epilogue = false;   ///< played after the campaign's end (its credits, its scores)
+    std::vector<std::string> m_swarm;          ///< the swarm fliers that come between the waves (Tyrian's random fliers)
+    float                    m_swarmEvery = 0.0f;   ///< seconds between two squads of them (0: none)
+    int                      m_swarmGroup = 5;      ///< at most so many in a squad
     std::string              m_where;
 };
 

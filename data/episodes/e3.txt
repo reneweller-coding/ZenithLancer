@@ -9,6 +9,7 @@ episode 3
   first e3_01
   intro e3_intro
   ending e3_ending
+  swarm every=3.6 group=6 e3_sdart e3_sring e3_sneedle e3_smoth
   credits 30000
   ship corsair
   front arc 3

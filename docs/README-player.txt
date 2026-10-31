@@ -54,7 +54,9 @@ Kette:     Jeder Abschuss innerhalb von zwei Sekunden nach dem letzten verlänge
            Kette am Leben. Die Kredite der Kampagne bleiben davon unberührt.
 Am Boden:  Silos, Schlote, Bohrinseln, Kuppeln, Fässer, Kisten und Laternen lassen sich
            zerschießen. Sie bringen Punkte und ein paar Kredite; deine Schüsse fliegen durch
-           sie hindurch weiter, sie halten also nichts auf, was einem Gegner gilt.
+           sie hindurch weiter, sie halten also nichts auf, was einem Gegner gilt. Vorsicht
+           vor Flakstellungen und Raketenbatterien, und zerstöre Startrampen früh: von dort
+           steigen Flieger auf.
 
 Spielarten
 ----------
@@ -168,7 +170,8 @@ Chain:     every kill within two seconds of the last one extends the chain and r
            are not touched by it.
 Ground:    silos, smokestacks, rigs, domes, drums, crates and lamps can be shot to pieces.
            They give points and a few credits; your shots fly on through them, so they
-           never stop a shot meant for an enemy.
+           never stop a shot meant for an enemy. Mind the flak nests and rocket batteries,
+           and wreck launch pads early: fliers rise from them.
 
 Ways to play
 ------------

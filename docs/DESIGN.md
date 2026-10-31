@@ -102,17 +102,30 @@ Unmöglich, 43 on Selbstmord and 16 on Zenit (30.10.2026).
 
 ## The ground's structures
 
-Tyrian's ground was full of things to wreck; so is this one. Every world has 11–14 kinds of its own, 150 in all:
-seven to nine buildings (Pyra's smokestacks, cooling towers and blast furnaces, Thalassa's rigs, piers and tankers, the
-cities' tower blocks and parking decks, the Choir's brood towers, the Crown's gates and cores, Vael's aerostats ...)
-and four or five small things between them (drums, crates, lamps, carts, boats, bulbs). tools/gen_structures.py writes
-their models, enemies and the themes' `structures` lines. The game scatters them
-over the ground as it scrolls, with their own random numbers, so the waves, the replays' enemies and the balance stay
-as they were. Shots fly on through them, and nothing that counts for the fight counts them: the kill ratio, the
-medals, the chain, seeking weapons, the autopilot, the music's intensity and the mission's end. They add points and
-7–18 % more credits (the simulation of all missions on Normal and on Veteran without lives); the money per structure
-grows with the episode so that it means as much late as early. The extra pickups lure: the autopilot, which flies to
-every pickup near it, takes a little more damage than before.
+Tyrian's ground was full of things to wreck, up to 25 kinds on a level; this one has 26–30 per world, 333 in all
+(tools/gen_structures.py writes their models, enemies and the themes' `structures` lines):
+
+- 17–21 buildings: Pyra's smokestacks, cooling towers, blast furnaces and headframes, Thalassa's rigs, piers, tankers
+  and trawlers, the cities' tower blocks and parking decks, wind rotors and radar dishes that turn, the Choir's brood
+  towers and membranes, the Crown's gates and cores, Vael's aerostats and weather stations ...
+- 5–7 small things between them: drums, crates, lamps, carts, boats, barriers, power cells, parked drones, fungi.
+- 3 guns and pads: flak nests and rocket batteries (spore cannons and crystal throwers on the living worlds) that
+  shoot back, and launch pads (hatcheries) from which a flier of the episode rises into the fight, three at most.
+
+The game scatters them as the ground scrolls, with their own random numbers, and builds up the first picture of a
+mission at once. Shots fly on through them; the kill ratio, the medals, the chain, the music's intensity and the
+mission's end leave them alone, seeking weapons and the autopilot go only for the guns and pads.
+
+Tyrian topped its levels up with random fliers (300–550 enemies on a planet level). Each episode here has four swarm
+fliers of its own (tools/gen_fliers.py: a dart, a ring, a needle, a moth) that come in squads between the waves, never
+in a boss fight. With them and the pads a mission brings 300–460 fliers instead of 110–195, and 370–780 things on
+the ground are shot to pieces. Swarm fliers and the pads' fliers are not in the kill ratio, pay a fifth of their
+score as credits and shoot only from Hard on.
+
+The simulation of all missions (the autopilot, Normal; Veteran without lives) with all of it against the game
+without it: Normal is still won everywhere; credits +5–28 %; the damage taken rises (the guns, the pads' fliers, and
+the autopilot flies to every pickup), most in episode 1; Veteran without lives loses 4 missions instead of 2; the
+autopilot's share of the scripted enemies drops by 7–12 points (more targets to choose from).
 
 ## The world
 

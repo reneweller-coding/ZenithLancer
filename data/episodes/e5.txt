@@ -6,6 +6,7 @@ episode 5
   first e5_01
   intro e5_intro
   ending e5_ending
+  swarm every=3.6 group=6 e5_sdart e5_sring e5_sneedle e5_smoth
   credits 120000
   ship seraphim
   front comet 6

@@ -782,7 +782,7 @@ void App::countMission( bool won )
     // What a mission adds to the achievements (practice flights and replays add nothing).
     if ( m_practice || m_replaying || !m_opt.m_test.empty() || !m_world.m_level ) return;
     const Stats &st = m_world.m_stats;
-    m_feats.add( "kills", st.m_kills );
+    m_feats.add( "kills", st.m_kills + st.m_swarmKills );
     m_feats.add( "bosses", st.m_bossKills );
     m_feats.add( "deaths", st.m_deaths );
     m_feats.add( "seconds", st.m_time );

@@ -419,7 +419,7 @@ achievement seen_all
   title_en "Bestiary"
   desc "Begegne jedem Gegner, den das Archiv kennt. Okonjo möchte eine Kopie."
   desc_en "Meet every enemy the archive knows. Okonjo would like a copy."
-  need seen 139
+  need seen 163
   hidden 1
 
 achievement heard_all

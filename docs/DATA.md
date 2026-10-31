@@ -97,14 +97,17 @@ enemy e1_dart
   solid 1 / invulnerable 1     # obstacles: bullets stop / it cannot be destroyed
   scenery 1                    # a structure of the ground (kind ground): see below
   ruin ruin_metal              # what it leaves when destroyed (another enemy entry: scenery, invulnerable, solid 0)
+  swarm 1                      # a swarm flier (an episode's "swarm" line sends it): not in the kill ratio
+  worth 0.2                    # the share of its score paid as credits in the campaign (default 1)
 ```
 
 Ground enemies stand on the ground below and move with it; all guns hit them.
 
-Structures (`scenery 1`, data/enemies/structures.txt) are the ground's silos, tanks, masts and halls, and the
-drums, crates, lamps and carts between them. They never fire. The pilots' shots and beams hit them and fly on, so
-they swallow no shot meant for an enemy. Seeking weapons, sidekicks, the autopilot, the kill count, the chain, the
-music's intensity, the mission's end and the archive all leave them alone. Destroyed, they give points (at the
+Structures (`scenery 1`, data/enemies/structures.txt) are the ground's silos, tanks, masts and halls, the drums,
+crates, lamps and carts between them, and its guns and launch pads. The pilots' shots and beams hit them and fly on,
+so they swallow no shot meant for an enemy. The kill count, the chain, the music's intensity, the mission's end and
+the archive leave them alone; seeking weapons, sidekicks and the autopilot go only for those that fire (guns and pads).
+At a mission's start the field is built up already (guns only in its upper half). Destroyed, they give points (at the
 chain's multiplier) and a little money that grows with the episode (×1 to ×8), and they leave their `ruin`. The
 game places them itself, from the theme's `structures` lines; missions do not name them. Bosses hold the timeline until
 they die; give them parts and phases. Parts sit in the parent's frame: x to its right, z towards its nose.
@@ -135,7 +138,7 @@ mirrors `dir` and `rot` too (symmetric beams and fans).
 | `missile` | homing bullets (`turn` degrees/s, homing stops after 2.5 s) |
 | `mine` | drifting mines that burst into a ring |
 | `laser` | a beam: `warn` (s of warning line), `dur`, `width`, `damage` (×4 a second while it touches: 40 costs 160/s); aimed unless `dir`/`rot` given (or `aim=1`/`aim=0` says so); `rot` sweeps (degrees/s) |
-| `spawn` | launches an enemy: `spawn=e2_drone` (its own path, or `path=` and path values on the fire line) |
+| `spawn` | launches an enemy: `spawn=e2_drone` (its own path, or `path=` and path values on the fire line); `spawn=e1_shard\|e2_lancefish\|...` takes the one of the mission's episode. Launched from a ground unit (a launch pad) it first rises from the ground for 1.4 s, out of reach, and counts like a swarm flier |
 | `radio` | says a radio line once: `fire radio e5_10_r7 from=0.5` (a boss's taunt at half strength) |
 
 Bullet damage defaults: orb 6, needle 5, big 12, ring 8, missile 10, mine 10, shard 5, wave 7. The difficulty
@@ -326,6 +329,8 @@ episode 1
   shield veil
   special nova
   arcade e1_01 e1_03 e1_05 e1_07 e1_09 e1_10
+  swarm every=3.6 group=6 e1_sdart e1_sring e1_sneedle e1_smoth   # squads of 3..group swarm fliers about every 3.6 s
+                            # (0.6-1.4 of it) while no boss holds the field, in the campaign and arcade (tools/gen_fliers.py)
 ```
 
 ## Stories (`data/story/de/*.txt`)

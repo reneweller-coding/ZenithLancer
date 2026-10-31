@@ -530,6 +530,8 @@ bool Catalog::load( const std::string &dir, const std::vector<std::string> &mods
                 else if ( k == "invulnerable" ) d.m_invulnerable = l.argNum( 0, 1 ) != 0;
                 else if ( k == "life" ) d.m_life = l.argNum( 0, 40.0f );
                 else if ( k == "scenery" ) d.m_scenery = l.argNum( 0, 1 ) != 0;
+                else if ( k == "swarm" ) d.m_swarm = l.argNum( 0, 1 ) != 0;
+                else if ( k == "worth" ) d.m_worth = l.argNum( 0, 1.0f );
                 else if ( k == "ruin" ) d.m_ruin = l.arg( 0 );
                 else unknown( b, l, m_errors );
             }
@@ -760,6 +762,12 @@ bool Catalog::load( const std::string &dir, const std::vector<std::string> &mods
                 else if ( k == "credits" ) ep.m_credits = (int)l.argNum( 0, 0 );
                 else if ( k == "arcade" ) ep.m_arcade = l.m_args;
                 else if ( k == "epilogue" ) ep.m_epilogue = l.argNum( 0, 0 ) != 0;
+                else if ( k == "swarm" )
+                {
+                    ep.m_swarm = l.m_args;
+                    ep.m_swarmEvery = l.num( "every", 4.0f );
+                    ep.m_swarmGroup = std::max( 1, (int)l.num( "group", 5.0f ) );
+                }
                 else if ( k == "ship" || k == "front" || k == "rear" || k == "side" || k == "gen" || k == "shield" ||
                           k == "special" )
                     loadoutLine( ep.m_loadout, l );
@@ -865,6 +873,14 @@ void Catalog::check()
     auto need = [&]( bool ok, const std::string &where, const std::string &what ) {
         if ( !ok ) m_errors.push_back( where + ": " + what );
     };
+    // The swarm fliers of an episode: air enemies marked swarm.
+    for ( const auto &[id, ep] : m_episodes )
+        for ( const std::string &n : ep.m_swarm )
+        {
+            auto it = m_enemies.find( n );
+            need( it != m_enemies.end() && it->second.m_kind == EnemyKindE::AIR && it->second.m_swarm, ep.m_where,
+                  "swarm " + n + " is no air enemy with swarm 1" );
+        }
     // The structures a ground carries: ground enemies that are scenery.
     for ( const Block &b : m_themes )
         for ( const Line &l : b.m_lines )
@@ -885,7 +901,15 @@ void Catalog::check()
         if ( !d.m_ruin.empty() ) need( m_enemies.count( d.m_ruin ) > 0, d.m_where, "ruin " + d.m_ruin + " unknown" );
         for ( const FireDef &f : d.m_fire )
         {
-            if ( f.m_pattern == "spawn" ) need( m_enemies.count( f.m_spawn ) > 0, f.m_where, "spawn " + f.m_spawn + " unknown" );
+            // spawn=a|b|c: the one of the mission's episode (World picks it), each must exist.
+            if ( f.m_pattern == "spawn" )
+                for ( size_t a = 0; a <= f.m_spawn.size(); )
+                {
+                    size_t      b = std::min( f.m_spawn.find( '|', a ), f.m_spawn.size() );
+                    std::string one = f.m_spawn.substr( a, b - a );
+                    need( m_enemies.count( one ) > 0, f.m_where, "spawn " + one + " unknown" );
+                    a = b + 1;
+                }
             if ( f.m_pattern == "radio" && !m_story.count( f.m_spawn ) )
                 m_warnings.push_back( f.m_where + ": radio \"" + f.m_spawn + "\" is missing" );
         }

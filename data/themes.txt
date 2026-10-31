@@ -45,8 +45,9 @@ theme nebula
   bloom 1.1
 
 theme station
-  structures every=71 group=3 st_containers st_tank st_mast st_hangar st_pad st_uplink st_bunker st_reactor st_fuel
-  structures every=43 group=4 st_drums st_crates st_lamp st_cart st_beacon
+  structures every=71 group=3 st_containers st_tank st_mast st_hangar st_pad st_uplink st_bunker st_reactor st_fuel st_warehouse st_watchtower st_radar st_helipad st_habitat st_antennas st_shuttle st_lattice_tower st_domes3
+  structures every=43 group=4 st_drums st_crates st_lamp st_cart st_beacon st_barrier st_fuelcells st_drone
+  structures every=380 group=2 st_flak st_rockets st_launchpad
   sky #05070c
   fog #0a1018 0.0012
   sun -0.3 -0.85 -0.45
@@ -88,8 +89,9 @@ theme gallery
   stars 0.6
 
 theme lava
-  structures every=82 group=3 fo_stack fo_silo fo_hall fo_tank fo_crane fo_cooling fo_refinery fo_furnace fo_bunker
-  structures every=50 group=4 fo_drums fo_pipes fo_ingots fo_cart fo_lamp
+  structures every=82 group=3 fo_stack fo_silo fo_hall fo_tank fo_crane fo_cooling fo_refinery fo_furnace fo_bunker fo_warehouse fo_conveyor fo_silos3 fo_minehead fo_oreheap fo_watertank fo_train fo_lattice_tower fo_radar
+  structures every=50 group=4 fo_drums fo_pipes fo_ingots fo_cart fo_lamp fo_barrier fo_valve fo_pallet
+  structures every=440 group=2 fo_flak fo_rockets fo_launchpad
   sky #120604
   fog #2a0a06 0.0014
   sun -0.4 -0.8 -0.3
@@ -108,8 +110,9 @@ theme lava
   groundlight 0.5
 
 theme desert
-  structures every=79 group=3 de_dome de_tower de_mast de_truck de_solar de_house de_bunker de_uplink de_fuel
-  structures every=47 group=4 de_drums de_rover de_crates de_lamp de_pipes
+  structures every=79 group=3 de_dome de_tower de_mast de_truck de_solar de_house de_bunker de_uplink de_fuel de_watchtower de_watertank de_turbine de_oreheap de_pumpjack de_domes3 de_stalls de_minehead de_train
+  structures every=47 group=4 de_drums de_rover de_crates de_lamp de_pipes de_panel de_barrier de_pallet
+  structures every=420 group=2 de_flak de_rockets de_launchpad
   sky #1c140c
   fog #6a5034 0.0007
   sun -0.55 -0.7 -0.3
@@ -129,8 +132,9 @@ theme desert
   groundlight 0.37
 
 theme foundry
-  structures every=64 group=3 fo_stack fo_silo fo_hall fo_tank fo_crane fo_cooling fo_refinery fo_furnace fo_bunker
-  structures every=38 group=4 fo_drums fo_pipes fo_ingots fo_cart fo_lamp
+  structures every=64 group=3 fo_stack fo_silo fo_hall fo_tank fo_crane fo_cooling fo_refinery fo_furnace fo_bunker fo_warehouse fo_conveyor fo_silos3 fo_minehead fo_oreheap fo_watertank fo_train fo_lattice_tower fo_radar
+  structures every=38 group=4 fo_drums fo_pipes fo_ingots fo_cart fo_lamp fo_barrier fo_valve fo_pallet
+  structures every=340 group=2 fo_flak fo_rockets fo_launchpad
   sky #0e0806
   fog #2a120a 0.0014
   sun -0.35 -0.85 -0.35
@@ -151,8 +155,9 @@ theme foundry
   groundlight 0.5
 
 theme ocean
-  structures every=112 group=3 oc_rig oc_buoy oc_barge oc_beacon oc_dock oc_farm oc_tanker oc_platform
-  structures every=68 group=4 oc_boat oc_float oc_crates oc_skiff
+  structures every=112 group=3 oc_rig oc_buoy oc_barge oc_beacon oc_dock oc_farm oc_tanker oc_platform oc_trawler oc_floatcrane oc_helipad oc_radar oc_gastanks oc_habitat oc_turbine oc_weather oc_lattice_tower
+  structures every=68 group=4 oc_boat oc_float oc_crates oc_skiff oc_smallbuoy oc_lifeboat
+  structures every=600 group=2 oc_flak oc_rockets oc_launchpad
   sky #0a1420
   fog #3a5a78 0.0009
   sun -0.5 -0.75 -0.35
@@ -172,8 +177,9 @@ theme ocean
   groundlight 0.48
 
 theme storm
-  structures every=105 group=3 oc_rig oc_buoy oc_barge oc_beacon oc_dock oc_farm oc_tanker oc_platform
-  structures every=63 group=4 oc_boat oc_float oc_crates oc_skiff
+  structures every=105 group=3 oc_rig oc_buoy oc_barge oc_beacon oc_dock oc_farm oc_tanker oc_platform oc_trawler oc_floatcrane oc_helipad oc_radar oc_gastanks oc_habitat oc_turbine oc_weather oc_lattice_tower
+  structures every=63 group=4 oc_boat oc_float oc_crates oc_skiff oc_smallbuoy oc_lifeboat
+  structures every=560 group=2 oc_flak oc_rockets oc_launchpad
   sky #060a10
   fog #222c38 0.0016
   sun -0.3 -0.9 -0.3
@@ -193,8 +199,9 @@ theme storm
   groundlight 0.45
 
 theme ice
-  structures every=82 group=3 ic_dome ic_radar ic_tank ic_containers ic_drill ic_igloo ic_hall ic_reactor
-  structures every=50 group=4 ic_cat ic_drums ic_lamp ic_crates ic_sled
+  structures every=82 group=3 ic_dome ic_radar ic_tank ic_containers ic_drill ic_igloo ic_hall ic_reactor ic_warehouse ic_greenhouse ic_turbine ic_watchtower ic_antennas ic_domes3 ic_habitat ic_helipad ic_lattice_tower
+  structures every=50 group=4 ic_cat ic_drums ic_lamp ic_crates ic_sled ic_barrier ic_fuelcells ic_drone
+  structures every=440 group=2 ic_flak ic_rockets ic_launchpad
   sky #0c1420
   fog #2a3a4c 0.0009
   sun -0.5 -0.7 -0.4
@@ -213,8 +220,9 @@ theme ice
   groundlight 0.3
 
 theme city
-  structures every=64 group=3 ci_tower ci_tower2 ci_tanks ci_pylon ci_tower3 ci_mall ci_garage ci_house ci_arena
-  structures every=38 group=4 ci_car ci_sign ci_lamp ci_kiosk ci_bus
+  structures every=64 group=3 ci_tower ci_tower2 ci_tanks ci_pylon ci_tower3 ci_mall ci_garage ci_house ci_arena ci_warehouse ci_habitat ci_antennas ci_stalls ci_train ci_helipad ci_obelisk ci_turbine ci_watertank ci_lattice_tower
+  structures every=38 group=4 ci_car ci_sign ci_lamp ci_kiosk ci_bus ci_barrier ci_drone ci_dish
+  structures every=340 group=2 ci_flak ci_rockets ci_launchpad
   sky #080a12
   fog #2a3244 0.0012
   sun -0.4 -0.8 -0.4
@@ -236,8 +244,9 @@ theme city
   groundlight 0.45
 
 theme jungle
-  structures every=82 group=3 ju_hut ju_tower ju_green ju_silo ju_platform ju_stele ju_lab ju_pad
-  structures every=50 group=4 ju_crates ju_lamp ju_drums ju_rover ju_tent
+  structures every=82 group=3 ju_hut ju_tower ju_green ju_silo ju_platform ju_stele ju_lab ju_pad ju_watchtower ju_watertank ju_turbine ju_greenhouse ju_radar ju_helipad ju_antennas ju_domes3 ju_stalls
+  structures every=50 group=4 ju_crates ju_lamp ju_drums ju_rover ju_tent ju_barrier ju_panel ju_drone
+  structures every=440 group=2 ju_flak ju_rockets ju_launchpad
   sky #0a120a
   fog #1e3a24 0.0013
   sun -0.45 -0.75 -0.45
@@ -257,8 +266,9 @@ theme jungle
   groundlight 0.5
 
 theme hive
-  structures every=82 group=3 hv_pod hv_node hv_hut hv_mound hv_vent hv_chrysalis hv_anemone
-  structures every=50 group=4 hv_eggs hv_shard hv_bulb hv_spines
+  structures every=82 group=3 hv_pod hv_node hv_hut hv_mound hv_vent hv_chrysalis hv_anemone hv_tendrils hv_pustules hv_membrane hv_rootknot hv_stalks hv_orbs hv_shell hv_spinarms hv_obelisk
+  structures every=50 group=4 hv_eggs hv_shard hv_bulb hv_spines hv_fungus hv_spore hv_pebble
+  structures every=440 group=2 hv_sporegun hv_emitter hv_hatchery
   sky #0e060e
   fog #2a0e26 0.0016
   sun -0.4 -0.8 -0.4
@@ -276,8 +286,9 @@ theme hive
   groundlight 0.5
 
 theme corona
-  structures every=86 group=3 co_spire co_shrine co_relay co_mirrors co_fins co_gate co_core
-  structures every=52 group=4 co_shard co_lamp co_node co_cable
+  structures every=86 group=3 co_spire co_shrine co_relay co_mirrors co_fins co_gate co_core co_spinarms co_orbs co_obelisk co_lattice_tower co_radar co_domes3 co_antennas co_membrane co_conveyor co_silos3
+  structures every=52 group=4 co_shard co_lamp co_node co_cable co_fuelcells co_dish co_pebble
+  structures every=460 group=2 co_emitter co_flak co_launchpad
   sky #1a0602
   fog #3a0c02 0.0011
   sun -0.2 -0.95 -0.2
@@ -293,8 +304,9 @@ theme corona
   bloom 1.0
 
 theme lattice
-  structures every=75 group=3 la_spire la_relay la_shrine la_gate la_prism la_column la_core la_mirrors
-  structures every=45 group=4 la_shard la_lamp la_node la_cable
+  structures every=75 group=3 la_spire la_relay la_shrine la_gate la_prism la_column la_core la_mirrors la_spinarms la_orbs la_obelisk la_lattice_tower la_membrane la_domes3 la_radar la_stalks la_antennas la_shell
+  structures every=45 group=4 la_shard la_lamp la_node la_cable la_fuelcells la_dish la_pebble
+  structures every=400 group=2 la_emitter la_flak la_launchpad
   sky #06040c
   fog #140a1e 0.0013
   sun -0.4 -0.8 -0.4
@@ -309,8 +321,9 @@ theme lattice
   groundlight 0.5
 
 theme river
-  structures every=90 group=3 ju_hut ju_tower ju_green ju_silo ju_platform ju_stele ju_lab ju_pad
-  structures every=54 group=4 ju_crates ju_lamp ju_drums ju_rover ju_tent
+  structures every=90 group=3 ju_hut ju_tower ju_green ju_silo ju_platform ju_stele ju_lab ju_pad ju_watchtower ju_watertank ju_turbine ju_greenhouse ju_radar ju_helipad ju_antennas ju_domes3 ju_stalls
+  structures every=54 group=4 ju_crates ju_lamp ju_drums ju_rover ju_tent ju_barrier ju_panel ju_drone
+  structures every=480 group=2 ju_flak ju_rockets ju_launchpad
   sky #0a120a
   fog #1e3a24 0.0013
   sun -0.45 -0.75 -0.45
@@ -329,8 +342,9 @@ theme river
   groundlight 0.5
 
 theme cave
-  structures every=98 group=3 de_dome de_tower de_mast de_truck de_solar de_house de_bunker de_uplink de_fuel
-  structures every=58 group=4 de_drums de_rover de_crates de_lamp de_pipes
+  structures every=98 group=3 de_dome de_tower de_mast de_truck de_solar de_house de_bunker de_uplink de_fuel de_watchtower de_watertank de_turbine de_oreheap de_pumpjack de_domes3 de_stalls de_minehead de_train
+  structures every=58 group=4 de_drums de_rover de_crates de_lamp de_pipes de_panel de_barrier de_pallet
+  structures every=520 group=2 de_flak de_rockets de_launchpad
   sky #020304
   fog #03070a 0.0018
   sun -0.3 -0.9 -0.3

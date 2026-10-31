@@ -147,6 +147,8 @@ struct Enemy
     int                m_wave = -1;         ///< which wave (all of a wave killed: a bonus)
     float              m_lift = 0.0f;       ///< parts: drawn this far above the parent's plane
     std::string        m_faceAs;            ///< the wave's own facing (instead of the enemy's)
+    float              m_rise = 0.0f;       ///< seconds still rising from the ground (launched from a pad): not hit, no fire
+    bool               m_extra = false;     ///< launched from a pad: counted like a swarm flier, not in the kill ratio
 };
 
 /** @brief A bullet (the pilot's or an enemy's). */
@@ -309,6 +311,8 @@ struct Stats
     int                      m_bestChain = 0;   ///< the longest chain of kills (either pilot)
     int                      m_grazes = 0;      ///< bullets grazed (both pilots)
     int                      m_structures = 0;  ///< structures of the ground destroyed
+    int                      m_swarm = 0;       ///< swarm fliers that came (not in m_spawned)
+    int                      m_swarmKills = 0;  ///< ... and were shot down (not in m_kills)
 };
 
 /** @brief A set of structures standing on the ground: a theme's "structures" line. */
@@ -394,6 +398,8 @@ public:
     int                  m_rules = 0;          ///< the weekly flight's rules (setRules)
     std::vector<StructureSet> m_structSets;    ///< what stands on the ground now (setStructures)
     Rng                  m_srng;               ///< their own random numbers (the enemies' stay as they were)
+    const EpisodeDef    *m_swarmEp = nullptr;  ///< whose swarm fliers come between the waves (none: no swarm)
+    float                m_swarmT = 0.0f;      ///< seconds to the next squad
     DifficultyDef        m_diff;
     Rng                  m_rng;
     float                m_clock = 0.0f;       ///< seconds since the start
@@ -439,6 +445,7 @@ public:
         int                  m_wave = -1;
         float                m_hp = 1.0f;
         std::vector<DropDef> m_drops;
+        float                m_rise = 0.0f;   ///< rises from the ground first (launched from a pad)
     };
     std::vector<Pending>  m_pending;
     std::vector<std::pair<float, size_t>> m_free;   ///< events a boss does not hold: (clock, index)
@@ -462,14 +469,16 @@ public:
     /**
      * @brief The ground's structures for a theme: its "structures" line (data/themes.txt), none where it has none.
      * @param[in] theme  the theme's name
+     * @param[in] fill   also stand them all over the field now (a mission's start: its first picture is built up)
      */
-    void setStructures( const std::string &theme );
+    void setStructures( const std::string &theme, bool fill = false );
 
 private:
     void runTimeline();
     void runEvent( const LevelEvent &ev );
     void spawnWave( const Line &p, bool ground );
-    void spawnStructures( StructureSet &s );
+    void spawnStructures( StructureSet &s, float y = -60.0f );
+    void spawnSwarm();
     void movePlayer( int i, const PlayerInput &in );
     void firePlayer( int i, const PlayerInput &in );
     void fireShots( int i, const std::vector<ShotDef> &shots, int level, int maxLevel, int mode, int volley,
@@ -517,6 +526,8 @@ struct SimResult
     int         m_deaths = 0;
     float       m_bossTime = 0.0f;   ///< seconds the bosses held the timeline
     int         m_cubes = 0, m_keys = 0, m_plans = 0;   ///< what was picked up
+    int         m_swarm = 0, m_swarmKills = 0;          ///< swarm fliers that came, shot down
+    int         m_structures = 0;                       ///< structures of the ground destroyed
     float       m_firstDeath = -1.0f;   ///< seconds to the first death (-1: none)
     float       m_timeline = 0.0f;      ///< how far the timeline came (it stands while a boss holds it)
     int         m_bosses = 0;           ///< bosses destroyed

@@ -3,8 +3,9 @@
 # gold and magenta stay readable. (It may move into data/themes.txt; the missions only need the name.)
 
 theme e5_corona
-  structures every=86 group=3 co_spire co_shrine co_relay co_mirrors co_fins co_gate co_core
-  structures every=52 group=4 co_shard co_lamp co_node co_cable
+  structures every=86 group=3 co_spire co_shrine co_relay co_mirrors co_fins co_gate co_core co_spinarms co_orbs co_obelisk co_lattice_tower co_radar co_domes3 co_antennas co_membrane co_conveyor co_silos3
+  structures every=52 group=4 co_shard co_lamp co_node co_cable co_fuelcells co_dish co_pebble
+  structures every=460 group=2 co_emitter co_flak co_launchpad
   sky #1c0602
   fog #3a0c04 0.0012
   sun -0.2 -0.95 -0.2

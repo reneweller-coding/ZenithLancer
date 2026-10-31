@@ -6,6 +6,7 @@ episode 4
   first e4_01
   intro e4_intro
   ending e4_ending
+  swarm every=3.6 group=6 e4_sdart e4_sring e4_sneedle e4_smoth
   credits 60000
   ship warhawk
   front helix 4

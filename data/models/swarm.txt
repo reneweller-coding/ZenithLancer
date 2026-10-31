@@ -1,0 +1,187 @@
+# The swarm fliers, four kinds for every episode. Written by tools/gen_fliers.py.
+
+# Funkenpfeil (Spark Dart): a swarm flier of episode 1.
+model e1_sdart
+  part hull len=20 wid=7 hgt=4 shape=dart color=#3a2440
+  part wing span=10 root=10 tip=3 sweep=7 z=3 thick=1 color=#6a3a70 stripe=#ff60e0
+  part engine r=1.6 len=4 z=9 glow=#60e8ff color=#3a2440
+  part light r=0.9 y=2 z=-4 color=#ff60e0
+
+# Glutring (Ember Ring): a swarm flier of episode 1.
+model e1_sring
+  part ring r=8 thick=1.6 seg=14 color=#6a3a70 group=spin spin=260
+  part sphere r=4 color=#3a2440
+  part light r=1.6 y=2 color=#ff60e0
+  part light r=0.8 x=8 z=0 color=#60e8ff group=spin
+  part light r=0.8 x=-8 z=0 color=#60e8ff group=spin
+  part light r=0.8 x=0 z=8 color=#60e8ff group=spin
+  part light r=0.8 x=0 z=-8 color=#60e8ff group=spin
+
+# Aschenadel (Ash Needle): a swarm flier of episode 1.
+model e1_sneedle
+  part hull len=26 wid=4 hgt=3.5 shape=needle color=#3a2440
+  part fin h=4 root=8 tip=2 sweep=4 z=6 thick=0.8 color=#6a3a70
+  part wing span=6 root=8 tip=1 sweep=6 z=6 thick=0.8 color=#6a3a70
+  part engine r=1.2 len=3 z=12 glow=#ff60e0 color=#3a2440
+
+# Schlackenmotte (Slag Moth): a swarm flier of episode 1.
+model e1_smoth
+  part hull len=12 wid=8 hgt=5 shape=blob color=#3a2440
+  part wing span=14 root=12 tip=8 sweep=-2 z=0 thick=0.8 color=#6a3a70 stripe=#60e8ff
+  part light r=1.2 y=3 color=#ff60e0
+  part light r=0.7 x=10 z=2 y=1 color=#60e8ff
+
+# Gischtpfeil (Spray Dart): a swarm flier of episode 2.
+model e2_sdart
+  part hull len=20 wid=7 hgt=4 shape=dart color=#1e3a50
+  part wing span=10 root=10 tip=3 sweep=7 z=3 thick=1 color=#2e5a78 stripe=#60f0ff
+  part engine r=1.6 len=4 z=9 glow=#ffb040 color=#1e3a50
+  part light r=0.9 y=2 z=-4 color=#60f0ff
+
+# Brandungsring (Surf Ring): a swarm flier of episode 2.
+model e2_sring
+  part ring r=8 thick=1.6 seg=14 color=#2e5a78 group=spin spin=260
+  part sphere r=4 color=#1e3a50
+  part light r=1.6 y=2 color=#60f0ff
+  part light r=0.8 x=8 z=0 color=#ffb040 group=spin
+  part light r=0.8 x=-8 z=0 color=#ffb040 group=spin
+  part light r=0.8 x=0 z=8 color=#ffb040 group=spin
+  part light r=0.8 x=0 z=-8 color=#ffb040 group=spin
+
+# Tidennadel (Tide Needle): a swarm flier of episode 2.
+model e2_sneedle
+  part hull len=26 wid=4 hgt=3.5 shape=needle color=#1e3a50
+  part fin h=4 root=8 tip=2 sweep=4 z=6 thick=0.8 color=#2e5a78
+  part wing span=6 root=8 tip=1 sweep=6 z=6 thick=0.8 color=#2e5a78
+  part engine r=1.2 len=3 z=12 glow=#60f0ff color=#1e3a50
+
+# Sturmmotte (Storm Moth): a swarm flier of episode 2.
+model e2_smoth
+  part hull len=12 wid=8 hgt=5 shape=blob color=#1e3a50
+  part wing span=14 root=12 tip=8 sweep=-2 z=0 thick=0.8 color=#2e5a78 stripe=#ffb040
+  part light r=1.2 y=3 color=#60f0ff
+  part light r=0.7 x=10 z=2 y=1 color=#ffb040
+
+# Splitterpfeil (Splinter Dart): a swarm flier of episode 3.
+model e3_sdart
+  part hull len=20 wid=7 hgt=4 shape=dart color=#3a3430
+  part wing span=10 root=10 tip=3 sweep=7 z=3 thick=1 color=#6a5a48 stripe=#ffb040
+  part engine r=1.6 len=4 z=9 glow=#40e0ff color=#3a3430
+  part light r=0.9 y=2 z=-4 color=#ffb040
+
+# Geröllring (Rubble Ring): a swarm flier of episode 3.
+model e3_sring
+  part ring r=8 thick=1.6 seg=14 color=#6a5a48 group=spin spin=260
+  part sphere r=4 color=#3a3430
+  part light r=1.6 y=2 color=#ffb040
+  part light r=0.8 x=8 z=0 color=#40e0ff group=spin
+  part light r=0.8 x=-8 z=0 color=#40e0ff group=spin
+  part light r=0.8 x=0 z=8 color=#40e0ff group=spin
+  part light r=0.8 x=0 z=-8 color=#40e0ff group=spin
+
+# Staubnadel (Dust Needle): a swarm flier of episode 3.
+model e3_sneedle
+  part hull len=26 wid=4 hgt=3.5 shape=needle color=#3a3430
+  part fin h=4 root=8 tip=2 sweep=4 z=6 thick=0.8 color=#6a5a48
+  part wing span=6 root=8 tip=1 sweep=6 z=6 thick=0.8 color=#6a5a48
+  part engine r=1.2 len=3 z=12 glow=#ffb040 color=#3a3430
+
+# Erzmotte (Ore Moth): a swarm flier of episode 3.
+model e3_smoth
+  part hull len=12 wid=8 hgt=5 shape=blob color=#3a3430
+  part wing span=14 root=12 tip=8 sweep=-2 z=0 thick=0.8 color=#6a5a48 stripe=#40e0ff
+  part light r=1.2 y=3 color=#ffb040
+  part light r=0.7 x=10 z=2 y=1 color=#40e0ff
+
+# Sporenpfeil (Spore Dart): a swarm flier of episode 4.
+model e4_sdart
+  part hull len=20 wid=7 hgt=4 shape=dart color=#2a3a24
+  part wing span=10 root=10 tip=3 sweep=7 z=3 thick=1 color=#4a6a38 stripe=#ffe060
+  part engine r=1.6 len=4 z=9 glow=#ff50d0 color=#2a3a24
+  part light r=0.9 y=2 z=-4 color=#ffe060
+
+# Rankenring (Vine Ring): a swarm flier of episode 4.
+model e4_sring
+  part ring r=8 thick=1.6 seg=14 color=#4a6a38 group=spin spin=260
+  part sphere r=4 color=#2a3a24
+  part light r=1.6 y=2 color=#ffe060
+  part light r=0.8 x=8 z=0 color=#ff50d0 group=spin
+  part light r=0.8 x=-8 z=0 color=#ff50d0 group=spin
+  part light r=0.8 x=0 z=8 color=#ff50d0 group=spin
+  part light r=0.8 x=0 z=-8 color=#ff50d0 group=spin
+
+# Pollennadel (Pollen Needle): a swarm flier of episode 4.
+model e4_sneedle
+  part hull len=26 wid=4 hgt=3.5 shape=needle color=#2a3a24
+  part fin h=4 root=8 tip=2 sweep=4 z=6 thick=0.8 color=#4a6a38
+  part wing span=6 root=8 tip=1 sweep=6 z=6 thick=0.8 color=#4a6a38
+  part engine r=1.2 len=3 z=12 glow=#ffe060 color=#2a3a24
+
+# Schimmermotte (Glimmer Moth): a swarm flier of episode 4.
+model e4_smoth
+  part hull len=12 wid=8 hgt=5 shape=blob color=#2a3a24
+  part wing span=14 root=12 tip=8 sweep=-2 z=0 thick=0.8 color=#4a6a38 stripe=#ff50d0
+  part light r=1.2 y=3 color=#ffe060
+  part light r=0.7 x=10 z=2 y=1 color=#ff50d0
+
+# Sonnenpfeil (Sun Dart): a swarm flier of episode 5.
+model e5_sdart
+  part hull len=20 wid=7 hgt=4 shape=dart color=#3a2210
+  part wing span=10 root=10 tip=3 sweep=7 z=3 thick=1 color=#7a4a20 stripe=#ffd060
+  part engine r=1.6 len=4 z=9 glow=#ff50d0 color=#3a2210
+  part light r=0.9 y=2 z=-4 color=#ffd060
+
+# Flammenring (Flame Ring): a swarm flier of episode 5.
+model e5_sring
+  part ring r=8 thick=1.6 seg=14 color=#7a4a20 group=spin spin=260
+  part sphere r=4 color=#3a2210
+  part light r=1.6 y=2 color=#ffd060
+  part light r=0.8 x=8 z=0 color=#ff50d0 group=spin
+  part light r=0.8 x=-8 z=0 color=#ff50d0 group=spin
+  part light r=0.8 x=0 z=8 color=#ff50d0 group=spin
+  part light r=0.8 x=0 z=-8 color=#ff50d0 group=spin
+
+# Koronanadel (Corona Needle): a swarm flier of episode 5.
+model e5_sneedle
+  part hull len=26 wid=4 hgt=3.5 shape=needle color=#3a2210
+  part fin h=4 root=8 tip=2 sweep=4 z=6 thick=0.8 color=#7a4a20
+  part wing span=6 root=8 tip=1 sweep=6 z=6 thick=0.8 color=#7a4a20
+  part engine r=1.2 len=3 z=12 glow=#ffd060 color=#3a2210
+
+# Strahlenmotte (Ray Moth): a swarm flier of episode 5.
+model e5_smoth
+  part hull len=12 wid=8 hgt=5 shape=blob color=#3a2210
+  part wing span=14 root=12 tip=8 sweep=-2 z=0 thick=0.8 color=#7a4a20 stripe=#ff50d0
+  part light r=1.2 y=3 color=#ffd060
+  part light r=0.7 x=10 z=2 y=1 color=#ff50d0
+
+# Wolkenpfeil (Cloud Dart): a swarm flier of episode 6.
+model e6_sdart
+  part hull len=20 wid=7 hgt=4 shape=dart color=#26384a
+  part wing span=10 root=10 tip=3 sweep=7 z=3 thick=1 color=#5c6878 stripe=#9fe8ff
+  part engine r=1.6 len=4 z=9 glow=#ffb060 color=#26384a
+  part light r=0.9 y=2 z=-4 color=#9fe8ff
+
+# Windring (Wind Ring): a swarm flier of episode 6.
+model e6_sring
+  part ring r=8 thick=1.6 seg=14 color=#5c6878 group=spin spin=260
+  part sphere r=4 color=#26384a
+  part light r=1.6 y=2 color=#9fe8ff
+  part light r=0.8 x=8 z=0 color=#ffb060 group=spin
+  part light r=0.8 x=-8 z=0 color=#ffb060 group=spin
+  part light r=0.8 x=0 z=8 color=#ffb060 group=spin
+  part light r=0.8 x=0 z=-8 color=#ffb060 group=spin
+
+# Echonadel (Echo Needle): a swarm flier of episode 6.
+model e6_sneedle
+  part hull len=26 wid=4 hgt=3.5 shape=needle color=#26384a
+  part fin h=4 root=8 tip=2 sweep=4 z=6 thick=0.8 color=#5c6878
+  part wing span=6 root=8 tip=1 sweep=6 z=6 thick=0.8 color=#5c6878
+  part engine r=1.2 len=3 z=12 glow=#9fe8ff color=#26384a
+
+# Nebelmotte (Mist Moth): a swarm flier of episode 6.
+model e6_smoth
+  part hull len=12 wid=8 hgt=5 shape=blob color=#26384a
+  part wing span=14 root=12 tip=8 sweep=-2 z=0 thick=0.8 color=#5c6878 stripe=#ffb060
+  part light r=1.2 y=3 color=#9fe8ff
+  part light r=0.7 x=10 z=2 y=1 color=#ffb060

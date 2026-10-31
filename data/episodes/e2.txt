@@ -6,6 +6,7 @@ episode 2
   first e2_01
   intro e2_intro
   ending e2_ending
+  swarm every=4 group=6 e2_sdart e2_sring e2_sneedle e2_smoth
   credits 12000
   ship kestrel
   front hornet 3

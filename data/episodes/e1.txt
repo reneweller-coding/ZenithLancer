@@ -9,6 +9,7 @@ episode 1
   first e1_01
   intro e1_intro
   ending e1_ending
+  swarm every=4.6 group=6 e1_sdart e1_sring e1_sneedle e1_smoth
   credits 3000
   ship lancer
   front pulse 1

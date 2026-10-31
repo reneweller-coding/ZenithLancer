@@ -947,7 +947,7 @@ void Renderer::drawShadows( const World &w, const Catalog &cat )
     SetShaderValue( s, g.m_locShRect, &m_shadowRect, SHADER_UNIFORM_VEC4 );
     for ( const Enemy &e : w.m_enemies )
     {
-        if ( e.m_dead || e.m_gone || e.m_ground ) continue;
+        if ( e.m_dead || e.m_gone || e.m_ground || e.m_rise > 0 ) continue;
         const ModelMesh &mm = s_forge.get( cat, e.m_def->m_model );
         Matrix           at = modelMatrix( { e.m_pos.x, 0, e.m_pos.y }, e.m_face, e.m_bank, e.m_def->m_scale, 0 );
         drawMeshes( mm, at, e.m_face, e.m_head, g.m_shadowMat );
@@ -1031,7 +1031,7 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
     boost( 2.4f );
     for ( const Enemy &e : w.m_enemies )
     {
-        if ( e.m_dead || e.m_gone || e.m_ground ) continue;
+        if ( e.m_dead || e.m_gone || e.m_ground || e.m_rise > 0 ) continue;
         const ModelMesh &mm = s_forge.get( *w.m_cat, e.m_def->m_model );
         if ( mm.m_engines.empty() ) continue;
         float   yaw = ( 180.0f - e.m_face ) * Deg, c = std::cos( yaw ), s = std::sin( yaw );
@@ -1296,6 +1296,15 @@ void Renderer::draw( const World &w, const Catalog &cat )
         {
             float k = 0.5f + 0.5f * std::sin( m_time * 10.0f );
             tint = { 255, (unsigned char)( 200 + 55 * k ), (unsigned char)( 200 + 55 * k ), 255 };
+        }
+        if ( e.m_rise > 0 )
+        {
+            float   k = 1.0f - e.m_rise / RiseTime;
+            k = k * k * ( 3.0f - 2.0f * k );
+            Vector3 gp = groundPoint( e.m_pos, m_scroll );
+            Vector3 at = { gp.x + ( e.m_pos.x - gp.x ) * k, gp.y * ( 1.0f - k ), gp.z + ( e.m_pos.y - gp.z ) * k };
+            drawModel( mm, at, e.m_face, 0, e.m_def->m_scale * ( GroundFactor + ( 1.0f - GroundFactor ) * k ), e.m_flash, e.m_head, tint );
+            continue;
         }
         drawModel( mm, { e.m_pos.x, bob + e.m_lift, e.m_pos.y }, e.m_face, e.m_bank, e.m_def->m_scale, e.m_flash, e.m_head, tint, pitch );
     }

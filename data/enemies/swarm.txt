@@ -1,0 +1,404 @@
+# The swarm fliers (swarm 1: not in the kill ratio; worth: the share of the score paid as credits). They come in
+# squads between the waves, by the episodes' "swarm" lines. Written by tools/gen_fliers.py.
+
+enemy e1_sdart
+  title "Funkenpfeil"
+  title_en "Spark Dart"
+  model e1_sdart
+  swarm 1
+  worth 0.2
+  hp 6
+  radius 9
+  score 12
+  speed 240
+  path swoop cx=360 cy=320 dur=4.5
+  face move
+  fire aimed every=4.0 delay=1.5 speed=210 bullet=needle color=#ff60e0 cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e1_sring
+  title "Glutring"
+  title_en "Ember Ring"
+  model e1_sring
+  swarm 1
+  worth 0.2
+  hp 8.4
+  radius 11
+  score 12
+  speed 170
+  path sine amp=70 freq=0.5
+  face spin
+  fire ring n=4 every=5.0 delay=2.2 speed=130 bullet=orb color=#ff60e0 cap=1 diff=4
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e1_sneedle
+  title "Aschenadel"
+  title_en "Ash Needle"
+  model e1_sneedle
+  swarm 1
+  worth 0.2
+  hp 4.8
+  radius 9
+  score 12
+  speed 300
+  path dive turn=70
+  face move
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e1_smoth
+  title "Schlackenmotte"
+  title_en "Slag Moth"
+  model e1_smoth
+  swarm 1
+  worth 0.2
+  hp 6
+  radius 9
+  score 12
+  speed 190
+  path zigzag amp=90 freq=0.7
+  face move
+  fire aimed every=4.5 delay=2.0 speed=180 bullet=orb color=#ff60e0 cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e2_sdart
+  title "Gischtpfeil"
+  title_en "Spray Dart"
+  model e2_sdart
+  swarm 1
+  worth 0.2
+  hp 9
+  radius 9
+  score 16
+  speed 240
+  path swoop cx=360 cy=320 dur=4.5
+  face move
+  fire aimed every=4.0 delay=1.5 speed=210 bullet=needle color=#60f0ff cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e2_sring
+  title "Brandungsring"
+  title_en "Surf Ring"
+  model e2_sring
+  swarm 1
+  worth 0.2
+  hp 12.6
+  radius 11
+  score 16
+  speed 170
+  path sine amp=70 freq=0.5
+  face spin
+  fire ring n=4 every=5.0 delay=2.2 speed=130 bullet=orb color=#60f0ff cap=1 diff=4
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e2_sneedle
+  title "Tidennadel"
+  title_en "Tide Needle"
+  model e2_sneedle
+  swarm 1
+  worth 0.2
+  hp 7.2
+  radius 9
+  score 16
+  speed 300
+  path dive turn=70
+  face move
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e2_smoth
+  title "Sturmmotte"
+  title_en "Storm Moth"
+  model e2_smoth
+  swarm 1
+  worth 0.2
+  hp 9
+  radius 9
+  score 16
+  speed 190
+  path zigzag amp=90 freq=0.7
+  face move
+  fire aimed every=4.5 delay=2.0 speed=180 bullet=orb color=#60f0ff cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e3_sdart
+  title "Splitterpfeil"
+  title_en "Splinter Dart"
+  model e3_sdart
+  swarm 1
+  worth 0.2
+  hp 13
+  radius 9
+  score 20
+  speed 240
+  path swoop cx=360 cy=320 dur=4.5
+  face move
+  fire aimed every=4.0 delay=1.5 speed=210 bullet=needle color=#ffb040 cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e3_sring
+  title "Geröllring"
+  title_en "Rubble Ring"
+  model e3_sring
+  swarm 1
+  worth 0.2
+  hp 18.2
+  radius 11
+  score 20
+  speed 170
+  path sine amp=70 freq=0.5
+  face spin
+  fire ring n=4 every=5.0 delay=2.2 speed=130 bullet=orb color=#ffb040 cap=1 diff=4
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e3_sneedle
+  title "Staubnadel"
+  title_en "Dust Needle"
+  model e3_sneedle
+  swarm 1
+  worth 0.2
+  hp 10.4
+  radius 9
+  score 20
+  speed 300
+  path dive turn=70
+  face move
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e3_smoth
+  title "Erzmotte"
+  title_en "Ore Moth"
+  model e3_smoth
+  swarm 1
+  worth 0.2
+  hp 13
+  radius 9
+  score 20
+  speed 190
+  path zigzag amp=90 freq=0.7
+  face move
+  fire aimed every=4.5 delay=2.0 speed=180 bullet=orb color=#ffb040 cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e4_sdart
+  title "Sporenpfeil"
+  title_en "Spore Dart"
+  model e4_sdart
+  swarm 1
+  worth 0.2
+  hp 18
+  radius 9
+  score 24
+  speed 240
+  path swoop cx=360 cy=320 dur=4.5
+  face move
+  fire aimed every=4.0 delay=1.5 speed=210 bullet=needle color=#ffb030 cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e4_sring
+  title "Rankenring"
+  title_en "Vine Ring"
+  model e4_sring
+  swarm 1
+  worth 0.2
+  hp 25.2
+  radius 11
+  score 24
+  speed 170
+  path sine amp=70 freq=0.5
+  face spin
+  fire ring n=4 every=5.0 delay=2.2 speed=130 bullet=orb color=#ffb030 cap=1 diff=4
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e4_sneedle
+  title "Pollennadel"
+  title_en "Pollen Needle"
+  model e4_sneedle
+  swarm 1
+  worth 0.2
+  hp 14.4
+  radius 9
+  score 24
+  speed 300
+  path dive turn=70
+  face move
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e4_smoth
+  title "Schimmermotte"
+  title_en "Glimmer Moth"
+  model e4_smoth
+  swarm 1
+  worth 0.2
+  hp 18
+  radius 9
+  score 24
+  speed 190
+  path zigzag amp=90 freq=0.7
+  face move
+  fire aimed every=4.5 delay=2.0 speed=180 bullet=orb color=#ffb030 cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e5_sdart
+  title "Sonnenpfeil"
+  title_en "Sun Dart"
+  model e5_sdart
+  swarm 1
+  worth 0.2
+  hp 24
+  radius 9
+  score 28
+  speed 240
+  path swoop cx=360 cy=320 dur=4.5
+  face move
+  fire aimed every=4.0 delay=1.5 speed=210 bullet=needle color=#ff50d0 cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e5_sring
+  title "Flammenring"
+  title_en "Flame Ring"
+  model e5_sring
+  swarm 1
+  worth 0.2
+  hp 33.6
+  radius 11
+  score 28
+  speed 170
+  path sine amp=70 freq=0.5
+  face spin
+  fire ring n=4 every=5.0 delay=2.2 speed=130 bullet=orb color=#ff50d0 cap=1 diff=4
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e5_sneedle
+  title "Koronanadel"
+  title_en "Corona Needle"
+  model e5_sneedle
+  swarm 1
+  worth 0.2
+  hp 19.2
+  radius 9
+  score 28
+  speed 300
+  path dive turn=70
+  face move
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e5_smoth
+  title "Strahlenmotte"
+  title_en "Ray Moth"
+  model e5_smoth
+  swarm 1
+  worth 0.2
+  hp 24
+  radius 9
+  score 28
+  speed 190
+  path zigzag amp=90 freq=0.7
+  face move
+  fire aimed every=4.5 delay=2.0 speed=180 bullet=orb color=#ff50d0 cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e6_sdart
+  title "Wolkenpfeil"
+  title_en "Cloud Dart"
+  model e6_sdart
+  swarm 1
+  worth 0.2
+  hp 34
+  radius 9
+  score 32
+  speed 240
+  path swoop cx=360 cy=320 dur=4.5
+  face move
+  fire aimed every=4.0 delay=1.5 speed=210 bullet=needle color=#9fe8ff cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e6_sring
+  title "Windring"
+  title_en "Wind Ring"
+  model e6_sring
+  swarm 1
+  worth 0.2
+  hp 47.6
+  radius 11
+  score 32
+  speed 170
+  path sine amp=70 freq=0.5
+  face spin
+  fire ring n=4 every=5.0 delay=2.2 speed=130 bullet=orb color=#9fe8ff cap=1 diff=4
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e6_sneedle
+  title "Echonadel"
+  title_en "Echo Needle"
+  model e6_sneedle
+  swarm 1
+  worth 0.2
+  hp 27.2
+  radius 9
+  score 32
+  speed 300
+  path dive turn=70
+  face move
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8
+
+enemy e6_smoth
+  title "Nebelmotte"
+  title_en "Mist Moth"
+  model e6_smoth
+  swarm 1
+  worth 0.2
+  hp 34
+  radius 9
+  score 32
+  speed 190
+  path zigzag amp=90 freq=0.7
+  face move
+  fire aimed every=4.5 delay=2.0 speed=180 bullet=orb color=#9fe8ff cap=1 diff=3
+  drop power 0.01 mode=arcade
+  explode small
+  contact 8

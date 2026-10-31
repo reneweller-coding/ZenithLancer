@@ -26,6 +26,7 @@ constexpr float Deg = Pi / 180.0f;          ///< one degree in radians
 constexpr float CamHeight = 1600.0f;                                     ///< the camera above the field
 constexpr float GroundDepth = 260.0f;                                    ///< the ground below the field
 constexpr float GroundFactor = CamHeight / ( CamHeight + GroundDepth );   ///< the ground's scale on the field
+constexpr float RiseTime = 1.4f;   ///< seconds a flier launched from the ground takes to rise to the field
 
 /** @brief A small, fast random source (xorshift); the same seed gives the same game everywhere. */
 struct Rng

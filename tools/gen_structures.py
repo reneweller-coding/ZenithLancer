@@ -569,6 +569,384 @@ for world in WORLDS:
     WORLDS[world] += MORE[world]
     SMALL[world] += MORE_SMALL[world]
 
+
+# ---------------------------------------------------------------------------------------------------- a third round
+# Tyrian had up to 25 kinds of things on a ground; these give every world 25 to 30, guns and launch pads among them.
+# The builders below take a world's palette, so one recipe serves every world in its own colours.
+def warehouse(c, roof, trim, w=60, d=26):
+    return ["box w=%g h=12 d=%g color=%s" % (w, d, c)] + \
+        [("box w=%g h=2 d=%g y=12 x=%g color=%s" % (w / 6 - 1.2, d + 1, -w / 2 + w / 12 + i * w / 6, roof)) for i in range(6)] + \
+        [("box w=10 h=8 d=1 z=%g x=%g color=%s" % (-d / 2 - 0.4, x, trim)) for x in (-w / 4, w / 4)]
+
+
+def greenhouses(c, glass):
+    return [("box w=10 h=6 d=44 x=%g color=%s emit=0.25" % (x, glass)) for x in (-13, 0, 13)] + \
+        [("box w=11 h=0.6 d=1.2 x=%g y=6 z=%g color=%s" % (x, z, c)) for x in (-13, 0, 13) for z in (-20, -10, 0, 10, 20)]
+
+
+def watchtower(c, top, light, h=40):
+    return [("box w=1.6 h=%g d=1.6 x=%g z=%g color=%s" % (h, x, z, c)) for x in (-6, 6) for z in (-6, 6)] + \
+        ["box w=18 h=6 d=18 y=%g color=%s" % (h, top), "box w=20 h=3 d=20 y=%g taper=0.6 color=%s" % (h + 6, c), "light r=1.4 y=%g color=%s" % (h + 10, light)]
+
+
+def watertank(c, tank, light):
+    return [("box w=1.6 h=22 d=1.6 x=%g z=%g color=%s" % (x, z, c)) for x in (-8, 8) for z in (-8, 8)] + \
+        ["disc r=12 h=12 seg=14 y=22 color=%s" % tank, "dome r=12 ry=4 y=34 color=%s" % tank, "light r=1 y=39 color=%s" % light]
+
+
+def turbine(c, blade, light, h=40):
+    # A rotor on a mast, turning (seen from above it is a three-bladed wheel).
+    return ["box w=8 h=4 d=8 color=%s" % c, "disc r=1.6 h=%g seg=8 y=4 color=%s" % (h, c), "sphere r=2.5 y=%g color=%s" % (h + 4, c)] + \
+        around(3, 15, lambda x, z, a: ["box w=3 h=0.8 d=30 x=%g z=%g y=%g rot=%g color=%s group=spin spin=120 mirror=0" % (x, z, h + 4, a, blade)]) + \
+        ["light r=1 y=%g color=%s" % (h + 6, light)]
+
+
+def radar(c, dish, light):
+    return ["box w=16 h=8 d=16 color=%s" % c, "disc r=2 h=8 seg=8 y=8 color=%s" % c,
+            "box w=28 h=6 d=2 y=18 pitch=-15 color=%s group=spin spin=90" % dish, "light r=1 y=24 color=%s" % light]
+
+
+def helipad(c, mark, heli):
+    return pad(c, mark, mark) + ["hull len=22 wid=7 hgt=6 shape=tear y=2 color=%s" % heli, "box w=1.2 h=1.2 d=14 y=4 z=16 color=%s" % heli,
+                                 "box w=30 h=0.4 d=1.6 y=9 color=#2a2e34", "box w=1.6 h=0.4 d=30 y=9 color=#2a2e34"]
+
+
+def conveyor(c, belt, light):
+    return ["box w=10 h=6 d=64 y=4 color=%s" % belt, "box w=12 h=1.5 d=64 y=10 color=%s" % c] + \
+        [("box w=2 h=6 d=2 x=%g z=%g color=%s" % (x, z, c)) for x in (-5, 5) for z in (-24, 0, 24)] + \
+        ["box w=14 h=10 d=14 z=-36 color=%s" % c, "light r=1 y=12 z=-36 color=%s" % light]
+
+
+def silos3(c, roof, light):
+    out = []
+    for x in (-14, 0, 14):
+        out += ["disc r=6.5 h=30 seg=10 x=%g color=%s" % (x, c), "dome r=6.5 y=30 x=%g color=%s" % (x, roof)]
+    return out + ["box w=34 h=3 d=4 y=26 z=7 color=%s" % roof, "light r=1 y=38 color=%s" % light]
+
+
+def habitat(c, mod, light):
+    return ["box w=30 h=10 d=14 color=%s" % c, "box w=14 h=10 d=26 x=-8 z=6 color=%s" % mod, "box w=16 h=8 d=12 y=10 x=4 color=%s" % mod,
+            "box w=30.4 h=1.4 d=14.4 y=5 color=%s emit=0.7" % light, "greeble n=6 w=12 d=10 y=18 x=4 size=1.5 seed=29 color=%s" % c]
+
+
+def antennas(c, light):
+    out = ["box w=30 h=2 d=26 color=%s" % c]
+    for x, z, h in ((-10, -6, 34), (8, -10, 26), (0, 8, 40), (12, 10, 20)):
+        out += ["disc r=1 h=%g seg=6 x=%g z=%g color=%s" % (h, x, z, c), "light r=1 x=%g z=%g y=%g color=%s" % (x, z, h + 1, light)]
+    return out
+
+
+def domes3(c, shell_, light):
+    return ["box w=40 h=2 d=22 color=%s" % c] + [("dome r=%g x=%g y=2 color=%s" % (r, x, shell_)) for x, r in ((-12, 9), (5, 11), (17, 6))] + \
+        ["light r=1 y=8 x=-20 color=%s" % light]
+
+
+def obelisk(c, glow, h=46):
+    return ["box w=18 h=4 d=18 color=%s" % c, "box w=8 h=%g d=8 y=4 taper=0.55 color=%s" % (h, c), "box w=1.5 h=%g d=8.4 y=8 color=%s emit=0.8" % (h * 0.6, glow)]
+
+
+def lattice_tower(c, light, h=56):
+    return ["box w=14 h=%g d=14 taper=0.85 color=%s noise=0.3" % (h, c)] + \
+        [("ring r=%g thick=0.6 seg=4 y=%g rot=45 color=%s" % (7 * (1 - 0.85 * y / h) + 0.8, y, c)) for y in (10, 20, 30, 40)] + \
+        ["light r=1.4 y=%g color=%s" % (h + 1, light)]
+
+
+def shuttle(base, ship, wingc, light):
+    return pad(base, wingc, light) + ["hull len=36 wid=10 hgt=7 shape=dart y=3 color=%s" % ship,
+                                      "wing span=14 root=14 tip=4 sweep=8 z=6 y=3 thick=1.2 color=%s" % wingc,
+                                      "engine r=2.5 len=6 x=4 z=18 y=3 glow=%s color=%s" % (light, ship)]
+
+
+def train(c, wag, light):
+    return [("box w=1 h=1 d=90 x=%g color=#2a2a2a" % x) for x in (-4, 4)] + \
+        [("box w=10 h=8 d=22 y=1 z=%g color=%s" % (z, wag if i else c)) for i, z in enumerate((-30, -6, 18))] + \
+        [("light r=1 x=%g y=6 z=-41.5 color=%s mirror=0" % (x, light)) for x in (-3, 3)]
+
+
+def stalls(cols, light):
+    return [("box w=10 h=6 d=8 x=%g z=%g taper=0.9 color=%s" % (x, z, cols[i % len(cols)])) for i, (x, z) in enumerate(((-10, -8), (8, -9), (-9, 9), (10, 8)))] + \
+        ["light r=1 y=4 color=%s" % light]
+
+
+def minehead(c, frame, wheel):
+    return ["box w=24 h=12 d=18 z=10 color=%s" % c, "box w=3 h=40 d=3 x=-8 pitch=-10 color=%s" % frame, "box w=3 h=40 d=3 x=8 pitch=-10 color=%s" % frame,
+            "ring r=7 thick=1 seg=16 y=40 z=-4 pitch=90 color=%s" % wheel, "box w=20 h=2 d=4 y=38 z=-4 color=%s" % frame]
+
+
+def oreheap(c, rock):
+    return ["sphere r=16 rx=18 ry=6 rz=14 color=%s noise=0.3" % c, "sphere r=8 rx=9 ry=5 rz=8 x=10 z=6 y=2 color=%s noise=0.3" % rock] + \
+        [("box w=%g h=%g d=%g x=%g z=%g y=2 rot=%g color=%s noise=0.3" % (s, s * 0.7, s, x, z, r, rock)) for s, x, z, r in ((4, -10, 8, 20), (3, 12, -8, 40), (5, -4, -12, 10))]
+
+
+def pumpjack(c, beam, light):
+    return ["box w=10 h=3 d=30 color=%s" % c, "box w=3 h=14 d=3 color=%s" % c, "box w=3 h=3 d=30 y=14 z=-2 pitch=-12 color=%s" % beam,
+            "box w=6 h=8 d=4 y=8 z=-17 color=%s" % beam, "box w=8 h=6 d=8 z=12 y=3 color=%s" % c, "light r=0.8 y=10 z=12 color=%s" % light]
+
+
+def trawler(c, deck, light):
+    return ["hull len=46 wid=14 hgt=6 shape=tear color=%s" % c, "box w=10 h=7 d=10 y=5 z=-6 color=%s" % deck, "box w=1 h=14 d=1 y=5 z=8 color=%s" % deck,
+            "box w=1 h=1 d=16 y=18 z=12 pitch=30 color=%s" % deck, "light r=0.9 y=13 z=-6 color=%s" % light]
+
+
+def floatcrane(c, boom, light):
+    return ["hull len=50 wid=24 hgt=6 shape=box round=2 color=%s" % c, "box w=10 h=10 d=10 y=6 z=12 color=%s" % boom,
+            "box w=3 h=3 d=46 y=16 z=-8 pitch=-18 color=%s" % boom, "light r=1.2 y=26 z=-30 color=%s" % light]
+
+
+def spinarms(c, glow):
+    return ["disc r=8 h=6 seg=12 color=%s" % c, "sphere r=4 y=8 color=%s emit=0.9" % glow] + \
+        around(4, 12, lambda x, z, a: ["box w=2 h=1.5 d=20 x=%g z=%g y=8 rot=%g color=%s group=spin spin=70 mirror=0" % (x, z, a, c),
+                                       "light r=1.2 x=%g z=%g y=9 color=%s group=spin mirror=0" % (x * 1.8, z * 1.8, glow)])
+
+
+def orbs(c, glow):
+    return ["box w=30 h=2 d=30 color=%s" % c] + [("disc r=1 h=10 seg=6 x=%g z=%g y=2 color=%s" % (x, z, c)) for x in (-10, 10) for z in (-10, 10)] + \
+        [("sphere r=4 x=%g z=%g y=14 color=%s emit=0.8" % (x, z, glow)) for x in (-10, 10) for z in (-10, 10)]
+
+
+def tendrils(c, glow):
+    return ["sphere r=7 ry=4 color=%s" % c] + \
+        around(6, 5, lambda x, z, a: ["spike r=2 len=20 x=%g z=%g y=3 pitch=25 rot=%g color=%s mirror=0" % (x, z, a, c),
+                                      "sphere r=1.4 x=%g z=%g y=6 color=%s emit=0.9 mirror=0" % (x * 3.6, z * 3.6, glow)])
+
+
+def pustules(c, glow):
+    spots = ((7, -6, -4), (5, 6, -6), (6, 2, 7), (4, -9, 8))
+    return [("sphere r=%g ry=%g x=%g z=%g color=%s" % (r, r * 0.7, x, z, c)) for r, x, z in spots] + \
+        [("sphere r=%g x=%g z=%g y=%g color=%s emit=0.9" % (r * 0.35, x, z, r * 0.6, glow)) for r, x, z in spots]
+
+
+def membrane(c, glow):
+    return ["disc r=16 h=2 seg=14 color=%s" % c, "dome r=14 y=2 glass=1 color=%s emit=0.3" % glow, "sphere r=5 y=6 color=%s emit=1" % glow,
+            "ring r=14.5 thick=1 seg=16 y=2 color=%s" % c]
+
+
+def rootknot(c, glow):
+    return [("ring r=%g thick=2 seg=12 y=%g x=%g color=%s" % (r, y, x, c)) for r, y, x in ((12, 1, 0), (8, 4, 4), (6, 7, -3))] + \
+        ["sphere r=5 y=6 color=%s" % c, "sphere r=2 y=11 color=%s emit=1" % glow]
+
+
+def shell(c, glow):
+    return [("ring r=%g thick=%g seg=14 y=%g color=%s" % (r, r * 0.25, y, c)) for r, y in ((12, 2), (9, 6), (6.5, 9.5), (4.5, 12.5))] + \
+        ["sphere r=3 y=15 color=%s emit=0.9" % glow]
+
+
+def stalks(c, glow):
+    st = ((24, -4, -2), (18, 4, -3), (30, 0, 4))
+    return ["disc r=8 h=2 seg=10 color=%s" % c] + [("disc r=0.8 h=%g seg=5 x=%g z=%g color=%s" % (h, x, z, c)) for h, x, z in st] + \
+        [("sphere r=2.5 x=%g z=%g y=%g color=%s emit=1" % (x, z, h, glow)) for h, x, z in st]
+
+
+def weather(c, cup, light):
+    return ["box w=12 h=4 d=12 color=%s" % c, "disc r=1 h=26 seg=6 y=4 color=%s" % c] + \
+        around(3, 6, lambda x, z, a: ["box w=1 h=0.8 d=12 x=%g z=%g y=30 rot=%g color=%s group=spin spin=200 mirror=0" % (x, z, a, c),
+                                      "sphere r=1.8 x=%g z=%g y=30 color=%s group=spin mirror=0" % (x * 2, z * 2, cup)]) + ["light r=1 y=32 color=%s" % light]
+
+
+def gastanks(c, tank, light):
+    return ["box w=36 h=2 d=14 color=%s" % c] + [("sphere r=7 x=%g y=8 color=%s" % (x, tank)) for x in (-12, 0, 12)] + ["light r=1 y=16 color=%s" % light]
+
+
+def barrier(c, stripe):
+    return [("box w=7 h=4 d=4 x=%g taper=0.3 color=%s" % (x, c if i % 2 else stripe)) for i, x in enumerate((-12, -4, 4, 12))]
+
+
+def fuelcells(c, glow):
+    return [("disc r=2.5 h=9 seg=8 x=%g color=%s" % (x, c)) for x in (-6, 0, 6)] + \
+        [("ring r=2.7 thick=0.5 seg=8 x=%g y=6 color=%s emit=0.8" % (x, glow)) for x in (-6, 0, 6)] + ["box w=18 h=1.5 d=7 color=%s" % c]
+
+
+def drone(c, light):
+    return ["box w=6 h=3 d=6 y=2 color=%s" % c] + [("disc r=3 h=0.8 seg=10 x=%g z=%g y=3 color=%s" % (x, z, c)) for x in (-6, 6) for z in (-6, 6)] + \
+        [("box w=9 h=0.8 d=1 y=2.5 rot=%g color=%s" % (r, c)) for r in (45, -45)] + ["light r=0.7 y=4 color=%s" % light]
+
+
+def panel(c, cell):
+    return ["box w=16 h=0.8 d=10 y=5 pitch=-25 color=%s emit=0.15" % cell, "box w=1.4 h=5 d=1.4 color=%s" % c]
+
+
+def dish(c, d, light):
+    return ["box w=6 h=3 d=6 color=%s" % c, "disc r=6 h=0.8 seg=12 y=6 pitch=45 color=%s" % d, "light r=0.6 y=8 color=%s" % light]
+
+
+def pallet(c, c2):
+    return ["box w=16 h=1.5 d=12 color=%s" % c] + [("box w=6 h=5 d=5 x=%g z=%g y=1.5 color=%s" % (x, z, c2)) for x in (-4, 4) for z in (-3, 3)]
+
+
+def valve(c, wheel):
+    return ["disc r=3 h=10 seg=8 color=%s" % c, "ring r=3.5 thick=0.6 seg=10 y=10 color=%s" % wheel, "box w=10 h=2.4 d=2.4 y=5 color=%s" % c]
+
+
+def fungus(c, cap, glow):
+    return ["disc r=1.5 h=8 seg=6 color=%s" % c, "dome r=7 ry=3 y=8 color=%s" % cap, "light r=0.8 y=9 color=%s" % glow,
+            "disc r=1 h=5 seg=6 x=6 z=3 color=%s" % c, "dome r=4 ry=2 x=6 z=3 y=5 color=%s" % cap]
+
+
+def spore(c, glow):
+    return [("sphere r=%g x=%g z=%g y=%g color=%s emit=0.7" % (r, x, z, r, glow)) for r, x, z in ((3, 0, 0), (2, 5, -3), (2.4, -4, 4))] + \
+        ["disc r=6 h=1 seg=8 color=%s" % c]
+
+
+def pebble(c, glow):
+    return ["crystal r=2.4 len=9 pitch=70 y=4 seg=5 color=%s emit=0.5" % glow, "crystal r=1.8 len=7 pitch=50 x=3 z=2 y=2 rot=120 seg=4 color=%s emit=0.4" % glow,
+            "box w=7 h=1.5 d=7 color=%s" % c]
+
+
+def smallbuoy(c, light):
+    return ["sphere r=4 color=%s" % c, "disc r=0.6 h=8 seg=5 y=2 color=%s" % c, "light r=1 y=10 color=%s" % light]
+
+
+# The guns: a head that turns to the pilot (group=head) on a base.
+def flak(c, d, light):
+    return ["disc r=12 h=4 seg=12 color=%s" % c, "box w=14 h=6 d=14 y=4 taper=0.3 color=%s" % d,
+            "box w=10 h=5 d=10 y=10 color=%s group=head pivot=0,0" % c, "gun r=1.2 len=14 x=2.5 y=12 z=-8 color=%s group=head" % d,
+            "light r=1 y=15 color=%s group=head" % light]
+
+
+def rockets(c, d, light):
+    return ["box w=20 h=5 d=20 color=%s" % d, "box w=14 h=8 d=12 y=5 color=%s group=head pivot=0,0" % c,
+            "gun r=1.8 len=10 x=3 y=8 z=-6 color=%s group=head" % d, "gun r=1.8 len=10 x=3 y=12 z=-6 color=%s group=head" % d,
+            "light r=1 y=14 color=%s group=head" % light]
+
+
+def sporegun(c, d, acc, glow):
+    return ["sphere r=10 ry=6 color=%s" % c, "sphere r=6 y=8 color=%s group=head pivot=0,0" % d, "spike r=3 len=12 y=9 z=-6 color=%s group=head" % acc,
+            "sphere r=2 y=12 color=%s emit=1 group=head" % glow]
+
+
+def emitter(d, acc, glow):
+    return ["box w=16 h=4 d=16 color=%s" % d, "crystal r=4 len=16 y=10 z=-2 color=%s emit=0.7 group=head pivot=0,0" % glow,
+            "ring r=8 thick=1 seg=14 y=6 color=%s emit=0.6" % acc]
+
+
+# The launch pads: from time to time a flier of the episode rises from them into the fight.
+def launchpad(c, d, light):
+    return ["box w=34 h=3 d=34 color=%s" % d, "box w=22 h=0.6 d=22 y=3 color=#14161a", "ring r=13 thick=1 seg=4 y=3.2 rot=45 color=%s emit=0.8" % light] + \
+        [("box w=3 h=14 d=3 x=%g z=%g color=%s" % (x, z, c)) for x in (-15, 15) for z in (-15, 15)] + \
+        [("light r=1.2 x=%g z=%g y=15 color=%s" % (x, z, light)) for x in (-15, 15) for z in (-15, 15)]
+
+
+def hatchery(c, glow):
+    return ["sphere r=16 ry=7 color=%s" % c, "ring r=9 thick=2.5 seg=14 y=5 color=%s" % c, "disc r=7 h=1 seg=12 y=5 color=%s emit=1" % glow] + \
+        around(5, 15, lambda x, z, a: ["spike r=2.5 len=10 x=%g z=%g y=2 pitch=40 rot=%g color=%s mirror=0" % (x, z, a, c)])
+
+
+PALETTES = {
+    "station": dict(base="#5a6474", dark="#3a424e", light="#9aa4b4", accent="#d8c040", glow="#60c0ff", warn="#ff5040", glass="#a0d8ff", shot="#ff7040"),
+    "foundry": dict(base="#5a4a40", dark="#3a2e28", light="#7a6a5a", accent="#c09030", glow="#ff8030", warn="#ff6020", glass="#ffb070", shot="#ff9040"),
+    "desert": dict(base="#8a7a5a", dark="#5a5040", light="#b0906a", accent="#c0a070", glow="#ffd080", warn="#ff5040", glass="#c8e0f0", shot="#ff7040"),
+    "ocean": dict(base="#6a7480", dark="#3a4a5a", light="#d8d0c0", accent="#c04030", glow="#ffd060", warn="#ff5040", glass="#a0d8ff", shot="#ff7040"),
+    "ice": dict(base="#8a96a8", dark="#5a6474", light="#d8e4f0", accent="#c04030", glow="#60c0ff", warn="#ff8040", glass="#d0f0ff", shot="#ff7040"),
+    "city": dict(base="#5a6474", dark="#3a424e", light="#8a96a8", accent="#ff4fd0", glow="#ffd890", warn="#a0e0ff", glass="#a0e0ff", shot="#ff60d0"),
+    "jungle": dict(base="#5a6a4a", dark="#3a4a30", light="#6a5a40", accent="#c0a040", glow="#80ff90", warn="#ffd080", glass="#a0ffb0", shot="#ffb040"),
+    "hive": dict(base="#8a5a90", dark="#6a4c72", light="#7a5a78", accent="#70f060", glow="#ff60d0", warn="#70f060", glass="#ff90e0", shot="#90ff60"),
+    "lattice": dict(base="#4e4272", dark="#3e3460", light="#7a6aa0", accent="#ff4fd0", glow="#60e0ff", warn="#ffd060", glass="#c0a0ff", shot="#ff60d0"),
+    "corona": dict(base="#6a3c1e", dark="#4a2a14", light="#8a5a30", accent="#ffd060", glow="#ffb040", warn="#ff8040", glass="#ffe0a0", shot="#ffd060"),
+    "vael": dict(base="#5c6878", dark="#3c4858", light="#c8d0dc", accent="#8a96a8", glow="#9fe8ff", warn="#ff5040", glass="#c8f0ff", shot="#7ab8ff"),
+    "deep": dict(base="#40607a", dark="#304a60", light="#5e4a30", accent="#ffb060", glow="#9fe8ff", warn="#ffb060", glass="#9fe8ff", shot="#ffb060"),
+}
+PREFIX = {"station": "st", "foundry": "fo", "desert": "de", "ocean": "oc", "ice": "ic", "city": "ci", "jungle": "ju", "hive": "hv",
+          "lattice": "la", "corona": "co", "vael": "v6", "deep": "vd"}
+# What a launch pad sends up, by the mission's episode (World picks the one of its episode).
+LAUNCHED = "e1_shard|e2_lancefish|e3_mite|e4_hivemite|e5_shard|e6_splinter"
+
+
+def recipes(p):
+    b, d, l, a, g, w = p["base"], p["dark"], p["light"], p["accent"], p["glow"], p["warn"]
+    # key: (title, title_en, parts, hp, score, ruin)
+    return {
+        "warehouse": ("Lagerhalle", "Warehouse", warehouse(b, d, a), 130, 150, "ruin_rubble"),
+        "greenhouse": ("Gewächshausreihe", "Greenhouse Rows", greenhouses(d, p["glass"]), 70, 90, "ruin_rubble"),
+        "watchtower": ("Wachturm", "Watchtower", watchtower(b, d, w), 70, 90, "ruin_metal"),
+        "watertank": ("Hochbehälter", "Water Tower", watertank(d, l, w), 80, 100, "ruin_metal"),
+        "turbine": ("Windrad", "Wind Rotor", turbine(b, l, w), 60, 90, "ruin_metal"),
+        "radar": ("Radarstation", "Radar Station", radar(b, l, w), 80, 110, "ruin_metal"),
+        "helipad": ("Hubschrauberplatz", "Helipad", helipad(d, a, l), 90, 110, "ruin_metal"),
+        "conveyor": ("Förderband", "Conveyor", conveyor(b, d, g), 70, 90, "ruin_metal"),
+        "silos3": ("Silogruppe", "Silo Row", silos3(l, d, w), 120, 140, "ruin_rubble"),
+        "habitat": ("Wohnmodul", "Habitat Block", habitat(b, l, g), 110, 130, "ruin_rubble"),
+        "antennas": ("Antennenfeld", "Antenna Farm", antennas(b, w), 60, 90, "ruin_metal"),
+        "domes3": ("Lagerkuppeln", "Storage Domes", domes3(d, l, g), 90, 110, "ruin_rubble"),
+        "obelisk": ("Obelisk", "Obelisk", obelisk(b, g), 90, 110, "ruin_rubble"),
+        "lattice_tower": ("Gittermast", "Lattice Mast", lattice_tower(l, w), 70, 100, "ruin_metal"),
+        "shuttle": ("Parkende Fähre", "Parked Shuttle", shuttle(d, l, a, g), 100, 130, "ruin_metal"),
+        "train": ("Güterzug", "Freight Train", train(b, l, g), 90, 120, "ruin_metal"),
+        "stalls": ("Marktstände", "Market Stalls", stalls([a, l, b], g), 50, 70, "ruin_rubble"),
+        "minehead": ("Förderturm", "Headframe", minehead(b, d, l), 120, 140, "ruin_metal"),
+        "oreheap": ("Erzhalde", "Ore Heap", oreheap(d, l), 60, 80, "ruin_rubble"),
+        "pumpjack": ("Pumpe", "Pump Jack", pumpjack(b, d, w), 70, 90, "ruin_metal"),
+        "trawler": ("Trawler", "Trawler", trawler(l, b, g), 100, 120, "ruin_wreck"),
+        "floatcrane": ("Schwimmkran", "Floating Crane", floatcrane(d, a, w), 120, 140, "ruin_wreck"),
+        "spinarms": ("Drehfeld", "Spinning Array", spinarms(b, g), 90, 110, "ruin_crystal"),
+        "orbs": ("Kugelfeld", "Orb Array", orbs(d, g), 80, 100, "ruin_crystal"),
+        "tendrils": ("Rankenfeld", "Tendrils", tendrils(b, g), 60, 90, "ruin_crystal"),
+        "pustules": ("Pusteln", "Pustules", pustules(b, g), 50, 80, "ruin_crystal"),
+        "membrane": ("Membrankuppel", "Membrane Dome", membrane(d, g), 90, 110, "ruin_crystal"),
+        "rootknot": ("Wurzelknoten", "Root Knot", rootknot(b, g), 80, 100, "ruin_crystal"),
+        "shell": ("Spiralschale", "Spiral Shell", shell(l, g), 80, 100, "ruin_crystal"),
+        "stalks": ("Leuchtstiele", "Glow Stalks", stalks(b, g), 50, 80, "ruin_crystal"),
+        "weather": ("Wetterstation", "Weather Station", weather(b, l, w), 70, 90, "ruin_metal"),
+        "gastanks": ("Gasballons", "Gas Floats", gastanks(d, l, w), 80, 100, "ruin_wreck"),
+        "barrier": ("Sperrblöcke", "Barrier Blocks", barrier(l, a), 16, 30, ""),
+        "fuelcells": ("Energiezellen", "Power Cells", fuelcells(d, g), 14, 30, ""),
+        "drone": ("Geparkte Drohne", "Parked Drone", drone(l, w), 14, 30, ""),
+        "panel": ("Solarpaneel", "Solar Panel", panel(d, "#3a5a8a"), 12, 25, ""),
+        "dish": ("Kleine Schüssel", "Small Dish", dish(d, l, w), 12, 25, ""),
+        "pallet": ("Palette", "Pallet", pallet(d, a), 14, 25, ""),
+        "valve": ("Ventilstock", "Valve Stack", valve(b, a), 14, 30, ""),
+        "fungus": ("Pilzgruppe", "Fungus Patch", fungus(d, b, g), 12, 25, ""),
+        "spore": ("Sporenballen", "Spore Puffs", spore(d, g), 12, 25, ""),
+        "pebble": ("Kristallkiesel", "Crystal Pebbles", pebble(d, g), 12, 25, ""),
+        "smallbuoy": ("Markierungsboje", "Marker Buoy", smallbuoy(a, w), 12, 25, ""),
+        "lifeboat": ("Rettungsboot", "Lifeboat", boat("#e07020", "#d8d8d8", w), 16, 30, ""),
+        "flak": ("Flakstellung", "Flak Nest", flak(b, d, w), 70, 130, "ruin_metal"),
+        "rockets": ("Raketenstellung", "Rocket Battery", rockets(b, d, w), 90, 150, "ruin_metal"),
+        "sporegun": ("Sporenkanone", "Spore Cannon", sporegun(b, d, a, g), 80, 140, "ruin_crystal"),
+        "emitter": ("Kristallwerfer", "Crystal Thrower", emitter(d, a, g), 90, 150, "ruin_crystal"),
+        "launchpad": ("Startrampe", "Launch Pad", launchpad(b, d, w), 110, 160, "ruin_metal"),
+        "hatchery": ("Brutsack", "Hatchery", hatchery(b, g), 100, 160, "ruin_crystal"),
+    }
+
+
+FIRE = {
+    "flak": ["fire aimed every=3.2 delay=1.6 speed=210 bullet=orb color=%s"],
+    "rockets": ["fire aimed n=2 spread=12 every=4.4 delay=2.4 speed=190 bullet=big color=%s"],
+    "sporegun": ["fire aimed n=3 spread=18 every=4.6 delay=2.0 speed=160 bullet=orb color=%s"],
+    "emitter": ["fire ring n=6 rot=30 every=5.0 delay=2.5 speed=130 bullet=orb color=%s"],
+    "launchpad": ["fire spawn every=7 delay=2.5 cap=3 spawn=" + LAUNCHED],
+    "hatchery": ["fire spawn every=7 delay=2.5 cap=3 spawn=" + LAUNCHED],
+}
+# Each world's extra kinds: buildings, small things, guns and launch pads.
+THIRD = {
+    "station": ("warehouse watchtower radar helipad habitat antennas shuttle lattice_tower domes3", "barrier fuelcells drone", "flak rockets launchpad"),
+    "foundry": ("warehouse conveyor silos3 minehead oreheap watertank train lattice_tower radar", "barrier valve pallet", "flak rockets launchpad"),
+    "desert": ("watchtower watertank turbine oreheap pumpjack domes3 stalls minehead train", "panel barrier pallet", "flak rockets launchpad"),
+    "ocean": ("trawler floatcrane helipad radar gastanks habitat turbine weather lattice_tower", "smallbuoy lifeboat", "flak rockets launchpad"),
+    "ice": ("warehouse greenhouse turbine watchtower antennas domes3 habitat helipad lattice_tower", "barrier fuelcells drone", "flak rockets launchpad"),
+    "city": ("warehouse habitat antennas stalls train helipad obelisk turbine watertank lattice_tower", "barrier drone dish", "flak rockets launchpad"),
+    "jungle": ("watchtower watertank turbine greenhouse radar helipad antennas domes3 stalls", "barrier panel drone", "flak rockets launchpad"),
+    "hive": ("tendrils pustules membrane rootknot stalks orbs shell spinarms obelisk", "fungus spore pebble", "sporegun emitter hatchery"),
+    "lattice": ("spinarms orbs obelisk lattice_tower membrane domes3 radar stalks antennas shell", "fuelcells dish pebble", "emitter flak launchpad"),
+    "corona": ("spinarms orbs obelisk lattice_tower radar domes3 antennas membrane conveyor silos3", "fuelcells dish pebble", "emitter flak launchpad"),
+    "vael": ("weather gastanks turbine helipad radar habitat trawler floatcrane antennas shuttle", "drone fuelcells smallbuoy", "flak rockets launchpad"),
+    "deep": ("shell stalks rootknot orbs tendrils pustules membrane spinarms obelisk", "fungus spore pebble", "sporegun emitter hatchery"),
+}
+ARMED = {world: [] for world in WORLDS}
+for world, (big, small, armed) in THIRD.items():
+    p = PALETTES[world]
+    rec = recipes(p)
+    water = world in ("ocean", "vael")
+    for key in big.split():
+        title, title_en, parts, hp, score, ruin = rec[key]
+        WORLDS[world].append(("%s_%s" % (PREFIX[world], key), title, title_en, parts, hp, score, "ruin_wreck" if water else ruin))
+    for key in small.split():
+        title, title_en, parts, hp, score, _ = rec[key]
+        SMALL[world].append(("%s_%s" % (PREFIX[world], key), title, title_en, parts, hp, score))
+    for key in armed.split():
+        title, title_en, parts, hp, score, ruin = rec[key]
+        ARMED[world].append(("%s_%s" % (PREFIX[world], key), title, title_en, parts, hp, score, "ruin_wreck" if water else ruin,
+                             [f % p["shot"] if "%s" in f else f for f in FIRE[key]]))
+
 # The ruins: what stays when a structure falls (the bullets pass over them).
 model("ruin_rubble", "Ruin: rubble where a building stood.",
       ["box w=18 h=5 d=12 x=-6 z=4 rot=20 color=#3a342e noise=0.25",
@@ -607,6 +985,14 @@ for world, items in WORLDS.items():
         enemies += ["", "enemy " + name, '  title "%s"' % title, '  title_en "%s"' % title_en, "  model " + name, "  kind ground",
                     "  scenery 1", "  ruin ruin_scorch", "  hp %d" % hp, "  radius 12", "  score %d" % score, "  face fixed",
                     "  life 900", "  scale 1.6", "  drop credits 0.06 value=10", "  explode small"]
+    # The guns and launch pads: scenery too (no kill count, the shots fly on), but they fire, and seeking weapons
+    # go for them.
+    for name, title, title_en, parts, hp, score, ruin, fire in ARMED[world]:
+        model(name, "%s (%s): a gun or launch pad on the ground." % (title, title_en), parts)
+        enemies += ["", "enemy " + name, '  title "%s"' % title, '  title_en "%s"' % title_en, "  model " + name, "  kind ground",
+                    "  scenery 1", "  ruin " + ruin, "  hp %d" % hp, "  radius 22", "  score %d" % score, "  face fixed",
+                    "  aimhead 1", "  life 900", "  scale 1.5"] + ["  " + f for f in fire] + \
+            ["  drop credits 0.5 value=%d" % (score // 4), "  drop power 0.05 mode=arcade", "  explode medium"]
 
 with open(os.path.join(ROOT, "data", "models", "structures.txt"), "w", encoding="utf-8", newline="\n") as f:
     f.write("# The ground's destructible structures and their ruins, a set for each world. Written by tools/gen_structures.py.\n")
@@ -633,6 +1019,9 @@ for path in (os.path.join(ROOT, "data", "themes.txt"), os.path.join(ROOT, "data"
         # The buildings a little denser than the numbers above say, the small things between them twice as often.
         line = "  structures every=%d group=3 %s\n  structures every=%d group=4 %s" % (
             round(every * 0.75), " ".join(n for n, *_ in WORLDS[world]), round(every * 0.45), " ".join(n for n, *_ in SMALL[world]))
+        # The guns and launch pads, far apart.
+        if ARMED[world]:
+            line += "\n  structures every=%d group=2 %s" % (round(every * 4), " ".join(n for n, *_ in ARMED[world]))
         s = re.sub(r"(\ntheme %s\n)" % re.escape(theme), r"\1" + line.replace("\\", "\\\\") + "\n", s)
     open(path, "w", encoding="utf-8", newline="").write(s)
-print("structures:", sum(len(v) for v in WORLDS.values()), "buildings and", sum(len(v) for v in SMALL.values()), "small things in", len(WORLDS), "worlds:", ", ".join("%s %d" % (w, len(WORLDS[w]) + len(SMALL[w])) for w in WORLDS))
+print("structures:", sum(len(v) for v in WORLDS.values()), "buildings,", sum(len(v) for v in SMALL.values()), "small things,", sum(len(v) for v in ARMED.values()), "guns and pads in", len(WORLDS), "worlds:", ", ".join("%s %d" % (w, len(WORLDS[w]) + len(SMALL[w]) + len(ARMED[w])) for w in WORLDS))
