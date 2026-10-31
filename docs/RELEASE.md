@@ -59,20 +59,20 @@ The app tests, the playing and the pictures use the graphics card: check that no
 ## 5. Pictures
 
 `README.md` shows these from `docs/shots`; `publish_release.ps1` refuses to publish while one is missing. The game
-takes them itself in a hidden window of the settings' size (1600 x 900 when none is set; add `--size 1600x900` to be
-sure); the times are suggestions, look for the moment that shows most. Keep each picture under about 1 MB and commit them.
+takes them itself in a hidden window of the settings' size (1600 x 900 when none is set); the README's are taken with
+`--lang en --size 1280x720`. The times are suggestions, look for the moment that shows most. Keep each picture under about 1 MB and commit them.
 
 | File | What | How |
 |---|---|---|
-| `hero.png` | a mission over the foundries of Pyra | `ZenithLancer --level e1_05 --at 45 --shot docs/shots/hero.png` |
+| `hero.png` | a mission over the foundries of Pyra | `ZenithLancer --level e1_05 --at 40 --shot docs/shots/hero.png` |
 | `workshop.png` | Quill's workshop | `ZenithLancer --screen shop --shot docs/shots/workshop.png` |
 | `plan.png` | the mission plan with a fork | `ZenithLancer --screen plan --shot docs/shots/plan.png` |
 | `boss.png` | a boss fight (the Foundry Warden) | `ZenithLancer --level e1_10 --at 160 --shot docs/shots/boss.png` |
-| `thalassa.png` | the storm belts of Thalassa | `ZenithLancer --level e2_03 --at 40 --shot docs/shots/thalassa.png` |
+| `thalassa.png` | the storm belts of Thalassa | `ZenithLancer --level e2_03 --at 55 --shot docs/shots/thalassa.png` |
 | `shatter.png` | the asteroid belt of the Shatter | `ZenithLancer --level e3_01 --at 40 --shot docs/shots/shatter.png` |
-| `sylvara.png` | the jungle moon Sylvara | `ZenithLancer --level e4_01 --at 40 --shot docs/shots/sylvara.png` |
+| `sylvara.png` | the jungle moon Sylvara | `ZenithLancer --level e4_01 --at 55 --shot docs/shots/sylvara.png` |
 | `corona.png` | the corona of Solenne | `ZenithLancer --level e5_03 --at 40 --shot docs/shots/corona.png` |
-| `coop.png` | the campaign for two | F12 in a campaign for two (the picture lands in the player's folder, `shots`) |
+| `coop.png` | the campaign for two | `ZenithLancer --level e2_03 --arcade --pilots 2 --at 30 --shot docs/shots/coop.png` |
 | `radio.png` | a radio call with its speaker's portrait | `ZenithLancer --level e1_01 --at 2 --shot docs/shots/radio.png` |
 | `logbook.png` | the log book and its crystals | `ZenithLancer --screen logbook --shot docs/shots/logbook.png` |
 
