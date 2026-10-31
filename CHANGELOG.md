@@ -41,6 +41,10 @@ the Steam Deck, free software under the AGPL-3.0.
 - Medals for every mission, challenge codes for friends, the boss rush for two, the arcade ghost, the photo mode,
   the wave editor, a battery profile for the Steam Deck, the logbook's portraits and voices in the list.
 - Golden replays as a test (`--goldentest`), a sanitizer job in CI; test runs and ffmpeg stay in the background.
+- A ground full of things to shoot: every world has 11–14 kinds of its own, 150 in all, buildings (smokestacks,
+  cooling towers, rigs, piers, domes, tower blocks, brood towers, crystal gates, aerostats ...) and the small things
+  between them (drums, crates, lamps, carts, boats). They leave ruins and debris, give points and a little money,
+  and never get in the way of a shot meant for an enemy.
 
 ### Changed since 0.9.0
 

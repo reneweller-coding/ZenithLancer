@@ -16,7 +16,7 @@
 # bossretries missions nodamage allkills deaths seconds credits spent max_credits max_front cubes plans secrets
 # episode1..episode6 campaign_diff (0 Kadett .. 6 Zenit) campaign_coop coop_missions arcade_runs arcade2_runs
 # arcade_clean bossrush_done bossrush_best survival_seconds survival_daily ngplus practice replays_watched
-# max_chain grazes school weekly seen heard gold challenges
+# max_chain grazes school weekly seen heard gold challenges structures
 
 # ---------------------------------------------------------------------------------------------------- the fight
 
@@ -379,6 +379,20 @@ achievement grazes_1000
   desc_en "Let 1,000 bullets graze past you. ORRIN has stopped sighing every time."
   need grazes 1000
 
+achievement structures_250
+  title "Flurbereinigung"
+  title_en "Clearing the Ground"
+  desc "Zerstöre 250 Bauten am Boden: Silos, Tanks, Masten, was eben herumsteht."
+  desc_en "Destroy 250 structures on the ground: silos, tanks, masts, whatever stands around."
+  need structures 250
+
+achievement structures_2500
+  title "Abrissunternehmen"
+  title_en "Demolition Company"
+  desc "Zerstöre 2.500 Bauten am Boden. ORRIN führt eine Liste, falls jemand eine Rechnung schickt."
+  desc_en "Destroy 2,500 structures on the ground. ORRIN keeps a list in case anyone sends a bill."
+  need structures 2500
+
 achievement weekly_1
   title "Sonderregeln"
   title_en "House Rules"
@@ -527,6 +541,11 @@ stat max_chain
 stat grazes
   title "Streifschüsse"
   title_en "Grazes"
+  show count
+
+stat structures
+  title "Bauten zerstört"
+  title_en "Structures destroyed"
   show count
 
 stat gold

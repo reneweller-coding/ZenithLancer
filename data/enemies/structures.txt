@@ -1,0 +1,2569 @@
+# The ground's structures (scenery: they do not fire, the pilots' shots pass on through them, seeking weapons and the
+# kill count leave them alone; destroyed they leave a ruin and a little money that grows with the episode).
+# Which stand on which ground: the themes' "structures" lines. Written by tools/gen_structures.py.
+
+enemy ruin_rubble
+  model ruin_rubble
+  kind ground
+  scenery 1
+  invulnerable 1
+  solid 0
+  hp 1
+  radius 20
+  score 0
+  face fixed
+  life 900
+  scale 1.5
+  explode small
+
+enemy ruin_metal
+  model ruin_metal
+  kind ground
+  scenery 1
+  invulnerable 1
+  solid 0
+  hp 1
+  radius 20
+  score 0
+  face fixed
+  life 900
+  scale 1.5
+  explode small
+
+enemy ruin_crystal
+  model ruin_crystal
+  kind ground
+  scenery 1
+  invulnerable 1
+  solid 0
+  hp 1
+  radius 20
+  score 0
+  face fixed
+  life 900
+  scale 1.5
+  explode small
+
+enemy ruin_wreck
+  model ruin_wreck
+  kind ground
+  scenery 1
+  invulnerable 1
+  solid 0
+  hp 1
+  radius 20
+  score 0
+  face fixed
+  life 900
+  scale 1.5
+  explode small
+
+enemy ruin_scorch
+  model ruin_scorch
+  kind ground
+  scenery 1
+  invulnerable 1
+  solid 0
+  hp 1
+  radius 10
+  score 0
+  face fixed
+  life 900
+  scale 1.6
+  explode small
+
+enemy st_containers
+  title "Frachtcontainer"
+  title_en "Cargo Containers"
+  model st_containers
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 60
+  radius 24
+  score 70
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=17
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy st_tank
+  title "Treibstofftank"
+  title_en "Fuel Tank"
+  model st_tank
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy st_mast
+  title "Antennenmast"
+  title_en "Antenna Mast"
+  model st_mast
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 40
+  radius 24
+  score 70
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=17
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy st_hangar
+  title "Hangar"
+  title_en "Hangar"
+  model st_hangar
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 120
+  radius 30
+  score 140
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=35
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy st_pad
+  title "Landefeld"
+  title_en "Landing Pad"
+  model st_pad
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 80
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy st_uplink
+  title "Sendeschüssel"
+  title_en "Uplink Dish"
+  model st_uplink
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy st_bunker
+  title "Lagerbunker"
+  title_en "Storage Bunker"
+  model st_bunker
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 110
+  radius 30
+  score 130
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=32
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy st_reactor
+  title "Reaktorblock"
+  title_en "Reactor Block"
+  model st_reactor
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 100
+  radius 30
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy st_fuel
+  title "Tankstelle"
+  title_en "Fuel Station"
+  model st_fuel
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy st_drums
+  title "Fässer"
+  title_en "Drums"
+  model st_drums
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy st_crates
+  title "Frachtkisten"
+  title_en "Cargo Crates"
+  model st_crates
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy st_lamp
+  title "Deckleuchte"
+  title_en "Deck Lamp"
+  model st_lamp
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy st_cart
+  title "Frachtkarre"
+  title_en "Cargo Cart"
+  model st_cart
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 20
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy st_beacon
+  title "Landebake"
+  title_en "Landing Beacon"
+  model st_beacon
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy fo_stack
+  title "Schlot"
+  title_en "Smokestack"
+  model fo_stack
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy fo_silo
+  title "Erzsilo"
+  title_en "Ore Silo"
+  model fo_silo
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy fo_hall
+  title "Gießhalle"
+  title_en "Casting Hall"
+  model fo_hall
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 140
+  radius 30
+  score 160
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=40
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy fo_tank
+  title "Schlackentank"
+  title_en "Slag Tank"
+  model fo_tank
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy fo_crane
+  title "Portalkran"
+  title_en "Gantry Crane"
+  model fo_crane
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 100
+  radius 30
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy fo_cooling
+  title "Kühlturm"
+  title_en "Cooling Tower"
+  model fo_cooling
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 130
+  radius 30
+  score 150
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=37
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy fo_refinery
+  title "Raffinerie"
+  title_en "Refinery"
+  model fo_refinery
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 110
+  radius 30
+  score 130
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=32
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy fo_furnace
+  title "Hochofen"
+  title_en "Blast Furnace"
+  model fo_furnace
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 140
+  radius 30
+  score 160
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=40
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy fo_bunker
+  title "Schlackenbunker"
+  title_en "Slag Bunker"
+  model fo_bunker
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 100
+  radius 30
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy fo_drums
+  title "Schlackefässer"
+  title_en "Slag Drums"
+  model fo_drums
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy fo_pipes
+  title "Rohrleitung"
+  title_en "Pipeline"
+  model fo_pipes
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 22
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy fo_ingots
+  title "Barrenstapel"
+  title_en "Ingot Stack"
+  model fo_ingots
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy fo_cart
+  title "Erzlore"
+  title_en "Ore Cart"
+  model fo_cart
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 20
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy fo_lamp
+  title "Warnleuchte"
+  title_en "Warning Light"
+  model fo_lamp
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy de_dome
+  title "Siedlerkuppel"
+  title_en "Settler Dome"
+  model de_dome
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_tower
+  title "Wasserturm"
+  title_en "Water Tower"
+  model de_tower
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 60
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_mast
+  title "Funkmast"
+  title_en "Radio Mast"
+  model de_mast
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 40
+  radius 24
+  score 70
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=17
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_truck
+  title "Erztransporter"
+  title_en "Ore Hauler"
+  model de_truck
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 50
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_solar
+  title "Solarfeld"
+  title_en "Solar Field"
+  model de_solar
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 50
+  radius 24
+  score 70
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=17
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_house
+  title "Lehmhaus"
+  title_en "Adobe House"
+  model de_house
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 60
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_bunker
+  title "Sturmbunker"
+  title_en "Storm Shelter"
+  model de_bunker
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_uplink
+  title "Funkschüssel"
+  title_en "Dish Antenna"
+  model de_uplink
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 60
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_fuel
+  title "Tankstelle"
+  title_en "Fuel Stop"
+  model de_fuel
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy de_drums
+  title "Wasserfässer"
+  title_en "Water Drums"
+  model de_drums
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy de_rover
+  title "Wüstenbuggy"
+  title_en "Dune Buggy"
+  model de_rover
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 20
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy de_crates
+  title "Vorratskisten"
+  title_en "Supply Crates"
+  model de_crates
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy de_lamp
+  title "Signalleuchte"
+  title_en "Signal Light"
+  model de_lamp
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy de_pipes
+  title "Wasserleitung"
+  title_en "Water Main"
+  model de_pipes
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 22
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy oc_rig
+  title "Bohrinsel"
+  title_en "Drilling Rig"
+  model oc_rig
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 140
+  radius 30
+  score 160
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=40
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy oc_buoy
+  title "Bojenfeld"
+  title_en "Buoy Field"
+  model oc_buoy
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 40
+  radius 24
+  score 60
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=15
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy oc_barge
+  title "Containerkahn"
+  title_en "Container Barge"
+  model oc_barge
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 110
+  radius 30
+  score 130
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=32
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy oc_beacon
+  title "Leuchtfeuer"
+  title_en "Beacon"
+  model oc_beacon
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 60
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy oc_dock
+  title "Pier"
+  title_en "Pier"
+  model oc_dock
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy oc_farm
+  title "Fischfarm"
+  title_en "Fish Farm"
+  model oc_farm
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy oc_tanker
+  title "Tanker"
+  title_en "Tanker"
+  model oc_tanker
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 150
+  radius 30
+  score 170
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=42
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy oc_platform
+  title "Wohnplattform"
+  title_en "Habitat Platform"
+  model oc_platform
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 120
+  radius 30
+  score 140
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=35
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy oc_boat
+  title "Fischerboot"
+  title_en "Fishing Boat"
+  model oc_boat
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy oc_float
+  title "Leuchtboje"
+  title_en "Light Buoy"
+  model oc_float
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy oc_crates
+  title "Treibgut"
+  title_en "Flotsam"
+  model oc_crates
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy oc_skiff
+  title "Schnellboot"
+  title_en "Speedboat"
+  model oc_skiff
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ic_dome
+  title "Forschungskuppel"
+  title_en "Research Dome"
+  model ic_dome
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ic_radar
+  title "Radarschüssel"
+  title_en "Radar Dish"
+  model ic_radar
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 50
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ic_tank
+  title "Brennstofflager"
+  title_en "Fuel Depot"
+  model ic_tank
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ic_containers
+  title "Vorratslager"
+  title_en "Supply Stack"
+  model ic_containers
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 60
+  radius 24
+  score 70
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=17
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ic_drill
+  title "Eisbohrer"
+  title_en "Ice Drill"
+  model ic_drill
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 110
+  radius 30
+  score 130
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=32
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ic_igloo
+  title "Wohnkuppel"
+  title_en "Habitat Dome"
+  model ic_igloo
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ic_hall
+  title "Forschungshalle"
+  title_en "Research Hall"
+  model ic_hall
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 120
+  radius 30
+  score 140
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=35
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ic_reactor
+  title "Wärmereaktor"
+  title_en "Heat Reactor"
+  model ic_reactor
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 100
+  radius 30
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ic_cat
+  title "Schneeraupe"
+  title_en "Snowcat"
+  model ic_cat
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 20
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ic_drums
+  title "Brennstofffässer"
+  title_en "Fuel Drums"
+  model ic_drums
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ic_lamp
+  title "Wegleuchte"
+  title_en "Path Light"
+  model ic_lamp
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ic_crates
+  title "Vorratskisten"
+  title_en "Supply Crates"
+  model ic_crates
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ic_sled
+  title "Lastschlitten"
+  title_en "Cargo Sled"
+  model ic_sled
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 20
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ci_tower
+  title "Wohnturm"
+  title_en "Tower Block"
+  model ci_tower
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 160
+  radius 30
+  score 180
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=45
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ci_tower2
+  title "Bürohaus"
+  title_en "Office Block"
+  model ci_tower2
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 130
+  radius 30
+  score 150
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=37
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ci_tanks
+  title "Dachtanks"
+  title_en "Rooftop Tanks"
+  model ci_tanks
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 60
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ci_pylon
+  title "Strommast"
+  title_en "Power Pylon"
+  model ci_pylon
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 40
+  radius 24
+  score 60
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=15
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ci_tower3
+  title "Hochhaus"
+  title_en "High-Rise"
+  model ci_tower3
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 170
+  radius 30
+  score 190
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=47
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ci_mall
+  title "Markthalle"
+  title_en "Market Hall"
+  model ci_mall
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 130
+  radius 30
+  score 150
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=37
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ci_garage
+  title "Parkhaus"
+  title_en "Parking Deck"
+  model ci_garage
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 120
+  radius 30
+  score 140
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=35
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ci_house
+  title "Stadthaus"
+  title_en "Townhouse"
+  model ci_house
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ci_arena
+  title "Arena"
+  title_en "Arena"
+  model ci_arena
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 140
+  radius 30
+  score 160
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=40
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ci_car
+  title "Schwebewagen"
+  title_en "Hover Car"
+  model ci_car
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ci_sign
+  title "Leuchtreklame"
+  title_en "Neon Sign"
+  model ci_sign
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ci_lamp
+  title "Straßenlaterne"
+  title_en "Street Lamp"
+  model ci_lamp
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ci_kiosk
+  title "Kiosk"
+  title_en "Kiosk"
+  model ci_kiosk
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ci_bus
+  title "Schwebebus"
+  title_en "Hover Bus"
+  model ci_bus
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 22
+  radius 12
+  score 40
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ju_hut
+  title "Forschungshütte"
+  title_en "Research Hut"
+  model ju_hut
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 60
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ju_tower
+  title "Funkturm"
+  title_en "Radio Tower"
+  model ju_tower
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 50
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ju_green
+  title "Gewächshaus"
+  title_en "Greenhouse"
+  model ju_green
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ju_silo
+  title "Biosilo"
+  title_en "Bio Silo"
+  model ju_silo
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ju_platform
+  title "Baumplattform"
+  title_en "Tree Platform"
+  model ju_platform
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ju_stele
+  title "Alte Stele"
+  title_en "Ancient Stele"
+  model ju_stele
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ju_lab
+  title "Feldlabor"
+  title_en "Field Lab"
+  model ju_lab
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 100
+  radius 30
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy ju_pad
+  title "Landeplatz"
+  title_en "Landing Pad"
+  model ju_pad
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 80
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy ju_crates
+  title "Probenkisten"
+  title_en "Sample Crates"
+  model ju_crates
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ju_lamp
+  title "Lagerleuchte"
+  title_en "Camp Light"
+  model ju_lamp
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ju_drums
+  title "Treibstofffässer"
+  title_en "Fuel Drums"
+  model ju_drums
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ju_rover
+  title "Geländewagen"
+  title_en "Jungle Rover"
+  model ju_rover
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 20
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy ju_tent
+  title "Zelt"
+  title_en "Tent"
+  model ju_tent
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy hv_pod
+  title "Sporenkapsel"
+  title_en "Spore Pod"
+  model hv_pod
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 60
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy hv_node
+  title "Gitterknoten"
+  title_en "Lattice Knot"
+  model hv_node
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy hv_hut
+  title "Verwachsene Hütte"
+  title_en "Overgrown Hut"
+  model hv_hut
+  kind ground
+  scenery 1
+  ruin ruin_rubble
+  hp 60
+  radius 24
+  score 80
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=20
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy hv_mound
+  title "Brutturm"
+  title_en "Brood Tower"
+  model hv_mound
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 110
+  radius 30
+  score 130
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=32
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy hv_vent
+  title "Sporenschlot"
+  title_en "Spore Vent"
+  model hv_vent
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy hv_chrysalis
+  title "Puppe"
+  title_en "Chrysalis"
+  model hv_chrysalis
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy hv_anemone
+  title "Fangkrone"
+  title_en "Snare Crown"
+  model hv_anemone
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy hv_eggs
+  title "Gelege"
+  title_en "Clutch"
+  model hv_eggs
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy hv_shard
+  title "Gitterdorn"
+  title_en "Lattice Thorn"
+  model hv_shard
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy hv_bulb
+  title "Leuchtknolle"
+  title_en "Glow Bulb"
+  model hv_bulb
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy hv_spines
+  title "Dornenbusch"
+  title_en "Thorn Bush"
+  model hv_spines
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy la_spire
+  title "Kristallnadel"
+  title_en "Crystal Needle"
+  model la_spire
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 70
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy la_relay
+  title "Gitterrelais"
+  title_en "Lattice Relay"
+  model la_relay
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy la_shrine
+  title "Lichtring"
+  title_en "Light Ring"
+  model la_shrine
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy la_gate
+  title "Gittertor"
+  title_en "Lattice Gate"
+  model la_gate
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 100
+  radius 30
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy la_prism
+  title "Prismenfeld"
+  title_en "Prism Field"
+  model la_prism
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy la_column
+  title "Gittersäule"
+  title_en "Lattice Column"
+  model la_column
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy la_core
+  title "Speicherkern"
+  title_en "Memory Core"
+  model la_core
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 120
+  radius 30
+  score 140
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=35
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy la_mirrors
+  title "Spiegelfeld"
+  title_en "Mirror Field"
+  model la_mirrors
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy la_shard
+  title "Splitterkristall"
+  title_en "Shard Crystal"
+  model la_shard
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy la_lamp
+  title "Gitterlicht"
+  title_en "Lattice Light"
+  model la_lamp
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy la_node
+  title "Datenknoten"
+  title_en "Data Node"
+  model la_node
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy la_cable
+  title "Leitungsbündel"
+  title_en "Cable Run"
+  model la_cable
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 20
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy co_spire
+  title "Sonnennadel"
+  title_en "Sun Needle"
+  model co_spire
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 80
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy co_shrine
+  title "Glutring"
+  title_en "Ember Ring"
+  model co_shrine
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy co_relay
+  title "Kronenrelais"
+  title_en "Crown Relay"
+  model co_relay
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy co_mirrors
+  title "Sonnenspiegel"
+  title_en "Sun Mirrors"
+  model co_mirrors
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy co_fins
+  title "Kühlrippen"
+  title_en "Heat Fins"
+  model co_fins
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy co_gate
+  title "Kronentor"
+  title_en "Crown Gate"
+  model co_gate
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 100
+  radius 30
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy co_core
+  title "Fusionskern"
+  title_en "Fusion Core"
+  model co_core
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 120
+  radius 30
+  score 140
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=35
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy co_shard
+  title "Glutkristall"
+  title_en "Ember Crystal"
+  model co_shard
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy co_lamp
+  title "Kronenlicht"
+  title_en "Crown Light"
+  model co_lamp
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy co_node
+  title "Glutknoten"
+  title_en "Ember Node"
+  model co_node
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy co_cable
+  title "Glutleitung"
+  title_en "Ember Conduit"
+  model co_cable
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 20
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy v6_skiff
+  title "Wolkenbarke"
+  title_en "Cloud Skiff"
+  model v6_skiff
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 80
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_buoy
+  title "Wetterboje"
+  title_en "Weather Buoy"
+  model v6_buoy
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 60
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_mast
+  title "Messplattform"
+  title_en "Sensor Platform"
+  model v6_mast
+  kind ground
+  scenery 1
+  ruin ruin_metal
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_aerostat
+  title "Aerostat"
+  title_en "Aerostat"
+  model v6_aerostat
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 90
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_scoop
+  title "Gassammler"
+  title_en "Gas Scoop"
+  model v6_scoop
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 100
+  radius 30
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy v6_dock
+  title "Andockring"
+  title_en "Docking Ring"
+  model v6_dock
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 110
+  radius 30
+  score 130
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=32
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy v6_tanker
+  title "Gastanker"
+  title_en "Gas Tanker"
+  model v6_tanker
+  kind ground
+  scenery 1
+  ruin ruin_wreck
+  hp 140
+  radius 30
+  score 160
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=40
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy v6_boat
+  title "Wolkenboot"
+  title_en "Cloud Boat"
+  model v6_boat
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 18
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy v6_float
+  title "Windboje"
+  title_en "Wind Buoy"
+  model v6_float
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy v6_crates
+  title "Frachtnetz"
+  title_en "Cargo Net"
+  model v6_crates
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy v6_drift
+  title "Treibkapsel"
+  title_en "Drift Pod"
+  model v6_drift
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy v6_cluster
+  title "Echokristalle"
+  title_en "Echo Crystals"
+  model v6_cluster
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 90
+  radius 24
+  score 120
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=30
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_pod
+  title "Chorkapsel"
+  title_en "Choir Pod"
+  model v6_pod
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 60
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_anemone
+  title "Echokrone"
+  title_en "Echo Crown"
+  model v6_anemone
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 70
+  radius 24
+  score 90
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=22
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_vent
+  title "Echoschlot"
+  title_en "Echo Vent"
+  model v6_vent
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_spire
+  title "Korallennadel"
+  title_en "Coral Needle"
+  model v6_spire
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 80
+  radius 24
+  score 110
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=27
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_mound
+  title "Chorhügel"
+  title_en "Choir Mound"
+  model v6_mound
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 110
+  radius 30
+  score 130
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=32
+  drop power 0.02 mode=arcade
+  explode medium
+
+enemy v6_column
+  title "Klangsäule"
+  title_en "Sound Column"
+  model v6_column
+  kind ground
+  scenery 1
+  ruin ruin_crystal
+  hp 80
+  radius 24
+  score 100
+  face fixed
+  life 900
+  scale 1.5
+  drop credits 0.2 value=25
+  drop power 0.02 mode=arcade
+  explode small
+
+enemy v6_shard
+  title "Echosplitter"
+  title_en "Echo Shard"
+  model v6_shard
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy v6_eggs
+  title "Chorgelege"
+  title_en "Choir Clutch"
+  model v6_eggs
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 16
+  radius 12
+  score 35
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy v6_bulb
+  title "Echoknolle"
+  title_en "Echo Bulb"
+  model v6_bulb
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 12
+  radius 12
+  score 25
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small
+
+enemy v6_spines
+  title "Echodornen"
+  title_en "Echo Thorns"
+  model v6_spines
+  kind ground
+  scenery 1
+  ruin ruin_scorch
+  hp 14
+  radius 12
+  score 30
+  face fixed
+  life 900
+  scale 1.6
+  drop credits 0.06 value=10
+  explode small

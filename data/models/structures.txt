@@ -1,0 +1,1345 @@
+# The ground's destructible structures and their ruins, a set for each world. Written by tools/gen_structures.py.
+
+# Ruin: rubble where a building stood.
+model ruin_rubble
+  part box w=18 h=5 d=12 x=-6 z=4 rot=20 color=#3a342e noise=0.25
+  part box w=10 h=7 d=10 x=8 z=-6 rot=-30 color=#2e2a26 noise=0.25
+  part box w=6 h=10 d=4 x=2 z=8 rot=50 color=#4a443e
+  part greeble n=14 w=36 d=36 y=1 size=2.5 seed=21 color=#3a342e
+  part light r=1 x=-4 y=2 z=-2 color=#ff7020
+
+# Ruin: twisted girders and plates.
+model ruin_metal
+  part box w=2 h=2 d=28 y=2 rot=25 pitch=10 color=#3a3e44
+  part box w=2 h=2 d=22 x=6 y=2 rot=-40 pitch=-12 color=#3a3e44
+  part box w=14 h=1 d=10 x=-6 z=6 y=1 rot=15 pitch=20 color=#2e3238
+  part greeble n=10 w=30 d=30 y=1 size=2 seed=23 color=#30343a
+  part light r=0.9 x=5 y=2 z=3 color=#ff6020
+
+# Ruin: broken crystals, still faintly lit.
+model ruin_crystal
+  part crystal r=3 len=14 pitch=15 x=-5 y=2 rot=30 color=#3a2e4a emit=0.15
+  part crystal r=2.5 len=12 pitch=-10 x=6 y=2 z=4 rot=-60 color=#3a2e4a emit=0.15
+  part crystal r=2 len=9 pitch=5 z=-7 y=1 rot=100 color=#3a2e4a emit=0.15
+  part light r=0.8 y=2 color=#c070ff
+
+# Ruin: wreckage drifting where it went down.
+model ruin_wreck
+  part box w=12 h=2 d=20 rot=35 y=0.5 color=#2e3238 noise=0.25
+  part box w=8 h=2 d=6 x=10 z=-8 rot=-20 color=#3a3e44
+  part greeble n=8 w=34 d=34 size=2 seed=25 color=#2a2e34
+  part light r=0.8 x=-6 z=6 y=1 color=#ff6020
+
+# Ruin: a few glowing scraps where something small stood.
+model ruin_scorch
+  part box w=4 h=1.5 d=3 x=-3 z=2 rot=30 color=#2e2a26
+  part box w=3 h=1 d=4 x=3 z=-2 rot=-20 color=#3a342e
+  part light r=0.6 x=1 y=1 z=1 color=#ff6020
+
+# Frachtcontainer (Cargo Containers): a structure on the ground, to be shot.
+model st_containers
+  part box w=10 h=8 d=26 x=-12 z=0 y=0 color=#6a7a8a
+  part box w=10 h=8 d=26 x=0 z=0 y=0 color=#a05a3a
+  part box w=10 h=8 d=26 x=12 z=0 y=0 color=#4a6a5a
+  part box w=10 h=8 d=26 x=-12 z=0 y=8 color=#a05a3a
+  part box w=10 h=8 d=26 x=0 z=0 y=8 color=#4a6a5a
+  part box w=10 h=8 d=26 x=12 z=0 y=8 color=#6a7a8a
+
+# Treibstofftank (Fuel Tank): a structure on the ground, to be shot.
+model st_tank
+  part box w=28.6 h=4 d=28.6 color=#4a5260
+  part sphere r=13 y=16 seg=12 color=#9aa4b4
+  part ring r=13.3 thick=0.8 seg=16 y=16 color=#4a5260
+  part light r=1 y=29 color=#ff5040
+
+# Antennenmast (Antenna Mast): a structure on the ground, to be shot.
+model st_mast
+  part box w=12 h=4 d=12 color=#7a8494
+  part disc r=1.4 h=48 seg=6 y=4 color=#7a8494
+  part disc r=9 h=1.2 seg=14 y=33.6 pitch=60 color=#b0bac8
+  part light r=1.6 y=53 color=#ff5040
+  part box w=1 h=43.2 d=1 x=5 z=5 pitch=-8 color=#7a8494
+  part box w=1 h=43.2 d=1 x=-5 z=-5 pitch=8 color=#7a8494
+
+# Hangar (Hangar): a structure on the ground, to be shot.
+model st_hangar
+  part box w=56 h=16 d=36 color=#5a6474
+  part box w=58 h=6 d=38 y=16 taper=0.6 color=#3a424e
+  part box w=22.4 h=10 d=2 z=-18.5 y=0 color=#8a96a8
+  part greeble n=8 w=48 d=28 y=22 size=2.2 seed=7 color=#8a96a8
+
+# Landefeld (Landing Pad): a structure on the ground, to be shot.
+model st_pad
+  part disc r=26 h=2 seg=16 color=#3a424e
+  part ring r=20 thick=1 seg=20 y=2 color=#d8c040
+  part box w=20 h=0.6 d=3 y=2 color=#d8c040
+  part box w=3 h=0.6 d=20 y=2 color=#d8c040
+  part light r=1 y=2.5 x=0 z=-24 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=16.97 z=-16.97 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=24 z=-0 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=16.97 z=16.97 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=0 z=24 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=-16.97 z=16.97 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=-24 z=0 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=-16.97 z=-16.97 color=#60c0ff mirror=0
+
+# Sendeschüssel (Uplink Dish): a structure on the ground, to be shot.
+model st_uplink
+  part box w=18 h=8 d=18 color=#7a8494
+  part disc r=2.5 h=10 seg=8 y=8 color=#7a8494
+  part disc r=16 h=1.5 seg=18 y=18 pitch=40 color=#c8d0dc
+  part disc r=0.7 h=8 seg=5 y=19 color=#7a8494
+  part light r=1.4 y=27 color=#ff5040
+
+# Lagerbunker (Storage Bunker): a structure on the ground, to be shot.
+model st_bunker
+  part box w=34 h=10 d=24 taper=0.25 color=#4a5260
+  part box w=20.4 h=1.6 d=1 y=5 z=-11.4 color=#ffd060 emit=0.8
+  part box w=8 h=3 d=8 y=10 x=8.5 color=#4a5260
+  part greeble n=5 w=20.4 d=12 y=10 size=1.8 seed=13 color=#4a5260
+
+# Reaktorblock (Reactor Block): a structure on the ground, to be shot.
+model st_reactor
+  part box w=30 h=10 d=20 color=#5a6474
+  part disc r=6 h=14 seg=12 x=-8 y=10 color=#3a424e
+  part disc r=6 h=14 seg=12 x=8 y=10 color=#3a424e
+  part ring r=6.5 thick=1 seg=14 x=-8 y=15 color=#60c0ff emit=0.8
+  part ring r=6.5 thick=1 seg=14 x=-8 y=21 color=#60c0ff emit=0.8
+  part ring r=6.5 thick=1 seg=14 x=8 y=15 color=#60c0ff emit=0.8
+  part ring r=6.5 thick=1 seg=14 x=8 y=21 color=#60c0ff emit=0.8
+
+# Tankstelle (Fuel Station): a structure on the ground, to be shot.
+model st_fuel
+  part box w=34 h=1.5 d=20 y=14 color=#8a96a8 emit=0.1
+  part box w=34.4 h=0.6 d=2.4 y=15.2 z=-8.8 color=#ffe0a0 emit=0.6
+  part box w=34.4 h=0.6 d=2.4 y=15.2 z=8.8 color=#ffe0a0 emit=0.6
+  part box w=1.5 h=14 d=1.5 x=-14 z=-7 color=#4a5260
+  part box w=1.5 h=14 d=1.5 x=-14 z=7 color=#4a5260
+  part box w=1.5 h=14 d=1.5 x=14 z=-7 color=#4a5260
+  part box w=1.5 h=14 d=1.5 x=14 z=7 color=#4a5260
+  part box w=3 h=6 d=3 x=-6 color=#4a5260
+  part box w=3 h=6 d=3 x=6 color=#4a5260
+  part light r=1 x=-10 y=13 color=#ffe0a0
+  part light r=1 x=0 y=13 color=#ffe0a0
+  part light r=1 x=10 y=13 color=#ffe0a0
+
+# Fässer (Drums): a small thing on the ground, to be shot.
+model st_drums
+  part disc r=3.2 h=8 seg=8 x=-4 z=-3 color=#8a6a3a
+  part disc r=3.2 h=8 seg=8 x=3.5 z=-4 color=#8a6a3a
+  part disc r=3.2 h=8 seg=8 x=0 z=4 color=#8a6a3a
+  part disc r=3.2 h=8 seg=8 x=-6 z=5 color=#8a6a3a
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-4 z=-3 color=#3a3e44
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=3.5 z=-4 color=#3a3e44
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=0 z=4 color=#3a3e44
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-6 z=5 color=#3a3e44
+
+# Frachtkisten (Cargo Crates): a small thing on the ground, to be shot.
+model st_crates
+  part box w=9 h=8 d=9 x=-5 z=-3 color=#6a7a8a
+  part box w=9 h=8 d=9 x=5 z=-2 rot=10 color=#8a7a5a
+  part box w=8 h=7 d=8 x=-1 z=5 rot=-15 color=#6a7a8a
+  part box w=8 h=7 d=8 x=-4 z=-2 y=8 rot=25 color=#8a7a5a
+
+# Deckleuchte (Deck Lamp): a small thing on the ground, to be shot.
+model st_lamp
+  part box w=5 h=2 d=5 color=#4a5260
+  part disc r=0.8 h=24 seg=6 y=2 color=#4a5260
+  part box w=7 h=1.2 d=2 x=3 y=25 color=#4a5260
+  part light r=1.8 x=6 y=24 color=#9fd8ff
+
+# Frachtkarre (Cargo Cart): a small thing on the ground, to be shot.
+model st_cart
+  part box w=11 h=5 d=16 y=3 color=#c09030
+  part box w=9 h=5 d=6 y=8 z=-4 color=#4a5260
+  part box w=2.5 h=4.5 d=4.5 x=6 z=5 mirror=1 color=#1e2024
+  part box w=2.5 h=4.5 d=4.5 x=6 z=-5 mirror=1 color=#1e2024
+  part light r=0.8 x=3 y=5 z=-8.5 mirror=1 color=#ffe0a0
+
+# Landebake (Landing Beacon): a small thing on the ground, to be shot.
+model st_beacon
+  part box w=5 h=2 d=5 color=#4a5260
+  part disc r=0.8 h=14 seg=6 y=2 color=#4a5260
+  part box w=7 h=1.2 d=2 x=3 y=15 color=#4a5260
+  part light r=1.8 x=6 y=14 color=#ffd060
+
+# Schlot (Smokestack): a structure on the ground, to be shot.
+model fo_stack
+  part box w=26 h=10 d=26 color=#3a2e28
+  part disc r=6 h=56 seg=10 y=8 color=#5a4a40
+  part ring r=6.6 thick=0.8 seg=12 y=33.6 color=#3a2e28
+  part ring r=6.6 thick=0.8 seg=12 y=47.6 color=#3a2e28
+  part light r=3 y=65 color=#ff8030
+  part greeble n=6 w=24 d=24 y=10 size=2 seed=3 color=#3a2e28
+
+# Erzsilo (Ore Silo): a structure on the ground, to be shot.
+model fo_silo
+  part disc r=11 h=34 seg=12 color=#7a6a5a
+  part dome r=11 y=34 color=#4a3c34
+  part ring r=11.6 thick=0.8 seg=14 y=17 color=#4a3c34
+  part light r=1.2 y=42.8 x=0 color=#ff9040
+  part box w=3 h=34 d=3 x=12.5 z=0 color=#4a3c34
+
+# Gießhalle (Casting Hall): a structure on the ground, to be shot.
+model fo_hall
+  part box w=56 h=16 d=36 color=#4a3c34
+  part box w=58 h=6 d=38 y=16 taper=0.6 color=#2e2620
+  part box w=22.4 h=10 d=2 z=-18.5 y=0 color=#ff7020
+  part greeble n=8 w=48 d=28 y=22 size=2.2 seed=7 color=#ff7020
+
+# Schlackentank (Slag Tank): a structure on the ground, to be shot.
+model fo_tank
+  part box w=28.6 h=4 d=28.6 color=#3a2e28
+  part sphere r=13 y=16 seg=12 color=#6a5a4a
+  part ring r=13.3 thick=0.8 seg=16 y=16 color=#3a2e28
+  part light r=1 y=29 color=#ff6020
+
+# Portalkran (Gantry Crane): a structure on the ground, to be shot.
+model fo_crane
+  part box w=6 h=40 d=6 x=-20 color=#6a5a40
+  part box w=6 h=40 d=6 x=20 color=#6a5a40
+  part box w=50 h=6 d=8 y=40 color=#c09030
+  part box w=8 h=6 d=8 y=34 x=6 color=#6a5a40
+  part disc r=0.8 h=20 seg=6 y=14 x=6 color=#6a5a40
+  part light r=1.4 y=47 x=-20 color=#ff6020
+  part light r=1.4 y=47 x=20 color=#ff6020
+
+# Kühlturm (Cooling Tower): a structure on the ground, to be shot.
+model fo_cooling
+  part disc r=17 h=26 seg=18 color=#6a5a4a
+  part ring r=17 thick=1.2 seg=20 y=26 color=#3a2e28
+  part ring r=17.3 thick=0.8 seg=20 y=8 color=#3a2e28
+  part disc r=14 h=0.6 seg=16 y=26 color=#ff9040 emit=0.25
+
+# Raffinerie (Refinery): a structure on the ground, to be shot.
+model fo_refinery
+  part disc r=8 h=30 seg=12 x=-14 color=#7a6a5a
+  part dome r=8 y=30 x=-14 color=#4a3c34
+  part light r=1.4 y=39 x=-14 color=#ff8030
+  part disc r=8 h=30 seg=12 x=14 color=#7a6a5a
+  part dome r=8 y=30 x=14 color=#4a3c34
+  part light r=1.4 y=39 x=14 color=#ff8030
+  part box w=20 h=2.5 d=2.5 y=22 color=#4a3c34
+  part box w=20 h=2.5 d=2.5 y=12 z=4 color=#4a3c34
+  part box w=12 h=7 d=10 z=14 color=#4a3c34
+
+# Hochofen (Blast Furnace): a structure on the ground, to be shot.
+model fo_furnace
+  part box w=30 h=14 d=30 color=#4a3c34
+  part box w=20 h=18 d=20 y=14 taper=0.3 color=#4a3c34
+  part disc r=5 h=16 seg=10 y=30 color=#4a3c34
+  part box w=12 h=6 d=1 y=4 z=-15.2 color=#ff7020 emit=1
+  part light r=3 y=48 color=#ff8030
+
+# Schlackenbunker (Slag Bunker): a structure on the ground, to be shot.
+model fo_bunker
+  part box w=34 h=10 d=24 taper=0.25 color=#5a4a40
+  part box w=20.4 h=1.6 d=1 y=5 z=-11.4 color=#ff6020 emit=0.8
+  part box w=8 h=3 d=8 y=10 x=8.5 color=#5a4a40
+  part greeble n=5 w=20.4 d=12 y=10 size=1.8 seed=13 color=#5a4a40
+
+# Schlackefässer (Slag Drums): a small thing on the ground, to be shot.
+model fo_drums
+  part disc r=3.2 h=8 seg=8 x=-4 z=-3 color=#5a4a3a
+  part disc r=3.2 h=8 seg=8 x=3.5 z=-4 color=#5a4a3a
+  part disc r=3.2 h=8 seg=8 x=0 z=4 color=#5a4a3a
+  part disc r=3.2 h=8 seg=8 x=-6 z=5 color=#5a4a3a
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-4 z=-3 color=#ff7020
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=3.5 z=-4 color=#ff7020
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=0 z=4 color=#ff7020
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-6 z=5 color=#ff7020
+
+# Rohrleitung (Pipeline): a small thing on the ground, to be shot.
+model fo_pipes
+  part box w=3.2 h=3.2 d=46 y=5 x=-3 color=#6a5a4a
+  part box w=3.2 h=3.2 d=46 y=5 x=3 color=#6a5a4a
+  part box w=10 h=5 d=2 z=-18 color=#3a2e28
+  part box w=10 h=5 d=2 z=0 color=#3a2e28
+  part box w=10 h=5 d=2 z=18 color=#3a2e28
+
+# Barrenstapel (Ingot Stack): a small thing on the ground, to be shot.
+model fo_ingots
+  part box w=9 h=8 d=9 x=-5 z=-3 color=#8a7050
+  part box w=9 h=8 d=9 x=5 z=-2 rot=10 color=#c09060
+  part box w=8 h=7 d=8 x=-1 z=5 rot=-15 color=#8a7050
+  part box w=8 h=7 d=8 x=-4 z=-2 y=8 rot=25 color=#c09060
+
+# Erzlore (Ore Cart): a small thing on the ground, to be shot.
+model fo_cart
+  part box w=11 h=5 d=14 y=3 color=#5a4a40
+  part box w=9 h=5 d=6 y=8 z=-3 color=#8a7050
+  part box w=2.5 h=4.5 d=4.5 x=6 z=4 mirror=1 color=#1e2024
+  part box w=2.5 h=4.5 d=4.5 x=6 z=-4 mirror=1 color=#1e2024
+  part light r=0.8 x=3 y=5 z=-7.5 mirror=1 color=#ff9040
+
+# Warnleuchte (Warning Light): a small thing on the ground, to be shot.
+model fo_lamp
+  part box w=5 h=2 d=5 color=#5a4a40
+  part disc r=0.8 h=18 seg=6 y=2 color=#5a4a40
+  part box w=7 h=1.2 d=2 x=3 y=19 color=#5a4a40
+  part light r=1.8 x=6 y=18 color=#ff6020
+
+# Siedlerkuppel (Settler Dome): a structure on the ground, to be shot.
+model de_dome
+  part disc r=18 h=4 seg=16 color=#9a8a6a
+  part dome r=16 y=4 glass=1 color=#c8e0f0 emit=0.25
+  part box w=8 h=8 d=10 z=19 color=#9a8a6a
+  part light r=0.9 y=4 x=0 z=-18 color=#ffd080 mirror=0
+  part light r=0.9 y=4 x=15.59 z=-9 color=#ffd080 mirror=0
+  part light r=0.9 y=4 x=15.59 z=9 color=#ffd080 mirror=0
+  part light r=0.9 y=4 x=0 z=18 color=#ffd080 mirror=0
+  part light r=0.9 y=4 x=-15.59 z=9 color=#ffd080 mirror=0
+  part light r=0.9 y=4 x=-15.59 z=-9 color=#ffd080 mirror=0
+
+# Wasserturm (Water Tower): a structure on the ground, to be shot.
+model de_tower
+  part disc r=10 h=26 seg=12 color=#8a7a5a
+  part dome r=10 y=26 color=#6a5a40
+  part ring r=10.6 thick=0.8 seg=14 y=13 color=#6a5a40
+  part light r=1.2 y=34 x=0 color=#80c0ff
+  part box w=3 h=26 d=3 x=11.5 z=0 color=#6a5a40
+
+# Funkmast (Radio Mast): a structure on the ground, to be shot.
+model de_mast
+  part box w=12 h=4 d=12 color=#8a7a6a
+  part disc r=1.4 h=48 seg=6 y=4 color=#8a7a6a
+  part disc r=9 h=1.2 seg=14 y=33.6 pitch=60 color=#c8bca8
+  part light r=1.6 y=53 color=#ff5040
+  part box w=1 h=43.2 d=1 x=5 z=5 pitch=-8 color=#8a7a6a
+  part box w=1 h=43.2 d=1 x=-5 z=-5 pitch=8 color=#8a7a6a
+
+# Erztransporter (Ore Hauler): a structure on the ground, to be shot.
+model de_truck
+  part box w=12 h=10 d=28 z=4 color=#a07a40
+  part box w=12 h=8 d=8 z=-14 color=#6a5a4a
+  part light r=1 x=4 y=4 z=-18.5 color=#ffe0a0 mirror=1
+  part greeble n=4 w=10 d=24 y=10 size=1.5 seed=9 color=#6a5a4a
+
+# Solarfeld (Solar Field): a structure on the ground, to be shot.
+model de_solar
+  part box w=30 h=0.8 d=10 x=0 z=-14 y=6 pitch=-20 color=#3a5a8a emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=-14 color=#5a5040
+  part box w=30 h=0.8 d=10 x=0 z=0 y=6 pitch=-20 color=#3a5a8a emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=0 color=#5a5040
+  part box w=30 h=0.8 d=10 x=0 z=14 y=6 pitch=-20 color=#3a5a8a emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=14 color=#5a5040
+
+# Lehmhaus (Adobe House): a structure on the ground, to be shot.
+model de_house
+  part box w=22 h=10 d=16 color=#b0906a
+  part box w=24 h=7 d=18 y=10 taper=0.9 color=#8a6a4a
+  part light r=0.9 y=6 z=-8.4 color=#ffd080
+
+# Sturmbunker (Storm Shelter): a structure on the ground, to be shot.
+model de_bunker
+  part box w=34 h=10 d=24 taper=0.25 color=#8a7a5a
+  part box w=20.4 h=1.6 d=1 y=5 z=-11.4 color=#ffd080 emit=0.8
+  part box w=8 h=3 d=8 y=10 x=8.5 color=#8a7a5a
+  part greeble n=5 w=20.4 d=12 y=10 size=1.8 seed=13 color=#8a7a5a
+
+# Funkschüssel (Dish Antenna): a structure on the ground, to be shot.
+model de_uplink
+  part box w=18 h=8 d=18 color=#8a7a6a
+  part disc r=2.5 h=10 seg=8 y=8 color=#8a7a6a
+  part disc r=16 h=1.5 seg=18 y=18 pitch=40 color=#e0d8c8
+  part disc r=0.7 h=8 seg=5 y=19 color=#8a7a6a
+  part light r=1.4 y=27 color=#ff5040
+
+# Tankstelle (Fuel Stop): a structure on the ground, to be shot.
+model de_fuel
+  part box w=34 h=1.5 d=20 y=14 color=#c0a070 emit=0.1
+  part box w=34.4 h=0.6 d=2.4 y=15.2 z=-8.8 color=#ffe0a0 emit=0.6
+  part box w=34.4 h=0.6 d=2.4 y=15.2 z=8.8 color=#ffe0a0 emit=0.6
+  part box w=1.5 h=14 d=1.5 x=-14 z=-7 color=#6a5a4a
+  part box w=1.5 h=14 d=1.5 x=-14 z=7 color=#6a5a4a
+  part box w=1.5 h=14 d=1.5 x=14 z=-7 color=#6a5a4a
+  part box w=1.5 h=14 d=1.5 x=14 z=7 color=#6a5a4a
+  part box w=3 h=6 d=3 x=-6 color=#6a5a4a
+  part box w=3 h=6 d=3 x=6 color=#6a5a4a
+  part light r=1 x=-10 y=13 color=#ffe0a0
+  part light r=1 x=0 y=13 color=#ffe0a0
+  part light r=1 x=10 y=13 color=#ffe0a0
+
+# Wasserfässer (Water Drums): a small thing on the ground, to be shot.
+model de_drums
+  part disc r=3.2 h=8 seg=8 x=-4 z=-3 color=#6a7a8a
+  part disc r=3.2 h=8 seg=8 x=3.5 z=-4 color=#6a7a8a
+  part disc r=3.2 h=8 seg=8 x=0 z=4 color=#6a7a8a
+  part disc r=3.2 h=8 seg=8 x=-6 z=5 color=#6a7a8a
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-4 z=-3 color=#c8bca8
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=3.5 z=-4 color=#c8bca8
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=0 z=4 color=#c8bca8
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-6 z=5 color=#c8bca8
+
+# Wüstenbuggy (Dune Buggy): a small thing on the ground, to be shot.
+model de_rover
+  part box w=11 h=5 d=14 y=3 color=#b08a50
+  part box w=9 h=5 d=6 y=8 z=-3 color=#5a5040
+  part box w=2.5 h=4.5 d=4.5 x=6 z=4 mirror=1 color=#1e2024
+  part box w=2.5 h=4.5 d=4.5 x=6 z=-4 mirror=1 color=#1e2024
+  part light r=0.8 x=3 y=5 z=-7.5 mirror=1 color=#ffe0a0
+
+# Vorratskisten (Supply Crates): a small thing on the ground, to be shot.
+model de_crates
+  part box w=9 h=8 d=9 x=-5 z=-3 color=#8a7a5a
+  part box w=9 h=8 d=9 x=5 z=-2 rot=10 color=#6a5a40
+  part box w=8 h=7 d=8 x=-1 z=5 rot=-15 color=#8a7a5a
+  part box w=8 h=7 d=8 x=-4 z=-2 y=8 rot=25 color=#6a5a40
+
+# Signalleuchte (Signal Light): a small thing on the ground, to be shot.
+model de_lamp
+  part box w=5 h=2 d=5 color=#6a5a4a
+  part disc r=0.8 h=16 seg=6 y=2 color=#6a5a4a
+  part box w=7 h=1.2 d=2 x=3 y=17 color=#6a5a4a
+  part light r=1.8 x=6 y=16 color=#ff5040
+
+# Wasserleitung (Water Main): a small thing on the ground, to be shot.
+model de_pipes
+  part box w=3.2 h=3.2 d=46 y=5 x=-3 color=#8a7a6a
+  part box w=3.2 h=3.2 d=46 y=5 x=3 color=#8a7a6a
+  part box w=10 h=5 d=2 z=-18 color=#5a5040
+  part box w=10 h=5 d=2 z=0 color=#5a5040
+  part box w=10 h=5 d=2 z=18 color=#5a5040
+
+# Bohrinsel (Drilling Rig): a structure on the ground, to be shot.
+model oc_rig
+  part box w=46 h=4 d=46 y=10 color=#4a5260
+  part disc r=2.5 h=14 seg=8 x=-18 z=-18 color=#6a7480
+  part disc r=2.5 h=14 seg=8 x=-18 z=18 color=#6a7480
+  part disc r=2.5 h=14 seg=8 x=18 z=-18 color=#6a7480
+  part disc r=2.5 h=14 seg=8 x=18 z=18 color=#6a7480
+  part box w=8 h=34 d=8 y=14 x=8 z=-6 taper=0.7 color=#6a7480
+  part box w=14 h=8 d=12 y=14 x=-10 z=8 color=#4a5260
+  part light r=1.6 y=50 x=8 z=-6 color=#ff5040
+  part disc r=8 h=1 seg=10 y=14.5 x=-12 z=-12 color=#ff5040
+
+# Bojenfeld (Buoy Field): a structure on the ground, to be shot.
+model oc_buoy
+  part sphere r=5 x=0 z=-12 y=2 color=#c04030 mirror=0
+  part ring r=5.2 thick=0.6 seg=10 x=0 z=-12 y=2 color=#e8e8e8 mirror=0
+  part light r=1.2 x=0 z=-12 y=8 color=#ffd060 mirror=0
+  part sphere r=5 x=10.39 z=6 y=2 color=#c04030 mirror=0
+  part ring r=5.2 thick=0.6 seg=10 x=10.39 z=6 y=2 color=#e8e8e8 mirror=0
+  part light r=1.2 x=10.39 z=6 y=8 color=#ffd060 mirror=0
+  part sphere r=5 x=-10.39 z=6 y=2 color=#c04030 mirror=0
+  part ring r=5.2 thick=0.6 seg=10 x=-10.39 z=6 y=2 color=#e8e8e8 mirror=0
+  part light r=1.2 x=-10.39 z=6 y=8 color=#ffd060 mirror=0
+
+# Containerkahn (Container Barge): a structure on the ground, to be shot.
+model oc_barge
+  part hull len=70 wid=24 hgt=8 shape=box round=2 color=#3a4a5a
+  part box w=20 h=10 d=12 y=8 z=24 color=#5a6474
+  part box w=9 h=7 d=14 x=-5 z=-20 y=8 color=#a05a3a
+  part box w=9 h=7 d=14 x=5 z=-20 y=8 color=#4a7a5a
+  part box w=9 h=7 d=14 x=-5 z=-4 y=8 color=#c0a040
+  part box w=9 h=7 d=14 x=5 z=-4 y=8 color=#a05a3a
+
+# Leuchtfeuer (Beacon): a structure on the ground, to be shot.
+model oc_beacon
+  part disc r=12 h=4 seg=12 color=#6a7480
+  part disc r=5 h=34 seg=10 y=4 color=#d8d8d8
+  part ring r=5.5 thick=1 seg=12 y=20 color=#6a7480
+  part disc r=7 h=6 seg=10 y=38 color=#6a7480
+  part light r=3.5 y=44 color=#ffe080
+
+# Pier (Pier): a structure on the ground, to be shot.
+model oc_dock
+  part box w=12 h=2 d=70 y=6 color=#6a5a48
+  part disc r=1.5 h=8 seg=6 x=-5 z=-30 color=#4a4038
+  part disc r=1.5 h=8 seg=6 x=-5 z=-10 color=#4a4038
+  part disc r=1.5 h=8 seg=6 x=-5 z=10 color=#4a4038
+  part disc r=1.5 h=8 seg=6 x=-5 z=30 color=#4a4038
+  part disc r=1.5 h=8 seg=6 x=5 z=-30 color=#4a4038
+  part disc r=1.5 h=8 seg=6 x=5 z=-10 color=#4a4038
+  part disc r=1.5 h=8 seg=6 x=5 z=10 color=#4a4038
+  part disc r=1.5 h=8 seg=6 x=5 z=30 color=#4a4038
+  part box w=8 h=6 d=8 y=8 z=-24 rot=5 color=#a05a3a
+  part box w=8 h=6 d=8 y=8 z=-14 rot=-10 color=#4a7a5a
+  part box w=8 h=6 d=8 y=8 z=18 rot=15 color=#a05a3a
+
+# Fischfarm (Fish Farm): a structure on the ground, to be shot.
+model oc_farm
+  part ring r=9 thick=1.2 seg=16 x=-11 z=-11 y=1 color=#c0a040
+  part ring r=9 thick=1.2 seg=16 x=-11 z=11 y=1 color=#c0a040
+  part ring r=9 thick=1.2 seg=16 x=11 z=-11 y=1 color=#c0a040
+  part ring r=9 thick=1.2 seg=16 x=11 z=11 y=1 color=#c0a040
+  part disc r=8 h=0.4 seg=14 x=-11 z=-11 color=#1a3a4a
+  part disc r=8 h=0.4 seg=14 x=-11 z=11 color=#1a3a4a
+  part disc r=8 h=0.4 seg=14 x=11 z=-11 color=#1a3a4a
+  part disc r=8 h=0.4 seg=14 x=11 z=11 color=#1a3a4a
+  part box w=6 h=4 d=6 y=1 color=#c0a040
+  part light r=1 y=6 color=#ffd060
+
+# Tanker (Tanker): a structure on the ground, to be shot.
+model oc_tanker
+  part hull len=90 wid=22 hgt=8 shape=box round=2 color=#4a3a3a
+  part box w=18 h=10 d=12 y=8 z=34 color=#6a7480
+  part sphere r=7 y=9 z=-30 color=#c0c8d0
+  part sphere r=7 y=9 z=-15 color=#c0c8d0
+  part sphere r=7 y=9 z=0 color=#c0c8d0
+  part sphere r=7 y=9 z=15 color=#c0c8d0
+
+# Wohnplattform (Habitat Platform): a structure on the ground, to be shot.
+model oc_platform
+  part disc r=26 h=2 seg=16 color=#4a5260
+  part ring r=20 thick=1 seg=20 y=2 color=#d8c040
+  part box w=20 h=0.6 d=3 y=2 color=#d8c040
+  part box w=3 h=0.6 d=20 y=2 color=#d8c040
+  part light r=1 y=2.5 x=0 z=-24 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=16.97 z=-16.97 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=24 z=-0 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=16.97 z=16.97 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=0 z=24 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=-16.97 z=16.97 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=-24 z=0 color=#60c0ff mirror=0
+  part light r=1 y=2.5 x=-16.97 z=-16.97 color=#60c0ff mirror=0
+  part box w=22 h=10 d=16 color=#8a96a8
+  part box w=24 h=7 d=18 y=10 taper=0.9 color=#4a5260
+  part light r=0.9 y=6 z=-8.4 color=#ffe0a0
+
+# Fischerboot (Fishing Boat): a small thing on the ground, to be shot.
+model oc_boat
+  part hull len=24 wid=9 hgt=4 shape=tear color=#d8d0c0
+  part box w=6 h=4 d=7 y=3 z=2 color=#a05a3a
+  part light r=0.8 y=8 z=2 color=#ffe080
+
+# Leuchtboje (Light Buoy): a small thing on the ground, to be shot.
+model oc_float
+  part box w=5 h=2 d=5 color=#c04030
+  part disc r=0.8 h=12 seg=6 y=2 color=#c04030
+  part box w=7 h=1.2 d=2 x=3 y=13 color=#c04030
+  part light r=1.8 x=6 y=12 color=#ffd060
+  part sphere r=4 y=1 color=#c04030
+
+# Treibgut (Flotsam): a small thing on the ground, to be shot.
+model oc_crates
+  part box w=9 h=8 d=9 x=-5 z=-3 color=#8a6a4a
+  part box w=9 h=8 d=9 x=5 z=-2 rot=10 color=#5a6474
+  part box w=8 h=7 d=8 x=-1 z=5 rot=-15 color=#8a6a4a
+  part box w=8 h=7 d=8 x=-4 z=-2 y=8 rot=25 color=#5a6474
+
+# Schnellboot (Speedboat): a small thing on the ground, to be shot.
+model oc_skiff
+  part hull len=24 wid=9 hgt=4 shape=tear color=#c04030
+  part box w=6 h=4 d=7 y=3 z=2 color=#d8d8d8
+  part light r=0.8 y=8 z=2 color=#ffe080
+
+# Forschungskuppel (Research Dome): a structure on the ground, to be shot.
+model ic_dome
+  part disc r=20 h=4 seg=16 color=#8a96a8
+  part dome r=18 y=4 glass=1 color=#d0f0ff emit=0.25
+  part box w=8 h=8 d=10 z=21 color=#8a96a8
+  part light r=0.9 y=4 x=0 z=-20 color=#60c0ff mirror=0
+  part light r=0.9 y=4 x=17.32 z=-10 color=#60c0ff mirror=0
+  part light r=0.9 y=4 x=17.32 z=10 color=#60c0ff mirror=0
+  part light r=0.9 y=4 x=0 z=20 color=#60c0ff mirror=0
+  part light r=0.9 y=4 x=-17.32 z=10 color=#60c0ff mirror=0
+  part light r=0.9 y=4 x=-17.32 z=-10 color=#60c0ff mirror=0
+
+# Radarschüssel (Radar Dish): a structure on the ground, to be shot.
+model ic_radar
+  part box w=12 h=4 d=12 color=#9aa4b4
+  part disc r=1.4 h=30 seg=6 y=4 color=#9aa4b4
+  part disc r=9 h=1.2 seg=14 y=21 pitch=60 color=#e8f0f8
+  part light r=1.6 y=35 color=#ff5040
+  part box w=1 h=27 d=1 x=5 z=5 pitch=-8 color=#9aa4b4
+  part box w=1 h=27 d=1 x=-5 z=-5 pitch=8 color=#9aa4b4
+
+# Brennstofflager (Fuel Depot): a structure on the ground, to be shot.
+model ic_tank
+  part box w=28.6 h=4 d=28.6 color=#5a6474
+  part sphere r=13 y=16 seg=12 color=#b0bac8
+  part ring r=13.3 thick=0.8 seg=16 y=16 color=#5a6474
+  part light r=1 y=29 color=#ff8040
+
+# Vorratslager (Supply Stack): a structure on the ground, to be shot.
+model ic_containers
+  part box w=10 h=8 d=26 x=-12 z=0 y=0 color=#c04030
+  part box w=10 h=8 d=26 x=0 z=0 y=0 color=#5a6a8a
+  part box w=10 h=8 d=26 x=12 z=0 y=0 color=#d8d8d8
+  part box w=10 h=8 d=26 x=-12 z=0 y=8 color=#5a6a8a
+  part box w=10 h=8 d=26 x=0 z=0 y=8 color=#d8d8d8
+  part box w=10 h=8 d=26 x=12 z=0 y=8 color=#c04030
+
+# Eisbohrer (Ice Drill): a structure on the ground, to be shot.
+model ic_drill
+  part box w=24 h=6 d=24 color=#5a6474
+  part box w=10 h=46 d=10 y=6 taper=0.6 color=#c04030
+  part box w=10 h=10 d=14 x=12 color=#5a6474
+  part disc r=3 h=8 seg=8 z=-14 color=#c04030
+  part light r=1.6 y=54 color=#ff8040
+
+# Wohnkuppel (Habitat Dome): a structure on the ground, to be shot.
+model ic_igloo
+  part disc r=18 h=3 seg=16 color=#b0bac8
+  part dome r=16 y=3 color=#d8e4f0
+  part ring r=13.6 thick=0.8 seg=18 y=9 color=#b0bac8
+  part box w=8 h=7 d=10 z=19 color=#b0bac8
+  part light r=1 y=8 z=24.5 color=#60c0ff
+
+# Forschungshalle (Research Hall): a structure on the ground, to be shot.
+model ic_hall
+  part box w=56 h=16 d=36 color=#8a96a8
+  part box w=58 h=6 d=38 y=16 taper=0.6 color=#5a6474
+  part box w=22.4 h=10 d=2 z=-18.5 y=0 color=#60c0ff
+  part greeble n=8 w=48 d=28 y=22 size=2.2 seed=7 color=#60c0ff
+
+# Wärmereaktor (Heat Reactor): a structure on the ground, to be shot.
+model ic_reactor
+  part box w=30 h=10 d=20 color=#7a8494
+  part disc r=6 h=14 seg=12 x=-8 y=10 color=#4a5260
+  part disc r=6 h=14 seg=12 x=8 y=10 color=#4a5260
+  part ring r=6.5 thick=1 seg=14 x=-8 y=15 color=#ff8040 emit=0.8
+  part ring r=6.5 thick=1 seg=14 x=-8 y=21 color=#ff8040 emit=0.8
+  part ring r=6.5 thick=1 seg=14 x=8 y=15 color=#ff8040 emit=0.8
+  part ring r=6.5 thick=1 seg=14 x=8 y=21 color=#ff8040 emit=0.8
+
+# Schneeraupe (Snowcat): a small thing on the ground, to be shot.
+model ic_cat
+  part box w=11 h=5 d=16 y=3 color=#c04030
+  part box w=9 h=5 d=6 y=8 z=-4 color=#d8d8d8
+  part box w=2.5 h=4.5 d=4.5 x=6 z=5 mirror=1 color=#1e2024
+  part box w=2.5 h=4.5 d=4.5 x=6 z=-5 mirror=1 color=#1e2024
+  part light r=0.8 x=3 y=5 z=-8.5 mirror=1 color=#ffe0a0
+
+# Brennstofffässer (Fuel Drums): a small thing on the ground, to be shot.
+model ic_drums
+  part disc r=3.2 h=8 seg=8 x=-4 z=-3 color=#c0a040
+  part disc r=3.2 h=8 seg=8 x=3.5 z=-4 color=#c0a040
+  part disc r=3.2 h=8 seg=8 x=0 z=4 color=#c0a040
+  part disc r=3.2 h=8 seg=8 x=-6 z=5 color=#c0a040
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-4 z=-3 color=#3a3e44
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=3.5 z=-4 color=#3a3e44
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=0 z=4 color=#3a3e44
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-6 z=5 color=#3a3e44
+
+# Wegleuchte (Path Light): a small thing on the ground, to be shot.
+model ic_lamp
+  part box w=5 h=2 d=5 color=#5a6474
+  part disc r=0.8 h=18 seg=6 y=2 color=#5a6474
+  part box w=7 h=1.2 d=2 x=3 y=19 color=#5a6474
+  part light r=1.8 x=6 y=18 color=#ff8040
+
+# Vorratskisten (Supply Crates): a small thing on the ground, to be shot.
+model ic_crates
+  part box w=9 h=8 d=9 x=-5 z=-3 color=#c04030
+  part box w=9 h=8 d=9 x=5 z=-2 rot=10 color=#8a96a8
+  part box w=8 h=7 d=8 x=-1 z=5 rot=-15 color=#c04030
+  part box w=8 h=7 d=8 x=-4 z=-2 y=8 rot=25 color=#8a96a8
+
+# Lastschlitten (Cargo Sled): a small thing on the ground, to be shot.
+model ic_sled
+  part box w=11 h=5 d=18 y=3 color=#5a6474
+  part box w=9 h=5 d=6 y=8 z=-5 color=#c0a040
+  part box w=2.5 h=4.5 d=4.5 x=6 z=6 mirror=1 color=#1e2024
+  part box w=2.5 h=4.5 d=4.5 x=6 z=-6 mirror=1 color=#1e2024
+  part light r=0.8 x=3 y=5 z=-9.5 mirror=1 color=#ffe0a0
+
+# Wohnturm (Tower Block): a structure on the ground, to be shot.
+model ci_tower
+  part box w=24 h=60 d=24 color=#5a6474
+  part box w=26 h=4 d=26 y=60 color=#3a424e
+  part greeble n=10 w=20 d=20 y=64 size=2 seed=11 color=#3a424e
+  part box w=24.4 h=1.4 d=24.4 y=8 color=#ffd890 emit=0.6
+  part box w=24.4 h=1.4 d=24.4 y=17 color=#ffd890 emit=0.6
+  part box w=24.4 h=1.4 d=24.4 y=26 color=#ffd890 emit=0.6
+  part box w=24.4 h=1.4 d=24.4 y=35 color=#ffd890 emit=0.6
+  part box w=24.4 h=1.4 d=24.4 y=44 color=#ffd890 emit=0.6
+  part box w=24.4 h=1.4 d=24.4 y=53 color=#ffd890 emit=0.6
+
+# Bürohaus (Office Block): a structure on the ground, to be shot.
+model ci_tower2
+  part box w=30 h=44 d=30 color=#4a5a6a
+  part box w=32 h=4 d=32 y=44 color=#2e3640
+  part greeble n=10 w=26 d=26 y=48 size=2 seed=11 color=#2e3640
+  part box w=30.4 h=1.4 d=30.4 y=8 color=#a0e0ff emit=0.6
+  part box w=30.4 h=1.4 d=30.4 y=17 color=#a0e0ff emit=0.6
+  part box w=30.4 h=1.4 d=30.4 y=26 color=#a0e0ff emit=0.6
+  part box w=30.4 h=1.4 d=30.4 y=35 color=#a0e0ff emit=0.6
+
+# Dachtanks (Rooftop Tanks): a structure on the ground, to be shot.
+model ci_tanks
+  part box w=22 h=4 d=22 color=#4a5260
+  part sphere r=10 y=13 seg=12 color=#8a96a8
+  part ring r=10.3 thick=0.8 seg=16 y=13 color=#4a5260
+  part light r=1 y=23 color=#ff5040
+  part box w=26 h=6 d=26 y=-4 color=#3a424e
+
+# Strommast (Power Pylon): a structure on the ground, to be shot.
+model ci_pylon
+  part box w=4 h=50 d=4 taper=0.5 color=#6a7480
+  part box w=30 h=2 d=3 y=44 color=#6a7480
+  part box w=22 h=2 d=3 y=36 color=#6a7480
+  part light r=1 x=14 y=44 color=#ff5040 mirror=1
+
+# Hochhaus (High-Rise): a structure on the ground, to be shot.
+model ci_tower3
+  part box w=18 h=80 d=18 color=#6a7484
+  part box w=20 h=4 d=20 y=80 color=#3a424e
+  part greeble n=10 w=14 d=14 y=84 size=2 seed=11 color=#3a424e
+  part box w=18.4 h=1.4 d=18.4 y=8 color=#ffe0a0 emit=0.6
+  part box w=18.4 h=1.4 d=18.4 y=17 color=#ffe0a0 emit=0.6
+  part box w=18.4 h=1.4 d=18.4 y=26 color=#ffe0a0 emit=0.6
+  part box w=18.4 h=1.4 d=18.4 y=35 color=#ffe0a0 emit=0.6
+  part box w=18.4 h=1.4 d=18.4 y=44 color=#ffe0a0 emit=0.6
+  part box w=18.4 h=1.4 d=18.4 y=53 color=#ffe0a0 emit=0.6
+  part box w=18.4 h=1.4 d=18.4 y=62 color=#ffe0a0 emit=0.6
+  part box w=18.4 h=1.4 d=18.4 y=71 color=#ffe0a0 emit=0.6
+
+# Markthalle (Market Hall): a structure on the ground, to be shot.
+model ci_mall
+  part box w=64 h=14 d=40 color=#5a5a6a
+  part box w=66 h=6 d=42 y=14 taper=0.6 color=#3a3a4a
+  part box w=25.6 h=10 d=2 z=-20.5 y=0 color=#ff4fd0
+  part greeble n=8 w=56 d=32 y=20 size=2.2 seed=7 color=#ff4fd0
+
+# Parkhaus (Parking Deck): a structure on the ground, to be shot.
+model ci_garage
+  part box w=40 h=3 d=28 y=0 color=#7a8494
+  part box w=40 h=3.5 d=25 y=3 color=#2e3640
+  part box w=40 h=3 d=28 y=6.5 color=#7a8494
+  part box w=40 h=3.5 d=25 y=9.5 color=#2e3640
+  part box w=40 h=3 d=28 y=13 color=#7a8494
+  part box w=40 h=3.5 d=25 y=16 color=#2e3640
+  part light r=1 x=-14 y=19.5 z=-9 color=#ffd890
+  part light r=1 x=-14 y=19.5 z=9 color=#ffd890
+  part light r=1 x=14 y=19.5 z=-9 color=#ffd890
+  part light r=1 x=14 y=19.5 z=9 color=#ffd890
+
+# Stadthaus (Townhouse): a structure on the ground, to be shot.
+model ci_house
+  part box w=26 h=10 d=20 color=#7a6a5a
+  part box w=28 h=7 d=22 y=10 taper=0.9 color=#4a3a34
+  part light r=0.9 y=6 z=-10.4 color=#ffd890
+
+# Arena (Arena): a structure on the ground, to be shot.
+model ci_arena
+  part disc r=24 h=4 seg=16 color=#5a6474
+  part dome r=22 y=4 glass=1 color=#a0e0ff emit=0.25
+  part box w=8 h=8 d=10 z=25 color=#5a6474
+  part light r=0.9 y=4 x=0 z=-24 color=#ffd890 mirror=0
+  part light r=0.9 y=4 x=20.78 z=-12 color=#ffd890 mirror=0
+  part light r=0.9 y=4 x=20.78 z=12 color=#ffd890 mirror=0
+  part light r=0.9 y=4 x=0 z=24 color=#ffd890 mirror=0
+  part light r=0.9 y=4 x=-20.78 z=12 color=#ffd890 mirror=0
+  part light r=0.9 y=4 x=-20.78 z=-12 color=#ffd890 mirror=0
+
+# Schwebewagen (Hover Car): a small thing on the ground, to be shot.
+model ci_car
+  part box w=11 h=5 d=14 y=3 color=#4a6a8a
+  part box w=9 h=5 d=6 y=8 z=-3 color=#a0e0ff
+  part box w=2.5 h=4.5 d=4.5 x=6 z=4 mirror=1 color=#1e2024
+  part box w=2.5 h=4.5 d=4.5 x=6 z=-4 mirror=1 color=#1e2024
+  part light r=0.8 x=3 y=5 z=-7.5 mirror=1 color=#ffe0a0
+
+# Leuchtreklame (Neon Sign): a small thing on the ground, to be shot.
+model ci_sign
+  part box w=1.5 h=14 d=1.5 x=-8 color=#3a424e
+  part box w=1.5 h=14 d=1.5 x=8 color=#3a424e
+  part box w=24 h=10 d=1.2 y=14 color=#ff4fd0 emit=0.7
+
+# Straßenlaterne (Street Lamp): a small thing on the ground, to be shot.
+model ci_lamp
+  part box w=5 h=2 d=5 color=#4a5260
+  part disc r=0.8 h=26 seg=6 y=2 color=#4a5260
+  part box w=7 h=1.2 d=2 x=3 y=27 color=#4a5260
+  part light r=1.8 x=6 y=26 color=#ffd890
+
+# Kiosk (Kiosk): a small thing on the ground, to be shot.
+model ci_kiosk
+  part box w=12 h=8 d=10 color=#5a6474
+  part box w=15 h=1.5 d=13 y=8 color=#ffd890 emit=0.3
+  part light r=0.8 y=6 z=-5.5 color=#ffe0a0
+
+# Schwebebus (Hover Bus): a small thing on the ground, to be shot.
+model ci_bus
+  part box w=11 h=5 d=26 y=3 color=#c0a040
+  part box w=9 h=5 d=6 y=8 z=-9 color=#3a424e
+  part box w=2.5 h=4.5 d=4.5 x=6 z=10 mirror=1 color=#1e2024
+  part box w=2.5 h=4.5 d=4.5 x=6 z=-10 mirror=1 color=#1e2024
+  part light r=0.8 x=3 y=5 z=-13.5 mirror=1 color=#ffe0a0
+
+# Forschungshütte (Research Hut): a structure on the ground, to be shot.
+model ju_hut
+  part disc r=1.5 h=10 seg=6 x=-12 z=-10 color=#6a5a40
+  part disc r=1.5 h=10 seg=6 x=-12 z=10 color=#6a5a40
+  part disc r=1.5 h=10 seg=6 x=12 z=-10 color=#6a5a40
+  part disc r=1.5 h=10 seg=6 x=12 z=10 color=#6a5a40
+  part box w=30 h=12 d=26 y=10 color=#6a5a40
+  part box w=34 h=8 d=30 y=22 taper=0.4 color=#3a5a30
+  part light r=1.2 y=16 z=-13.5 color=#ffd080
+
+# Funkturm (Radio Tower): a structure on the ground, to be shot.
+model ju_tower
+  part box w=12 h=4 d=12 color=#5a6a4a
+  part disc r=1.4 h=54 seg=6 y=4 color=#5a6a4a
+  part disc r=9 h=1.2 seg=14 y=37.8 pitch=60 color=#a0b090
+  part light r=1.6 y=59 color=#ff5040
+  part box w=1 h=48.6 d=1 x=5 z=5 pitch=-8 color=#5a6a4a
+  part box w=1 h=48.6 d=1 x=-5 z=-5 pitch=8 color=#5a6a4a
+
+# Gewächshaus (Greenhouse): a structure on the ground, to be shot.
+model ju_green
+  part disc r=20 h=4 seg=16 color=#4a5a40
+  part dome r=18 y=4 glass=1 color=#a0ffb0 emit=0.25
+  part box w=8 h=8 d=10 z=21 color=#4a5a40
+  part light r=0.9 y=4 x=0 z=-20 color=#80ff90 mirror=0
+  part light r=0.9 y=4 x=17.32 z=-10 color=#80ff90 mirror=0
+  part light r=0.9 y=4 x=17.32 z=10 color=#80ff90 mirror=0
+  part light r=0.9 y=4 x=0 z=20 color=#80ff90 mirror=0
+  part light r=0.9 y=4 x=-17.32 z=10 color=#80ff90 mirror=0
+  part light r=0.9 y=4 x=-17.32 z=-10 color=#80ff90 mirror=0
+
+# Biosilo (Bio Silo): a structure on the ground, to be shot.
+model ju_silo
+  part disc r=11 h=34 seg=12 color=#5a6a4a
+  part dome r=11 y=34 color=#3a4a30
+  part ring r=11.6 thick=0.8 seg=14 y=17 color=#3a4a30
+  part light r=1.2 y=42.8 x=0 color=#80ff90
+  part box w=3 h=34 d=3 x=12.5 z=0 color=#3a4a30
+
+# Baumplattform (Tree Platform): a structure on the ground, to be shot.
+model ju_platform
+  part disc r=1.6 h=16 seg=6 x=-10 z=-8 color=#5a4a30
+  part disc r=1.6 h=16 seg=6 x=10 z=-8 color=#5a4a30
+  part disc r=1.6 h=16 seg=6 x=0 z=10 color=#5a4a30
+  part disc r=15 h=2 seg=12 y=16 color=#5a4a30
+  part box w=14 h=8 d=12 y=18 color=#5a4a30
+  part box w=18 h=6 d=16 y=26 taper=0.7 color=#3a5a30
+  part light r=1 y=22 z=-6.5 color=#ffd080
+
+# Alte Stele (Ancient Stele): a structure on the ground, to be shot.
+model ju_stele
+  part box w=16 h=4 d=16 color=#6a6a5a
+  part box w=8 h=30 d=6 y=4 taper=0.15 color=#6a6a5a
+  part box w=4 h=12 d=6.4 y=14 color=#80ff90 emit=0.7
+  part greeble n=6 w=14 d=14 y=4 size=1.6 seed=17 color=#6a6a5a
+
+# Feldlabor (Field Lab): a structure on the ground, to be shot.
+model ju_lab
+  part box w=44 h=12 d=28 color=#5a6a4a
+  part box w=46 h=6 d=30 y=12 taper=0.6 color=#3a4a30
+  part box w=17.6 h=10 d=2 z=-14.5 y=0 color=#ffd080
+  part greeble n=8 w=36 d=20 y=18 size=2.2 seed=7 color=#ffd080
+
+# Landeplatz (Landing Pad): a structure on the ground, to be shot.
+model ju_pad
+  part disc r=26 h=2 seg=16 color=#4a4a3a
+  part ring r=20 thick=1 seg=20 y=2 color=#d8c040
+  part box w=20 h=0.6 d=3 y=2 color=#d8c040
+  part box w=3 h=0.6 d=20 y=2 color=#d8c040
+  part light r=1 y=2.5 x=0 z=-24 color=#80ff90 mirror=0
+  part light r=1 y=2.5 x=16.97 z=-16.97 color=#80ff90 mirror=0
+  part light r=1 y=2.5 x=24 z=-0 color=#80ff90 mirror=0
+  part light r=1 y=2.5 x=16.97 z=16.97 color=#80ff90 mirror=0
+  part light r=1 y=2.5 x=0 z=24 color=#80ff90 mirror=0
+  part light r=1 y=2.5 x=-16.97 z=16.97 color=#80ff90 mirror=0
+  part light r=1 y=2.5 x=-24 z=0 color=#80ff90 mirror=0
+  part light r=1 y=2.5 x=-16.97 z=-16.97 color=#80ff90 mirror=0
+
+# Probenkisten (Sample Crates): a small thing on the ground, to be shot.
+model ju_crates
+  part box w=9 h=8 d=9 x=-5 z=-3 color=#6a5a40
+  part box w=9 h=8 d=9 x=5 z=-2 rot=10 color=#4a5a30
+  part box w=8 h=7 d=8 x=-1 z=5 rot=-15 color=#6a5a40
+  part box w=8 h=7 d=8 x=-4 z=-2 y=8 rot=25 color=#4a5a30
+
+# Lagerleuchte (Camp Light): a small thing on the ground, to be shot.
+model ju_lamp
+  part box w=5 h=2 d=5 color=#5a4a30
+  part disc r=0.8 h=16 seg=6 y=2 color=#5a4a30
+  part box w=7 h=1.2 d=2 x=3 y=17 color=#5a4a30
+  part light r=1.8 x=6 y=16 color=#ffd080
+
+# Treibstofffässer (Fuel Drums): a small thing on the ground, to be shot.
+model ju_drums
+  part disc r=3.2 h=8 seg=8 x=-4 z=-3 color=#4a5a30
+  part disc r=3.2 h=8 seg=8 x=3.5 z=-4 color=#4a5a30
+  part disc r=3.2 h=8 seg=8 x=0 z=4 color=#4a5a30
+  part disc r=3.2 h=8 seg=8 x=-6 z=5 color=#4a5a30
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-4 z=-3 color=#c0a040
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=3.5 z=-4 color=#c0a040
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=0 z=4 color=#c0a040
+  part ring r=3.4 thick=0.5 seg=8 y=5 x=-6 z=5 color=#c0a040
+
+# Geländewagen (Jungle Rover): a small thing on the ground, to be shot.
+model ju_rover
+  part box w=11 h=5 d=16 y=3 color=#4a5a30
+  part box w=9 h=5 d=6 y=8 z=-4 color=#6a5a40
+  part box w=2.5 h=4.5 d=4.5 x=6 z=5 mirror=1 color=#1e2024
+  part box w=2.5 h=4.5 d=4.5 x=6 z=-5 mirror=1 color=#1e2024
+  part light r=0.8 x=3 y=5 z=-8.5 mirror=1 color=#ffe0a0
+
+# Zelt (Tent): a small thing on the ground, to be shot.
+model ju_tent
+  part box w=14 h=8 d=18 taper=0.95 color=#8a7a4a
+  part light r=0.8 y=3 z=-9.5 color=#ffd080
+
+# Sporenkapsel (Spore Pod): a structure on the ground, to be shot.
+model hv_pod
+  part sphere r=10 rx=10 ry=14 rz=10 y=8 color=#8a5a90
+  part sphere r=4 y=16 color=#70f060 emit=0.9
+  part spike r=1.6 len=10 x=0 z=-9 y=4 pitch=50 rot=0 color=#8a5a90 mirror=0
+  part spike r=1.6 len=10 x=8.56 z=-2.78 y=4 pitch=50 rot=72 color=#8a5a90 mirror=0
+  part spike r=1.6 len=10 x=5.29 z=7.28 y=4 pitch=50 rot=144 color=#8a5a90 mirror=0
+  part spike r=1.6 len=10 x=-5.29 z=7.28 y=4 pitch=50 rot=216 color=#8a5a90 mirror=0
+  part spike r=1.6 len=10 x=-8.56 z=-2.78 y=4 pitch=50 rot=288 color=#8a5a90 mirror=0
+
+# Gitterknoten (Lattice Knot): a structure on the ground, to be shot.
+model hv_node
+  part box w=20 h=6 d=20 color=#6a4c72
+  part crystal r=6 len=22 pitch=90 y=18 seg=6 color=#ff60d0 emit=0.6
+  part ring r=12 thick=1 seg=16 y=10 color=#ff60d0 emit=0.5
+
+# Verwachsene Hütte (Overgrown Hut): a structure on the ground, to be shot.
+model hv_hut
+  part disc r=1.5 h=10 seg=6 x=-12 z=-10 color=#7a5a78
+  part disc r=1.5 h=10 seg=6 x=-12 z=10 color=#7a5a78
+  part disc r=1.5 h=10 seg=6 x=12 z=-10 color=#7a5a78
+  part disc r=1.5 h=10 seg=6 x=12 z=10 color=#7a5a78
+  part box w=30 h=12 d=26 y=10 color=#7a5a78
+  part box w=34 h=8 d=30 y=22 taper=0.4 color=#8a5a90
+  part light r=1.2 y=16 z=-13.5 color=#70f060
+
+# Brutturm (Brood Tower): a structure on the ground, to be shot.
+model hv_mound
+  part sphere r=14 ry=8 color=#8a5a90
+  part sphere r=10 ry=9 y=10 color=#8a5a90
+  part sphere r=6 ry=8 y=20 color=#8a5a90
+  part sphere r=2.5 y=28 color=#70f060 emit=1
+  part sphere r=1.6 x=0 z=-10 y=10 color=#70f060 emit=0.8 mirror=0
+  part sphere r=1.6 x=10 z=-0 y=10 color=#70f060 emit=0.8 mirror=0
+  part sphere r=1.6 x=0 z=10 y=10 color=#70f060 emit=0.8 mirror=0
+  part sphere r=1.6 x=-10 z=0 y=10 color=#70f060 emit=0.8 mirror=0
+
+# Sporenschlot (Spore Vent): a structure on the ground, to be shot.
+model hv_vent
+  part disc r=14 h=3 seg=14 color=#7a5a78
+  part ring r=8 thick=3 seg=14 y=4 color=#7a5a78
+  part disc r=6 h=1 seg=12 y=4 color=#ff60d0 emit=1
+  part spike r=1.8 len=8 x=0 z=-13 y=2 pitch=60 rot=0 color=#7a5a78 mirror=0
+  part spike r=1.8 len=8 x=12.36 z=-4.02 y=2 pitch=60 rot=72 color=#7a5a78 mirror=0
+  part spike r=1.8 len=8 x=7.64 z=10.52 y=2 pitch=60 rot=144 color=#7a5a78 mirror=0
+  part spike r=1.8 len=8 x=-7.64 z=10.52 y=2 pitch=60 rot=216 color=#7a5a78 mirror=0
+  part spike r=1.8 len=8 x=-12.36 z=-4.02 y=2 pitch=60 rot=288 color=#7a5a78 mirror=0
+
+# Puppe (Chrysalis): a structure on the ground, to be shot.
+model hv_chrysalis
+  part box w=18 h=3 d=8 color=#6a4c72
+  part sphere r=8 rx=9 ry=7 rz=20 y=7 color=#6a4c72
+  part sphere r=3 rx=4 ry=3 rz=10 y=12 color=#70f060 emit=0.7
+
+# Fangkrone (Snare Crown): a structure on the ground, to be shot.
+model hv_anemone
+  part disc r=6 h=6 seg=10 color=#8a5a90
+  part spike r=1.6 len=16 x=0 z=-4 y=4 pitch=35 rot=0 color=#8a5a90 mirror=0
+  part spike r=1.6 len=16 x=3.13 z=-2.49 y=4 pitch=35 rot=51.4 color=#8a5a90 mirror=0
+  part spike r=1.6 len=16 x=3.9 z=0.89 y=4 pitch=35 rot=102.9 color=#8a5a90 mirror=0
+  part spike r=1.6 len=16 x=1.74 z=3.6 y=4 pitch=35 rot=154.3 color=#8a5a90 mirror=0
+  part spike r=1.6 len=16 x=-1.74 z=3.6 y=4 pitch=35 rot=205.7 color=#8a5a90 mirror=0
+  part spike r=1.6 len=16 x=-3.9 z=0.89 y=4 pitch=35 rot=257.1 color=#8a5a90 mirror=0
+  part spike r=1.6 len=16 x=-3.13 z=-2.49 y=4 pitch=35 rot=308.6 color=#8a5a90 mirror=0
+  part sphere r=3 y=7 color=#ff60d0 emit=1
+
+# Gelege (Clutch): a small thing on the ground, to be shot.
+model hv_eggs
+  part sphere r=4 rx=4 ry=5.5 rz=4 x=-4 z=-3 y=3 color=#8a5a90
+  part sphere r=4 rx=4 ry=5.5 rz=4 x=4 z=-2 y=3 color=#8a5a90
+  part sphere r=4 rx=4 ry=5.5 rz=4 x=0 z=4 y=3 color=#8a5a90
+  part sphere r=1.6 x=-4 z=-3 y=6 color=#70f060 emit=0.9
+  part sphere r=1.6 x=4 z=-2 y=6 color=#70f060 emit=0.9
+  part sphere r=1.6 x=0 z=4 y=6 color=#70f060 emit=0.9
+
+# Gitterdorn (Lattice Thorn): a small thing on the ground, to be shot.
+model hv_shard
+  part crystal r=3.2 len=16 pitch=80 y=6 seg=5 color=#ff60d0 emit=0.5
+  part crystal r=2 len=10 pitch=55 x=4 y=3 rot=70 seg=4 color=#6a4c72 emit=0.3
+  part box w=10 h=2 d=10 color=#6a4c72
+
+# Leuchtknolle (Glow Bulb): a small thing on the ground, to be shot.
+model hv_bulb
+  part box w=8 h=2 d=8 color=#6a4c72
+  part sphere r=5 ry=6 y=6 color=#70f060 emit=0.6
+
+# Dornenbusch (Thorn Bush): a small thing on the ground, to be shot.
+model hv_spines
+  part disc r=5 h=2 seg=8 color=#7a5a78
+  part spike r=1.2 len=11 x=0 z=-3 y=1 pitch=40 rot=0 color=#7a5a78 mirror=0
+  part spike r=1.2 len=11 x=2.85 z=-0.93 y=1 pitch=40 rot=72 color=#7a5a78 mirror=0
+  part spike r=1.2 len=11 x=1.76 z=2.43 y=1 pitch=40 rot=144 color=#7a5a78 mirror=0
+  part spike r=1.2 len=11 x=-1.76 z=2.43 y=1 pitch=40 rot=216 color=#7a5a78 mirror=0
+  part spike r=1.2 len=11 x=-2.85 z=-0.93 y=1 pitch=40 rot=288 color=#7a5a78 mirror=0
+
+# Kristallnadel (Crystal Needle): a structure on the ground, to be shot.
+model la_spire
+  part box w=14 h=4 d=14 color=#4e4272
+  part crystal r=5 len=40 pitch=90 y=24 seg=6 color=#ff4fd0 emit=0.6
+  part crystal r=2.5 len=20 pitch=80 x=6 y=12 seg=4 rot=40 color=#ff4fd0 emit=0.5 mirror=1
+
+# Gitterrelais (Lattice Relay): a structure on the ground, to be shot.
+model la_relay
+  part box w=26 h=6 d=18 color=#4e4272
+  part disc r=8 h=1 seg=14 x=-9 y=10 pitch=55 color=#e8dcc0
+  part disc r=8 h=1 seg=14 x=9 y=10 pitch=55 color=#e8dcc0
+  part light r=1.6 y=14 x=-9 color=#ffd060
+  part light r=1.6 y=14 x=9 color=#ffd060
+
+# Lichtring (Light Ring): a structure on the ground, to be shot.
+model la_shrine
+  part disc r=14 h=4 seg=12 color=#4e4272
+  part ring r=12 thick=1.6 seg=20 y=16 pitch=90 color=#ffd060 emit=0.7
+  part sphere r=4 y=16 color=#ffd060 emit=1
+
+# Gittertor (Lattice Gate): a structure on the ground, to be shot.
+model la_gate
+  part box w=12 h=3 d=12 x=-16 color=#4e4272
+  part box w=12 h=3 d=12 x=16 color=#4e4272
+  part box w=6 h=30 d=6 x=-16 color=#4e4272
+  part box w=6 h=30 d=6 x=16 color=#4e4272
+  part box w=38 h=4 d=6 y=30 color=#4e4272
+  part box w=26 h=1.5 d=1.5 y=16 color=#ff4fd0 emit=1
+  part box w=26 h=1.5 d=1.5 y=8 color=#ff4fd0 emit=1
+
+# Prismenfeld (Prism Field): a structure on the ground, to be shot.
+model la_prism
+  part crystal r=8 len=34 pitch=80 y=14 seg=6 color=#4e4272 emit=0.3
+  part crystal r=5 len=24 pitch=60 x=10 y=8 rot=60 seg=5 color=#4e4272 emit=0.3
+  part crystal r=4 len=20 pitch=65 x=-9 z=6 y=7 rot=-120 seg=5 color=#4e4272 emit=0.3
+  part light r=2 y=18 color=#ffd060
+
+# Gittersäule (Lattice Column): a structure on the ground, to be shot.
+model la_column
+  part box w=14 h=4 d=14 color=#4e4272
+  part box w=8 h=44 d=8 y=4 taper=0.4 color=#4e4272
+  part ring r=6 thick=0.8 seg=8 y=12 color=#60e0ff emit=0.8
+  part ring r=6 thick=0.8 seg=8 y=22 color=#60e0ff emit=0.8
+  part ring r=6 thick=0.8 seg=8 y=32 color=#60e0ff emit=0.8
+  part light r=2 y=50 color=#60e0ff
+
+# Speicherkern (Memory Core): a structure on the ground, to be shot.
+model la_core
+  part box w=24 h=6 d=24 color=#4e4272
+  part sphere r=8 y=14 color=#ff4fd0 emit=0.8
+  part ring r=12 thick=1.2 seg=18 y=14 color=#4e4272
+  part box w=3 h=18 d=3 x=-10 z=-10 color=#4e4272
+  part box w=3 h=18 d=3 x=-10 z=10 color=#4e4272
+  part box w=3 h=18 d=3 x=10 z=-10 color=#4e4272
+  part box w=3 h=18 d=3 x=10 z=10 color=#4e4272
+
+# Spiegelfeld (Mirror Field): a structure on the ground, to be shot.
+model la_mirrors
+  part box w=30 h=0.8 d=10 x=0 z=-14 y=6 pitch=-20 color=#c0a0ff emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=-14 color=#4e4272
+  part box w=30 h=0.8 d=10 x=0 z=0 y=6 pitch=-20 color=#c0a0ff emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=0 color=#4e4272
+  part box w=30 h=0.8 d=10 x=0 z=14 y=6 pitch=-20 color=#c0a0ff emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=14 color=#4e4272
+
+# Splitterkristall (Shard Crystal): a small thing on the ground, to be shot.
+model la_shard
+  part crystal r=3.2 len=16 pitch=80 y=6 seg=5 color=#ff4fd0 emit=0.5
+  part crystal r=2 len=10 pitch=55 x=4 y=3 rot=70 seg=4 color=#4e4272 emit=0.3
+  part box w=10 h=2 d=10 color=#4e4272
+
+# Gitterlicht (Lattice Light): a small thing on the ground, to be shot.
+model la_lamp
+  part box w=5 h=2 d=5 color=#4e4272
+  part disc r=0.8 h=20 seg=6 y=2 color=#4e4272
+  part box w=7 h=1.2 d=2 x=3 y=21 color=#4e4272
+  part light r=1.8 x=6 y=20 color=#ffd060
+
+# Datenknoten (Data Node): a small thing on the ground, to be shot.
+model la_node
+  part box w=10 h=5 d=10 color=#4e4272
+  part box w=6 h=1 d=6 y=5 color=#60e0ff emit=0.9
+  part light r=0.8 y=7 color=#60e0ff
+
+# Leitungsbündel (Cable Run): a small thing on the ground, to be shot.
+model la_cable
+  part box w=3.2 h=3.2 d=46 y=5 x=-3 color=#4e4272
+  part box w=3.2 h=3.2 d=46 y=5 x=3 color=#4e4272
+  part box w=10 h=5 d=2 z=-18 color=#ff4fd0
+  part box w=10 h=5 d=2 z=0 color=#ff4fd0
+  part box w=10 h=5 d=2 z=18 color=#ff4fd0
+
+# Sonnennadel (Sun Needle): a structure on the ground, to be shot.
+model co_spire
+  part box w=14 h=4 d=14 color=#6a3c1e
+  part crystal r=5 len=46 pitch=90 y=27 seg=6 color=#ffd060 emit=0.6
+  part crystal r=2.5 len=23 pitch=80 x=6 y=13.8 seg=4 rot=40 color=#ffd060 emit=0.5 mirror=1
+
+# Glutring (Ember Ring): a structure on the ground, to be shot.
+model co_shrine
+  part disc r=14 h=4 seg=12 color=#6a3c1e
+  part ring r=12 thick=1.6 seg=20 y=16 pitch=90 color=#ff8040 emit=0.7
+  part sphere r=4 y=16 color=#ff8040 emit=1
+
+# Kronenrelais (Crown Relay): a structure on the ground, to be shot.
+model co_relay
+  part box w=26 h=6 d=18 color=#6a3c1e
+  part disc r=8 h=1 seg=14 x=-9 y=10 pitch=55 color=#ffe8a0
+  part disc r=8 h=1 seg=14 x=9 y=10 pitch=55 color=#ffe8a0
+  part light r=1.6 y=14 x=-9 color=#ff4fd0
+  part light r=1.6 y=14 x=9 color=#ff4fd0
+
+# Sonnenspiegel (Sun Mirrors): a structure on the ground, to be shot.
+model co_mirrors
+  part box w=30 h=0.8 d=10 x=0 z=-14 y=6 pitch=-20 color=#ffd060 emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=-14 color=#6a3c1e
+  part box w=30 h=0.8 d=10 x=0 z=0 y=6 pitch=-20 color=#ffd060 emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=0 color=#6a3c1e
+  part box w=30 h=0.8 d=10 x=0 z=14 y=6 pitch=-20 color=#ffd060 emit=0.15
+  part box w=1.5 h=6 d=1.5 x=0 z=14 color=#6a3c1e
+
+# Kühlrippen (Heat Fins): a structure on the ground, to be shot.
+model co_fins
+  part box w=34 h=4 d=22 color=#6a3c1e
+  part box w=1.4 h=14 d=20 x=-14 y=4 color=#6a3c1e
+  part box w=1.4 h=14 d=20 x=-10 y=4 color=#6a3c1e
+  part box w=1.4 h=14 d=20 x=-6 y=4 color=#6a3c1e
+  part box w=1.4 h=14 d=20 x=-2 y=4 color=#6a3c1e
+  part box w=1.4 h=14 d=20 x=2 y=4 color=#6a3c1e
+  part box w=1.4 h=14 d=20 x=6 y=4 color=#6a3c1e
+  part box w=1.4 h=14 d=20 x=10 y=4 color=#6a3c1e
+  part box w=1.4 h=14 d=20 x=14 y=4 color=#6a3c1e
+  part box w=30 h=1 d=1 y=4.5 z=-11.2 color=#ff8040 emit=1
+
+# Kronentor (Crown Gate): a structure on the ground, to be shot.
+model co_gate
+  part box w=12 h=3 d=12 x=-16 color=#6a3c1e
+  part box w=12 h=3 d=12 x=16 color=#6a3c1e
+  part box w=6 h=30 d=6 x=-16 color=#6a3c1e
+  part box w=6 h=30 d=6 x=16 color=#6a3c1e
+  part box w=38 h=4 d=6 y=30 color=#6a3c1e
+  part box w=26 h=1.5 d=1.5 y=16 color=#ffd060 emit=1
+  part box w=26 h=1.5 d=1.5 y=8 color=#ffd060 emit=1
+
+# Fusionskern (Fusion Core): a structure on the ground, to be shot.
+model co_core
+  part box w=24 h=6 d=24 color=#6a3c1e
+  part sphere r=8 y=14 color=#ffb040 emit=0.8
+  part ring r=12 thick=1.2 seg=18 y=14 color=#6a3c1e
+  part box w=3 h=18 d=3 x=-10 z=-10 color=#6a3c1e
+  part box w=3 h=18 d=3 x=-10 z=10 color=#6a3c1e
+  part box w=3 h=18 d=3 x=10 z=-10 color=#6a3c1e
+  part box w=3 h=18 d=3 x=10 z=10 color=#6a3c1e
+
+# Glutkristall (Ember Crystal): a small thing on the ground, to be shot.
+model co_shard
+  part crystal r=3.2 len=16 pitch=80 y=6 seg=5 color=#ffb040 emit=0.5
+  part crystal r=2 len=10 pitch=55 x=4 y=3 rot=70 seg=4 color=#6a3c1e emit=0.3
+  part box w=10 h=2 d=10 color=#6a3c1e
+
+# Kronenlicht (Crown Light): a small thing on the ground, to be shot.
+model co_lamp
+  part box w=5 h=2 d=5 color=#6a3c1e
+  part disc r=0.8 h=20 seg=6 y=2 color=#6a3c1e
+  part box w=7 h=1.2 d=2 x=3 y=21 color=#6a3c1e
+  part light r=1.8 x=6 y=20 color=#ff4fd0
+
+# Glutknoten (Ember Node): a small thing on the ground, to be shot.
+model co_node
+  part box w=10 h=5 d=10 color=#6a3c1e
+  part box w=6 h=1 d=6 y=5 color=#ffb040 emit=0.9
+  part light r=0.8 y=7 color=#ffb040
+
+# Glutleitung (Ember Conduit): a small thing on the ground, to be shot.
+model co_cable
+  part box w=3.2 h=3.2 d=46 y=5 x=-3 color=#6a3c1e
+  part box w=3.2 h=3.2 d=46 y=5 x=3 color=#6a3c1e
+  part box w=10 h=5 d=2 z=-18 color=#ff8040
+  part box w=10 h=5 d=2 z=0 color=#ff8040
+  part box w=10 h=5 d=2 z=18 color=#ff8040
+
+# Wolkenbarke (Cloud Skiff): a structure on the ground, to be shot.
+model v6_skiff
+  part hull len=50 wid=20 hgt=7 shape=cigar color=#8a96a8
+  part box w=14 h=6 d=14 y=5 z=8 color=#5c6878
+  part engine r=3 len=6 x=7 z=24 glow=#7ab8ff color=#5c6878 mirror=1
+  part light r=1 x=9 y=4 z=-18 color=#7ab8ff mirror=1
+
+# Wetterboje (Weather Buoy): a structure on the ground, to be shot.
+model v6_buoy
+  part disc r=12 h=4 seg=12 color=#5c6878
+  part disc r=5 h=34 seg=10 y=4 color=#c8d0dc
+  part ring r=5.5 thick=1 seg=12 y=20 color=#5c6878
+  part disc r=7 h=6 seg=10 y=38 color=#5c6878
+  part light r=3.5 y=44 color=#9fe8ff
+
+# Messplattform (Sensor Platform): a structure on the ground, to be shot.
+model v6_mast
+  part disc r=26 h=2 seg=16 color=#4a5260
+  part ring r=20 thick=1 seg=20 y=2 color=#9fe8ff
+  part box w=20 h=0.6 d=3 y=2 color=#9fe8ff
+  part box w=3 h=0.6 d=20 y=2 color=#9fe8ff
+  part light r=1 y=2.5 x=0 z=-24 color=#7ab8ff mirror=0
+  part light r=1 y=2.5 x=16.97 z=-16.97 color=#7ab8ff mirror=0
+  part light r=1 y=2.5 x=24 z=-0 color=#7ab8ff mirror=0
+  part light r=1 y=2.5 x=16.97 z=16.97 color=#7ab8ff mirror=0
+  part light r=1 y=2.5 x=0 z=24 color=#7ab8ff mirror=0
+  part light r=1 y=2.5 x=-16.97 z=16.97 color=#7ab8ff mirror=0
+  part light r=1 y=2.5 x=-24 z=0 color=#7ab8ff mirror=0
+  part light r=1 y=2.5 x=-16.97 z=-16.97 color=#7ab8ff mirror=0
+  part box w=12 h=4 d=12 color=#8a96a8
+  part disc r=1.4 h=30 seg=6 y=4 color=#8a96a8
+  part disc r=9 h=1.2 seg=14 y=21 pitch=60 color=#c8d0dc
+  part light r=1.6 y=35 color=#ff5040
+  part box w=1 h=27 d=1 x=5 z=5 pitch=-8 color=#8a96a8
+  part box w=1 h=27 d=1 x=-5 z=-5 pitch=8 color=#8a96a8
+
+# Aerostat (Aerostat): a structure on the ground, to be shot.
+model v6_aerostat
+  part sphere r=16 rx=14 ry=12 rz=22 y=24 color=#c8d0dc
+  part box w=1.5 h=1 d=44 y=36 color=#5c6878
+  part box w=29 h=1 d=1.5 y=36 color=#5c6878
+  part box w=12 h=5 d=18 y=8 color=#5c6878
+  part disc r=0.6 h=10 seg=4 y=8 x=4 color=#5c6878
+  part light r=1.2 y=37 color=#ff5040
+
+# Gassammler (Gas Scoop): a structure on the ground, to be shot.
+model v6_scoop
+  part disc r=16 h=3 seg=16 color=#5c6878
+  part ring r=12 thick=2.5 seg=18 y=6 color=#8a96a8
+  part disc r=10 h=0.6 seg=14 y=5 color=#9fe8ff emit=0.7
+  part box w=6 h=12 d=6 x=14 color=#5c6878
+
+# Andockring (Docking Ring): a structure on the ground, to be shot.
+model v6_dock
+  part ring r=20 thick=2.5 seg=24 y=2 color=#5c6878
+  part box w=8 h=4 d=40 y=1 color=#8a96a8
+  part light r=1 y=5 x=0 z=-20 color=#7ab8ff mirror=0
+  part light r=1 y=5 x=17.32 z=-10 color=#7ab8ff mirror=0
+  part light r=1 y=5 x=17.32 z=10 color=#7ab8ff mirror=0
+  part light r=1 y=5 x=0 z=20 color=#7ab8ff mirror=0
+  part light r=1 y=5 x=-17.32 z=10 color=#7ab8ff mirror=0
+  part light r=1 y=5 x=-17.32 z=-10 color=#7ab8ff mirror=0
+
+# Gastanker (Gas Tanker): a structure on the ground, to be shot.
+model v6_tanker
+  part hull len=90 wid=22 hgt=8 shape=box round=2 color=#5c6878
+  part box w=18 h=10 d=12 y=8 z=34 color=#8a96a8
+  part sphere r=7 y=9 z=-30 color=#c8d0dc
+  part sphere r=7 y=9 z=-15 color=#c8d0dc
+  part sphere r=7 y=9 z=0 color=#c8d0dc
+  part sphere r=7 y=9 z=15 color=#c8d0dc
+
+# Wolkenboot (Cloud Boat): a small thing on the ground, to be shot.
+model v6_boat
+  part hull len=24 wid=9 hgt=4 shape=tear color=#8a96a8
+  part box w=6 h=4 d=7 y=3 z=2 color=#5c6878
+  part light r=0.8 y=8 z=2 color=#9fe8ff
+
+# Windboje (Wind Buoy): a small thing on the ground, to be shot.
+model v6_float
+  part box w=5 h=2 d=5 color=#5c6878
+  part disc r=0.8 h=12 seg=6 y=2 color=#5c6878
+  part box w=7 h=1.2 d=2 x=3 y=13 color=#5c6878
+  part light r=1.8 x=6 y=12 color=#9fe8ff
+  part sphere r=4 y=1 color=#8a96a8
+
+# Frachtnetz (Cargo Net): a small thing on the ground, to be shot.
+model v6_crates
+  part box w=9 h=8 d=9 x=-5 z=-3 color=#8a96a8
+  part box w=9 h=8 d=9 x=5 z=-2 rot=10 color=#5c6878
+  part box w=8 h=7 d=8 x=-1 z=5 rot=-15 color=#8a96a8
+  part box w=8 h=7 d=8 x=-4 z=-2 y=8 rot=25 color=#5c6878
+
+# Treibkapsel (Drift Pod): a small thing on the ground, to be shot.
+model v6_drift
+  part box w=8 h=2 d=8 color=#5c6878
+  part sphere r=5 ry=6 y=6 color=#9fe8ff emit=0.6
+
+# Echokristalle (Echo Crystals): a structure on the ground, to be shot.
+model v6_cluster
+  part crystal r=8 len=34 pitch=80 y=14 seg=6 color=#40607a emit=0.3
+  part crystal r=5 len=24 pitch=60 x=10 y=8 rot=60 seg=5 color=#40607a emit=0.3
+  part crystal r=4 len=20 pitch=65 x=-9 z=6 y=7 rot=-120 seg=5 color=#40607a emit=0.3
+  part light r=2 y=18 color=#9fe8ff
+
+# Chorkapsel (Choir Pod): a structure on the ground, to be shot.
+model v6_pod
+  part sphere r=10 rx=10 ry=14 rz=10 y=8 color=#5e4a30
+  part sphere r=4 y=16 color=#ffb060 emit=0.9
+  part spike r=1.6 len=10 x=0 z=-9 y=4 pitch=50 rot=0 color=#5e4a30 mirror=0
+  part spike r=1.6 len=10 x=8.56 z=-2.78 y=4 pitch=50 rot=72 color=#5e4a30 mirror=0
+  part spike r=1.6 len=10 x=5.29 z=7.28 y=4 pitch=50 rot=144 color=#5e4a30 mirror=0
+  part spike r=1.6 len=10 x=-5.29 z=7.28 y=4 pitch=50 rot=216 color=#5e4a30 mirror=0
+  part spike r=1.6 len=10 x=-8.56 z=-2.78 y=4 pitch=50 rot=288 color=#5e4a30 mirror=0
+
+# Echokrone (Echo Crown): a structure on the ground, to be shot.
+model v6_anemone
+  part disc r=6 h=6 seg=10 color=#40607a
+  part spike r=1.6 len=16 x=0 z=-4 y=4 pitch=35 rot=0 color=#40607a mirror=0
+  part spike r=1.6 len=16 x=3.13 z=-2.49 y=4 pitch=35 rot=51.4 color=#40607a mirror=0
+  part spike r=1.6 len=16 x=3.9 z=0.89 y=4 pitch=35 rot=102.9 color=#40607a mirror=0
+  part spike r=1.6 len=16 x=1.74 z=3.6 y=4 pitch=35 rot=154.3 color=#40607a mirror=0
+  part spike r=1.6 len=16 x=-1.74 z=3.6 y=4 pitch=35 rot=205.7 color=#40607a mirror=0
+  part spike r=1.6 len=16 x=-3.9 z=0.89 y=4 pitch=35 rot=257.1 color=#40607a mirror=0
+  part spike r=1.6 len=16 x=-3.13 z=-2.49 y=4 pitch=35 rot=308.6 color=#40607a mirror=0
+  part sphere r=3 y=7 color=#9fe8ff emit=1
+
+# Echoschlot (Echo Vent): a structure on the ground, to be shot.
+model v6_vent
+  part disc r=14 h=3 seg=14 color=#5e4a30
+  part ring r=8 thick=3 seg=14 y=4 color=#5e4a30
+  part disc r=6 h=1 seg=12 y=4 color=#ffb060 emit=1
+  part spike r=1.8 len=8 x=0 z=-13 y=2 pitch=60 rot=0 color=#5e4a30 mirror=0
+  part spike r=1.8 len=8 x=12.36 z=-4.02 y=2 pitch=60 rot=72 color=#5e4a30 mirror=0
+  part spike r=1.8 len=8 x=7.64 z=10.52 y=2 pitch=60 rot=144 color=#5e4a30 mirror=0
+  part spike r=1.8 len=8 x=-7.64 z=10.52 y=2 pitch=60 rot=216 color=#5e4a30 mirror=0
+  part spike r=1.8 len=8 x=-12.36 z=-4.02 y=2 pitch=60 rot=288 color=#5e4a30 mirror=0
+
+# Korallennadel (Coral Needle): a structure on the ground, to be shot.
+model v6_spire
+  part box w=14 h=4 d=14 color=#40607a
+  part crystal r=5 len=44 pitch=90 y=26 seg=6 color=#9fe8ff emit=0.6
+  part crystal r=2.5 len=22 pitch=80 x=6 y=13.2 seg=4 rot=40 color=#9fe8ff emit=0.5 mirror=1
+
+# Chorhügel (Choir Mound): a structure on the ground, to be shot.
+model v6_mound
+  part sphere r=14 ry=8 color=#5e4a30
+  part sphere r=10 ry=9 y=10 color=#5e4a30
+  part sphere r=6 ry=8 y=20 color=#5e4a30
+  part sphere r=2.5 y=28 color=#ffb060 emit=1
+  part sphere r=1.6 x=0 z=-10 y=10 color=#ffb060 emit=0.8 mirror=0
+  part sphere r=1.6 x=10 z=-0 y=10 color=#ffb060 emit=0.8 mirror=0
+  part sphere r=1.6 x=0 z=10 y=10 color=#ffb060 emit=0.8 mirror=0
+  part sphere r=1.6 x=-10 z=0 y=10 color=#ffb060 emit=0.8 mirror=0
+
+# Klangsäule (Sound Column): a structure on the ground, to be shot.
+model v6_column
+  part box w=14 h=4 d=14 color=#40607a
+  part box w=8 h=44 d=8 y=4 taper=0.4 color=#40607a
+  part ring r=6 thick=0.8 seg=8 y=12 color=#ffb060 emit=0.8
+  part ring r=6 thick=0.8 seg=8 y=22 color=#ffb060 emit=0.8
+  part ring r=6 thick=0.8 seg=8 y=32 color=#ffb060 emit=0.8
+  part light r=2 y=50 color=#ffb060
+
+# Echosplitter (Echo Shard): a small thing on the ground, to be shot.
+model v6_shard
+  part crystal r=3.2 len=16 pitch=80 y=6 seg=5 color=#9fe8ff emit=0.5
+  part crystal r=2 len=10 pitch=55 x=4 y=3 rot=70 seg=4 color=#40607a emit=0.3
+  part box w=10 h=2 d=10 color=#40607a
+
+# Chorgelege (Choir Clutch): a small thing on the ground, to be shot.
+model v6_eggs
+  part sphere r=4 rx=4 ry=5.5 rz=4 x=-4 z=-3 y=3 color=#5e4a30
+  part sphere r=4 rx=4 ry=5.5 rz=4 x=4 z=-2 y=3 color=#5e4a30
+  part sphere r=4 rx=4 ry=5.5 rz=4 x=0 z=4 y=3 color=#5e4a30
+  part sphere r=1.6 x=-4 z=-3 y=6 color=#ffb060 emit=0.9
+  part sphere r=1.6 x=4 z=-2 y=6 color=#ffb060 emit=0.9
+  part sphere r=1.6 x=0 z=4 y=6 color=#ffb060 emit=0.9
+
+# Echoknolle (Echo Bulb): a small thing on the ground, to be shot.
+model v6_bulb
+  part box w=8 h=2 d=8 color=#40607a
+  part sphere r=5 ry=6 y=6 color=#9fe8ff emit=0.6
+
+# Echodornen (Echo Thorns): a small thing on the ground, to be shot.
+model v6_spines
+  part disc r=5 h=2 seg=8 color=#40607a
+  part spike r=1.2 len=11 x=0 z=-3 y=1 pitch=40 rot=0 color=#40607a mirror=0
+  part spike r=1.2 len=11 x=2.85 z=-0.93 y=1 pitch=40 rot=72 color=#40607a mirror=0
+  part spike r=1.2 len=11 x=1.76 z=2.43 y=1 pitch=40 rot=144 color=#40607a mirror=0
+  part spike r=1.2 len=11 x=-1.76 z=2.43 y=1 pitch=40 rot=216 color=#40607a mirror=0
+  part spike r=1.2 len=11 x=-2.85 z=-0.93 y=1 pitch=40 rot=288 color=#40607a mirror=0

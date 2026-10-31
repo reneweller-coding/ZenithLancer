@@ -2,6 +2,8 @@
 # the deep atmosphere where the echo's crystals glow. (Like e5_corona, they may move into data/themes.txt.)
 
 theme e6_bands
+  structures every=94 group=3 v6_skiff v6_buoy v6_mast v6_aerostat v6_scoop v6_dock v6_tanker
+  structures every=56 group=4 v6_boat v6_float v6_crates v6_drift
   sky #120a06
   fog #4a2e16 0.0010
   sun -0.5 -0.8 -0.3
@@ -20,6 +22,8 @@ theme e6_bands
   groundlight 0.42
 
 theme e6_storm
+  structures every=101 group=3 v6_skiff v6_buoy v6_mast v6_aerostat v6_scoop v6_dock v6_tanker
+  structures every=61 group=4 v6_boat v6_float v6_crates v6_drift
   sky #08060a
   fog #2a1c18 0.0016
   sun -0.3 -0.9 -0.3
@@ -51,6 +55,8 @@ theme e6_rings
   bloom 0.9
 
 theme e6_deep
+  structures every=82 group=3 v6_cluster v6_pod v6_anemone v6_vent v6_spire v6_mound v6_column
+  structures every=50 group=4 v6_shard v6_eggs v6_bulb v6_spines
   sky #060406
   fog #2a0e08 0.0018
   sun -0.2 -0.95 -0.2

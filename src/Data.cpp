@@ -529,6 +529,8 @@ bool Catalog::load( const std::string &dir, const std::vector<std::string> &mods
                 else if ( k == "solid" ) d.m_solid = l.argNum( 0, 1 ) != 0;
                 else if ( k == "invulnerable" ) d.m_invulnerable = l.argNum( 0, 1 ) != 0;
                 else if ( k == "life" ) d.m_life = l.argNum( 0, 40.0f );
+                else if ( k == "scenery" ) d.m_scenery = l.argNum( 0, 1 ) != 0;
+                else if ( k == "ruin" ) d.m_ruin = l.arg( 0 );
                 else unknown( b, l, m_errors );
             }
             if ( d.m_kind == EnemyKindE::GROUND && d.m_path.m_key == "straight" && d.m_path.m_args.empty() )
@@ -863,6 +865,16 @@ void Catalog::check()
     auto need = [&]( bool ok, const std::string &where, const std::string &what ) {
         if ( !ok ) m_errors.push_back( where + ": " + what );
     };
+    // The structures a ground carries: ground enemies that are scenery.
+    for ( const Block &b : m_themes )
+        for ( const Line &l : b.m_lines )
+            if ( l.m_key == "structures" )
+                for ( const std::string &n : l.m_args )
+                {
+                    auto it = m_enemies.find( n );
+                    need( it != m_enemies.end() && it->second.m_kind == EnemyKindE::GROUND && it->second.m_scenery, l.where(),
+                          "structure " + n + " is no ground enemy with scenery 1" );
+                }
     auto wantModel = [&]( const std::string &m, const std::string &where ) {
         if ( !m.empty() && !m_models.count( m ) ) m_warnings.push_back( where + ": model \"" + m + "\" is missing" );
     };
@@ -870,6 +882,7 @@ void Catalog::check()
     {
         wantModel( d.m_model, d.m_where );
         for ( const PartRef &p : d.m_parts ) need( m_enemies.count( p.m_enemy ) > 0, d.m_where, "part " + p.m_enemy + " unknown" );
+        if ( !d.m_ruin.empty() ) need( m_enemies.count( d.m_ruin ) > 0, d.m_where, "ruin " + d.m_ruin + " unknown" );
         for ( const FireDef &f : d.m_fire )
         {
             if ( f.m_pattern == "spawn" ) need( m_enemies.count( f.m_spawn ) > 0, f.m_where, "spawn " + f.m_spawn + " unknown" );

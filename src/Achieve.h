@@ -251,6 +251,7 @@ std::string achievementsPath( const std::string &dataDir );
  *        - heard: max with the music pieces heard (Profile::m_heard)
  *        - gold: max with the missions that have a gold medal (Profile::m_medals)
  *        - challenges: add 1 for every challenge (a code's flight) played to its end
+ *        - structures: add Stats::m_structures (the ground's structures destroyed)
  * @return the counters' names
  */
 const std::vector<std::string> &counterKeys();

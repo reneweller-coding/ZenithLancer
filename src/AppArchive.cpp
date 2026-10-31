@@ -84,7 +84,7 @@ void App::loadArchive()
     }
     m_codex.clear();
     for ( const auto &[n, e] : m_cat.m_enemies )
-        if ( e.m_kind != EnemyKindE::PART && n != "target" && !e.m_title.empty() ) m_codex.push_back( n );
+        if ( e.m_kind != EnemyKindE::PART && n != "target" && !e.m_title.empty() && !e.m_scenery ) m_codex.push_back( n );
     auto episode = []( const std::string &n ) {
         return n.size() > 2 && n[0] == 'e' && isdigit( (unsigned char)n[1] ) && n[2] == '_' ? n[1] - '0' : 0;
     };
@@ -102,7 +102,7 @@ void App::noteSeen()
     // Every enemy that came onto the field opens in the archive (a replay shows what was seen already).
     if ( m_replaying ) return;
     for ( const Enemy &e : m_world.m_enemies )
-        if ( e.m_entered && e.m_def ) m_prof.m_seen.insert( e.m_def->m_name );
+        if ( e.m_entered && e.m_def && !e.m_def->m_scenery ) m_prof.m_seen.insert( e.m_def->m_name );
 }
 
 namespace
@@ -462,7 +462,7 @@ void App::schoolStep( const PlayerInput &in )
     };
     auto alive = [&]() {
         int n = 0;
-        for ( const Enemy &e : m_world.m_enemies ) n += !e.m_dead && !e.m_gone ? 1 : 0;
+        for ( const Enemy &e : m_world.m_enemies ) n += !e.m_dead && !e.m_gone && !e.m_def->m_scenery ? 1 : 0;
         return n;
     };
     m_lessonT += Dt;

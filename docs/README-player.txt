@@ -52,6 +52,9 @@ Kette:     Jeder Abschuss innerhalb von zwei Sekunden nach dem letzten verlänge
            Kette und hebt den Punkte-Multiplikator (bis fünffach). Ein Treffer bricht sie.
            Kugeln, die knapp vorbeiziehen (Streifschuss), bringen Punkte und halten die
            Kette am Leben. Die Kredite der Kampagne bleiben davon unberührt.
+Am Boden:  Silos, Schlote, Bohrinseln, Kuppeln, Fässer, Kisten und Laternen lassen sich
+           zerschießen. Sie bringen Punkte und ein paar Kredite; deine Schüsse fliegen durch
+           sie hindurch weiter, sie halten also nichts auf, was einem Gegner gilt.
 
 Spielarten
 ----------
@@ -163,6 +166,9 @@ Chain:     every kill within two seconds of the last one extends the chain and r
            the score multiplier (up to five times). A hit breaks it. Bullets that pass
            close by (grazes) score points and keep the chain alive. The campaign's credits
            are not touched by it.
+Ground:    silos, smokestacks, rigs, domes, drums, crates and lamps can be shot to pieces.
+           They give points and a few credits; your shots fly on through them, so they
+           never stop a shot meant for an enemy.
 
 Ways to play
 ------------

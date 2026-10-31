@@ -308,6 +308,16 @@ struct Stats
     std::vector<DeathNote>   m_deathNotes;
     int                      m_bestChain = 0;   ///< the longest chain of kills (either pilot)
     int                      m_grazes = 0;      ///< bullets grazed (both pilots)
+    int                      m_structures = 0;  ///< structures of the ground destroyed
+};
+
+/** @brief A set of structures standing on the ground: a theme's "structures" line. */
+struct StructureSet
+{
+    std::vector<const EnemyDef *> m_defs;     ///< what may stand there
+    float                         m_every = 0.0f;   ///< field units of ground between two groups of them
+    int                           m_group = 3;      ///< at most so many in a group
+    float                         m_dist = 0.0f;    ///< ground still to pass before the next group
 };
 
 /** @brief The field and all on it. */
@@ -382,6 +392,8 @@ public:
     int                  m_diffIndex = 2;
     int                  m_plus = 0;           ///< New Game+ (setPlus)
     int                  m_rules = 0;          ///< the weekly flight's rules (setRules)
+    std::vector<StructureSet> m_structSets;    ///< what stands on the ground now (setStructures)
+    Rng                  m_srng;               ///< their own random numbers (the enemies' stay as they were)
     DifficultyDef        m_diff;
     Rng                  m_rng;
     float                m_clock = 0.0f;       ///< seconds since the start
@@ -447,10 +459,17 @@ public:
      */
     void turn( int idx, float face );
 
+    /**
+     * @brief The ground's structures for a theme: its "structures" line (data/themes.txt), none where it has none.
+     * @param[in] theme  the theme's name
+     */
+    void setStructures( const std::string &theme );
+
 private:
     void runTimeline();
     void runEvent( const LevelEvent &ev );
     void spawnWave( const Line &p, bool ground );
+    void spawnStructures( StructureSet &s );
     void movePlayer( int i, const PlayerInput &in );
     void firePlayer( int i, const PlayerInput &in );
     void fireShots( int i, const std::vector<ShotDef> &shots, int level, int maxLevel, int mode, int volley,

@@ -788,6 +788,7 @@ void App::countMission( bool won )
     m_feats.add( "seconds", st.m_time );
     m_feats.max( "max_chain", st.m_bestChain );
     m_feats.add( "grazes", st.m_grazes );
+    m_feats.add( "structures", st.m_structures );
     {
         int seen = 0;
         for ( const std::string &n : m_codex ) seen += m_prof.m_seen.count( n ) ? 1 : 0;

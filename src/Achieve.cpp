@@ -361,7 +361,7 @@ const std::vector<std::string> &counterKeys()
         "episode3",       "episode4",     "episode5",     "episode6",       "campaign_diff",  "campaign_coop", "coop_missions",
         "arcade_runs",    "arcade2_runs", "arcade_clean", "bossrush_done",  "bossrush_best", "survival_seconds",
         "survival_daily", "ngplus",       "practice",     "replays_watched", "max_chain",   "grazes",
-        "school",         "weekly",       "seen",         "heard",           "gold",        "challenges"
+        "school",         "weekly",       "seen",         "heard",           "gold",        "challenges",  "structures"
     };
     return keys;
 }

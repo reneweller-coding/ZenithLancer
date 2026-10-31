@@ -95,9 +95,18 @@ enemy e1_dart
   part e1_turret x=-20 z=10    # parts fixed to it (their own enemy entries, kind part); x/z scale with `scale`, y lifts it
   shielded 1                   # cannot be hurt while parts live
   solid 1 / invulnerable 1     # obstacles: bullets stop / it cannot be destroyed
+  scenery 1                    # a structure of the ground (kind ground): see below
+  ruin ruin_metal              # what it leaves when destroyed (another enemy entry: scenery, invulnerable, solid 0)
 ```
 
-Ground enemies stand on the ground below and move with it; all guns hit them. Bosses hold the timeline until
+Ground enemies stand on the ground below and move with it; all guns hit them.
+
+Structures (`scenery 1`, data/enemies/structures.txt) are the ground's silos, tanks, masts and halls, and the
+drums, crates, lamps and carts between them. They never fire. The pilots' shots and beams hit them and fly on, so
+they swallow no shot meant for an enemy. Seeking weapons, sidekicks, the autopilot, the kill count, the chain, the
+music's intensity, the mission's end and the archive all leave them alone. Destroyed, they give points (at the
+chain's multiplier) and a little money that grows with the episode (×1 to ×8), and they leave their `ruin`. The
+game places them itself, from the theme's `structures` lines; missions do not name them. Bosses hold the timeline until
 they die; give them parts and phases. Parts sit in the parent's frame: x to its right, z towards its nose.
 
 HP guide (normal difficulty): popcorn 4–12, fighters 15–40, gunships 60–150, heavy ground 80–250, mini-bosses
@@ -237,6 +246,9 @@ theme lava
   space 1                   # no ground: stars (with rocks 0..1 floating rocks, nebula #a #b)
   exposure 1  bloom 0.9
   groundlight 0.5           # how brightly the ground is lit (keep it darker than ships and bullets)
+  structures every=80 group=3 fo_stack fo_silo fo_hall   # destructible structures: a group of 1 to `group` about
+                            # every 80 field units of ground (0.6-1.4 of it, at random), drawn from these names
+                            # (enemies with scenery 1); several lines stand side by side (buildings, small things)
 ```
 
 The ground has its own shader per style; these keys shape it (all optional):

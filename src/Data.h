@@ -184,6 +184,8 @@ struct EnemyDef
     bool                 m_solid = true;             ///< player bullets stop on it (an obstacle may let them pass)
     bool                 m_invulnerable = false;     ///< cannot be destroyed (obstacles)
     float                m_life = 40.0f;             ///< seconds it may stay on the field (bosses: always)
+    bool                 m_scenery = false;          ///< a structure of the ground: no kill count, shots pass on through
+    std::string          m_ruin;                     ///< what it leaves when destroyed (an enemy entry, "" nothing)
     std::string          m_where;
 };
 

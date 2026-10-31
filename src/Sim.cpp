@@ -178,6 +178,8 @@ void World::begin( const Catalog *cat, const LevelDef *level, ModeE mode, int di
     m_scroll = m_scrollGoal = level ? level->m_scroll : 60.0f;
     m_noTimeline = level == nullptr;
     if ( level ) m_music = level->m_music;
+    m_srng.seed( seed * 2246822519u ^ ( level ? level->m_seed : 7u ) ^ 0x5c3e7u );
+    if ( level ) setStructures( level->m_theme );
     // The harder difficulties grow into their full strength over the first two episodes, while the workshop's gear
     // is still small (the autopilot lost episode 1's boss on Impossible every time, 30.10.2026).
     if ( level && level->m_episode <= 2 && level->m_name != "survival" && level->m_name != "bossrush" )
@@ -288,7 +290,7 @@ int World::nearestEnemy( Vector2 from, float range, int skip ) const
     for ( size_t i = 0; i < m_enemies.size(); ++i )
     {
         const Enemy &e = m_enemies[i];
-        if ( (int)i == skip || e.m_dead || e.m_gone || e.m_def->m_invulnerable ) continue;
+        if ( (int)i == skip || e.m_dead || e.m_gone || e.m_def->m_invulnerable || e.m_def->m_scenery ) continue;
         // Seeking weapons leave a shielded body alone while its parts live: they go for the parts.
         if ( i < m_shut.size() && m_shut[i] ) continue;
         if ( e.m_pos.y < -20 || e.m_pos.y > FieldH + 10 || e.m_pos.x < -10 || e.m_pos.x > FieldW + 10 ) continue;
@@ -327,6 +329,50 @@ Vector2 World::worldPos( const Enemy &e, Vector2 off ) const
     Vector2 right = { -fwd.y, fwd.x };
     float   s = ( e.m_ground ? GroundFactor : 1.0f ) * e.m_def->m_scale;
     return { e.m_pos.x + ( right.x * off.x + fwd.x * off.y ) * s, e.m_pos.y + ( right.y * off.x + fwd.y * off.y ) * s };
+}
+
+void World::setStructures( const std::string &theme )
+{
+    m_structSets.clear();
+    const Block *b = m_cat ? m_cat->theme( theme ) : nullptr;
+    if ( !b ) return;
+    for ( const Line &l : b->m_lines )
+        if ( l.m_key == "structures" )
+        {
+            StructureSet s;
+            s.m_every = std::max( 10.0f, l.num( "every", 110.0f ) );
+            s.m_group = std::max( 1, (int)l.num( "group", 3.0f ) );
+            for ( const std::string &n : l.m_args )
+                if ( const EnemyDef *d = m_cat->enemy( n ) ) s.m_defs.push_back( d );
+            s.m_dist = s.m_every * 0.3f;
+            if ( !s.m_defs.empty() ) m_structSets.push_back( s );
+        }
+}
+
+void World::spawnStructures( StructureSet &s )
+{
+    // A group of them just above the field's top edge, turned at random; none on another or on a ground unit there.
+    int n = 1 + (int)m_srng.below( s.m_group );
+    for ( int tries = 0, placed = 0; placed < n && tries < 3 * n + 3; ++tries )
+    {
+        const EnemyDef *d = s.m_defs[(size_t)m_srng.below( (int)s.m_defs.size() )];
+        Vector2         at = { m_srng.range( 36.0f, FieldW - 36.0f ), -60.0f - m_srng.range( 0.0f, 50.0f ) };
+        bool            free = true;
+        for ( const Enemy &e : m_enemies )
+        {
+            if ( e.m_dead || e.m_gone || !e.m_ground || e.m_pos.y > 60.0f ) continue;
+            float r = ( d->m_radius * d->m_scale + e.m_def->m_radius * e.m_def->m_scale ) * GroundFactor * 0.9f;
+            if ( dist2( e.m_pos, at ) < r * r )
+            {
+                free = false;
+                break;
+            }
+        }
+        if ( !free ) continue;
+        ++placed;
+        int i = spawn( d, at, nullptr );
+        if ( i >= 0 ) m_enemies[(size_t)i].m_face = m_enemies[(size_t)i].m_head = 90.0f * (float)m_srng.below( 4 ) + m_srng.range( -12.0f, 12.0f );
+    }
 }
 
 void World::turn( int idx, float face )
@@ -431,7 +477,7 @@ int World::spawn( const EnemyDef *def, Vector2 pos, const Line *pathLine, int pa
     e.m_head = e.m_face;
     int idx = (int)m_enemies.size();
     m_enemies.push_back( e );
-    if ( def->m_kind != EnemyKindE::OBSTACLE || !def->m_invulnerable ) ++m_stats.m_spawned;
+    if ( ( def->m_kind != EnemyKindE::OBSTACLE || !def->m_invulnerable ) && !def->m_scenery ) ++m_stats.m_spawned;
     for ( const PartRef &pr : def->m_parts )
     {
         const EnemyDef *pd = m_cat->enemy( pr.m_enemy );
@@ -621,7 +667,11 @@ void World::runEvent( const LevelEvent &ev )
         emit( EvE::MUSIC, { 0, 0 }, 0, 0, m_music );
     }
     else if ( t == "warn" ) emit( EvE::WARN, { FieldW * 0.5f, FieldH * 0.4f }, 0, 0, p.arg( 0 ) );
-    else if ( t == "theme" ) emit( EvE::THEME, { 0, 0 }, 0, 0, p.arg( 0 ) );
+    else if ( t == "theme" )
+    {
+        emit( EvE::THEME, { 0, 0 }, 0, 0, p.arg( 0 ) );
+        setStructures( p.arg( 0 ) );
+    }
     else if ( t == "clear" )
     {
         for ( Bullet &b : m_bullets )
@@ -683,7 +733,8 @@ void World::runTimeline()
     {
         bool any = false;
         for ( const Enemy &e : m_enemies )
-            if ( !e.m_dead && !e.m_gone && e.m_def->m_kind != EnemyKindE::OBSTACLE && e.m_pos.y < FieldH ) any = true;
+            if ( !e.m_dead && !e.m_gone && e.m_def->m_kind != EnemyKindE::OBSTACLE && !e.m_def->m_scenery && e.m_pos.y < FieldH )
+                any = true;
         if ( !any || m_time > m_level->m_length + 20.0f ) m_endT = 3.0f;
     }
     if ( m_endT >= 0 )
@@ -706,6 +757,16 @@ void World::step( const PlayerInput in[2] )
     }
     m_scroll += clampf( m_scrollGoal - m_scroll, -40.0f * Dt, 40.0f * Dt );
     m_scrollPos += m_scroll * Dt;
+    if ( m_level )
+        for ( StructureSet &s : m_structSets )
+        {
+            s.m_dist -= m_scroll * GroundFactor * Dt;
+            while ( s.m_dist <= 0.0f )
+            {
+                spawnStructures( s );
+                s.m_dist += s.m_every * m_srng.range( 0.6f, 1.4f );
+            }
+        }
     runTimeline();
     markShut();
     for ( int i = 0; i < 2; ++i )
@@ -1065,7 +1126,8 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
             }
         else if ( k == "beam" )
         {
-            // A beam: everything in its column (up to the first solid enemy unless it pierces) takes the hit now.
+            // A beam: everything in its column (up to the first solid enemy unless it pierces) takes the hit now; the
+            // ground's structures do not stop it, it burns through them on its way.
             float width = V( "width", 10 );
             pl.m_beam = true;
             pl.m_beamWidth = std::max( pl.m_beamWidth, width );
@@ -1077,7 +1139,7 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
                 for ( size_t e = 0; e < m_enemies.size(); ++e )
                 {
                     const Enemy &en = m_enemies[e];
-                    if ( en.m_dead || en.m_gone || en.m_pos.y > origin.y || !en.m_def->m_solid ) continue;
+                    if ( en.m_dead || en.m_gone || en.m_pos.y > origin.y || !en.m_def->m_solid || en.m_def->m_scenery ) continue;
                     float r = en.m_def->m_radius * ( en.m_ground ? GroundFactor : 1.0f );
                     if ( std::fabs( en.m_pos.x - origin.x ) < r + width * 0.5f && en.m_pos.y > stopY )
                     {
@@ -1090,7 +1152,8 @@ void World::fireShots( int i, const std::vector<ShotDef> &shots, int level, int 
                 const Enemy &en = m_enemies[e];
                 if ( en.m_dead || en.m_gone || en.m_pos.y > origin.y || en.m_pos.y < -20 ) continue;
                 float r = en.m_def->m_radius * ( en.m_ground ? GroundFactor : 1.0f );
-                if ( std::fabs( en.m_pos.x - origin.x ) < r + width * 0.5f && ( pierce > 0 || (int)e == first ) )
+                if ( std::fabs( en.m_pos.x - origin.x ) < r + width * 0.5f
+                     && ( pierce > 0 || (int)e == first || ( en.m_def->m_scenery && en.m_pos.y > stopY ) ) )
                     hitEnemy( (int)e, dmg, i, { origin.x, en.m_pos.y } );
             }
             pl.m_beamWidth = width;
@@ -1925,6 +1988,37 @@ void World::killEnemy( int idx, int owner )
     m_events.push_back( ev );
     if ( size >= 2 ) emit( EvE::SHAKE, e.m_pos, size == 3 ? 1.0f : 0.4f );
     if ( d.m_invulnerable ) return;
+    if ( d.m_scenery )
+    {
+        ++m_stats.m_structures;
+        // Points at the chain's multiplier; a structure is no link of the chain (or chains would never break).
+        int who = owner >= 0 ? owner : 0;
+        if ( m_players[who].m_active )
+        {
+            Player &p = m_players[who];
+            p.m_score += (long long)std::lround( d.m_score * m_diff.m_credits * chainMult( p.m_chain ) );
+        }
+        // The money: about what the episode's enemies are worth, so it means as much in the last episode as in the first.
+        static const float worth[] = { 1.0f, 1.0f, 1.8f, 3.0f, 4.5f, 6.5f, 8.0f };
+        int ep = m_level ? std::clamp( m_level->m_episode, 0, 6 ) : 1;
+        for ( DropDef dd : d.m_drops )
+        {
+            if ( dd.m_what == "credits" ) dd.m_value = (int)std::lround( dd.m_value * worth[ep] );
+            drop( e, dd );
+        }
+        if ( const EnemyDef *ruin = d.m_ruin.empty() ? nullptr : m_cat->enemy( d.m_ruin ) )
+        {
+            float face = e.m_face;
+            Vector2 at = e.m_pos;
+            int   i = spawn( ruin, at, nullptr );   // (the enemies may move in memory: e is not used after this)
+            if ( i >= 0 )
+            {
+                m_enemies[(size_t)i].m_face = m_enemies[(size_t)i].m_head = face;
+                m_enemies[(size_t)i].m_entered = true;
+            }
+        }
+        return;
+    }
     ++m_stats.m_kills;
     int score = (int)std::lround( d.m_score * m_diff.m_credits );
     int who = owner >= 0 ? owner : 0;
@@ -2225,6 +2319,8 @@ void World::collide()
             if ( !en.m_def->m_solid && en.m_def->m_invulnerable ) continue;
             hitEnemy( (int)e, b.m_damage, b.m_owner, b.m_pos );
             b.m_lastHit = (int)e;
+            // A structure of the ground does not stop a shot: it flies on to what it was fired at.
+            if ( en.m_def->m_scenery ) continue;
             if ( b.m_explode > 0 )
             {
                 for ( size_t o = 0; o < m_enemies.size(); ++o )
@@ -2374,7 +2470,8 @@ PlayerInput autopilot( const World &w, int i )
     {
         const Enemy &e = w.m_enemies[ei];
         if ( shut[ei] ) continue;
-        if ( e.m_dead || e.m_gone || e.m_def->m_invulnerable || e.m_pos.y < 0 || e.m_pos.y > p.m_pos.y - 40 ) continue;
+        if ( e.m_dead || e.m_gone || e.m_def->m_invulnerable || e.m_def->m_scenery || e.m_pos.y < 0 || e.m_pos.y > p.m_pos.y - 40 )
+            continue;
         if ( reach < 560.0f && e.m_pos.y > FieldH * 0.75f ) continue;
         float score = std::fabs( e.m_pos.x - p.m_pos.x ) + ( p.m_pos.y - e.m_pos.y ) * 0.3f -
                       ( e.m_def->m_kind == EnemyKindE::BOSS ? 200.0f : 0.0f );

@@ -45,6 +45,7 @@ Free and open source under the AGPL-3.0, in English and German, for Windows, Lin
 ### Features
 
 - A campaign of five episodes and an epilogue, 72 missions, with forks, secret missions and an ending.
+- A ground full of things to wreck: every world's own buildings, rigs, domes, spires, drums and crates.
 - A workshop: 10 hulls, 24 front and 14 rear guns with eleven power levels, 22 sidekicks, generators, shields and
   specials.
 - Log crystals, blueprints for rare gear, hidden beacons.
@@ -159,6 +160,7 @@ Frei und quelloffen unter der AGPL-3.0, auf Deutsch und Englisch, für Windows, 
 ### Merkmale
 
 - Eine Kampagne aus fünf Episoden und einem Nachspiel, 72 Missionen, mit Abzweigungen, Geheimmissionen und einem Ende.
+- Ein Boden voller Ziele: die Gebäude jeder Welt, Bohrinseln, Kuppeln, Kristallnadeln, Fässer und Kisten.
 - Eine Werkstatt: 10 Rümpfe, 24 Front- und 14 Heckkanonen mit elf Leistungsstufen, 22 Begleiter, Generatoren, Schilde
   und Spezialwaffen.
 - Logkristalle, Baupläne für seltene Ausrüstung, versteckte Peilsignale.

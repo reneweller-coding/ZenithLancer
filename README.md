@@ -59,6 +59,8 @@ her from world to world.
 - **The campaign:** five episodes (the foundries of Pyra, the ocean world Thalassa, the asteroid belt of the Shatter,
   the jungle moon Sylvara, the sun Solenne) and an epilogue over the gas giant Vael, 72 missions with forks in the path and secret missions, bosses in
   several parts, three save slots. A later episode opens once the one before is finished.
+- **A ground to wreck:** every world has its own buildings and the small things between them, silos and
+  smokestacks, rigs and boats, domes, tower blocks, crystal spires, drums and crates, all of it to be shot to pieces.
 - **The workshop:** between the missions Quill sells hulls, front and rear guns with eleven power levels, two
   sidekicks, generators, shields and specials, and takes back what is fitted at full value. The generator feeds the
   guns and the shield: a strong gun needs a strong generator.

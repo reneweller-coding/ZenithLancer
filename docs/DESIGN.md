@@ -100,6 +100,20 @@ fire and damage above Normal grow in over the first two episodes, while the gear
 episode 1, 85 % in episode 2 (`World::begin`). The autopilot (mortal, the episode's middle gear) wins 58–59 of 60 on
 Unmöglich, 43 on Selbstmord and 16 on Zenit (30.10.2026).
 
+## The ground's structures
+
+Tyrian's ground was full of things to wreck; so is this one. Every world has 11–14 kinds of its own, 150 in all:
+seven to nine buildings (Pyra's smokestacks, cooling towers and blast furnaces, Thalassa's rigs, piers and tankers, the
+cities' tower blocks and parking decks, the Choir's brood towers, the Crown's gates and cores, Vael's aerostats ...)
+and four or five small things between them (drums, crates, lamps, carts, boats, bulbs). tools/gen_structures.py writes
+their models, enemies and the themes' `structures` lines. The game scatters them
+over the ground as it scrolls, with their own random numbers, so the waves, the replays' enemies and the balance stay
+as they were. Shots fly on through them, and nothing that counts for the fight counts them: the kill ratio, the
+medals, the chain, seeking weapons, the autopilot, the music's intensity and the mission's end. They add points and
+7–18 % more credits (the simulation of all missions on Normal and on Veteran without lives); the money per structure
+grows with the episode so that it means as much late as early. The extra pickups lure: the autopilot, which flies to
+every pickup near it, takes a little more damage than before.
+
 ## The world
 
 The **Solenne system**, in the 27th century. Five worlds and one star:

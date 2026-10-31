@@ -431,7 +431,8 @@ void App::play( float dt )
         {
             int enemies = 0, shots = 0;
             for ( const Enemy &e : m_world.m_enemies )
-                if ( !e.m_dead && !e.m_gone && e.m_entered && e.m_def->m_kind != EnemyKindE::OBSTACLE ) ++enemies;
+                if ( !e.m_dead && !e.m_gone && e.m_entered && e.m_def->m_kind != EnemyKindE::OBSTACLE && !e.m_def->m_scenery )
+                    ++enemies;
             for ( const Bullet &b : m_world.m_bullets )
                 if ( !b.m_player ) ++shots;
             float x = m_world.boss() >= 0 ? 1.0f : clampf( enemies / 7.0f + shots / 40.0f, 0.0f, 1.0f );
