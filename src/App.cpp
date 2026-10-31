@@ -1984,6 +1984,14 @@ int App::appTest()
                 }
             continue;
         }
+        if ( w == "safe" )
+        {
+            // Every pilot out of reach until the next kill or restart (the ground's guns would otherwise decide
+            // whether a pilot standing still lives to see the boss).
+            for ( Player &p : m_world.m_players )
+                if ( p.m_active ) p.m_invuln = 1e6f;
+            continue;
+        }
         m_in.script( { w } );
         for ( int k = 0; k < 6; ++k )
         {

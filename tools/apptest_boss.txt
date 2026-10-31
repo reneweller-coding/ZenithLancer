@@ -17,6 +17,7 @@ accept                  # the first mission
 expect:story
 back
 until:play:20
+safe                    # out of reach: standing still under the ground's guns
 until:boss:3000         # the dock guardian comes
 wait wait wait wait wait wait
 kill                    # shot down in the boss fight
