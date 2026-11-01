@@ -1,6 +1,10 @@
-<img src="res/zenithlancer.png" width="96" align="left" alt="Zenith Lancer" />
+<h1 align="center"><img src="docs/logo.png" width="620" alt="Zenith Lancer" /></h1>
 
-# Zenith Lancer
+<p align="center">
+<a href="https://reneweller-coding.itch.io/zenith-lancer"><b>itch.io</b></a> ·
+<a href="https://github.com/reneweller-coding/ZenithLancer/releases/latest"><b>Download</b></a> ·
+<a href="LICENSE">AGPL-3.0</a>
+</p>
 
 A vertical scrolling shooter in the tradition of the great 1990s PC shooters, with a workshop between the missions:
 a campaign of five episodes and an epilogue, 72 missions across the worlds of the Solenne system, front and rear guns with eleven
@@ -11,8 +15,6 @@ pilots and a boss rush, seven difficulties, German and English.
 **Windows, Linux and the Steam Deck**, free and open source under the AGPL-3.0. Ships, enemies, landscapes and sound
 effects are made by the program itself, from plain-text data anybody can change.
 
-<br clear="left" />
-
 ![A mission over the foundries of Pyra](docs/shots/hero.png)
 
 ## Download
@@ -21,7 +23,8 @@ effects are made by the program itself, from plain-text data anybody can change.
 for Windows 10 and 11: unpack it anywhere and start `ZenithLancer.exe`, nothing to install. The
 **[Linux archive](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.0/ZenithLancer-1.0.0-linux-x86_64.tar.gz)**
 runs on any x86-64 distribution with glibc 2.35 or newer, SteamOS included. Both carry the player's readme
-(`README.txt`), the credits and the licence.
+(`README.txt`), the credits and the licence. The same packages are on
+**[itch.io](https://reneweller-coding.itch.io/zenith-lancer)**, where the itch app installs and updates them.
 
 Requirements: a graphics card with OpenGL 3.3; a gamepad, the keyboard or the mouse. The program is not code-signed:
 Windows' SmartScreen may warn once ("More info", "Run anyway").
