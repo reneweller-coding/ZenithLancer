@@ -3,6 +3,8 @@
 <p align="center">
 <a href="https://reneweller-coding.itch.io/zenith-lancer"><b>itch.io</b></a> ·
 <a href="https://github.com/reneweller-coding/ZenithLancer/releases/latest"><b>Download</b></a> ·
+<a href="https://youtu.be/8GT8tBtOZQs"><b>Trailer</b></a> ·
+<a href="https://youtu.be/USwvXqK7Ir8">Gameplay video</a> ·
 <a href="LICENSE">AGPL-3.0</a>
 </p>
 
@@ -28,6 +30,13 @@ runs on any x86-64 distribution with glibc 2.35 or newer, SteamOS included. Both
 
 Requirements: a graphics card with OpenGL 3.3; a gamepad, the keyboard or the mouse. The program is not code-signed:
 Windows' SmartScreen may warn once ("More info", "Run anyway").
+
+## Videos
+
+| | |
+|:---:|:---:|
+| [![Trailer](https://img.youtube.com/vi/8GT8tBtOZQs/maxresdefault.jpg)](https://youtu.be/8GT8tBtOZQs) | [![Gameplay video](https://img.youtube.com/vi/USwvXqK7Ir8/maxresdefault.jpg)](https://youtu.be/USwvXqK7Ir8) |
+| The trailer (one minute) | Gameplay (several minutes, the game's autopilot at the controls) |
 
 ## Pictures
 
