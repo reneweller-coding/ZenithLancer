@@ -3,6 +3,13 @@
 What changed in Zenith Lancer, newest first. `Deploy/publish_release.ps1` takes a version's section as the text of
 its GitHub release.
 
+## [Unreleased]
+
+- **Pickups look like things, not like shots:** money is a spinning gold coin, log crystals are data chips, blueprints
+  sheets, keys keys, and equipment a hexagonal token with its sign (bolt, ring, plus, arrows, star). Every pickup is
+  solid with a dark edge and a shadow, all but money sit in four corner brackets, and a glint passes over them now and
+  then; the enemies' shots stay pure light.
+
 ## [1.0.0] - 2026-10-30
 
 The first public release: a vertical scrolling shooter with a workshop between the missions, for Windows, Linux and

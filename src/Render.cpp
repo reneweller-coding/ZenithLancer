@@ -239,6 +239,15 @@ void main()
 }
 )";
 
+enum TexE : int
+{
+    T_SOFT, T_CORE, T_RING, T_STREAK, T_SPARK, T_SMOKE, T_SHARD, T_HEX, T_FLARE,
+    // The pickups: solid bodies with a dark edge, and the signs on the equipment tokens.
+    T_COIN, T_CHIP, T_SHEET, T_KEY, T_TOKEN, T_BRACKET,
+    T_G_PLUS, T_G_UP, T_G_DOWN, T_G_SIDE, T_G_STAR, T_G_RING, T_G_BOLT,
+    T_COUNT
+};
+
 /** @brief The shared things. */
 struct Shared
 {
@@ -246,17 +255,12 @@ struct Shared
     Shader    m_lit = {}, m_glow = {}, m_prefilter = {}, m_down = {}, m_up = {}, m_final = {}, m_shadow = {};
     Material  m_mat = {}, m_shadowMat = {};
     int       m_locShSun = 0, m_locShPlane = 0, m_locShRect = 0;
-    Texture2D m_tex[9] = {};
+    Texture2D m_tex[T_COUNT] = {};
     int       m_locSun = 0, m_locSunCol = 0, m_locAmbUp = 0, m_locAmbDown = 0, m_locCam = 0, m_locCount = 0,
               m_locLightPos = 0, m_locLightCol = 0, m_locFlash = 0, m_locTint = 0, m_locFog = 0, m_locEmit = 0,
               m_locTime = 0, m_locBoost = 0, m_locSpec = 0, m_locPaint = 0;
 };
 Shared g;
-
-enum TexE : int
-{
-    T_SOFT, T_CORE, T_RING, T_STREAK, T_SPARK, T_SMOKE, T_SHARD, T_HEX, T_FLARE
-};
 
 Texture2D makeTex( int size, float ( *f )( float x, float y, Rng &r ), uint32_t seed )
 {
@@ -276,6 +280,93 @@ Texture2D makeTex( int size, float ( *f )( float x, float y, Rng &r ), uint32_t 
     SetTextureFilter( t, TEXTURE_FILTER_TRILINEAR );
     UnloadImage( img );
     return t;
+}
+
+/**
+ * @brief Makes a two-tone sprite: f gives the coverage (x) and the brightness (y) of a point.
+ * @param[in] size width and height in pixels
+ * @param[in] f    the shape, on -1..1 in both axes
+ * @return the texture
+ */
+Texture2D makeTex2( int size, Vector2 ( *f )( float x, float y ) )
+{
+    Image  img = GenImageColor( size, size, BLANK );
+    Color *px = (Color *)img.data;
+    for ( int y = 0; y < size; ++y )
+        for ( int x = 0; x < size; ++x )
+        {
+            float         u = ( x + 0.5f ) / size * 2 - 1, v = ( y + 0.5f ) / size * 2 - 1;
+            Vector2       al = f( u, v );
+            unsigned char l = (unsigned char)( clampf( al.y, 0, 1 ) * 255 );
+            px[y * size + x] = { l, l, l, (unsigned char)( clampf( al.x, 0, 1 ) * 255 ) };
+        }
+    Texture2D t = LoadTextureFromImage( img );
+    GenTextureMipmaps( &t );
+    SetTextureFilter( t, TEXTURE_FILTER_TRILINEAR );
+    UnloadImage( img );
+    return t;
+}
+
+// Signed distances for the pickup sprites (negative inside, the sprite spans -1..1).
+float sdBox( float x, float y, float hx, float hy, float r = 0.0f )
+{
+    float qx = std::fabs( x ) - hx + r, qy = std::fabs( y ) - hy + r;
+    float ox = std::max( qx, 0.0f ), oy = std::max( qy, 0.0f );
+    return std::sqrt( ox * ox + oy * oy ) + std::min( std::max( qx, qy ), 0.0f ) - r;
+}
+
+float sdHex( float x, float y, float r )
+{
+    const float kx = -0.866025404f, ky = 0.5f, kz = 0.577350269f;
+    x = std::fabs( x );
+    y = std::fabs( y );
+    float d = 2.0f * std::min( kx * x + ky * y, 0.0f );
+    x -= d * kx;
+    y -= d * ky;
+    x -= clampf( x, -kz * r, kz * r );
+    y -= r;
+    return std::sqrt( x * x + y * y ) * ( y < 0 ? -1.0f : 1.0f );
+}
+
+// A convex polygon of n corners (x, y pairs) in either order.
+float sdPoly( float x, float y, const float *p, int n )
+{
+    float cx = 0, cy = 0;
+    for ( int i = 0; i < n; ++i )
+    {
+        cx += p[i * 2];
+        cy += p[i * 2 + 1];
+    }
+    cx /= n;
+    cy /= n;
+    float d = -1e9f;
+    for ( int i = 0; i < n; ++i )
+    {
+        int   j = ( i + 1 ) % n;
+        float ax = p[i * 2], ay = p[i * 2 + 1];
+        float nx = p[j * 2 + 1] - ay, ny = ax - p[j * 2], l = std::sqrt( nx * nx + ny * ny );
+        nx /= l;
+        ny /= l;
+        if ( ( cx - ax ) * nx + ( cy - ay ) * ny > 0 )
+        {
+            nx = -nx;
+            ny = -ny;
+        }
+        d = std::max( d, ( x - ax ) * nx + ( y - ay ) * ny );
+    }
+    return d;
+}
+
+// How much of a pixel of a 128 sprite a shape covers (a pixel is 1/64 of the half width).
+float cover( float sd )
+{
+    return clampf( 0.5f - sd * 64.0f, 0, 1 );
+}
+
+// A pickup's body: the face's brightness inside and a dark edge of the given width round it.
+Vector2 body( float sd, float edge, float face )
+{
+    return { cover( sd - edge ), face * cover( sd ) };
 }
 
 float noise2( float x, float y )
@@ -362,6 +453,91 @@ void makeShared()
         float rays = std::exp( -std::fabs( y ) * 40 ) * ( 1 - std::fabs( x ) ) + std::exp( -std::fabs( x ) * 40 ) * ( 1 - std::fabs( y ) ) * 0.5f;
         return std::exp( -d * d * 30 ) + rays * 0.8f;
     }, 9 );
+    // Money: a coin with a rim and a diamond.
+    g.m_tex[T_COIN] = makeTex2( 128, []( float x, float y ) {
+        float d = std::sqrt( x * x + y * y );
+        float face = 0.94f - ( x + y ) * 0.1f;
+        face = lerpf( face, 0.5f, cover( std::fabs( d - 0.54f ) - 0.045f ) );
+        face = lerpf( face, 0.5f, cover( std::fabs( ( std::fabs( x ) * 1.2f + std::fabs( y ) - 0.3f ) / 1.56f ) - 0.035f ) );
+        return body( d - 0.66f, 0.12f, face );
+    } );
+    // Data (log crystals): a chip with pins, a darker die and a bright core.
+    g.m_tex[T_CHIP] = makeTex2( 128, []( float x, float y ) {
+        float die = sdBox( x, y, 0.46f, 0.46f, 0.08f );
+        float s = die;
+        for ( float c : { -0.26f, 0.0f, 0.26f } )
+        {
+            s = std::min( s, sdBox( std::fabs( x ) - 0.58f, y - c, 0.12f, 0.05f ) );
+            s = std::min( s, sdBox( x - c, std::fabs( y ) - 0.58f, 0.05f, 0.12f ) );
+        }
+        float face = lerpf( 0.7f, 0.94f - ( x + y ) * 0.08f, cover( die ) );
+        float inner = sdBox( x, y, 0.25f, 0.25f, 0.05f );
+        face = lerpf( face, 0.68f, cover( inner ) );
+        face = lerpf( face, 0.4f, cover( std::fabs( inner ) - 0.035f ) );
+        face = lerpf( face, 1.0f, cover( std::sqrt( x * x + y * y ) - 0.1f ) );
+        return body( s, 0.09f, face );
+    } );
+    // Plans: a sheet with a dog-ear and lines.
+    g.m_tex[T_SHEET] = makeTex2( 128, []( float x, float y ) {
+        static const float flap[] = { 0.08f, -0.58f, 0.44f, -0.22f, 0.08f, -0.22f };
+        float              s = std::max( sdBox( x, y, 0.44f, 0.58f, 0.03f ), ( x - y - 0.66f ) * 0.7071f );
+        float              face = 0.94f - ( x + y ) * 0.06f;
+        float              f = sdPoly( x, y, flap, 3 );
+        face = lerpf( face, 0.62f, cover( f ) );
+        face = lerpf( face, 0.3f, cover( std::fabs( f ) - 0.02f ) );
+        face = lerpf( face, 0.45f, cover( sdBox( x + 0.15f, y + 0.32f, 0.17f, 0.03f ) ) );
+        for ( float l : { -0.12f, 0.08f, 0.28f } ) face = lerpf( face, 0.45f, cover( sdBox( x, y - l, 0.28f, 0.03f ) ) );
+        return body( s, 0.1f, face );
+    } );
+    // Keys.
+    g.m_tex[T_KEY] = makeTex2( 128, []( float x, float y ) {
+        float s = std::fabs( std::sqrt( x * x + ( y + 0.34f ) * ( y + 0.34f ) ) - 0.22f ) - 0.08f;
+        s = std::min( s, sdBox( x, y - 0.17f, 0.07f, 0.37f ) );
+        s = std::min( s, sdBox( x - 0.15f, y - 0.46f, 0.09f, 0.05f ) );
+        s = std::min( s, sdBox( x - 0.13f, y - 0.28f, 0.07f, 0.045f ) );
+        return body( s, 0.1f, 0.95f - ( x + y ) * 0.08f );
+    } );
+    // Equipment: a hexagonal token (its sign is drawn on it).
+    g.m_tex[T_TOKEN] = makeTex2( 128, []( float x, float y ) {
+        float face = 0.9f - ( x + y ) * 0.1f;
+        face = lerpf( face, 0.55f, cover( std::fabs( sdHex( x, y, 0.48f ) ) - 0.03f ) );
+        return body( sdHex( x, y, 0.62f ), 0.12f, face );
+    } );
+    // Four corner brackets round every pickup that is not money.
+    g.m_tex[T_BRACKET] = makeTex2( 128, []( float x, float y ) {
+        float ax = std::fabs( x ), ay = std::fabs( y );
+        float s = std::min( sdBox( ax - 0.62f, ay - 0.78f, 0.17f, 0.045f ), sdBox( ax - 0.78f, ay - 0.62f, 0.045f, 0.17f ) );
+        return body( s, 0.06f, 1.0f );
+    } );
+    // The signs.
+    g.m_tex[T_G_PLUS] = makeTex( 128, []( float x, float y, Rng & ) {
+        return cover( std::min( sdBox( x, y, 0.13f, 0.5f, 0.03f ), sdBox( x, y, 0.5f, 0.13f, 0.03f ) ) );
+    }, 10 );
+    g.m_tex[T_G_UP] = makeTex( 128, []( float x, float y, Rng & ) {
+        static const float head[] = { 0.0f, -0.6f, 0.5f, -0.05f, -0.5f, -0.05f };
+        return cover( std::min( sdPoly( x, y, head, 3 ), sdBox( x, y - 0.25f, 0.15f, 0.32f ) ) );
+    }, 11 );
+    g.m_tex[T_G_DOWN] = makeTex( 128, []( float x, float y, Rng & ) {
+        static const float head[] = { 0.0f, -0.6f, 0.5f, -0.05f, -0.5f, -0.05f };
+        return cover( std::min( sdPoly( x, -y, head, 3 ), sdBox( x, -y - 0.25f, 0.15f, 0.32f ) ) );
+    }, 12 );
+    g.m_tex[T_G_SIDE] = makeTex( 128, []( float x, float y, Rng & ) {
+        static const float tip[] = { 0.62f, 0.0f, 0.12f, -0.42f, 0.12f, 0.42f };
+        return cover( sdPoly( std::fabs( x ), y, tip, 3 ) );
+    }, 13 );
+    g.m_tex[T_G_STAR] = makeTex( 128, []( float x, float y, Rng & ) {
+        static const float tall[] = { 0.0f, -0.62f, 0.17f, 0.0f, 0.0f, 0.62f, -0.17f, 0.0f };
+        static const float wide[] = { -0.62f, 0.0f, 0.0f, -0.17f, 0.62f, 0.0f, 0.0f, 0.17f };
+        return cover( std::min( sdPoly( x, y, tall, 4 ), sdPoly( x, y, wide, 4 ) ) );
+    }, 14 );
+    g.m_tex[T_G_RING] = makeTex( 128, []( float x, float y, Rng & ) {
+        return cover( std::fabs( std::sqrt( x * x + y * y ) - 0.38f ) - 0.1f );
+    }, 15 );
+    g.m_tex[T_G_BOLT] = makeTex( 128, []( float x, float y, Rng & ) {
+        static const float a[] = { 0.25f, -0.65f, -0.3f, 0.08f, 0.05f, 0.08f };
+        static const float b[] = { -0.05f, -0.08f, 0.3f, -0.08f, -0.25f, 0.65f };
+        return cover( std::min( sdPoly( x, y, a, 3 ), sdPoly( x, y, b, 3 ) ) );
+    }, 16 );
 }
 
 RenderTexture2D hdrTarget( int w, int h, bool depth )
@@ -1024,6 +1200,43 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
             Vector2 d = dirOf( l.m_dir );
             beam( l.m_from, add( l.m_from, mul( d, 1600.0f ) ), l.m_width * 3.4f, { 0, 0, 0, 120 } );
         }
+    // The pickups: solid things with a dark edge and a shadow, never light like a shot. Money is a spinning coin,
+    // log crystals are data chips, plans sheets, keys keys and equipment a hexagonal token with its sign; all but
+    // money sit in four corner brackets.
+    for ( const Pickup &pk : w.m_pickups )
+    {
+        Color c = { 255, 200, 70, 255 };
+        int   tex = T_TOKEN, sign = -1;
+        float size = 30.0f;
+        switch ( pk.m_kind )
+        {
+        case PickE::CREDITS: tex = T_COIN; size = pk.m_value >= 400 ? 32.0f : 26.0f; break;
+        case PickE::POWER: c = { 255, 90, 220, 255 }; sign = T_G_BOLT; break;
+        case PickE::SHIELD: c = { 80, 170, 255, 255 }; sign = T_G_RING; break;
+        case PickE::ARMOR: c = { 90, 255, 130, 255 }; sign = T_G_PLUS; break;
+        case PickE::WEAPON: c = { 255, 140, 40, 255 }; sign = T_G_UP; break;
+        case PickE::REAR: c = { 255, 180, 40, 255 }; sign = T_G_DOWN; break;
+        case PickE::SIDE: c = { 120, 255, 255, 255 }; sign = T_G_SIDE; break;
+        case PickE::LIFE: c = { 255, 80, 80, 255 }; sign = T_G_STAR; size = 34.0f; break;
+        case PickE::SPECIAL: c = { 200, 160, 255, 255 }; sign = T_G_STAR; break;
+        case PickE::CUBE: c = { 90, 235, 255, 255 }; tex = T_CHIP; size = 32.0f; break;
+        case PickE::KEY: c = { 255, 225, 120, 255 }; tex = T_KEY; size = 36.0f; break;
+        case PickE::PLAN: c = { 170, 210, 255, 255 }; tex = T_SHEET; size = 34.0f; break;
+        }
+        size *= std::min( 1.0f, 0.6f + pk.m_t * 2.7f );   // a short pop when it drops
+        sprite( T_SOFT, add( pk.m_pos, { 3, 5 } ), size * 1.3f, { 0, 0, 0, 120 } );
+        if ( tex == T_COIN )
+        {
+            // The coin turns: narrower and a little darker edge-on, but never a thin sliver.
+            float f = std::fabs( std::cos( pk.m_t * 3.0f + pk.m_pos.x * 0.05f ) );
+            sprite( T_COIN, pk.m_pos, size, mixColor( c, BLACK, 0.25f * ( 1 - f ) ), 0, 0.4f + 0.6f * f - 1.0f );
+            continue;
+        }
+        sprite( tex, pk.m_pos, size, c );
+        if ( sign >= 0 ) sprite( sign, pk.m_pos, size * 0.62f, { (unsigned char)( c.r * 0.25f ), (unsigned char)( c.g * 0.25f ), (unsigned char)( c.b * 0.25f ), 240 } );
+        float k = 1.5f + 0.08f * std::sin( m_time * 6.0f + pk.m_pos.x );
+        sprite( T_BRACKET, pk.m_pos, size * k, mixColor( c, WHITE, 0.55f ) );
+    }
     rlDrawRenderBatchActive();
     EndBlendMode();
     BeginBlendMode( BLEND_ADD_COLORS );
@@ -1090,32 +1303,14 @@ void Renderer::drawSprites( const World &w, const Catalog &cat )
             sprite( T_SOFT, l.m_from, l.m_width * 3.0f, l.m_color );
         }
     }
-    // Pickups.
+    // A glint now and then on every pickup (the body itself was drawn solid above).
+    boost( 2.2f );
     for ( const Pickup &pk : w.m_pickups )
     {
-        float  pulse = 0.8f + 0.2f * std::sin( m_time * 8.0f + pk.m_pos.x );
-        Color  c = { 255, 210, 90, 255 };
-        int    core = T_SHARD;
-        float  size = 14.0f;
-        switch ( pk.m_kind )
-        {
-        case PickE::CREDITS: c = { 255, 205, 80, 255 }; size = pk.m_value >= 400 ? 18.0f : 12.0f; break;
-        case PickE::POWER: c = { 255, 90, 220, 255 }; core = T_CORE; size = 18; break;
-        case PickE::SHIELD: c = { 80, 170, 255, 255 }; core = T_HEX; size = 22; break;
-        case PickE::ARMOR: c = { 90, 255, 130, 255 }; core = T_CORE; size = 18; break;
-        case PickE::WEAPON: c = { 255, 140, 40, 255 }; core = T_HEX; size = 22; break;
-        case PickE::REAR: c = { 255, 180, 40, 255 }; core = T_HEX; size = 22; break;
-        case PickE::SIDE: c = { 120, 255, 255, 255 }; core = T_HEX; size = 22; break;
-        case PickE::LIFE: c = { 255, 80, 80, 255 }; core = T_FLARE; size = 26; break;
-        case PickE::SPECIAL: c = { 200, 160, 255, 255 }; core = T_FLARE; size = 22; break;
-        case PickE::CUBE: c = { 90, 255, 240, 255 }; core = T_HEX; size = 24; break;
-        case PickE::KEY: c = { 255, 240, 140, 255 }; core = T_FLARE; size = 28; break;
-        case PickE::PLAN: c = { 240, 240, 255, 255 }; core = T_HEX; size = 24; break;
-        }
-        boost( 1.6f );
-        sprite( T_SOFT, pk.m_pos, size * 2.4f * pulse, c );
-        boost( 2.6f );
-        sprite( core, pk.m_pos, size, c, m_time * 120.0f );
+        float ph = std::fmod( m_time * 0.7f + pk.m_pos.x * 0.013f + pk.m_pos.y * 0.007f, 1.0f );
+        if ( ph > 0.14f ) continue;
+        float k = std::sin( ph / 0.14f * Pi );
+        sprite( T_SPARK, add( pk.m_pos, { -5, -5 } ), 26.0f * k, { 255, 255, 255, (unsigned char)( 255 * k ) } );
     }
     // Bullets.
     for ( const Bullet &b : w.m_bullets )
