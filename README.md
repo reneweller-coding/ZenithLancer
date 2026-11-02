@@ -21,9 +21,9 @@ effects are made by the program itself, from plain-text data anybody can change.
 
 ## Download
 
-**[ZenithLancer-1.0.0-windows-x64.zip](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.0/ZenithLancer-1.0.0-windows-x64.zip)**
+**[ZenithLancer-1.0.1-windows-x64.zip](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.1/ZenithLancer-1.0.1-windows-x64.zip)**
 for Windows 10 and 11: unpack it anywhere and start `ZenithLancer.exe`, nothing to install. The
-**[Linux archive](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.0/ZenithLancer-1.0.0-linux-x86_64.tar.gz)**
+**[Linux archive](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.1/ZenithLancer-1.0.1-linux-x86_64.tar.gz)**
 runs on any x86-64 distribution with glibc 2.35 or newer, SteamOS included. Both carry the player's readme
 (`README.txt`), the credits and the licence. The same packages are on
 **[itch.io](https://reneweller-coding.itch.io/zenith-lancer)**, where the itch app installs and updates them.
@@ -248,10 +248,10 @@ Geräuscheffekte erzeugt das Programm selbst, aus Textdateien, die jeder ändern
 
 ### Herunterladen und starten
 
-- **Windows 10 und 11:** [ZenithLancer-1.0.0-windows-x64.zip](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.0/ZenithLancer-1.0.0-windows-x64.zip)
+- **Windows 10 und 11:** [ZenithLancer-1.0.1-windows-x64.zip](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.1/ZenithLancer-1.0.1-windows-x64.zip)
   irgendwohin entpacken und `ZenithLancer.exe` starten, ohne Installation. Das Programm ist nicht signiert:
   SmartScreen warnt unter Umständen einmal ("Weitere Informationen", "Trotzdem ausführen").
-- **Linux** (x86-64, glibc 2.35 oder neuer): [ZenithLancer-1.0.0-linux-x86_64.tar.gz](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.0/ZenithLancer-1.0.0-linux-x86_64.tar.gz)
+- **Linux** (x86-64, glibc 2.35 oder neuer): [ZenithLancer-1.0.1-linux-x86_64.tar.gz](https://github.com/reneweller-coding/ZenithLancer/releases/download/v1.0.1/ZenithLancer-1.0.1-linux-x86_64.tar.gz)
   entpacken und `./ZenithLancer` starten.
 - **Steam Deck:** das Linux-Archiv im Desktop-Modus entpacken, in Steam "Ein Nicht-Steam-Spiel hinzufügen" und
   `ZenithLancer` auswählen. Das Spiel erkennt das Deck, startet im Vollbild (1280 x 800) und spielt sich mit den

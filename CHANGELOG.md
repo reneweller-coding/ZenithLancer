@@ -3,7 +3,9 @@
 What changed in Zenith Lancer, newest first. `Deploy/publish_release.ps1` takes a version's section as the text of
 its GitHub release.
 
-## [Unreleased]
+## [1.0.1] - 2026-11-02
+
+A small update for the eyes.
 
 - **Pickups look like things, not like shots:** money is a spinning gold coin, log crystals are data chips, blueprints
   sheets, keys keys, and equipment a hexagonal token with its sign (bolt, ring, plus, arrows, star). Every pickup is
