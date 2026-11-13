@@ -13,7 +13,7 @@ The app tests, the playing and the pictures use the graphics card: check that no
 ## 2. The version
 
 - `CMakeLists.txt`, `project( ZenithLancer VERSION x.y.z ... )`, is the one source: the game shows it, the scripts and
-  the workflows read it. 1.0.1 is set.
+  the workflows read it. 1.1.0 is set.
 - For a later release: raise it, put a section `## [x.y.z] - yyyy-mm-dd` on top of `CHANGELOG.md` (its text becomes
   the release's text), and change the download links in `README.md` (`publish_release.ps1` refuses links to another
   version).

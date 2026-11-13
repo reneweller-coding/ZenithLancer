@@ -3,7 +3,9 @@
 What changed in Zenith Lancer, newest first. `Deploy/publish_release.ps1` takes a version's section as the text of
 its GitHub release.
 
-## [Unreleased]
+## [1.1.0] - 2026-11-13
+
+A foreground over the field: clouds, girders, rocks and weather passing faster than the ground.
 
 - **A foreground over the field:** clouds, smoke, mist, girders, rocks, dust, rain and snow pass between the camera
   and the field, each layer at its own height and so at its own pace – up to two and a half times as fast as the
