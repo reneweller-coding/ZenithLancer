@@ -37,6 +37,7 @@ struct Settings
     float       m_speed = 1.0f;              ///< the game's pace (an aid: 0.7 .. 1)
     bool        m_autoBomb = false;          ///< the special fires by itself when the armour is nearly gone
     bool        m_softFlash = false;         ///< flashes and white-outs dimmed
+    float       m_fore = 1.0f;               ///< the foreground passing over the field: 1 full, 0.5 weak, 0 off
     int         m_quality = -1;              ///< graphics: 0 performance, 1 balanced, 2 quality (-1: by the machine)
     bool        m_battery = false;           ///< saving the battery: 30 fps, balanced graphics at most
     std::vector<std::string> m_mods;         ///< the mods switched on (folders in <user>/mods)

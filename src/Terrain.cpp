@@ -1415,6 +1415,9 @@ void Terrain::setup( const Catalog &cat, const std::string &theme, uint32_t seed
     m_nebulaA = { 60, 30, 120, 255 };
     m_nebulaB = { 20, 80, 140, 255 };
     m_nebula = 1.0f;
+    m_fore.clear();
+    m_foreTime = -1.0f;
+    m_foreSpeed = 0.0f;
     std::string style, fluid;
     const Block *b = cat.theme( theme );
     if ( !b ) b = cat.theme( "space" );
@@ -1530,7 +1533,34 @@ void Terrain::setup( const Catalog &cat, const std::string &theme, uint32_t seed
             m_planet[2] = l.argNum( 3, 0.25f );
             m_planet[3] = l.argNum( 4, 0 );
         }
+        else if ( k == "fore" )
+        {
+            // The kinds with their colour and height when the line names none.
+            struct Kind
+            {
+                const char *m_name;
+                ForeE       m_kind;
+                Color       m_color;
+                float       m_height;
+            };
+            static const Kind kinds[] = {
+                { "cloud", ForeE::CLOUD, { 255, 255, 255, 255 }, 520.0f }, { "smoke", ForeE::SMOKE, { 58, 54, 50, 255 }, 420.0f },
+                { "mist", ForeE::MIST, { 200, 216, 208, 255 }, 300.0f },   { "girder", ForeE::GIRDER, { 74, 78, 88, 255 }, 760.0f },
+                { "rock", ForeE::ROCK, { 90, 82, 74, 255 }, 900.0f },      { "dust", ForeE::DUST, { 200, 176, 144, 255 }, 600.0f },
+                { "rain", ForeE::RAIN, { 160, 180, 208, 255 }, 600.0f },   { "snow", ForeE::SNOW, { 232, 240, 255, 255 }, 600.0f } };
+            for ( const Kind &kd : kinds )
+                if ( l.arg( 0 ) == kd.m_name )
+                {
+                    Fore f;
+                    f.m_kind = kd.m_kind;
+                    f.m_amount = clampf( l.argNum( 1, 0.5f ), 0.0f, 1.0f );
+                    f.m_color = numColor( l, 2, kd.m_color );
+                    f.m_height = clampf( l.argNum( 3, kd.m_height ), 100.0f, 1300.0f );
+                    m_fore.push_back( f );
+                }
+        }
     }
+    std::stable_sort( m_fore.begin(), m_fore.end(), []( const Fore &a, const Fore &b ) { return a.m_height < b.m_height; } );
     // The surface: named, or guessed from what the theme has (themes of other files keep working).
     static const std::pair<const char *, StyleE> styles[] = {
         { "rock", StyleE::ROCK },       { "sand", StyleE::SAND },       { "island", StyleE::ISLAND },
@@ -1619,8 +1649,94 @@ void Terrain::setup( const Catalog &cat, const std::string &theme, uint32_t seed
         UnloadImage( img );
         m_hasCloudTex = true;
     }
+    if ( !m_fore.empty() ) makeForeTextures();
     makeShaders();
     setStaticUniforms();
+}
+
+void Terrain::makeForeTextures()
+{
+    auto load = []( Image &img, Texture2D &tex ) {
+        tex = LoadTextureFromImage( img );
+        GenTextureMipmaps( &tex );
+        SetTextureFilter( tex, TEXTURE_FILTER_TRILINEAR );
+        SetTextureWrap( tex, TEXTURE_WRAP_CLAMP );
+        UnloadImage( img );
+    };
+    // Value noise for the puff and the rock (no tiling needed: each is one piece).
+    auto noise = [&]( float x, float y, uint32_t s ) {
+        int   ix = (int)std::floor( x ), iy = (int)std::floor( y );
+        float fx = x - ix, fy = y - iy;
+        fx = fx * fx * ( 3 - 2 * fx );
+        fy = fy * fy * ( 3 - 2 * fy );
+        return lerpf( lerpf( hashf( ix, iy, s ), hashf( ix + 1, iy, s ), fx ),
+                      lerpf( hashf( ix, iy + 1, s ), hashf( ix + 1, iy + 1, s ), fx ), fy ) * 2 - 1;
+    };
+    auto fbm = [&]( float x, float y, uint32_t s, int octaves ) {
+        float n = 0, amp = 0.55f;
+        for ( int o = 0; o < octaves; ++o, x *= 2.0f, y *= 2.0f, amp *= 0.5f ) n += noise( x, y, s + (uint32_t)o * 17u ) * amp;
+        return n;
+    };
+    const int W = 128;
+    // The puff: a lump of cloud, soft at its rim, ragged inside.
+    {
+        Image  img = GenImageColor( W, W, BLANK );
+        Color *px = (Color *)img.data;
+        for ( int y = 0; y < W; ++y )
+            for ( int x = 0; x < W; ++x )
+            {
+                float u = ( x + 0.5f ) / W * 2 - 1, v = ( y + 0.5f ) / W * 2 - 1;
+                float r = std::sqrt( u * u + v * v );
+                float fall = clampf( 1.0f - r * r, 0.0f, 1.0f );
+                float a = clampf( fall * 1.6f - 0.25f + fbm( x / 22.0f, y / 22.0f, m_seed + 31, 4 ) * 0.9f, 0.0f, 1.0f );
+                a = a * a * ( 3 - 2 * a ) * std::sqrt( fall );
+                px[y * W + x] = { 255, 255, 255, (unsigned char)( a * 255 ) };
+            }
+        load( img, m_puffTex );
+    }
+    // The dot: a soft round speck (dust, rain, snow).
+    {
+        const int D = 32;
+        Image     img = GenImageColor( D, D, BLANK );
+        Color    *px = (Color *)img.data;
+        for ( int y = 0; y < D; ++y )
+            for ( int x = 0; x < D; ++x )
+            {
+                float u = ( x + 0.5f ) / D * 2 - 1, v = ( y + 0.5f ) / D * 2 - 1;
+                float a = std::exp( -( u * u + v * v ) * 4.0f ) * clampf( 1.0f - std::sqrt( u * u + v * v ), 0.0f, 1.0f );
+                px[y * D + x] = { 255, 255, 255, (unsigned char)( clampf( a * 1.4f, 0.0f, 1.0f ) * 255 ) };
+            }
+        load( img, m_dotTex );
+    }
+    // The rock: a ragged outline, lit from the upper left, pitted; out of focus at its rim (it passes close).
+    {
+        Image  img = GenImageColor( W, W, BLANK );
+        Color *px = (Color *)img.data;
+        float  ph[4];
+        for ( int i = 0; i < 4; ++i ) ph[i] = hashf( i, 7, m_seed + 47 ) * 6.2832f;
+        Vector3 sun = Vector3Normalize( { -0.55f, -0.6f, 0.6f } );
+        for ( int y = 0; y < W; ++y )
+            for ( int x = 0; x < W; ++x )
+            {
+                float u = ( x + 0.5f ) / W * 2 - 1, v = ( y + 0.5f ) / W * 2 - 1;
+                float ang = std::atan2( v, u ), r = std::sqrt( u * u + v * v );
+                float edge = 0.74f + 0.07f * std::sin( 2 * ang + ph[0] ) + 0.05f * std::sin( 3 * ang + ph[1] ) +
+                             0.035f * std::sin( 5 * ang + ph[2] ) + 0.02f * std::sin( 9 * ang + ph[3] );
+                float a = clampf( ( edge - r ) / 0.05f, 0.0f, 1.0f );
+                // A bulge for the light: the normal of a dome inside the outline, roughened.
+                float   q = clampf( r / edge, 0.0f, 0.999f );
+                Vector3 n = Vector3Normalize( { u / edge, v / edge, std::sqrt( 1.0f - q * q ) + 0.15f } );
+                n.x += fbm( x / 9.0f, y / 9.0f, m_seed + 53, 3 ) * 0.5f;
+                n.y += fbm( x / 9.0f + 40, y / 9.0f, m_seed + 53, 3 ) * 0.5f;
+                n = Vector3Normalize( n );
+                float lit = 0.22f + 0.78f * std::max( 0.0f, Vector3DotProduct( n, sun ) );
+                lit *= 0.82f + 0.18f * fbm( x / 5.0f, y / 5.0f, m_seed + 61, 2 );
+                auto c = (unsigned char)( clampf( lit, 0.0f, 1.0f ) * 255 );
+                px[y * W + x] = { c, c, c, (unsigned char)( a * 255 ) };
+            }
+        load( img, m_rockTex );
+    }
+    m_hasForeTex = true;
 }
 
 void Terrain::makeShaders()
@@ -1644,7 +1760,7 @@ void Terrain::makeShaders()
         m_sky = LoadShaderFromMemory( SkyVs, sfs.c_str() );
         for ( int i = 0; i < K_COUNT; ++i ) m_skyLoc[i] = GetShaderLocation( m_sky, SkyLocNames[i] );
     }
-    if ( m_hasCloudTex )
+    if ( m_hasCloudTex || m_hasForeTex )
     {
         m_cloud = LoadShaderFromMemory( SkyVs, CloudFs );
         for ( int i = 0; i < C_COUNT; ++i ) m_cloudLoc[i] = GetShaderLocation( m_cloud, CloudLocNames[i] );
@@ -1756,6 +1872,13 @@ void Terrain::unload()
     m_hasNoise = false;
     if ( m_hasCloudTex ) UnloadTexture( m_cloudTex );
     m_hasCloudTex = false;
+    if ( m_hasForeTex )
+    {
+        UnloadTexture( m_puffTex );
+        UnloadTexture( m_dotTex );
+        UnloadTexture( m_rockTex );
+    }
+    m_hasForeTex = false;
 }
 
 void Terrain::releaseChunks()
@@ -2465,6 +2588,24 @@ void Terrain::draw( Material &mat, double scroll, float time )
     }
 }
 
+Vector4 Terrain::lightningFlash( float time ) const
+{
+    // Now and then a flash somewhere inside the clouds.
+    Vector4 flash = { 0, 0, 1, 0 };
+    if ( m_lightning <= 0 ) return flash;
+    float slot = std::floor( time / 0.9f );
+    for ( int s = 0; s < 2; ++s )
+    {
+        int   sl = (int)slot - s;
+        float t = time - sl * 0.9f - 0.9f * hashf( sl, 1, m_seed + 800 );
+        if ( hashf( sl, 2, m_seed + 800 ) > m_lightning * 0.4f || t < 0 || t > 0.35f ) continue;
+        float env = ( t < 0.06f ? 1.0f : t < 0.12f ? 0.3f : t < 0.18f ? 0.8f : 0.0f ) + std::max( 0.0f, 0.35f - t ) * 0.6f;
+        flash = { FieldW * 0.5f + ( hashf( sl, 3, m_seed + 800 ) - 0.5f ) * 1400.0f,
+                  FieldH * 0.5f + ( hashf( sl, 4, m_seed + 800 ) - 0.5f ) * 1000.0f, 260.0f, env * 0.9f };
+    }
+    return flash;
+}
+
 void Terrain::drawOver( double scroll, float time )
 {
     if ( !m_hasCloudTex || m_clouds <= 0 ) return;
@@ -2475,21 +2616,7 @@ void Terrain::drawOver( double scroll, float time )
     };
     const Layer layers[2] = { { GroundDepth * 0.55f, 1100.0f, std::min( 0.95f, 0.6f * m_clouds ), 9.0f },
                               { GroundDepth * 0.25f, 1500.0f, std::min( 0.8f, 0.38f * m_clouds ), 14.0f } };
-    // Lightning: now and then a flash somewhere inside the clouds.
-    Vector4 flash = { 0, 0, 1, 0 };
-    if ( m_lightning > 0 )
-    {
-        float slot = std::floor( time / 0.9f );
-        for ( int s = 0; s < 2; ++s )
-        {
-            int   sl = (int)slot - s;
-            float t = time - sl * 0.9f - 0.9f * hashf( sl, 1, m_seed + 800 );
-            if ( hashf( sl, 2, m_seed + 800 ) > m_lightning * 0.4f || t < 0 || t > 0.35f ) continue;
-            float env = ( t < 0.06f ? 1.0f : t < 0.12f ? 0.3f : t < 0.18f ? 0.8f : 0.0f ) + std::max( 0.0f, 0.35f - t ) * 0.6f;
-            flash = { FieldW * 0.5f + ( hashf( sl, 3, m_seed + 800 ) - 0.5f ) * 1400.0f,
-                      FieldH * 0.5f + ( hashf( sl, 4, m_seed + 800 ) - 0.5f ) * 1000.0f, 260.0f, env * 0.9f };
-        }
-    }
+    Vector4     flash = lightningFlash( time );
     const Look &L = m_look;
     Vector3     light = Vector3Add( v3( L.m_sunColor, L.m_sunPower * 0.62f ), v3( L.m_ambUp, 0.4f ) );
     Vector3     shade = Vector3Add( v3( L.m_ambUp, 0.55f ), v3( L.m_ambDown, 0.4f ) );
@@ -2532,6 +2659,276 @@ void Terrain::drawOver( double scroll, float time )
     }
     EndBlendMode();
     EndShaderMode();
+    rlEnableDepthMask();
+}
+
+void Terrain::drawFore( double scroll, float time, const ForeFrame &f )
+{
+    if ( m_fore.empty() || !m_hasForeTex || f.m_amount <= 0 ) return;
+    // How fast the field scrolls (for the streaks of dust and rain), smoothed over the frames.
+    if ( m_foreTime >= 0 && time > m_foreTime )
+    {
+        float dt = time - m_foreTime;
+        float now = clampf( (float)( scroll - m_foreScroll ) / dt, -2000.0f, 2000.0f );
+        m_foreSpeed += ( now - m_foreSpeed ) * std::min( 1.0f, dt * 4.0f );
+    }
+    m_foreScroll = scroll;
+    m_foreTime = time;
+
+    const Look &L = m_look;
+    Vector3     light = Vector3Add( v3( L.m_sunColor, L.m_sunPower * 0.62f ), v3( L.m_ambUp, 0.4f ) );
+    Vector3     shade = Vector3Add( v3( L.m_ambUp, 0.55f ), v3( L.m_ambDown, 0.4f ) );
+    light = Vector3Scale( light, L.m_groundLight * 1.35f );
+    shade = Vector3Scale( shade, L.m_groundLight * 1.35f );
+    float   lum = clampf( light.x * 0.3f + light.y * 0.59f + light.z * 0.11f, 0.3f, 1.15f );
+    Vector4 flash = lightningFlash( time );
+    // The options: weaker is thinner and rarer.
+    float aMul = 0.1f + 0.9f * f.m_amount, pMul = 0.2f + 0.8f * f.m_amount;
+    float cx = FieldW * 0.5f, cz = FieldH * 0.5f;
+    auto  tint = []( Color c, float k, float a ) {
+        return Color{ (unsigned char)clampf( c.r * k, 0, 255 ), (unsigned char)clampf( c.g * k, 0, 255 ),
+                      (unsigned char)clampf( c.b * k, 0, 255 ), (unsigned char)clampf( a * 255.0f, 0, 255 ) };
+    };
+    // How much of a piece stays where it passes over a pilot's ship (x, z on the layer, k its scale, r its radius).
+    auto thin = [&]( float x, float z, float k, float r ) {
+        float fx = f.m_center.x + ( x - f.m_center.x ) * k, fz = f.m_center.y + ( z - f.m_center.y ) * k;
+        float a = 1.0f;
+        for ( int i = 0; i < f.m_pilotN; ++i )
+        {
+            float d = std::hypot( fx - f.m_pilots[i].x, fz - f.m_pilots[i].y );
+            float r0 = r * k * 0.35f, r1 = r * k + 70.0f;
+            float t = clampf( ( d - r0 ) / ( r1 - r0 ), 0.0f, 1.0f );
+            a = std::min( a, 0.3f + 0.7f * t * t * ( 3 - 2 * t ) );
+        }
+        return a;
+    };
+    // A picture on the layer's plane: middle, half sizes along its own axes, turned by ang.
+    auto quad = [&]( float x, float z, float y, float hx, float hz, float ang, Color c ) {
+        float   cs = std::cos( ang ), sn = std::sin( ang );
+        Vector2 ax = { cs * hx, sn * hx }, az = { -sn * hz, cs * hz };
+        rlBegin( RL_QUADS );
+        rlColor4ub( c.r, c.g, c.b, c.a );
+        rlNormal3f( 0, 1, 0 );
+        rlTexCoord2f( 0, 0 );
+        rlVertex3f( x - ax.x - az.x, y, z - ax.y - az.y );
+        rlTexCoord2f( 0, 1 );
+        rlVertex3f( x - ax.x + az.x, y, z - ax.y + az.y );
+        rlTexCoord2f( 1, 1 );
+        rlVertex3f( x + ax.x + az.x, y, z + ax.y + az.y );
+        rlTexCoord2f( 1, 0 );
+        rlVertex3f( x + ax.x - az.x, y, z + ax.y - az.y );
+        rlEnd();
+    };
+    // Across the layer: u in -1..1 over its width, carried sideways by the wind and wrapped round.
+    auto across = []( float u, float wide, float wind ) {
+        float x = std::fmod( u * wide + wind + wide, 2.0f * wide );
+        if ( x < 0 ) x += 2.0f * wide;
+        return x - wide;
+    };
+
+    rlDrawRenderBatchActive();
+    rlDisableDepthMask();
+    BeginBlendMode( BLEND_ALPHA );
+    int li = 0;
+    for ( const Fore &F : m_fore )
+    {
+        uint32_t s = m_seed + 4000u + (uint32_t)li++ * 131u;
+        float    amount = F.m_amount * pMul;
+        bool     puffs = F.m_kind == ForeE::CLOUD || F.m_kind == ForeE::SMOKE || F.m_kind == ForeE::MIST;
+        bool     specks = F.m_kind == ForeE::DUST || F.m_kind == ForeE::RAIN || F.m_kind == ForeE::SNOW;
+        if ( puffs )
+        {
+            // Clouds, smoke and mist: clusters of lit puffs with gaps between them.
+            struct P
+            {
+                float m_cell, m_tries, m_nMin, m_nMax, m_rMin, m_rMax, m_spread, m_alpha, m_drift, m_wind, m_spin;
+            };
+            P p = F.m_kind == ForeE::CLOUD   ? P{ 380, 2, 3, 5, 80, 170, 150, 0.55f, 18, 6, 0.02f }
+                  : F.m_kind == ForeE::SMOKE ? P{ 300, 2, 2, 4, 55, 120, 90, 0.5f, 8, 14, 0.15f }
+                                             : P{ 520, 2, 1, 2, 240, 400, 220, 0.3f, 10, 4, 0.01f };
+            float  k = CamHeight / ( CamHeight - F.m_height );
+            float  wide = f.m_halfW / k + p.m_rMax * 1.5f, high = f.m_halfH / k + p.m_rMax + p.m_spread;
+            double S = scroll + time * p.m_drift;
+            BeginShaderMode( m_cloud );
+            Vector2 sunUv = { -L.m_sunDir.x * 0.05f, -L.m_sunDir.z * 0.05f };
+            SetShaderValue( m_cloud, m_cloudLoc[C_SUNUV], &sunUv, SHADER_UNIFORM_VEC2 );
+            SetShaderValue( m_cloud, m_cloudLoc[C_LIGHT], &light, SHADER_UNIFORM_VEC3 );
+            SetShaderValue( m_cloud, m_cloudLoc[C_SHADE], &shade, SHADER_UNIFORM_VEC3 );
+            SetShaderValue( m_cloud, m_cloudLoc[C_FLASH], &flash, SHADER_UNIFORM_VEC4 );
+            rlSetTexture( m_puffTex.id );
+            for ( long long i = (long long)std::floor( ( S - high ) / p.m_cell ); i <= (long long)std::floor( ( S + high ) / p.m_cell ); ++i )
+                for ( int t = 0; t < (int)p.m_tries; ++t )
+                {
+                    int ci = (int)i, ct = t * 16;
+                    if ( hashf( ci, ct, s ) > amount ) continue;
+                    double qc = ( (double)i + hashf( ci, ct + 1, s ) ) * p.m_cell;
+                    float  uc = hashf( ci, ct + 2, s ) * 2 - 1;
+                    int    n = (int)p.m_nMin + (int)( hashf( ci, ct + 3, s ) * ( p.m_nMax - p.m_nMin + 0.999f ) );
+                    for ( int j = 0; j < n; ++j )
+                    {
+                        float h1 = hashf( ci * 8 + t, j * 6 + 1, s + 7 ), h2 = hashf( ci * 8 + t, j * 6 + 2, s + 7 );
+                        float h3 = hashf( ci * 8 + t, j * 6 + 3, s + 7 ), h4 = hashf( ci * 8 + t, j * 6 + 4, s + 7 );
+                        float r = lerpf( p.m_rMin, p.m_rMax, h1 );
+                        if ( F.m_kind == ForeE::SMOKE ) r *= 1.0f + 0.15f * std::sin( time * 0.5f + h4 * 6.2832f );
+                        float x = cx + across( uc, wide, time * p.m_wind ) + ( h2 - 0.5f ) * 2.0f * p.m_spread;
+                        float z = cz + (float)( S - qc ) + ( h3 - 0.5f ) * p.m_spread;
+                        if ( std::fabs( z - cz ) > high || std::fabs( x - cx ) > wide ) continue;
+                        float a = p.m_alpha * aMul * ( 0.7f + 0.3f * h4 ) * thin( x, z, k, r );
+                        quad( x, z, F.m_height, r, r * ( 0.75f + 0.25f * h2 ), h4 * 6.2832f + time * p.m_spin * ( h1 - 0.5f ),
+                              tint( F.m_color, 1.0f, a ) );
+                    }
+                }
+            rlDrawRenderBatchActive();
+            rlSetTexture( 0 );
+            EndShaderMode();
+        }
+        else if ( F.m_kind == ForeE::GIRDER )
+        {
+            // Girders: a truss of two rails and zigzag struts (or one broad beam) across the whole view, lit on top.
+            float  k = CamHeight / ( CamHeight - F.m_height ), cell = 420.0f;
+            float  wide = f.m_halfW / k + 120.0f, high = f.m_halfH / k + 160.0f;
+            double S = scroll;
+            // Near the camera and against the light: a dark body with a bright edge on the sun's side.
+            Color  dark = tint( F.m_color, 0.3f + 0.1f * lum, 1 ), top = tint( F.m_color, 0.9f + 0.9f * lum, 1 );
+            // A strip from a to b, half width hw, in pieces short enough to thin out over a ship.
+            auto strip = [&]( Vector2 a, Vector2 b, float hw, Color c, float alpha ) {
+                Vector2 d = { b.x - a.x, b.y - a.y };
+                float   len = std::max( 1.0f, std::hypot( d.x, d.y ) );
+                Vector2 n = { -d.y / len * hw, d.x / len * hw };
+                int     m = std::max( 1, (int)( len / 40.0f ) );
+                for ( int q = 0; q < m; ++q )
+                {
+                    Vector2 p0 = { a.x + d.x * q / m, a.y + d.y * q / m };
+                    Vector2 p1 = { a.x + d.x * ( q + 1 ) / m, a.y + d.y * ( q + 1 ) / m };
+                    auto    vert = [&]( Vector2 p, float side ) {
+                        float al = alpha * thin( p.x, p.y, k, hw + 20.0f );
+                        rlColor4ub( c.r, c.g, c.b, (unsigned char)clampf( al * 255.0f, 0, 255 ) );
+                        rlVertex3f( p.x + n.x * side, F.m_height, p.y + n.y * side );
+                    };
+                    rlBegin( RL_QUADS );
+                    vert( p0, -1 );
+                    vert( p0, 1 );
+                    vert( p1, 1 );
+                    vert( p1, -1 );
+                    rlEnd();
+                }
+            };
+            for ( long long i = (long long)std::floor( ( S - high ) / cell ); i <= (long long)std::floor( ( S + high ) / cell ); ++i )
+            {
+                int ci = (int)i;
+                if ( hashf( ci, 0, s ) > amount * 0.9f ) continue;
+                float   zc = cz + (float)( S - ( (double)i + 0.2 + 0.6 * hashf( ci, 1, s ) ) * cell );
+                float   ang = ( hashf( ci, 2, s ) - 0.5f ) * 0.6f;
+                Vector2 dir = { std::cos( ang ), std::sin( ang ) }, nrm = { -dir.y, dir.x };
+                Vector2 a = { cx - dir.x * wide * 1.2f, zc - dir.y * wide * 1.2f };
+                Vector2 b = { cx + dir.x * wide * 1.2f, zc + dir.y * wide * 1.2f };
+                float   alpha = 0.82f * aMul;
+                // The sun's side of a rail is lit: the light strip leans that way.
+                float lean = ( -L.m_sunDir.x * nrm.x - L.m_sunDir.z * nrm.y ) > 0 ? 1.0f : -1.0f;
+                auto  rail = [&]( float off, float hw ) {
+                    Vector2 o = { nrm.x * off, nrm.y * off };
+                    Vector2 o2 = { nrm.x * ( off + lean * hw * 0.62f ), nrm.y * ( off + lean * hw * 0.62f ) };
+                    strip( { a.x + o.x, a.y + o.y }, { b.x + o.x, b.y + o.y }, hw, dark, alpha );
+                    strip( { a.x + o2.x, a.y + o2.y }, { b.x + o2.x, b.y + o2.y }, hw * 0.3f, top, alpha );
+                };
+                if ( hashf( ci, 3, s ) < 0.65f )
+                {
+                    float sp = 34.0f + 26.0f * hashf( ci, 4, s ), rw = 6.0f + 4.0f * hashf( ci, 5, s );
+                    float step = sp * 1.15f, total = std::hypot( b.x - a.x, b.y - a.y );
+                    for ( float t = 0; t + step <= total; t += step )
+                    {
+                        Vector2 p0 = { a.x + dir.x * t - nrm.x * sp * 0.5f, a.y + dir.y * t - nrm.y * sp * 0.5f };
+                        Vector2 p1 = { a.x + dir.x * ( t + step * 0.5f ) + nrm.x * sp * 0.5f,
+                                       a.y + dir.y * ( t + step * 0.5f ) + nrm.y * sp * 0.5f };
+                        Vector2 p2 = { a.x + dir.x * ( t + step ) - nrm.x * sp * 0.5f, a.y + dir.y * ( t + step ) - nrm.y * sp * 0.5f };
+                        strip( p0, p1, rw * 0.4f, dark, alpha );
+                        strip( p1, p2, rw * 0.4f, dark, alpha );
+                    }
+                    rail( -sp * 0.5f, rw );
+                    rail( sp * 0.5f, rw );
+                }
+                else
+                {
+                    float bw = 14.0f + 10.0f * hashf( ci, 6, s );
+                    rail( 0, bw );
+                    // Ribs across the beam now and then.
+                    float total = std::hypot( b.x - a.x, b.y - a.y ), gap = 60.0f + 40.0f * hashf( ci, 7, s );
+                    for ( float t = gap * 0.5f; t < total; t += gap )
+                    {
+                        Vector2 m = { a.x + dir.x * t, a.y + dir.y * t };
+                        strip( { m.x - nrm.x * bw * 1.15f, m.y - nrm.y * bw * 1.15f }, { m.x + nrm.x * bw * 1.15f, m.y + nrm.y * bw * 1.15f },
+                               3.0f, dark, alpha );
+                    }
+                }
+            }
+            rlDrawRenderBatchActive();
+        }
+        else if ( F.m_kind == ForeE::ROCK )
+        {
+            // Rocks tumbling by close to the camera, most of them off the middle.
+            float  k = CamHeight / ( CamHeight - F.m_height ), cell = 520.0f;
+            float  wide = f.m_halfW / k + 140.0f, high = f.m_halfH / k + 140.0f;
+            double S = scroll + time * 12.0f;
+            rlSetTexture( m_rockTex.id );
+            for ( long long i = (long long)std::floor( ( S - high ) / cell ); i <= (long long)std::floor( ( S + high ) / cell ); ++i )
+                for ( int t = 0; t < 2; ++t )
+                {
+                    int ci = (int)i, ct = t * 16;
+                    if ( hashf( ci, ct, s ) > amount * ( t == 0 ? 0.85f : 0.35f ) ) continue;
+                    float u = hashf( ci, ct + 2, s );
+                    u = hashf( ci, ct + 3, s ) < 0.8f ? ( u < 0.5f ? -1.0f : 1.0f ) * ( 0.35f + 0.65f * hashf( ci, ct + 4, s ) ) : u * 2 - 1;
+                    float r = t == 0 ? 40.0f + 70.0f * hashf( ci, ct + 5, s ) : 22.0f + 30.0f * hashf( ci, ct + 5, s );
+                    float x = cx + across( u, wide, 0 ), z = cz + (float)( S - ( (double)i + hashf( ci, ct + 1, s ) ) * cell );
+                    if ( std::fabs( z - cz ) > high ) continue;
+                    float spin = ( hashf( ci, ct + 6, s ) - 0.5f ) * 0.6f;
+                    float a = 0.85f * aMul * thin( x, z, k, r );
+                    quad( x, z, F.m_height, r, r, hashf( ci, ct + 7, s ) * 6.2832f + time * spin, tint( F.m_color, 0.45f + 0.55f * lum, a ) );
+                }
+            rlDrawRenderBatchActive();
+            rlSetTexture( 0 );
+        }
+        else if ( specks )
+        {
+            // Dust, rain and snow: specks in four sheets around the layer's height, each at its own pace, drawn as
+            // streaks along the way they pass.
+            struct P
+            {
+                float m_count, m_sMin, m_sMax, m_alpha, m_fall, m_wind, m_blur;
+            };
+            P p = F.m_kind == ForeE::DUST   ? P{ 14, 1.4f, 3.0f, 0.55f, 60, 25, 0.03f }
+                  : F.m_kind == ForeE::RAIN ? P{ 18, 1.0f, 1.6f, 0.35f, 650, -180, 0.045f }
+                                            : P{ 12, 2.6f, 5.0f, 0.8f, 45, 0, 0.0f };
+            const float cell = 160.0f;
+            int         count = (int)std::lround( p.m_count * amount * ( f.m_light ? 0.5f : 1.0f ) * 2.0f );
+            rlSetTexture( m_dotTex.id );
+            for ( int sheet = 0; sheet < 4; ++sheet )
+            {
+                float  h = clampf( F.m_height + ( sheet / 3.0f - 0.5f ) * 500.0f, 120.0f, 1300.0f );
+                float  k = CamHeight / ( CamHeight - h );
+                float  wide = f.m_halfW / k + 20.0f, high = f.m_halfH / k + 40.0f;
+                double S = scroll + time * p.m_fall;
+                for ( long long i = (long long)std::floor( ( S - high ) / cell ); i <= (long long)std::floor( ( S + high ) / cell ); ++i )
+                    for ( int j = 0; j < count; ++j )
+                    {
+                        int   ci = (int)i * 4 + sheet;
+                        float h1 = hashf( ci, j * 4, s ), h2 = hashf( ci, j * 4 + 1, s ), h3 = hashf( ci, j * 4 + 2, s );
+                        float sway = F.m_kind == ForeE::SNOW ? std::sin( time * 1.3f + h3 * 6.2832f ) * 12.0f : 0.0f;
+                        float x = cx + across( h1 * 2 - 1, wide, time * p.m_wind * ( 0.8f + 0.4f * h3 ) ) + sway;
+                        float z = cz + (float)( S - ( (double)i + h2 ) * cell );
+                        if ( std::fabs( z - cz ) > high ) continue;
+                        float   size = lerpf( p.m_sMin, p.m_sMax, h3 );
+                        Vector2 v = { p.m_wind, m_foreSpeed + p.m_fall };
+                        float   speed = std::hypot( v.x, v.y ), len = std::max( size, speed * p.m_blur * 0.5f );
+                        float   ang = speed > 1 ? std::atan2( v.y, v.x ) : 0.0f;
+                        float   a = p.m_alpha * aMul * ( 0.6f + 0.4f * h1 );
+                        quad( x, z, h, len, size, ang, tint( F.m_color, F.m_kind == ForeE::DUST ? lum : 0.6f + 0.4f * lum, a ) );
+                    }
+            }
+            rlDrawRenderBatchActive();
+            rlSetTexture( 0 );
+        }
+    }
+    EndBlendMode();
     rlEnableDepthMask();
 }
 

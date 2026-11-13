@@ -1542,6 +1542,16 @@ void Renderer::draw( const World &w, const Catalog &cat )
         }
         DrawMesh( cube.m_base, g.m_mat, m );
     }
+    // Last of the world: what passes between the camera and the field, over the ships and under the bullets.
+    Terrain::ForeFrame ff;
+    ff.m_center = m_center;
+    ff.m_halfH = m_halfH;
+    ff.m_halfW = m_halfH * m_w / (float)std::max( 1, m_h );
+    for ( const Player &p : w.m_players )
+        if ( p.m_active && p.m_alive && ff.m_pilotN < 2 ) ff.m_pilots[ff.m_pilotN++] = p.m_pos;
+    ff.m_amount = m_foreAmount;
+    ff.m_light = m_quality == 0;
+    m_terrain.drawFore( m_scroll, m_time, ff );
     EndMode3D();
     // Light: sprites in the field's pixels.
     drawSprites( w, cat );

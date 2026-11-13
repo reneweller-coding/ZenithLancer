@@ -233,6 +233,7 @@ void App::applySettings()
     m_view.m_showHitbox = m_set.m_hitbox;
     m_view.m_bulletStyle = m_preview.m_bulletStyle = m_set.m_bullets;
     m_view.m_softFlash = m_preview.m_softFlash = m_set.m_softFlash;
+    m_view.m_foreAmount = m_set.m_fore;
     m_audio.m_voiceVolume = m_set.m_voices;
     if ( quality() != m_view.m_quality && m_view.width() > 0 )
     {
@@ -1720,8 +1721,8 @@ void App::options( float dt )
     auto        row = [&]( const char *name, const std::string &value ) { return std::string( T( name ) ) + ":  " + value; };
     const char *quality[] = { "Flüssig", "Ausgewogen", "Qualität" };
     const char *bullets[] = { "wie gemacht", "kräftig", "Rot-Grün-Sehschwäche", "Blau-Gelb-Sehschwäche" };
-    enum RowE { LANG, MUSIC, EFFECTS, VOICES, FULL, FPS, QUALITY, BATTERY, SHAKE, FLASH, BULLETS, SPEED, BOMB, AUTOFIRE,
-                MOUSE, HITBOX, TEXT, RUMBLE, KEYS, BACK, ROWS };
+    enum RowE { LANG, MUSIC, EFFECTS, VOICES, FULL, FPS, QUALITY, BATTERY, SHAKE, FLASH, FORE, BULLETS, SPEED, BOMB,
+                AUTOFIRE, MOUSE, HITBOX, TEXT, RUMBLE, KEYS, BACK, ROWS };
     std::vector<std::string> items = {
         row( "Sprache", english() ? "English" : "Deutsch" ),
         row( "Musik", pct( m_set.m_music ) ),
@@ -1733,6 +1734,7 @@ void App::options( float dt )
         row( "Akku sparen", on( m_set.m_battery ) ),
         row( "Bildschirmwackeln", T( m_set.m_shake <= 0 ? "aus" : m_set.m_shake < 0.75f ? "schwach" : "voll" ) ),
         row( "Blitze dämpfen", on( m_set.m_softFlash ) ),
+        row( "Vordergrund", T( m_set.m_fore <= 0 ? "aus" : m_set.m_fore < 0.75f ? "schwach" : "voll" ) ),
         row( "Gegnergeschosse", T( bullets[std::clamp( m_set.m_bullets, 0, 3 )] ) ),
         row( "Spieltempo", pct( m_set.m_speed ) ),
         row( "Auto-Bombe", on( m_set.m_autoBomb ) ),
@@ -1758,6 +1760,7 @@ void App::options( float dt )
     help[VOICES] = "Die Stimmen der Funksprüche und Besprechungen. Die Texte bleiben immer zu lesen.";
     help[QUALITY] = "Flüssig: kleineres Bild, weniger Leuchten und Partikel. Ausgewogen: für das Steam Deck. Qualität: alles.";
     help[FLASH] = "Explosionen, Treffer und Übergänge blitzen schwächer auf.";
+    help[FORE] = "Wolken, Rauch, Träger und Felsen ziehen schneller als der Boden über das Spielfeld. Geschosse bleiben immer darüber.";
     help[BATTERY] = "Für das Steam Deck unterwegs: 30 Bilder in der Sekunde und höchstens ausgewogene Grafik.";
     help[BULLETS] = "Gegnergeschosse mit dunklem Rand, auf Wunsch in Farben für Farbsehschwächen.";
     help[SPEED] = "Das ganze Spiel läuft langsamer. Eine Hilfe, keine Schande.";
@@ -1796,6 +1799,7 @@ void App::options( float dt )
             break;
         case SHAKE: m_set.m_shake = m_set.m_shake <= 0 ? ( d > 0 ? 0.5f : 1.0f ) : m_set.m_shake < 0.75f ? ( d > 0 ? 1.0f : 0.0f ) : ( d > 0 ? 0.0f : 0.5f ); break;
         case FLASH: m_set.m_softFlash = !m_set.m_softFlash; break;
+        case FORE: m_set.m_fore = m_set.m_fore <= 0 ? ( d > 0 ? 0.5f : 1.0f ) : m_set.m_fore < 0.75f ? ( d > 0 ? 1.0f : 0.0f ) : ( d > 0 ? 0.0f : 0.5f ); break;
         case BATTERY: m_set.m_battery = !m_set.m_battery; break;
         case BULLETS: m_set.m_bullets = ( m_set.m_bullets + d + 4 ) % 4; break;
         case SPEED:

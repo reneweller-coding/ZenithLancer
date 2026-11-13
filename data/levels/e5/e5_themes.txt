@@ -20,3 +20,5 @@ theme e5_corona
   clouds #ff5a20 0.1
   exposure 0.95
   bloom 1.0
+  fore smoke 0.35 #2a0c06 420
+  fore dust 0.3 #4a1408 650

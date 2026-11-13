@@ -3,6 +3,14 @@
 What changed in Zenith Lancer, newest first. `Deploy/publish_release.ps1` takes a version's section as the text of
 its GitHub release.
 
+## [Unreleased]
+
+- **A foreground over the field:** clouds, smoke, mist, girders, rocks, dust, rain and snow pass between the camera
+  and the field, each layer at its own height and so at its own pace – up to two and a half times as fast as the
+  ground, as in the shooters of the nineties. Every world has its own (girders over the stations, rain under storm
+  clouds, ash over lava, snow on ice worlds). Bullets always stay on top, the pieces thin out over the pilots' ships,
+  and Options > Foreground makes it weaker or turns it off.
+
 ## [1.0.1] - 2026-11-02
 
 A small update for the eyes.

@@ -21,6 +21,8 @@ theme e6_bands
   exposure 0.95
   bloom 0.9
   groundlight 0.42
+  fore cloud 0.55 #e0b080 500
+  fore mist 0.3 #b08048 300
 
 theme e6_storm
   structures every=101 group=3 v6_skiff v6_buoy v6_mast v6_aerostat v6_scoop v6_dock v6_tanker v6_weather v6_gastanks v6_turbine v6_helipad v6_radar v6_habitat v6_trawler v6_floatcrane v6_antennas v6_shuttle
@@ -40,6 +42,8 @@ theme e6_storm
   lightning 0.8
   mist #604030 0.5
   groundlight 0.4
+  fore cloud 0.7 #806048 480
+  fore rain 0.6 #a89888 600
 
 theme e6_rings
   sky #030306
@@ -55,6 +59,8 @@ theme e6_rings
   planet #c8945a 260 0.78 0.28 1
   groundlight 0.6
   bloom 0.9
+  fore rock 0.65 #b09a80
+  fore dust 0.4 #c8bca8 500
 
 theme e6_deep
   structures every=82 group=3 v6_cluster v6_pod v6_anemone v6_vent v6_spire v6_mound v6_column vd_shell vd_stalks vd_rootknot vd_orbs vd_tendrils vd_pustules vd_membrane vd_spinarms vd_obelisk
@@ -76,3 +82,6 @@ theme e6_deep
   exposure 0.95
   bloom 1.0
   groundlight 0.4
+  fore mist 0.35 #803020 320
+  fore dust 0.3 #6ab0c0 550
+  fore rock 0.25 #2e1208 950

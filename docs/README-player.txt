@@ -95,6 +95,7 @@ Hilfen und Grafik (Optionen)
 ----------------------------
 Gegnergeschosse kräftig umrandet oder in Farben für Rot-Grün- und Blau-Gelb-Sehschwäche,
 Spieltempo 70 bis 100 %, Auto-Bombe, gedämpfte Blitze, Stimmen an oder aus.
+Vordergrund (Wolken, Rauch, Träger und Felsen über dem Spielfeld): voll, schwach oder aus.
 "Akku sparen" (Steam Deck unterwegs): 30 Bilder in der Sekunde, höchstens ausgewogene Grafik.
 Grafik "Flüssig", "Ausgewogen" (Steam Deck) oder "Qualität". Wer messen will:
     ZenithLancer --bench all
@@ -209,6 +210,7 @@ Aids and graphics (Options)
 ---------------------------
 Enemy bullets with a strong rim or in colours for red-green and blue-yellow colour
 blindness, game speed 70 to 100 %, auto-bomb, dimmed flashes, voices on or off.
+Foreground (clouds, smoke, girders and rocks over the field): full, low or off.
 "Save battery" (Steam Deck on the go): 30 frames a second, balanced graphics at most.
 Graphics "Smooth", "Balanced" (Steam Deck) or "Quality". To measure:
     ZenithLancer --bench all

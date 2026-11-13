@@ -114,6 +114,7 @@ void Settings::load( const std::string &path )
         else if ( k == "speed" ) m_speed = f;
         else if ( k == "autobomb" ) m_autoBomb = f != 0;
         else if ( k == "softflash" ) m_softFlash = f != 0;
+        else if ( k == "fore" ) m_fore = std::clamp( (float)f, 0.0f, 1.0f );
         else if ( k == "quality" ) m_quality = (int)f;
         else if ( k == "battery" ) m_battery = f != 0;
         else if ( k == "mod" ) m_mods.push_back( v );
@@ -133,7 +134,7 @@ bool Settings::save( const std::string &path ) const
     if ( !m_language.empty() ) fprintf( f, "language %s\n", m_language.c_str() );
     fprintf( f, "voices %.2f\nbullets %d\nspeed %.2f\nautobomb %d\nsoftflash %d\nquality %d\n", m_voices, m_bullets,
              m_speed, m_autoBomb ? 1 : 0, m_softFlash ? 1 : 0, m_quality );
-    fprintf( f, "battery %d\n", m_battery ? 1 : 0 );
+    fprintf( f, "battery %d\nfore %.2f\n", m_battery ? 1 : 0, m_fore );
     for ( const std::string &m : m_mods ) fprintf( f, "mod %s\n", m.c_str() );
     for ( int i = 0; i < 2; ++i )
         if ( !m_paint[i].empty() ) fprintf( f, "paint%d %s\n", i + 1, m_paint[i].c_str() );

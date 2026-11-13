@@ -146,6 +146,7 @@ public:
     int   m_quality = 2;          ///< 0 performance, 1 balanced, 2 quality (bloom passes, particles; the size is init's)
     int   m_bulletStyle = 0;      ///< enemy bullets: 0 as made, 1 strong, 2 for red-green, 3 for blue-yellow colour blindness
     bool  m_softFlash = false;    ///< flashes, the hit's red and explosions' light dimmed
+    float m_foreAmount = 1.0f;    ///< the foreground passing over the field: 1 full, 0.5 weak, 0 off
     Color m_paint[2] = { WHITE, WHITE };      ///< each pilot's paint (the hull and sidekicks in its colour)
     float m_paintAmount[2] = { 0.0f, 0.0f };  ///< ... how much of it (0: the hull's own colours)
     /** @brief Where the ghost (the best flight of the same seed) flies: drawn when m_ghostOn. */

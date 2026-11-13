@@ -89,6 +89,28 @@ public:
      */
     void drawOver( double scroll, float time );
 
+    /** @brief What the foreground needs of a frame. */
+    struct ForeFrame
+    {
+        Vector2 m_center = { 0, 0 };              ///< where the camera looks (field units, the shake included)
+        float   m_halfW = 0.0f, m_halfH = 0.0f;   ///< half the view at the field
+        Vector2 m_pilots[2] = {};                 ///< the pilots' ships (field units)
+        int     m_pilotN = 0;
+        float   m_amount = 1.0f;                  ///< the options' foreground: 1 full, 0.5 weak, 0 off
+        bool    m_light = false;                  ///< fewer specks (the performance graphics)
+    };
+
+    /**
+     * @brief Draws what passes between the camera and the field (data/themes.txt "fore": clouds, smoke, mist,
+     *        girders, rocks, dust, rain, snow) with alpha, last of the world: over the ships, under every bullet and
+     *        sprite. A layer h above the field passes CamHeight / (CamHeight - h) times as fast as the field and
+     *        looks that much larger; what passes over a pilot's ship thins out there.
+     * @param[in] scroll  how far the ground has come
+     * @param[in] time    seconds
+     * @param[in] f       the camera, the pilots and the options
+     */
+    void drawFore( double scroll, float time, const ForeFrame &f );
+
     /**
      * @brief The ground's height (world y) under a world point.
      * @param[in] x       world x
@@ -195,6 +217,31 @@ private:
     float                 m_planet[4] = { 0, 0, 0, 0 };   ///< a distant disc: radius, x and y (0..1 of the view), rings
     Color                 m_nebulaA = { 60, 30, 120, 255 }, m_nebulaB = { 20, 80, 140, 255 };
     float                 m_nebula = 1.0f;
+    /** @brief What a foreground layer is made of. */
+    enum class ForeE : int
+    {
+        CLOUD, SMOKE, MIST, GIRDER, ROCK, DUST, RAIN, SNOW
+    };
+    /** @brief One layer of the foreground (data/themes.txt "fore KIND AMOUNT COLOUR HEIGHT"). */
+    struct Fore
+    {
+        ForeE m_kind = ForeE::CLOUD;
+        float m_amount = 0.5f;                  ///< how much of it (0..1)
+        Color m_color = { 255, 255, 255, 255 };
+        float m_height = 500.0f;                ///< above the field (world units)
+    };
+    std::vector<Fore>     m_fore;               ///< the nearest last
+    Texture2D             m_puffTex = {}, m_dotTex = {}, m_rockTex = {};
+    bool                  m_hasForeTex = false;
+    double                m_foreScroll = 0.0;   ///< the last frame's scroll and time: the speed the streaks show
+    float                 m_foreTime = -1.0f, m_foreSpeed = 0.0f;
+    /** @brief The pictures of the foreground: a soft puff, a dot, a rock. */
+    void makeForeTextures();
+    /**
+     * @param[in] time  seconds
+     * @return the lightning in the clouds at this moment: x, z, radius, strength (0: none)
+     */
+    Vector4 lightningFlash( float time ) const;
     StyleE                m_style = StyleE::ROCK;
     FluidE                m_fluid = FluidE::NONE;
     std::map<int, Chunk>  m_chunks;

@@ -246,6 +246,7 @@ theme lava
   plates 1                  # station plating
   props #707880             # colour of buildings and hardware
   clouds #ffffff 0.5        # cloud layers between ground and field
+  fore girder 0.6 #4e5664   # a layer between the camera and the field (see below); several lines stack
   space 1                   # no ground: stars (with rocks 0..1 floating rocks, nebula #a #b)
   exposure 1  bloom 0.9
   groundlight 0.5           # how brightly the ground is lit (keep it darker than ships and bullets)
@@ -268,6 +269,7 @@ The ground has its own shader per style; these keys shape it (all optional):
 | `mist` | `#c amount [top]` — mist in the valleys |
 | `walls` | `height [corridor]` — rock walls at both sides (caves, gorges) |
 | `crystals` | `n [#c1] [#c2]` — glowing crystals and fungi |
+| `fore` | `kind amount [#c] [height]` — the foreground: what passes between the camera and the field, over the ships and under every bullet. Kinds: cloud smoke mist girder rock dust rain snow. `height` above the field (100–1300; by kind 300 mist … 900 rock) sets its pace: CamHeight / (CamHeight − height) of the field's, so 760 passes 1.9 times as fast as the field and 2.2 times as fast as the ground. Pieces thin out over the pilots' ships; Options > Foreground makes it weaker or turns it off |
 
 Themes: space asteroid nebula gallery station range lava desert foundry ocean storm ice city jungle hive corona lattice
 river cave (and episode 5's own `e5_corona` in data/levels/e5/e5_themes.txt).

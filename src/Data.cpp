@@ -891,6 +891,11 @@ void Catalog::check()
                     need( it != m_enemies.end() && it->second.m_kind == EnemyKindE::GROUND && it->second.m_scenery, l.where(),
                           "structure " + n + " is no ground enemy with scenery 1" );
                 }
+    // The foreground's kinds (Terrain::drawFore).
+    static const std::set<std::string> foreKinds = { "cloud", "smoke", "mist", "girder", "rock", "dust", "rain", "snow" };
+    for ( const Block &b : m_themes )
+        for ( const Line &l : b.m_lines )
+            if ( l.m_key == "fore" ) need( foreKinds.count( l.arg( 0 ) ) > 0, l.where(), "fore \"" + l.arg( 0 ) + "\" is no kind of foreground" );
     auto wantModel = [&]( const std::string &m, const std::string &where ) {
         if ( !m.empty() && !m_models.count( m ) ) m_warnings.push_back( where + ": model \"" + m + "\" is missing" );
     };

@@ -14,6 +14,7 @@ theme space
   planet #7a5e46 190 0.97 0.16 1
   exposure 1.0
   bloom 1.0
+  fore dust 0.3 #8c98b4 700
 
 theme asteroid
   sky #04050a
@@ -29,6 +30,8 @@ theme asteroid
   planet #6a625c 110 0.04 0.3 0
   groundlight 0.6
   bloom 0.9
+  fore rock 0.6 #6a5e52
+  fore dust 0.35 #9a8e80 500
 
 theme nebula
   sky #0a0614
@@ -43,6 +46,8 @@ theme nebula
   stars 0.9
   groundlight 0.6
   bloom 1.1
+  fore mist 0.45 #6a4a9a 350
+  fore rock 0.25 #605070
 
 theme station
   structures every=71 group=3 st_containers st_tank st_mast st_hangar st_pad st_uplink st_bunker st_reactor st_fuel st_warehouse st_watchtower st_radar st_helipad st_habitat st_antennas st_shuttle st_lattice_tower st_domes3
@@ -61,6 +66,8 @@ theme station
   glow #40c8ff 0.35
   props #5a6270
   groundlight 0.5
+  fore girder 0.7 #4e5664
+  fore dust 0.2 #a8b4c8 450
 
 theme range
   sky #05070c
@@ -77,6 +84,8 @@ theme range
   paint 0.35
   props #4a5260
   groundlight 0.5
+  fore girder 0.45 #3e4654
+  fore smoke 0.25 #2e3540 400
 
 theme gallery
   sky #141820
@@ -108,6 +117,8 @@ theme lava
   craters 0.12
   clouds #2a1612 0.3
   groundlight 0.5
+  fore smoke 0.6 #2e1e18 420
+  fore dust 0.35 #5a4e48 650
 
 theme desert
   structures every=79 group=3 de_dome de_tower de_mast de_truck de_solar de_house de_bunker de_uplink de_fuel de_watchtower de_watertank de_turbine de_oreheap de_pumpjack de_domes3 de_stalls de_minehead de_train
@@ -130,6 +141,8 @@ theme desert
   city 0.05
   props #8a7a6a
   groundlight 0.37
+  fore dust 0.6 #c09a6a 600
+  fore mist 0.25 #b08e5e 300
 
 theme foundry
   structures every=64 group=3 fo_stack fo_silo fo_hall fo_tank fo_crane fo_cooling fo_refinery fo_furnace fo_bunker fo_warehouse fo_conveyor fo_silos3 fo_minehead fo_oreheap fo_watertank fo_train fo_lattice_tower fo_radar
@@ -153,6 +166,8 @@ theme foundry
   props #4a3c34
   clouds #22160f 0.3
   groundlight 0.5
+  fore smoke 0.6 #2a201a 420
+  fore girder 0.4 #4a3c34 800
 
 theme ocean
   structures every=112 group=3 oc_rig oc_buoy oc_barge oc_beacon oc_dock oc_farm oc_tanker oc_platform oc_trawler oc_floatcrane oc_helipad oc_radar oc_gastanks oc_habitat oc_turbine oc_weather oc_lattice_tower
@@ -175,6 +190,8 @@ theme ocean
   props #a0a8b0
   clouds #ffffff 0.35
   groundlight 0.48
+  fore cloud 0.5 #ffffff 520
+  fore mist 0.2 #c8d8e4 300
 
 theme storm
   structures every=105 group=3 oc_rig oc_buoy oc_barge oc_beacon oc_dock oc_farm oc_tanker oc_platform oc_trawler oc_floatcrane oc_helipad oc_radar oc_gastanks oc_habitat oc_turbine oc_weather oc_lattice_tower
@@ -197,6 +214,8 @@ theme storm
   clouds #8a96a6 0.95
   lightning 0.7
   groundlight 0.45
+  fore cloud 0.65 #8a96a6 480
+  fore rain 0.7 #a8bcd8 600
 
 theme ice
   structures every=82 group=3 ic_dome ic_radar ic_tank ic_containers ic_drill ic_igloo ic_hall ic_reactor ic_warehouse ic_greenhouse ic_turbine ic_watchtower ic_antennas ic_domes3 ic_habitat ic_helipad ic_lattice_tower
@@ -218,6 +237,8 @@ theme ice
   leads 1
   craters 0.04
   groundlight 0.3
+  fore snow 0.55 #eef4ff 600
+  fore cloud 0.3 #dde8f4 520
 
 theme city
   structures every=64 group=3 ci_tower ci_tower2 ci_tanks ci_pylon ci_tower3 ci_mall ci_garage ci_house ci_arena ci_warehouse ci_habitat ci_antennas ci_stalls ci_train ci_helipad ci_obelisk ci_turbine ci_watertank ci_lattice_tower
@@ -242,6 +263,8 @@ theme city
   props #5a6474
   glow #ffd890 0.15
   groundlight 0.45
+  fore mist 0.3 #6a7488 320
+  fore girder 0.25 #3a3e48 820
 
 theme jungle
   structures every=82 group=3 ju_hut ju_tower ju_green ju_silo ju_platform ju_stele ju_lab ju_pad ju_watchtower ju_watertank ju_turbine ju_greenhouse ju_radar ju_helipad ju_antennas ju_domes3 ju_stalls
@@ -264,6 +287,8 @@ theme jungle
   mist #5a7a5c 0.45 -0.15
   clouds #d8f0d8 0.2
   groundlight 0.5
+  fore mist 0.5 #7a9a7c 300
+  fore cloud 0.3 #d8f0d8 560
 
 theme hive
   structures every=82 group=3 hv_pod hv_node hv_hut hv_mound hv_vent hv_chrysalis hv_anemone hv_tendrils hv_pustules hv_membrane hv_rootknot hv_stalks hv_orbs hv_shell hv_spinarms hv_obelisk
@@ -284,6 +309,8 @@ theme hive
   glow #70f060 0.45
   trees 0.35 #3e1a40
   groundlight 0.5
+  fore smoke 0.4 #2a1230 420
+  fore dust 0.4 #7ab060 550
 
 theme corona
   structures every=86 group=3 co_spire co_shrine co_relay co_mirrors co_fins co_gate co_core co_spinarms co_orbs co_obelisk co_lattice_tower co_radar co_domes3 co_antennas co_membrane co_conveyor co_silos3
@@ -302,6 +329,8 @@ theme corona
   glow #fff4c0 0.55
   exposure 0.85
   bloom 1.0
+  fore smoke 0.35 #2a0c06 420
+  fore dust 0.3 #4a1408 650
 
 theme lattice
   structures every=75 group=3 la_spire la_relay la_shrine la_gate la_prism la_column la_core la_mirrors la_spinarms la_orbs la_obelisk la_lattice_tower la_membrane la_domes3 la_radar la_stalks la_antennas la_shell
@@ -319,6 +348,8 @@ theme lattice
   glow #ff40d0 0.6 #40e0ff
   props #2a2238
   groundlight 0.5
+  fore girder 0.6 #2a2238
+  fore dust 0.2 #8a7aa8 450
 
 theme river
   structures every=90 group=3 ju_hut ju_tower ju_green ju_silo ju_platform ju_stele ju_lab ju_pad ju_watchtower ju_watertank ju_turbine ju_greenhouse ju_radar ju_helipad ju_antennas ju_domes3 ju_stalls
@@ -340,6 +371,8 @@ theme river
   trees 0.8 #285a22
   mist #5a7a5c 0.5 -0.12
   groundlight 0.5
+  fore mist 0.45 #7a9a7c 300
+  fore cloud 0.2 #d8f0d8 560
 
 theme cave
   structures every=98 group=3 de_dome de_tower de_mast de_truck de_solar de_house de_bunker de_uplink de_fuel de_watchtower de_watertank de_turbine de_oreheap de_pumpjack de_domes3 de_stalls de_minehead de_train
@@ -361,3 +394,6 @@ theme cave
   mist #12262c 0.5 -0.1
   groundlight 0.6
   bloom 1.0
+  fore rock 0.35 #2a2c30 950
+  fore mist 0.35 #1e3a40 320
+  fore dust 0.3 #6a7a80 500
